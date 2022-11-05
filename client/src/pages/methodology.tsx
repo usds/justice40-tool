@@ -10,7 +10,7 @@ import Layout from '../components/layout';
 import SubPageNav from '../components/SubPageNav';
 import PublicEngageButton from '../components/PublicEngageButton';
 
-import * as CONSTANTS from '../data/constants';
+import {USWDS_BREAKPOINTS} from '../data/constants';
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
 import {PAGES_ENDPOINTS} from '../data/constants';
 
@@ -60,7 +60,7 @@ const IndexPage = ({location}: MethodPageProps) => {
           </Grid>
 
           {/* Third column */}
-          {width > CONSTANTS.USWDS_BREAKPOINTS.DESKTOP ?
+          {width > USWDS_BREAKPOINTS.DESKTOP ?
           <Grid col={12} tablet={{col: 3}}>
             <SubPageNav
               endPoints={[

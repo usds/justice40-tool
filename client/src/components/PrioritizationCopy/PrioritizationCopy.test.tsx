@@ -14,7 +14,7 @@ describe('rendering of PrioritizationCopy Component -', () => {
       tribalCountUS: null,
       percentTractTribal: null,
       // eslint-disable-next-line max-len
-      para1: `This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.`,
+      para1: `This tract is not considered disadvantaged. It does not meet any burden thresholds `,
     },
     {
       totalCategoriesPrioritized: 0,
@@ -25,7 +25,7 @@ describe('rendering of PrioritizationCopy Component -', () => {
       tribalCountUS: null,
       percentTractTribal: null,
       // eslint-disable-next-line max-len
-      para1: `This tract is not considered disadvantaged. It meets 1 burden threshold BUT no associated socio-economic thresholds.`,
+      para1: `This tract is not considered disadvantaged. It meets 1 burden threshold`,
     },
     {
       totalCategoriesPrioritized: 0,
@@ -36,7 +36,7 @@ describe('rendering of PrioritizationCopy Component -', () => {
       tribalCountUS: null,
       percentTractTribal: null,
       // eslint-disable-next-line max-len
-      para1: `This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds.`,
+      para1: `This tract is not considered disadvantaged. It meets more than 1 burden threshold `,
     },
     {
       totalCategoriesPrioritized: 2,
@@ -47,7 +47,7 @@ describe('rendering of PrioritizationCopy Component -', () => {
       tribalCountUS: null,
       percentTractTribal: null,
       // eslint-disable-next-line max-len
-      para1: `This tract is considered disadvantaged because it meets 1 burden threshold AND the associated socio-economic threshold.`,
+      para1: `This tract is considered disadvantaged because it meets 1 burden threshold `,
     },
     {
       totalCategoriesPrioritized: 2,
@@ -58,7 +58,7 @@ describe('rendering of PrioritizationCopy Component -', () => {
       tribalCountUS: null,
       percentTractTribal: null,
       // eslint-disable-next-line max-len
-      para1: `This tract is considered disadvantaged because it meets more than 1 burden threshold AND the associated socio-economic threshold.`,
+      para1: `This tract is considered disadvantaged because it meets more than 1 burden threshold `,
     },
 
     // {

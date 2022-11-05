@@ -4,7 +4,7 @@
     "description": "Navigate to the About page. This is the sub heading of page"
   },
   "about.page.how.to.use.tool.para1": {
-    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows Federally-recognized Tribal reservation lands, including Alaskan Native Villages.",
+    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.",
     "description": "Navigate to the About page. This is the sub heading of How to use the tool paragraph1"
   },
   "about.page.how.to.use.tool.para2": {
@@ -32,7 +32,11 @@
     "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.how.you.can.help.list.item.4": {
-    "defaultMessage": "Any other questions? Email: <link1>Screeningtool-Support@omb.eop.gov</link1>",
+    "defaultMessage": "Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email CEQ at: <link1>Screeningtool-Support@omb.eop.gov</link1>",
+    "description": "Navigate to the about page. You will see How you can help list item 3"
+  },
+  "about.page.how.you.can.help.para.1": {
+    "defaultMessage": "The Council on Environmental Quality plans to issue a Request for Information in 2023. This will give the public time to use the tool before providing comments.",
     "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.join.open.source.info": {
@@ -56,11 +60,11 @@
     "description": "Navigate to the About page. This is the list item 2"
   },
   "about.page.paragraph.1": {
-    "defaultMessage": "In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.",
+    "defaultMessage": "In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.These are the communities that are disadvantaged because they are overburdened and underserved.",
     "description": "Navigate to the About page. This is the paragraph 1"
   },
   "about.page.paragraph.2": {
-    "defaultMessage": "Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in <link1>Justice40 Initiative</link1>. The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.",
+    "defaultMessage": "Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in the <link1>Justice40 Initiative</link1>. The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.",
     "description": "Navigate to the About page. This is the paragraph 2"
   },
   "about.page.paragraph.3": {
@@ -72,7 +76,7 @@
     "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.send.feedback.email.link": {
-    "defaultMessage": "Contact CEQ",
+    "defaultMessage": "Contact",
     "description": "about page sub header text"
   },
   "about.page.send.feedback.heading": {
@@ -92,7 +96,7 @@
     "description": "Navigate to the About page. This is the sub heading of Using the data"
   },
   "about.page.use.data.paragraph": {
-    "defaultMessage": "A community is considered to be disadvantaged if it meets the <link1>methodology</link1>.",
+    "defaultMessage": "A community is considered to be disadvantaged if it meets the tool's <link1>methodology</link1>.",
     "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.use.map.heading": {
@@ -100,7 +104,7 @@
     "description": "Navigate to the About page. This is the sub heading of Using the map"
   },
   "about.page.use.map.para": {
-    "defaultMessage": "Zoom and select any census tract to see if it is considered disadvantaged.",
+    "defaultMessage": "Zoom-in and select any census tract to see if it is considered disadvantaged.",
     "description": "Navigate to the About page. This is the paragraph of Using the map"
   },
   "common.pages.alerts.additional_docs_available.description": {
@@ -604,7 +608,7 @@
     "description": "Navigate to the Downloads page, this will be the view of change log"
   },
   "explore.map.page.description.1": {
-    "defaultMessage": "Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. These include Federally Recognized Tribal lands, including Alaska Native Villages.",
+    "defaultMessage": "Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. Federally Recognized Tribes, including Alaska Native Villages are also considered disadvantaged communities.",
     "description": "On the explore the map page, the first description of the page"
   },
   "explore.map.page.description.2": {
@@ -896,7 +900,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to agriculture resulting from natural hazards\n    "
   },
   "explore.map.page.side.panel.indicator.description.exp.bld.loss": {
-    "defaultMessage": "Economic loss to agricultural value resulting from natural hazards each year",
+    "defaultMessage": "Economic loss to building value resulting from natural hazards each year",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards"
   },
   "explore.map.page.side.panel.indicator.description.exp.pop.loss": {
@@ -904,7 +908,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
   },
   "explore.map.page.side.panel.indicator.description.flooding": {
-    "defaultMessage": "Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years",
+    "defaultMessage": "Projected risk to properties from projected floods, from tides, rain, riverine and storm surges within 30 years",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of flooding risk"
   },
   "explore.map.page.side.panel.indicator.description.former.def.sites": {
@@ -932,7 +936,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of households making less than 80% of the area median family income and spending more than 30% of income on housing"
   },
   "explore.map.page.side.panel.indicator.description.lack.green.space": {
-    "defaultMessage": "Share of non-crop land covered with artificial materials like concrete or pavement",
+    "defaultMessage": "Amount of non-crop land covered with artificial materials like concrete or pavement",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of non-crop land covered with artificial materials like concrete or pavement"
   },
   "explore.map.page.side.panel.indicator.description.lack.plumbing": {
@@ -1340,28 +1344,28 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is partially focused on"
   },
   "explore.map.page.side.panel.prio.copy.not.prio": {
-    "defaultMessage": "This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold."
+    "defaultMessage": "This tract is not considered disadvantaged. It does not meet any burden thresholds <bold>OR</bold> at least one associated socioeconomic threshold.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomic threshold."
   },
   "explore.map.page.side.panel.prio.copy.not.prio.one.burden": {
-    "defaultMessage": "This tract is not considered disadvantaged. It meets 1 burden threshold BUT no associated socio-economic thresholds.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold BUT no associated socio-economic thresholds."
+    "defaultMessage": "This tract is not considered disadvantaged. It meets 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold <bold>BUT</bold> no associated socioeconomic thresholds."
   },
   "explore.map.page.side.panel.prio.copy.prio.donut": {
-    "defaultMessage": "This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories."
+    "defaultMessage": "This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories."
   },
   "explore.map.page.side.panel.prio.copy.prio.frt.n.perc": {
     "defaultMessage": "The lands of Federally Recognized Tribes that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged.",
     "description": "Navigate to the explore the map page. Click on tract, The Federally Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged."
   },
   "explore.map.page.side.panel.prio.copy.prio.n.burden": {
-    "defaultMessage": "This tract is considered disadvantaged because it meets {burdens} burden threshold AND the associated socio-economic threshold.",
-    "description": "Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds AND the associated socio-economic threshold."
+    "defaultMessage": "This tract is considered disadvantaged because it meets {burdens} burden threshold <bold>AND</bold> the associated socioeconomic threshold.",
+    "description": "Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds <bold>AND</bold> the associated socioeconomic threshold."
   },
   "explore.map.page.side.panel.prio.copy.prio.one.burden": {
-    "defaultMessage": "This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds."
+    "defaultMessage": "This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds."
   },
   "explore.map.page.side.panel.send.feedback.alt.img": {
     "defaultMessage": "Send feedback",
@@ -1416,8 +1420,12 @@
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations intro text"
   },
   "explore.map.page.under.map.note.on.tribal.nations.para.1": {
-    "defaultMessage": "To honor the Administration's commitment to the Federal trust responsibility to Tribal Nations, areas within the boundaries of Federally recognized Tribes, including Alaska Native villages, are designated as disadvantaged. In some areas, like rural Alaska, this includes Tribal areas that are smaller than a census tract.",
+    "defaultMessage": "To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized Tribes are designated as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than a census tract. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.",
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1"
+  },
+  "explore.map.page.under.map.note.on.tribal.nations.para.2": {
+    "defaultMessage": "This decision was made after meaningful and robust consultation with Tribal Nations. This is consistent with CEQ’s <link1> Action Plan for Consultation and Coordination with Tribal Nations </link1>, President Biden’s <link3>Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link2> Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments </link2> .",
+    "description": "Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 2"
   },
   "fab.survey.text": {
     "defaultMessage": "Help improve the site & data",
@@ -1512,7 +1520,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q11"
   },
   "faqs.page.answers.Q12_P1": {
-    "defaultMessage": "The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze environmental problems. For example, EPA uses <link1>EJScreen</link1> to:",
+    "defaultMessage": "The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information and combines that information together into indices. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze for environmental and EJ issues. For example, EPA uses <link1>EJScreen</link1> to:",
     "description": "Navigate to the FAQs page, this will be an answer, Q12_P1"
   },
   "faqs.page.answers.Q12_P1_1": {
@@ -1644,7 +1652,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q2_P1"
   },
   "faqs.page.answers.Q2_P2": {
-    "defaultMessage": "The tool highlights disadvantaged communities across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:",
+    "defaultMessage": "The tool highlights disadvantaged communities across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:",
     "description": "Navigate to the FAQs page, this will be an answer, Q2_P2"
   },
   "faqs.page.answers.Q2_P2_1": {
@@ -1652,7 +1660,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q2_P2_1"
   },
   "faqs.page.answers.Q2_P2_2": {
-    "defaultMessage": "If they are on Federally Recognized Tribal land",
+    "defaultMessage": "If they are on land within the boundaries of Federally Recognized Tribes",
     "description": "Navigate to the FAQs page, this will be an answer, Q2_P2_2"
   },
   "faqs.page.answers.Q2_P3": {
@@ -1680,7 +1688,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q4_P3"
   },
   "faqs.page.answers.Q5_P1": {
-    "defaultMessage": "To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, Federally Recognized Tribal lands are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The tool’s census tracts and Tribal lands have different boundaries.",
+    "defaultMessage": "To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized tribes are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.",
     "description": "Navigate to the FAQs page, this will be an answer, Q5_P1"
   },
   "faqs.page.answers.Q5_P2": {
@@ -1688,11 +1696,11 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q5_P2"
   },
   "faqs.page.answers.Q5_P2_1": {
-    "defaultMessage": "The decision to highlight Federally-recognized Tribal lands on the CEJST map and to designate them as disadvantaged communities was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s Action Plan for Consultation and Coordination with Tribal Nations, President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation, and Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments.",
+    "defaultMessage": "This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.",
     "description": "Navigate to the FAQs page, this will be an answer, Q5_P2_1"
   },
   "faqs.page.answers.Q6_P1": {
-    "defaultMessage": "Some census tracts that contain lands of Federally-recognized Tribes that are also considered disadvantaged because they meet the burden thresholds for at least one of the categories on the tool. When this happens, the areas appear darker on the tool’s map.",
+    "defaultMessage": "Some census tracts that contain land within the boundaries of Federally Recognized Tribes are also considered disadvantaged because they meet the burden thresholds for at least one of the categories on the tool. When this happens, the areas appear darker on the tool’s map.",
     "description": "Navigate to the FAQs page, this will be an answer, Q6_P1"
   },
   "faqs.page.answers.Q6_P2": {
@@ -1700,15 +1708,15 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q6_P2"
   },
   "faqs.page.answers.Q6_P3": {
-    "defaultMessage": ": Disadvantaged census tracts and Federally-Recognized Tribal lands",
+    "defaultMessage": ": Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes",
     "description": "Navigate to the FAQs page, this will be an answer, Q6_P3"
   },
   "faqs.page.answers.Q6_P4": {
-    "defaultMessage": "Any area that is highlighted is considered disadvantaged, regardless of whether it is a light shade or dark shade. The tool will show if a whole census tract is considered disadvantaged or just the parts that are Federally Recognized Tribal lands.",
+    "defaultMessage": "Any area that is highlighted is considered disadvantaged, regardless of whether it is a light shade or dark shade. The tool will show if a whole census tract is considered disadvantaged or just the parts that are within the boundaries of Federally Recognized Tribes.",
     "description": "Navigate to the FAQs page, this will be an answer, Q6_P4"
   },
   "faqs.page.answers.Q7": {
-    "defaultMessage": "A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains Federally Recognized Tribal lands, then the parts of the tract that are Tribal lands are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”",
+    "defaultMessage": "A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains land within the boundaries of Federally Recognized Tribes, then the parts of the tract that are within the land of Tribes are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”",
     "description": "Navigate to the FAQs page, this will be an answer, Q7"
   },
   "faqs.page.answers.Q8_P1": {
@@ -1844,7 +1852,7 @@
     "description": "Navigate to the Methodology page. This is the description text for Formerly Used Defense Sites"
   },
   "methodology.page.category.green.space.description.text": {
-    "defaultMessage": "Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes.",
+    "defaultMessage": "Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.",
     "description": "Navigate to the Methodology page. This is the description text for housing burden"
   },
   "methodology.page.category.heart.disease.description.text": {
@@ -1880,11 +1888,11 @@
     "description": "Navigate to the Methodology page. This is the note text for linguistic.iso"
   },
   "methodology.page.category.low.hist.underinvestectancy.description.text": {
-    "defaultMessage": "Census tracts that experienced historic underinvestment as determined by the National Community Reinvestment Coalition’s (NCRC) historic redlining score. It is determined using the <link1>NCRC’s methodology</link1> for identifying areas with the most historic redlining (i.e. a score of 3.25 or more out of 4). This means that people in the tract had high barriers to accessing home loans.",
+    "defaultMessage": "Census tracts that experienced historic underinvestment based on redlining maps created by the federal government’s Home Owners’ Loan Corporation (HOLC) between 1935 and 1940. The tool uses the <link1>National Community Reinvestment Coalition’s methodology</link1> for converting boundaries in the HOLC maps to census tracts. Census tracts meet the threshold when they have a score of 3.25 or more out of 4.",
     "description": "Navigate to the Methodology page. This is the description text for Historic Underinvestment"
   },
   "methodology.page.category.low.hist.underinvestectancy.note.text": {
-    "defaultMessage": "<boldtag>Note: </boldtag>The historic underinvestment data indicator <boldtag>does not</boldtag> appear on the map for tracts <boldtag>that were not</boldtag> evaluated by the National Community Reinvestment Coalition. It is shown in tracts that are most commonly in larger metropolitan areas.",
+    "defaultMessage": "<boldtag>Note: </boldtag>The historic underinvestment indicator <boldtag>is not shown</boldtag> on the map for tracts that were not included in the original HOLC maps because there is no data available.",
     "description": "Navigate to the Methodology page. This is the note text for Historic Underinvestment"
   },
   "methodology.page.category.low.income.description.text": {
@@ -1996,7 +2004,7 @@
     "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
   },
   "methodology.page.category.source.holc.link": {
-    "defaultMessage": "<link1>Dataset of formerly redlined areas</link1> using digitized maps from the Home Owners Loan Corporation from {date10}",
+    "defaultMessage": "<link1>Dataset of formerly redlined areas</link1> using digitized maps from the Home Owners Loan Corporation (HOLC), using {date10} census boundaries",
     "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
   },
   "methodology.page.category.source.hud.link": {
@@ -2024,12 +2032,8 @@
     "description": "Navigate to the Methodology page. This is the description text for Transportation barriers"
   },
   "methodology.page.category.tribal.lands.description.text": {
-    "defaultMessage": "The Land Area Representation (LAR) dataset depicts the exterior extent of a Federal Indian land area.",
+    "defaultMessage": "The Land Area Representation (LAR) dataset depicts American Indian land areas for Federally Recognized Tribes.",
     "description": "Navigate to the Methodology page. This is the description text for Tribal lands"
-  },
-  "methodology.page.category.tribal.lands.note.text": {
-    "defaultMessage": "<boldtag>Note: </boldtag>The LAR dataset depicts the exterior extent of a Federal Indian land area. Not all Federally recognized tribes have a designated land area; therefore, they may not have an associated land area represented in the land area dataset.",
-    "description": "Navigate to the Methodology page. This is the note text for low median expectancy"
   },
   "methodology.page.category.unemploy.description.text": {
     "defaultMessage": "Number of unemployed people as a share of the labor force.",
@@ -2060,7 +2064,7 @@
     "description": "Methodology page dataset card available for CONUS and DC"
   },
   "methodology.page.dataset.card.availableFor.FRT": {
-    "defaultMessage": "Federally-Recognized Tribes, including Alaskan Native villages",
+    "defaultMessage": "Federally Recognized Tribes, including Alaskan Native villages",
     "description": "Methodology page dataset card available for FRT"
   },
   "methodology.page.dataset.card.availableFor.METRO_US_HOLC": {
@@ -2124,7 +2128,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the high school dataset"
   },
   "methodology.page.dataset.indicator.hist.underinvest.title.text": {
-    "defaultMessage": "New Historic underinvestment",
+    "defaultMessage": "Historic underinvestment",
     "description": "Navigate to the Methodology page. This is the title text for the Historic Underinvestment"
   },
   "methodology.page.dataset.indicator.house.burden.title.text": {
@@ -2192,7 +2196,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the Transportation barriers"
   },
   "methodology.page.dataset.indicator.tribal.lands.title.text": {
-    "defaultMessage": "Tribal lands",
+    "defaultMessage": "Tribes",
     "description": "Navigate to the Methodology page. This is the title text for the Tribal lands"
   },
   "methodology.page.dataset.indicator.unemploy.title.text": {
@@ -2271,10 +2275,6 @@
     "defaultMessage": "Under the current formula, a census tract will be identified as disadvantaged in one or more categories of criteria:",
     "description": "Navigate to the methodology page. This is the methodology page introducing the formula"
   },
-  "methodology.page.formula.second": {
-    "defaultMessage": "<boldtag>AND</boldtag> the census tract is above the threshold for the socioeconomic indicators",
-    "description": "Navigate to the methodology page. This is the second part of the formula used in the methodology"
-  },
   "methodology.page.header.text": {
     "defaultMessage": "Methodology",
     "description": "Navigate to the methodology page. This is the methodology page header text"
@@ -2344,7 +2344,7 @@
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.tribal.lands.methodology": {
-    "defaultMessage": "Displaying Federally recognized tribal boundaries and Alaska Native Villages on the map",
+    "defaultMessage": "Displaying land within the boundaries of Federally Recognized Tribes and point locations of Alaska Native Villages on the map",
     "description": "Displaying Federally recognized tribal boundaries and Alaska Native Villages on the map"
   },
   "methodology.page.indicator.categories.work.dev.if": {
@@ -2356,15 +2356,15 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Training and workforce development"
   },
   "methodology.page.paragraph.1": {
-    "defaultMessage": "The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:",
+    "defaultMessage": "The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:",
     "description": "Navigate to the methodology page. This is the methodology paragraph 1"
   },
   "methodology.page.paragraph.1.bullet.1": {
-    "defaultMessage": "If they are in a census tract that meets the thresholds for at least one of tool’s categories of burden, or",
+    "defaultMessage": "If they are in census tracts that meet the thresholds for at least one of tool’s categories of burden, or",
     "description": "Navigate to the methodology page. This is the methodology paragraph 1, bullet 1"
   },
   "methodology.page.paragraph.1.bullet.2": {
-    "defaultMessage": "If they are on Federally-Recognized Tribal land",
+    "defaultMessage": "If they are on land within the boundaries of Federally Recognized Tribes",
     "description": "Navigate to the methodology page. This is the methodology paragraph 1, bullet 2"
   },
   "methodology.page.paragraph.3": {
@@ -2372,11 +2372,11 @@
     "description": "Navigate to the methodology page. This is the methodology paragraph 3"
   },
   "methodology.page.paragraph.4": {
-    "defaultMessage": "Census tracts are small units of geography. Census tract boundaries are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.",
+    "defaultMessage": "Census tracts are small units of geography. Census tract <link1>boundaries</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.",
     "description": "Navigate to the methodology page. This is the methodology paragraph 4"
   },
   "methodology.page.paragraph.5": {
-    "defaultMessage": "Federally-Recognized Tribal lands, including Alaska Native Villages, are also considered disadvantaged and highlighted on the map.",
+    "defaultMessage": "Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities. They are highlighted on the map.",
     "description": "Navigate to the methodology page. This is the methodology paragraph 5"
   },
   "methodology.page.return.to.top.link": {

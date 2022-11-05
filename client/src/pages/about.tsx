@@ -12,9 +12,8 @@ import PublicEngageButton from '../components/PublicEngageButton';
 import SubPageNav from '../components/SubPageNav';
 
 import * as ABOUT_COPY from '../data/copy/about';
-import * as COMMON_COPY from '../data/copy/common';
-import * as CONSTANTS from '../data/constants';
-import {PAGES_ENDPOINTS} from '../data/constants';
+import {FEEDBACK_EMAIL} from '../data/copy/common';
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
 
 import accountBalanceIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
@@ -77,7 +76,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
           </Grid>
 
           {/* Third column */}
-          {width > CONSTANTS.USWDS_BREAKPOINTS.DESKTOP ?
+          {width > USWDS_BREAKPOINTS.DESKTOP ?
           <Grid col={12} tablet={{col: 3}}>
             <SubPageNav
               endPoints={[
@@ -141,7 +140,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
             imgSrc={commentIcon}
             header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_HEADING)}
             linkText={ABOUT_COPY.GET_INVOLVED_COMMENTS.EMAIL}
-            url={`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
+            url={`mailto:${FEEDBACK_EMAIL}`}
             openUrlNewTab={true}
             internal={false}>
             <p>

@@ -517,14 +517,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                    recognizes that some communities are disadvantaged because they face burdens. The CEJST uses datasets that are indicators of burden. These burdens are related to climate change and the environment. They are also related to health and lack of economic opportunity.
                 </p>
                 <p>
-                  The tool highlights disadvantaged communities across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:
+                  The tool highlights disadvantaged communities across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:
                 </p>
                 <ul>
                   <li>
                     If they are in a census tract that meets the thresholds for at least one of the tool’s categories of burden, or
                   </li>
                   <li>
-                    If they are on Federally Recognized Tribal land
+                    If they are on land within the boundaries of Federally Recognized Tribes
                   </li>
                 </ul>
                 <p>
@@ -612,7 +612,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-4"
               >
                 <p>
-                  To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, Federally Recognized Tribal lands are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The tool’s census tracts and Tribal lands have different boundaries.
+                  
+      To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized tribes  are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.
+    
                 </p>
                 <p>
                   Federally Recognized Tribes are those that are recognized by the U.S. Bureau of Indian Affairs in the 
@@ -629,7 +631,37 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </p>
                 <ul>
                   <li>
-                    The decision to highlight Federally-recognized Tribal lands on the CEJST map and to designate them as disadvantaged communities was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s Action Plan for Consultation and Coordination with Tribal Nations, President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation, and Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments.
+                    This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Action Plan for Consultation and Coordination with Tribal Nations
+                    </a>
+                    , 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation
+                    </a>
+                    , and 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments
+                    </a>
+                    .
                   </li>
                 </ul>
               </div>
@@ -653,7 +685,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-5"
               >
                 <p>
-                  Some census tracts that contain lands of Federally-recognized Tribes that are also considered disadvantaged because they meet the burden thresholds for at least one of the categories on the tool. When this happens, the areas appear darker on the tool’s map.
+                  Some census tracts that contain land within the boundaries of Federally Recognized Tribes are also considered disadvantaged because they meet the burden thresholds for at least one of the categories on the tool. When this happens, the areas appear darker on the tool’s map.
                 </p>
                 <div
                   style="display: flex;"
@@ -662,6 +694,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     alt="
       a blue circle icon informing the user of what a disadvantaged community is depicted as
     "
+                    class="faqs-dot-alignment"
                     src="test-file-stub"
                   />
                   <div
@@ -682,11 +715,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <div
                     style="padding-left: 2px;"
                   >
-                     : Disadvantaged census tracts and Federally-Recognized Tribal lands
+                     : Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes 
                   </div>
                 </div>
                 <p>
-                  Any area that is highlighted is considered disadvantaged, regardless of whether it is a light shade or dark shade. The tool will show if a whole census tract is considered disadvantaged or just the parts that are Federally Recognized Tribal lands.
+                  Any area that is highlighted is considered disadvantaged, regardless of whether it is a light shade or dark shade. The tool will show if a whole census tract is considered disadvantaged or just the parts that are within the boundaries of Federally Recognized Tribes.
                 </p>
               </div>
               <h2
@@ -709,7 +742,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-6"
               >
                 <p>
-                  A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains Federally Recognized Tribal lands, then the parts of the tract that are Tribal lands are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”
+                  A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains land within the boundaries of Federally Recognized Tribes, then the parts of the tract that are within the land of Tribes are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”
                 </p>
               </div>
               <h2
@@ -853,7 +886,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-11"
               >
                 <p>
-                  The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze environmental problems. For example, EPA uses 
+                  The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information and combines that information together into indices. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze for environmental and EJ issues. For example, EPA uses 
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""

@@ -41,10 +41,18 @@ const PrioritizationCopy =
        if (isAdjacencyThreshMet && isAdjacencyLowIncome) {
          prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.PRIO_SURR_LI;
        } else if (
+         isAdjacencyThreshMet &&
+          !isAdjacencyLowIncome &&
+          tribalCountAK === null &&
+          tribalCountUS === null &&
+          percentTractTribal === null
+       ) {
+         prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO_SURR_LI;
+       } else if (
          !(isAdjacencyThreshMet && isAdjacencyLowIncome) &&
-      tribalCountAK === null &&
-      tribalCountUS === null &&
-      percentTractTribal === null
+          tribalCountAK === null &&
+          tribalCountUS === null &&
+          percentTractTribal === null
        ) {
          if (totalBurdensPrioritized === 0) {
            prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO;

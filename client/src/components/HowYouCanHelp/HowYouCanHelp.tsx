@@ -23,6 +23,9 @@ const HowYouCanHelp = () => {
           {ABOUT_COPY.HOW_YOU_CAN_HELP_LIST_ITEMS.LIST_ITEM_4}
         </li>
       </ul>
+      <p>
+        {ABOUT_COPY.HOW_YOU_CAN_HELP_LIST_ITEMS.PARA1}
+      </p>
     </div>
   );
 };

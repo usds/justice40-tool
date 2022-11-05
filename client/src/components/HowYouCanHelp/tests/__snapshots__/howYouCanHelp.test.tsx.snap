@@ -10,8 +10,11 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
       <li>
         Provide 
         <a
-          class="usa-link"
-          href="/en/methodology"
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="https://www.surveymonkey.com/r/P3LWTSB"
+          rel="noreferrer"
+          target="_blank"
         >
           general feedback
         </a>
@@ -20,15 +23,18 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
       <li>
         Suggest new 
         <a
-          class="usa-link"
-          href="/en/methodology"
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="https://www.surveymonkey.com/r/6G9TQJ8"
+          rel="noreferrer"
+          target="_blank"
         >
           data sources
         </a>
         .
       </li>
       <li>
-        Any other questions? Email: 
+        Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email CEQ at: 
         <a
           class="usa-link"
           href="/en/methodology"
@@ -37,6 +43,11 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         </a>
       </li>
     </ul>
+    <p>
+      
+      The Council on Environmental Quality plans to issue a Request for Information in 2023. This will give the public time to use the tool before providing comments.    
+    
+    </p>
   </div>
 </DocumentFragment>
 `;

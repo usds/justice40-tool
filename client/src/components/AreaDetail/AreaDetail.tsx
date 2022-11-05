@@ -64,7 +64,7 @@ export interface indicatorInfo {
  * id: distict id
  * titleText: display text for the category title
  * indicators: an array of indicators
- * socioEcIndicators: an array of socio-economic indicators
+ * socioEcIndicators: an array of socioeconomic indicators
  * isDisadvagtaged: boolean to indicate if the category is disadvantaged
  * isExceed1MoreBurden: boolean to indicate if the category exceeds more than one burden
  * isExceedBothSocioBurdens: boolean to indicate if the category exceeds both socio-eco burdens
@@ -143,10 +143,17 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   console.log("Tribal count in CONUS: ", properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
   ` ${properties[constants.TRIBAL_AREAS_COUNT_CONUS]}` : ` null`);
 
-  const blockGroup = properties[constants.GEOID_PROPERTY] ? properties[constants.GEOID_PROPERTY] : "N/A";
-  const population = properties[constants.TOTAL_POPULATION] ? properties[constants.TOTAL_POPULATION] : "N/A";
-  const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
-  const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
+
+  // Fix constants.MISSING_DATA_STRING import
+  const blockGroup = properties[constants.GEOID_PROPERTY] ?
+   properties[constants.GEOID_PROPERTY] : constants.MISSING_DATA_STRING;
+  const population = properties[constants.TOTAL_POPULATION] ?
+   properties[constants.TOTAL_POPULATION] : constants.MISSING_DATA_STRING;
+  const countyName = properties[constants.COUNTY_NAME] ?
+   properties[constants.COUNTY_NAME] : constants.MISSING_DATA_STRING;
+  const stateName = properties[constants.STATE_NAME] ?
+   properties[constants.STATE_NAME] : constants.MISSING_DATA_STRING;
+
   const sidePanelState = properties[constants.SIDE_PANEL_STATE];
   const percentTractTribal = properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
     parseFloat((properties[constants.TRIBAL_AREAS_PERCENTAGE]*100).toFixed()) : null;
@@ -764,7 +771,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           isBurdened={category.isExceedBothSocioBurdens}
         /> */}
 
-        {/* socio-economic indicators */}
+        {/* socioeconomic indicators */}
         {category.socioEcIndicators.map((indicator: any, index: number) => {
           return <Indicator
             key={`ind${index}`}
@@ -845,7 +852,10 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS] === 0) &&
       <DonutCopy
         isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-        povertyBelow200Percentile={properties[constants.POVERTY_BELOW_200_PERCENTILE]}
+        povertyBelow200Percentile={
+          properties[constants.POVERTY_BELOW_200_PERCENTILE] > 0 ?
+          properties[constants.POVERTY_BELOW_200_PERCENTILE] : null
+        }
       /> }
 
       {/* Send Feedback button */}

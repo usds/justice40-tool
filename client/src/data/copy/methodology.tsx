@@ -20,21 +20,21 @@ export const PAGE = defineMessages({
   PARA1: {
     id: 'methodology.page.paragraph.1',
     defaultMessage: `
-      The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:
+      The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:
     `,
     description: 'Navigate to the methodology page. This is the methodology paragraph 1',
   },
   PARA1_BULLET1: {
     id: 'methodology.page.paragraph.1.bullet.1',
     defaultMessage: `
-      If they are in a census tract that meets the thresholds for at least one of tool’s categories of burden, or
+      If they are in census tracts that meet the thresholds for at least one of tool’s categories of burden, or
     `,
     description: 'Navigate to the methodology page. This is the methodology paragraph 1, bullet 1',
   },
   PARA1_BULLET2: {
     id: 'methodology.page.paragraph.1.bullet.2',
     defaultMessage: `
-      If they are on Federally-Recognized Tribal land
+      If they are on land within the boundaries of Federally Recognized Tribes
     `,
     description: 'Navigate to the methodology page. This is the methodology paragraph 1, bullet 2',
   },
@@ -61,18 +61,10 @@ export const PAGE = defineMessages({
     `,
     description: 'Navigate to the methodology page. This is the methodology paragraph 3',
   },
-  PARA4: {
-    id: 'methodology.page.paragraph.4',
-    defaultMessage: `
-      Census tracts are small units of geography. Census tract boundaries are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
-      census boundaries.    
-    `,
-    description: 'Navigate to the methodology page. This is the methodology paragraph 4',
-  },
   PARA5: {
     id: 'methodology.page.paragraph.5',
     defaultMessage: `
-      Federally-Recognized Tribal lands, including Alaska Native Villages, are also considered disadvantaged and highlighted on the map.   
+      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities. They are highlighted on the map.  
     `,
     description: 'Navigate to the methodology page. This is the methodology paragraph 5',
   },
@@ -97,14 +89,15 @@ export const FORMULA = {
       boldtag: boldFn,
     }}
   />,
-  AND: <FormattedMessage
-    id={'methodology.page.formula.second'}
+  PARA4: <FormattedMessage
+    id={'methodology.page.paragraph.4'}
     defaultMessage={`
-      <boldtag>AND</boldtag> the census tract is above the threshold for the socioeconomic indicators
+      Census tracts are small units of geography. Census tract <link1>boundaries</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
+      census boundaries.    
     `}
-    description={'Navigate to the methodology page. This is the second part of the formula used in the methodology'}
+    description={'Navigate to the methodology page. This is the methodology paragraph 4'}
     values={{
-      boldtag: boldFn,
+      link1: linkFn('https://www.census.gov/programs-surveys/geography/about/glossary.html#par_textimage_6', false, true),
     }}
   />,
 };
@@ -376,7 +369,9 @@ export const CATEGORIES = {
   TRIBAL_LANDS: {
     METHODOLOGY: <FormattedMessage
       id={'methodology.page.indicator.categories.tribal.lands.methodology'}
-      defaultMessage={`Displaying Federally recognized tribal boundaries and Alaska Native Villages on the map`}
+      defaultMessage={`
+        Displaying land within the boundaries of Federally Recognized Tribes and point locations of Alaska Native Villages on the map
+      `}
       description={`Displaying Federally recognized tribal boundaries and Alaska Native Villages on the map`}
     />,
 
@@ -634,7 +629,7 @@ export const SOURCE_LINKS = {
   />,
   HOLC: <FormattedMessage
     id={'methodology.page.category.source.holc.link'}
-    defaultMessage={`<link1>Dataset of formerly redlined areas</link1> using digitized maps from the Home Owners Loan Corporation from {date10}`}
+    defaultMessage={`<link1>Dataset of formerly redlined areas</link1> using digitized maps from the Home Owners Loan Corporation (HOLC), using {date10} census boundaries`}
     description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
     values={{
       link1: linkFn('https://www.openicpsr.org/openicpsr/project/141121/version/V2/view', false, true),
@@ -732,7 +727,7 @@ export const AVAILABLE_FOR = defineMessages({
   },
   FRT: {
     id: 'methodology.page.dataset.card.availableFor.FRT',
-    defaultMessage: `Federally-Recognized Tribes, including Alaskan Native villages `,
+    defaultMessage: `Federally Recognized Tribes, including Alaskan Native villages `,
     description: 'Methodology page dataset card available for FRT',
   },
 });
@@ -1059,13 +1054,14 @@ export const INDICATORS = [
     domID: 'hist-underinv',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.hist.underinvest.title.text'}
-      defaultMessage={`New Historic underinvestment`}
+      defaultMessage={`Historic underinvestment`}
       description={'Navigate to the Methodology page. This is the title text for the Historic Underinvestment'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.low.hist.underinvestectancy.description.text'}
       defaultMessage={`
-        Census tracts that experienced historic underinvestment as determined by the National Community Reinvestment Coalition’s (NCRC) historic redlining score. It is determined using the <link1>NCRC’s methodology</link1> for identifying areas with the most historic redlining (i.e. a score of 3.25 or more out of 4). This means that people in the  tract had high barriers to accessing home loans. 
+        Census tracts that experienced historic underinvestment based on redlining maps created by the federal government’s Home Owners’ Loan Corporation (HOLC) between 1935 and 1940. The tool uses the <link1>National Community Reinvestment Coalition’s methodology</link1> for converting boundaries in the HOLC maps to census tracts. Census tracts meet the threshold when they have a score of 3.25 or more out of 4.
       `}
       description={'Navigate to the Methodology page. This is the description text for Historic Underinvestment'}
       values={{
@@ -1075,7 +1071,7 @@ export const INDICATORS = [
     note: <FormattedMessage
       id={'methodology.page.category.low.hist.underinvestectancy.note.text'}
       defaultMessage={`
-        <boldtag>Note: </boldtag>The historic underinvestment data indicator <boldtag>does not</boldtag> appear on the map for tracts <boldtag>that were not</boldtag> evaluated by the National Community Reinvestment Coalition. It is shown in tracts that are most commonly in larger metropolitan areas.
+        <boldtag>Note: </boldtag>The historic underinvestment indicator <boldtag>is not shown</boldtag> on the map for tracts that were not included in the original HOLC maps because there is no data available.
       `}
       description={'Navigate to the Methodology page. This is the note text for Historic Underinvestment'}
       values={{
@@ -1125,7 +1121,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.green.space.description.text'}
       defaultMessage={`
-        Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes.
+        Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.
+
       `}
       description={'Navigate to the Methodology page. This is the description text for housing burden'}
     />,
@@ -1582,26 +1579,16 @@ export const INDICATORS = [
     domID: 'tribal-lands',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.tribal.lands.title.text'}
-      defaultMessage={`Tribal lands`}
+      defaultMessage={`Tribes`}
       description={'Navigate to the Methodology page. This is the title text for the Tribal lands'}
     />,
     isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.tribal.lands.description.text'}
       defaultMessage={`
-        The Land Area Representation (LAR) dataset depicts the exterior extent of a Federal Indian land area. 
+      The Land Area Representation (LAR) dataset depicts American Indian land areas for Federally Recognized Tribes.
       `}
       description={'Navigate to the Methodology page. This is the description text for Tribal lands'}
-    />,
-    note: <FormattedMessage
-      id={'methodology.page.category.tribal.lands.note.text'}
-      defaultMessage={`
-        <boldtag>Note: </boldtag>The LAR dataset depicts the exterior extent of a Federal Indian land area.  Not all Federally recognized tribes have a designated land area; therefore, they may not have an associated land area represented in the land area dataset.
-      `}
-      description={'Navigate to the Methodology page. This is the note text for low median expectancy'}
-      values={{
-        boldtag: boldFn,
-      }}
     />,
     usedIn: CATEGORIES.TRIBAL_LANDS.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.BIA,

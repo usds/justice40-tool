@@ -443,12 +443,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 Executive Order 14008
               </a>
-              . The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.
+              . The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.These are the communities that are disadvantaged because they are overburdened and underserved.
+
     
             </p>
             <p>
               
-      Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in 
+      Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in the 
               <a
                 class="usa-link usa-link--external"
                 data-cy=""
@@ -518,14 +519,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             How to use the tool
           </h2>
           <p>
-            The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows Federally-recognized Tribal reservation lands, including Alaskan Native Villages.
+            The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.
           </p>
           <p>
             The tool ranks most of the burdens using percentiles. Percentiles show how much burden each tract experiences compared to other tracts. Certain burdens use percentages or a simple yes/no.
           </p>
           <p>
             
-    A community is considered to be disadvantaged if it meets the 
+    A community is considered to be disadvantaged if it meets the tool's 
             <a
               class="usa-link"
               href="/en/methodology"
@@ -572,7 +573,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </h3>
                   <p>
                     
-      Zoom and select any census tract to see if it is considered disadvantaged.
+      Zoom-in and select any census tract to see if it is considered disadvantaged.
     
                   </p>
                   <div
@@ -703,7 +704,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     target="_blank"
                   >
                     
-      Contact CEQ
+      Contact
     
                   </a>
                 </div>
@@ -788,8 +789,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <li>
               Provide 
               <a
-                class="usa-link"
-                href="/en/methodology"
+                class="usa-link usa-link--external"
+                data-cy=""
+                href="https://www.surveymonkey.com/r/P3LWTSB"
+                rel="noreferrer"
+                target="_blank"
               >
                 general feedback
               </a>
@@ -798,15 +802,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <li>
               Suggest new 
               <a
-                class="usa-link"
-                href="/en/methodology"
+                class="usa-link usa-link--external"
+                data-cy=""
+                href="https://www.surveymonkey.com/r/6G9TQJ8"
+                rel="noreferrer"
+                target="_blank"
               >
                 data sources
               </a>
               .
             </li>
             <li>
-              Any other questions? Email: 
+              Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email CEQ at: 
               <a
                 class="usa-link"
                 href="/en/methodology"
@@ -815,6 +822,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </a>
             </li>
           </ul>
+          <p>
+            
+      The Council on Environmental Quality plans to issue a Request for Information in 2023. This will give the public time to use the tool before providing comments.    
+    
+          </p>
         </div>
       </div>
     </div>

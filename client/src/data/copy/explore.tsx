@@ -4,15 +4,15 @@ import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
 
-import * as COMMON_COPY from './common';
-import * as DOWNLOADS_COPY from './downloads';
-import * as METHODOLOGY_COPY from './methodology';
+import {linkFn, boldFn, downloadLink} from './common';
+import {DOWNLOAD_FILES} from './downloads';
+import {VERSION_NUMBER} from './methodology';
 import {PAGES_ENDPOINTS} from '../constants';
 
 export const EXPLORE_PAGE_LINKS = {
-  TRIBAL_ACTION_PLAN: `https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`,
-  TRIBAL_WHITEHOUSE: `https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/`,
-  TRIBAL_FED_REGISTER: `https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments`,
+  WH_GOV_TRIBAL_ACTION_PLAN_4_26_21: `https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`,
+  WH_GOV_TRIBAL_CONSULT_NATION_NATION_01_25_21: `https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/`,
+  FED_REGISTER_CONSULT_TRIBE_GOV_2000: `https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments`,
   CENSUS_15_19: `https://www.census.gov/programs-surveys/decennial-census/data.html`,
   DECENNIAL: `https://www.census.gov/programs-surveys/decennial-census/data.html`,
 };
@@ -33,12 +33,9 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION1 = <FormattedMessage
   id={'explore.map.page.description.1'}
   defaultMessage={`
-    Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. These include Federally Recognized Tribal lands, including Alaska Native Villages. 
+    Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. Federally Recognized Tribes, including Alaska Native Villages are also considered disadvantaged communities. 
   `}
   description={'On the explore the map page, the first description of the page'}
-  // values={{
-  //   link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-  // }}
 />;
 
 export const PAGE_DESCRIPTION2 = <FormattedMessage
@@ -47,9 +44,6 @@ export const PAGE_DESCRIPTION2 = <FormattedMessage
     Zooming-in and selecting shows information about each census tract. 
   `}
   description={'On the explore the map page, the fifth description of the page'}
-  // values={{
-  //   link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-  // }}
 />;
 
 export const LEGEND = defineMessages({
@@ -85,7 +79,7 @@ export const EXPLORE_DATA_BOX_BODY = <FormattedMessage
   `}
   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane`}
   values={{
-    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.DOWNLOADS, true, false),
+    link1: linkFn(PAGES_ENDPOINTS.DOWNLOADS, true, false),
   }}
 />;
 
@@ -367,7 +361,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA6_PART1: {
     id: 'explore.map.page.side.panel.info.para.6',
     defaultMessage: `
-      Federally Recognized Tribal lands are also highlighted
+      Land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages are
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
   },
@@ -478,8 +472,8 @@ export const SIDE_PANEL_VERSION = {
        * Formatted Message component. Using toFixed will render the desire, however it returns a string which
        * is unacceptable by the value prop of FormattedNumber.
        */
-      // version: <FormattedNumber value={METHODOLOGY_COPY.VERSION_NUMBER} style="decimal"/>,
-      version: METHODOLOGY_COPY.VERSION_NUMBER,
+      // version: <FormattedNumber value={VERSION_NUMBER} style="decimal"/>,
+      version: VERSION_NUMBER,
     }}
   />,
 };
@@ -602,23 +596,43 @@ export const SIDE_PANEL_TRIBAL_INFO = defineMessages({
 export const PRIORITIZATION_COPY = {
   NOT_PRIO: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.not.prio'}
-    defaultMessage={'This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.`}
+    defaultMessage={'This tract is not considered disadvantaged. It does not meet any burden thresholds <bold>OR</bold> at least one associated socioeconomic threshold.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomic threshold.`}
+    values = {{
+      bold: boldFn,
+    }}
   />,
   NOT_PRIO_1BUR: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.not.prio.one.burden'}
-    defaultMessage={'This tract is not considered disadvantaged. It meets 1 burden threshold BUT no associated socio-economic thresholds.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold BUT no associated socio-economic thresholds.`}
+    defaultMessage={'This tract is not considered disadvantaged. It meets 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.`}
+    values= {{
+      bold: boldFn,
+    }}
   />,
   NOT_PRIO_NBUR: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.prio.one.burden'}
-    defaultMessage={'This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds.`}
+    defaultMessage={'This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.`}
+    values= {{
+      bold: boldFn,
+    }}
+  />,
+  NOT_PRIO_SURR_LI: <FormattedMessage
+    id={'explore.map.page.side.panel.prio.copy.prio.donut'}
+    defaultMessage={'This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold.`}
+    values={{
+      bold: boldFn,
+    }}
   />,
   PRIO_SURR_LI: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.prio.donut'}
-    defaultMessage={'This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories.`}
+    defaultMessage={'This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories.`}
+    values={{
+      bold: boldFn,
+    }}
   />,
 };
 
@@ -626,10 +640,11 @@ export const getPrioNBurdenCopy = (burdens:string) => {
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.n.burden'}
-      defaultMessage={ 'This tract is considered disadvantaged because it meets {burdens} burden threshold AND the associated socio-economic threshold.'}
-      description={`Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds AND the associated socio-economic threshold.`}
+      defaultMessage={ 'This tract is considered disadvantaged because it meets {burdens} burden threshold <bold>AND</bold> the associated socioeconomic threshold.'}
+      description={`Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds <bold>AND</bold> the associated socioeconomic threshold.`}
       values={{
         burdens: burdens,
+        bold: boldFn,
       }}
     />
   );
@@ -1113,7 +1128,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   EXP_BLD_LOSS: {
     id: 'explore.map.page.side.panel.indicator.description.exp.bld.loss',
-    defaultMessage: 'Economic loss to agricultural value resulting from natural hazards each year',
+    defaultMessage: 'Economic loss to building value resulting from natural hazards each year',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side 
     panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards`,
   },
@@ -1128,7 +1143,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   FLOODING: {
     id: 'explore.map.page.side.panel.indicator.description.flooding',
     defaultMessage: `
-      Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years
+    Projected risk to properties from projected floods, from tides, rain, riverine and storm surges within 30 years
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of flooding risk`,
   },
@@ -1206,7 +1221,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   LACK_GREEN_SPACE: {
     id: 'explore.map.page.side.panel.indicator.description.lack.green.space',
-    defaultMessage: 'Share of non-crop land covered with artificial materials like concrete or pavement',
+    defaultMessage: 'Amount of non-crop land covered with artificial materials like concrete or pavement',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of non-crop land covered with artificial materials like concrete or pavement`,
   },
   LACK_PLUMBING: {
@@ -1390,15 +1405,15 @@ export const DOWNLOAD_DRAFT = {
       map that will download the data packet
     `}
     values={{
-      link1: COMMON_COPY.downloadLink(DOWNLOADS_COPY.DOWNLOAD_FILES.NARWAL.SHAPE_FILE.URL),
+      link1: downloadLink(DOWNLOAD_FILES.NARWAL.SHAPE_FILE.URL),
       downloadFileSize: <FormattedNumber
-        value={DOWNLOADS_COPY.DOWNLOAD_FILES.NARWAL.SHAPE_FILE.SIZE}
+        value={DOWNLOAD_FILES.NARWAL.SHAPE_FILE.SIZE}
         style="unit"
         unit="megabyte"
         unitDisplay="narrow"
       />,
       dateUpdated: <FormattedDate
-        value={DOWNLOADS_COPY.DOWNLOAD_FILES.NARWAL.SHAPE_FILE.LAST_UPDATED}
+        value={DOWNLOAD_FILES.NARWAL.SHAPE_FILE.LAST_UPDATED}
         year="2-digit"
         month="2-digit"
         day="2-digit"
@@ -1423,12 +1438,11 @@ export const NOTE_ON_TERRITORIES = {
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.1'}
     defaultMessage={`
-      <bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields 
-      in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.
+      <bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period. 
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 1`}
     values={{
-      bold: COMMON_COPY.boldFn,
+      bold: boldFn,
     }}
   />,
 
@@ -1439,7 +1453,7 @@ export const NOTE_ON_TERRITORIES = {
   `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 2`}
     values={{
-      bold: COMMON_COPY.boldFn,
+      bold: boldFn,
     }}
   />,
 };
@@ -1453,8 +1467,20 @@ export const NOTE_ON_TRIBAL_NATIONS = {
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.tribal.nations.para.1'}
     defaultMessage={`
-      To honor the Administration's commitment to the Federal trust responsibility to Tribal Nations, areas within the boundaries of Federally recognized Tribes, including Alaska Native villages, are designated as disadvantaged. In some areas, like rural Alaska, this includes Tribal areas that are smaller than a census tract. 
+      To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized Tribes are designated as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than a census tract. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1`}
+  />,
+  PARA_2: <FormattedMessage
+    id={'explore.map.page.under.map.note.on.tribal.nations.para.2'}
+    defaultMessage={`
+      This decision was made after meaningful and robust consultation with Tribal Nations. This is consistent with CEQ’s <link1> Action Plan for Consultation and Coordination with Tribal Nations </link1>, President Biden’s <link3>Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and  <link2> Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments </link2> .
+    `}
+    description={`Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 2`}
+    values={{
+      link1: linkFn(EXPLORE_PAGE_LINKS.WH_GOV_TRIBAL_ACTION_PLAN_4_26_21, false, true),
+      link2: linkFn(EXPLORE_PAGE_LINKS.FED_REGISTER_CONSULT_TRIBE_GOV_2000, false, true),
+      link3: linkFn(EXPLORE_PAGE_LINKS.WH_GOV_TRIBAL_CONSULT_NATION_NATION_01_25_21, false, true),
+    }}
   />,
 };
