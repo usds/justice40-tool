@@ -596,23 +596,43 @@ export const SIDE_PANEL_TRIBAL_INFO = defineMessages({
 export const PRIORITIZATION_COPY = {
   NOT_PRIO: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.not.prio'}
-    defaultMessage={'This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.'}
+    defaultMessage={'This tract is not considered disadvantaged. It does not meet any burden thresholds <bold>OR</bold> at least one associated socio-economic threshold.'}
     description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.`}
+    values = {{
+      bold: boldFn,
+    }}
   />,
   NOT_PRIO_1BUR: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.not.prio.one.burden'}
-    defaultMessage={'This tract is not considered disadvantaged. It meets 1 burden threshold BUT no associated socio-economic thresholds.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold BUT no associated socio-economic thresholds.`}
+    defaultMessage={'This tract is not considered disadvantaged. It meets 1 burden threshold <bold>BUT</bold> no associated socio-economic thresholds.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold <bold>BUT</bold> no associated socio-economic thresholds.`}
+    values= {{
+      bold: boldFn,
+    }}
   />,
   NOT_PRIO_NBUR: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.prio.one.burden'}
-    defaultMessage={'This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds.`}
+    defaultMessage={'This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socio-economic thresholds.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socio-economic thresholds.`}
+    values= {{
+      bold: boldFn,
+    }}
+  />,
+  NOT_PRIO_SURR_LI: <FormattedMessage
+    id={'explore.map.page.side.panel.prio.copy.prio.donut'}
+    defaultMessage={'This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold.`}
+    values={{
+      bold: boldFn,
+    }}
   />,
   PRIO_SURR_LI: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.prio.donut'}
-    defaultMessage={'This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories.`}
+    defaultMessage={'This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories.`}
+    values={{
+      bold: boldFn,
+    }}
   />,
 };
 
@@ -620,10 +640,11 @@ export const getPrioNBurdenCopy = (burdens:string) => {
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.n.burden'}
-      defaultMessage={ 'This tract is considered disadvantaged because it meets {burdens} burden threshold AND the associated socio-economic threshold.'}
-      description={`Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds AND the associated socio-economic threshold.`}
+      defaultMessage={ 'This tract is considered disadvantaged because it meets {burdens} burden threshold <bold>AND</bold> the associated socio-economic threshold.'}
+      description={`Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds <bold>AND</bold> the associated socio-economic threshold.`}
       values={{
         burdens: burdens,
+        bold: boldFn,
       }}
     />
   );
