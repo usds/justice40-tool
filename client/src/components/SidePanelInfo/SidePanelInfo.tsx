@@ -25,7 +25,7 @@ import tribalDotIcon from '../../images/sidePanelIcons/tribal-tract.svg';
 // @ts-ignore
 import pieChartIcon from '../../images/sidePanelIcons/pie-chart.svg';
 // @ts-ignore
-import selectArrowIcon from '../../images/sidePanelIcons/select-arrow.svg';
+import handPointIcon from '../../images/sidePanelIcons/mouse-hand-point.svg';
 
 import * as styles from './SidePanelInfo.module.scss';
 import * as constants from '../../data/constants';
@@ -69,7 +69,7 @@ const SidePanelInfo = () => {
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART4)}
         {
           windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={selectArrowIcon}
+          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={handPointIcon}
             alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.MOUSE)}
           />
         }
