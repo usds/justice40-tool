@@ -7,7 +7,7 @@ exports[`rendering of PrioritizationCopy Component - checks if component renders
     <strong>
       AND
     </strong>
-     the associated socio-economic threshold.
+     the associated socioeconomic threshold.
   </div>
 </DocumentFragment>
 `;
@@ -19,7 +19,7 @@ exports[`rendering of PrioritizationCopy Component - checks if component renders
     <strong>
       AND
     </strong>
-     the associated socio-economic threshold.
+     the associated socioeconomic threshold.
   </div>
 </DocumentFragment>
 `;
@@ -31,7 +31,7 @@ exports[`rendering of PrioritizationCopy Component - checks if component renders
     <strong>
       OR
     </strong>
-     at least one associated socio-economic threshold.
+     at least one associated socioeconomic threshold.
   </div>
 </DocumentFragment>
 `;
@@ -43,7 +43,7 @@ exports[`rendering of PrioritizationCopy Component - checks if component renders
     <strong>
       BUT
     </strong>
-     no associated socio-economic thresholds.
+     no associated socioeconomic thresholds.
   </div>
 </DocumentFragment>
 `;
@@ -55,7 +55,7 @@ exports[`rendering of PrioritizationCopy Component - checks if component renders
     <strong>
       BUT
     </strong>
-     no associated socio-economic thresholds.
+     no associated socioeconomic thresholds.
   </div>
 </DocumentFragment>
 `;

@@ -64,7 +64,7 @@ export interface indicatorInfo {
  * id: distict id
  * titleText: display text for the category title
  * indicators: an array of indicators
- * socioEcIndicators: an array of socio-economic indicators
+ * socioEcIndicators: an array of socioeconomic indicators
  * isDisadvagtaged: boolean to indicate if the category is disadvantaged
  * isExceed1MoreBurden: boolean to indicate if the category exceeds more than one burden
  * isExceedBothSocioBurdens: boolean to indicate if the category exceeds both socio-eco burdens
@@ -771,7 +771,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           isBurdened={category.isExceedBothSocioBurdens}
         /> */}
 
-        {/* socio-economic indicators */}
+        {/* socioeconomic indicators */}
         {category.socioEcIndicators.map((indicator: any, index: number) => {
           return <Indicator
             key={`ind${index}`}

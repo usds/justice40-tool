@@ -596,24 +596,24 @@ export const SIDE_PANEL_TRIBAL_INFO = defineMessages({
 export const PRIORITIZATION_COPY = {
   NOT_PRIO: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.not.prio'}
-    defaultMessage={'This tract is not considered disadvantaged. It does not meet any burden thresholds <bold>OR</bold> at least one associated socio-economic threshold.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.`}
+    defaultMessage={'This tract is not considered disadvantaged. It does not meet any burden thresholds <bold>OR</bold> at least one associated socioeconomic threshold.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomic threshold.`}
     values = {{
       bold: boldFn,
     }}
   />,
   NOT_PRIO_1BUR: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.not.prio.one.burden'}
-    defaultMessage={'This tract is not considered disadvantaged. It meets 1 burden threshold <bold>BUT</bold> no associated socio-economic thresholds.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold <bold>BUT</bold> no associated socio-economic thresholds.`}
+    defaultMessage={'This tract is not considered disadvantaged. It meets 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.`}
     values= {{
       bold: boldFn,
     }}
   />,
   NOT_PRIO_NBUR: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.prio.one.burden'}
-    defaultMessage={'This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socio-economic thresholds.'}
-    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socio-economic thresholds.`}
+    defaultMessage={'This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.`}
     values= {{
       bold: boldFn,
     }}
@@ -640,8 +640,8 @@ export const getPrioNBurdenCopy = (burdens:string) => {
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.n.burden'}
-      defaultMessage={ 'This tract is considered disadvantaged because it meets {burdens} burden threshold <bold>AND</bold> the associated socio-economic threshold.'}
-      description={`Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds <bold>AND</bold> the associated socio-economic threshold.`}
+      defaultMessage={ 'This tract is considered disadvantaged because it meets {burdens} burden threshold <bold>AND</bold> the associated socioeconomic threshold.'}
+      description={`Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds <bold>AND</bold> the associated socioeconomic threshold.`}
       values={{
         burdens: burdens,
         bold: boldFn,
