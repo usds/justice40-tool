@@ -75,7 +75,7 @@ export const RICH_COPY = {
   `}
     description={`Navigate to the public engagement page, this will be the publiceng page description 3 text`}
     values={{
-      link1: linkFn('https://www.surveymonkey.com/r/whceqej', false, true),
+      link1: linkFn('https://lp.constantcontactpages.com/su/Vm8pCFj/spring', false, true),
     }}
   />,
   PAGE_HEADING2: <FormattedMessage

@@ -174,7 +174,7 @@ export const FOOTER = defineMessages({
   },
   SIGN_UP_LINK: {
     id: 'common.pages.footer.sign.up.link',
-    defaultMessage: 'https://www.surveymonkey.com/r/whceqej',
+    defaultMessage: 'https://lp.constantcontactpages.com/su/Vm8pCFj/spring',
     description: 'Navigate to the about page. This is Footer link under Sign-up for updates',
   },
   MORE_INFO: {
@@ -254,7 +254,7 @@ export const FOOTER_CEQ_ADDRESS = {
   //   defaultMessage={`<link1>Sign-up</link1> for updates`}
   //   description={`Alert title that appears at the top of pages.`}
   //   values={{
-  //     link1: linkFn('https://www.surveymonkey.com/r/whceqej', false, true),
+  //     link1: linkFn('https://lp.constantcontactpages.com/su/Vm8pCFj/spring', false, true),
   //   }}
   // />,
 }

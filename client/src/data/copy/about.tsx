@@ -79,7 +79,7 @@ export const CONTENT = {
     description={'Navigate to the About page. This is the paragraph 4'}
     values={{
       version: VERSION_NUMBER,
-      link1: linkFn('https://www.surveymonkey.com/r/whceqej', false, true),
+      link1: linkFn('https://lp.constantcontactpages.com/su/Vm8pCFj/spring', false, true),
     }}
   />,
   USE_DATA_PARA:
