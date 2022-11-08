@@ -18,7 +18,6 @@ import TractPrioritization from '../TractPrioritization';
 import * as styles from './areaDetail.module.scss';
 import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
-import * as COMMON_COPY from '../../data/copy/common';
 
 // @ts-ignore
 import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail_outline.svg';
@@ -157,13 +156,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const sidePanelState = properties[constants.SIDE_PANEL_STATE];
   const percentTractTribal = properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
     parseFloat((properties[constants.TRIBAL_AREAS_PERCENTAGE]*100).toFixed()) : null;
-
-  const feedbackEmailSubject = hash ? `
-    Census tract ID ${blockGroup}, ${countyName}, ${stateName}, ( z/lat/lon: #${hash.join('/')} )
-  ` : `Census tract ID ${blockGroup}, ${countyName}, ${stateName}`;
-
-  const feedbackEmailBody = intl.formatMessage(EXPLORE_COPY.SEND_FEEDBACK.EMAIL_BODY);
-
 
   /**
    * The workforce development category has some indicators who's source will vary depending on which
@@ -861,10 +853,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
       {/* Send Feedback button */}
       <a
         className={styles.sendFeedbackLink}
-        // The mailto string must be on a single line otherwise the email does not display subject and body
-        href={`
-          mailto:${COMMON_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
-          `}
+        href={`https://www.surveymonkey.com/r/6GKVCMF?tractid=${blockGroup}`}
         target={"_blank"}
         rel="noreferrer"
       >
