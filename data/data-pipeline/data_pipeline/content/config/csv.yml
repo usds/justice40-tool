@@ -1,12 +1,12 @@
 ---
 global_config:
-  sort_by_label: Census tract ID
+  sort_by_label: Census tract 2010 ID
   rounding_num:
     float: 2
     loss_rate_percentage: 4
 fields:
 - score_name: GEOID10_TRACT
-  label: Census tract ID
+  label: Census tract 2010 ID
   format: string
 - score_name: County Name
   label: County Name
