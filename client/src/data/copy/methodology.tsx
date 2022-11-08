@@ -1071,7 +1071,7 @@ export const INDICATORS = [
     note: <FormattedMessage
       id={'methodology.page.category.low.hist.underinvestectancy.note.text'}
       defaultMessage={`
-        <boldtag>Note: </boldtag>The historic underinvestment indicator <boldtag>is not shown</boldtag> on the map for tracts that were not included in the original HOLC maps because there is no data available.
+        <boldtag>Note:</boldtag> The historic underinvestment burden is <boldtag>not available</boldtag> for tracts that were not included in the original HOLC maps because there is no underlying data.
       `}
       description={'Navigate to the Methodology page. This is the note text for Historic Underinvestment'}
       values={{

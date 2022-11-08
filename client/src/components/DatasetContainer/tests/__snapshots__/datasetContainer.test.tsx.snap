@@ -747,13 +747,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   
         
                   <strong>
-                    Note: 
+                    Note:
                   </strong>
-                  The historic underinvestment indicator 
+                   The historic underinvestment burden is 
                   <strong>
-                    is not shown
+                    not available
                   </strong>
-                   on the map for tracts that were not included in the original HOLC maps because there is no data available.
+                   for tracts that were not included in the original HOLC maps because there is no underlying data.
       
                 </p>
               </div>
