@@ -616,7 +616,7 @@
     "description": "On the explore the map page, the fifth description of the page"
   },
   "explore.map.page.explore.data.box.body": {
-    "defaultMessage": "Download the data with documentation and shapefiles, from the <link1>downloads</link1> page.",
+    "defaultMessage": "Download the data with documentation and shapefile from the <link1>downloads</link1> page.",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane"
   },
   "explore.map.page.explore.data.box.title": {
@@ -2416,7 +2416,7 @@
     "description": "page not found title text"
   },
   "previous.versions.page.body.text": {
-    "defaultMessage": "The beta version of the methodology and data was used during the public beta period to get feedback on the tool from {betaDate} - {releaseDate}",
+    "defaultMessage": "The beta version of the methodology and data was used during the public beta period to get feedback on the tool from {betaDate} - {releaseDate}.",
     "description": "Navigate to the previous version page. This is the Cards body text"
   },
   "previous.versions.page.button1.alt.tag.text": {

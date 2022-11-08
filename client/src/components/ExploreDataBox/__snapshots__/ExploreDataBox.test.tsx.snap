@@ -25,7 +25,7 @@ exports[`rendering of ExploreDataBox Component checks if component renders 1`] =
         class="usa-summary-box__text"
       >
         
-    Download the data with documentation and shapefiles, from the 
+    Download the data with documentation and shapefile from the 
         <a
           class="usa-link"
           href="/en/downloads"

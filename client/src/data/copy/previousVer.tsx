@@ -19,7 +19,7 @@ export const CARD = {
   BODY: <FormattedMessage
     id={'previous.versions.page.body.text'}
     defaultMessage={`The beta version of the methodology and data was used during the public 
-    beta period to get feedback on the tool from {betaDate} - {releaseDate}`}
+    beta period to get feedback on the tool from {betaDate} - {releaseDate}.`}
     description={'Navigate to the previous version page. This is the Cards body text'}
     values={{
       betaDate: <FormattedDate

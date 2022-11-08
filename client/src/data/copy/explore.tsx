@@ -75,7 +75,7 @@ export const EXPLORE_DATA_BOX = defineMessages({
 export const EXPLORE_DATA_BOX_BODY = <FormattedMessage
   id={'explore.map.page.explore.data.box.body'}
   defaultMessage={ `
-    Download the data with documentation and shapefiles, from the <link1>downloads</link1> page.
+    Download the data with documentation and shapefile from the <link1>downloads</link1> page.
   `}
   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane`}
   values={{
