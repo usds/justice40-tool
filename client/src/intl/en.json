@@ -459,8 +459,12 @@
     "defaultMessage": "County:",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the county of the feature selected"
   },
+  "explore.map.page.side.panel.geographicInfo.pct_AA": {
+    "defaultMessage": "% African American:",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the percentage of the feature selected"
+  },
   "explore.map.page.side.panel.geographicInfo.population": {
-    "defaultMessage": "Population:",
+    "defaultMessage": "Population test:",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the population of the feature selected"
   },
   "explore.map.page.side.panel.geographicInfo.state": {

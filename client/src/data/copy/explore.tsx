@@ -235,7 +235,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
 
 export const SIDE_PANEL_INITIAL_STATE_PARA5 = <FormattedMessage
   id={'explore.map.page.side.panel.info.para5'}
-  defaultMessage={ `
+  defaultMessage={`
     Thresholds for each category determine if a tract should be identified as disadvantaged because it has exceeded a certain value for the relevant indicators.
   `}
   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane`}
@@ -244,10 +244,10 @@ export const SIDE_PANEL_INITIAL_STATE_PARA5 = <FormattedMessage
 export const SIDE_PANEL_VERION = {
   TITLE: <FormattedMessage
     id={'explore.map.page.side.panel.version.title'}
-    defaultMessage={ 'Methodology version {version}'}
+    defaultMessage={'Methodology version {version}'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the methodology version number`}
-    values= {{
-      version: <FormattedNumber value={METHODOLOGY_COPY.VERSION_NUMBER}/>,
+    values={{
+      version: <FormattedNumber value={METHODOLOGY_COPY.VERSION_NUMBER} />,
     }}
   />,
 };
@@ -275,31 +275,36 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
   },
   POPULATION: {
     id: 'explore.map.page.side.panel.geographicInfo.population',
-    defaultMessage: 'Population:',
+    defaultMessage: 'Population test:',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the population of the feature selected`,
+  },
+  PERCENTAGE_AA: {
+    id: 'explore.map.page.side.panel.geographicInfo.pct_AA',
+    defaultMessage: '% African American:',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the percentage of the feature selected`,
   },
 });
 
 export const COMMUNITY = {
   OF_FOCUS: <FormattedMessage
     id={'explore.map.page.side.panel.community.of.focus'}
-    defaultMessage={ 'YES'}
+    defaultMessage={'YES'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is focused on`}
   />,
   NOT_OF_FOCUS: <FormattedMessage
-    id= {'explore.map.page.side.panel.not.community.of.focus'}
-    defaultMessage= {'No'}
+    id={'explore.map.page.side.panel.not.community.of.focus'}
+    defaultMessage={'No'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is not focused on`}
   />,
   IS_FOCUS: <FormattedMessage
     id={'explore.map.page.side.panel.is.community.of.focus'}
-    defaultMessage={ 'Identified as disadvantaged?'}
+    defaultMessage={'Identified as disadvantaged?'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show asking IF the communities is focused on`}
   />,
   SEND_FEEDBACK: {
     TITLE: <FormattedMessage
       id={'explore.map.page.side.panel.send.feedback.title'}
-      defaultMessage={ 'Send feedback'}
+      defaultMessage={'Send feedback'}
       description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show link to send feedback`}
     />,
     IMG_ICON: defineMessages({
@@ -312,7 +317,7 @@ export const COMMUNITY = {
   },
 };
 
-export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMessage
+export const numberOfCategoriesExceeded = (categoryCount: number) => <FormattedMessage
   id={'explore.map.page.side.panel.num.categories.exceeded'}
   defaultMessage={`in {numberOfDisCategories, plural, one {# category} other {# categories}}`}
   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many categories are exceeded`}
@@ -426,7 +431,8 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   LOW_INCOME: {
     id: 'explore.map.page.side.panel.indicator.low.income',
     defaultMessage: 'Low income',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show low income`},
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show low income`,
+  },
   HIGH_ED: {
     id: 'explore.map.page.side.panel.indicator.high.ed',
     defaultMessage: 'Higher education non-enrollment',
