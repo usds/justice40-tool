@@ -11,7 +11,7 @@ import {
 import BetaBanner from '../BetaBanner';
 import J40MainGridContainer from '../J40MainGridContainer';
 import GovernmentBanner from '../GovernmentBanner';
-import Language from '../Language';
+// import Language from '../Language';
 import {useWindowSize} from 'react-use';
 
 // @ts-ignore
@@ -235,9 +235,10 @@ const J40Header = ({location}:IJ40Header) => {
       data-cy={'nav-link-contact'}>
       {intl.formatMessage(COMMON_COPY.HEADER.CONTACT)}
     </Link>,
-    <div key={'language'}>
-      <Language isDesktop={false}/>
-    </div>,
+    // Temporarily removing language link until translation is completed
+    // <div key={'language'}>
+    //   <Language isDesktop={false}/>
+    // </div>,
   ];
 
   return (
