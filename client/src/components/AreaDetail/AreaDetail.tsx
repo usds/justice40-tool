@@ -40,7 +40,7 @@ export interface indicatorInfo {
   isPercent?: boolean,
   threshold?: number,
 }
-// REFRENCED [https://groups.google.com/g/justice40-open-source/c/kbmnIvsmnv0/m/B_wHXJj5AgAJ?utm_medium=email&utm_source=footer]
+
 const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const intl = useIntl();
 
@@ -50,7 +50,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const score = properties[constants.SCORE_PROPERTY_HIGH] ? properties[constants.SCORE_PROPERTY_HIGH] as number : 0;
   const blockGroup = properties[constants.GEOID_PROPERTY] ? properties[constants.GEOID_PROPERTY] : "N/A";
   const population = properties[constants.TOTAL_POPULATION] ? properties[constants.TOTAL_POPULATION] : "N/A";
-  const pctAfricanAmerican = properties[constants.PCT_AA] ? properties[constants.PCT_AA] : "N/A";
   const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
   const sidePanelState = properties[constants.SIDE_PANEL_STATE];
@@ -572,13 +571,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
             {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.POPULATION)}
           </span>
           <span className={styles.censusText}>{` ${population.toLocaleString()}`}</span>
-        </li>
-
-        <li>
-          <span className={styles.censusLabel}>
-            {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.PERCENTAGE_AA)}
-          </span>
-          <span className={styles.censusText}>{` ${pctAfricanAmerican.toLocaleString()}`}</span>
         </li>
       </ul>
 

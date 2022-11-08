@@ -326,9 +326,6 @@ class CensusACSETL(ExtractTransformLoad):
         df[self.NON_HISPANIC_WHITE_FIELD_NAME] = df["B03002_003E"]
         df[self.HISPANIC_FIELD_NAME] = df["B03003_003E"]
 
-# population percentage already calculated.
-    # Discuss with Team
-    
         # Calculate demographics as percent
         df[self.PERCENT_PREFIX + self.BLACK_FIELD_NAME] = (
             df["B02001_003E"] / df["B02001_001E"]
