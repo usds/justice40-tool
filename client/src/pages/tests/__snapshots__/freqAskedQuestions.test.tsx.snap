@@ -530,6 +530,22 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p>
                   Not all disadvantaged communities can be shown on the map. Some communities, such as migrant workers, do not live in just one place. The Interim Implementation Guidance on the Justice40 Initiative also directs Federal agencies to consider geographically dispersed communities when implementing programs included in the Justice40 Initiative.
                 </p>
+                <p>
+                  <strong>
+                    The tool uses census tracts.
+                  </strong>
+                   Census tracts are small units of geography. Census tract boundaries for 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.census.gov/programs-surveys/acs/geography-acs/geography-boundaries-by-year.html"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    statistical areas
+                  </a>
+                   are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.
+                </p>
               </div>
               <h2
                 class="usa-accordion__heading"
