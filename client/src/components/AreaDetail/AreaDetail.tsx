@@ -80,14 +80,14 @@ export interface ICategory {
 
 /**
  * This filter will remove indicators from appearing in the side panel by returning
- * the filter function (curring). There is 1 use case. It can accept any indicator name
+ * the filter function (currying). There is 1 use case. It can accept any indicator name
  * as an input.
  *
  * 1. For Historic underinvestment if the value is null
  *
  * Recommendation is to use a separate filter for each indicator that needs filtering.
  *
- * @param {MessageDescriptor} label - allows to re-use this filter for all 3 indicators above
+ * @param {MessageDescriptor} label - allows to re-use this filter for any number of indicators
  * @return {indicatorInfo}
  */
 export const indicatorFilter = (label:MessageDescriptor) => {
@@ -127,7 +127,7 @@ export const getTribalPercentValue = (tribalPercentRaw: number) => {
  * @param {IAreaDetailProps} {}
  * @return {void}
  */
-const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
+const AreaDetail = ({properties}: IAreaDetailProps) => {
   const intl = useIntl();
 
   // console.log the properties of the census that is selected:
@@ -769,6 +769,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
             key={`ind${index}`}
             indicator={indicator}
             isImpute={properties[constants.IMPUTE_FLAG] === "0" ? false : true}
+            population={population}
           />;
         })}
 

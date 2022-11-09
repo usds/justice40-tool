@@ -14,6 +14,7 @@ import infoIcon from '/node_modules/uswds/dist/img/usa-icons/info.svg';
 interface IIndicator {
   indicator: indicatorInfo,
   isImpute?: boolean,
+  population?: number | string,
 }
 interface IIndicatorValueSubText {
   type: indicatorType,
@@ -32,20 +33,20 @@ interface IIndicatorValue {
  *
  * @return {JSX.Element}
  */
-export const IndicatorInfoIcon = () => {
+export const IndicatorInfoIcon = ({isImpute, population}: Omit<IIndicator, 'indicator'>) => {
   const intl = useIntl();
+  let showTilde = false;
 
-  // const getToolTipCopy = () => {
-  //   if (!isImpute && isAdjacent) {
-  //     return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_NO_ADJ_YES);
-  //   } else if (isImpute && !isAdjacent) {
-  //     return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_NO);
-  //   } else if (isImpute && isAdjacent) {
-  //     return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_YES);
-  //   } else {
-  //     return null;
-  //   }
-  // };
+  const getToolTipCopy = () => {
+    if (population === constants.MISSING_DATA_STRING) {
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_POP_NULL);
+    } else if (population !== constants.MISSING_DATA_STRING && isImpute) {
+      showTilde = true;
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_POP_NOT_NULL);
+    } else {
+      return null;
+    }
+  };
 
   /**
    * This library react-tooltip creates random DOM ID which will not allow for snapshot testing as
@@ -66,13 +67,13 @@ export const IndicatorInfoIcon = () => {
       />
       <img
         data-for="lowIncomeIcon"
-        data-tip={intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_NO)}
+        data-tip={getToolTipCopy()}
         data-iscapture="true"
         className={styles.info}
         src={infoIcon}
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.INFO)}
       />
-      <span className={styles.infoTilde}>{ ` ~ ` }</span>
+      {showTilde && <span className={styles.infoTilde}>{ ` ~ ` }</span>}
     </>
   );
 };
@@ -223,7 +224,7 @@ export const IndicatorValue = ({type, displayStat}:IIndicatorValue) => {
  * @param {IIndicator} indicator
  * @return {JSX.Element}
  */
-const Indicator = ({indicator, isImpute}:IIndicator) => {
+const Indicator = ({indicator, isImpute, population}:IIndicator) => {
   /**
    * The indicator value could be a number | boolean | null. In all cases we coerce to number
    * before flooring.
@@ -239,8 +240,11 @@ const Indicator = ({indicator, isImpute}:IIndicator) => {
   // A boolean to represent if the indicator is above or below the threshold
   const isAboveThresh = displayStat !== null && displayStat >= threshold ? true : false;
 
-  // Show an info icon on the low icome indicator if the impute true:
-  const showLowIncomeInfoIcon = (indicator.label === 'Low income' && (isImpute));
+  // Show an info icon on the low icome indicator if:
+  const showLowIncomeInfoIcon = (
+    (indicator.label === 'Low income' && (isImpute)) ||
+    (indicator.label === 'Low income' && population === constants.MISSING_DATA_STRING && !isImpute)
+  );
 
   return (
     <li
@@ -264,7 +268,10 @@ const Indicator = ({indicator, isImpute}:IIndicator) => {
             {/* Indicator info icon */}
             { showLowIncomeInfoIcon &&
               <div className={styles.indicatorInfo}>
-                <IndicatorInfoIcon/>
+                <IndicatorInfoIcon
+                  isImpute={isImpute}
+                  population={population}
+                />
               </div>
             }
 
