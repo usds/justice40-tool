@@ -28,7 +28,7 @@ export const linkFn = (to:string | IDefineMessage, isInternal:boolean, isOpenNew
 
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
 
-export const METH_1_0_RELEASE_DATE = new Date(2022, 10, 21, 11, 59, 59); // Nov 21 2022
+export const METH_1_0_RELEASE_DATE = new Date(2022, 9, 25, 11, 59, 59); // Oct 25 2022
 export const METH_BETA_RELEASE_DATE = new Date(2022, 1, 18, 11, 59, 59); // Feb 18 2022
 
 
