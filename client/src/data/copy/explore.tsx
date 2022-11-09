@@ -611,7 +611,7 @@ export const PRIORITIZATION_COPY = {
     }}
   />,
   NOT_PRIO_NBUR: <FormattedMessage
-    id={'explore.map.page.side.panel.prio.copy.prio.one.burden'}
+    id={'explore.map.page.side.panel.prio.copy.not.prio.n.burden'}
     defaultMessage={'This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.'}
     description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.`}
     values= {{
@@ -619,8 +619,16 @@ export const PRIORITIZATION_COPY = {
     }}
   />,
   NOT_PRIO_SURR_LI: <FormattedMessage
-    id={'explore.map.page.side.panel.prio.copy.prio.donut'}
-    defaultMessage={'This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold.'}
+    id={'explore.map.page.side.panel.prio.copy.not.prio.surr.li'}
+    defaultMessage={'This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold. The adjustment does not apply to any of the categories.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold.`}
+    values={{
+      bold: boldFn,
+    }}
+  />,
+  PAR_PRIO_SURR_NO_LI: <FormattedMessage
+    id={'explore.map.page.side.panel.prio.copy.par.prio.surr.no.li'}
+    defaultMessage={'This tract is partially disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold. The adjustment does not apply to any of the categories.'}
     description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold.`}
     values={{
       bold: boldFn,
