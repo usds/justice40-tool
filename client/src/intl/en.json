@@ -856,7 +856,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract info title"
   },
   "explore.map.page.side.panel.indicator.abandon.mines": {
-    "defaultMessage": "Abandoned mine lands",
+    "defaultMessage": "Abandoned mine land",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines"
   },
   "explore.map.page.side.panel.indicator.adjacency": {
@@ -872,7 +872,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show transportation barriers"
   },
   "explore.map.page.side.panel.indicator.description.abandon.mines": {
-    "defaultMessage": "Presence of an abandoned mine land within the tract",
+    "defaultMessage": "Presence of one or more abandoned mine land within the tract",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned mine lands within the tract"
   },
   "explore.map.page.side.panel.indicator.description.asthma": {
@@ -912,7 +912,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of flooding risk"
   },
   "explore.map.page.side.panel.indicator.description.former.def.sites": {
-    "defaultMessage": "Presence of a Formerly Used Defense Site within the tract",
+    "defaultMessage": "Presence of one or more Formerly Used Defense Site within the tract",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract"
   },
   "explore.map.page.side.panel.indicator.description.heartDisease": {
@@ -936,7 +936,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of households making less than 80% of the area median family income and spending more than 30% of income on housing"
   },
   "explore.map.page.side.panel.indicator.description.lack.green.space": {
-    "defaultMessage": "Amount of non-crop land covered with artificial materials like concrete or pavement",
+    "defaultMessage": "Amount of land, not including crop land, that is covered with artificial materials like concrete or pavement",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of non-crop land covered with artificial materials like concrete or pavement"
   },
   "explore.map.page.side.panel.indicator.description.lack.plumbing": {
@@ -964,8 +964,8 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description ofPeople in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed"
   },
   "explore.map.page.side.panel.indicator.description.low.med.income": {
-    "defaultMessage": "Comparison of income in the tract to incomes in the area",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Comparison of income in the tract to incomes in the area"
+    "defaultMessage": "Comparison of median income in the tract to median incomes in the area",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Comparison of median income in the tract to median incomes in the area"
   },
   "explore.map.page.side.panel.indicator.description.pm25": {
     "defaultMessage": "Level of inhalable particles, 2.5 micrometers or smaller",
@@ -980,11 +980,11 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of hazardous waste facilities within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.prox.npl": {
-    "defaultMessage": "Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers",
+    "defaultMessage": "Count of proposed or listed Superfund (or National Priorities List (NPL)) sites within 5 kilometers",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.prox.rmp": {
-    "defaultMessage": "Count of Risk Management Plan facilities within 5 kilometers",
+    "defaultMessage": "Count of Risk Management Plan (RMP) facilities within 5 kilometers",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of Risk Management Plan facilities within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.trafficVolume": {

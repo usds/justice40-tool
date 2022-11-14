@@ -987,7 +987,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   // Legacy Pollution
   ABANDON_MINES: {
     id: 'explore.map.page.side.panel.indicator.abandon.mines',
-    defaultMessage: 'Abandoned mine lands',
+    defaultMessage: 'Abandoned mine land',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines`,
   },
   FORMER_DEF_SITES: {
@@ -1229,7 +1229,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   LACK_GREEN_SPACE: {
     id: 'explore.map.page.side.panel.indicator.description.lack.green.space',
-    defaultMessage: 'Amount of non-crop land covered with artificial materials like concrete or pavement',
+    defaultMessage: 'Amount of land, not including crop land, that is covered with artificial materials like concrete or pavement',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of non-crop land covered with artificial materials like concrete or pavement`,
   },
   LACK_PLUMBING: {
@@ -1249,12 +1249,12 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   // Legacy Pollution
   ABANDON_MINES: {
     id: 'explore.map.page.side.panel.indicator.description.abandon.mines',
-    defaultMessage: 'Presence of an abandoned mine land within the tract',
+    defaultMessage: 'Presence of one or more abandoned mine land within the tract',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned mine lands within the tract`,
   },
   FORMER_DEF_SITES: {
     id: 'explore.map.page.side.panel.indicator.description.former.def.sites',
-    defaultMessage: 'Presence of a Formerly Used Defense Site within the tract',
+    defaultMessage: 'Presence of one or more Formerly Used Defense Site within the tract',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract`,
   },
   PROX_HAZ: {
@@ -1264,12 +1264,12 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   PROX_RMP: {
     id: 'explore.map.page.side.panel.indicator.description.prox.rmp',
-    defaultMessage: 'Count of Risk Management Plan facilities within 5 kilometers',
+    defaultMessage: 'Count of Risk Management Plan (RMP) facilities within 5 kilometers',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of Risk Management Plan facilities within 5 kilometers`,
   },
   PROX_NPL: {
     id: 'explore.map.page.side.panel.indicator.description.prox.npl',
-    defaultMessage: `Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers`,
+    defaultMessage: `Count of proposed or listed Superfund (or National Priorities List (NPL)) sites within 5 kilometers`,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers`,
   },
 
@@ -1308,14 +1308,14 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LING_ISO: {
     id: 'explore.map.page.side.panel.indicator.description.ling.iso',
     defaultMessage: `
-    Share of households where no one over the age 14 speaks English well
+    Share of households where no one over age 14 speaks English well
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of households where no one over the age 14 speaks English well`,
   },
   LOW_MED_INCOME: {
     id: 'explore.map.page.side.panel.indicator.description.low.med.income',
-    defaultMessage: 'Comparison of income in the tract to incomes in the area',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Comparison of income in the tract to incomes in the area`,
+    defaultMessage: 'Comparison of median income in the tract to median incomes in the area',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Comparison of median income in the tract to median incomes in the area`,
   },
   POVERTY: {
     id: 'explore.map.page.side.panel.indicator.description.poverty',
