@@ -321,12 +321,12 @@ export const FAQ_ANSWERS = {
   />,
   Q3_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q3_P1'}
-    defaultMessage={ 'No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool offers data about race and age only as information when a specific census tract is selected. It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.'}
+    defaultMessage={ 'No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool offers data about race and age only as information when a census tract is selected. It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q3_P1'}
   />,
   Q3_P2: <FormattedMessage
     id={ 'faqs.page.answers.Q3_P2'}
-    defaultMessage={ 'Although the CEJST does not use race in the methodology, it seeks to create a map that reflects the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.'}
+    defaultMessage={ 'Although the CEJST does not use race in its methodology, the tool creates a map that seeks to reflect the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q3_P2'}
   />,
   Q4_P1: <FormattedMessage
@@ -353,7 +353,7 @@ export const FAQ_ANSWERS = {
   Q5_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q5_P1'}
     defaultMessage={`
-      To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized tribes  are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.
+      To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized tribes are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.
     `}
     description={ 'Navigate to the FAQs page, this will be an answer, Q5_P1'}
   />,
@@ -397,7 +397,7 @@ export const FAQ_ANSWERS = {
   />,
   Q7: <FormattedMessage
     id={ 'faqs.page.answers.Q7'}
-    defaultMessage={ `A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains land within the boundaries of Federally Recognized Tribes, then the parts of the tract that are within the land of Tribes are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”`}
+    defaultMessage={ `A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains land within the boundaries of Federally Recognized Tribes, then the parts of the tract that contain the land of Tribes are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q7'}
   />,
   Q8_P1: <FormattedMessage
@@ -417,7 +417,7 @@ export const FAQ_ANSWERS = {
   />,
   Q9_P2: <FormattedMessage
     id={ 'faqs.page.answers.Q9_P2'}
-    defaultMessage={ `The CEJST will play an important role in the Justice40 Initiative. It will help to provide a single definition of disadvantaged communities for programs included in the Justice40 Initiative. This definition applies to the whole government. Federal agencies will use this definition to direct Justice40 investment benefits in the following areas:`}
+    defaultMessage={ `Federal agencies will use this definition to direct Justice40 investment benefits in the following areas:`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q9_P2'}
   />,
   Q9_P2_1: <FormattedMessage
@@ -457,7 +457,7 @@ export const FAQ_ANSWERS = {
   />,
   Q10: <FormattedMessage
     id={ 'faqs.page.answers.Q10'}
-    defaultMessage={ `Recent historic legislation—such as the Bipartisan Infrastructure Law and the Inflation Reduction Act—have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the eligibility criteria. Agencies will use the CEJST to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.`}
+    defaultMessage={ `Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the eligibility criteria. Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q10'}
   />,
   Q11: <FormattedMessage
@@ -467,7 +467,7 @@ export const FAQ_ANSWERS = {
   />,
   Q12_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q12_P1'}
-    defaultMessage={ `The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information and combines that information together into indices. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze for environmental and EJ issues. For example, EPA uses <link1>EJScreen</link1> to:`}
+    defaultMessage={ `The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information and combines that information together into indices. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze for environmental and EJ issues. For example, EPA uses <link1> EJScreen </link1> to:`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q12_P1'}
     values={{
       link1: linkFn(EJSCREEN, false, true),
@@ -550,13 +550,19 @@ export const FAQ_ANSWERS = {
   />,
   Q15_P1_2: <FormattedMessage
     id={ 'faqs.page.answers.Q15_P1_2'}
-    defaultMessage={ `The public can also submit data sources or ideas for consideration.`}
+    defaultMessage={ `The public can also submit <link1>data sources</link1> or ideas for consideration.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q15_P1_2'}
+    values={{
+      link1: linkFn('https://www.surveymonkey.com/r/6G9TQJ8', false, true),
+    }}
   />,
   Q15_P1_3: <FormattedMessage
     id={ 'faqs.page.answers.Q15_P1_3'}
-    defaultMessage={ `The public may also take a short survey to help improve the experience of using the tool.`}
+    defaultMessage={ `The public may also take a <link1>short survey</link1> to help improve the experience of using the tool.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q15_P1_3'}
+    values={{
+      link1: linkFn('https://www.surveymonkey.com/r/5LZ7MNB', false, true),
+    }}
   />,
   Q15_P1_4: <FormattedMessage
     id={ 'faqs.page.answers.Q15_P1_4'}
@@ -579,7 +585,7 @@ export const FAQ_ANSWERS = {
   />,
   Q17_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q17_P1'}
-    defaultMessage={ `The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in MM, YYYY. The tool is no longer in beta.`}
+    defaultMessage={ `The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in November, 2022. The tool is no longer in beta.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q17_P1'}
   />,
   Q17_P2: <FormattedMessage

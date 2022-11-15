@@ -525,10 +525,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-2"
               >
                 <p>
-                  No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool offers data about race and age only as information when a specific census tract is selected. It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.
+                  No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool offers data about race and age only as information when a census tract is selected. It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.
                 </p>
                 <p>
-                  Although the CEJST does not use race in the methodology, it seeks to create a map that reflects the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.
+                  Although the CEJST does not use race in its methodology, the tool creates a map that seeks to reflect the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.
                 </p>
               </div>
               <h2
@@ -587,7 +587,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 <p>
                   
-      To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized tribes  are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.
+      To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized tribes are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.
     
                 </p>
                 <p>
@@ -716,7 +716,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-6"
               >
                 <p>
-                  A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains land within the boundaries of Federally Recognized Tribes, then the parts of the tract that are within the land of Tribes are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”
+                  A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains land within the boundaries of Federally Recognized Tribes, then the parts of the tract that contain the land of Tribes are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”
                 </p>
               </div>
               <h2
@@ -768,7 +768,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in the Justice40 Initiative. The Justice40 Initiative seeks to deliver 40% of the overall benefits of certain investments to disadvantaged communities.
                 </p>
                 <p>
-                  The CEJST will play an important role in the Justice40 Initiative. It will help to provide a single definition of disadvantaged communities for programs included in the Justice40 Initiative. This definition applies to the whole government. Federal agencies will use this definition to direct Justice40 investment benefits in the following areas:
+                  Federal agencies will use this definition to direct Justice40 investment benefits in the following areas:
                 </p>
                 <ul>
                   <li>
@@ -814,7 +814,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-9"
               >
                 <p>
-                  Recent historic legislation—such as the Bipartisan Infrastructure Law and the Inflation Reduction Act—have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the eligibility criteria. Agencies will use the CEJST to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.
+                  Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the eligibility criteria. Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.
                 </p>
               </div>
               <h2
@@ -868,7 +868,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    EJScreen
+                     EJScreen 
                   </a>
                    to:
                 </p>
@@ -983,10 +983,30 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     The public can find census tracts that they are familiar with and send feedback about those tracts. That feedback is used to “ground truth” the tool. This helps the tool to better reflect the realities for communities.
                   </li>
                   <li>
-                    The public can also submit data sources or ideas for consideration.
+                    The public can also submit 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.surveymonkey.com/r/6G9TQJ8"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      data sources
+                    </a>
+                     or ideas for consideration.
                   </li>
                   <li>
-                    The public may also take a short survey to help improve the experience of using the tool.
+                    The public may also take a 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.surveymonkey.com/r/5LZ7MNB"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      short survey
+                    </a>
+                     to help improve the experience of using the tool.
                   </li>
                   <li>
                     The public can also email 
@@ -1045,7 +1065,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-16"
               >
                 <p>
-                  The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in MM, YYYY. The tool is no longer in beta.
+                  The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in November, 2022. The tool is no longer in beta.
                 </p>
                 <p>
                   The tool will be improved over time. The Council on Environmental Quality (CEQ) will update the tool each year based on public feedback, research, and the availability of new data.
