@@ -56,15 +56,21 @@ export const PAGE = defineMessages({
     id: 'methodology.page.paragraph.3',
     defaultMessage: `
       The tool uses datasets as indicators of burdens. The burdens are organized into categories. A community is highlighted as disadvantaged on the CEJST map if it is in a census tract that is (1) at or above the threshold for one or more environmental, climate, or other burdens, and (2) at or
-      above the threshold for an associated socioeconomic burden. In addition, a census tract that is completely surrounded by disadvantaged communities that meet the burden thresholds, and is at or above 
-      the 50% percentile for low income, is also considered disadvantaged. 
+      above the threshold for an associated socioeconomic burden.
+    `,
+    description: 'Navigate to the methodology page. This is the methodology paragraph 3',
+  },
+  PARA4: {
+    id: 'methodology.page.paragraph.4',
+    defaultMessage: `
+      In addition, a census tract that is completely surrounded by disadvantaged communities and is at or above the 50% percentile for low income is also considered disadvantaged.
     `,
     description: 'Navigate to the methodology page. This is the methodology paragraph 3',
   },
   PARA5: {
     id: 'methodology.page.paragraph.5',
     defaultMessage: `
-      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities. They are highlighted on the map.  
+      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities.
     `,
     description: 'Navigate to the methodology page. This is the methodology paragraph 5',
   },
@@ -92,7 +98,7 @@ export const FORMULA = {
   PARA4: <FormattedMessage
     id={'methodology.page.paragraph.4'}
     defaultMessage={`
-      Census tracts are small units of geography. Census tract <link1>boundaries</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
+      Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
       census boundaries.    
     `}
     description={'Navigate to the methodology page. This is the methodology paragraph 4'}
@@ -275,7 +281,7 @@ export const CATEGORIES = {
     />,
     IF: <FormattedMessage
       id={'methodology.page.indicator.categories.legacy.pollution.if'}
-      defaultMessage={`Have at least one <link0>abandoned mine land</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites</link3> OR <link4>proximity to Risk Management Plan facilities</link4>`}
+      defaultMessage={`Have at least one <link0>abandoned mine land</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites (National Priorities List (NPL))</link3> OR <link4>proximity to Risk Management Plan (RMP) facilities</link4>`}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values={{
         link0: simpleLink('#mine-land'),
@@ -346,7 +352,7 @@ export const CATEGORIES = {
     />,
     TITLE: <FormattedMessage
       id={'indicator.categories.work.dev.title'}
-      defaultMessage={'Training and workforce development'}
+      defaultMessage={'Workforce development'}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
 
     />,
@@ -665,10 +671,10 @@ export const SOURCE_LINKS = {
   />,
   TRANS_BUR: <FormattedMessage
     id={'methodology.page.category.source.trans.bur.link'}
-    defaultMessage={`<link1>Transportation Burdens indicator (need link)</link1>  from {date22}`}
+    defaultMessage={`<link1>Transportation Burdens indicator</link1>  from {date22}`}
     description={'Navigate to the Methodology page. This is the source link for Transportation burdens'}
     values={{
-      link1: linkFn('http://google.com', false, true),
+      link1: linkFn('https://www.transportation.gov/equity-Justice40#:~:text=Transportation%20access%20disadvantage%20identifies%20communities%20and%20places%20that%20spend%20more%2C%20and%20take%20longer%2C%20to%20get%20where%20they%20need%20to%20go.%20(4)', false, true),
       date22: DATE_RANGE.TWENTYTWO,
     }}
   />,
@@ -834,7 +840,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.exp.pop.loss.rate.description.text'}
       defaultMessage={`
-        Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the rate of population loss.
+        Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the rate the population loss rate.
 
       `}
       description={'Navigate to the Methodology page. This is the description text for exp pop loss rate'}
@@ -859,7 +865,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.flood.risk.rate.description.text'}
       defaultMessage={`
-        A high precision, climate-adjusted model that projects future flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not include property value.
+        A high precision, climate-adjusted model that projects future flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not consider property value.
       `}
       description={'Navigate to the Methodology page. This is the description text for exp bld loss rate'}
     />,
@@ -883,7 +889,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.wildfire.risk.rate.description.text'}
       defaultMessage={`
-        A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous US, today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not include property value.
+        A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous US, today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not consider property value.
       `}
       description={'Navigate to the Methodology page. This is the description text for exp bld loss rate'}
     />,
@@ -1121,7 +1127,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.green.space.description.text'}
       defaultMessage={`
-        Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.
+        Share of land with developed surfaces covered with artificial materials like concrete or pavement, excluding crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.
 
       `}
       description={'Navigate to the Methodology page. This is the description text for housing burden'}
@@ -1146,7 +1152,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.indoor.plumb.description.text'}
       defaultMessage={`
-        Housing without complete kitchen facilities or complete plumbing facilities.
+        Housing without indoor kitchen facilities or complete plumbing facilities.
       `}
       description={'Navigate to the Methodology page. This is the description text for housing burden'}
     />,
@@ -1169,7 +1175,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.lead.paint.description.text'}
       defaultMessage={`
-        Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) are not likely to have lead paint exposure and are not included.
+        Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) are less likely to face health risks from lead paint exposure are not included.
       `}
       description={'Navigate to the Methodology page. This is the description text for lead paint'}
     />,
@@ -1288,7 +1294,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.prox.rmp.description.text'}
       defaultMessage={`
-        Count of RMP, or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
+        Count of Risk Management Plan (RMP), or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
       `}
       description={'Navigate to the Methodology page. This is the description text for proximity to rmp'}
     />,
@@ -1435,7 +1441,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.linguistic.iso.description.text'}
       defaultMessage={`
-        Share of households where no one over the age 14 speaks English well.
+        Share of households where no one over age 14 speaks English well.
       `}
       description={'Navigate to the Methodology page. This is the description text for linguistic isolation'}
     />,
@@ -1516,6 +1522,10 @@ export const INDICATORS = [
         source: SOURCE_LINKS.CENSUS_ACS_15_19,
         availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_10,
+        availableFor: AVAILABLE_FOR.ALL_ISLDS,
+      },
     ],
   },
   {
@@ -1528,7 +1538,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.unemploy.description.text'}
       defaultMessage={`
-        Number of unemployed people as a share of the  labor force.
+        Number of unemployed people as a share of the labor force.
       `}
       description={'Navigate to the Methodology page. This is the description text for unemployment'}
     />,
@@ -1589,6 +1599,16 @@ export const INDICATORS = [
       The Land Area Representation (LAR) dataset depicts American Indian land areas for Federally Recognized Tribes.
       `}
       description={'Navigate to the Methodology page. This is the description text for Tribal lands'}
+    />,
+    note: <FormattedMessage
+      id={'methodology.page.category.tribal.lands.note.text'}
+      defaultMessage={`
+        <boldtag>Note: </boldtag>The LAR dataset depicts the exterior extent of a Federal Indian land area.  Not all Federally Recognized Tribes have a designated land area; therefore, they may not have an associated land area represented in the land area dataset.
+      `}
+      description={'Navigate to the Methodology page. This is the note text for low median expectancy'}
+      values={{
+        boldtag: boldFn,
+      }}
     />,
     usedIn: CATEGORIES.TRIBAL_LANDS.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.BIA,

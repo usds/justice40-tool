@@ -20,13 +20,17 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <p>
           
       The tool uses datasets as indicators of burdens. The burdens are organized into categories. A community is highlighted as disadvantaged on the CEJST map if it is in a census tract that is (1) at or above the threshold for one or more environmental, climate, or other burdens, and (2) at or
-      above the threshold for an associated socioeconomic burden. In addition, a census tract that is completely surrounded by disadvantaged communities that meet the burden thresholds, and is at or above 
-      the 50% percentile for low income, is also considered disadvantaged. 
+      above the threshold for an associated socioeconomic burden.
     
         </p>
         <p>
           
-      Census tracts are small units of geography. Census tract 
+      In addition, a census tract that is completely surrounded by disadvantaged communities and is at or above the 50% percentile for low income is also considered disadvantaged.
+    
+        </p>
+        <p>
+          
+      Census tracts are small units of geography. Census tract boundaries for 
           <a
             class="usa-link usa-link--external"
             data-cy=""
@@ -34,7 +38,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
             rel="noreferrer"
             target="_blank"
           >
-            boundaries
+            statistical areas
           </a>
            are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
       census boundaries.    
@@ -336,14 +340,14 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           class="usa-link"
           href="#prox-npl"
         >
-          proximity to Superfind sites
+          proximity to Superfind sites (National Priorities List (NPL))
         </a>
          OR 
         <a
           class="usa-link"
           href="#prox-rmp"
         >
-          proximity to Risk Management Plan facilities
+          proximity to Risk Management Plan (RMP) facilities
         </a>
       </p>
       <p>
@@ -474,7 +478,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
     </div>
     <div>
       <h3>
-        Training and workforce development
+        Workforce development
       </h3>
       <p>
         
@@ -557,7 +561,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </h2>
         <p>
           
-      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities. They are highlighted on the map.  
+      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities.
     
         </p>
       </div>

@@ -432,13 +432,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <p>
             
       The tool uses datasets as indicators of burdens. The burdens are organized into categories. A community is highlighted as disadvantaged on the CEJST map if it is in a census tract that is (1) at or above the threshold for one or more environmental, climate, or other burdens, and (2) at or
-      above the threshold for an associated socioeconomic burden. In addition, a census tract that is completely surrounded by disadvantaged communities that meet the burden thresholds, and is at or above 
-      the 50% percentile for low income, is also considered disadvantaged. 
+      above the threshold for an associated socioeconomic burden.
     
           </p>
           <p>
             
-      Census tracts are small units of geography. Census tract 
+      In addition, a census tract that is completely surrounded by disadvantaged communities and is at or above the 50% percentile for low income is also considered disadvantaged.
+    
+          </p>
+          <p>
+            
+      Census tracts are small units of geography. Census tract boundaries for 
             <a
               class="usa-link usa-link--external"
               data-cy=""
@@ -446,7 +450,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               rel="noreferrer"
               target="_blank"
             >
-              boundaries
+              statistical areas
             </a>
              are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
       census boundaries.    
@@ -748,14 +752,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             class="usa-link"
             href="#prox-npl"
           >
-            proximity to Superfind sites
+            proximity to Superfind sites (National Priorities List (NPL))
           </a>
            OR 
           <a
             class="usa-link"
             href="#prox-rmp"
           >
-            proximity to Risk Management Plan facilities
+            proximity to Risk Management Plan (RMP) facilities
           </a>
         </p>
         <p>
@@ -886,7 +890,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
       <div>
         <h3>
-          Training and workforce development
+          Workforce development
         </h3>
         <p>
           
@@ -969,7 +973,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </h2>
           <p>
             
-      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities. They are highlighted on the map.  
+      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities.
     
           </p>
         </div>
@@ -1212,7 +1216,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the rate of population loss.
+        Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the rate the population loss rate.
 
       
                 </div>
@@ -1270,7 +1274,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        A high precision, climate-adjusted model that projects future flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not include property value.
+        A high precision, climate-adjusted model that projects future flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not consider property value.
       
                 </div>
                 <ul>
@@ -1327,7 +1331,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous US, today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not include property value.
+        A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous US, today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not consider property value.
       
                 </div>
                 <ul>
@@ -1835,7 +1839,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.
+        Share of land with developed surfaces covered with artificial materials like concrete or pavement, excluding crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.
 
       
                 </div>
@@ -1893,7 +1897,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        Housing without complete kitchen facilities or complete plumbing facilities.
+        Housing without indoor kitchen facilities or complete plumbing facilities.
       
                 </div>
                 <ul>
@@ -1944,7 +1948,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) are not likely to have lead paint exposure and are not included.
+        Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) are less likely to face health risks from lead paint exposure are not included.
       
                 </div>
                 <ul>
@@ -2215,7 +2219,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        Count of RMP, or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
+        Count of Risk Management Plan (RMP), or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
       
                 </div>
                 <ul>
@@ -2346,11 +2350,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <a
                       class="usa-link usa-link--external"
                       data-cy=""
-                      href="http://google.com"
+                      href="https://www.transportation.gov/equity-Justice40#:~:text=Transportation%20access%20disadvantage%20identifies%20communities%20and%20places%20that%20spend%20more%2C%20and%20take%20longer%2C%20to%20get%20where%20they%20need%20to%20go.%20(4)"
                       rel="noreferrer"
                       target="_blank"
                     >
-                      Transportation Burdens indicator (need link)
+                      Transportation Burdens indicator
                     </a>
                       from 2022
                   </li>
@@ -2536,7 +2540,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        Share of households where no one over the age 14 speaks English well.
+        Share of households where no one over age 14 speaks English well.
       
                 </div>
                 <ul>
@@ -2719,6 +2723,28 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     </span>
                     All U.S. states, the District of Columbia, and Puerto Rico
                   </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.census.gov/data/developers/data-sets/acs-5year/2010.html"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      American Community Survey
+                    </a>
+                     from 2010
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands
+    
+                  </li>
                 </ul>
               </div>
               <div
@@ -2733,7 +2759,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        Number of unemployed people as a share of the  labor force.
+        Number of unemployed people as a share of the labor force.
       
                 </div>
                 <ul>
@@ -2887,6 +2913,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   
       The Land Area Representation (LAR) dataset depicts American Indian land areas for Federally Recognized Tribes.
       
+                </div>
+                <div>
+                  <p>
+                    
+        
+                    <strong>
+                      Note: 
+                    </strong>
+                    The LAR dataset depicts the exterior extent of a Federal Indian land area.  Not all Federally Recognized Tribes have a designated land area; therefore, they may not have an associated land area represented in the land area dataset.
+      
+                  </p>
                 </div>
                 <ul>
                   <li>
