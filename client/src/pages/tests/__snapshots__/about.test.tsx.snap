@@ -420,25 +420,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               . The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.
     
             </p>
-            <div
-              class="j40-p-tag"
-            >
-              
-      Federal agencies should also use the following:
-    
-              <ul>
-                <li>
-                   
-      Addendum to the Justice40 Initiative Interim Guidance on Using CEJST
-    
-                </li>
-                <li>
-                   
-      Instructions to Federal Agencies on Using the CEJST
-    
-                </li>
-              </ul>
-            </div>
             <p>
               
       CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version 1.0. 
@@ -452,6 +433,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Sign-up
               </a>
                for updates from CEQ
+    
+            </p>
+            <p>
+              
+      A Spanish version of the site will be available in the near future.
     
             </p>
           </section>
@@ -477,21 +463,30 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             How to use the tool
           </h2>
           <p>
-            The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.
+            
+      The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for 
+            <a
+              class="usa-link"
+              href="/en/methodology"
+            >
+              statistical areas
+            </a>
+             are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.
+    
           </p>
           <p>
             The tool ranks most of the burdens using percentiles. Percentiles show how much burden each tract experiences compared to other tracts. Certain burdens use percentages or a simple yes/no.
           </p>
           <p>
             
-    A community is considered to be disadvantaged if it meets the tool's 
+      A community is considered to be disadvantaged if they are located within a census tract that meets the tool’s 
             <a
               class="usa-link"
               href="/en/methodology"
             >
               methodology
             </a>
-            .
+             or are on land within the boundaries of Federally Recognized Tribes.
     
           </p>
         </div>
@@ -771,7 +766,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               .
             </li>
             <li>
-              Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email CEQ at: 
+              Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email: 
               <a
                 class="usa-link"
                 href="/en/methodology"

@@ -3,9 +3,13 @@
     "defaultMessage": "Get involved",
     "description": "Navigate to the About page. This is the sub heading of page"
   },
+  "about.page.how.to.use.para3": {
+    "defaultMessage": "A community is considered to be disadvantaged if they are located within a census tract that meets the tool’s <link1>methodology</link1> or are on land within the boundaries of Federally Recognized Tribes.",
+    "description": "Navigate to the About page. This is the paragraph 4"
+  },
   "about.page.how.to.use.tool.para1": {
-    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.",
-    "description": "Navigate to the About page. This is the sub heading of How to use the tool paragraph1"
+    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.",
+    "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.how.to.use.tool.para2": {
     "defaultMessage": "The tool ranks most of the burdens using percentiles. Percentiles show how much burden each tract experiences compared to other tracts. Certain burdens use percentages or a simple yes/no.",
@@ -32,7 +36,7 @@
     "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.how.you.can.help.list.item.4": {
-    "defaultMessage": "Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email CEQ at: <link1>Screeningtool-Support@omb.eop.gov</link1>",
+    "defaultMessage": "Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>",
     "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.how.you.can.help.para.1": {
@@ -75,6 +79,10 @@
     "defaultMessage": "CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version {version}. <link1>Sign-up</link1> for updates from CEQ",
     "description": "Navigate to the About page. This is the paragraph 4"
   },
+  "about.page.paragraph.5": {
+    "defaultMessage": "A Spanish version of the site will be available in the near future.",
+    "description": "Navigate to the About page. This is the paragraph 5"
+  },
   "about.page.send.feedback.email.link": {
     "defaultMessage": "Contact",
     "description": "about page sub header text"
@@ -96,7 +104,7 @@
     "description": "Navigate to the About page. This is the sub heading of Using the data"
   },
   "about.page.use.data.paragraph": {
-    "defaultMessage": "A community is considered to be disadvantaged if it meets the tool's <link1>methodology</link1>.",
+    "defaultMessage": "The tool's data is available for <link1>download</link1>. This data can be used to filter by state or county.",
     "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.use.map.heading": {

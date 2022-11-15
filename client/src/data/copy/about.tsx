@@ -82,6 +82,14 @@ export const CONTENT = {
       link1: linkFn('https://lp.constantcontactpages.com/su/Vm8pCFj/spring', false, true),
     }}
   />,
+  PARA5:
+  <FormattedMessage
+    id={'about.page.paragraph.5'}
+    defaultMessage={`
+      A Spanish version of the site will be available in the near future.
+    `}
+    description={'Navigate to the About page. This is the paragraph 5'}
+  />,
   USE_DATA_PARA:
   <FormattedMessage
     id={'about.page.use.data.paragraph'}
@@ -93,11 +101,22 @@ export const CONTENT = {
       link1: linkFn(PAGES_ENDPOINTS.DOWNLOADS, true, false),
     }}
   />,
+  HOW_TO_USE_PARA1:
+  <FormattedMessage
+    id={'about.page.how.to.use.tool.para1'}
+    defaultMessage={`
+      The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.
+    `}
+    description={'Navigate to the About page. This is the paragraph 4'}
+    values={{
+      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+    }}
+  />,
   HOW_TO_USE_PARA3:
   <FormattedMessage
-    id={'about.page.use.data.paragraph'}
+    id={'about.page.how.to.use.para3'}
     defaultMessage={`
-    A community is considered to be disadvantaged if it meets the tool's <link1>methodology</link1>.
+      A community is considered to be disadvantaged if they are located within a census tract that meets the tool’s <link1>methodology</link1> or are on land within the boundaries of Federally Recognized Tribes.
     `}
     description={'Navigate to the About page. This is the paragraph 4'}
     values={{
@@ -113,11 +132,6 @@ export const HOW_TO_USE_TOOL = defineMessages({
     id: 'about.page.how.to.use.tool.title',
     defaultMessage: 'How to use the tool',
     description: 'Navigate to the About page. This is the sub heading of How to use the tool',
-  },
-  PARA1: {
-    id: 'about.page.how.to.use.tool.para1',
-    defaultMessage: 'The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.',
-    description: 'Navigate to the About page. This is the sub heading of How to use the tool paragraph1',
   },
   PARA2: {
     id: 'about.page.how.to.use.tool.para2',
@@ -220,7 +234,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_4: <FormattedMessage
     id={'about.page.how.you.can.help.list.item.4'}
-    defaultMessage={`Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email CEQ at: <link1>Screeningtool-Support@omb.eop.gov</link1>`}
+    defaultMessage={`Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>`}
     description={`Navigate to the about page. You will see How you can help list item 3`}
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
