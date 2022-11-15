@@ -128,11 +128,11 @@
     "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
   },
   "common.pages.alerts.public_comment_period.description": {
-    "defaultMessage": "The public comment period for <link1>sending feedback</link1> via the Request for Information has been extended to {expDate1}.",
+    "defaultMessage": "The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on xx/xx/xx. For more information about the improvements to the tool, CEQ’s press release will be coming soon.",
     "description": "Alert body that appears on landing page."
   },
-  "common.pages.alerts.public_comment_period.title": {
-    "defaultMessage": "Public comment period extended",
+  "common.pages.alerts.version.1.release..title": {
+    "defaultMessage": "Version 1.0 of the tool is now available",
     "description": "Alert title that appears on landing page."
   },
   "common.pages.console.error.stage.url": {

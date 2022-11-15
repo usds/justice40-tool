@@ -62,18 +62,17 @@ export const RFI_EXPIRATION_DATE= new Date(2022, 4, 25, 11, 59, 59); // May 25
 export const ALERTS = {
   ALERT_1_TITLE: defineMessages({
     TITLE: {
-      id: 'common.pages.alerts.public_comment_period.title',
-      defaultMessage: 'Public comment period extended',
+      id: 'common.pages.alerts.version.1.release..title',
+      defaultMessage: 'Version 1.0 of the tool is now available',
       description: 'Alert title that appears on landing page.',
     },
   }),
   EXPIRATION_DATE: RFI_EXPIRATION_DATE,
   ALERT_1_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.public_comment_period.description'}
-    defaultMessage={`The public comment period for <link1>sending feedback</link1> via the Request for Information has been extended to {expDate1}.`}
+    defaultMessage={`The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on xx/xx/xx. For more information about the improvements to the tool, CEQ’s press release will be coming soon.`}
     description={`Alert body that appears on landing page.`}
     values={{
-      link1: linkFn('https://www.federalregister.gov/documents/2022/04/25/2022-08774/climate-and-economic-justice-screening-tool-beta-version', false, true),
       expDate1: <FormattedDate
         value={RFI_EXPIRATION_DATE}
         year="numeric"

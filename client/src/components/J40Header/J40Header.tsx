@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useIntl} from 'gatsby-plugin-intl';
 import {
+  Alert,
   Header,
   NavMenuButton,
   PrimaryNav,
@@ -24,6 +25,7 @@ import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../../data/constants';
 interface IJ40Header {
   location: Location
 }
+
 /**
  * The J40Header component will control how the header looks for both mobile and desktop
  *
@@ -298,22 +300,24 @@ const J40Header = ({location}:IJ40Header) => {
       </J40MainGridContainer>
 
       {/* Alert */}
-      {/* {<J40MainGridContainer>
-        <Alert
+      {<J40MainGridContainer>
+        {/* <Alert
           className={styles.alert}
           type="info"
-          heading={intl.formatMessage(COMMON_COPY.ALERTS.ALERT_2_TITLE.TITLE)}>
+          heading={intl.formatMessage(COMMON_COPY.ALERTS.ALERT_2_TITLE.TITLE)}
+          headingLevel={'h1'}>
           {COMMON_COPY.ALERTS.ALERT_2_DESCRIPTION}
-        </Alert>
+        </Alert> */}
 
         <Alert
           className={styles.alert}
           type="info"
-          heading={intl.formatMessage(COMMON_COPY.ALERTS.ALERT_1_TITLE.TITLE)}>
+          heading={intl.formatMessage(COMMON_COPY.ALERTS.ALERT_1_TITLE.TITLE)}
+          headingLevel={'h1'}>
           {COMMON_COPY.ALERTS.ALERT_1_DESCRIPTION}
         </Alert>
       </J40MainGridContainer>
-      } */}
+      }
     </Header>
   );
 };
