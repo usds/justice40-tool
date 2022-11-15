@@ -70,4 +70,5 @@
 .newTag {
   @include u-bg('yellow-20v');
   @include u-text('blue-70v');
+  font-weight: bolder;
 }
