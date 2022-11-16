@@ -48,7 +48,7 @@ export const PAGE = defineMessages({
   SUB_HEADING_2: {
     id: 'methodology.page.sub.heading.2',
     defaultMessage: `
-      Tribal lands
+      Tribes
     `,
     description: 'Navigate to the methodology page. This is sub-heading 2',
   },
@@ -141,7 +141,7 @@ export const CATEGORY_AND_CLAUSE = {
   />,
   HS_DEG_GTE_10: <FormattedMessage
     id={'methodology.page.category.and.clause.hs.ed.higher.ed'}
-    defaultMessage={`<boldtag>AND</boldtag> have 10% or more of adults have a <link1>high school education</link1> level less than a high school degree
+    defaultMessage={`<boldtag>AND</boldtag> more than 10% of adults have a <link1>high school education</link1> level less than a high school degree
   `}
     description={'Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate'}
     values={{
@@ -281,7 +281,7 @@ export const CATEGORIES = {
     />,
     IF: <FormattedMessage
       id={'methodology.page.indicator.categories.legacy.pollution.if'}
-      defaultMessage={`Have at least one <link0>abandoned mine land</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites (National Priorities List (NPL))</link3> OR <link4>proximity to Risk Management Plan (RMP) facilities</link4>`}
+      defaultMessage={`Have at least one <link0>abandoned mine lands</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites (National Priorities List (NPL))</link3> OR <link4>proximity to Risk Management Plan (RMP) facilities</link4>`}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values={{
         link0: simpleLink('#mine-land'),

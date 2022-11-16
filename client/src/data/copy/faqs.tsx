@@ -195,7 +195,7 @@ export const QUESTIONS = [
   <FormattedMessage
     id={ 'faqs.page.Q12'}
     key={ 'faqs.page.Q12'}
-    defaultMessage={ 'Q: How is the Climate and Economic Justice Screening Tool (CEJST) different from the Environmental Protection Agency’s (EPA) EJScreen?'}
+    defaultMessage={ 'Q: How is the Climate and Economic Justice Screening Tool (CEJST) different from other Federal environmental screening tools, such as EJScreen?'}
     description={ 'Navigate to the FAQs page, this will be Q12'}
   />,
   <FormattedMessage

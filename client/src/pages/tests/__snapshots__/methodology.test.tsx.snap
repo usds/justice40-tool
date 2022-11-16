@@ -423,7 +423,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       If they are in census tracts that meet the thresholds for at least one of tool’s categories of burden, or
     
                 </li>
-                <li>
+                <li
+                  class="j40-mt3"
+                >
                   
       If they are on land within the boundaries of Federally Recognized Tribes
     
@@ -755,7 +757,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             class="usa-link"
             href="#mine-land"
           >
-            abandoned mine land
+            abandoned mine lands
           </a>
            OR 
           <a
@@ -966,7 +968,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           have 10% or more of adults have a 
+           more than 10% of adults have a 
           <a
             class="usa-link"
             href="#high-school"
@@ -992,7 +994,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         >
           <h2>
             
-      Tribal lands
+      Tribes
     
           </h2>
           <p>

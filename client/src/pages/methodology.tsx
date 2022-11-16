@@ -46,7 +46,7 @@ const IndexPage = ({location}: MethodPageProps) => {
                   <li>
                     {intl.formatMessage(METHODOLOGY_COPY.PAGE.PARA1_BULLET1)}
                   </li>
-                  <li>
+                  <li className={'j40-mt3'}>
                     {intl.formatMessage(METHODOLOGY_COPY.PAGE.PARA1_BULLET2)}
                   </li>
                 </ul>

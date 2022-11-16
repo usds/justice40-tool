@@ -648,7 +648,7 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
     {
       id: 'leg-pollute',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.LEG_POLLUTE),
-      indicators: [abandonMines, formerDefSites, proxHaz, proxNPL, proxRMP],
+      indicators: [abandonMines, formerDefSites, proxHaz, proxRMP, proxNPL],
       socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED] ?
         properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED] : null,
@@ -684,7 +684,7 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
     {
       id: 'work-dev',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.WORK_DEV),
-      indicators: [lingIso, lowMedInc, unemploy, poverty],
+      indicators: [lingIso, lowMedInc, poverty, unemploy],
       socioEcIndicators: [highSchool],
       isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED] ?
         properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED] : null,

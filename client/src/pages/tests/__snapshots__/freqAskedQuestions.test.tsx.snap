@@ -874,7 +874,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-testid="accordionButton_faq-id-11"
                   type="button"
                 >
-                  Q: How is the Climate and Economic Justice Screening Tool (CEJST) different from the Environmental Protection Agency’s (EPA) EJScreen?
+                  Q: How is the Climate and Economic Justice Screening Tool (CEJST) different from other Federal environmental screening tools, such as EJScreen?
                 </button>
               </h2>
               <div

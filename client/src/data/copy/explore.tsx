@@ -33,7 +33,7 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION1 = <FormattedMessage
   id={'explore.map.page.description.1'}
   defaultMessage={`
-    Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. Federally Recognized Tribes, including Alaska Native Villages are also considered disadvantaged communities. 
+    Census tracts that are overburdened and underserved are highlighted as being disadvantaged on the map. Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities. 
   `}
   description={'On the explore the map page, the first description of the page'}
 />;
@@ -361,14 +361,14 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA6_PART1: {
     id: 'explore.map.page.side.panel.info.para.6',
     defaultMessage: `
-      Land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages are
+      Land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages are highlighted
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
   },
   PARA6_PART2: {
     id: 'explore.map.page.side.panel.info.para.6',
     defaultMessage: `
-      highlighted on the map. These communities are also considered disadvantaged.
+      on the map. These communities are also considered disadvantaged.
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
   },
@@ -987,7 +987,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   // Legacy Pollution
   ABANDON_MINES: {
     id: 'explore.map.page.side.panel.indicator.abandon.mines',
-    defaultMessage: 'Abandoned mine land',
+    defaultMessage: 'Abandoned mine lands',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines`,
   },
   FORMER_DEF_SITES: {
@@ -1200,7 +1200,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   DIABETES: {
     id: 'explore.map.page.side.panel.indicator.description.diabetes',
     defaultMessage: `
-      Share of people ages 18 years and older who have diabetes
+      Share of people ages 18 years and older who have diabetes other than diabetes during pregnancy
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people ages 18 years and older who have diabetes`,
   },
@@ -1320,7 +1320,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   POVERTY: {
     id: 'explore.map.page.side.panel.indicator.description.poverty',
     defaultMessage: `
-      Share of people in households where the income is at or below 100% of the Federal poverty level 
+      Share of people in households where income is at or below 100% of the Federal poverty level 
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people in households where the income is at or below 100% of the Federal poverty level`,
   },
@@ -1434,14 +1434,14 @@ export const NOTE_ON_TERRITORIES = {
   PARA_0: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.0'}
     defaultMessage={`
-      Not all the data used in CEJST are available or used for all U.S. territories.
+      Not all the data used in the tool are available or used for all U.S. territories.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 0`}
   />,
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.1'}
     defaultMessage={`
-      <bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period. 
+      <bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: low income, projected flood risk, energy cost, lack of indoor plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, low median income, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 1`}
     values={{

@@ -51,14 +51,6 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         
       and select
     
-        <img
-          alt="
-      a mouse arrow icon informing the user can use the mouse
-    "
-          src="test-file-stub"
-          tabindex="0"
-        />
-        
       to see information about any census tract.
     
       </p>
@@ -171,7 +163,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      Land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages are
+      Land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages are highlighted
     
         <img
           alt="
@@ -181,7 +173,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
           tabindex="0"
         />
         
-      highlighted on the map. These communities are also considered disadvantaged.
+      on the map. These communities are also considered disadvantaged.
     
       </p>
     </aside>

@@ -620,7 +620,7 @@
     "description": "Navigate to the Downloads page, this will be the view of change log"
   },
   "explore.map.page.description.1": {
-    "defaultMessage": "Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. Federally Recognized Tribes, including Alaska Native Villages are also considered disadvantaged communities.",
+    "defaultMessage": "Census tracts that are overburdened and underserved are highlighted as being disadvantaged on the map. Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities.",
     "description": "On the explore the map page, the first description of the page"
   },
   "explore.map.page.description.2": {
@@ -868,7 +868,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract info title"
   },
   "explore.map.page.side.panel.indicator.abandon.mines": {
-    "defaultMessage": "Abandoned mine land",
+    "defaultMessage": "Abandoned mine lands",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines"
   },
   "explore.map.page.side.panel.indicator.adjacency": {
@@ -896,7 +896,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Cost and time spent on transportation"
   },
   "explore.map.page.side.panel.indicator.description.diabetes": {
-    "defaultMessage": "Share of people ages 18 years and older who have diabetes",
+    "defaultMessage": "Share of people ages 18 years and older who have diabetes other than diabetes during pregnancy",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people ages 18 years and older who have diabetes"
   },
   "explore.map.page.side.panel.indicator.description.dieselPartMatter": {
@@ -984,7 +984,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Fine inhalable particles, 2.5 micrometers and smaller"
   },
   "explore.map.page.side.panel.indicator.description.poverty": {
-    "defaultMessage": "Share of people in households where the income is at or below 100% of the Federal poverty level",
+    "defaultMessage": "Share of people in households where income is at or below 100% of the Federal poverty level",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people in households where the income is at or below 100% of the Federal poverty level"
   },
   "explore.map.page.side.panel.indicator.description.prox.haz": {
@@ -1336,7 +1336,7 @@
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show percentages"
   },
   "explore.map.page.side.panel.info.para.6": {
-    "defaultMessage": "highlighted on the map. These communities are also considered disadvantaged.",
+    "defaultMessage": "on the map. These communities are also considered disadvantaged.",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged."
   },
   "explore.map.page.side.panel.is.community.of.focus": {
@@ -1424,11 +1424,11 @@
     "description": "Navigate to the explore the map page. Under the map, you will see territories intro text"
   },
   "explore.map.page.under.map.note.on.territories.para.0": {
-    "defaultMessage": "Not all the data used in CEJST are available or used for all U.S. territories.",
+    "defaultMessage": "Not all the data used in the tool are available or used for all U.S. territories.",
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 0"
   },
   "explore.map.page.under.map.note.on.territories.para.1": {
-    "defaultMessage": "<bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
+    "defaultMessage": "<bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: low income, projected flood risk, energy cost, lack of indoor plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, low median income, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 1"
   },
   "explore.map.page.under.map.note.on.territories.para.2": {
@@ -1464,7 +1464,7 @@
     "description": "Navigate to the FAQs page, this will be Q11"
   },
   "faqs.page.Q12": {
-    "defaultMessage": "Q: How is the Climate and Economic Justice Screening Tool (CEJST) different from the Environmental Protection Agency’s (EPA) EJScreen?",
+    "defaultMessage": "Q: How is the Climate and Economic Justice Screening Tool (CEJST) different from other Federal environmental screening tools, such as EJScreen?",
     "description": "Navigate to the FAQs page, this will be Q12"
   },
   "faqs.page.Q13": {
@@ -1828,7 +1828,7 @@
     "description": "Focus on the bounds of a specific territory"
   },
   "methodology.page.category.and.clause.hs.ed.higher.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> have 10% or more of adults have a <link1>high school education</link1> level less than a high school degree",
+    "defaultMessage": "<boldtag>AND</boldtag> more than 10% of adults have a <link1>high school education</link1> level less than a high school degree",
     "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
   },
   "methodology.page.category.and.clause.low.inc": {
@@ -2368,7 +2368,7 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Reduction and remediation of legacy pollution methodology"
   },
   "methodology.page.indicator.categories.legacy.pollution.if": {
-    "defaultMessage": "Have at least one <link0>abandoned mine land</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites (National Priorities List (NPL))</link3> OR <link4>proximity to Risk Management Plan (RMP) facilities</link4>",
+    "defaultMessage": "Have at least one <link0>abandoned mine lands</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites (National Priorities List (NPL))</link3> OR <link4>proximity to Risk Management Plan (RMP) facilities</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.tribal.lands.methodology": {
@@ -2416,7 +2416,7 @@
     "description": "Navigate to the methodology page. This is sub-heading 1"
   },
   "methodology.page.sub.heading.2": {
-    "defaultMessage": "Tribal lands",
+    "defaultMessage": "Tribes",
     "description": "Navigate to the methodology page. This is sub-heading 2"
   },
   "methodology.page.title.text": {
