@@ -703,17 +703,34 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
    * This sidePanelState has 3 values; namely, Nation, Puerto Rico and Island Areas.
    */
   if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.PUERTO_RICO) {
-    /* For Puerto Rico - only show the following indicators:
-        clean energy (index 1): show all
-        sustainable housing (index 2): only housing cost burden
-        legacy pollution (index 3): show all
-        workforce dev (index 4): remove linguistic iso
-    */
+    // Allow all categories except health burdens:
+    categories = categories.filter((category) => category.id !== 'health-burdens');
 
-    // eslint-disable-next-line max-len
-    categories = categories.filter((category) => category.id === 'work-dev' || category.id === 'clean-energy' || category.id === 'leg-pollute' || category.id === 'sustain-house');
+    // Re-define which burdens show up for each category:
+
+    // 'climate-change'
+    categories[0].indicators = [flooding];
+
+    // 'clean-energy'
     categories[1].indicators = [houseCost];
-    categories[3].indicators = [lowMedInc, unemploy, poverty];
+
+    // 'health-burdens'
+    // not showing this category
+
+    // 'sustain-house'
+    categories[2].indicators = [lowMedInc, unemploy, poverty, lackPlumbing];
+
+    // 'leg-pollute'
+    categories[3].indicators = [proxHaz, proxRMP, proxNPL];
+
+    // 'clean-transport'
+    categories[4].indicators = [dieselPartMatter, trafficVolume];
+
+    // 'clean-water'
+    // show all
+
+    // 'work-dev'
+    // show all
   }
 
   if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
