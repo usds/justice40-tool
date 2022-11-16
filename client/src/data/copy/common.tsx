@@ -28,14 +28,14 @@ export const linkFn = (to:string | IDefineMessage, isInternal:boolean, isOpenNew
 
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
 
-export const METH_1_0_RELEASE_DATE = new Date(2022, 9, 25, 11, 59, 59); // Oct 25 2022
+export const METH_1_0_RELEASE_DATE = new Date(2022, 10, 22, 11, 59, 59); // Nov 22 2022
 export const METH_BETA_RELEASE_DATE = new Date(2022, 1, 18, 11, 59, 59); // Feb 18 2022
 
 
 // Beta Banner
 export const BETA_BANNER_CONTENT = <FormattedMessage
   id={'common.pages.alerts.banner.beta.content'}
-  defaultMessage={`<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}`}
+  defaultMessage={`<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}.`}
   description={`Alert body that appears on landing page.`}
   values={{
     bold1: boldFn,
@@ -70,13 +70,13 @@ export const ALERTS = {
   EXPIRATION_DATE: RFI_EXPIRATION_DATE,
   ALERT_1_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.public_comment_period.description'}
-    defaultMessage={`The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on xx/xx/xx. For more information about the improvements to the tool, CEQ’s press release will be coming soon.`}
+    defaultMessage={`The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on {ver1RelDate}. For more information about the improvements to the tool, CEQ’s press release will be coming soon.`}
     description={`Alert body that appears on landing page.`}
     values={{
-      expDate1: <FormattedDate
-        value={RFI_EXPIRATION_DATE}
+      ver1RelDate: <FormattedDate
+        value={METH_1_0_RELEASE_DATE}
         year="numeric"
-        month="short"
+        month="numeric"
         day="numeric"
       />,
     }}

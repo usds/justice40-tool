@@ -120,7 +120,7 @@
     "description": "Alert title that appears at the top of pages."
   },
   "common.pages.alerts.banner.beta.content": {
-    "defaultMessage": "<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}",
+    "defaultMessage": "<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}.",
     "description": "Alert body that appears on landing page."
   },
   "common.pages.alerts.census.tract.title": {
@@ -128,7 +128,7 @@
     "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
   },
   "common.pages.alerts.public_comment_period.description": {
-    "defaultMessage": "The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on xx/xx/xx. For more information about the improvements to the tool, CEQ’s press release will be coming soon.",
+    "defaultMessage": "The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on {ver1RelDate}. For more information about the improvements to the tool, CEQ’s press release will be coming soon.",
     "description": "Alert body that appears on landing page."
   },
   "common.pages.alerts.version.1.release..title": {
@@ -312,7 +312,7 @@
     "description": "Navigate to the download page. This is first section of the release update SECTION1"
   },
   "download.page.release.update.SECTION1_B1": {
-    "defaultMessage": "Added Federally Recognized Tribal Lands and Alaska Native Villages data from the Bureau of Indian Affairs at the Department of the Interior to the tool and map",
+    "defaultMessage": "Added lands within the boundaries of Federally Recognized Tribes and locations of Alaska Native Villages using data from the Bureau of Indian Affairs at the U.S. Department of the Interior",
     "description": "Navigate to the download page. This is SECTION1_B1"
   },
   "download.page.release.update.SECTION1_B10": {
@@ -334,6 +334,10 @@
   "download.page.release.update.SECTION1_B2_1_2": {
     "defaultMessage": "Projected wildfire risk",
     "description": "Navigate to the download page. This is SECTION1_B2_1_2"
+  },
+  "download.page.release.update.SECTION1_B2_1_3": {
+    "defaultMessage": "Historic underinvestment due to redlining",
+    "description": "Navigate to the download page. This is SECTION1_B2_1_3"
   },
   "download.page.release.update.SECTION1_B2_2": {
     "defaultMessage": "Housing",
@@ -380,7 +384,7 @@
     "description": "Navigate to the download page. This is SECTION1_B2_5_1"
   },
   "download.page.release.update.SECTION1_B3": {
-    "defaultMessage": "Added an adjacency indicator to methodology to include low income communities that had been completely surrounded by other disadvantaged communities, but which had just missed the thresholds in the beta version.",
+    "defaultMessage": "Included communities that are completely surrounded by other disadvantaged communities and that meet an adjusted low income threshold",
     "description": "Navigate to the download page. This is SECTION1_B3"
   },
   "download.page.release.update.SECTION1_B4": {
@@ -392,11 +396,11 @@
     "description": "Navigate to the download page. This is SECTION1_B4_1"
   },
   "download.page.release.update.SECTION1_B4_2": {
-    "defaultMessage": "Imputed income for census tracts missing that data that have a population greater than zero",
+    "defaultMessage": "Imputed income for census tracts missing income data",
     "description": "Navigate to the download page. This is SECTION1_B4_2"
   },
   "download.page.release.update.SECTION1_B4_3": {
-    "defaultMessage": "Used transportation barriers and population loss data indicators only for census tracts with populations of 20 or more",
+    "defaultMessage": "Used transportation barriers and expected population loss rate data burdens only for census tracts with populations of 20 or more to exclude areas such as airports",
     "description": "Navigate to the download page. This is SECTION1_B4_3"
   },
   "download.page.release.update.SECTION1_B5": {
@@ -412,7 +416,7 @@
     "description": "Navigate to the download page. This is SECTION1_B5_2"
   },
   "download.page.release.update.SECTION1_B5_3": {
-    "defaultMessage": "Updated the site copy of the website and associated Spanish translations",
+    "defaultMessage": "Updated the site copy of the website",
     "description": "Navigate to the download page. This is SECTION1_B5_3"
   },
   "download.page.release.update.SECTION1_B6": {
@@ -448,7 +452,7 @@
     "description": "Navigate to the download page. This is SECTION1_B6_1_2_2_1"
   },
   "download.page.release.update.SECTION1_B6_1_2_2_2": {
-    "defaultMessage": "Proximity to Risk Management Plan (RMP) facilities",
+    "defaultMessage": "Proximity to Risk Management Plan (RMP) sites",
     "description": "Navigate to the download page. This is SECTION1_B6_1_2_2_2"
   },
   "download.page.release.update.SECTION1_B6_1_2_2_3": {
@@ -540,7 +544,7 @@
     "description": "Navigate to the download page. This is SECTION1_B8_1"
   },
   "download.page.release.update.SECTION1_B8_2": {
-    "defaultMessage": "Added versions page to house beta version of download files",
+    "defaultMessage": "Added previous versions page to access the beta version’s download files",
     "description": "Navigate to the download page. This is SECTION1_B8_2"
   },
   "download.page.release.update.SECTION1_B8_3": {
@@ -584,16 +588,16 @@
     "description": "Navigate to the download page. This is second section of the release update section"
   },
   "download.page.release.update.section.2.p2": {
-    "defaultMessage": "Bug fix: Census tracts that have 0 land should not be included on the map",
+    "defaultMessage": "Bug fix: Census tracts that are 100% water should not be included on the map",
     "description": "Navigate to the download page. This is second section of the release update section"
   },
   "download.page.release.update.title.1": {
-    "defaultMessage": "Release update - {date}",
+    "defaultMessage": "Version {release} Release update - {date}",
     "description": "Navigate to the download page. This is first download file link"
   },
   "downloads.page.change.log.text": {
-    "defaultMessage": "change log",
-    "description": "Navigate to the Downloads page, this will be the view of change log"
+    "defaultMessage": "release notes",
+    "description": "Navigate to the Downloads page, this will be the view of release notes"
   },
   "downloads.page.download.icon.alt.tag": {
     "defaultMessage": "The icon used to indicate that the file is downloadable",

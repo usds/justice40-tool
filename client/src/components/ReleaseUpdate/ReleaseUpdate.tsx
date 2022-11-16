@@ -97,8 +97,9 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
                 </ul>
                 <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_2}</li>
                 <ul>
-                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_2_1}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_1_3}</li>
                   <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_2_2}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_2_1}</li>
                 </ul>
                 <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_3}</li>
                 <ul>
@@ -133,7 +134,7 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
                 <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1}</li>
                 <ul>
                   <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_1}</li>
-                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
+                  {/* <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
                   <ul>
                     <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1}</li>
                     <ul>
@@ -146,13 +147,13 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
                       <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_3}</li>
                       <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_4}</li>
                     </ul>
-                  </ul>
+                  </ul> */}
                 </ul>
 
                 <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_2}</li>
                 <ul>
                   <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_2_1}</li>
-                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
+                  {/* <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
                   <ul>
                     <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1}</li>
                     <ul>
@@ -165,10 +166,10 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
                       <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_3}</li>
                       <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_4}</li>
                     </ul>
-                  </ul>
+                  </ul> */}
                 </ul>
 
-                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_3}</li>
+                {/* <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_3}</li>
                 <ul>
                   <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
                   <ul>
@@ -197,7 +198,7 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
                       <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_4}</li>
                     </ul>
                   </ul>
-                </ul>
+                </ul> */}
 
                 <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_5}</li>
                 <ul>
@@ -214,7 +215,7 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
                 </ul>
               </ul>
 
-              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7}</li>
+              {/* <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7}</li>
               <ul>
                 <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1}</li>
                 <ul>
@@ -230,7 +231,7 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
                 <ul>
                   <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7_3_1}</li>
                 </ul>
-              </ul>
+              </ul> */}
 
               <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B8}</li>
               <ul>

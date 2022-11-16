@@ -23,8 +23,8 @@ export const PAGE_INTRO = defineMessages({
   },
   CHANGE_LOG: {
     id: 'downloads.page.change.log.text',
-    defaultMessage: 'change log',
-    description: 'Navigate to the Downloads page, this will be the view of change log',
+    defaultMessage: 'release notes',
+    description: 'Navigate to the Downloads page, this will be the view of release notes',
   },
 });
 
@@ -116,9 +116,10 @@ export const getDownloadIconAltTag = () => defineMessages({
 export const RELEASE_1_0 = {
   UPDATE_1: <FormattedMessage
     id={'download.page.release.update.title.1'}
-    defaultMessage={`Release update - {date}`}
+    defaultMessage={`Version {release} Release update - {date}`}
     description={'Navigate to the download page. This is first download file link'}
     values={{
+      release: VERSION_NUMBER,
       date: <FormattedDate
         value={COMMON_COPY.METH_1_0_RELEASE_DATE}
         year="numeric"
@@ -134,7 +135,9 @@ export const RELEASE_1_0 = {
   />,
   SECTION1_B1: <FormattedMessage
     id={'download.page.release.update.SECTION1_B1'}
-    defaultMessage={`Added Federally Recognized Tribal Lands and Alaska Native Villages data from the Bureau of Indian Affairs at the Department of the Interior to the tool and map`}
+    defaultMessage={`Added lands within the boundaries of Federally Recognized Tribes and 
+    locations of Alaska Native Villages using data from the Bureau of Indian
+    Affairs at the U.S. Department of the Interior`}
     description={'Navigate to the download page. This is SECTION1_B1'}
   />,
   SECTION1_B2: <FormattedMessage
@@ -156,6 +159,11 @@ export const RELEASE_1_0 = {
     id={'download.page.release.update.SECTION1_B2_1_2'}
     defaultMessage={`Projected wildfire risk`}
     description={'Navigate to the download page. This is SECTION1_B2_1_2'}
+  />,
+  SECTION1_B2_1_3: <FormattedMessage
+    id={'download.page.release.update.SECTION1_B2_1_3'}
+    defaultMessage={`Historic underinvestment due to redlining`}
+    description={'Navigate to the download page. This is SECTION1_B2_1_3'}
   />,
   SECTION1_B2_2: <FormattedMessage
     id={'download.page.release.update.SECTION1_B2_2'}
@@ -214,7 +222,9 @@ export const RELEASE_1_0 = {
   />,
   SECTION1_B3: <FormattedMessage
     id={'download.page.release.update.SECTION1_B3'}
-    defaultMessage={`Added an adjacency indicator to methodology to include low income communities that had been completely surrounded by other disadvantaged communities, but which had just missed the thresholds in the beta version.`}
+    defaultMessage={`Included communities that are completely surrounded by other 
+    disadvantaged communities and that meet an adjusted low income 
+    threshold`}
     description={'Navigate to the download page. This is SECTION1_B3'}
   />,
   SECTION1_B4: <FormattedMessage
@@ -229,12 +239,14 @@ export const RELEASE_1_0 = {
   />,
   SECTION1_B4_2: <FormattedMessage
     id={'download.page.release.update.SECTION1_B4_2'}
-    defaultMessage={`Imputed income for census tracts missing that data that have a population greater than zero`}
+    defaultMessage={`Imputed income for census tracts missing income data`}
     description={'Navigate to the download page. This is SECTION1_B4_2'}
   />,
   SECTION1_B4_3: <FormattedMessage
     id={'download.page.release.update.SECTION1_B4_3'}
-    defaultMessage={`Used transportation barriers and population loss data indicators only for census tracts with populations of 20 or more`}
+    defaultMessage={`Used transportation barriers and expected population loss rate 
+    data burdens only for census tracts with populations of 20 or 
+    more to exclude areas such as airports`}
     description={'Navigate to the download page. This is SECTION1_B4_3'}
   />,
   SECTION1_B5: <FormattedMessage
@@ -254,7 +266,7 @@ export const RELEASE_1_0 = {
   />,
   SECTION1_B5_3: <FormattedMessage
     id={'download.page.release.update.SECTION1_B5_3'}
-    defaultMessage={`Updated the site copy of the website and associated Spanish translations`}
+    defaultMessage={`Updated the site copy of the website`}
     description={'Navigate to the download page. This is SECTION1_B5_3'}
   />,
   SECTION1_B6: <FormattedMessage
@@ -299,7 +311,7 @@ export const RELEASE_1_0 = {
   />,
   SECTION1_B6_1_2_2_2: <FormattedMessage
     id={'download.page.release.update.SECTION1_B6_1_2_2_2'}
-    defaultMessage={`Proximity to Risk Management Plan (RMP) facilities`}
+    defaultMessage={`Proximity to Risk Management Plan (RMP) sites`}
     description={'Navigate to the download page. This is SECTION1_B6_1_2_2_2'}
   />,
   SECTION1_B6_1_2_2_3: <FormattedMessage
@@ -414,7 +426,8 @@ export const RELEASE_1_0 = {
   />,
   SECTION1_B8_2: <FormattedMessage
     id={'download.page.release.update.SECTION1_B8_2'}
-    defaultMessage={`Added versions page to house beta version of download files`}
+    defaultMessage={`Added previous versions page to access the beta version’s 
+    download files`}
     description={'Navigate to the download page. This is SECTION1_B8_2'}
   />,
   SECTION1_B8_3: <FormattedMessage
@@ -471,7 +484,8 @@ export const RELEASE_1_0 = {
   />,
   SECTION2_P2: <FormattedMessage
     id={'download.page.release.update.section.2.p2'}
-    defaultMessage={`Bug fix: Census tracts that have 0 land should not be included on the map`}
+    defaultMessage={`Bug fix: Census tracts that are 100% water should not be 
+    included on the map`}
     description={'Navigate to the download page. This is second section of the release update section'}
   />,
   FOOTER: <FormattedMessage

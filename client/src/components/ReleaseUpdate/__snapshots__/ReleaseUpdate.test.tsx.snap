@@ -12,7 +12,7 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
         id="releaseUpdate-header"
         tabindex="0"
       >
-        change log
+        release notes
       </a>
       <img
         alt="expand icon"
@@ -26,7 +26,7 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
     >
       <div>
         <div>
-          Release update - Oct 25, 2022
+          Version 1.0 Release update - Nov 22, 2022
         </div>
         <div>
           New & improved
@@ -34,7 +34,9 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
         <div>
           <ul>
             <li>
-              Added Federally Recognized Tribal Lands and Alaska Native Villages data from the Bureau of Indian Affairs at the Department of the Interior to the tool and map
+              Added lands within the boundaries of Federally Recognized Tribes and 
+    locations of Alaska Native Villages using data from the Bureau of Indian
+    Affairs at the U.S. Department of the Interior
             </li>
             <ul>
               <li>
@@ -56,10 +58,13 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
               </li>
               <ul>
                 <li>
-                  Lack of plumbing
+                  Historic underinvestment due to redlining
                 </li>
                 <li>
                   Lack of green space
+                </li>
+                <li>
+                  Lack of plumbing
                 </li>
               </ul>
               <li>
@@ -91,7 +96,9 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
               </ul>
             </ul>
             <li>
-              Added an adjacency indicator to methodology to include low income communities that had been completely surrounded by other disadvantaged communities, but which had just missed the thresholds in the beta version.
+              Included communities that are completely surrounded by other 
+    disadvantaged communities and that meet an adjusted low income 
+    threshold
             </li>
             <li>
               Made technical changes to enhance accuracy of the tool
@@ -101,10 +108,12 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
                 Removed income data for students enrolled in higher education in the low income indicator
               </li>
               <li>
-                Imputed income for census tracts missing that data that have a population greater than zero
+                Imputed income for census tracts missing income data
               </li>
               <li>
-                Used transportation barriers and population loss data indicators only for census tracts with populations of 20 or more
+                Used transportation barriers and expected population loss rate 
+    data burdens only for census tracts with populations of 20 or 
+    more to exclude areas such as airports
               </li>
             </ul>
             <li>
@@ -118,7 +127,7 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
                 Improved the design of the map side panel
               </li>
               <li>
-                Updated the site copy of the website and associated Spanish translations
+                Updated the site copy of the website
               </li>
             </ul>
             <li>
@@ -132,36 +141,6 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
                 <li>
                   Included data from 2010 decennial census for US Virgin Islands
                 </li>
-                <li>
-                  New data from EJScreen 2.1
-                </li>
-                <ul>
-                  <li>
-                    Sustainable Housing:
-                  </li>
-                  <ul>
-                    <li>
-                      Lead paint
-                    </li>
-                  </ul>
-                  <li>
-                    Legacy pollution:
-                  </li>
-                  <ul>
-                    <li>
-                      Proximity to Superfund (National Priorities List (NPL)) sites
-                    </li>
-                    <li>
-                      Proximity to Risk Management Plan (RMP) facilities
-                    </li>
-                    <li>
-                      Proximity to hazardous waste facilities
-                    </li>
-                    <li>
-                      Leaking underground storage tanks
-                    </li>
-                  </ul>
-                </ul>
               </ul>
               <li>
                 Guam
@@ -170,91 +149,6 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
                 <li>
                   Included data from 2010 decennial census for Guam
                 </li>
-                <li>
-                  New data from EJScreen 2.1
-                </li>
-                <ul>
-                  <li>
-                    Sustainable Housing:
-                  </li>
-                  <ul>
-                    <li>
-                      Lead paint
-                    </li>
-                  </ul>
-                  <li>
-                    Legacy pollution:
-                  </li>
-                  <ul>
-                    <li>
-                      Proximity to Superfund (National Priorities List (NPL)) sites
-                    </li>
-                    <li>
-                      Proximity to Risk Management Plan (RMP) facilities
-                    </li>
-                    <li>
-                      Proximity to hazardous waste facilities
-                    </li>
-                    <li>
-                      Leaking underground storage tanks
-                    </li>
-                  </ul>
-                </ul>
-              </ul>
-              <li>
-                Samoa
-              </li>
-              <ul>
-                <li>
-                  New data from EJScreen 2.1
-                </li>
-                <ul>
-                  <li>
-                    Sustainable Housing:
-                  </li>
-                  <ul>
-                    <li>
-                      Lead paint
-                    </li>
-                  </ul>
-                  <li>
-                    Legacy pollution:
-                  </li>
-                  <ul>
-                    <li>
-                      Proximity to Risk Management Plan (RMP) facilities
-                    </li>
-                    <li>
-                      Leaking underground storage tanks
-                    </li>
-                  </ul>
-                </ul>
-              </ul>
-              <li>
-                Marianna Islands
-              </li>
-              <ul>
-                <li>
-                  New data from EJScreen 2.1
-                </li>
-                <ul>
-                  <li>
-                    Sustainable Housing:
-                  </li>
-                  <ul>
-                    <li>
-                      Lead paint
-                    </li>
-                  </ul>
-                  <li>
-                    Legacy pollution:
-                  </li>
-                  <ul>
-                    <li>
-                      Leaking underground storage tanks
-                    </li>
-                  </ul>
-                </ul>
               </ul>
               <li>
                 Puerto Rico
@@ -283,44 +177,9 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
                     Proximity to Superfund (National Priorities List (NPL)) sites
                   </li>
                   <li>
-                    Proximity to Risk Management Plan (RMP) facilities
+                    Proximity to Risk Management Plan (RMP) sites
                   </li>
                 </ul>
-              </ul>
-            </ul>
-            <li>
-              Updated data from EJScreen 2.1 across the entire tool:
-            </li>
-            <ul>
-              <li>
-                Sustainable Housing:
-              </li>
-              <ul>
-                <li>
-                  Lead paint - 2016-2020
-                </li>
-              </ul>
-              <li>
-                Legacy pollution:
-              </li>
-              <ul>
-                <li>
-                  Proximity to Superfund (National Priorities List (NPL)) sites - 2022
-                </li>
-                <li>
-                  Proximity to Risk Management Plans (RMP) facilities - 2022
-                </li>
-                <li>
-                  Proximity to hazardous waste facilities - 2022
-                </li>
-              </ul>
-              <li>
-                Water and wastewater
-              </li>
-              <ul>
-                <li>
-                  Leaking underground storage tanks - 2022
-                </li>
               </ul>
             </ul>
             <li>
@@ -331,7 +190,8 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
                 Added all new data indicators and demographics to .xls, .csv, and shapefiles
               </li>
               <li>
-                Added versions page to house beta version of download files
+                Added previous versions page to access the beta version’s 
+    download files
               </li>
               <li>
                 Updated codebook
@@ -371,7 +231,8 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
               Bug fix: loaded missing life expectancy data for Maine and Wisconsin
             </li>
             <li>
-              Bug fix: Census tracts that have 0 land should not be included on the map
+              Bug fix: Census tracts that are 100% water should not be 
+    included on the map
             </li>
           </ul>
         </div>

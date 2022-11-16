@@ -147,7 +147,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
         <strong>
           This site has been updated.
         </strong>
-         The current version of the site is 1.0 that was released on Oct 25, 2022
+         The current version of the site is 1.0 that was released on Nov 22, 2022.
       </div>
     </div>
     <div
@@ -361,7 +361,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
           <p
             class="usa-alert__text"
           >
-            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on xx/xx/xx. For more information about the improvements to the tool, CEQ’s press release will be coming soon.
+            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on 11/22/2022. For more information about the improvements to the tool, CEQ’s press release will be coming soon.
           </p>
         </div>
       </div>
