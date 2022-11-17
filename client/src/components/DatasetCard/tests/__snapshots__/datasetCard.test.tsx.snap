@@ -50,7 +50,7 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
         <span>
           Available for: 
         </span>
-        All U.S. states and the District of Columbia
+        All U.S. states, the District of Columbia, and Puerto Rico
       </li>
     </ul>
   </div>

@@ -21,7 +21,7 @@ import bellCurveIcon from '../../images/sidePanelIcons/bell-curve.svg';
 // @ts-ignore
 import censusDotIcon from '../../images/sidePanelIcons/census-tract.svg';
 // @ts-ignore
-import tribalDotIcon from '../../images/sidePanelIcons/tribal-tract.svg';
+// import tribalDotIcon from '../../images/sidePanelIcons/tribal-tract.svg';
 // @ts-ignore
 import pieChartIcon from '../../images/sidePanelIcons/pie-chart.svg';
 // @ts-ignore
@@ -149,7 +149,7 @@ const SidePanelInfo = () => {
         windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
         <p tabIndex={0}>
           {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA6_PART1)}
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={tribalDotIcon}
+          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={censusDotIcon}
             alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.DAC_CIRCLE)}
           />
           {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA6_PART2)}

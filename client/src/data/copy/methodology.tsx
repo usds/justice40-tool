@@ -487,7 +487,7 @@ export const RESPONSIBLE_PARTIES = {
   EPA_OAR: `Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)`,
   FIRST: `First Street Foundation`,
   FEMA: `Federal Emergency Management Agency (FEMA)`,
-  HUD: `Department of Housing & Urban Development (HUD)`,
+  HUD: `Department of Housing and Urban Development (HUD)`,
   NCRC: `Nationl Community Reinvestment Coalition (NCRC)`,
   TPL: `The Trust for Public Lands and American Forestry`,
   USACE: `U.S. Army Corps of Engineers`,
@@ -617,7 +617,7 @@ export const SOURCE_LINKS = {
   />,
   CDC_SLEEP: <FormattedMessage
     id={'methodology.page.category.source.cdc.sleep.link'}
-    defaultMessage={`<link1>U.S. Small-Area Life Expectancy Estimates Project (USALEEP)</link1> from {date10_15}`}
+    defaultMessage={`<link1>U.S. Small-Area Life Expectancy Estimates Project</link1> (USALEEP) from {date10_15}`}
     description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
     values={{
       link1: linkFn('https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data', false, true),
@@ -662,7 +662,7 @@ export const SOURCE_LINKS = {
   />,
   FUDS: <FormattedMessage
     id={'methodology.page.category.source.fuds.link'}
-    defaultMessage={`<link1>Formerly Used Defense Sites (FUDS) </link1>  from {date19}`}
+    defaultMessage={`<link1>Formerly Used Defense Sites</link1> (FUDS) from {date19}`}
     description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
     values={{
       link1: linkFn('https://www.usace.army.mil/Missions/Environmental/Formerly-Used-Defense-Sites/', false, true),
@@ -728,7 +728,7 @@ export const AVAILABLE_FOR = defineMessages({
   },
   METRO_US_HOLC: {
     id: 'methodology.page.dataset.card.availableFor.METRO_US_HOLC',
-    defaultMessage: `Metro areas of US that were HOLC graded `,
+    defaultMessage: `Metro areas of U.S. that were HOLC graded `,
     description: 'Methodology page dataset card available for METRO_US_HOLC',
   },
   FRT: {
@@ -778,7 +778,7 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.CENSUS_ACS_15_19,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
     ],
   },
@@ -840,7 +840,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.exp.pop.loss.rate.description.text'}
       defaultMessage={`
-        Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the rate the population loss rate.
+        Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the population loss rate.
 
       `}
       description={'Navigate to the Methodology page. This is the description text for exp pop loss rate'}
@@ -865,7 +865,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.flood.risk.rate.description.text'}
       defaultMessage={`
-        A high precision, climate-adjusted model that projects future flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not consider property value.
+        A high precision, climate-adjusted model that projects flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not consider property value.
       `}
       description={'Navigate to the Methodology page. This is the description text for exp bld loss rate'}
     />,
@@ -889,7 +889,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.wildfire.risk.rate.description.text'}
       defaultMessage={`
-        A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous US, today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not consider property value.
+        A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous U.S., today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not consider property value.
       `}
       description={'Navigate to the Methodology page. This is the description text for exp bld loss rate'}
     />,
@@ -1067,7 +1067,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.low.hist.underinvestectancy.description.text'}
       defaultMessage={`
-        Census tracts that experienced historic underinvestment based on redlining maps created by the federal government’s Home Owners’ Loan Corporation (HOLC) between 1935 and 1940. The tool uses the <link1>National Community Reinvestment Coalition’s methodology</link1> for converting boundaries in the HOLC maps to census tracts. Census tracts meet the threshold when they have a score of 3.25 or more out of 4.
+        Census tracts that experienced historic underinvestment based on redlining maps created by the federal government’s Home Owners’ Loan Corporation (HOLC) between 1935 and 1940. The tool uses the National Community Reinvestment Coalition’s <link1>methodology</link1> for converting boundaries in the HOLC maps to census tracts. Census tracts meet the threshold when they have a score of 3.25 or more out of 4.
       `}
       description={'Navigate to the Methodology page. This is the description text for Historic Underinvestment'}
       values={{
@@ -1175,7 +1175,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.lead.paint.description.text'}
       defaultMessage={`
-        Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) are less likely to face health risks from lead paint exposure are not included.
+        Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) that are less likely to face health risks from lead paint exposure are not included.
       `}
       description={'Navigate to the Methodology page. This is the description text for lead paint'}
     />,
@@ -1352,7 +1352,7 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.TRANS_BUR,
-        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
       },
     ],
   },
@@ -1392,7 +1392,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.leaky.uwt.description.text'}
       defaultMessage={`
-        Weighted formula of number of leaking underground storage tanks and the number of underground storage tanks within 1,500 feet.
+        Weighted formula of number of leaking underground storage tanks and the number of all underground storage tanks within 1,500 feet.
       `}
       description={'Navigate to the Methodology page. This is the description text for Leaking underground storage tanks'}
     />,
@@ -1448,7 +1448,7 @@ export const INDICATORS = [
     note: <FormattedMessage
       id={'methodology.page.category.linguistic.iso.note.text'}
       defaultMessage={`
-      <boldtag>Note: </boldtag>Linguistic isolation was removed from Puerto Rico based on feedback during the beta period.
+      <boldtag>Note: </boldtag>Linguistic isolation was removed for Puerto Rico based on feedback during the beta period.
       `}
       description={'Navigate to the Methodology page. This is the note text for linguistic.iso'}
       values={{
