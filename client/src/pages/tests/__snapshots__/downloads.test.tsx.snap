@@ -410,6 +410,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           class="grid-col-12 tablet:grid-col-8"
           data-testid="grid"
         >
+          <h2
+            class="j40-mt-0 j40-mb-3"
+          >
+            Version 1.0 file formats
+          </h2>
           <section>
             <div>
               <span>
@@ -652,9 +657,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </section>
             </div>
           </section>
-          <h2>
-            Version 1.0 file formats
-          </h2>
           <p>
             The dataset used in the 1.0 version of the tool, along with a codebook, and information about how to use the list of communities (.pdf) are available for download:
           </p>

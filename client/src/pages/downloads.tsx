@@ -32,11 +32,13 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
         <Grid row gap className={'j40-mb5-mt3'}>
 
           <Grid col={12} tablet={{col: 8}}>
+
+            <h2 className={'j40-mt-0 j40-mb-3'}>{DOWNLOADS_COPY.DOWNLOAD_LINKS.TITLE}</h2>
+
             <section>
               <ReleaseUpdate />
             </section>
 
-            <h2>{DOWNLOADS_COPY.DOWNLOAD_LINKS.TITLE}</h2>
             <p>
               {DOWNLOADS_COPY.DOWNLOAD_LINKS.TEXT}
             </p>

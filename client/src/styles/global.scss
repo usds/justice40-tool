@@ -98,9 +98,8 @@ p.flush {
   @include u-margin-bottom(3);
 }
 
-// 40 pixel margin-bottom
-.j40-mb-5 {
-  
+.j40-mt-0 {
+  @include u-margin-top(0);  
 }
 
 .j40-footer-ceq-font {
