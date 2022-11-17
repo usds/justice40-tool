@@ -6,6 +6,7 @@ import DownloadButton from '../DownloadButton';
 
 import * as styles from './PublicVideoBox.module.scss';
 import * as PUBLIC_COPY from '../../data/copy/publicEngage';
+import {getDownloadFileUrl} from '../../data/copy/downloads';
 
 // @ts-ignore
 import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
@@ -55,7 +56,7 @@ const PublicVideoBox = ({isBeta}:IPublicVideoBox) => {
           </Button>
         </a>
         <DownloadButton
-          downloadLink={`https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx`}
+          downloadLink={getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_BETA_TRAINING_SLIDES_PPT, true)}
           buttonText={isBeta ?
             intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.BUTTON2_BETA_TEXT) :
             intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.BUTTON2_TEXT)

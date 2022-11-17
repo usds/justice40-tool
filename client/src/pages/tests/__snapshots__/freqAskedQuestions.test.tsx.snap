@@ -930,6 +930,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p>
                   In contrast, the CEJST will help Federal agencies to identify disadvantaged communities that will benefit from programs included in the Justice40 Initiative.
                 </p>
+                <p>
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="//"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    This chart
+                  </a>
+                   is helpful for understanding how the CEJST differs from some of the other Federal environmental screening tools.
+                </p>
               </div>
               <h2
                 class="usa-accordion__heading"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of the PublicVideoBox checks if component renders 1`] = `
+exports[`rendering of the PublicVideoBox checks if component renders when it is NOT in beta 1`] = `
 <DocumentFragment>
   <div
     class="usa-summary-box"
@@ -43,7 +43,7 @@ exports[`rendering of the PublicVideoBox checks if component renders 1`] = `
         </a>
         <a
           download=""
-          href="https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx"
+          href="//"
         >
           <button
             class="usa-button"
@@ -53,6 +53,73 @@ exports[`rendering of the PublicVideoBox checks if component renders 1`] = `
             <div>
               <div>
                 Download slide deck
+              </div>
+              <img
+                alt="the icon to show that this button will download the file"
+                src="test-file-stub"
+              />
+            </div>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of the PublicVideoBox checks if component renders when it is in beta 1`] = `
+<DocumentFragment>
+  <div
+    class="usa-summary-box"
+    data-testid="summary-box"
+  >
+    <div
+      class="usa-summary-box__body"
+    >
+      <h2
+        class="usa-summary-box__heading"
+      >
+        Need information about the public beta?
+      </h2>
+      <div
+        class="usa-summary-box__text"
+      >
+        
+      Watch a recorded version of the beta version of the CEJST training on YouTube.
+  
+        <a
+          href="https://www.youtube.com/watch?v=QwHWcXbhw28"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button
+            class="usa-button"
+            data-testid="button"
+            type="button"
+          >
+            <div>
+              <div>
+                Watch on beta demo
+              </div>
+              <img
+                alt="the icon to show that this button will open in a new tab"
+                src="test-file-stub"
+              />
+            </div>
+          </button>
+        </a>
+        <a
+          download=""
+          href="//"
+        >
+          <button
+            class="usa-button"
+            data-testid="button"
+            type="button"
+          >
+            <div>
+              <div>
+                Download beta slide deck
               </div>
               <img
                 alt="the icon to show that this button will download the file"

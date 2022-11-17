@@ -42,32 +42,42 @@ export const DOWNLOAD_FILES = {
     COMMUNITIES_LIST_XLS: {
       SIZE: 35.6, // MB
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_COMMUNITIES_LIST_XLS, false),
-      LAST_UPDATED: new Date('10/27/2022').getTime(),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     COMMUNITIES_LIST_CSV: {
       SIZE: 42, // MB
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_COMMUNITIES_LIST_CSV, false),
-      LAST_UPDATED: new Date('10/27/2022').getTime(),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     SHAPE_FILE: {
       SIZE: 356.8, // MB
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_SHAPE_FILE_ZIP, false),
-      LAST_UPDATED: new Date('10/27/2022').getTime(),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     TSD: {
       SIZE: 2.4, // MB
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_TSD_PDF, false),
-      LAST_UPDATED: new Date('10/27/2022').getTime(),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     TSD_ES: {
       SIZE: 4.8, // MB
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_TSD_ES_PDF, false),
-      LAST_UPDATED: new Date('10/27/2022').getTime(),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     HOW_TO_COMMUNITIES: {
       SIZE: 658.3, // KB
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_HOW_TO_COMMUNITIES_PDF, false),
-      LAST_UPDATED: new Date('10/27/2022').getTime(),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
+    },
+    INSTRUCTIONS: {
+      SIZE: .8, // KB // Todo: Update when actual file is uploaded
+      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_INSTRUCT_PDF, false),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
+    },
+    COMP_CHART: {
+      SIZE: .8, // KB // Todo: Update when actual file is uploaded
+      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_COMP_CHART_PDF, false),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
   },
   BETA: {

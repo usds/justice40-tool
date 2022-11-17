@@ -8,6 +8,7 @@ import {EJSCREEN, EXEC_ORDER_LINK, FED_RECOGNIZED_INDIAN_ENTITIES} from './about
 import {boldFn, linkFn, FEEDBACK_EMAIL} from './common';
 import {PAGES_ENDPOINTS} from '../constants';
 import {EXPLORE_PAGE_LINKS} from './explore';
+import {DOWNLOAD_FILES} from './downloads';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -522,6 +523,14 @@ export const FAQ_ANSWERS = {
     id={ 'faqs.page.answers.Q12_P3'}
     defaultMessage={ `In contrast, the CEJST will help Federal agencies to identify disadvantaged communities that will benefit from programs included in the Justice40 Initiative.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q12_P3'}
+  />,
+  Q12_P4: <FormattedMessage
+    id={ 'faqs.page.answers.Q12_P4'}
+    defaultMessage={ `<link1>This chart</link1> is helpful for understanding how the CEJST differs from some of the other Federal environmental screening tools.`}
+    description={ 'Navigate to the FAQs page, this will be an answer, Q12_P4'}
+    values={{
+      link1: linkFn(DOWNLOAD_FILES.NARWAL.COMP_CHART.URL, false, true),
+    }}
   />,
   Q13_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q13_P1'}
