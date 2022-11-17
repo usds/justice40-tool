@@ -838,17 +838,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-9"
               >
                 <p>
-                  Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the 
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="https://www.whitehouse.gov/wp-content/uploads/2021/07/M-21-28.pdf"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    eligibility criteria
-                  </a>
-                  . Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.
+                  Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the eligibility criteria. Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.
                 </p>
               </div>
               <h2
@@ -939,18 +929,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </p>
                 <p>
                   In contrast, the CEJST will help Federal agencies to identify disadvantaged communities that will benefit from programs included in the Justice40 Initiative.
-                </p>
-                <p>
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="//"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    This chart
-                  </a>
-                   is helpful for understanding how the CEJST differs from some of the other Federal environmental screening tools.
                 </p>
               </div>
               <h2
