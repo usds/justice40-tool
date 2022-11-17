@@ -217,12 +217,12 @@ export const QUESTIONS = [
     defaultMessage={ 'Q: Can the public provide feedback on this tool?'}
     description={ 'Navigate to the FAQs page, this will be Q15'}
   />,
-  <FormattedMessage
-    id={ 'faqs.page.Q16'}
-    key={ 'faqs.page.Q16'}
-    defaultMessage={ 'Q: Will CEQ issue another Request for Information about the tool?'}
-    description={ 'Navigate to the FAQs page, this will be Q16'}
-  />,
+  // <FormattedMessage
+  //   id={ 'faqs.page.Q16'}
+  //   key={ 'faqs.page.Q16'}
+  //   defaultMessage={ 'Q: Will CEQ issue another Request for Information about the tool?'}
+  //   description={ 'Navigate to the FAQs page, this will be Q16'}
+  // />,
   <FormattedMessage
     id={ 'faqs.page.Q17'}
     key={ 'faqs.page.Q17'}
@@ -458,8 +458,11 @@ export const FAQ_ANSWERS = {
   />,
   Q10: <FormattedMessage
     id={ 'faqs.page.answers.Q10'}
-    defaultMessage={ `Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the eligibility criteria. Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.`}
+    defaultMessage={ `Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the <link1>eligibility criteria</link1>. Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q10'}
+    values={{
+      link1: linkFn(`https://www.whitehouse.gov/wp-content/uploads/2021/07/M-21-28.pdf`, false, true),
+    }}
   />,
   Q11: <FormattedMessage
     id={ 'faqs.page.answers.Q11'}

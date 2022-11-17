@@ -838,7 +838,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-9"
               >
                 <p>
-                  Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the eligibility criteria. Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.
+                  Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.whitehouse.gov/wp-content/uploads/2021/07/M-21-28.pdf"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    eligibility criteria
+                  </a>
+                  . Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.
                 </p>
               </div>
               <h2
@@ -1068,7 +1078,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-testid="accordionButton_faq-id-15"
                   type="button"
                 >
-                  Q: Will CEQ issue another Request for Information about the tool?
+                  Q: When did the official version of the tool come out?
                 </button>
               </h2>
               <div
@@ -1076,29 +1086,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="accordionItem_faq-id-15"
                 hidden=""
                 id="faq-id-15"
-              >
-                <p>
-                  Yes. CEQ plans to issue a Request for Information (RFI) about version 1.0 of the CEJST in 2023. The feedback received in that RFI will inform version 2.0 of the tool.
-                </p>
-              </div>
-              <h2
-                class="usa-accordion__heading"
-              >
-                <button
-                  aria-controls="faq-id-16"
-                  aria-expanded="false"
-                  class="usa-accordion__button"
-                  data-testid="accordionButton_faq-id-16"
-                  type="button"
-                >
-                  Q: When did the official version of the tool come out?
-                </button>
-              </h2>
-              <div
-                class="usa-accordion__content usa-prose"
-                data-testid="accordionItem_faq-id-16"
-                hidden=""
-                id="faq-id-16"
               >
                 <p>
                   The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in November, 2022. The tool is no longer in beta.
@@ -1111,10 +1098,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-accordion__heading"
               >
                 <button
-                  aria-controls="faq-id-17"
+                  aria-controls="faq-id-16"
                   aria-expanded="false"
                   class="usa-accordion__button"
-                  data-testid="accordionButton_faq-id-17"
+                  data-testid="accordionButton_faq-id-16"
                   type="button"
                 >
                   Q. How does the Council on Environmental Quality (CEQ) keep people informed about the tool?
@@ -1122,9 +1109,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h2>
               <div
                 class="usa-accordion__content usa-prose"
-                data-testid="accordionItem_faq-id-17"
+                data-testid="accordionItem_faq-id-16"
                 hidden=""
-                id="faq-id-17"
+                id="faq-id-16"
               >
                 <p>
                   Sign-up to receive updates on the Climate and Economic Justice Screening Tool (CEJST) and other environmental justice news from CEQ.
@@ -1134,10 +1121,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-accordion__heading"
               >
                 <button
-                  aria-controls="faq-id-18"
+                  aria-controls="faq-id-17"
                   aria-expanded="false"
                   class="usa-accordion__button"
-                  data-testid="accordionButton_faq-id-18"
+                  data-testid="accordionButton_faq-id-17"
                   type="button"
                 >
                   Q: What files and documentation are available from the tool?
@@ -1145,9 +1132,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h2>
               <div
                 class="usa-accordion__content usa-prose"
-                data-testid="accordionItem_faq-id-18"
+                data-testid="accordionItem_faq-id-17"
                 hidden=""
-                id="faq-id-18"
+                id="faq-id-17"
               >
                 <p>
                   The Climate and Economic Justice Screening Tool (CEJST) has 
@@ -1164,10 +1151,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-accordion__heading"
               >
                 <button
-                  aria-controls="faq-id-19"
+                  aria-controls="faq-id-18"
                   aria-expanded="false"
                   class="usa-accordion__button"
-                  data-testid="accordionButton_faq-id-19"
+                  data-testid="accordionButton_faq-id-18"
                   type="button"
                 >
                   Q: How does the tool’s shapefile work?
@@ -1175,9 +1162,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h2>
               <div
                 class="usa-accordion__content usa-prose"
-                data-testid="accordionItem_faq-id-19"
+                data-testid="accordionItem_faq-id-18"
                 hidden=""
-                id="faq-id-19"
+                id="faq-id-18"
               >
                 <p>
                   The tool’s shapefile can be uploaded into other mapping programs such as Esri.

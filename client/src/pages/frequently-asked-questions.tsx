@@ -182,11 +182,11 @@ const FAQPage = ({location}: IFAQPageProps) => {
         </ul>
       </>
     ),
-    (
-      <>
-        <p key={16}>{FAQS_COPY.FAQ_ANSWERS.Q16}</p>
-      </>
-    ),
+    // (
+    //   <>
+    //     <p key={16}>{FAQS_COPY.FAQ_ANSWERS.Q16}</p>
+    //   </>
+    // ),
     (
       <>
         <p key={17}>{FAQS_COPY.FAQ_ANSWERS.Q17_P1}</p>
