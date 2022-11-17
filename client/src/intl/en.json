@@ -1583,6 +1583,10 @@
     "defaultMessage": "In contrast, the CEJST will help Federal agencies to identify disadvantaged communities that will benefit from programs included in the Justice40 Initiative.",
     "description": "Navigate to the FAQs page, this will be an answer, Q12_P3"
   },
+  "faqs.page.answers.Q12_P4": {
+    "defaultMessage": "<link1>This chart</link1> is helpful for understanding how the CEJST differs from some of the other Federal environmental screening tools.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P4"
+  },
   "faqs.page.answers.Q13_P1": {
     "defaultMessage": "Several states that have environmental justice screening tools. CalEnviroScreen is an environmental justice screening tool for California. Other states, like New York and Michigan have screening tools as well. The Climate and Economic Justice Screening Tool (CEJST) incorporates lessons learned from these efforts.",
     "description": "Navigate to the FAQs page, this will be an answer, Q13_P1"

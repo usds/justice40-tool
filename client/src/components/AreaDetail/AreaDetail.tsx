@@ -712,13 +712,13 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
     categories[0].indicators = [flooding];
 
     // 'clean-energy'
-    categories[1].indicators = [houseCost];
+    categories[1].indicators = [energyCost];
 
     // 'health-burdens'
     // not showing this category
 
     // 'sustain-house'
-    categories[2].indicators = [lowMedInc, unemploy, poverty, lackPlumbing];
+    categories[2].indicators = [houseCost, lackPlumbing, leadPaint];
 
     // 'leg-pollute'
     categories[3].indicators = [proxHaz, proxRMP, proxNPL];
@@ -730,7 +730,7 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
     // show all
 
     // 'work-dev'
-    // show all
+    categories[6].indicators = [lowMedInc, poverty, unemploy];
   }
 
   if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
