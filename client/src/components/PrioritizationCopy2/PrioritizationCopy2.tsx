@@ -89,10 +89,35 @@ const PrioritizationCopy2 =
         (tribalCountUS !== null && tribalCountUS >= 1)
        ) {
          prioCopy2Rendered = EXPLORE_COPY.getPrioAKUSCopy(tribalCountAK, tribalCountUS, true);
-       // if 1-7
-       } else {
-         prioCopy2Rendered = <></>;
-         noStyles = true;
+         // if 1-7
+       } else if (
+         !isAdjacencyThreshMet && isAdjacencyLowIncome &&
+       (tribalCountAK !== null && tribalCountAK >= 1) &&
+       (percentTractTribal !== null && percentTractTribal >= 1)
+       ) {
+         prioCopy2Rendered = EXPLORE_COPY.getPrioFRTCopy(`${percentTractTribal}%`, true);
+         // if 1-8
+       } else if (
+         (totalCategoriesPrioritized >= 1) &&
+         tribalCountAK == null &&
+         (tribalCountUS !== null && tribalCountUS >= 1) &&
+         percentTractTribal == null
+       ) {
+         prioCopy2Rendered = EXPLORE_COPY.getPrioFRTPointsCopy(tribalCountUS, true);
+         // if 1-9
+       } else if (
+         totalCategoriesPrioritized >= 1 &&
+       (tribalCountAK !== null && tribalCountAK >= 1) &&
+       (percentTractTribal !== null && percentTractTribal == 0)
+       ) {
+         prioCopy2Rendered = EXPLORE_COPY.getPrioFRTCopy(`less than 1%`, true);
+         // if 1-10
+       } else if (
+         totalCategoriesPrioritized >= 1 &&
+       (tribalCountAK !== null && tribalCountAK >= 1) &&
+       (percentTractTribal !== null && percentTractTribal >= 1)
+       ) {
+         prioCopy2Rendered = EXPLORE_COPY.getPrioFRTCopy(`${percentTractTribal}%`, true);
        }
        // if 2
      } else if (
@@ -117,26 +142,11 @@ const PrioritizationCopy2 =
        prioCopy2Rendered = EXPLORE_COPY.getPrioFRTPointsCopy(tribalCountUS, true);
        // if 4
      } else if (
-       (totalCategoriesPrioritized >= 1) &&
-        tribalCountAK == null &&
-        (tribalCountUS !== null && tribalCountUS >= 1) &&
-        percentTractTribal == null
+       totalCategoriesPrioritized === 0 &&
+      isAdjacencyThreshMet && !isAdjacencyLowIncome &&
+      (tribalCountAK !== null && tribalCountAK >= 1)
      ) {
-       prioCopy2Rendered = EXPLORE_COPY.getPrioFRTPointsCopy(tribalCountUS, true);
-       // if 5
-     } else if (
-       totalCategoriesPrioritized >= 1 &&
-      (tribalCountAK !== null && tribalCountAK >= 1) &&
-      (percentTractTribal !== null && percentTractTribal == 0)
-     ) {
-       prioCopy2Rendered = EXPLORE_COPY.getPrioFRTCopy(`less than 1%`, true);
-       // if 6
-     } else if (
-       totalCategoriesPrioritized >= 1 &&
-      (tribalCountAK !== null && tribalCountAK >= 1) &&
-      (percentTractTribal !== null && percentTractTribal >= 1)
-     ) {
-       prioCopy2Rendered = EXPLORE_COPY.getPrioFRTCopy(`${percentTractTribal}%`, true);
+       prioCopy2Rendered = EXPLORE_COPY.getPrioANVCopy(tribalCountAK, true);
      } else {
        prioCopy2Rendered = <></>;
        noStyles = true;

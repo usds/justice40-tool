@@ -48,21 +48,22 @@ const PrioritizationCopy =
        if (isAdjacencyThreshMet && isAdjacencyLowIncome) {
          prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.PRIO_SURR_LI;
          // if 1-2
-       } else if (
-         isAdjacencyThreshMet &&
-          !isAdjacencyLowIncome &&
-          tribalCountAK === null &&
-          tribalCountUS === null
-       ) {
+       } else if (isAdjacencyThreshMet && !isAdjacencyLowIncome) {
          // if 1-2-1
-         if (percentTractTribal === null) {
-           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO_SURR_LI;
+         if ( tribalCountAK === null && tribalCountUS === null) {
+           // if 1-2-1-1
+           if (percentTractTribal === null) {
+             prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO_SURR_LI;
+             // if 1-2-1-2
+           } else if (percentTractTribal === 0) {
+             prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.PAR_PRIO_SURR_NO_LI;
+             // if 1-2-1-3
+           } else if (percentTractTribal >= 1) {
+             prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.PAR_PRIO_SURR_NO_LI;
+           }
            // if 1-2-2
-         } else if (percentTractTribal === 0) {
-           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.PAR_PRIO_SURR_NO_LI;
-           // if 1-2-3
-         } else if (percentTractTribal >= 1) {
-           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.PAR_PRIO_SURR_NO_LI;
+         } else if (tribalCountAK !== null && tribalCountAK >= 1) {
+           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO_SURR_LI;
          }
          // if 1-3
        } else if (
