@@ -607,8 +607,11 @@ export const FAQ_ANSWERS = {
   />,
   Q18: <FormattedMessage
     id={ 'faqs.page.answers.Q18'}
-    defaultMessage={ `Sign-up to receive updates on the Climate and Economic Justice Screening Tool (CEJST) and other environmental justice news from CEQ.`}
+    defaultMessage={ `<link1>Sign-up</link1> to receive updates on the Climate and Economic Justice Screening Tool (CEJST) and other environmental justice news from CEQ.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q18'}
+    values={{
+      link1: linkFn(`https://lp.constantcontactpages.com/su/Vm8pCFj/spring`, false, true),
+    }}
   />,
   Q19: <FormattedMessage
     id={ 'faqs.page.answers.Q19'}

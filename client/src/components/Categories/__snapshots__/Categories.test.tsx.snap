@@ -319,7 +319,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           class="usa-link"
           href="#mine-land"
         >
-          abandoned mine lands
+          abandoned mine land
         </a>
          OR 
         <a
@@ -530,14 +530,14 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         more than 10% of adults have a 
+         fewer than 10% of people ages 25 or older have a 
         <a
           class="usa-link"
           href="#high-school"
         >
           high school education
         </a>
-         level less than a high school degree
+          level less than a high school diploma
   
       </p>
     </div>

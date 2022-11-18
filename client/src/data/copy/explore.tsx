@@ -987,7 +987,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   // Legacy Pollution
   ABANDON_MINES: {
     id: 'explore.map.page.side.panel.indicator.abandon.mines',
-    defaultMessage: 'Abandoned mine lands',
+    defaultMessage: 'Abandoned mine land',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines`,
   },
   FORMER_DEF_SITES: {
@@ -1333,7 +1333,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIGH_SKL: {
     id: 'explore.map.page.side.panel.indicator.description.high.school',
     defaultMessage: `
-      Percent of people ages 25 years or older who did not graduate high school 
+      Percent of people ages 25 years or older whose high school education is less than a high school diploma
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older who did not graduate high school`,
   },

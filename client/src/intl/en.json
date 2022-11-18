@@ -868,7 +868,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract info title"
   },
   "explore.map.page.side.panel.indicator.abandon.mines": {
-    "defaultMessage": "Abandoned mine lands",
+    "defaultMessage": "Abandoned mine land",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines"
   },
   "explore.map.page.side.panel.indicator.adjacency": {
@@ -936,7 +936,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of the census tract's population 15 or older not \n      enrolled in college, university, or graduate school"
   },
   "explore.map.page.side.panel.indicator.description.high.school": {
-    "defaultMessage": "Percent of people ages 25 years or older who did not graduate high school",
+    "defaultMessage": "Percent of people ages 25 years or older whose high school education is less than a high school diploma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older who did not graduate high school"
   },
   "explore.map.page.side.panel.indicator.description.historic.underinvestment": {
@@ -1628,7 +1628,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q17_P2"
   },
   "faqs.page.answers.Q18": {
-    "defaultMessage": "Sign-up to receive updates on the Climate and Economic Justice Screening Tool (CEJST) and other environmental justice news from CEQ.",
+    "defaultMessage": "<link1>Sign-up</link1> to receive updates on the Climate and Economic Justice Screening Tool (CEJST) and other environmental justice news from CEQ.",
     "description": "Navigate to the FAQs page, this will be an answer, Q18"
   },
   "faqs.page.answers.Q19": {
@@ -1828,7 +1828,7 @@
     "description": "Focus on the bounds of a specific territory"
   },
   "methodology.page.category.and.clause.hs.ed.higher.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> more than 10% of adults have a <link1>high school education</link1> level less than a high school degree",
+    "defaultMessage": "<boldtag>AND</boldtag> fewer than 10% of people ages 25 or older have a <link1>high school education</link1> level less than a high school diploma",
     "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
   },
   "methodology.page.category.and.clause.low.inc": {
@@ -2192,7 +2192,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the low median income dataset"
   },
   "methodology.page.dataset.indicator.mine.land.title.text": {
-    "defaultMessage": "Abandoned mine lands",
+    "defaultMessage": "Abandoned mine land",
     "description": "Navigate to the Methodology page. This is the title text for the Abandoned mine lands"
   },
   "methodology.page.dataset.indicator.pm25.title.text": {
@@ -2368,7 +2368,7 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Reduction and remediation of legacy pollution methodology"
   },
   "methodology.page.indicator.categories.legacy.pollution.if": {
-    "defaultMessage": "Have at least one <link0>abandoned mine lands</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites (National Priorities List (NPL))</link3> OR <link4>proximity to Risk Management Plan (RMP) facilities</link4>",
+    "defaultMessage": "Have at least one <link0>abandoned mine land</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites (National Priorities List (NPL))</link3> OR <link4>proximity to Risk Management Plan (RMP) facilities</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.tribal.lands.methodology": {
