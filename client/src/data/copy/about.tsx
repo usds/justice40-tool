@@ -25,7 +25,7 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.paragraph.1'}
     defaultMessage={`
-      In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.These are the communities that are disadvantaged because they are overburdened and underserved.
+      In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.
 
     `}
     description={'Navigate to the About page. This is the paragraph 1'}
