@@ -30,7 +30,7 @@ export const PAGE_INTRO = defineMessages({
 const getDownloadFileUrl = (filePath:string | undefined) => {
   return [
     process.env.GATSBY_CDN_TILES_BASE_URL,
-    process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
+    process.env.GATSBY_BETA_SCORE_PATH,
     filePath,
   ].join('/');
 };

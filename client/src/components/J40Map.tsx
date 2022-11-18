@@ -86,7 +86,7 @@ export const featureURLForTilesetName = (tilesetName: string): string => {
 
     const featureTilePath = process.env.DATA_SOURCE === 'local' ?
     process.env.GATSBY_DATA_PIPELINE_SCORE_PATH_LOCAL :
-    process.env.GATSBY_DATA_PIPELINE_SCORE_PATH;
+    process.env.GATSBY_BETA_SCORE_PATH;
 
     return [
       featureTileBaseURL,
