@@ -768,7 +768,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Responsible Party: 
                   </span>
-                  Nationl Community Reinvestment Coalition (NCRC)
+                  National Community Reinvestment Coalition (NCRC)
                 </li>
                 <li>
                   <span>
@@ -789,7 +789,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Available for: 
                   </span>
-                  Metro areas of U.S. that were HOLC graded 
+                  Metro areas of U.S. that were graded by the Home Owners’ Loan Corporation
                 </li>
               </ul>
             </div>
@@ -1131,7 +1131,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class=""
               >
                 <h3>
-                  Proximity to hazardous waste sites
+                  Proximity to hazardous waste facilities
                 </h3>
               </div>
               <div>
@@ -1563,7 +1563,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </div>
               <div>
                 
-        Share of households where no one over age 14 speaks English well.
+        Share of households where no one over age 14 speaks English very well.
       
               </div>
               <ul>
@@ -1982,7 +1982,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Available for: 
                   </span>
-                  Federally Recognized Tribes, including Alaskan Native villages 
+                  Federally Recognized Tribes, including Alaska Native villages 
                 </li>
               </ul>
             </div>

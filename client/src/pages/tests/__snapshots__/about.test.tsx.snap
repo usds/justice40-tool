@@ -495,7 +495,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               statistical areas
             </a>
-             are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.
+             are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.
     
           </p>
           <p>
@@ -790,7 +790,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               .
             </li>
             <li>
-              Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email: 
+              Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this 
+              <a
+                class="usa-link usa-link--external"
+                data-cy=""
+                href="https://www.surveymonkey.com/r/5LZ7MNB"
+                rel="noreferrer"
+                target="_blank"
+              >
+                form
+              </a>
+               . Otherwise, email: 
               <a
                 class="usa-link"
                 href="/en/methodology"

@@ -8,7 +8,7 @@
     "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.how.to.use.tool.para1": {
-    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.",
+    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.",
     "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.how.to.use.tool.para2": {
@@ -36,7 +36,7 @@
     "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.how.you.can.help.list.item.4": {
-    "defaultMessage": "Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>",
+    "defaultMessage": "Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this <link2>form</link2> . Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>",
     "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.how.you.can.help.para.1": {
@@ -624,7 +624,7 @@
     "description": "On the explore the map page, the first description of the page"
   },
   "explore.map.page.description.2": {
-    "defaultMessage": "Zooming-in and selecting shows information about each census tract.",
+    "defaultMessage": "Zooming in and selecting shows information about each census tract.",
     "description": "On the explore the map page, the fifth description of the page"
   },
   "explore.map.page.explore.data.box.body": {
@@ -1904,7 +1904,7 @@
     "description": "Navigate to the Methodology page. This is the description text for Leaking underground storage tanks"
   },
   "methodology.page.category.linguistic.iso.description.text": {
-    "defaultMessage": "Share of households where no one over age 14 speaks English well.",
+    "defaultMessage": "Share of households where no one over age 14 speaks English very well.",
     "description": "Navigate to the Methodology page. This is the description text for linguistic isolation"
   },
   "methodology.page.category.linguistic.iso.note.text": {
@@ -2092,11 +2092,11 @@
     "description": "Methodology page dataset card available for CONUS and DC"
   },
   "methodology.page.dataset.card.availableFor.FRT": {
-    "defaultMessage": "Federally Recognized Tribes, including Alaskan Native villages",
+    "defaultMessage": "Federally Recognized Tribes, including Alaska Native villages",
     "description": "Methodology page dataset card available for FRT"
   },
   "methodology.page.dataset.card.availableFor.METRO_US_HOLC": {
-    "defaultMessage": "Metro areas of U.S. that were HOLC graded",
+    "defaultMessage": "Metro areas of U.S. that were graded by the Home Owners’ Loan Corporation",
     "description": "Methodology page dataset card available for METRO_US_HOLC"
   },
   "methodology.page.dataset.card.availableFor.US_DC": {
@@ -2204,7 +2204,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the poverty dataset"
   },
   "methodology.page.dataset.indicator.prox.haz.title.text": {
-    "defaultMessage": "Proximity to hazardous waste sites",
+    "defaultMessage": "Proximity to hazardous waste facilities",
     "description": "Navigate to the Methodology page. This is the title text for the prox haz dataset"
   },
   "methodology.page.dataset.indicator.prox.npl.title.text": {

@@ -105,7 +105,7 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.how.to.use.tool.para1'}
     defaultMessage={`
-      The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.
+      The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.
     `}
     description={'Navigate to the About page. This is the paragraph 4'}
     values={{
@@ -234,10 +234,11 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_4: <FormattedMessage
     id={'about.page.how.you.can.help.list.item.4'}
-    defaultMessage={`Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>`}
+    defaultMessage={`Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this <link2>form</link2> . Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>`}
     description={`Navigate to the about page. You will see How you can help list item 3`}
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link2: linkFn('https://www.surveymonkey.com/r/5LZ7MNB', false, true),
     }}
   />,
   PARA1: <FormattedMessage

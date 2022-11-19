@@ -488,7 +488,7 @@ export const RESPONSIBLE_PARTIES = {
   FIRST: `First Street Foundation`,
   FEMA: `Federal Emergency Management Agency (FEMA)`,
   HUD: `Department of Housing and Urban Development (HUD)`,
-  NCRC: `Nationl Community Reinvestment Coalition (NCRC)`,
+  NCRC: `National Community Reinvestment Coalition (NCRC)`,
   TPL: `The Trust for Public Lands and American Forestry`,
   USACE: `U.S. Army Corps of Engineers`,
 };
@@ -728,12 +728,12 @@ export const AVAILABLE_FOR = defineMessages({
   },
   METRO_US_HOLC: {
     id: 'methodology.page.dataset.card.availableFor.METRO_US_HOLC',
-    defaultMessage: `Metro areas of U.S. that were HOLC graded `,
+    defaultMessage: `Metro areas of U.S. that were graded by the Home Owners’ Loan Corporation`,
     description: 'Methodology page dataset card available for METRO_US_HOLC',
   },
   FRT: {
     id: 'methodology.page.dataset.card.availableFor.FRT',
-    defaultMessage: `Federally Recognized Tribes, including Alaskan Native villages `,
+    defaultMessage: `Federally Recognized Tribes, including Alaska Native villages `,
     description: 'Methodology page dataset card available for FRT',
   },
 });
@@ -1242,7 +1242,7 @@ export const INDICATORS = [
     domID: 'prox-haz',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.prox.haz.title.text'}
-      defaultMessage={`Proximity to hazardous waste sites`}
+      defaultMessage={`Proximity to hazardous waste facilities`}
       description={'Navigate to the Methodology page. This is the title text for the prox haz dataset'}
     />,
     description: <FormattedMessage
@@ -1441,7 +1441,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.linguistic.iso.description.text'}
       defaultMessage={`
-        Share of households where no one over age 14 speaks English well.
+        Share of households where no one over age 14 speaks English very well.
       `}
       description={'Navigate to the Methodology page. This is the description text for linguistic isolation'}
     />,

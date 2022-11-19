@@ -12,5 +12,10 @@
     "."
   ],
   "python.testing.unittestEnabled": false,
-  "python.testing.nosetestsEnabled": false
+  "python.testing.nosetestsEnabled": false,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#2C294C",
+    "titleBar.activeBackground": "#3E3A6A",
+    "titleBar.activeForeground": "#FCFCFD"
+  }
 }

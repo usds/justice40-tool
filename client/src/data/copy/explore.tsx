@@ -41,7 +41,7 @@ export const PAGE_DESCRIPTION1 = <FormattedMessage
 export const PAGE_DESCRIPTION2 = <FormattedMessage
   id={'explore.map.page.description.2'}
   defaultMessage={`
-    Zooming-in and selecting shows information about each census tract. 
+    Zooming in and selecting shows information about each census tract. 
   `}
   description={'On the explore the map page, the fifth description of the page'}
 />;
@@ -693,7 +693,7 @@ export const getPrioANVCopy = (numPoints:number, isAlso:boolean = false) => {
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
-      defaultMessage={ 'The {numPoints} Alaskan Native Villages in this tract that are Federally Recognized are {also} considered disadvantaged.'}
+      defaultMessage={ 'The {numPoints} Alaska Native Villages in this tract that are Federally Recognized are {also} considered disadvantaged.'}
       description={`Navigate to the explore the map page. Click on tract, The {numPoints} of this tract that are Federally Recognized Tribal lands are {also} considered disadvantaged.`}
       values={{
         numPoints: numPoints,
@@ -708,8 +708,8 @@ export const getPrioAKUSCopy = (numAKpoints:number, numUSpoints:number, isAlso:b
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
-      defaultMessage={ 'The {numAKpoints} Alaskan Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are {also} considered disadvantaged.'}
-      description={`Navigate to the explore the map page. Click on tract, The {numAKpoints} Alaskan Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are considered disadvantaged.`}
+      defaultMessage={ 'The {numAKpoints} Alaska Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are {also} considered disadvantaged.'}
+      description={`Navigate to the explore the map page. Click on tract, The {numAKpoints} Alaska Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are considered disadvantaged.`}
       values={{
         numAKpoints: numAKpoints,
         numUSpoints: numUSpoints,
@@ -1308,7 +1308,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LING_ISO: {
     id: 'explore.map.page.side.panel.indicator.description.ling.iso',
     defaultMessage: `
-    Share of households where no one over age 14 speaks English well
+    Share of households where no one over age 14 speaks English very well
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of households where no one over the age 14 speaks English well`,
   },
