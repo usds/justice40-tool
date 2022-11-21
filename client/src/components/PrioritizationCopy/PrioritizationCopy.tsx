@@ -63,7 +63,7 @@ const PrioritizationCopy =
            }
            // if 1-2-2
          } else if (tribalCountAK !== null && tribalCountAK >= 1) {
-           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO_SURR_LI;
+           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.PAR_PRIO_SURR_NO_LI;
          }
          // if 1-3
        } else if (

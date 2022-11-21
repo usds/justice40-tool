@@ -897,9 +897,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Multi-Resolution Land Characteristics (MRLC)
+                    Multi-Resolution Land Characteristics
                   </a>
-                   consortium; data analysis provided by 
+                   (MRLC) consortium; data analysis provided by 
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -933,9 +933,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Percent Developed Imperviousness (CONUS) 
+                    Percent Developed Imperviousness
                   </a>
-                   from 2019
+                   (CONUS)  from 2019
                 </li>
                 <li>
                   <span>
@@ -1403,7 +1403,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <strong>
                     Note: 
                   </strong>
-                   this burden only applies for census tracts with populations greater than 20 people
+                   this burden only applies for census tracts with populations greater than 20 people.
     
                 </p>
               </div>
@@ -1431,9 +1431,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Transportation access disadvantage 3
+                    Transportation access disadvantage
                   </a>
-                    from 2022
+                   from 2022
                 </li>
                 <li>
                   <span>

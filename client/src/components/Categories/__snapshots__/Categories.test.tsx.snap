@@ -449,7 +449,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           class="usa-link"
           href="#leaky-uwt"
         >
-          leaking underground storage tanks
+          underground storage tanks and releases
         </a>
          OR 
         <a

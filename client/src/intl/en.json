@@ -1428,7 +1428,7 @@
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 0"
   },
   "explore.map.page.under.map.note.on.territories.para.1": {
-    "defaultMessage": "<bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: low income, projected flood risk, energy cost, lack of indoor plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, low median income, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
+    "defaultMessage": "<bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: low income, projected flood risk, energy cost, lack of indoor plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, underground storage tanks and releases, wastewater discharge, low median income, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 1"
   },
   "explore.map.page.under.map.note.on.territories.para.2": {
@@ -1708,7 +1708,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q4_P1"
   },
   "faqs.page.answers.Q4_P2": {
-    "defaultMessage": "<boldtag>Puerto Rico:</boldtag> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
+    "defaultMessage": "<boldtag>Puerto Rico:</boldtag> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, underground storage tanks and releases, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
     "description": "Navigate to the FAQs page, this will be an answer, Q4_P2"
   },
   "faqs.page.answers.Q4_P3": {
@@ -1872,7 +1872,7 @@
     "description": "responsible party text"
   },
   "methodology.page.cat.res.part.GREEN_SPACE": {
-    "defaultMessage": "Data from <link1>Multi-Resolution Land Characteristics (MRLC)</link1> consortium; data analysis provided by <link2>The Trust for Public Lands</link2> and <link3>American Forests</link3>",
+    "defaultMessage": "Data from <link1>Multi-Resolution Land Characteristics</link1> (MRLC) consortium; data analysis provided by <link2>The Trust for Public Lands</link2> and <link3>American Forests</link3>",
     "description": "responsible party text"
   },
   "methodology.page.cat.res.part.HUD": {
@@ -2100,11 +2100,11 @@
     "description": "Navigate to the Methodology page. This is the source link for HUD"
   },
   "methodology.page.category.source.pdi.link": {
-    "defaultMessage": "<link1>Percent Developed Imperviousness (CONUS) </link1> from {date19}",
+    "defaultMessage": "<link1>Percent Developed Imperviousness</link1> (CONUS) from {date19}",
     "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
   },
   "methodology.page.category.source.trans.bur.link": {
-    "defaultMessage": "<link1>Transportation access disadvantage 3</link1> from {date22}",
+    "defaultMessage": "<link1>Transportation access disadvantage</link1> from {date22}",
     "description": "Navigate to the Methodology page. This is the source link for Transportation burdens"
   },
   "methodology.page.category.source.ust.find.link": {
@@ -2120,7 +2120,7 @@
     "description": "Navigate to the Methodology page. This is the description text for Transportation barriers"
   },
   "methodology.page.category.trans.barrier.note.text": {
-    "defaultMessage": "<boldtag>Note: </boldtag> this burden only applies for census tracts with populations greater than 20 people",
+    "defaultMessage": "<boldtag>Note: </boldtag> this burden only applies for census tracts with populations greater than 20 people.",
     "description": "Navigate to the Methodology page. This is the note text for trans.barrier"
   },
   "methodology.page.category.tribal.lands.description.text": {
@@ -2400,7 +2400,7 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean transportation methodology"
   },
   "methodology.page.indicator.categories.clean.water.if": {
-    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link0>leaking underground storage tanks</link0> OR <link1>wastewater discharge</link1>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link0>underground storage tanks and releases</link0> OR <link1>wastewater discharge</link1>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.clean.water.methodology": {

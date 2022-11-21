@@ -334,7 +334,7 @@ export const CATEGORIES = {
     />,
     IF: <FormattedMessage
       id={'methodology.page.indicator.categories.clean.water.if'}
-      defaultMessage={`<boldtag>ARE</boldtag> at or above the 90th percentile for <link0>leaking underground storage tanks</link0> OR <link1>wastewater discharge</link1>`}
+      defaultMessage={`<boldtag>ARE</boldtag> at or above the 90th percentile for <link0>underground storage tanks and releases</link0> OR <link1>wastewater discharge</link1>`}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values={{
         boldtag: boldFn,
@@ -540,7 +540,7 @@ export const RESPONSIBLE_PARTIES = {
   GREEN_SPACE: <FormattedMessage
     id={'methodology.page.cat.res.part.GREEN_SPACE'}
     defaultMessage={`
-      Data from <link1>Multi-Resolution Land Characteristics (MRLC)</link1> consortium; data analysis provided by <link2>The Trust for Public Lands</link2> and <link3>American Forests</link3>
+      Data from <link1>Multi-Resolution Land Characteristics</link1> (MRLC) consortium; data analysis provided by <link2>The Trust for Public Lands</link2> and <link3>American Forests</link3>
     `}
     description={'responsible party text'}
     values={{
@@ -707,7 +707,7 @@ export const SOURCE_LINKS = {
   />,
   PDI: <FormattedMessage
     id={'methodology.page.category.source.pdi.link'}
-    defaultMessage={`<link1>Percent Developed Imperviousness (CONUS) </link1> from {date19}`}
+    defaultMessage={`<link1>Percent Developed Imperviousness</link1> (CONUS)  from {date19}`}
     description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
     values={{
       link1: linkFn('https://www.mrlc.gov/data/nlcd-2019-percent-developed-imperviousness-conus', false, true),
@@ -734,7 +734,7 @@ export const SOURCE_LINKS = {
   />,
   TRANS_BUR: <FormattedMessage
     id={'methodology.page.category.source.trans.bur.link'}
-    defaultMessage={`<link1>Transportation access disadvantage 3</link1>  from {date22}`}
+    defaultMessage={`<link1>Transportation access disadvantage</link1> from {date22}`}
     description={'Navigate to the Methodology page. This is the source link for Transportation burdens'}
     values={{
       link1: linkFn('https://www.transportation.gov/equity-Justice40#:~:text=Transportation%20access%20disadvantage%20identifies%20communities%20and%20places%20that%20spend%20more%2C%20and%20take%20longer%2C%20to%20get%20where%20they%20need%20to%20go.%20(4)', false, true),
@@ -1423,7 +1423,7 @@ export const INDICATORS = [
     note: <FormattedMessage
       id={'methodology.page.category.trans.barrier.note.text'}
       defaultMessage={`
-      <boldtag>Note: </boldtag> this burden only applies for census tracts with populations greater than 20 people
+      <boldtag>Note: </boldtag> this burden only applies for census tracts with populations greater than 20 people.
     `}
       description={'Navigate to the Methodology page. This is the note text for trans.barrier'}
       values={{
