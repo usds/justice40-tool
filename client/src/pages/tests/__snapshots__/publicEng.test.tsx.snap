@@ -140,36 +140,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
           </div>
         </section>
-        <div>
-          <img
-            alt="language icon for selecting language"
-            src="test-file-stub"
-          />
-          <a
-            href="#"
-          >
-            English
-          </a>
-          <a
-            href="#"
-          >
-            Español
-          </a>
-        </div>
       </div>
     </div>
     <div>
       <div>
-        <div />
-        <div>
-          <span>
-            This is a beta site. 
-          </span>
-          <span>
-            It is an early, in-progress version of the tool with limited datasets that will 
-    be regularly updated.
-          </span>
-        </div>
+        <strong>
+          This tool has been updated.
+        </strong>
+         The 1.0 version of the tool was released on Nov 22, 2022.
       </div>
     </div>
     <div
@@ -184,28 +162,29 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           class="grid-col-1"
           data-testid="grid"
         >
-          <img
-            alt="Climate and Economic Justice Screening Tool"
-            src="test-file-stub"
-          />
+          <a
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
+            <img
+              alt="Climate and Economic Justice Screening Tool"
+              src="test-file-stub"
+            />
+          </a>
         </div>
         <div
           class="grid-col-6"
           data-testid="grid"
         >
-          <div>
+          <a
+            class="remove-link-style"
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
             <div>
-              Climate and Economic Justice
+              Climate and Economic Justice Screening Tool
             </div>
-            <div>
-              <div>
-                 Screening Tool 
-              </div>
-              <div>
-                BETA
-              </div>
-            </div>
-          </div>
+          </a>
         </div>
         <div
           class="grid-col-fill"
@@ -249,7 +228,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 <button
                   aria-controls="methMenu"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   class="usa-accordion__button usa-nav__link"
                   data-cy="nav-dropdown-methodology"
                   data-testid="navDropDownButton"
@@ -261,6 +240,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </button>
                 <ul
                   class="usa-nav__submenu"
+                  hidden=""
                   id="methMenu"
                 >
                   <li
@@ -283,17 +263,69 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Downloads
                     </a>
                   </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-previous-versions"
+                      href="/en/previous-versions"
+                    >
+                      Previous versions
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-about"
-                  href="/en/about"
+                <button
+                  aria-controls="aboutMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-about"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  About
-                </a>
+                  <span>
+                    About
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="aboutMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-about"
+                      href="/en/about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
+                    >
+                      Engagement calendar
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-faqs"
+                      href="/en/frequently-asked-questions"
+                    >
+                      Frequently asked questions
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -305,30 +337,32 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Contact
                 </a>
               </li>
-              <li
-                class="usa-nav__primary-item"
-              >
-                <div>
-                  <div>
-                    <img
-                      alt="language icon for selecting language"
-                      src="test-file-stub"
-                    />
-                    <a
-                      href="#"
-                    >
-                      English
-                    </a>
-                    <a
-                      href="#"
-                    >
-                      Español
-                    </a>
-                  </div>
-                </div>
-              </li>
             </ul>
           </nav>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="usa-alert usa-alert--info"
+        data-testid="alert"
+      >
+        <div
+          class="usa-alert__body"
+        >
+          <h1
+            class="usa-alert__heading"
+          >
+            Version 1.0 of the tool is now available
+          </h1>
+          <p
+            class="usa-alert__text"
+          >
+            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on 11/22/2022. For more information about the improvements to the tool, CEQ’s press release will be coming soon.
+          </p>
         </div>
       </div>
     </div>
@@ -344,7 +378,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         Public engagement opportunities
       </h1>
       <div
-        class="grid-row"
+        class="grid-row grid-gap-6"
         data-testid="grid"
       >
         <div
@@ -353,10 +387,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         >
           <p>
             
-      CEQ is hosting engagement opportunities to connect with the public about the current version of the 
-      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the 
-      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
-      about the tool, have their questions answered, and share feedback.
+      The Council on Environmental Quality (CEQ) is hosting engagement opportunities to connect with the public about the current versions of the Climate and Economic Justice Screening Tool (CEJST). These sessions are an opportunity to obtain training on the tool or to provide the feedback on the latest version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, ask questions, an share feedback.
     
           </p>
           <p>
@@ -366,18 +397,31 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </p>
           <p>
             
-      As they become available, additional public trainings and engagement opportunities on the Climate 
-      and Economic Justice Screening Tool will also be posted on this page.
-    
+    As they become available, additional public trainings and engagement opportunities on the  Climate and Economic Justice Screening Tool will also be posted on this page. 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="https://lp.constantcontactpages.com/su/Vm8pCFj/spring"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Sign-up
+            </a>
+             for updates from CEQ
+  
           </p>
         </div>
+        <div
+          class="desktop:grid-col-4"
+          data-testid="grid"
+        />
       </div>
       <div
         class="grid-row"
         data-testid="grid"
       >
         <h2>
-          Find an event
+          Upcoming events for CEJST version 1.0
         </h2>
       </div>
       <div
@@ -392,6 +436,221 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             class="usa-collection"
             data-testid="collection"
           >
+            <li
+              class="usa-collection__item"
+            >
+              <div
+                class="usa-collection__body"
+              >
+                <h2
+                  class="usa-collection__heading"
+                >
+                  
+      Coming soon!
+    
+                </h2>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="desktop:grid-col-4"
+          data-testid="grid"
+        >
+          <div
+            class="usa-summary-box"
+            data-testid="summary-box"
+          >
+            <div
+              class="usa-summary-box__body"
+            >
+              <h2
+                class="usa-summary-box__heading"
+              >
+                Need information about the public beta?
+              </h2>
+              <div
+                class="usa-summary-box__text"
+              >
+                
+      Watch a recorded version of the beta version of the CEJST training on YouTube.
+  
+                <a
+                  href="https://www.youtube.com/watch?v=QwHWcXbhw28"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <button
+                    class="usa-button"
+                    data-testid="button"
+                    type="button"
+                  >
+                    <div>
+                      <div>
+                        Watch on beta demo
+                      </div>
+                      <img
+                        alt="the icon to show that this button will open in a new tab"
+                        src="test-file-stub"
+                      />
+                    </div>
+                  </button>
+                </a>
+                <a
+                  download=""
+                  href="//"
+                >
+                  <button
+                    class="usa-button"
+                    data-testid="button"
+                    type="button"
+                  >
+                    <div>
+                      <div>
+                        Download beta slide deck
+                      </div>
+                      <img
+                        alt="the icon to show that this button will download the file"
+                        src="test-file-stub"
+                      />
+                    </div>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <h2>
+          Previous events for public beta
+        </h2>
+      </div>
+      <div
+        class="grid-row grid-gap-6"
+        data-testid="grid"
+      >
+        <div
+          class="desktop:grid-col-8"
+          data-testid="grid"
+        >
+          <ul
+            class="usa-collection"
+            data-testid="collection"
+          >
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #5
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : October 9th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #4
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : October 4th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
             <li
               class="usa-collection__item"
             >
@@ -881,71 +1140,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </li>
           </ul>
         </div>
-        <div
-          class="desktop:grid-col-4"
-          data-testid="grid"
-        >
-          <div
-            class="usa-summary-box"
-            data-testid="summary-box"
-          >
-            <div
-              class="usa-summary-box__body"
-            >
-              <h3
-                class="usa-summary-box__heading"
-              >
-                Can't make an upcoming session?
-              </h3>
-              <div
-                class="usa-summary-box__text"
-              >
-                Watch a recorded version of the CEJST training on YouTube.
-                <a
-                  href="https://www.youtube.com/watch?v=QwHWcXbhw28"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <button
-                    class="usa-button"
-                    data-testid="button"
-                    type="button"
-                  >
-                    <div>
-                      <div>
-                        Watch on YouTube
-                      </div>
-                      <img
-                        alt="the icon to show that this button will open in a new tab"
-                        src="test-file-stub"
-                      />
-                    </div>
-                  </button>
-                </a>
-                <a
-                  download=""
-                  href="https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx"
-                >
-                  <button
-                    class="usa-button"
-                    data-testid="button"
-                    type="button"
-                  >
-                    <div>
-                      <div>
-                        Download slide deck
-                      </div>
-                      <img
-                        alt="the icon to show that this button will download the file"
-                        src="test-file-stub"
-                      />
-                    </div>
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </main>
@@ -1007,6 +1201,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     </div>
                   </address>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="sign-up-for-updates"
+                    href="https://lp.constantcontactpages.com/su/Vm8pCFj/spring"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Sign up for updates
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -1026,30 +1233,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
-                    href="/en/public-engagement"
-                  >
-                    Engagement calendar
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy="request-for-information"
-                    href="https://www.federalregister.gov/d/2022-03920"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Request for Information
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -1168,7 +1352,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <a
-        href="https://www.surveymonkey.com/r/cejst-survey"
+        href="https://www.surveymonkey.com/r/P3LWTSB"
         rel="noreferrer"
         target="_blank"
       >
@@ -1177,7 +1361,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="button"
           type="button"
         >
-          Help improve the site & data
+          Help improve the tool
           <img
             alt="launch icon"
             src="test-file-stub"

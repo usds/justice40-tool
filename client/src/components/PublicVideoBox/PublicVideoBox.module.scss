@@ -41,3 +41,48 @@
     }
   }
 };
+
+.publicVideoContainerBeta {
+  background-color: #F0F0F0;
+  border-color: #D8D9DA;
+  
+  @include u-margin-top(3);
+
+  @include at-media-max('desktop'){
+    @include u-margin-bottom(3);
+  }
+
+  .publicVideoLink {
+      display: flex;
+      text-decoration: none;
+
+      .youTubeBtn {
+        @include u-text("white");
+        @include u-bg("gray-60");
+        height: 40px;
+        @include u-margin-top(3);
+        margin-left: auto;
+        margin-right: auto;
+        width: 14rem;
+        
+        &:hover {
+          @include u-bg("gray-90");
+          @include u-text("gray-10");
+        }
+        .buttonContainer {
+            display: flex;
+
+          .buttonText {
+            @include u-margin-right(1);
+            }
+        
+        .buttonImage {
+            width: 21px;
+            margin-top: -3px;
+
+            filter: invert(100%) sepia(0%) saturate(7489%) hue-rotate(232deg) brightness(101%) contrast(101%);
+        }
+      }
+    }
+  }
+};

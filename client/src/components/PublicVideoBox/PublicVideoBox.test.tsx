@@ -4,13 +4,21 @@ import {LocalizedComponent} from '../../test/testHelpers';
 import PublicVideoBox from './PublicVideoBox';
 
 describe('rendering of the PublicVideoBox', () => {
-  const {asFragment} = render(
-      <LocalizedComponent>
-        <PublicVideoBox />
-      </LocalizedComponent>,
-  );
+  it('checks if component renders when it is in beta', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <PublicVideoBox isBeta={true} />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 
-  it('checks if component renders', () => {
+  it('checks if component renders when it is NOT in beta', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <PublicVideoBox isBeta={false} />
+        </LocalizedComponent>,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 });

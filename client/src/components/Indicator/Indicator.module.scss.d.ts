@@ -7,9 +7,11 @@ declare namespace IndicatorNamespace {
       indicatorValueCol:string;
       indicatorValueRow:string;
       indicatorValue:string;
+      disIndicatorValue:string;
       indicatorSuperscript:string;
-      indicatorArrow:string;
-      unavailable:string;
+      indicatorInfo:string;
+      info:string;
+      infoTilde: string;
       indicatorValueSubText:string;
       indicatorDesc:string;
       disadvantagedIndicator:string;

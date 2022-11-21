@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of TractInfo Component checks if tract info renders correctly for national tracts 1`] = `
+<DocumentFragment>
+  <ul>
+    <li>
+      <span>
+        Tract information
+      </span>
+    </li>
+    <li>
+      <span>
+        Number:
+      </span>
+      <span>
+         21183920100
+      </span>
+    </li>
+    <li>
+      <span>
+        County:
+      </span>
+      <span>
+         Ohio County
+      </span>
+    </li>
+    <li>
+      <span>
+        State: 
+      </span>
+      <span>
+         Kentucky
+      </span>
+    </li>
+    <li>
+      <span>
+        Population:
+      </span>
+      <span>
+         3,103
+      </span>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractInfo Component checks if tract info renders correctly for non-national tracts 1`] = `
+<DocumentFragment>
+  <ul>
+    <li>
+      <span>
+        Tract information
+      </span>
+    </li>
+    <li>
+      <span>
+        Number:
+      </span>
+      <span>
+         72107954901
+      </span>
+    </li>
+    <li>
+      <span>
+        County:
+      </span>
+      <span>
+         Orocovis Municipio
+      </span>
+    </li>
+    <li>
+      <span>
+        Territory: 
+      </span>
+      <span>
+         Puerto Rico
+      </span>
+    </li>
+    <li>
+      <span>
+        Population:
+      </span>
+      <span>
+         3,103
+      </span>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

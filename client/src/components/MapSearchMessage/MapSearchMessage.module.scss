@@ -11,6 +11,7 @@
 .showMessage {
     @include searchMessageLayout;
     display: block;
+    width: fit-content;
 }
 
 .hideMessage {

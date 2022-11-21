@@ -9,11 +9,24 @@ interface IMapInfoPanelProps {
     hash: string[],
   }
 
-const MapInfoPanel = ({className, featureProperties, selectedFeatureId, hash}:IMapInfoPanelProps) => {
+const MapInfoPanel = ({
+  className,
+  featureProperties,
+  selectedFeatureId,
+  hash,
+}:IMapInfoPanelProps) => {
   return (
     <div className={className} >
-      {(featureProperties && selectedFeatureId ) ?
-          <AreaDetail properties={featureProperties} hash={hash}/> :
+      {/*
+      The tertiary conditional statement below will control the side panel state. Currently
+      there are two states, namely showing the AreaDetail or SidePanelInfo. When a feature
+      is selected, show the AreaDetail. When not selected show SidePanelInfo
+       */}
+      {(featureProperties && selectedFeatureId) ?
+          <AreaDetail
+            properties={featureProperties}
+            hash={hash}
+          /> :
           <SidePanelInfo />
       }
     </div>

@@ -1,0 +1,6 @@
+@use '../../styles/design-system.scss' as *;
+@import "../utils.scss";
+
+h3.invert{
+    @include invert();
+};

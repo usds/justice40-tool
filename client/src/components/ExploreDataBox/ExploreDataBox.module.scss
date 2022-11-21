@@ -1,0 +1,11 @@
+@use '../../styles/design-system.scss' as *;
+
+.summaryBoxContainer{
+
+    @include u-margin-top(2.5);
+
+    .fileDownIcon{
+        margin-bottom: -4px;
+        @include u-padding-left(1);
+    }
+}

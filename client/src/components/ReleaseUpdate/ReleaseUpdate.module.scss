@@ -1,0 +1,45 @@
+@use '../../styles/design-system.scss' as *;
+
+.releaseUpdateComponent{
+
+    .releaseUpdateContainer{
+        @include u-margin-top(2);
+        @include u-padding(3);
+        border: 2px solid #9A9B99;
+        border-radius: 2px;
+
+        .releaseHeader{
+            font-size: x-large;
+            font-weight: 600;
+            @include u-margin-bottom(2);
+        }
+
+        .releaseSectionTitle{
+            font-size: large;
+            border-bottom: 2px solid #9A9B99;
+        }
+    }
+
+    .showHideText {
+        //remove styling of button
+        border: none;
+        background-color: white;
+
+        //emulate a link
+        cursor:pointer;
+        text-decoration:underline;
+
+        min-width: 45px;
+        padding-left: 0;
+    }
+
+    .showHideIcon{
+        vertical-align: middle;
+        height: 1rem;
+        filter: invert(8%) sepia(90%) saturate(7490%) hue-rotate(247deg) brightness(105%) contrast(143%);
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

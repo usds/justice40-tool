@@ -8,31 +8,56 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
     </h2>
     <ul>
       <li>
-        View the 
-        <a
-          href="/en/methodology"
-        >
-          Methodology & data
-        </a>
-         page and send feedback.
-      </li>
-      <li>
-        Use the map to find communities and 
+        Provide 
         <a
           class="usa-link usa-link--external"
           data-cy=""
-          href="mailto:Screeningtool-Support@omb.eop.gov"
+          href="https://www.surveymonkey.com/r/P3LWTSB"
           rel="noreferrer"
           target="_blank"
         >
-          share your feedback
+          general feedback
+        </a>
+         on the CEJST website
+      </li>
+      <li>
+        Suggest new 
+        <a
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="https://www.surveymonkey.com/r/6G9TQJ8"
+          rel="noreferrer"
+          target="_blank"
+        >
+          data sources
         </a>
         .
       </li>
       <li>
-        The Request for Information on the Federal Register is now closed.
+        Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this 
+        <a
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="https://www.surveymonkey.com/r/5LZ7MNB"
+          rel="noreferrer"
+          target="_blank"
+        >
+          form
+        </a>
+         . Otherwise, email: 
+        <a
+          class="usa-link"
+          href="/en/methodology"
+        >
+          Screeningtool-Support@omb.eop.gov
+        </a>
       </li>
     </ul>
+    <p>
+      
+      The Council on Environmental Quality plans to issue a Request for Information in 2023. This will give the public time to use the tool before providing comments.    
+    
+    </p>
   </div>
 </DocumentFragment>
 `;

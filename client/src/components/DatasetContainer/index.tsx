@@ -9,6 +9,7 @@ import {hyphenizeString} from '../../../cypress/integration/common/helpers';
 import * as styles from './dsContainer.module.scss';
 import * as METHODOLOGY_COPY from '../../data/copy/methodology';
 import {PAGES_ENDPOINTS} from '../../data/constants';
+import DatasetsButton from '../DatasetsButton';
 
 
 const DatasetContainer = () => {
@@ -22,13 +23,18 @@ const DatasetContainer = () => {
 
           <Grid row>
             <Grid col={12}>
-              <h2>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.HEADING)}</h2>
+              <h2>{METHODOLOGY_COPY.DATASETS_RICH_TEXT.HEADING}</h2>
             </Grid>
           </Grid>
 
-          <Grid row>
-            <Grid desktop={{col: 9}}>
+          <Grid row gap>
+            <Grid desktop={{col: 7}}>
               <p>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.INFO)}</p>
+            </Grid>
+            <Grid desktop={{col: 1}}>
+            </Grid>
+            <Grid desktop={{col: 4}}>
+              <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
             </Grid>
           </Grid>
 
@@ -44,7 +50,7 @@ const DatasetContainer = () => {
           </Grid>
 
           <div className={styles.returnToTop}>
-            <Link to={PAGES_ENDPOINTS.METHODOLOGY}>
+            <Link className={'usa-link'} to={PAGES_ENDPOINTS.METHODOLOGY}>
               {METHODOLOGY_COPY.RETURN_TO_TOP.LINK}
             </Link>
           </div>

@@ -10,9 +10,10 @@ $sidePanelLabelFontColor: #171716;
 }
 
 .versionInfo {
-  padding: .5rem 1rem .5rem 1.2rem;
+  padding: 2rem 1rem 2rem 1.2rem;
+  text-align: center;
   font-size: medium;
-  border-bottom: 1px solid $sidePanelBorderColor; 
+  color: #A0A3A3;
 }
 
 .areaDetailContainer {
@@ -24,7 +25,7 @@ $sidePanelLabelFontColor: #171716;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include u-padding-bottom(3);
+  // @include u-padding-bottom(3);
 
   .isInFocus {
     padding: .5rem 1rem .25rem 1.2rem;
@@ -40,6 +41,14 @@ $sidePanelLabelFontColor: #171716;
       margin-top: 0;
       margin-bottom: 0;
     }
+
+  }
+
+  .prioCopy{
+    @include u-padding-left(2);
+    @include u-padding-right(2);
+    @include u-padding-top(2);
+
   }
 
   .showCategoriesExceed {
@@ -47,41 +56,38 @@ $sidePanelLabelFontColor: #171716;
     @include u-margin-top('05');
   }
 
-  // .showThresholdExceed {
-  //   font-size: small;
-  //   @include u-margin-top('05');
-  // }
+}
 
-  .sendFeedbackLink {
-    @include u-margin-top(2);
+.sendFeedbackLink {
+  @include u-margin-top(2);
+  @include u-margin-left(2);
+  @include u-margin-bottom(2);
 
-    .sendFeedbackBtn{
-      @include u-text("blue-70v");
-      @include u-bg("yellow-20v");
-      height: 40px; 
-      
-      &:hover {
-        @include u-bg("yellow-20");
-        @include u-text("gray-90");
+  .sendFeedbackBtn{
+    @include u-text("blue-70v");
+    @include u-bg("yellow-20v");
+    height: 40px; 
+    
+    &:hover {
+      @include u-bg("yellow-20");
+      @include u-text("gray-90");
+    }
+
+    .buttonContainer{
+      display: flex;
+
+      .buttonText{
+        @include u-margin-right(1);
       }
 
-      .buttonContainer{
-        display: flex;
+      .buttonImage{
+        width: 21px;
+        margin-top: -3px;
 
-        .buttonText{
-          @include u-margin-right(1);
-        }
-
-        .buttonImage{
-          width: 21px;
-          margin-top: -3px;
-
-          filter: invert(13%) sepia(76%) saturate(5142%) hue-rotate(192deg) brightness(80%) contrast(106%);
-        }
+        filter: invert(13%) sepia(76%) saturate(5142%) hue-rotate(192deg) brightness(80%) contrast(106%);
       }
     }
   }
-
 }
 
 //Census row styles
@@ -112,14 +118,16 @@ $sidePanelLabelFontColor: #171716;
 }
 
 .categorySpacer {
-  @include u-bg('gray-cool-3');
-
   @include typeset('sans', '2xs', 2);
   @include u-text('bold'); 
 
-  margin: 0 -20px 1rem -20px;
-  @include u-padding-top(2);
-  @include u-padding-bottom(2);
+  margin-left: -20px;
+  @include u-padding-top(1);
+  @include u-padding-bottom(1);
   @include u-padding-left(2.5);
-  
+}
+
+.testSignals{
+  padding-left: 1rem;
+  padding-bottom: 1rem;
 }

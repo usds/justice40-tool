@@ -30,7 +30,7 @@ Once you install NVM, don't forget to install Node! This is included in the link
 
 After you've downloaded the nvm and the latest node (using the above steps) also install node version 14 by:
 
-`brew install node@14`
+`nvm install 14`
 
 You should then be able to switch to that version of node by:
 
@@ -41,6 +41,7 @@ To validate you are using node 14, type:
 `node -v` 
 
 This should return *Now using node 14.x.x (npm v6.x.x)*
+
 #### Install Yarn
 
 Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
@@ -222,5 +223,5 @@ The following attemps to explain why certain packages versions have been chosen 
 | gatsby     | 3.14.6          | 4.14.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests. |    
 | gatsby-cli | 3.14.2          | 4.15.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests.|  
 | sass       | 1.32.12         | 1.52.3         | No            | This version is needed to surpress the dart warnings on / as division for each component. See [here](https://github.com/twbs/bootstrap/issues/34051#issuecomment-845884423) for more information |
-| uswds      | 2.11.2          | 3.0.2          | No            | Needs to stay at 2.11 for peer dependency on trussworks|   
-| trussworks | 2.9.0           | 3.0.2          | No            | Needs to stay at 2.9 as 3.0 is breaking change |
+| uswds      | 2.13.3          | 3.0.2          | No            | Needs to stay at 2.13.3 for peer dependency on trussworks|   
+| trussworks | 3.1.0           | 3.1.0          | No            | latest! |

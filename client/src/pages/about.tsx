@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
+import {useWindowSize} from 'react-use';
 
 import AboutCard from '../components/AboutCard/AboutCard';
 import AboutCardsContainer from '../components/AboutCard/AboutCardsContainer';
+import {Grid} from '@trussworks/react-uswds';
+import HowYouCanHelp from '../components/HowYouCanHelp';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import PublicEngageButton from '../components/PublicEngageButton';
+import SubPageNav from '../components/SubPageNav';
 
 import * as ABOUT_COPY from '../data/copy/about';
-import * as COMMON_COPY from '../data/copy/common';
-import {PAGES_ENDPOINTS} from '../data/constants';
+import {FEEDBACK_EMAIL} from '../data/copy/common';
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
 
-// @ts-ignore
-import aboutUSMapImg from '../images/about-usmap-1.svg';
-// @ts-ignore
-import aboutJ40Img from '../images/about-j40-1.svg';
 import accountBalanceIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
 
@@ -34,64 +34,62 @@ interface IAboutPageProps {
 // markup
 const AboutPage = ({location}: IAboutPageProps) => {
   const intl = useIntl();
+  const {width} = useWindowSize();
 
   return (
-    <Layout location={location} title={intl.formatMessage(ABOUT_COPY.PAGE.TILE)}>
+    <Layout location={location} title={intl.formatMessage(ABOUT_COPY.PAGE.TITLE)}>
 
       <J40MainGridContainer>
 
         <section className={'page-heading'}>
-          <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.HEADING)}</h1>
+          <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.TITLE)}</h1>
           <PublicEngageButton />
         </section>
 
-        {/* Section 1 */}
-        <AboutCardsContainer>
-          <AboutCard
-            size={'large'}
-            imgSrc={aboutUSMapImg}
-            header={intl.formatMessage(ABOUT_COPY.PAGE.HEADING_1)}>
-            <>
-              <p>
-                {ABOUT_COPY.HEADING_1.DESCRIPTION_1}
-              </p>
-              <p>
-                {intl.formatMessage(ABOUT_COPY.PAGE.HEADING1_DESCRIPTION2)}
-              </p>
-            </>
-          </AboutCard>
-        </AboutCardsContainer>
+        <Grid row gap className={'j40-mb5-mt3'}>
 
+          {/* First column */}
+          <Grid col={12} tablet={{col: 8}}>
+            <section>
+              <p>
+                {ABOUT_COPY.CONTENT.PARA1}
+              </p>
+              <p>
+                {ABOUT_COPY.CONTENT.PARA2}
+              </p>
+              {/* <div className={'j40-p-tag'}>
+                {ABOUT_COPY.CONTENT.PARA3}
+                <ul>
+                  <li> {ABOUT_COPY.CONTENT.LI1}</li>
+                  <li> {ABOUT_COPY.CONTENT.LI2}</li>
+                </ul>
+              </div> */}
+              <p>
+                {ABOUT_COPY.CONTENT.PARA4}
+              </p>
+              <p>
+                {ABOUT_COPY.CONTENT.PARA5}
+              </p>
+            </section>
+          </Grid>
 
-        {/* Section 2 */}
-        <AboutCardsContainer>
-          <AboutCard
-            size={'large'}
-            imgSrc={aboutJ40Img}
-            header={intl.formatMessage(ABOUT_COPY.PAGE.HEADING_2)}>
-            <>
-              <p>
-                {intl.formatMessage(ABOUT_COPY.PAGE.HEADING2_DESCRIPTION1)}
-              </p>
-              <p>
-                {ABOUT_COPY.HEADING_2.DESCRIPTION_2}
-              </p>
-            </>
-          </AboutCard>
-        </AboutCardsContainer>
+          {/* Second column */}
+          <Grid col={12} tablet={{col: 1}}>
+            {/* Spacer column */}
+          </Grid>
 
-        {/* Section 3 */}
-        <AboutCardsContainer>
-          <AboutCard
-            size={'large'}
-            header={intl.formatMessage(ABOUT_COPY.PAGE.HEADING_3)}>
-            <>
-              <p>
-                {ABOUT_COPY.HEADING_3.DESCRIPTION_1}
-              </p>
-            </>
-          </AboutCard>
-        </AboutCardsContainer>
+          {/* Third column */}
+          {width > USWDS_BREAKPOINTS.DESKTOP ?
+          <Grid col={12} tablet={{col: 3}}>
+            <SubPageNav
+              endPoints={[
+                PAGES_ENDPOINTS.ABOUT,
+                PAGES_ENDPOINTS.PUBLIC_ENG,
+                PAGES_ENDPOINTS.FAQS,
+              ]}
+            />
+          </Grid> : ''}
+        </Grid>
 
       </J40MainGridContainer>
 
@@ -99,31 +97,38 @@ const AboutPage = ({location}: IAboutPageProps) => {
         fullWidth={true}
         blueBackground={true}>
         <J40MainGridContainer>
-          <h2>
-            {intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.TITLE)}
-          </h2>
+
+          <Grid col={12} tablet={{col: 8}}>
+            <h2>
+              {intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.TITLE)}
+            </h2>
+            <p>
+              {ABOUT_COPY.CONTENT.HOW_TO_USE_PARA1}
+            </p>
+            <p>
+              {intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.PARA2)}
+            </p>
+            <p>
+              {ABOUT_COPY.CONTENT.HOW_TO_USE_PARA3}
+            </p>
+          </Grid>
+
           <AboutCardsContainer>
             <AboutCard
               size={'small'}
               imgSrc={accountBalanceIcon}
-              header={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_HEADING)}
-              linkText={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_LINK_TEXT)}
-              url={PAGES_ENDPOINTS.METHODOLOGY}
-              internal={true}>
+              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_MAP_HEADING)}>
               <p>
-                {intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_INFO)}
+                {intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_MAP_PARA)}
               </p>
             </AboutCard>
 
             <AboutCard
               size={'small'}
               imgSrc={groupsIcon}
-              header={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_HEADING)}
-              linkText={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_LINK_TEXT)}
-              url={PAGES_ENDPOINTS.EXPLORE}
-              internal={true}>
+              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_DATA_HEADING)}>
               <p>
-                {intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_INFO)}
+                {ABOUT_COPY.CONTENT.USE_DATA_PARA}
               </p>
             </AboutCard>
           </AboutCardsContainer>
@@ -138,7 +143,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
             imgSrc={commentIcon}
             header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_HEADING)}
             linkText={ABOUT_COPY.GET_INVOLVED_COMMENTS.EMAIL}
-            url={`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
+            url={`mailto:${FEEDBACK_EMAIL}`}
             openUrlNewTab={true}
             internal={false}>
             <p>
@@ -159,6 +164,11 @@ const AboutPage = ({location}: IAboutPageProps) => {
             </p>
           </AboutCard>
         </AboutCardsContainer>
+
+        <Grid col={12} tablet={{col: 8}}>
+          <HowYouCanHelp/>
+        </Grid>
+
       </J40MainGridContainer>
     </Layout>);
 };

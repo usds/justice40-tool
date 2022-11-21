@@ -1,43 +1,47 @@
 {
-  "about.page.community.members.heading": {
-    "defaultMessage": "Community members",
-    "description": "Navigate to the About page. This is the sub heading of page"
-  },
-  "about.page.community.members.info": {
-    "defaultMessage": "Explore data about communities across the U.S., including your own, and provide feedback on the tool.",
-    "description": "Navigate to the About page. This is the sub heading of page"
-  },
-  "about.page.community.members.link": {
-    "defaultMessage": "Explore the map",
-    "description": "link to Navigate to the About page. This is the explore the map page"
-  },
-  "about.page.federal.pm.heading": {
-    "defaultMessage": "Federal program managers",
-    "description": "Navigate to the About page. This is the sub heading of page"
-  },
-  "about.page.federal.pm.info": {
-    "defaultMessage": "Download the tool’s current list of communities, explore data that may be useful to your program, and provide feedback on the tool.",
-    "description": "Navigate to the About page. This is the sub heading of page"
-  },
-  "about.page.federal.pm.link": {
-    "defaultMessage": "Methodology & data",
-    "description": "link text to Navigate to the About page. This is the go to methodology page"
-  },
   "about.page.getInvolved.title": {
     "defaultMessage": "Get involved",
     "description": "Navigate to the About page. This is the sub heading of page"
   },
-  "about.page.heading.1.text": {
-    "defaultMessage": "Screening tool",
-    "description": "Navigate to the About page. This is the second heading"
+  "about.page.how.to.use.para3": {
+    "defaultMessage": "A community is considered to be disadvantaged if they are located within a census tract that meets the tool’s <link1>methodology</link1> or are on land within the boundaries of Federally Recognized Tribes.",
+    "description": "Navigate to the About page. This is the paragraph 4"
   },
-  "about.page.heading.text": {
-    "defaultMessage": "About",
-    "description": "Navigate to the About page. This is the first heading"
+  "about.page.how.to.use.tool.para1": {
+    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 census boundaries. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.",
+    "description": "Navigate to the About page. This is the paragraph 4"
   },
-  "about.page.howToGetStarted.title": {
-    "defaultMessage": "How to get started",
-    "description": "Navigate to the About page. This is the sub heading of page"
+  "about.page.how.to.use.tool.para2": {
+    "defaultMessage": "The tool ranks most of the burdens using percentiles. Percentiles show how much burden each tract experiences compared to other tracts. Certain burdens use percentages or a simple yes/no.",
+    "description": "Navigate to the About page. This is the sub heading of How to use the tool paragraph1"
+  },
+  "about.page.how.to.use.tool.title": {
+    "defaultMessage": "How to use the tool",
+    "description": "Navigate to the About page. This is the sub heading of How to use the tool"
+  },
+  "about.page.how.you.can.help.heading": {
+    "defaultMessage": "How you can help improve the map",
+    "description": "Navigate to the about page. You will see How you can help"
+  },
+  "about.page.how.you.can.help.list.item.1": {
+    "defaultMessage": "Provide <link1>general feedback</link1> on the CEJST website",
+    "description": "Navigate to the about page. You will see How you can help list item 1"
+  },
+  "about.page.how.you.can.help.list.item.2": {
+    "defaultMessage": "Suggest new <link1>data sources</link1>.",
+    "description": "Navigate to the about page. You will see How you can help list item 2"
+  },
+  "about.page.how.you.can.help.list.item.3": {
+    "defaultMessage": "Have feedback about a specific census tract? You can either click here or click the “Send Feedback” button on the side-panel of a census tract on the map.",
+    "description": "Navigate to the about page. You will see How you can help list item 3"
+  },
+  "about.page.how.you.can.help.list.item.4": {
+    "defaultMessage": "Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this <link2>form</link2> . Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>",
+    "description": "Navigate to the about page. You will see How you can help list item 3"
+  },
+  "about.page.how.you.can.help.para.1": {
+    "defaultMessage": "The Council on Environmental Quality plans to issue a Request for Information in 2023. This will give the public time to use the tool before providing comments.",
+    "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.join.open.source.info": {
     "defaultMessage": "The tool’s code is open source, which means it is available for the public to view and contribute to it.",
@@ -51,8 +55,36 @@
     "defaultMessage": "Join the open source community",
     "description": "Navigate to the About page. This is the join the community heading"
   },
+  "about.page.list.item.1": {
+    "defaultMessage": "Addendum to the Justice40 Initiative Interim Guidance on Using CEJST",
+    "description": "Navigate to the About page. This is the list item 1"
+  },
+  "about.page.list.item.2": {
+    "defaultMessage": "Instructions to Federal Agencies on Using the CEJST",
+    "description": "Navigate to the About page. This is the list item 2"
+  },
+  "about.page.paragraph.1": {
+    "defaultMessage": "In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens in eight categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.",
+    "description": "Navigate to the About page. This is the paragraph 1"
+  },
+  "about.page.paragraph.2": {
+    "defaultMessage": "Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in the <link1>Justice40 Initiative</link1>. The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.",
+    "description": "Navigate to the About page. This is the paragraph 2"
+  },
+  "about.page.paragraph.3": {
+    "defaultMessage": "Federal agencies should also use the following:",
+    "description": "Navigate to the About page. This is the paragraph 3"
+  },
+  "about.page.paragraph.4": {
+    "defaultMessage": "CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version {version}. <link1>Sign-up</link1> for updates from CEQ",
+    "description": "Navigate to the About page. This is the paragraph 4"
+  },
+  "about.page.paragraph.5": {
+    "defaultMessage": "A Spanish version of the site will be available in the near future.",
+    "description": "Navigate to the About page. This is the paragraph 5"
+  },
   "about.page.send.feedback.email.link": {
-    "defaultMessage": "Email: {email}",
+    "defaultMessage": "Contact",
     "description": "about page sub header text"
   },
   "about.page.send.feedback.heading": {
@@ -60,64 +92,48 @@
     "description": "Navigate to the About page. This is the sending feedback heading"
   },
   "about.page.send.feedback.info": {
-    "defaultMessage": "Have ideas about data and information that reflect the experiences and conditions of your community?",
+    "defaultMessage": "Have ideas for the tool? Contact the Council on Environmental Quality’s (CEQ).",
     "description": "Navigate to the About page. This is the sending feedback information"
-  },
-  "about.page.sub.header.1.text.1": {
-    "defaultMessage": "In <link1>Executive Order 14008</link1> on <italictag>Tackling the Climate Crisis at Home and Abroad</italictag>, President Biden directed the Council on Environmental Quality (CEQ) to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities that are marginalized, underserved, and overburdened by pollution. The current version of the tool provides socioeconomic, environmental, and climate information to inform decisions that may affect these communities. The tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.",
-    "description": "Navigate to the About page. This is the second heading description"
-  },
-  "about.page.sub.header.1.text.2": {
-    "defaultMessage": "The current version of the tool is in a public beta form and will be updated based on feedback and research.",
-    "description": "Navigate to the About page. This is first heading description"
-  },
-  "about.page.sub.header.2.text": {
-    "defaultMessage": "The Justice40 Initiative",
-    "description": "Navigate to the About page. This is the third heading"
-  },
-  "about.page.sub.header.2.text.1": {
-    "defaultMessage": "The tool will provide important information for the Justice40 Initiative. The goal of the Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal investments in seven key areas to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.",
-    "description": "Navigate to the About page. This is the third heading description"
-  },
-  "about.page.sub.header.2.text.2": {
-    "defaultMessage": "Read more about the Justice40 Initiative in President Biden’s <link1>Executive Order 14008</link1> on <italictag>Tackling the Climate Crisis at Home and Abroad</italictag>.",
-    "description": "about page sub header text"
-  },
-  "about.page.sub.header.3.text": {
-    "defaultMessage": "Still have questions?",
-    "description": "Navigate to the About page. This is the fourth heading"
-  },
-  "about.page.sub.header.3.text.1": {
-    "defaultMessage": "Find answers on the Climate and Economic Justice Screening Tool's <link1>Frequently Asked Questions</link1>.",
-    "description": "Navigate to the About page. This is the second heading description"
   },
   "about.page.title.text": {
     "defaultMessage": "About",
     "description": "Navigate to the About page. This is the about page title text"
   },
+  "about.page.use.data.heading": {
+    "defaultMessage": "Using the data",
+    "description": "Navigate to the About page. This is the sub heading of Using the data"
+  },
+  "about.page.use.data.paragraph": {
+    "defaultMessage": "The tool's data is available for <link1>download</link1>. This data can be used to filter by state or county.",
+    "description": "Navigate to the About page. This is the paragraph 4"
+  },
+  "about.page.use.map.heading": {
+    "defaultMessage": "Using the map",
+    "description": "Navigate to the About page. This is the sub heading of Using the map"
+  },
+  "about.page.use.map.para": {
+    "defaultMessage": "Zoom in and select any census tract to see if it is considered disadvantaged.",
+    "description": "Navigate to the About page. This is the paragraph of Using the map"
+  },
   "common.pages.alerts.additional_docs_available.description": {
     "defaultMessage": "Download new <link1>technical support</link1> and other documentation and <link2>send feedback</link2>.",
     "description": "Alert title that appears at the top of pages."
+  },
+  "common.pages.alerts.banner.beta.content": {
+    "defaultMessage": "<bold1>This tool has been updated.</bold1> The 1.0 version of the tool was released on {relDate}.",
+    "description": "Alert body that appears on landing page."
   },
   "common.pages.alerts.census.tract.title": {
     "defaultMessage": "Additional documentation now available",
     "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
   },
   "common.pages.alerts.public_comment_period.description": {
-    "defaultMessage": "The public comment period for <link1>sending feedback</link1> via the Request for Information has been extended to {expDate1}.",
+    "defaultMessage": "The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on {ver1RelDate}. For more information about the improvements to the tool, CEQ’s press release will be coming soon.",
     "description": "Alert body that appears on landing page."
   },
-  "common.pages.alerts.public_comment_period.title": {
-    "defaultMessage": "Public comment period extended",
+  "common.pages.alerts.version.1.release..title": {
+    "defaultMessage": "Version 1.0 of the tool is now available",
     "description": "Alert title that appears on landing page."
-  },
-  "common.pages.banner.beta.info": {
-    "defaultMessage": "It is an early, in-progress version of the tool with limited datasets that will be regularly updated.",
-    "description": "Navigate to the about page. This is the main info of the beta banner"
-  },
-  "common.pages.banner.beta.title": {
-    "defaultMessage": "This is a beta site.",
-    "description": "Navigate to the about page. This is the main title of the beta banner"
   },
   "common.pages.console.error.stage.url": {
     "defaultMessage": "Please check stage_hash value. It must be a 4 digit decimal value / 40 digit hexadecimal value",
@@ -134,10 +150,6 @@
   "common.pages.footer.contribute.header": {
     "defaultMessage": "Want to contribute?",
     "description": "Navigate to the about page. This is third Footer column header"
-  },
-  "common.pages.footer.eng.cal.text": {
-    "defaultMessage": "Engagement calendar",
-    "description": "Navigate to the about page. This is Footer eng.cal.gov link text"
   },
   "common.pages.footer.findcontact": {
     "defaultMessage": "Find a contact at USA.gov",
@@ -175,13 +187,13 @@
     "defaultMessage": "Privacy Policy",
     "description": "Navigate to the about page. This is Footer privacy policy link text"
   },
-  "common.pages.footer.rfi.link": {
-    "defaultMessage": "https://www.federalregister.gov/d/2022-03920",
-    "description": "Navigate to the about page. This is Footer rfi link"
+  "common.pages.footer.sign.up": {
+    "defaultMessage": "Sign up for updates",
+    "description": "Navigate to the about page. This is Footer under Sign-up for updates"
   },
-  "common.pages.footer.rfi.text": {
-    "defaultMessage": "Request for Information",
-    "description": "Navigate to the about page. This is Footer rfi link text"
+  "common.pages.footer.sign.up.link": {
+    "defaultMessage": "https://lp.constantcontactpages.com/su/Vm8pCFj/spring",
+    "description": "Navigate to the about page. This is Footer link under Sign-up for updates"
   },
   "common.pages.footer.whitehouse.link": {
     "defaultMessage": "https://www.whitehouse.gov/",
@@ -224,47 +236,31 @@
     "description": "Navigate to the about page. This is Header navigate item to the public eng page"
   },
   "common.pages.header.title.line1": {
-    "defaultMessage": "Climate and Economic Justice",
-    "description": "Navigate to the about page. This is Title in nav header line 1 of 2"
-  },
-  "common.pages.header.title.line2": {
-    "defaultMessage": "Screening Tool",
-    "description": "Navigate to the about page. This is Title in nav header line 2 of 2"
+    "defaultMessage": "Climate and Economic Justice Screening Tool",
+    "description": "Navigate to the about page. This is Title in nav header"
   },
   "common.pages.header.tsd": {
-    "defaultMessage": "Technical Support Document",
+    "defaultMessage": "Previous versions",
     "description": "Navigate to the about page. This is Header navigate item to the technical support document page"
   },
   "common.pages.tsd.url": {
     "defaultMessage": "https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/cejst_technical_support_document.pdf",
     "description": "Navigate to the Alerts on any page. This will be the link to the techinical support document."
   },
-  "contact.page.census.tract.feedback.para1": {
-    "defaultMessage": "To provide feedback about a specific census tract, either select the send feedback button after selecting a census tract on the <link1>Explore the map</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.",
-    "description": "Navigate to the contact page, this is the census tract feedback section"
-  },
-  "contact.page.census.tract.feedback.para2": {
-    "defaultMessage": "If there are specific data indicators that could be improved or changed, please include that information in the body of the email.",
-    "description": "Navigate to the contact page, this is the census tract feedback section"
-  },
   "contact.page.census.tract.feedback.para3": {
-    "defaultMessage": "In addition, you can provide feedback on the tool via this <link1>survey</link1>.",
+    "defaultMessage": "The best way to contact the Council on Environmental Quality (CEQ) is by filling out <link1>this form</link1>.",
     "description": "Navigate to the survey. Spanish should substitute <link2> to get Spanish link! Already coded to support"
   },
-  "contact.page.census.tract.feedback.title": {
-    "defaultMessage": "Census tract feedback",
-    "description": "Navigate to the contact page, this is the census tract feedback section"
-  },
   "contact.page.fab.survey.link": {
-    "defaultMessage": "https://www.surveymonkey.com/r/cejst-survey",
+    "defaultMessage": "https://www.surveymonkey.com/r/P3LWTSB",
     "description": "The footer sticky link that links to the CEJST survey"
   },
   "contact.page.fab.survey.text": {
-    "defaultMessage": "Help improve the site & data",
+    "defaultMessage": "Help improve the tool",
     "description": "Navigate to the contact page, this is the text for floating action button"
   },
   "contact.page.general": {
-    "defaultMessage": "For general feedback, email {general_email_address}.",
+    "defaultMessage": "Otherwise, email CEQ at: {general_email_address}.",
     "description": "Contact page body text"
   },
   "contact.page.header.text": {
@@ -280,7 +276,7 @@
     "description": "Navigate to the contact page, this is the title of the request for information box"
   },
   "contact.page.sub.header.text": {
-    "defaultMessage": "Email us",
+    "defaultMessage": "Contact us",
     "description": "Navigate to the contact page, this is the contact page sub header text"
   },
   "contact.page.title.text": {
@@ -296,7 +292,7 @@
     "description": "Navigate to the download page. This is second download file link"
   },
   "download.page.download.file.3": {
-    "defaultMessage": "<link3>Shapefile</link3> (Codebook included with geojson {shapeFileSize} unzipped)",
+    "defaultMessage": "<link3>Shapefile</link3> (Codebook included with shapefile {shapeFileSize} unzipped)",
     "description": "Navigate to the download page. This is third download file link"
   },
   "download.page.download.file.4": {
@@ -307,29 +303,337 @@
     "defaultMessage": "<link5>How to use the list of communities</link5> (.pdf {howToCommFileSize})",
     "description": "Navigate to the download page. This is fifth download file link"
   },
-  "downloads.page.description1.text": {
-    "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
-    "description": "Navigate to the Downloads page, this will be the page description1 text"
+  "download.page.files.section.title": {
+    "defaultMessage": "Version {version} file formats",
+    "description": "Navigate to the download page. This is first download file link"
+  },
+  "download.page.release.update.SECTION1": {
+    "defaultMessage": "New & improved",
+    "description": "Navigate to the download page. This is first section of the release update SECTION1"
+  },
+  "download.page.release.update.SECTION1_B1": {
+    "defaultMessage": "Added lands within the boundaries of Federally Recognized Tribes and locations of Alaska Native Villages using data from the Bureau of Indian Affairs at the U.S. Department of the Interior",
+    "description": "Navigate to the download page. This is SECTION1_B1"
+  },
+  "download.page.release.update.SECTION1_B10": {
+    "defaultMessage": "Added a link to sign up for email mailing list managed by CEQ",
+    "description": "Navigate to the download page. This is SECTION1_B10 "
+  },
+  "download.page.release.update.SECTION1_B2": {
+    "defaultMessage": "Added new data for indicators of burden",
+    "description": "Navigate to the download page. This is SECTION1_B2"
+  },
+  "download.page.release.update.SECTION1_B2_1": {
+    "defaultMessage": "Climate change",
+    "description": "Navigate to the download page. This is SECTION1_B2_1"
+  },
+  "download.page.release.update.SECTION1_B2_1_1": {
+    "defaultMessage": "Projected flood risk",
+    "description": "Navigate to the download page. This is SECTION1_B2_1_1"
+  },
+  "download.page.release.update.SECTION1_B2_1_2": {
+    "defaultMessage": "Projected wildfire risk",
+    "description": "Navigate to the download page. This is SECTION1_B2_1_2"
+  },
+  "download.page.release.update.SECTION1_B2_1_3": {
+    "defaultMessage": "Historic underinvestment due to redlining",
+    "description": "Navigate to the download page. This is SECTION1_B2_1_3"
+  },
+  "download.page.release.update.SECTION1_B2_2": {
+    "defaultMessage": "Housing",
+    "description": "Navigate to the download page. This is SECTION1_B2_2"
+  },
+  "download.page.release.update.SECTION1_B2_2_1": {
+    "defaultMessage": "Lack of plumbing",
+    "description": "Navigate to the download page. This is SECTION1_B2_2_1"
+  },
+  "download.page.release.update.SECTION1_B2_2_2": {
+    "defaultMessage": "Lack of green space",
+    "description": "Navigate to the download page. This is SECTION1_B2_2_2"
+  },
+  "download.page.release.update.SECTION1_B2_2_3": {
+    "defaultMessage": "Historic underinvestment (due to redlining)",
+    "description": "Navigate to the download page. This is SECTION1_B2_2_3"
+  },
+  "download.page.release.update.SECTION1_B2_3": {
+    "defaultMessage": "Legacy pollution",
+    "description": "Navigate to the download page. This is SECTION1_B2_3"
+  },
+  "download.page.release.update.SECTION1_B2_3_1": {
+    "defaultMessage": "Abandoned mine lands",
+    "description": "Navigate to the download page. This is SECTION1_B2_3_1"
+  },
+  "download.page.release.update.SECTION1_B2_3_2": {
+    "defaultMessage": "Formerly used defense sites",
+    "description": "Navigate to the download page. This is SECTION1_B2_3_2"
+  },
+  "download.page.release.update.SECTION1_B2_4": {
+    "defaultMessage": "Transportation",
+    "description": "Navigate to the download page. This is SECTION1_B2_4"
+  },
+  "download.page.release.update.SECTION1_B2_4_1": {
+    "defaultMessage": "Transportation barriers",
+    "description": "Navigate to the download page. This is SECTION1_B2_4_1"
+  },
+  "download.page.release.update.SECTION1_B2_5": {
+    "defaultMessage": "Water",
+    "description": "Navigate to the download page. This is SECTION1_B2_5"
+  },
+  "download.page.release.update.SECTION1_B2_5_1": {
+    "defaultMessage": "Leaking underground storage tanks",
+    "description": "Navigate to the download page. This is SECTION1_B2_5_1"
+  },
+  "download.page.release.update.SECTION1_B3": {
+    "defaultMessage": "Included communities that are completely surrounded by other disadvantaged communities and that meet an adjusted low income threshold",
+    "description": "Navigate to the download page. This is SECTION1_B3"
+  },
+  "download.page.release.update.SECTION1_B4": {
+    "defaultMessage": "Made technical changes to enhance accuracy of the tool",
+    "description": "Navigate to the download page. This is SECTION1_B4"
+  },
+  "download.page.release.update.SECTION1_B4_1": {
+    "defaultMessage": "Removed income data for students enrolled in higher education in the low income indicator",
+    "description": "Navigate to the download page. This is SECTION1_B4_1"
+  },
+  "download.page.release.update.SECTION1_B4_2": {
+    "defaultMessage": "Imputed income for census tracts missing income data",
+    "description": "Navigate to the download page. This is SECTION1_B4_2"
+  },
+  "download.page.release.update.SECTION1_B4_3": {
+    "defaultMessage": "Used transportation barriers and expected population loss rate data burdens only for census tracts with populations of 20 or more to exclude areas such as airports",
+    "description": "Navigate to the download page. This is SECTION1_B4_3"
+  },
+  "download.page.release.update.SECTION1_B5": {
+    "defaultMessage": "Improved the user interface",
+    "description": "Navigate to the download page. This is SECTION1_B5"
+  },
+  "download.page.release.update.SECTION1_B5_1": {
+    "defaultMessage": "Added demographics (race & age) for census tracts to map side panel",
+    "description": "Navigate to the download page. This is SECTION1_B5_1"
+  },
+  "download.page.release.update.SECTION1_B5_2": {
+    "defaultMessage": "Improved the design of the map side panel",
+    "description": "Navigate to the download page. This is SECTION1_B5_2"
+  },
+  "download.page.release.update.SECTION1_B5_3": {
+    "defaultMessage": "Updated the site copy of the website",
+    "description": "Navigate to the download page. This is SECTION1_B5_3"
+  },
+  "download.page.release.update.SECTION1_B6": {
+    "defaultMessage": "Added new data for all the U.S. Territories, and also made a small methodology change for Puerto Rico",
+    "description": "Navigate to the download page. This is SECTION1_B6"
+  },
+  "download.page.release.update.SECTION1_B6_1": {
+    "defaultMessage": "USVI",
+    "description": "Navigate to the download page. This is SECTION1_B6_1"
+  },
+  "download.page.release.update.SECTION1_B6_1_1": {
+    "defaultMessage": "Included data from 2010 decennial census for US Virgin Islands",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_1"
+  },
+  "download.page.release.update.SECTION1_B6_1_2": {
+    "defaultMessage": "New data from EJScreen 2.1",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_2"
+  },
+  "download.page.release.update.SECTION1_B6_1_2_1": {
+    "defaultMessage": "Sustainable Housing:",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_2_1"
+  },
+  "download.page.release.update.SECTION1_B6_1_2_1_1": {
+    "defaultMessage": "Lead paint",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_2_1_1"
+  },
+  "download.page.release.update.SECTION1_B6_1_2_2": {
+    "defaultMessage": "Legacy pollution:",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_2_2"
+  },
+  "download.page.release.update.SECTION1_B6_1_2_2_1": {
+    "defaultMessage": "Proximity to Superfund (National Priorities List (NPL)) sites",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_2_2_1"
+  },
+  "download.page.release.update.SECTION1_B6_1_2_2_2": {
+    "defaultMessage": "Proximity to Risk Management Plan (RMP) sites",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_2_2_2"
+  },
+  "download.page.release.update.SECTION1_B6_1_2_2_3": {
+    "defaultMessage": "Proximity to hazardous waste facilities",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_2_2_3"
+  },
+  "download.page.release.update.SECTION1_B6_1_2_2_4": {
+    "defaultMessage": "Leaking underground storage tanks",
+    "description": "Navigate to the download page. This is SECTION1_B6_1_2_2_4"
+  },
+  "download.page.release.update.SECTION1_B6_2": {
+    "defaultMessage": "Guam",
+    "description": "Navigate to the download page. This is SECTION1_B6_2"
+  },
+  "download.page.release.update.SECTION1_B6_2_1": {
+    "defaultMessage": "Included data from 2010 decennial census for Guam",
+    "description": "Navigate to the download page. This is SECTION1_B6_2_1"
+  },
+  "download.page.release.update.SECTION1_B6_3": {
+    "defaultMessage": "Samoa",
+    "description": "Navigate to the download page. This is SECTION1_B6_3"
+  },
+  "download.page.release.update.SECTION1_B6_4": {
+    "defaultMessage": "Marianna Islands",
+    "description": "Navigate to the download page. This is SECTION1_B6_4"
+  },
+  "download.page.release.update.SECTION1_B6_5": {
+    "defaultMessage": "Puerto Rico",
+    "description": "Navigate to the download page. This is SECTION1_B6_5"
+  },
+  "download.page.release.update.SECTION1_B6_5_1": {
+    "defaultMessage": "Removed linguistic isolation as an indicator in the methodology for Puerto Rico",
+    "description": "Navigate to the download page. This is SECTION1_B6_5_1"
+  },
+  "download.page.release.update.SECTION1_B6_5_2": {
+    "defaultMessage": "Imported additional available data for Puerto Rico",
+    "description": "Navigate to the download page. This is SECTION1_B6_5_2"
+  },
+  "download.page.release.update.SECTION1_B6_5_2_1": {
+    "defaultMessage": "Energy cost",
+    "description": "Navigate to the download page. This is SECTION1_B6_5_2_1"
+  },
+  "download.page.release.update.SECTION1_B6_5_2_2": {
+    "defaultMessage": "Housing cost",
+    "description": "Navigate to the download page. This is SECTION1_B6_5_2_2"
+  },
+  "download.page.release.update.SECTION1_B6_5_2_3": {
+    "defaultMessage": "Abandoned mine lands",
+    "description": "Navigate to the download page. This is SECTION1_B6_5_2_3"
+  },
+  "download.page.release.update.SECTION1_B6_5_2_4": {
+    "defaultMessage": "Proximity to hazardous waste sites",
+    "description": "Navigate to the download page. This is SECTION1_B6_5_2_4"
+  },
+  "download.page.release.update.SECTION1_B7": {
+    "defaultMessage": "Updated data from EJScreen 2.1 across the entire tool:",
+    "description": "Navigate to the download page. This is SECTION1_B7"
+  },
+  "download.page.release.update.SECTION1_B7_1_1": {
+    "defaultMessage": "Lead paint - 2016-2020",
+    "description": "Navigate to the download page. This is SECTION1_B7_1_1"
+  },
+  "download.page.release.update.SECTION1_B7_2_1": {
+    "defaultMessage": "Proximity to Superfund (National Priorities List (NPL)) sites - 2022",
+    "description": "Navigate to the download page. This is SECTION1_B7_2_1"
+  },
+  "download.page.release.update.SECTION1_B7_2_2": {
+    "defaultMessage": "Proximity to Risk Management Plans (RMP) facilities - 2022",
+    "description": "Navigate to the download page. This is SECTION1_B7_2_2"
+  },
+  "download.page.release.update.SECTION1_B7_2_3": {
+    "defaultMessage": "Proximity to hazardous waste facilities - 2022",
+    "description": "Navigate to the download page. This is SECTION1_B7_2_3"
+  },
+  "download.page.release.update.SECTION1_B7_3": {
+    "defaultMessage": "Water and wastewater",
+    "description": "Navigate to the download page. This is SECTION1_B7_3"
+  },
+  "download.page.release.update.SECTION1_B7_3_1": {
+    "defaultMessage": "Leaking underground storage tanks - 2022",
+    "description": "Navigate to the download page. This is SECTION1_B7_3_1"
+  },
+  "download.page.release.update.SECTION1_B8": {
+    "defaultMessage": "Enhanced the technical files:",
+    "description": "Navigate to the download page. This is SECTION1_B8"
+  },
+  "download.page.release.update.SECTION1_B8_1": {
+    "defaultMessage": "Added all new data indicators and demographics to .xls, .csv, and shapefiles",
+    "description": "Navigate to the download page. This is SECTION1_B8_1"
+  },
+  "download.page.release.update.SECTION1_B8_2": {
+    "defaultMessage": "Added previous versions page to access the beta version’s download files",
+    "description": "Navigate to the download page. This is SECTION1_B8_2"
+  },
+  "download.page.release.update.SECTION1_B8_3": {
+    "defaultMessage": "Updated codebook",
+    "description": "Navigate to the download page. This is SECTION1_B8_3"
+  },
+  "download.page.release.update.SECTION1_B8_4": {
+    "defaultMessage": "Updated Technical Support Document",
+    "description": "Navigate to the download page. This is SECTION1_B8_4"
+  },
+  "download.page.release.update.SECTION1_B9": {
+    "defaultMessage": "Improved the way that users provide feedback on the tool:",
+    "description": "Navigate to the download page. This is SECTION1_B9"
+  },
+  "download.page.release.update.SECTION1_B9_1": {
+    "defaultMessage": "Data survey",
+    "description": "Navigate to the download page. This is SECTION1_B9_1"
+  },
+  "download.page.release.update.SECTION1_B9_2": {
+    "defaultMessage": "Site experience survey",
+    "description": "Navigate to the download page. This is SECTION1_B9_2"
+  },
+  "download.page.release.update.SECTION1_B9_3": {
+    "defaultMessage": "Census tract feedback",
+    "description": "Navigate to the download page. This is SECTION1_B9_3"
+  },
+  "download.page.release.update.SECTION1_B9_4": {
+    "defaultMessage": "General contact form",
+    "description": "Navigate to the download page. This is SECTION1_B9_4 "
+  },
+  "download.page.release.update.footer": {
+    "defaultMessage": "release version {version}",
+    "description": "Navigate to the download page. This is second section of the release update section"
+  },
+  "download.page.release.update.section.2": {
+    "defaultMessage": "Fixes",
+    "description": "Navigate to the download page. This is second section of the release update section"
+  },
+  "download.page.release.update.section.2.p1": {
+    "defaultMessage": "Bug fix: loaded missing life expectancy data for Maine and Wisconsin",
+    "description": "Navigate to the download page. This is second section of the release update section"
+  },
+  "download.page.release.update.section.2.p2": {
+    "defaultMessage": "Bug fix: Census tracts that are 100% water should not be included on the map",
+    "description": "Navigate to the download page. This is second section of the release update section"
+  },
+  "download.page.release.update.title.1": {
+    "defaultMessage": "Version {release} Release update - {date}",
+    "description": "Navigate to the download page. This is first download file link"
+  },
+  "downloads.page.change.log.text": {
+    "defaultMessage": "release notes",
+    "description": "Navigate to the Downloads page, this will be the view of release notes"
   },
   "downloads.page.download.icon.alt.tag": {
     "defaultMessage": "The icon used to indicate that the file is downloadable",
     "description": "Navigate to the Downloads page, this is the icon used to indicate that the file is downloadable"
   },
+  "downloads.page.files.section.text": {
+    "defaultMessage": "The dataset used in the {version} version of the tool, along with a codebook, and information about how to use the list of communities (.pdf) are available for download:",
+    "description": "Navigate to the Downloads page, this will be the page description1 text"
+  },
   "downloads.page.heading1.text": {
     "defaultMessage": "Downloads",
     "description": "Navigate to the Downloads page, this will be the page heading1 text"
-  },
-  "downloads.page.heading2.text": {
-    "defaultMessage": "File formats",
-    "description": "Navigate to the Downloads page, this will be the page heading2 text"
   },
   "downloads.page.title.text": {
     "defaultMessage": "Downloads",
     "description": "Navigate to the Downloads page, this will be the page title text"
   },
-  "explore.map.page.description.text": {
-    "defaultMessage": "Use the map to see communities that are identified as disadvantaged. The map uses publicly-available, nationally-consistent datasets. Learn more about the methodology and datasets that were used to identify disadvantaged communities in the current version of the map on the <link1>Methodology & data</link1> page.",
-    "description": "On the explore the map page, the description of the page"
+  "downloads.page.view.text": {
+    "defaultMessage": "View",
+    "description": "Navigate to the Downloads page, this will be the view of change log"
+  },
+  "explore.map.page.description.1": {
+    "defaultMessage": "Census tracts that are overburdened and underserved are highlighted as being disadvantaged on the map. Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities.",
+    "description": "On the explore the map page, the first description of the page"
+  },
+  "explore.map.page.description.2": {
+    "defaultMessage": "Zooming in and selecting shows information about each census tract.",
+    "description": "On the explore the map page, the fifth description of the page"
+  },
+  "explore.map.page.explore.data.box.body": {
+    "defaultMessage": "Download the data with documentation and shapefile from the <link1>downloads</link1> page.",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane"
+  },
+  "explore.map.page.explore.data.box.title": {
+    "defaultMessage": "Get the data",
+    "description": "On the explore the map page, a summary box title of Get the data"
   },
   "explore.map.page.heading.text": {
     "defaultMessage": "Explore the map",
@@ -342,6 +646,30 @@
   "explore.map.page.legend.description.text": {
     "defaultMessage": "Communities identified as disadvantaged by the map are those that are marginalized, underserved, and overburdened by pollution. These communities are at or above the thresholds in one or more of eight categories of criteria.",
     "description": "On the explore the map page, the description of the legend"
+  },
+  "explore.map.page.map.geolocation.disabled": {
+    "defaultMessage": "Geolocation disabled",
+    "description": "On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is disabled."
+  },
+  "explore.map.page.map.geolocation.locating": {
+    "defaultMessage": "Finding location...",
+    "description": "On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is locating."
+  },
+  "explore.map.page.map.layer.selector.tracts.long": {
+    "defaultMessage": "Census Tracts",
+    "description": "On the explore the map page, on the map, the full name indicating Census Tracts"
+  },
+  "explore.map.page.map.layer.selector.tracts.short": {
+    "defaultMessage": "Tracts",
+    "description": "On the explore the map page, on the map, the short name indicating Census Tracts"
+  },
+  "explore.map.page.map.layer.selector.tribal.long": {
+    "defaultMessage": "Tribal Lands",
+    "description": "On the explore the map page, on the map, the full name indicating Tribal Lands"
+  },
+  "explore.map.page.map.layer.selector.tribal.short": {
+    "defaultMessage": "Tribal",
+    "description": "On the explore the map page, on the map, the short name indicating Tribal Lands"
   },
   "explore.map.page.map.search.placeholder.mobile.text": {
     "defaultMessage": "Search locations",
@@ -443,6 +771,70 @@
     "defaultMessage": "YES",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is focused on"
   },
+  "explore.map.page.side.panel.demo.age.over.65": {
+    "defaultMessage": "Elderly over 65",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 65"
+  },
+  "explore.map.page.side.panel.demo.age.title": {
+    "defaultMessage": "Age",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics age title"
+  },
+  "explore.map.page.side.panel.demo.age.under.10": {
+    "defaultMessage": "Children under 10",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Children under 10"
+  },
+  "explore.map.page.side.panel.demo.american.indian": {
+    "defaultMessage": "American Indian and Alaska Native",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: American Indian and Alaska Native"
+  },
+  "explore.map.page.side.panel.demo.asian": {
+    "defaultMessage": "Asian",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Asian"
+  },
+  "explore.map.page.side.panel.demo.black": {
+    "defaultMessage": "Black or African American",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Black"
+  },
+  "explore.map.page.side.panel.demo.hawaiian": {
+    "defaultMessage": "Native Hawiian or Pacific Islander",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Native Hawiian or Pacific Islander"
+  },
+  "explore.map.page.side.panel.demo.hispanic": {
+    "defaultMessage": "Hispanic or Latino",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Hispanic or Latino"
+  },
+  "explore.map.page.side.panel.demo.of.age.mid": {
+    "defaultMessage": "Ages 10 - 64",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Ages 10 - 64"
+  },
+  "explore.map.page.side.panel.demo.other": {
+    "defaultMessage": "Other",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Other"
+  },
+  "explore.map.page.side.panel.demo.race.title": {
+    "defaultMessage": "Race / Ethnicity",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics race title"
+  },
+  "explore.map.page.side.panel.demo.title": {
+    "defaultMessage": "Tract demographics",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics title"
+  },
+  "explore.map.page.side.panel.demo.two.or.more": {
+    "defaultMessage": "Two or more races",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Two or more races"
+  },
+  "explore.map.page.side.panel.demo.white": {
+    "defaultMessage": "White",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: White"
+  },
+  "explore.map.page.side.panel.donut.copy.adj.low.income": {
+    "defaultMessage": "Adjusted low income",
+    "description": "Navigate to the explore the map page. Click on side panel, this copy may show up"
+  },
+  "explore.map.page.side.panel.donut.copy.complete.surround": {
+    "defaultMessage": "Completely surrounded",
+    "description": "Navigate to the explore the map page. Click on side panel, this copy may show up"
+  },
   "explore.map.page.side.panel.exceed.burden.answer.no": {
     "defaultMessage": "No",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged"
@@ -452,7 +844,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. This will display YES if the census tract is disadvantaged"
   },
   "explore.map.page.side.panel.geographicInfo.censusBlockGroup": {
-    "defaultMessage": "Census tract:",
+    "defaultMessage": "Number:",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract id number of the feature selected"
   },
   "explore.map.page.side.panel.geographicInfo.county": {
@@ -471,109 +863,157 @@
     "defaultMessage": "Territory:",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the territory of the feature selected"
   },
+  "explore.map.page.side.panel.geographicInfo.title": {
+    "defaultMessage": "Tract information",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract info title"
+  },
+  "explore.map.page.side.panel.indicator.abandon.mines": {
+    "defaultMessage": "Abandoned mine land",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines"
+  },
+  "explore.map.page.side.panel.indicator.adjacency": {
+    "defaultMessage": "Adjacency",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Adjancency"
+  },
   "explore.map.page.side.panel.indicator.asthma": {
     "defaultMessage": "Asthma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Asthma"
   },
+  "explore.map.page.side.panel.indicator.barrier.transport": {
+    "defaultMessage": "Transportation barriers",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show transportation barriers"
+  },
+  "explore.map.page.side.panel.indicator.description.abandon.mines": {
+    "defaultMessage": "Presence of one or more abandoned mine land within the tract",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned mine lands within the tract"
+  },
   "explore.map.page.side.panel.indicator.description.asthma": {
-    "defaultMessage": "Weighted percent of people who have been told they have asthma",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Number of people who have been told they have asthma"
+    "defaultMessage": "Share of people who have been told they have asthma",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people who have been told they have asthma"
+  },
+  "explore.map.page.side.panel.indicator.description.barrierTrans": {
+    "defaultMessage": "Average of relative cost and time spent on transportation",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Cost and time spent on transportation"
   },
   "explore.map.page.side.panel.indicator.description.diabetes": {
-    "defaultMessage": "Weighted percent of people ages 18 years and older who have diabetes other than diabetes during pregnancy",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of People ages 18 years and older who have diabetes other than \n      diabetes during pregnancy"
+    "defaultMessage": "Share of people ages 18 years and older who have diabetes other than diabetes during pregnancy",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people ages 18 years and older who have diabetes"
   },
   "explore.map.page.side.panel.indicator.description.dieselPartMatter": {
-    "defaultMessage": "Diesel exhaust in the air",
+    "defaultMessage": "Amount of diesel exhaust in the air",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Diesel exhaust in the air"
   },
-  "explore.map.page.side.panel.indicator.description.energyBurden": {
+  "explore.map.page.side.panel.indicator.description.energy.cost": {
     "defaultMessage": "Average annual energy costs divided by household income",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Energy costs divided by household income"
   },
   "explore.map.page.side.panel.indicator.description.exp.ag.loss": {
-    "defaultMessage": "Economic loss rate to agricultural value resulting from natural hazards each year",
+    "defaultMessage": "Economic loss to agricultural value resulting from natural hazards each year",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to agriculture resulting from natural hazards\n    "
   },
   "explore.map.page.side.panel.indicator.description.exp.bld.loss": {
-    "defaultMessage": "Economic loss rate to building value resulting from natural hazards each year",
+    "defaultMessage": "Economic loss to building value resulting from natural hazards each year",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards"
   },
   "explore.map.page.side.panel.indicator.description.exp.pop.loss": {
-    "defaultMessage": "Rate of fatalities and injuries resulting from natural hazards each year",
+    "defaultMessage": "Fatalities and injuries resulting from natural hazards each year",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
   },
+  "explore.map.page.side.panel.indicator.description.flooding": {
+    "defaultMessage": "Projected risk to properties from projected floods, from tides, rain, riverine and storm surges within 30 years",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of flooding risk"
+  },
+  "explore.map.page.side.panel.indicator.description.former.def.sites": {
+    "defaultMessage": "Presence of one or more Formerly Used Defense Site within the tract",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract"
+  },
   "explore.map.page.side.panel.indicator.description.heartDisease": {
-    "defaultMessage": "People ages 18 years and older who have been told they have heart disease",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
+    "defaultMessage": "Share of people ages 18 years and older who have been told they have heart disease",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people ages 18 years and older who have been told they have heart disease"
   },
   "explore.map.page.side.panel.indicator.description.high.ed": {
     "defaultMessage": "Percent of the census tract's population 15 or older not enrolled in college, university, or graduate school",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of the census tract's population 15 or older not \n      enrolled in college, university, or graduate school"
   },
   "explore.map.page.side.panel.indicator.description.high.school": {
-    "defaultMessage": "Percent of people ages 25 years or older whose education level is less than a high school diploma",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level \n      is less than a high school diploma"
+    "defaultMessage": "Percent of people ages 25 years or older whose high school education is less than a high school diploma",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older who did not graduate high school"
   },
-  "explore.map.page.side.panel.indicator.description.houseBurden": {
-    "defaultMessage": "Low income households spending more than 30% of income on housing",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing\n    "
+  "explore.map.page.side.panel.indicator.description.historic.underinvestment": {
+    "defaultMessage": "Census tracts with historically high barriers to accessing home loans",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Census tracts with historically high barriers to accessing home loans"
+  },
+  "explore.map.page.side.panel.indicator.description.house.cost": {
+    "defaultMessage": "Share of households making less than 80% of the area median family income and spending more than 30% of income on housing",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of households making less than 80% of the area median family income and spending more than 30% of income on housing"
+  },
+  "explore.map.page.side.panel.indicator.description.lack.green.space": {
+    "defaultMessage": "Amount of land, not including crop land, that is covered with artificial materials like concrete or pavement",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of non-crop land covered with artificial materials like concrete or pavement"
+  },
+  "explore.map.page.side.panel.indicator.description.lack.plumbing": {
+    "defaultMessage": "Share of homes without indoor kitchens or plumbing",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes without indoor kitchens or plumbing"
   },
   "explore.map.page.side.panel.indicator.description.leadPaint": {
-    "defaultMessage": "Percentile of number of homes built before 1960 that are not among the most expensive",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Pre-1960 housing"
+    "defaultMessage": "Share of homes that are likely to have lead paint",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes that are likely to have lead paint   \n    "
+  },
+  "explore.map.page.side.panel.indicator.description.leaky.tanks": {
+    "defaultMessage": "Formula of the density of leaking underground storage tanks and number of all active underground storage tanks within 1500 feet of the census tract boundaries",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of leaky storage tanks"
   },
   "explore.map.page.side.panel.indicator.description.lifeExpect": {
     "defaultMessage": "Average number of years a person can expect to live",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Average number of years of life a person can expect to live"
   },
   "explore.map.page.side.panel.indicator.description.ling.iso": {
-    "defaultMessage": "Percent of households where no one over the age 14 speaks English well",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Households in which no one age 14 and over speaks English only or also speaks a language other than English"
+    "defaultMessage": "A flag to inform imputation?",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator about adjacency"
   },
   "explore.map.page.side.panel.indicator.description.low.income": {
-    "defaultMessage": "Household income is less than or equal to twice the federal poverty level",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Household income is less than or equal to twice the federal poverty level"
+    "defaultMessage": "People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description ofPeople in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed"
   },
   "explore.map.page.side.panel.indicator.description.low.med.income": {
-    "defaultMessage": "Median income calculated as a percent of the area’s median income",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median income calculated as a percent of the area’s median income"
-  },
-  "explore.map.page.side.panel.indicator.description.med.home.val": {
-    "defaultMessage": "Median home value in area",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median home value in area"
+    "defaultMessage": "Comparison of median income in the tract to median incomes in the area",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Comparison of median income in the tract to median incomes in the area"
   },
   "explore.map.page.side.panel.indicator.description.pm25": {
-    "defaultMessage": "Fine inhalable particles, 2.5 micrometers or smaller",
+    "defaultMessage": "Level of inhalable particles, 2.5 micrometers or smaller",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Fine inhalable particles, 2.5 micrometers and smaller"
   },
   "explore.map.page.side.panel.indicator.description.poverty": {
-    "defaultMessage": "Percent of a census tract's population in households where the household income is at or below 100% of the Federal poverty level",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of individuals in households where the household income is at or below 100% of the federal poverty level"
+    "defaultMessage": "Share of people in households where income is at or below 100% of the Federal poverty level",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people in households where the income is at or below 100% of the Federal poverty level"
   },
   "explore.map.page.side.panel.indicator.description.prox.haz": {
     "defaultMessage": "Count of hazardous waste facilities within 5 kilometers",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of hazardous waste facilities within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.prox.npl": {
-    "defaultMessage": "Proposed or listed NPL (Superfund) sites within 5 kilometers",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Proposed or listed NPL (Superfund) sites within 5 kilometers"
+    "defaultMessage": "Count of proposed or listed Superfund (or National Priorities List (NPL)) sites within 5 kilometers",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.prox.rmp": {
-    "defaultMessage": "RMP facilities within 5 kilometers",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Risk Management Plan facilities within 5 kilometers"
+    "defaultMessage": "Count of Risk Management Plan (RMP) facilities within 5 kilometers",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of Risk Management Plan facilities within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.trafficVolume": {
     "defaultMessage": "Count of vehicles at major roads within 500 meters",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of vehicles at major roads within 500 meters"
   },
   "explore.map.page.side.panel.indicator.description.unemploy": {
-    "defaultMessage": "Number of unemployed people as a percentage of the labor force",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator description of Number of unemployed people as a percentage of the labor force"
+    "defaultMessage": "Number of unemployed people as a part of the labor force",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator description of Number of unemployed people as a part of the labor force"
   },
   "explore.map.page.side.panel.indicator.description.wasteWater": {
-    "defaultMessage": "Toxic concentrations at stream segments within 500 meters",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Toxic concentrations at stream segments within 500 meters"
+    "defaultMessage": "Modeled toxic concentrations at parts of streams within 500 meters",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Modeled toxic concentrations at parts of streams within 500 meters"
+  },
+  "explore.map.page.side.panel.indicator.description.wildfire": {
+    "defaultMessage": "Projected risk to properties from wildfire from fire fuels, weather, humans, and fire movement in 30 years",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of wildfire risk"
   },
   "explore.map.page.side.panel.indicator.diabetes": {
     "defaultMessage": "Diabetes",
@@ -584,20 +1024,28 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Diesel particulate matter exposure"
   },
   "explore.map.page.side.panel.indicator.energyBurden": {
-    "defaultMessage": "Energy burden",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Energy burden"
+    "defaultMessage": "Energy cost",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Energy cost"
   },
   "explore.map.page.side.panel.indicator.exp.ag.loss": {
     "defaultMessage": "Expected agriculture loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate"
   },
   "explore.map.page.side.panel.indicator.exp.bld.loss": {
     "defaultMessage": "Expected building loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate"
   },
   "explore.map.page.side.panel.indicator.exp.pop.loss": {
     "defaultMessage": "Expected population loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate"
+  },
+  "explore.map.page.side.panel.indicator.flooding": {
+    "defaultMessage": "Projected flood risk",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk"
+  },
+  "explore.map.page.side.panel.indicator.former.def.sites": {
+    "defaultMessage": "Formerly Used Defense Sites",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Formerly Used Defense Sites"
   },
   "explore.map.page.side.panel.indicator.heartDisease": {
     "defaultMessage": "Heart disease",
@@ -605,19 +1053,39 @@
   },
   "explore.map.page.side.panel.indicator.high.ed": {
     "defaultMessage": "Higher education non-enrollment",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate"
   },
   "explore.map.page.side.panel.indicator.high.school": {
-    "defaultMessage": "High school degree non-attainment",
+    "defaultMessage": "High school education",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school degree achievement rate"
   },
-  "explore.map.page.side.panel.indicator.houseBurden": {
-    "defaultMessage": "Housing cost burden",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden"
+  "explore.map.page.side.panel.indicator.historic.underinvest": {
+    "defaultMessage": "Historic underinvestment",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Historic underinvestment"
+  },
+  "explore.map.page.side.panel.indicator.house.cost": {
+    "defaultMessage": "Housing cost",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost"
+  },
+  "explore.map.page.side.panel.indicator.imp.flg": {
+    "defaultMessage": "Impute flag",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Impute flag"
+  },
+  "explore.map.page.side.panel.indicator.lack.green.space": {
+    "defaultMessage": "Lack of green space",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of green space"
+  },
+  "explore.map.page.side.panel.indicator.lack.plumbing": {
+    "defaultMessage": "Lack of indoor plumbing",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of indoor plumbing"
   },
   "explore.map.page.side.panel.indicator.leadPaint": {
     "defaultMessage": "Lead paint",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lead paint"
+  },
+  "explore.map.page.side.panel.indicator.leaky.tanks": {
+    "defaultMessage": "Underground storage tanks and releases",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Underground storage tanks and releases"
   },
   "explore.map.page.side.panel.indicator.lifeExpect": {
     "defaultMessage": "Low life expectancy",
@@ -630,6 +1098,14 @@
   "explore.map.page.side.panel.indicator.low.income": {
     "defaultMessage": "Low income",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show low income"
+  },
+  "explore.map.page.side.panel.indicator.low.income.tooltip.IMP_YES_POP_NOT_NULL": {
+    "defaultMessage": "Tracts with missing income data<br />are given estimated incomes<br />based on an average of the<br />incomes of the surrounding tracts.",
+    "description": "Hover over the low income icon and it will show Tracts with missing income data are given estimated incomes based on an average of the incomes of the surrounding tracts."
+  },
+  "explore.map.page.side.panel.indicator.low.income.tooltip.IMP_YES_POP_NULL": {
+    "defaultMessage": "Income is not estimated for<br /> tracts with unknown populations.",
+    "description": "Hover over the low income icon and it will show Income is not estimated for<br /> tracts with unknown populations."
   },
   "explore.map.page.side.panel.indicator.low.med.income": {
     "defaultMessage": "Low median income",
@@ -656,40 +1132,44 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Proximity to hazardous waste facilities"
   },
   "explore.map.page.side.panel.indicator.prox.npl": {
-    "defaultMessage": "Proximity to National Priorities List (NPL) sites",
+    "defaultMessage": "Proximity to Superfund sites",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Count of proposed or listed NPL "
   },
   "explore.map.page.side.panel.indicator.prox.rmp": {
-    "defaultMessage": "Proximity to Risk Management Plan (RMP) facilities",
+    "defaultMessage": "Proximity to Risk Management Plan facilities",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Count of proposed or listed RMP"
   },
   "explore.map.page.side.panel.indicator.title.clean.energy": {
-    "defaultMessage": "Clean energy and energy efficiency",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Clean, efficient energy title\n"
+    "defaultMessage": "Energy",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Energy title\n"
   },
   "explore.map.page.side.panel.indicator.title.clean.transport": {
-    "defaultMessage": "Clean transit",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Clean transportation title\n"
+    "defaultMessage": "Transportation",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Transportation title\n"
   },
   "explore.map.page.side.panel.indicator.title.clean.water": {
-    "defaultMessage": "Clean water and wastewater infrastructure",
-    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean water and waste title\n"
+    "defaultMessage": "Water and wastewater",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Water and wastewater title\n"
   },
   "explore.map.page.side.panel.indicator.title.climate": {
     "defaultMessage": "Climate change",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Climate change title\n"
   },
   "explore.map.page.side.panel.indicator.title.health.burden": {
-    "defaultMessage": "Health burdens",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Health burdens title\n"
+    "defaultMessage": "Health",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Healt title\n"
   },
   "explore.map.page.side.panel.indicator.title.legacy.pollution": {
     "defaultMessage": "Legacy pollution",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Legacy pollution title\n"
   },
   "explore.map.page.side.panel.indicator.title.sustain.house": {
-    "defaultMessage": "Sustainable housing",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Sustainable housing title\n"
+    "defaultMessage": "Housing",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing title\n"
+  },
+  "explore.map.page.side.panel.indicator.title.testing": {
+    "defaultMessage": "Testing",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Testing title\n"
   },
   "explore.map.page.side.panel.indicator.title.work.dev": {
     "defaultMessage": "Workforce development",
@@ -728,60 +1208,136 @@
     "description": "indicating percentile units"
   },
   "explore.map.page.side.panel.indicator.value.subtext.unavailable": {
-    "defaultMessage": "data is not available",
+    "defaultMessage": "missing data",
     "description": "subtext for indicator when data is N/A"
   },
   "explore.map.page.side.panel.indicator.value.unavailable.alt.text": {
     "defaultMessage": "an icon to represent data is unavailable",
-    "description": "image alt text for unavailable icon"
+    "description": "image alt text when low income is imputed"
   },
   "explore.map.page.side.panel.indicator.wasteWater": {
     "defaultMessage": "Wastewater discharge",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Wastewater discharge"
   },
-  "explore.map.page.side.panel.info.alt.text.icon1": {
-    "defaultMessage": "An icon that has depicts pieces of a block selected mimicking the census block census tracts",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first icon in this side panel"
+  "explore.map.page.side.panel.indicator.wildfire": {
+    "defaultMessage": "Projected wildfire risk",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk"
   },
-  "explore.map.page.side.panel.info.alt.text.icon2": {
+  "explore.map.page.side.panel.info.alt.text.icon.bell": {
     "defaultMessage": "An icon that a bell curve or gaussian distribution",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the second icon in this side panel"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution"
   },
-  "explore.map.page.side.panel.info.alt.text.icon3": {
+  "explore.map.page.side.panel.info.alt.text.icon.check": {
+    "defaultMessage": "An icon that depicts a check mark conveying yes and/or no",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that depicts a check mark conveying yes and/or no"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.dac.circle": {
+    "defaultMessage": "a blue circle icon informing the user of what a disadvantaged community is depicted as",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a blue circle icon informing the user of what a disadvantaged community is depicted as"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.file.up": {
+    "defaultMessage": "An icon shows a up arrow with a lower limit implying that it's above a threshold",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.locate": {
+    "defaultMessage": "a gps icon informing the user can locate",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a gps icon informing the user can locate"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.mouse": {
+    "defaultMessage": "a mouse arrow icon informing the user can use the mouse",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a mouse arrow icon informing the user can use the mouse"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.people": {
+    "defaultMessage": "a people icon informing the user of communities",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a tract icon informing the user of people"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.pie": {
     "defaultMessage": "An icon that depicts a part of pie chart being removed",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the third icon in this side panel"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that depicts a part of pie chart being removed"
   },
-  "explore.map.page.side.panel.info.alt.text.icon4": {
+  "explore.map.page.side.panel.info.alt.text.icon.plus": {
+    "defaultMessage": "a plus icon indicating that the user can zoom in *",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a plus icon indicating that the user can zoom in"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.search": {
+    "defaultMessage": "a magnifying glass icon informing the user can search",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a magnifying glass icon informing the user can search"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.tract": {
+    "defaultMessage": "a tract icon informing the user of census tracts",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a tract icon informing the user of census tracts"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.up.arrow": {
     "defaultMessage": "An icon that has an up arrow and a down arrow",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth icon in this side panel"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that has an up arrow and a down arrow"
   },
   "explore.map.page.side.panel.info.heading1": {
-    "defaultMessage": "Zoom in or search and select to see data about any census tract of interest",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel"
+    "defaultMessage": "How to use the map:",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the first heading of the non-selected side panel"
   },
-  "explore.map.page.side.panel.info.para1": {
-    "defaultMessage": "This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel"
+  "explore.map.page.side.panel.info.heading2": {
+    "defaultMessage": "Things to know:",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know:"
   },
-  "explore.map.page.side.panel.info.para2": {
-    "defaultMessage": "The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the map.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the second paragraph of this side panel"
+  "explore.map.page.side.panel.info.para.1": {
+    "defaultMessage": "Thresholds",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
   },
-  "explore.map.page.side.panel.info.para3": {
-    "defaultMessage": "The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criterion.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the third paragraph of this side panel"
+  "explore.map.page.side.panel.info.para.1.part.1": {
+    "defaultMessage": "Zoom in",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Zoom in"
   },
-  "explore.map.page.side.panel.info.para4": {
-    "defaultMessage": "Percentages are used for certain variables, i.e. those relating to high school achievement rate and to the share of individuals not currently enrolled in higher education.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth paragraph of this side panel"
+  "explore.map.page.side.panel.info.para.1.part.2": {
+    "defaultMessage": ", or locate yourself",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show or locate yourself"
   },
-  "explore.map.page.side.panel.info.para5": {
-    "defaultMessage": "Thresholds for each category determine if a tract should be identified as disadvantaged because it has exceeded a certain value for the relevant indicators.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane"
+  "explore.map.page.side.panel.info.para.1.part.4": {
+    "defaultMessage": "and select",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show and select"
   },
-  "explore.map.page.side.panel.info.title": {
-    "defaultMessage": "Things to know",
-    "description": "introductory text of ways to use the map"
+  "explore.map.page.side.panel.info.para.1.part.5": {
+    "defaultMessage": "to see information about any census tract.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show to see information about any census tract"
+  },
+  "explore.map.page.side.panel.info.para.2": {
+    "defaultMessage": ", or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
+  },
+  "explore.map.page.side.panel.info.para.2.part.1": {
+    "defaultMessage": "The tool uses census tracts",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool uses census tracts"
+  },
+  "explore.map.page.side.panel.info.para.2.part.2": {
+    "defaultMessage": "of between 1,200 - 8,000 people.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people."
+  },
+  "explore.map.page.side.panel.info.para.3": {
+    "defaultMessage": "or a simple yes/no",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
+  },
+  "explore.map.page.side.panel.info.para.3.part.1": {
+    "defaultMessage": "Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map."
+  },
+  "explore.map.page.side.panel.info.para.3.part.2": {
+    "defaultMessage": "on the map.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show on the map. This color is an opacity. This is so information about the map can be seen."
+  },
+  "explore.map.page.side.panel.info.para.4": {
+    "defaultMessage": ".",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
+  },
+  "explore.map.page.side.panel.info.para.4.part.1": {
+    "defaultMessage": "The tool ranks most of the burdens using percentiles",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool ranks most of the burdens using percentiles"
+  },
+  "explore.map.page.side.panel.info.para.4.part.2": {
+    "defaultMessage": ". Percentiles show how much burden each tract experiences when compared to other tracts.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show percentages"
+  },
+  "explore.map.page.side.panel.info.para.6": {
+    "defaultMessage": "on the map. These communities are also considered disadvantaged.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged."
   },
   "explore.map.page.side.panel.is.community.of.focus": {
     "defaultMessage": "Identified as disadvantaged?",
@@ -794,6 +1350,42 @@
   "explore.map.page.side.panel.num.categories.exceeded": {
     "defaultMessage": "in {numberOfDisCategories, plural, one {# category} other {# categories}}",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many categories are exceeded"
+  },
+  "explore.map.page.side.panel.partial.community.of.focus": {
+    "defaultMessage": "Partially",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is partially focused on"
+  },
+  "explore.map.page.side.panel.prio.copy.not.prio": {
+    "defaultMessage": "This tract is not considered disadvantaged. It does not meet any burden thresholds <bold>OR</bold> at least one associated socioeconomic threshold.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomic threshold."
+  },
+  "explore.map.page.side.panel.prio.copy.not.prio.n.burden": {
+    "defaultMessage": "This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds."
+  },
+  "explore.map.page.side.panel.prio.copy.not.prio.one.burden": {
+    "defaultMessage": "This tract is not considered disadvantaged. It meets 1 burden threshold <bold>BUT</bold> no associated socioeconomic thresholds.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold <bold>BUT</bold> no associated socioeconomic thresholds."
+  },
+  "explore.map.page.side.panel.prio.copy.not.prio.surr.li": {
+    "defaultMessage": "This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold. The adjustment does not apply to any of the categories.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold."
+  },
+  "explore.map.page.side.panel.prio.copy.par.prio.surr.no.li": {
+    "defaultMessage": "This tract is partially disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold. The adjustment does not apply to any of the categories.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold."
+  },
+  "explore.map.page.side.panel.prio.copy.prio.donut": {
+    "defaultMessage": "This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories."
+  },
+  "explore.map.page.side.panel.prio.copy.prio.frt.n.perc": {
+    "defaultMessage": "The lands of Federally Recognized Tribes that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged.",
+    "description": "Navigate to the explore the map page. Click on tract, The Federally Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged."
+  },
+  "explore.map.page.side.panel.prio.copy.prio.n.burden": {
+    "defaultMessage": "This tract is considered disadvantaged because it meets {burdens} burden threshold <bold>AND</bold> the associated socioeconomic threshold.",
+    "description": "Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds <bold>AND</bold> the associated socioeconomic threshold."
   },
   "explore.map.page.side.panel.send.feedback.alt.img": {
     "defaultMessage": "Send feedback",
@@ -811,6 +1403,10 @@
     "defaultMessage": "AND",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. Click on a category to expand. This is the AND spacer around thresholds."
   },
+  "explore.map.page.side.panel.tribalInfo.landAreaName": {
+    "defaultMessage": "Land Area Name:",
+    "description": "Navigate to the explore the map page. Click on Tribal Lands, when the map is in view, \n    click on the map. The side panel will show the land area name of the feature selected"
+  },
   "explore.map.page.side.panel.version.title": {
     "defaultMessage": "Methodology version {version}",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the methodology version number"
@@ -823,53 +1419,377 @@
     "defaultMessage": "<link1>Download the data sources</link1> used in the CEJST (.csv, .xlxs, .pdf that describes how to use the list, and a codebook, {downloadFileSize} unzipped). Last updated: {dateUpdated}.",
     "description": "\n      Navigate to the explore the map page. Under the map, you will see a link that is placed below the \n      map that will download the data packet\n    "
   },
-  "explore.map.page.under.map.how.you.can.help.heading": {
-    "defaultMessage": "How you can help improve the map",
-    "description": "Navigate to the explore the map page. Under the map, you will see how one can help us improve the map"
-  },
-  "explore.map.page.under.map.how.you.can.help.list.item.1": {
-    "defaultMessage": "View the <link1>Methodology & data</link1> page and send feedback.",
-    "description": "\n      Navigate to the explore the map page. Under the map, you will see give us feedback on our data and methodology\n    "
-  },
-  "explore.map.page.under.map.how.you.can.help.list.item.2": {
-    "defaultMessage": "Use the map to find communities and <link1>share your feedback</link1>.",
-    "description": "Navigate to the explore the map page. Under the map, you will see share your feedback"
-  },
-  "explore.map.page.under.map.how.you.can.help.list.item.3": {
-    "defaultMessage": "The Request for Information on the Federal Register is now closed.",
-    "description": "Navigate to the explore the map page. Under the map, you will see RFI is expired"
-  },
   "explore.map.page.under.map.note.on.territories.intro": {
-    "defaultMessage": "A note on the U.S. territories",
+    "defaultMessage": "U.S. territories note",
     "description": "Navigate to the explore the map page. Under the map, you will see territories intro text"
   },
+  "explore.map.page.under.map.note.on.territories.para.0": {
+    "defaultMessage": "Not all the data used in the tool are available or used for all U.S. territories.",
+    "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 0"
+  },
   "explore.map.page.under.map.note.on.territories.para.1": {
-    "defaultMessage": "The data sources described on the <link1>Methodology & data</link1> page are used to identify disadvantaged communities in all fifty states and the District of Columbia. However, not all of these data sources are currently available for the U.S. territories.",
+    "defaultMessage": "<bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: low income, projected flood risk, energy cost, lack of indoor plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, underground storage tanks and releases, wastewater discharge, low median income, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 1"
   },
   "explore.map.page.under.map.note.on.territories.para.2": {
-    "defaultMessage": "For Puerto Rico, the Census Bureau’s American Community Survey data from 2015-2019 are used for higher ed enrollment rate and all the other fields in the Training and Workforce Development category to identify disadvantaged communities. Data in the other categories are unavailable at this time.",
+    "defaultMessage": "<bold>American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands:</bold> For these U.S. territories, the tool uses the following data: unemployment, poverty, low median income, and high school education. These burdens are in the workforce development category.",
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 2"
-  },
-  "explore.map.page.under.map.note.on.territories.para.3": {
-    "defaultMessage": "For American Samoa and the Northern Mariana Islands, the data used to identify disadvantaged communities are from the 2010 Decennial Census, the last reported data from the U.S. Census Bureau. Available data for these territories includes unemployment, poverty, low median income, and high school degree achievement rate fields in the Training and Workforce Development category.",
-    "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 3"
-  },
-  "explore.map.page.under.map.note.on.territories.para.4": {
-    "defaultMessage": "Work is currently underway to identify disadvantaged communities and update the map accordingly for Guam and the U.S. Virgin Islands.",
-    "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 4"
   },
   "explore.map.page.under.map.note.on.tribal.nations.intro": {
     "defaultMessage": "A note on Tribal Nations",
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations intro text"
   },
   "explore.map.page.under.map.note.on.tribal.nations.para.1": {
-    "defaultMessage": "The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the map to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2> Action Plan for Consultation and Coordination with Tribal Nations</link2>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and Executive Order 13175 on <link4>Consultation and Coordination With Indian Tribal Governments</link4>.",
+    "defaultMessage": "To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized Tribes are designated as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than a census tract. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.",
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1"
+  },
+  "explore.map.page.under.map.note.on.tribal.nations.para.2": {
+    "defaultMessage": "This decision was made after meaningful and robust consultation with Tribal Nations. This is consistent with CEQ’s <link1>Action Plan</link1> for Consultation and Coordination with Tribal Nations, President Biden’s <link3>Memorandum</link3> on Tribal Consultation and Strengthening Nation-to-Nation Consultation, and <link2>Executive Order 13175</link2> on Consultation and Coordination With Indian Tribal Governments.",
+    "description": "Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 2"
   },
   "fab.survey.text": {
     "defaultMessage": "Help improve the site & data",
     "description": "Navigate to the public engagement page, this will be the text for floating action button"
+  },
+  "faqs.page.Q1": {
+    "defaultMessage": "Q: What is the Climate and Economic Justice Screening Tool (CEJST)?",
+    "description": "Navigate to the FAQs page, this will be Q1"
+  },
+  "faqs.page.Q10": {
+    "defaultMessage": "Q: How will this tool be used to inform decisions relating to new investments made through the Bipartisan Infrastructure Law and the Inflation Reduction Act?",
+    "description": "Navigate to the FAQs page, this will be Q10"
+  },
+  "faqs.page.Q11": {
+    "defaultMessage": "Q: Will agencies use the Climate and Economic Justice Screening Tool (CEJST) if they have already created their own tools or criteria to identify disadvantaged communities?",
+    "description": "Navigate to the FAQs page, this will be Q11"
+  },
+  "faqs.page.Q12": {
+    "defaultMessage": "Q: How is the Climate and Economic Justice Screening Tool (CEJST) different from other Federal environmental screening tools, such as EJScreen?",
+    "description": "Navigate to the FAQs page, this will be Q12"
+  },
+  "faqs.page.Q13": {
+    "defaultMessage": "Q: How is this tool different from state screening tools?",
+    "description": "Navigate to the FAQs page, this will be Q13"
+  },
+  "faqs.page.Q14": {
+    "defaultMessage": "Q: How were the White House Environmental Justice Advisory Council (WHEJAC) recommendations used for this tool?",
+    "description": "Navigate to the FAQs page, this will be Q14"
+  },
+  "faqs.page.Q15": {
+    "defaultMessage": "Q: Can the public provide feedback on this tool?",
+    "description": "Navigate to the FAQs page, this will be Q15"
+  },
+  "faqs.page.Q17": {
+    "defaultMessage": "Q: When did the official version of the tool come out?",
+    "description": "Navigate to the FAQs page, this will be Q17"
+  },
+  "faqs.page.Q18": {
+    "defaultMessage": "Q. How does the Council on Environmental Quality (CEQ) keep people informed about the tool?",
+    "description": "Navigate to the FAQs page, this will be Q18"
+  },
+  "faqs.page.Q19": {
+    "defaultMessage": "Q: What files and documentation are available from the tool?",
+    "description": "Navigate to the FAQs page, this will be Q19"
+  },
+  "faqs.page.Q2": {
+    "defaultMessage": "Q: How does the tool identify and define communities?",
+    "description": "Navigate to the FAQs page, this will be Q2"
+  },
+  "faqs.page.Q20": {
+    "defaultMessage": "Q: How does the tool’s shapefile work?",
+    "description": "Navigate to the FAQs page, this will be Q20"
+  },
+  "faqs.page.Q3": {
+    "defaultMessage": "Q: Is race included in the tool’s methodology?",
+    "description": "Navigate to the FAQs page, this will be Q3"
+  },
+  "faqs.page.Q4": {
+    "defaultMessage": "Q: Does the Climate and Economic Justice Screening Tool (CEJST) include the U.S. territories?",
+    "description": "Navigate to the FAQs page, this will be Q4"
+  },
+  "faqs.page.Q5": {
+    "defaultMessage": "Q: Does the tool include Tribal Nations?",
+    "description": "Navigate to the FAQs page, this will be Q5"
+  },
+  "faqs.page.Q6": {
+    "defaultMessage": "Q: Why do some areas of the map have different shades?",
+    "description": "Navigate to the FAQs page, this will be Q6"
+  },
+  "faqs.page.Q7": {
+    "defaultMessage": "Q: Why does the tool have “partially disadvantaged” census tracts?",
+    "description": "Navigate to the FAQs page, this will be Q7"
+  },
+  "faqs.page.Q8": {
+    "defaultMessage": "Q: How does this tool relate to the Justice40 Initiative?",
+    "description": "Navigate to the FAQs page, this will be Q8"
+  },
+  "faqs.page.Q9": {
+    "defaultMessage": "Q: How will Federal agencies use the Climate and Economic Justice Screening Tool (CEJST) for the Justice40 Initiative?",
+    "description": "Navigate to the FAQs page, this will be Q9"
+  },
+  "faqs.page.answers.Q10": {
+    "defaultMessage": "Recent historic legislation, such as the Bipartisan Infrastructure Law and the Inflation Reduction Act, have created new programs or directed funds to existing programs. These investments are included in the Justice40 Initiative if they meet the eligibility criteria. Agencies will use the tool to help identify disadvantaged communities that will receive 40% of the overall benefits of those Justice40 programs.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q10"
+  },
+  "faqs.page.answers.Q11": {
+    "defaultMessage": "The Council on Environmental Quality (CEQ), the Office of Management and Budget (OMB), and the Climate Policy Office (CPO) released the Justice40 Interim Implementation Guidance on July 20, 2021. It directed agencies to develop interim definitions of disadvantaged communities. Agencies used their interim definitions during the tool’s beta phase. Agencies will now transition to using version 1.0 of the tool to geographically identify disadvantaged communities.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q11"
+  },
+  "faqs.page.answers.Q12_P1": {
+    "defaultMessage": "The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information and combines that information together into indices. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze for environmental and EJ issues. For example, EPA uses <link1> EJScreen </link1> to:",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1"
+  },
+  "faqs.page.answers.Q12_P1_1": {
+    "defaultMessage": "Inform outreach and engagement practices",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1_1"
+  },
+  "faqs.page.answers.Q12_P1_2": {
+    "defaultMessage": "Implement aspects of the following programs:",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1_2"
+  },
+  "faqs.page.answers.Q12_P1_2_1": {
+    "defaultMessage": "Permitting programs",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1_2_1"
+  },
+  "faqs.page.answers.Q12_P1_2_2": {
+    "defaultMessage": "Enforcement programs",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1_2_2"
+  },
+  "faqs.page.answers.Q12_P1_2_3": {
+    "defaultMessage": "Compliance programs",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1_2_3"
+  },
+  "faqs.page.answers.Q12_P1_2_4": {
+    "defaultMessage": "Voluntary programs",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1_2_4"
+  },
+  "faqs.page.answers.Q12_P1_3": {
+    "defaultMessage": "Develop retrospective reports of EPA work",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1_3"
+  },
+  "faqs.page.answers.Q12_P1_4": {
+    "defaultMessage": "Enhance geographically based initiatives",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P1_4"
+  },
+  "faqs.page.answers.Q12_P2": {
+    "defaultMessage": "However, EPA does not use EJScreen to identify or label an area as an \"EJ community\" or as the sole basis for agency-decision-making.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P2"
+  },
+  "faqs.page.answers.Q12_P3": {
+    "defaultMessage": "In contrast, the CEJST will help Federal agencies to identify disadvantaged communities that will benefit from programs included in the Justice40 Initiative.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P3"
+  },
+  "faqs.page.answers.Q12_P4": {
+    "defaultMessage": "<link1>This chart</link1> is helpful for understanding how the CEJST differs from some of the other Federal environmental screening tools.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q12_P4"
+  },
+  "faqs.page.answers.Q13_P1": {
+    "defaultMessage": "Several states that have environmental justice screening tools. CalEnviroScreen is an environmental justice screening tool for California. Other states, like New York and Michigan have screening tools as well. The Climate and Economic Justice Screening Tool (CEJST) incorporates lessons learned from these efforts.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q13_P1"
+  },
+  "faqs.page.answers.Q13_P2": {
+    "defaultMessage": "There is an important difference between state-based tools and the CEJST. State tools use data that may not be available for other states. The CEJST only uses data that are nationally-consistent and publicly-available.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q13_P2"
+  },
+  "faqs.page.answers.Q14": {
+    "defaultMessage": "The WHEJAC provided recommendations on the Climate and Economic Justice Screening Tool (CEJST). The CEJST follows many of these recommendations.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q14"
+  },
+  "faqs.page.answers.Q15_P1": {
+    "defaultMessage": "Yes. The CEJST website has multiple ways to offer feedback on the tool.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q15_P1"
+  },
+  "faqs.page.answers.Q15_P1_1": {
+    "defaultMessage": "The public can find census tracts that they are familiar with and send feedback about those tracts. That feedback is used to “ground truth” the tool. This helps the tool to better reflect the realities for communities.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q15_P1_1"
+  },
+  "faqs.page.answers.Q15_P1_2": {
+    "defaultMessage": "The public can also submit <link1>data sources</link1> or ideas for consideration.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q15_P1_2"
+  },
+  "faqs.page.answers.Q15_P1_3": {
+    "defaultMessage": "The public may also take a <link1>short survey</link1> to help improve the experience of using the tool.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q15_P1_3"
+  },
+  "faqs.page.answers.Q15_P1_4": {
+    "defaultMessage": "The public can also email {general_email_address}",
+    "description": "Navigate to the FAQs page, this will be an answer, Q15_P1_4"
+  },
+  "faqs.page.answers.Q16": {
+    "defaultMessage": "Yes. CEQ plans to issue a Request for Information (RFI) about version 1.0 of the CEJST in 2023. The feedback received in that RFI will inform version 2.0 of the tool.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q16"
+  },
+  "faqs.page.answers.Q17_P1": {
+    "defaultMessage": "The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in November, 2022. The tool is no longer in beta.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q17_P1"
+  },
+  "faqs.page.answers.Q17_P2": {
+    "defaultMessage": "The tool will be improved over time. The Council on Environmental Quality (CEQ) will update the tool each year based on public feedback, research, and the availability of new data.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q17_P2"
+  },
+  "faqs.page.answers.Q18": {
+    "defaultMessage": "<link1>Sign-up</link1> to receive updates on the Climate and Economic Justice Screening Tool (CEJST) and other environmental justice news from CEQ.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q18"
+  },
+  "faqs.page.answers.Q19": {
+    "defaultMessage": "The Climate and Economic Justice Screening Tool (CEJST) has <link1>downloads</link1> available. Spreadsheets (.xlxs) and (.csv) contain the tool’s definitions and data. This data can be used for analysis. Shapefiles and geojson files can be uploaded into other mapping programs such as Esri. The downloads include information on how to use the files.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q19"
+  },
+  "faqs.page.answers.Q1_P1": {
+    "defaultMessage": "The CEJST is a critical component of the Biden-Harris Administration’s historic commitment to advancing environmental justice. In <link1>Executive Order 14008</link1> on Tackling the Climate Crisis at Home and Abroad, President Biden directed the White House Council on Environmental Quality (CEQ) to develop a geospatial mapping tool to identify disadvantaged communities that face burdens. The tool has an interactive map and uses datasets that are indicators of burdens.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q1_P1"
+  },
+  "faqs.page.answers.Q1_P2": {
+    "defaultMessage": "Federal agencies will use the tool for the Justice40 Initiative. It will help them identify disadvantaged communities that should receive 40% of the overall benefits of programs included in the Justice40 Initiative. The Justice40 Initiative seeks to deliver 40% of the overall benefits in climate, clean energy, and other related areas to disadvantaged communities.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q1_P2"
+  },
+  "faqs.page.answers.Q1_P3": {
+    "defaultMessage": "Other useful links for Federal agencies:",
+    "description": "Navigate to the FAQs page, this will be an answer, Q1_P3"
+  },
+  "faqs.page.answers.Q1_P3_1": {
+    "defaultMessage": "Addendum to the Justice40 Interim Guidance",
+    "description": "Navigate to the FAQs page, this will be an answer, Q1_P3_1"
+  },
+  "faqs.page.answers.Q1_P3_2": {
+    "defaultMessage": "Instructions to Federal Agencies on Using the CEJST",
+    "description": "Navigate to the FAQs page, this will be an answer, Q1_P3_2"
+  },
+  "faqs.page.answers.Q1_P4": {
+    "defaultMessage": "The public can find communities of interest and provide feedback. This feedback will be used to improve the tool.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q1_P4"
+  },
+  "faqs.page.answers.Q20_P1": {
+    "defaultMessage": "The tool’s shapefile can be uploaded into other mapping programs such as Esri.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q20_P1"
+  },
+  "faqs.page.answers.Q20_P2": {
+    "defaultMessage": "The <link1>shapefile</link1> format is <link2>a geospatial vector data format</link2> for geographic information system (GIS) software. It can be loaded into any software that works with Esri, ArcGIS or any other compatible GIS software. You may choose to download the data in this format so that you can load the data from the Climate and Economic Justice Screening Tool (CEJST) into other tools and use those tools to combine the CEJST data with other datasets and sources.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q20_P2"
+  },
+  "faqs.page.answers.Q2_P1": {
+    "defaultMessage": "<link1>Executive Order 14008</link1> recognizes that some communities are disadvantaged because they face burdens. The CEJST uses datasets that are indicators of burden. These burdens are related to climate change and the environment. They are also related to health and lack of economic opportunity.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q2_P1"
+  },
+  "faqs.page.answers.Q2_P2": {
+    "defaultMessage": "The tool highlights disadvantaged communities across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:",
+    "description": "Navigate to the FAQs page, this will be an answer, Q2_P2"
+  },
+  "faqs.page.answers.Q2_P2_1": {
+    "defaultMessage": "If they are in a census tract that meets the thresholds for at least one of the tool’s categories of burden, or",
+    "description": "Navigate to the FAQs page, this will be an answer, Q2_P2_1"
+  },
+  "faqs.page.answers.Q2_P2_2": {
+    "defaultMessage": "If they are on land within the boundaries of Federally Recognized Tribes",
+    "description": "Navigate to the FAQs page, this will be an answer, Q2_P2_2"
+  },
+  "faqs.page.answers.Q2_P3": {
+    "defaultMessage": "Not all disadvantaged communities can be shown on the map. Some communities do not live in just one place. The Interim Implementation Guidance on the Justice40 Initiative also directs Federal agencies to consider geographically dispersed communities when implementing programs included in the Justice40 Initiative.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q2_P3"
+  },
+  "faqs.page.answers.Q2_P4": {
+    "defaultMessage": "The tool uses census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q2_P4"
+  },
+  "faqs.page.answers.Q3_P1": {
+    "defaultMessage": "No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool displays data about race and age only to provide information when a census tract is selected.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q3_P1"
+  },
+  "faqs.page.answers.Q3_P2": {
+    "defaultMessage": "It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q3_P2"
+  },
+  "faqs.page.answers.Q3_P3": {
+    "defaultMessage": "Although the CEJST does not use race in its methodology, the tool creates a map that seeks to reflect the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q3_P3"
+  },
+  "faqs.page.answers.Q4_P1": {
+    "defaultMessage": "Yes, the version 1.0 of the CEJST has some data for all the territories but not all the CEJST data are available or used for all U.S. territories.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q4_P1"
+  },
+  "faqs.page.answers.Q4_P2": {
+    "defaultMessage": "<boldtag>Puerto Rico:</boldtag> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, underground storage tanks and releases, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q4_P2"
+  },
+  "faqs.page.answers.Q4_P3": {
+    "defaultMessage": "<boldtag>American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands:</boldtag> For these U.S. territories, the tool uses the following data: unemployment, poverty, low median income, and high school education. These burdens are in the workforce development category.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q4_P3"
+  },
+  "faqs.page.answers.Q5_P1": {
+    "defaultMessage": "To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized tribes are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q5_P1"
+  },
+  "faqs.page.answers.Q5_P2": {
+    "defaultMessage": "Federally Recognized Tribes are those that are recognized by the U.S. Bureau of Indian Affairs in the <link1>annual notice</link1> it publishes in the Federal Register:",
+    "description": "Navigate to the FAQs page, this will be an answer, Q5_P2"
+  },
+  "faqs.page.answers.Q5_P2_1": {
+    "defaultMessage": "This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q5_P2_1"
+  },
+  "faqs.page.answers.Q6_P1": {
+    "defaultMessage": "Some census tracts that contain land within the boundaries of Federally Recognized Tribes are also considered disadvantaged because they meet the burden thresholds for at least one of the categories on the tool. When this happens, the areas appear darker on the tool’s map.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q6_P1"
+  },
+  "faqs.page.answers.Q6_P2": {
+    "defaultMessage": ": Disadvantaged census tracts (meets threshold methodology OR contains lands of Tribes)",
+    "description": "Navigate to the FAQs page, this will be an answer, Q6_P2"
+  },
+  "faqs.page.answers.Q6_P3": {
+    "defaultMessage": ": Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes (meets threshold methodology AND contains lands of Tribes)",
+    "description": "Navigate to the FAQs page, this will be an answer, Q6_P3"
+  },
+  "faqs.page.answers.Q6_P4": {
+    "defaultMessage": "Any area that is highlighted is considered disadvantaged, regardless of whether it is a light shade or dark shade. The tool will show if a whole census tract is considered disadvantaged or just the parts that are within the boundaries of Federally Recognized Tribes.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q6_P4"
+  },
+  "faqs.page.answers.Q7": {
+    "defaultMessage": "A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains land within the boundaries of Federally Recognized Tribes, then the parts of the tract that contain the land of Tribes are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”",
+    "description": "Navigate to the FAQs page, this will be an answer, Q7"
+  },
+  "faqs.page.answers.Q8_P1": {
+    "defaultMessage": "The Biden administration is advancing environmental justice across the whole-of-government. The Justice40 Initiative is a critical part of this effort. The Justice40 Initiative seeks to deliver 40% of the overall benefits of climate, clean energy, and related investments to disadvantaged communities.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q8_P1"
+  },
+  "faqs.page.answers.Q8_P2": {
+    "defaultMessage": "The CEJST will play an important role in the Justice40 Initiative. It will help to provide a single, consistent definition of disadvantaged communities for programs included in the Justice40 Initiative.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q8_P2"
+  },
+  "faqs.page.answers.Q9_P1": {
+    "defaultMessage": "Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in the Justice40 Initiative. The Justice40 Initiative seeks to deliver 40% of the overall benefits of certain investments to disadvantaged communities.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P1"
+  },
+  "faqs.page.answers.Q9_P2": {
+    "defaultMessage": "Federal agencies will use this definition to direct Justice40 investment benefits in the following areas:",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P2"
+  },
+  "faqs.page.answers.Q9_P2_1": {
+    "defaultMessage": "Climate",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P2_1"
+  },
+  "faqs.page.answers.Q9_P2_2": {
+    "defaultMessage": "Clean energy and energy efficiency",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P2_2"
+  },
+  "faqs.page.answers.Q9_P2_3": {
+    "defaultMessage": "Clean transit",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P2_3"
+  },
+  "faqs.page.answers.Q9_P2_4": {
+    "defaultMessage": "Affordable and sustainable housing",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P2_4"
+  },
+  "faqs.page.answers.Q9_P2_5": {
+    "defaultMessage": "Training and workforce development",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P2_5"
+  },
+  "faqs.page.answers.Q9_P2_6": {
+    "defaultMessage": "Remediation and reduction of legacy pollution",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P2_6"
+  },
+  "faqs.page.answers.Q9_P2_7": {
+    "defaultMessage": "Development of clean water and wastewater infrastructure",
+    "description": "Navigate to the FAQs page, this will be an answer, Q9_P2_7"
   },
   "faqs.page.coming.soon.text": {
     "defaultMessage": "Coming Soon!",
@@ -880,151 +1800,243 @@
     "description": "Navigate to the FAQs page, this will be the page title text"
   },
   "indicator.categories.afford.house.title": {
-    "defaultMessage": "Affordable and sustainable housing",
+    "defaultMessage": "Housing",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.clean.energy.title": {
-    "defaultMessage": "Clean energy and energy efficiency",
+    "defaultMessage": "Energy",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.clean.transport.title": {
-    "defaultMessage": "Clean transit",
+    "defaultMessage": "Transportation",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.clean.water.title": {
-    "defaultMessage": "Critical clean water and wastewater infrastructure",
+    "defaultMessage": "Water and wastewater",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.health.burdens.title": {
-    "defaultMessage": "Health burdens",
+    "defaultMessage": "Health",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.legacy.pollution.title": {
-    "defaultMessage": "Reduction and remediation of legacy pollution",
+    "defaultMessage": "Legacy pollution",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.work.dev.title": {
-    "defaultMessage": "Training and workforce development",
+    "defaultMessage": "Workforce development",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "map.territoryFocus.focusOn": {
     "defaultMessage": "Focus on {territory}",
     "description": "Focus on the bounds of a specific territory"
   },
-  "methodology.page.categories.title": {
-    "defaultMessage": "Communities are identified as disadvantaged by the current version of the tool for the purposes of the Justice40 Initiative if they are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria below.",
-    "description": "Navigate to the methodology page. This is the methodology page explanation of the categories"
+  "methodology.page.cat.res.part.BIA": {
+    "defaultMessage": "Bureau of Indian Affairs (BIA)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.CDC": {
+    "defaultMessage": "Centers for Disease Control and Prevention (CDC)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.CENSUS": {
+    "defaultMessage": "U.S. Census",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.DOE": {
+    "defaultMessage": "Department of Energy (DOE)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.DOI": {
+    "defaultMessage": "Department of the Interior (DOI)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.DOT": {
+    "defaultMessage": "Department of Transportation (DOT)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.EPA": {
+    "defaultMessage": "Environmental Protection Agency (EPA)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.EPA_OAR": {
+    "defaultMessage": "Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.FEMA": {
+    "defaultMessage": "Federal Emergency Management Agency (FEMA)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.FIRST": {
+    "defaultMessage": "First Street Foundation",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.GREEN_SPACE": {
+    "defaultMessage": "Data from <link1>Multi-Resolution Land Characteristics</link1> (MRLC) consortium; data analysis provided by <link2>The Trust for Public Lands</link2> and <link3>American Forests</link3>",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.HUD": {
+    "defaultMessage": "Department of Housing and Urban Development (HUD)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.NCRC": {
+    "defaultMessage": "National Community Reinvestment Coalition (NCRC)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.USACE": {
+    "defaultMessage": "U.S. Army Corps of Engineers",
+    "description": "responsible party text"
   },
   "methodology.page.category.and.clause.hs.ed.higher.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> 10% or more of adults 25 or older have not attained a <link1>high school degree</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>",
+    "defaultMessage": "<boldtag>AND</boldtag> fewer than 10% of people ages 25 or older have a <link1>high school education</link1> (i.e. graduated with a high school degree)",
     "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
   },
-  "methodology.page.category.and.clause.low.inc.hs.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> is at or above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>",
-    "description": "Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate"
+  "methodology.page.category.and.clause.low.inc": {
+    "defaultMessage": "<boldtag>AND</boldtag> are at or above the 65th percentile for <link1>low income</link1>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income"
   },
   "methodology.page.category.asthma.description.text": {
-    "defaultMessage": "Weighted percent of people who answer “yes” to both of the following questions: “Have you ever been told by a doctor, nurse, or other health professional that you have asthma?” and “Do you still have asthma?”",
+    "defaultMessage": "Share of people who answer “yes” to both of these questions: “Have you ever been told by a health professional that you have asthma?” and “Do you still have asthma?”.",
     "description": "Navigate to the Methodology page. This is the description text for asthma"
   },
   "methodology.page.category.card.title": {
-    "defaultMessage": "Communities are <boldtag>identified as disadvantaged</boldtag>",
+    "defaultMessage": "Communities are <boldtag>identified as disadvantaged</boldtag> if they are in census tracts that:",
     "description": "Navigate to the methodology page. Navigate to the category section. This is category heading"
   },
   "methodology.page.category.diabetes.description.text": {
-    "defaultMessage": "Weighted percent of people ages 18 years and older who report having ever been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy.",
+    "defaultMessage": "Share of people ages 18 years and older who have been told by a health professional that they have diabetes other than diabetes during pregnancy.",
     "description": "Navigate to the Methodology page. This is the description text for diabetes"
   },
   "methodology.page.category.diesel.pm.description.text": {
-    "defaultMessage": "Mixture of particles that is part of diesel exhaust in the air. The value in the fields is the weight of these particles in micrograms per cubic meter.",
+    "defaultMessage": "Mixture of particles in diesel exhaust in the air, measured as micrograms per cubic meter.",
     "description": "Navigate to the Methodology page. This is the description text for diesel pm"
   },
   "methodology.page.category.energy.burden.description.text": {
-    "defaultMessage": "Average annual energy cost per household ($) divided by average household income.",
+    "defaultMessage": "Average household annual energy cost in dollars divided by the average household income.",
     "description": "Navigate to the Methodology page. This is the description text for energy burden"
   },
   "methodology.page.category.exp.agr.loss.rate.description.text": {
-    "defaultMessage": "Percent of agricultural value at risk from losses due to fourteen types of natural hazards that have some link to climate change: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agricultural value at risk in a census tract by the total agricultural value in that census tract.",
+    "defaultMessage": "Expected agricultural value at risk from losses due to fourteen types of natural hazards. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. The rate is calculated by dividing the agricultural value at risk by the total agricultural value.",
     "description": "Navigate to the Methodology page. This is the description text for exp agr loss rate"
   },
   "methodology.page.category.exp.bld.loss.rate.description.text": {
-    "defaultMessage": "Percent of building value at risk from losses due to fourteen types of natural hazards that have some link to climate change: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in a census tract by the total building value in that census tract.",
+    "defaultMessage": "Expected building value at risk from losses due to fourteen types of natural hazards. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. The rate is calculated by dividing the building value at risk by the total building value.",
     "description": "Navigate to the Methodology page. This is the description text for exp bld loss rate"
   },
   "methodology.page.category.exp.pop.loss.rate.description.text": {
-    "defaultMessage": "Rate relative to the population of fatalities and injuries due to fourteen types of natural hazards each year that have some link to climate change: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined as the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To combine fatalities and injuries for the computation of population loss value, an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries and fatalities are counted as population loss. This total number of injuries and fatalities is then divided by the population in the census tract to get a per-capita rate of population risk.",
+    "defaultMessage": "Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the population loss rate.",
     "description": "Navigate to the Methodology page. This is the description text for exp pop loss rate"
   },
+  "methodology.page.category.exp.pop.loss.rate.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>this burden only applies for census tracts with populations greater than 20 people.",
+    "description": "Navigate to the Methodology page. This is the note text for low life expectancy"
+  },
+  "methodology.page.category.flood.risk.rate.description.text": {
+    "defaultMessage": "A high precision, climate-adjusted model that projects flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not consider property value.",
+    "description": "Navigate to the Methodology page. This is the description text for exp bld loss rate"
+  },
+  "methodology.page.category.fuds.description.text": {
+    "defaultMessage": "Properties that were owned, leased, or possessed by the United States, under the jurisdiction of the Secretary of Defense prior to October 1986.",
+    "description": "Navigate to the Methodology page. This is the description text for Formerly Used Defense Sites"
+  },
+  "methodology.page.category.green.space.description.text": {
+    "defaultMessage": "Share of land with developed surfaces covered with artificial materials like concrete or pavement, excluding crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.",
+    "description": "Navigate to the Methodology page. This is the description text for housing burden"
+  },
   "methodology.page.category.heart.disease.description.text": {
-    "defaultMessage": "Weighted percent of people ages 18 years and older who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease.",
+    "defaultMessage": "Share of people ages 18 years and older who have been told by a health professional that they had angina or coronary heart disease.",
     "description": "Navigate to the Methodology page. This is the description text for heart disease"
   },
-  "methodology.page.category.high.ed.enroll.rate.description.text": {
-    "defaultMessage": "Percent of people 15 or older who are not currently enrolled in college, university, or graduate school.",
-    "description": "Navigate to the Methodology page. This is the description text for high ed enrollment"
-  },
   "methodology.page.category.highschool.description.text": {
-    "defaultMessage": "Percent of people age 25 years or older in a census tract whose education level is less than a high school diploma.",
+    "defaultMessage": "Share of people aged 25 years or older who didn’t graduate from high school.",
     "description": "Navigate to the Methodology page. This is the description text for high school"
   },
   "methodology.page.category.house.burden.description.text": {
-    "defaultMessage": "Percent of households in a census tract that are both earning less than 80% of HUD Area Median Family Income by county and are spending more than 30% of their income on housing costs.",
+    "defaultMessage": "Share of households that are both earning less than 80% of Housing and Urban Development’s Area Median Family Income and are spending more than 30% of their income on housing costs.",
+    "description": "Navigate to the Methodology page. This is the description text for housing burden"
+  },
+  "methodology.page.category.indoor.plumb.description.text": {
+    "defaultMessage": "Housing without indoor kitchen facilities or complete plumbing facilities.",
     "description": "Navigate to the Methodology page. This is the description text for housing burden"
   },
   "methodology.page.category.lead.paint.description.text": {
-    "defaultMessage": "Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in census tracts with median home values less than the 90th percentile.",
+    "defaultMessage": "Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) that are less likely to face health risks from lead paint exposure are not included.",
     "description": "Navigate to the Methodology page. This is the description text for lead paint"
   },
+  "methodology.page.category.leaky.uwt.description.text": {
+    "defaultMessage": "Weighted formula of the density of leaking underground storage tanks and the number of all active underground storage tanks within 1,500 feet of the census tract boundaries.",
+    "description": "Navigate to the Methodology page. This is the description text for Underground storage tanks and releases"
+  },
   "methodology.page.category.linguistic.iso.description.text": {
-    "defaultMessage": "Percent of households where no one over the age 14 speaks English well.",
+    "defaultMessage": "Share of households where no one over age 14 speaks English very well.",
     "description": "Navigate to the Methodology page. This is the description text for linguistic isolation"
   },
+  "methodology.page.category.linguistic.iso.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>Linguistic isolation was removed for Puerto Rico based on feedback during the beta period.",
+    "description": "Navigate to the Methodology page. This is the note text for linguistic.iso"
+  },
+  "methodology.page.category.low.hist.underinvestectancy.description.text": {
+    "defaultMessage": "Census tracts that experienced historic underinvestment based on redlining maps created by the federal government’s Home Owners’ Loan Corporation (HOLC) between 1935 and 1940. The tool uses the National Community Reinvestment Coalition’s <link1>methodology</link1> for converting boundaries in the HOLC maps to census tracts. Census tracts meet the threshold when they have a score of 3.25 or more out of 4.",
+    "description": "Navigate to the Methodology page. This is the description text for Historic Underinvestment"
+  },
+  "methodology.page.category.low.hist.underinvestectancy.note.text": {
+    "defaultMessage": "<boldtag>Note:</boldtag> The historic underinvestment burden is <boldtag>not available</boldtag> for tracts that were not included in the original HOLC maps because there is no underlying data.",
+    "description": "Navigate to the Methodology page. This is the note text for Historic Underinvestment"
+  },
   "methodology.page.category.low.income.description.text": {
-    "defaultMessage": "Percent of a census tract's population in households where household income is at or below 200% of the Federal poverty level.",
+    "defaultMessage": "Percent of a census tract's population in households where household income is at or below 200% of the Federal poverty level, not including students enrolled in higher education.",
     "description": "Navigate to the Methodology page. This is the description text for low income"
   },
   "methodology.page.category.low.life.expectancy.description.text": {
-    "defaultMessage": "Average number of years of life a person who has attained a given age can expect to live.",
+    "defaultMessage": "Average number of years people have left in their lives.",
     "description": "Navigate to the Methodology page. This is the description text for low life expectancy"
   },
   "methodology.page.category.low.life.expectancy.note.text": {
-    "defaultMessage": "<boldtag>Note: </boldtag>The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher life expectancies and the census tracts with higher numbers have lower life expectancy when compared to life expectancy in the area.",
+    "defaultMessage": "<boldtag>Note: </boldtag>The tool reverses the percentiles for this burden. This means that census tracts with lower numbers have higher life expectancies and that census tracts with higher numbers have lower life expectancies.",
     "description": "Navigate to the Methodology page. This is the note text for low life expectancy"
   },
-  "methodology.page.category.low.median.expectancy.note.text": {
-    "defaultMessage": "<boldtag>Note: </boldtag>The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median income when compared to area median income.",
+  "methodology.page.category.low.median.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>The tool reverses the percentiles for this burden. This means that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median incomes.",
     "description": "Navigate to the Methodology page. This is the note text for low median expectancy"
   },
-  "methodology.page.category.median.home.value.description.text": {
-    "defaultMessage": "Median home value of owner-occupied housing units in the census tract.",
-    "description": "Navigate to the Methodology page. This is the description text for lead paint"
+  "methodology.page.category.mine.land.description.text": {
+    "defaultMessage": "Presence of an abandoned mine left by legacy coal mining operations.",
+    "description": "Navigate to the Methodology page. This is the description text for Abandoned mine lands"
   },
   "methodology.page.category.pm2.5.description.text": {
-    "defaultMessage": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller. The value in the fields is the weight of these particles in micrograms per cubic meter.",
+    "defaultMessage": "Fine inhalable particles with 2.5 or smaller micrometer diameters. The percentile is the weight of the particles per cubic meter.",
     "description": "Navigate to the Methodology page. This is the description text for pm 2.5"
   },
   "methodology.page.category.poverty.description.text": {
-    "defaultMessage": "Percent of a census tract's population in households where the household income is at or below 100% of the Federal poverty level.",
+    "defaultMessage": "Share of people living at or below 100% of the Federal poverty level.",
     "description": "Navigate to the Methodology page. This is the description text for poverty"
   },
   "methodology.page.category.prox.haz.description.text": {
-    "defaultMessage": "Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by distance in kilometers.",
+    "defaultMessage": "Number of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by distance in kilometers.",
     "description": "Navigate to the Methodology page. This is the description text for proximity to hazards"
   },
   "methodology.page.category.prox.npl.description.text": {
-    "defaultMessage": "Count of proposed or listed NPL - also known as Superfund - sites within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.",
+    "defaultMessage": "Number of proposed or listed Superfund or National Priorities list (NPL) sites within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.",
     "description": "Navigate to the Methodology page. This is the description text for proximity to npl"
   },
   "methodology.page.category.prox.rmp.description.text": {
-    "defaultMessage": "Count of RMP (potential chemical accident management plan) facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.",
+    "defaultMessage": "Count of Risk Management Plan (RMP) facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers. These facilities are mandated by the Clean Air Act to file RMPs because they handle substances with significant environmental and public health risks.",
     "description": "Navigate to the Methodology page. This is the description text for proximity to rmp"
+  },
+  "methodology.page.category.source.aml.link": {
+    "defaultMessage": "<link1>Abandoned Mine Land Inventory System (e-AMLIS)</link1> from {date17}",
+    "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
+  },
+  "methodology.page.category.source.bia.lar.link": {
+    "defaultMessage": "<link1>Land Area Representation (LAR) dataset</link1> from {date18}",
+    "description": "Navigate to the Methodology page. This is the source link for BIA data"
   },
   "methodology.page.category.source.cdc.places.link": {
     "defaultMessage": "<link1>PLACES data</link1> from {date16_19}",
     "description": "Navigate to the Methodology page. This is the source link for CDC Places"
   },
   "methodology.page.category.source.cdc.sleep.link": {
-    "defaultMessage": "<link1>U.S. Small-Area Life Expectancy Estimates Project (USALEEP)</link1> from {date10_15}",
+    "defaultMessage": "<link1>U.S. Small-Area Life Expectancy Estimates Project</link1> (USALEEP) from {date10_15}",
     "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
   },
   "methodology.page.category.source.census.link.10": {
@@ -1036,7 +2048,7 @@
     "description": "Navigate to the Methodology page. This is the source link for Census ACS"
   },
   "methodology.page.category.source.doe.lead.link": {
-    "defaultMessage": "<link1>LEAD Score</link1> from {date18}",
+    "defaultMessage": "<link1>LEAD Tool</link1> from {date18}",
     "description": "Navigate to the Methodology page. This is the source link for DOE FEMA"
   },
   "methodology.page.category.source.dot.epa.link": {
@@ -1060,7 +2072,7 @@
     "description": "Navigate to the Methodology page. This is the source link for EPA RMP"
   },
   "methodology.page.category.source.epa.rsei.link": {
-    "defaultMessage": "<link1>Risk-Screening Environmental Indicators (RSEI) Model</link1> from {date20} as compiled by EPA’s EJScreen",
+    "defaultMessage": "<link1>Risk-Screening Environmental Indicators (RSEI) model</link1> from {date20} as compiled by EPA’s EJScreen",
     "description": "Navigate to the Methodology page. This is the source link for EPA RSEI"
   },
   "methodology.page.category.source.epa.tsdf.link": {
@@ -1071,29 +2083,89 @@
     "defaultMessage": "<link1>National Risk Index</link1> from {date14_21}",
     "description": "Navigate to the Methodology page. This is the source link for FEMA"
   },
+  "methodology.page.category.source.first.street.link": {
+    "defaultMessage": "<link1>Climate Risk Data Access</link1> from {date22}",
+    "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
+  },
+  "methodology.page.category.source.fuds.link": {
+    "defaultMessage": "<link1>Formerly Used Defense Sites</link1> (FUDS) from {date19}",
+    "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
+  },
+  "methodology.page.category.source.holc.link": {
+    "defaultMessage": "<link1>Dataset of formerly redlined areas</link1> using digitized maps from the Home Owners Loan Corporation (HOLC), using {date10} census boundaries",
+    "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
+  },
   "methodology.page.category.source.hud.link": {
     "defaultMessage": "<link1>Comprehensive Housing Affordability Strategy dataset</link1> from {date14_18}",
     "description": "Navigate to the Methodology page. This is the source link for HUD"
   },
+  "methodology.page.category.source.pdi.link": {
+    "defaultMessage": "<link1>Percent Developed Imperviousness</link1> (CONUS) from {date19}",
+    "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
+  },
+  "methodology.page.category.source.trans.bur.link": {
+    "defaultMessage": "<link1>Transportation access disadvantage</link1> from {date22}",
+    "description": "Navigate to the Methodology page. This is the source link for Transportation burdens"
+  },
+  "methodology.page.category.source.ust.find.link": {
+    "defaultMessage": "Calculated from EPA’s <link1>UST Finder</link1> from {date21} as compiled by EPA's EJScreen",
+    "description": "Navigate to the Methodology page. This is the source link for UST Find"
+  },
   "methodology.page.category.traffic.vol.description.text": {
-    "defaultMessage": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters.",
+    "defaultMessage": "Number of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters.",
     "description": "Navigate to the Methodology page. This is the description text for traffic volume"
   },
+  "methodology.page.category.trans.barrier.description.text": {
+    "defaultMessage": "Average relative cost and time spent on transportation relative to all other tracts.",
+    "description": "Navigate to the Methodology page. This is the description text for Transportation barriers"
+  },
+  "methodology.page.category.trans.barrier.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag> this burden only applies for census tracts with populations greater than 20 people.",
+    "description": "Navigate to the Methodology page. This is the note text for trans.barrier"
+  },
+  "methodology.page.category.tribal.lands.description.text": {
+    "defaultMessage": "The Land Area Representation (LAR) dataset depicts American Indian land areas for Federally Recognized Tribes.",
+    "description": "Navigate to the Methodology page. This is the description text for Tribal lands"
+  },
+  "methodology.page.category.tribal.lands.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>The LAR dataset depicts the exterior extent of a Federal Indian land area. Not all Federally Recognized Tribes have a designated land area; therefore, they may not have an associated land area represented in the land area dataset.",
+    "description": "Navigate to the Methodology page. This is the note text for low median expectancy"
+  },
   "methodology.page.category.unemploy.description.text": {
-    "defaultMessage": "Number of unemployed people as a percentage of the civilian labor force.",
+    "defaultMessage": "Number of unemployed people as a share of the labor force.",
     "description": "Navigate to the Methodology page. This is the description text for unemployment"
   },
   "methodology.page.category.waste.water.description.text": {
     "defaultMessage": "Risk-Screening Environmental Indicators (RSEI) modeled toxic concentrations at stream segments within 500 meters, divided by distance in kilometers.",
     "description": "Navigate to the Methodology page. This is the description text for waste water"
   },
+  "methodology.page.category.wildfire.risk.rate.description.text": {
+    "defaultMessage": "A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous U.S., today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not consider property value.",
+    "description": "Navigate to the Methodology page. This is the description text for exp bld loss rate"
+  },
   "methodology.page.category.workforce.dev.description.text": {
-    "defaultMessage": "Median income of the census tract calculated as a percent of the area’s median income.",
+    "defaultMessage": "Low median income calculated as a share of the area’s median income.",
     "description": "Navigate to the Methodology page. This is the description text for workforce dev"
+  },
+  "methodology.page.dataset.card.availableFor.ALL_ISLDS": {
+    "defaultMessage": "American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands",
+    "description": "Methodology page dataset card available for ALL_ISLDS"
   },
   "methodology.page.dataset.card.availableFor.AS_NMI": {
     "defaultMessage": "American Samoa and the Northern Mariana Islands",
-    "description": "Methodology page dataset card available for American Samoa and Northern Mariana Islands type"
+    "description": "Methodology page dataset card available for AS_NMI"
+  },
+  "methodology.page.dataset.card.availableFor.CONUS_DC": {
+    "defaultMessage": "All contiguous U.S. states and the District of Columbia",
+    "description": "Methodology page dataset card available for CONUS and DC"
+  },
+  "methodology.page.dataset.card.availableFor.FRT": {
+    "defaultMessage": "Federally Recognized Tribes, including Alaska Native villages",
+    "description": "Methodology page dataset card available for FRT"
+  },
+  "methodology.page.dataset.card.availableFor.METRO_US_HOLC": {
+    "defaultMessage": "Metro areas of U.S. that were graded by the Home Owners’ Loan Corporation",
+    "description": "Methodology page dataset card available for METRO_US_HOLC"
   },
   "methodology.page.dataset.card.availableFor.US_DC": {
     "defaultMessage": "All U.S. states and the District of Columbia",
@@ -1116,7 +2188,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the diesel pm dataset"
   },
   "methodology.page.dataset.indicator.energy.burden.title.text": {
-    "defaultMessage": "Energy burden",
+    "defaultMessage": "Energy cost",
     "description": "Navigate to the Methodology page. This is the title text for the energy burden dataset"
   },
   "methodology.page.dataset.indicator.exp.bld.loss.title.text": {
@@ -1131,25 +2203,45 @@
     "defaultMessage": "Expected agriculture loss rate",
     "description": "Navigate to the Methodology page. This is the title text for the expected agr loss rate income dataset"
   },
+  "methodology.page.dataset.indicator.flood.risk.title.text": {
+    "defaultMessage": "Projected flood risk",
+    "description": "Navigate to the Methodology page. This is the title text for the NEW Projected flood risk"
+  },
+  "methodology.page.dataset.indicator.fuds.title.text": {
+    "defaultMessage": "Formerly Used Defense Sites",
+    "description": "Navigate to the Methodology page. This is the title text for the Formerly Used Defense Sites"
+  },
+  "methodology.page.dataset.indicator.green.space.title.text": {
+    "defaultMessage": "Lack of green space",
+    "description": "Navigate to the Methodology page. This is the title text for the house burden dataset"
+  },
   "methodology.page.dataset.indicator.heart.disease.title.text": {
     "defaultMessage": "Heart disease",
     "description": "Navigate to the Methodology page. This is the title text for the heart disease dataset"
   },
-  "methodology.page.dataset.indicator.high.ed.enroll.title.text": {
-    "defaultMessage": "Higher education non-enrollment",
-    "description": "Navigate to the Methodology page. This is the title text for the high ed enrollment dataset"
-  },
   "methodology.page.dataset.indicator.high.school.title.text": {
-    "defaultMessage": "High school degree non-attainment",
+    "defaultMessage": "High school education",
     "description": "Navigate to the Methodology page. This is the title text for the high school dataset"
   },
+  "methodology.page.dataset.indicator.hist.underinvest.title.text": {
+    "defaultMessage": "Historic underinvestment",
+    "description": "Navigate to the Methodology page. This is the title text for the Historic Underinvestment"
+  },
   "methodology.page.dataset.indicator.house.burden.title.text": {
-    "defaultMessage": "Housing cost burden",
+    "defaultMessage": "Housing cost",
     "description": "Navigate to the Methodology page. This is the title text for the house burden dataset"
+  },
+  "methodology.page.dataset.indicator.indoor.plumb.title.text": {
+    "defaultMessage": "Lack of indoor plumbing",
+    "description": "Navigate to the Methodology page. This is the title text for the indoor plumbing"
   },
   "methodology.page.dataset.indicator.lead.paint.title.text": {
     "defaultMessage": "Lead paint",
     "description": "Navigate to the Methodology page. This is the title text for the lead paint dataset"
+  },
+  "methodology.page.dataset.indicator.leaky.uwt.title.text": {
+    "defaultMessage": "Underground storage tanks and releases",
+    "description": "Navigate to the Methodology page. This is the title text for the Underground storage tanks and releases"
   },
   "methodology.page.dataset.indicator.life.exp.title.text": {
     "defaultMessage": "Low life expectancy",
@@ -1167,9 +2259,9 @@
     "defaultMessage": "Low median income",
     "description": "Navigate to the Methodology page. This is the title text for the low median income dataset"
   },
-  "methodology.page.dataset.indicator.median.home.title.text": {
-    "defaultMessage": "Median home value",
-    "description": "Navigate to the Methodology page. This is the title text for the median home dataset"
+  "methodology.page.dataset.indicator.mine.land.title.text": {
+    "defaultMessage": "Abandoned mine land",
+    "description": "Navigate to the Methodology page. This is the title text for the Abandoned mine lands"
   },
   "methodology.page.dataset.indicator.pm25.title.text": {
     "defaultMessage": "PM2.5 in the air",
@@ -1184,7 +2276,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the prox haz dataset"
   },
   "methodology.page.dataset.indicator.prox.npl.title.text": {
-    "defaultMessage": "Proximity to National Priorities List (NPL) sites",
+    "defaultMessage": "Proximity to Superfund sites",
     "description": "Navigate to the Methodology page. This is the title text for the prox npl dataset"
   },
   "methodology.page.dataset.indicator.prox.rpm.title.text": {
@@ -1195,6 +2287,14 @@
     "defaultMessage": "Traffic proximity and volume",
     "description": "Navigate to the Methodology page. This is the title text for the traffic.volume dataset"
   },
+  "methodology.page.dataset.indicator.trans.barrier.title.text": {
+    "defaultMessage": "Transportation barriers",
+    "description": "Navigate to the Methodology page. This is the title text for the Transportation barriers"
+  },
+  "methodology.page.dataset.indicator.tribal.lands.title.text": {
+    "defaultMessage": "Tribes",
+    "description": "Navigate to the Methodology page. This is the title text for the Tribal lands"
+  },
   "methodology.page.dataset.indicator.unemploy.title.text": {
     "defaultMessage": "Unemployment",
     "description": "Navigate to the Methodology page. This is the title text for the unemployment dataset"
@@ -1203,6 +2303,10 @@
     "defaultMessage": "Wastewater discharge",
     "description": "Navigate to the Methodology page. This is the title text for the waste water dataset"
   },
+  "methodology.page.dataset.indicator.wildfire.risk.title.text": {
+    "defaultMessage": "Projected wildfire risk",
+    "description": "Navigate to the Methodology page. This is the title text for the NEW Projected wildfire risk"
+  },
   "methodology.page.datasetCard.available.for": {
     "defaultMessage": "Available for:",
     "description": "Navigate to the Methodology page. This is the label associated with available for which regions of the card"
@@ -1210,6 +2314,10 @@
   "methodology.page.datasetCard.date.range": {
     "defaultMessage": "Date range:",
     "description": "Navigate to the Methodology page. This is the label associated with explaining the card"
+  },
+  "methodology.page.datasetCard.new": {
+    "defaultMessage": "NEW",
+    "description": "Navigate to the Methodology page. This is the label associated with a NEW card"
   },
   "methodology.page.datasetCard.responsible.party": {
     "defaultMessage": "Responsible Party:",
@@ -1231,12 +2339,20 @@
     "defaultMessage": "These datasets provide additional information about each community.",
     "description": "Navigate to the Methodology page. This is the additional indicator info"
   },
+  "methodology.page.datasetContainer.button.text": {
+    "defaultMessage": "Share data sources with CEQ",
+    "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score with a button labeled: Share data sources with CEQ"
+  },
   "methodology.page.datasetContainer.heading": {
     "defaultMessage": "Datasets used in beta methodology",
     "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score"
   },
+  "methodology.page.datasetContainer.heading.rich.text": {
+    "defaultMessage": "Datasets used in v{version} methodology",
+    "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score"
+  },
   "methodology.page.datasetContainer.info": {
-    "defaultMessage": "The datasets used in the current version of the tool come from a variety of sources and were selected based on relevance, availability, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other impacts on communities.",
+    "defaultMessage": "The tool's datasets are public and consistent nationwide. They come from different sources and are high quality. The Council on Environmental Quality (CEQ) chose them based on relevance, availability, and quality. They identify climate, environmental, and other burdens on communities.",
     "description": "Navigate to the Methodology page. This is the description of the dataset section"
   },
   "methodology.page.datasets.all.except.workforce.used.in.text": {
@@ -1255,48 +2371,44 @@
     "defaultMessage": "Under the current formula, a census tract will be identified as disadvantaged in one or more categories of criteria:",
     "description": "Navigate to the methodology page. This is the methodology page introducing the formula"
   },
-  "methodology.page.formula.second": {
-    "defaultMessage": "<boldtag>AND</boldtag> the census tract is above the threshold for the socioeconomic indicators",
-    "description": "Navigate to the methodology page. This is the second part of the formula used in the methodology"
-  },
   "methodology.page.header.text": {
     "defaultMessage": "Methodology",
     "description": "Navigate to the methodology page. This is the methodology page header text"
   },
   "methodology.page.indicator.categories.afford.house.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>lead paint</link1> AND <link2>median home value</link2> is at or less than the 90th percentile OR at or above the 90th percentile for the <link3>housing cost burden</link3>",
+    "defaultMessage": "Experienced <link0>historic underinvestment</link0> OR are at or above the 90th percentile for the <link1>housing cost</link1> OR <link2>lack of green space</link2> OR <link3>lack of indoor plumbing</link3> OR <link4>lead paint</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.afford.housing.methodology": {
-    "defaultMessage": "Affordable and sustainable housing category",
+    "defaultMessage": "Housing category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Affordable and sustainable housing methodology"
   },
   "methodology.page.indicator.categories.clean.energy.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>energy burden</link1> OR <link2>PM2.5 in the air</link2>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>energy cost</link1> OR <link2>PM2.5 in the air</link2>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if if portion of the formula"
   },
   "methodology.page.indicator.categories.clean.energy.methodology": {
-    "defaultMessage": "Clean energy and energy efficiency category",
+    "defaultMessage": "Energy category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean energy and energy efficiency methodology"
   },
   "methodology.page.indicator.categories.clean.transport.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>diesel particulate matter exposure</link1> or <link2>traffic proximity and volume</link2>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>diesel particulate matter exposure</link1> OR <link3>transportation barriers</link3> OR <link2>traffic proximity and volume</link2>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.clean.transport.methodology": {
-    "defaultMessage": "Clean transit category",
+    "defaultMessage": "Transportation category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean transportation methodology"
   },
   "methodology.page.indicator.categories.clean.water.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>wastewater discharge</link1>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link0>underground storage tanks and releases</link0> OR <link1>wastewater discharge</link1>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.clean.water.methodology": {
-    "defaultMessage": "Critical clean water and wastewater infrastructure category",
-    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wastewater infrastructure methodology"
+    "defaultMessage": "Water and wastewater category",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Water and wastewater methodology"
   },
   "methodology.page.indicator.categories.climate.change.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>expected agriculture loss rate</link1> OR <link2>expected building loss rate</link2> OR <link3>expected population loss rate</link3>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>expected agriculture loss rate</link1> OR <link2>expected building loss rate</link2> OR <link3>expected population loss rate</link3> OR <link4>projected flood risk</link4> OR <link5>projected wildfire risk</link5>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.climate.change.methodology": {
@@ -1308,40 +2420,72 @@
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "methodology.page.indicator.categories.heading": {
-    "defaultMessage": "Categories",
+    "defaultMessage": "Categories of Burdens",
     "description": "Navigate to the methodology page. Navigate to the category section. This is category heading"
   },
   "methodology.page.indicator.categories.health.burdens.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>asthma</link1> OR <link2>diabetes</link2> OR <link3>heart disease</link3> OR <link4>low life expectancy</link4>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>asthma</link1> OR <link2>diabetes</link2> OR <link3>heart disease</link3> OR <link4>low life expectancy</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.health.burdens.methodology": {
-    "defaultMessage": "Health burdens category",
+    "defaultMessage": "Health category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Health burdens methodology"
   },
   "methodology.page.indicator.categories.legacy.pollute.methodology": {
-    "defaultMessage": "Reduction and remediation of legacy pollution category",
+    "defaultMessage": "Legacy pollution category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Reduction and remediation of legacy pollution methodology"
   },
   "methodology.page.indicator.categories.legacy.pollution.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>proximity to hazardous waste facilities</link1> OR <link2>proximity to National Priorities List (NPL) sites</link2> OR <link3>proximity to Risk Management Plan (RMP) facilities</link3>",
+    "defaultMessage": "Have at least one <link0>abandoned mine land</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites (National Priorities List (NPL))</link3> OR <link4>proximity to Risk Management Plan (RMP) facilities</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
+  "methodology.page.indicator.categories.tribal.lands.methodology": {
+    "defaultMessage": "Displaying land within the boundaries of Federally Recognized Tribes and point locations of Alaska Native Villages on the map",
+    "description": "Displaying Federally recognized tribal boundaries and Alaska Native Villages on the map"
+  },
   "methodology.page.indicator.categories.work.dev.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>low median income</link1> as a percentage of area median income OR <link2>linguistic isolation</link2> OR <link3>unemployment</link3> OR percentage of individuals in households at or below 100% Federal <link4>poverty</link4> level",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link2>linguistic isolation</link2> OR <link1>low median income</link1> OR <link4>poverty</link4> OR <link3>unemployment</link3>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.workforce.dev.methodology": {
-    "defaultMessage": "Training and workforce development category",
+    "defaultMessage": "Workforce development category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Training and workforce development"
   },
-  "methodology.page.paragraph": {
-    "defaultMessage": "The current version of the tool identifies communities that are disadvantaged for the purposes of the Justice40 Initiative using census tracts, which are the smallest geographic unit for which publicly-available and nationally-consistent datasets can be consistently displayed on the tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used in the tool.",
-    "description": "Navigate to the methodology page. This is the methodology page paragraph"
+  "methodology.page.paragraph.1": {
+    "defaultMessage": "The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 1"
+  },
+  "methodology.page.paragraph.1.bullet.1": {
+    "defaultMessage": "If they are in census tracts that meet the thresholds for at least one of the tool’s categories of burden, or",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 1, bullet 1"
+  },
+  "methodology.page.paragraph.1.bullet.2": {
+    "defaultMessage": "If they are on land within the boundaries of Federally Recognized Tribes",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 1, bullet 2"
+  },
+  "methodology.page.paragraph.3": {
+    "defaultMessage": "The tool uses datasets as indicators of burdens. The burdens are organized into categories. A community is highlighted as disadvantaged on the CEJST map if it is in a census tract that is (1) at or above the threshold for one or more environmental, climate, or other burdens, and (2) at or above the threshold for an associated socioeconomic burden.",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 3"
+  },
+  "methodology.page.paragraph.4": {
+    "defaultMessage": "Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 census boundaries.",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 4"
+  },
+  "methodology.page.paragraph.5": {
+    "defaultMessage": "Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities.",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 5"
   },
   "methodology.page.return.to.top.link": {
     "defaultMessage": "Return to top",
     "description": "Navigate to the Methodology page. This is the link text to return to top"
+  },
+  "methodology.page.sub.heading.1": {
+    "defaultMessage": "Categories of Burdens",
+    "description": "Navigate to the methodology page. This is sub-heading 1"
+  },
+  "methodology.page.sub.heading.2": {
+    "defaultMessage": "Tribes",
+    "description": "Navigate to the methodology page. This is sub-heading 2"
   },
   "methodology.page.title.text": {
     "defaultMessage": "Methodology & data",
@@ -1352,7 +2496,7 @@
     "description": "page not found guidance text"
   },
   "pageNotFound.apology.text": {
-    "defaultMessage": "Sorry, the page you were looking for was not found. Click <link1>home</link1> to go home.",
+    "defaultMessage": "Sorry, the page you are looking for is not found. <link1>Explore the map</link1> or learn more <link2>about</link2> the tool.",
     "description": "main error message"
   },
   "pageNotFound.heading.text": {
@@ -1363,6 +2507,30 @@
     "defaultMessage": "Page not found",
     "description": "page not found title text"
   },
+  "previous.versions.page.body.text": {
+    "defaultMessage": "The beta version of the methodology and data was used during the public beta period to get feedback on the tool from {betaDate} - {releaseDate}.",
+    "description": "Navigate to the previous version page. This is the Cards body text"
+  },
+  "previous.versions.page.button1.alt.tag.text": {
+    "defaultMessage": "a button that allows to download the data and documentation to the tool",
+    "description": "Navigate to the previous version page. This is the Cards button1.alt.tag text"
+  },
+  "previous.versions.page.button1.text": {
+    "defaultMessage": "Data & documentation",
+    "description": "Navigate to the previous version page. This is the Cards button1 text"
+  },
+  "previous.versions.page.button2.alt.tag.text": {
+    "defaultMessage": "a button that allows to download the shapefile and codebook to the tool",
+    "description": "Navigate to the previous version page. This is the Cards button2.alt.tag text"
+  },
+  "previous.versions.page.button2.text": {
+    "defaultMessage": "Shapefile & codebook",
+    "description": "Navigate to the previous version page. This is the Cards button2 text"
+  },
+  "previous.versions.page.title.text": {
+    "defaultMessage": "Beta version",
+    "description": "Navigate to the previous version page. This is the Cards title text"
+  },
   "public.eng.page.button.img.alt.tag": {
     "defaultMessage": "an icon that represents a calendar",
     "description": "Navigate to the public engagement page, this will be the public engagement button icon alt tag text"
@@ -1371,8 +2539,12 @@
     "defaultMessage": "Public engagement",
     "description": "Navigate to the public engagement page, this will be the public engagement button label"
   },
+  "public.eng.page.coming.soon.text": {
+    "defaultMessage": "Coming soon!",
+    "description": "Navigate to the public engagement page, this will be the publiceng page coming soon text"
+  },
   "public.eng.page.description1.text": {
-    "defaultMessage": "CEQ is hosting engagement opportunities to connect with the public about the current version of the tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the beta version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, have their questions answered, and share feedback.",
+    "defaultMessage": "The Council on Environmental Quality (CEQ) is hosting engagement opportunities to connect with the public about the current versions of the Climate and Economic Justice Screening Tool (CEJST). These sessions are an opportunity to obtain training on the tool or to provide the feedback on the latest version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, ask questions, an share feedback.",
     "description": "Navigate to the public engagement page, this will be the publiceng page description 1 text"
   },
   "public.eng.page.description2.text": {
@@ -1380,7 +2552,7 @@
     "description": "Navigate to the public engagement page, this will be the publiceng page description 2 text"
   },
   "public.eng.page.description3.text": {
-    "defaultMessage": "As they become available, additional public trainings and engagement opportunities on the Climate and Economic Justice Screening Tool will also be posted on this page.",
+    "defaultMessage": "As they become available, additional public trainings and engagement opportunities on the Climate and Economic Justice Screening Tool will also be posted on this page. <link1>Sign-up</link1> for updates from CEQ",
     "description": "Navigate to the public engagement page, this will be the publiceng page description 3 text"
   },
   "public.eng.page.event.info.label": {
@@ -1427,6 +2599,14 @@
     "defaultMessage": "March 16th (4:00 - 5:00 PM EST)",
     "description": "Navigate to the public engagement page, this will be the public engagement page event training session 3 date"
   },
+  "public.eng.page.event.training.4.info": {
+    "defaultMessage": "October 4th (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the public engagement page, this will be the public engagement page event training session 4 date"
+  },
+  "public.eng.page.event.training.5.info": {
+    "defaultMessage": "October 9th (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the public engagement page, this will be the public engagement page event training session 5 date"
+  },
   "public.eng.page.event.training.description": {
     "defaultMessage": "The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to use the current version of the tool. The presenters at these webinars will be available to provide technical support and address issues related to accessing and using the tool.",
     "description": "Navigate to the public engagement page, this will be the public engagement page event training session description"
@@ -1456,7 +2636,11 @@
     "description": "Navigate to the public engagement page, this will be the publiceng page header text"
   },
   "public.eng.page.sub.header2.text": {
-    "defaultMessage": "Find an event",
+    "defaultMessage": "Upcoming events for CEJST version {version}",
+    "description": "Navigate to the public engagement page, this will be the publiceng page sub header text"
+  },
+  "public.eng.page.sub.header3.text": {
+    "defaultMessage": "Previous events for public beta",
     "description": "Navigate to the public engagement page, this will be the publiceng page sub header text"
   },
   "public.eng.page.tag.label": {
@@ -1468,7 +2652,11 @@
     "description": "Navigate to the public engagement page, this will be the publiceng page title text"
   },
   "public.eng.page.video.box.body.text": {
-    "defaultMessage": "Watch a recorded version of the CEJST training on YouTube.",
+    "defaultMessage": "See what's new in the version {version} of the Climate and Economic Justice Screening tool.",
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text."
+  },
+  "public.eng.page.video.box.body2.text": {
+    "defaultMessage": "Watch a recorded version of the beta version of the CEJST training on YouTube.",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text."
   },
   "public.eng.page.video.box.button.img.alt.text1": {
@@ -1479,16 +2667,28 @@
     "defaultMessage": "the icon to show that this button will download the file",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the 2nd button."
   },
+  "public.eng.page.video.box.button1.beta.text": {
+    "defaultMessage": "Watch on beta demo",
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text."
+  },
   "public.eng.page.video.box.button1.text": {
     "defaultMessage": "Watch on YouTube",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text."
+  },
+  "public.eng.page.video.box.button2.beta.text": {
+    "defaultMessage": "Download beta slide deck",
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button."
   },
   "public.eng.page.video.box.button2.text": {
     "defaultMessage": "Download slide deck",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button."
   },
+  "public.eng.page.video.box.title.beta.text": {
+    "defaultMessage": "Need information about the public beta?",
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
+  },
   "public.eng.page.video.box.title.text": {
-    "defaultMessage": "Can't make an upcoming session?",
+    "defaultMessage": "Need information about the latest version of the tool?",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
   },
   "public.eng.page.whejac.meeting.day.1.info": {

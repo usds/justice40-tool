@@ -140,36 +140,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
           </div>
         </section>
-        <div>
-          <img
-            alt="language icon for selecting language"
-            src="test-file-stub"
-          />
-          <a
-            href="#"
-          >
-            English
-          </a>
-          <a
-            href="#"
-          >
-            Español
-          </a>
-        </div>
       </div>
     </div>
     <div>
       <div>
-        <div />
-        <div>
-          <span>
-            This is a beta site. 
-          </span>
-          <span>
-            It is an early, in-progress version of the tool with limited datasets that will 
-    be regularly updated.
-          </span>
-        </div>
+        <strong>
+          This tool has been updated.
+        </strong>
+         The 1.0 version of the tool was released on Nov 22, 2022.
       </div>
     </div>
     <div
@@ -184,28 +162,29 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           class="grid-col-1"
           data-testid="grid"
         >
-          <img
-            alt="Climate and Economic Justice Screening Tool"
-            src="test-file-stub"
-          />
+          <a
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
+            <img
+              alt="Climate and Economic Justice Screening Tool"
+              src="test-file-stub"
+            />
+          </a>
         </div>
         <div
           class="grid-col-6"
           data-testid="grid"
         >
-          <div>
+          <a
+            class="remove-link-style"
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
             <div>
-              Climate and Economic Justice
+              Climate and Economic Justice Screening Tool
             </div>
-            <div>
-              <div>
-                 Screening Tool 
-              </div>
-              <div>
-                BETA
-              </div>
-            </div>
-          </div>
+          </a>
         </div>
         <div
           class="grid-col-fill"
@@ -249,7 +228,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 <button
                   aria-controls="methMenu"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   class="usa-accordion__button usa-nav__link"
                   data-cy="nav-dropdown-methodology"
                   data-testid="navDropDownButton"
@@ -261,6 +240,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </button>
                 <ul
                   class="usa-nav__submenu"
+                  hidden=""
                   id="methMenu"
                 >
                   <li
@@ -283,17 +263,69 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Downloads
                     </a>
                   </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-previous-versions"
+                      href="/en/previous-versions"
+                    >
+                      Previous versions
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-about"
-                  href="/en/about"
+                <button
+                  aria-controls="aboutMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-about"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  About
-                </a>
+                  <span>
+                    About
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="aboutMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-about"
+                      href="/en/about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
+                    >
+                      Engagement calendar
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-faqs"
+                      href="/en/frequently-asked-questions"
+                    >
+                      Frequently asked questions
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -305,30 +337,32 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Contact
                 </a>
               </li>
-              <li
-                class="usa-nav__primary-item"
-              >
-                <div>
-                  <div>
-                    <img
-                      alt="language icon for selecting language"
-                      src="test-file-stub"
-                    />
-                    <a
-                      href="#"
-                    >
-                      English
-                    </a>
-                    <a
-                      href="#"
-                    >
-                      Español
-                    </a>
-                  </div>
-                </div>
-              </li>
             </ul>
           </nav>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="usa-alert usa-alert--info"
+        data-testid="alert"
+      >
+        <div
+          class="usa-alert__body"
+        >
+          <h1
+            class="usa-alert__heading"
+          >
+            Version 1.0 of the tool is now available
+          </h1>
+          <p
+            class="usa-alert__text"
+          >
+            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on 11/22/2022. For more information about the improvements to the tool, CEQ’s press release will be coming soon.
+          </p>
         </div>
       </div>
     </div>
@@ -369,7 +403,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </section>
       <div
-        class="grid-row grid-gap j40-mb5-mt3"
+        class="grid-row grid-gap j40-mt3"
         data-testid="grid"
       >
         <div
@@ -379,49 +413,25 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <section>
             <p>
               
-      The current version of the tool identifies communities that are disadvantaged for the purposes of 
-      the Justice40 Initiative using census tracts, which are the smallest geographic unit for 
-      which publicly-available and nationally-consistent datasets can be consistently displayed on the 
-      tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
-      years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
-      in the tool.
+      The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:
     
             </p>
-          </section>
-          <section>
-            <p>
-              
-      Under the current formula, a census tract will be identified as disadvantaged in one or more 
-      categories of criteria: 
+            <div>
+              <ul>
+                <li>
+                  
+      If they are in census tracts that meet the thresholds for at least one of the tool’s categories of burden, or
     
-            </p>
-            <p>
-              
-      
-              <strong>
-                IF
-              </strong>
-               the census tract is above the threshold for one or more environmental or climate indicators
-      
-            </p>
-            <p>
-              
-      
-              <strong>
-                AND
-              </strong>
-               the census tract is above the threshold for the socioeconomic indicators
+                </li>
+                <li
+                  class="j40-mt3"
+                >
+                  
+      If they are on land within the boundaries of Federally Recognized Tribes
     
-            </p>
-          </section>
-          <section>
-            <p>
-              
-      Communities are identified as disadvantaged by the current version of the tool for the purposes of 
-      the Justice40 Initiative if they are located in census tracts that are at or above the 
-      thresholds in one or more of eight categories of criteria below. 
-    
-            </p>
+                </li>
+              </ul>
+            </div>
           </section>
         </div>
         <div
@@ -439,12 +449,39 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="grid"
       >
         <div
-          class="grid-col-12"
+          class="grid-col-8"
           data-testid="grid"
         >
           <h2>
-            Categories
+            Categories of Burdens
           </h2>
+          <p>
+            
+      The tool uses datasets as indicators of burdens. The burdens are organized into categories. A community is highlighted as disadvantaged on the CEJST map if it is in a census tract that is (1) at or above the threshold for one or more environmental, climate, or other burdens, and (2) at or
+      above the threshold for an associated socioeconomic burden.
+    
+          </p>
+          <p>
+            
+      In addition, a census tract that is completely surrounded by disadvantaged communities and is at or above the 50% percentile for low income is also considered disadvantaged.
+    
+          </p>
+          <p>
+            
+      Census tracts are small units of geography. Census tract boundaries for 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="https://www.census.gov/programs-surveys/geography/about/glossary.html#par_textimage_6"
+              rel="noreferrer"
+              target="_blank"
+            >
+              statistical areas
+            </a>
+             are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 
+      census boundaries.    
+    
+          </p>
         </div>
       </div>
     </div>
@@ -462,30 +499,47 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-          
+           if they are in census tracts that:
     
         </p>
         <p>
           <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#exp-agr-loss-rate"
           >
             expected agriculture loss rate
           </a>
            OR 
           <a
+            class="usa-link"
             href="#exp-bld-loss-rate"
           >
             expected building loss rate
           </a>
            OR 
           <a
+            class="usa-link"
             href="#exp-pop-loss-rate"
           >
             expected population loss rate
+          </a>
+            OR 
+          <a
+            class="usa-link"
+            href="#flood-risk"
+          >
+            projected flood risk
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#wildfire-risk"
+          >
+            projected wildfire risk
           </a>
         </p>
         <p>
@@ -494,26 +548,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above the 65th percentile for 
+           are at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+          
     
         </p>
-        <p />
       </div>
       <div>
         <h3>
-          Clean energy and energy efficiency
+          Energy
         </h3>
         <p>
           
@@ -521,21 +569,23 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-          
+           if they are in census tracts that:
     
         </p>
         <p>
           <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#energy-burden"
           >
-            energy burden
+            energy cost
           </a>
            OR 
           <a
+            class="usa-link"
             href="#pm-25"
           >
             PM2.5 in the air
@@ -547,26 +597,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above the 65th percentile for 
+           are at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+          
     
         </p>
-        <p />
       </div>
       <div>
         <h3>
-          Clean transit
+          Health
         </h3>
         <p>
           
@@ -574,23 +618,229 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
+           if they are in census tracts that:
+    
+        </p>
+        <p>
+          <strong>
+            ARE
+          </strong>
+           at or above the 90th percentile for 
+          <a
+            class="usa-link"
+            href="#asthma"
+          >
+            asthma
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#diabetes"
+          >
+            diabetes
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#heart-disease"
+          >
+            heart disease
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#life-exp"
+          >
+            low life expectancy
+          </a>
+        </p>
+        <p>
           
+      
+          <strong>
+            AND
+          </strong>
+           are at or above the 65th percentile for 
+          <a
+            class="usa-link"
+            href="#low-income"
+          >
+            low income
+          </a>
+          
+    
+        </p>
+      </div>
+      <div>
+        <h3>
+          Housing
+        </h3>
+        <p>
+          
+      Communities are 
+          <strong>
+            identified as disadvantaged
+          </strong>
+           if they are in census tracts that:
+    
+        </p>
+        <p>
+          Experienced 
+          <a
+            class="usa-link"
+            href="#hist-underinv"
+          >
+            historic underinvestment
+          </a>
+           OR are at or above the 90th percentile for the 
+          <a
+            class="usa-link"
+            href="#house-burden"
+          >
+            housing cost
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#green-space"
+          >
+            lack of green space
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#indoor-plumb"
+          >
+            lack of indoor plumbing
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#lead-paint"
+          >
+            lead paint
+          </a>
+        </p>
+        <p>
+          
+      
+          <strong>
+            AND
+          </strong>
+           are at or above the 65th percentile for 
+          <a
+            class="usa-link"
+            href="#low-income"
+          >
+            low income
+          </a>
+          
+    
+        </p>
+      </div>
+      <div>
+        <h3>
+          Legacy pollution
+        </h3>
+        <p>
+          
+      Communities are 
+          <strong>
+            identified as disadvantaged
+          </strong>
+           if they are in census tracts that:
+    
+        </p>
+        <p>
+          Have at least one 
+          <a
+            class="usa-link"
+            href="#mine-land"
+          >
+            abandoned mine land
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#fuds"
+          >
+            Formerly Used Defense Sites
+          </a>
+           OR are at or above the 90th percentile for 
+          <a
+            class="usa-link"
+            href="#prox-haz"
+          >
+            proximity to hazardous waste facilities
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#prox-npl"
+          >
+            proximity to Superfind sites (National Priorities List (NPL))
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#prox-rmp"
+          >
+            proximity to Risk Management Plan (RMP) facilities
+          </a>
+        </p>
+        <p>
+          
+      
+          <strong>
+            AND
+          </strong>
+           are at or above the 65th percentile for 
+          <a
+            class="usa-link"
+            href="#low-income"
+          >
+            low income
+          </a>
+          
+    
+        </p>
+      </div>
+      <div>
+        <h3>
+          Transportation
+        </h3>
+        <p>
+          
+      Communities are 
+          <strong>
+            identified as disadvantaged
+          </strong>
+           if they are in census tracts that:
     
         </p>
         <p>
           
         
           <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#diesel-pm"
           >
             diesel particulate matter exposure
           </a>
-           or 
+           OR 
           <a
+            class="usa-link"
+            href="#trans-barrier"
+          >
+            transportation barriers
+          </a>
+           OR 
+          <a
+            class="usa-link"
             href="#traffic-vol"
           >
             traffic proximity and volume
@@ -604,26 +854,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above the 65th percentile for 
+           are at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+          
     
         </p>
-        <p />
       </div>
       <div>
         <h3>
-          Affordable and sustainable housing
+          Water and wastewater
         </h3>
         <p>
           
@@ -631,133 +875,23 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-          
+           if they are in census tracts that:
     
         </p>
         <p>
           <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
           <a
-            href="#lead-paint"
+            class="usa-link"
+            href="#leaky-uwt"
           >
-            lead paint
-          </a>
-           AND 
-          <a
-            href="#median-home"
-          >
-            median home value
-          </a>
-           is at or less than the 90th percentile OR at or above the 90th percentile for the 
-          <a
-            href="#house-burden"
-          >
-            housing cost burden
-          </a>
-        </p>
-        <p>
-          
-      
-          <strong>
-            AND
-          </strong>
-           is at or above the 65th percentile for 
-          <a
-            href="#low-income"
-          >
-            low income
-          </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
-    
-        </p>
-        <p />
-      </div>
-      <div>
-        <h3>
-          Reduction and remediation of legacy pollution
-        </h3>
-        <p>
-          
-      Communities are 
-          <strong>
-            identified as disadvantaged
-          </strong>
-          
-    
-        </p>
-        <p>
-          <strong>
-            IF
-          </strong>
-           at or above the 90th percentile for 
-          <a
-            href="#prox-haz"
-          >
-            proximity to hazardous waste facilities
+            underground storage tanks and releases
           </a>
            OR 
           <a
-            href="#prox-npl"
-          >
-            proximity to National Priorities List (NPL) sites
-          </a>
-           OR 
-          <a
-            href="#prox-rmp"
-          >
-            proximity to Risk Management Plan (RMP) facilities
-          </a>
-        </p>
-        <p>
-          
-      
-          <strong>
-            AND
-          </strong>
-           is at or above the 65th percentile for 
-          <a
-            href="#low-income"
-          >
-            low income
-          </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
-    
-        </p>
-        <p />
-      </div>
-      <div>
-        <h3>
-          Critical clean water and wastewater infrastructure
-        </h3>
-        <p>
-          
-      Communities are 
-          <strong>
-            identified as disadvantaged
-          </strong>
-          
-    
-        </p>
-        <p>
-          <strong>
-            IF
-          </strong>
-           at or above the 90th percentile for 
-          <a
+            class="usa-link"
             href="#waste-water"
           >
             wastewater discharge
@@ -769,26 +903,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above the 65th percentile for 
+           are at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+          
     
         </p>
-        <p />
       </div>
       <div>
         <h3>
-          Health burdens
+          Workforce development
         </h3>
         <p>
           
@@ -796,125 +924,85 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-          
+           if they are in census tracts that:
     
         </p>
         <p>
+          
+        
           <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
           <a
-            href="#asthma"
-          >
-            asthma
-          </a>
-           OR 
-          <a
-            href="#diabetes"
-          >
-            diabetes
-          </a>
-           OR 
-          <a
-            href="#heart-disease"
-          >
-            heart disease
-          </a>
-           OR 
-          <a
-            href="#life-exp"
-          >
-            low life expectancy
-          </a>
-        </p>
-        <p>
-          
-      
-          <strong>
-            AND
-          </strong>
-           is at or above the 65th percentile for 
-          <a
-            href="#low-income"
-          >
-            low income
-          </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
-    
-        </p>
-        <p />
-      </div>
-      <div>
-        <h3>
-          Training and workforce development
-        </h3>
-        <p>
-          
-      Communities are 
-          <strong>
-            identified as disadvantaged
-          </strong>
-          
-    
-        </p>
-        <p>
-          <strong>
-            IF
-          </strong>
-           at or above the 90th percentile for 
-          <a
-            href="#low-med-inc"
-          >
-            low median income
-          </a>
-           as a percentage of area median income OR 
-          <a
+            class="usa-link"
             href="#ling-iso"
           >
             linguistic isolation
           </a>
            OR 
           <a
-            href="#unemploy"
+            class="usa-link"
+            href="#low-med-inc"
           >
-            unemployment
+            low median income
           </a>
-           OR percentage of individuals in households at or below 100% Federal 
+           OR 
           <a
+            class="usa-link"
             href="#poverty"
           >
             poverty
           </a>
-           level
+           OR 
+          <a
+            class="usa-link"
+            href="#unemploy"
+          >
+            unemployment
+          </a>
+          
       
         </p>
         <p>
           <strong>
             AND
           </strong>
-           10% or more of adults 25 or older have not attained a 
+           fewer than 10% of people ages 25 or older have a 
           <a
+            class="usa-link"
             href="#high-school"
           >
-            high school degree
+            high school education
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+           (i.e. graduated with a high school degree)
   
         </p>
-        <p />
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <div
+          class="grid-col-8"
+          data-testid="grid"
+        >
+          <h2>
+            
+      Tribes
+    
+          </h2>
+          <p>
+            
+      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities.
+    
+          </p>
+        </div>
       </div>
     </div>
     <div
@@ -934,25 +1022,49 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             data-testid="grid"
           >
             <h2>
-              Datasets used in beta methodology
+              Datasets used in v1.0 methodology
             </h2>
           </div>
         </div>
         <div
-          class="grid-row"
+          class="grid-row grid-gap"
           data-testid="grid"
         >
           <div
-            class="desktop:grid-col-9"
+            class="desktop:grid-col-7"
             data-testid="grid"
           >
             <p>
               
-      The datasets used in the current version of the tool come from a variety of sources and were 
-      selected based on relevance, availability, and quality. The datasets seek to identify a range of 
-      human health, environmental, climate-related, and other impacts on communities.
+      The tool's datasets are public and consistent nationwide. They come from different sources and are high quality. The Council on Environmental Quality (CEQ) chose them based on relevance,  availability, and quality. They identify climate, environmental, and other burdens on communities.
     
             </p>
+          </div>
+          <div
+            class="desktop:grid-col-1"
+            data-testid="grid"
+          />
+          <div
+            class="desktop:grid-col-4"
+            data-testid="grid"
+          >
+            <a
+              href="https://www.surveymonkey.com/r/6G9TQJ8"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                Share data sources with CEQ
+                <img
+                  alt="launch icon"
+                  src="test-file-stub"
+                />
+              </button>
+            </a>
           </div>
         </div>
         <div
@@ -967,13 +1079,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 id="low-income"
               >
-                <h3>
-                  Low income
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Low income
+                  </h3>
+                </div>
                 <div>
                   
         Percent of a census tract's population in households where household income is at or below
-        200% of the Federal poverty level.
+        200% of the Federal poverty level, not including students enrolled in higher education.
       
                 </div>
                 <ul>
@@ -987,54 +1103,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Responsible Party: 
                     </span>
-                    Census
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      American Community Survey
-                    </a>
-                     from 2015-2019
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="high-ed-enroll-rate"
-              >
-                <h3>
-                  Higher education non-enrollment
-                </h3>
-                <div>
-                  
-        Percent of people 15 or older who are not currently enrolled in college, university, or graduate school.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    All categories
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Census
+                    U.S. Census
                   </li>
                   <li>
                     <span>
@@ -1062,17 +1131,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 id="exp-agr-loss-rate"
               >
-                <h3>
-                  Expected agriculture loss rate
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Expected agriculture loss rate
+                  </h3>
+                </div>
                 <div>
                   
-        Percent of agricultural value at risk from losses due to fourteen types of 
-        natural hazards that have some link 
-        to climate change: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agricultural value at risk in 
-        a census tract by the total agricultural value in that census tract.
+        Expected agricultural value at risk from losses due to fourteen types of natural hazards. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. The rate is calculated by dividing the agricultural value at risk by the total agricultural value. 
       
                 </div>
                 <ul>
@@ -1114,16 +1182,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 id="exp-bld-loss-rate"
               >
-                <h3>
-                  Expected building loss rate
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Expected building loss rate
+                  </h3>
+                </div>
                 <div>
                   
-        Percent of building value at risk from losses due to fourteen types of natural hazards 
-        that have some link to climate change: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in 
-        a census tract by the total building value in that census tract.
+        Expected building value at risk from losses due to fourteen types of natural hazards. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. The rate is calculated by dividing the building value at risk by the total building value.
       
                 </div>
                 <ul>
@@ -1165,24 +1233,29 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 id="exp-pop-loss-rate"
               >
-                <h3>
-                  Expected population loss rate
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Expected population loss rate
+                  </h3>
+                </div>
                 <div>
                   
-        Rate relative to the population of fatalities and injuries due to fourteen types of
-        natural hazards each year
-        that have some link to climate change: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
-        as the Spatial Hazard Events and Losses and National Centers for Environmental Information’s 
-        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
-        combine fatalities and injuries for the computation of population loss value, an injury is counted 
-        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 
-        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population 
-        loss. This total number of injuries and fatalities is then divided by the population in the 
-        census tract to get a per-capita rate of population risk. 
+        Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the population loss rate.
+
       
+                </div>
+                <div>
+                  <p>
+                    
+        
+                    <strong>
+                      Note: 
+                    </strong>
+                    this burden only applies for census tracts with populations greater than 20 people.
+      
+                  </p>
                 </div>
                 <ul>
                   <li>
@@ -1221,20 +1294,140 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </ul>
               </div>
               <div
-                id="energy-burden"
+                id="flood-risk"
               >
-                <h3>
-                  Energy burden
-                </h3>
                 <div>
-                  Average annual energy cost per household ($) divided by average household income.
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Projected flood risk
+                  </h3>
+                </div>
+                <div>
+                  
+        A high precision, climate-adjusted model that projects flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not consider property value.
+      
                 </div>
                 <ul>
                   <li>
                     <span>
                       Used in: 
                     </span>
-                    Clean energy and energy efficiency category
+                    Climate change category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    First Street Foundation
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://firststreet.org/data-access/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Climate Risk Data Access
+                    </a>
+                     from 2022
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="wildfire-risk"
+              >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Projected wildfire risk
+                  </h3>
+                </div>
+                <div>
+                  
+        A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous U.S., today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not consider property value.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Climate change category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    First Street Foundation
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://firststreet.org/data-access/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Climate Risk Data Access
+                    </a>
+                     from 2022
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All contiguous U.S. states and the District of Columbia 
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="energy-burden"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Energy cost
+                  </h3>
+                </div>
+                <div>
+                  
+        Average household annual energy cost in dollars divided by the average household income.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Energy category
                   </li>
                   <li>
                     <span>
@@ -1253,7 +1446,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       rel="noreferrer"
                       target="_blank"
                     >
-                      LEAD Score
+                      LEAD Tool
                     </a>
                      from 2018
                   </li>
@@ -1261,21 +1454,23 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Available for: 
                     </span>
-                    All U.S. states and the District of Columbia
+                    All U.S. states, the District of Columbia, and Puerto Rico
                   </li>
                 </ul>
               </div>
               <div
                 id="pm-25"
               >
-                <h3>
-                  PM2.5 in the air
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    PM2.5 in the air
+                  </h3>
+                </div>
                 <div>
                   
-        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller. The value 
-        in the fields is the weight of these particles in micrograms per cubic meter.
-
+        Fine inhalable particles with 2.5 or smaller micrometer diameters. The percentile is the weight of the particles per cubic meter.
       
                 </div>
                 <ul>
@@ -1283,7 +1478,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Clean energy and energy efficiency category
+                    Energy category
                   </li>
                   <li>
                     <span>
@@ -1316,452 +1511,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </ul>
               </div>
               <div
-                id="diesel-pm"
-              >
-                <h3>
-                  Diesel particulate matter exposure
-                </h3>
-                <div>
-                  
-        Mixture of particles that is part of diesel exhaust in the air. The value in the fields is the 
-        weight of these particles in micrograms per cubic meter. 
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Clean transit category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Environmental Protection Agency (EPA)
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      National Air Toxics Assessment (NATA)
-                    </a>
-                     from 2014 as compiled by EPA's EJScreen
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="traffic-vol"
-              >
-                <h3>
-                  Traffic proximity and volume
-                </h3>
-                <div>
-                  
-        Count of vehicles (average annual daily traffic) at major roads
-        within 500 meters, divided by distance in meters.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Clean transit category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Department of Transportation (DOT)
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Traffic data
-                    </a>
-                     from 2017 as compiled by EPA's EJScreen
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="house-burden"
-              >
-                <h3>
-                  Housing cost burden
-                </h3>
-                <div>
-                  
-        Percent of households in a census tract that are both earning less than 80% of HUD Area Median
-        Family Income by county and are spending more than 30% of their income on housing costs.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Affordable and sustainable housing category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Department of Housing & Urban Development (HUD)
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.huduser.gov/portal/datasets/cp.html"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Comprehensive Housing Affordability Strategy dataset
-                    </a>
-                     from 2014-2018
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="lead-paint"
-              >
-                <h3>
-                  Lead paint
-                </h3>
-                <div>
-                  
-        Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        census tracts with median home values less than the 90th percentile.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Affordable and sustainable housing category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Census
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      American Community Survey
-                    </a>
-                     from 2015-2019
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="median-home"
-              >
-                <h3>
-                  Median home value
-                </h3>
-                <div>
-                  
-        Median home value of owner-occupied housing units in the census tract.
-       
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Affordable and sustainable housing category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Census
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      American Community Survey
-                    </a>
-                     from 2015-2019
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="prox-haz"
-              >
-                <h3>
-                  Proximity to hazardous waste facilities
-                </h3>
-                <div>
-                  
-        Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
-        Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by 
-        distance in kilometers.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Reduction and remediation of legacy pollution category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Environmental Protection Agency (EPA)
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    
-      
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://enviro.epa.gov/facts/rcrainfo/search.html"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Treatment, Storage, and Disposal Facilities (TSDF) data
-                    </a>
-                     from 2020 calculated from EPA's RCRA database as compiled 
-      by EPA's EJScreen
-    
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="prox-npl"
-              >
-                <h3>
-                  Proximity to National Priorities List (NPL) sites
-                </h3>
-                <div>
-                  
-        Count of proposed or listed NPL - also known as Superfund - sites within 5 kilometers (or nearest one
-        beyond 5 kilometers), each divided by distance in kilometers.
-        
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Reduction and remediation of legacy pollution category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Environmental Protection Agency (EPA)
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://cumulis.epa.gov/supercpad/cursites/srchsites.cfm"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      CERCLIS database
-                    </a>
-                     from 2020 as compiled by EPA’s EJScreen
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="prox-rmp"
-              >
-                <h3>
-                  Proximity to Risk Management Plan (RMP) facilities
-                </h3>
-                <div>
-                  
-        Count of RMP (potential chemical accident management plan) facilities within 5 kilometers (or nearest
-        one beyond 5 kilometers), each divided by distance in kilometers.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Reduction and remediation of legacy pollution category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Environmental Protection Agency (EPA)
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      RMP database
-                    </a>
-                     from 2020 as compiled by EPA’s EJScreen
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="waste-water"
-              >
-                <h3>
-                  Wastewater discharge
-                </h3>
-                <div>
-                  
-        Risk-Screening Environmental Indicators (RSEI) modeled toxic concentrations at
-        stream segments within 500 meters, divided by distance in kilometers.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Critical clean water and wastewater infrastructure category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Environmental Protection Agency (EPA)
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Risk-Screening Environmental Indicators (RSEI) Model
-                    </a>
-                     from 2020 as compiled by EPA’s EJScreen
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states and the District of Columbia
-                  </li>
-                </ul>
-              </div>
-              <div
                 id="asthma"
               >
-                <h3>
-                  Asthma
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Asthma
+                  </h3>
+                </div>
                 <div>
                   
-        Weighted percent of people who answer “yes” to both of the following questions: “Have you ever
-        been told by a doctor, nurse, or other health professional that you have asthma?” and
-        “Do you still have asthma?”
+        Share of people who answer “yes” to both of these questions: “Have you ever been told by a health professional that you have asthma?” and “Do you still have asthma?”.
       
                 </div>
                 <ul>
@@ -1769,7 +1530,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Health burdens category
+                    Health category
                   </li>
                   <li>
                     <span>
@@ -1803,14 +1564,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 id="diabetes"
               >
-                <h3>
-                  Diabetes
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Diabetes
+                  </h3>
+                </div>
                 <div>
                   
-        Weighted percent of people ages 18 years and older who report having ever been
-        told by a doctor, nurse, or other health professionals that they have
-        diabetes other than diabetes during pregnancy.
+        Share of people ages 18 years and older who have been told by a health professional that they have diabetes other than diabetes during pregnancy.
       
                 </div>
                 <ul>
@@ -1818,7 +1581,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Health burdens category
+                    Health category
                   </li>
                   <li>
                     <span>
@@ -1852,14 +1615,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 id="heart-disease"
               >
-                <h3>
-                  Heart disease
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Heart disease
+                  </h3>
+                </div>
                 <div>
                   
-        Weighted percent of people ages 18 years and older who report ever having been told
-        by a doctor, nurse, or other health professionals that they had angina or
-        coronary heart disease.
+        Share of people ages 18 years and older who have been told by a health professional that they had angina or coronary heart disease.
       
                 </div>
                 <ul>
@@ -1867,7 +1632,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Health burdens category
+                    Health category
                   </li>
                   <li>
                     <span>
@@ -1901,12 +1666,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 id="life-exp"
               >
-                <h3>
-                  Low life expectancy
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Low life expectancy
+                  </h3>
+                </div>
                 <div>
                   
-        Average number of years of life a person who has attained a given age can expect to live.
+        Average number of years people have left in their lives.
       
                 </div>
                 <div>
@@ -1916,7 +1685,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <strong>
                       Note: 
                     </strong>
-                    The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher life expectancies and the census tracts with higher numbers have lower life expectancy when compared to life expectancy in the area.
+                    The tool reverses the percentiles for this burden. This means that census tracts with lower numbers have higher life expectancies and that census tracts with higher numbers have lower life expectancies.
       
                   </p>
                 </div>
@@ -1925,7 +1694,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Health burdens category
+                    Health category
                   </li>
                   <li>
                     <span>
@@ -1944,9 +1713,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       rel="noreferrer"
                       target="_blank"
                     >
-                      U.S. Small-Area Life Expectancy Estimates Project (USALEEP)
+                      U.S. Small-Area Life Expectancy Estimates Project
                     </a>
-                     from 2010-2015
+                     (USALEEP) from 2010-2015
                   </li>
                   <li>
                     <span>
@@ -1957,14 +1726,963 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </ul>
               </div>
               <div
-                id="low-med-inc"
+                id="hist-underinv"
               >
-                <h3>
-                  Low median income
-                </h3>
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Historic underinvestment
+                  </h3>
+                </div>
                 <div>
                   
-        Median income of the census tract calculated as a percent of the area’s median income.
+        Census tracts that experienced historic underinvestment based on redlining maps created by the federal government’s Home Owners’ Loan Corporation (HOLC) between 1935 and 1940. The tool uses the National Community Reinvestment Coalition’s 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://ncrc.org/explainer-why-we-created-a-new-method-for-measuring-the-impact-of-redlining/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    methodology
+                  </a>
+                   for converting boundaries in the HOLC maps to census tracts. Census tracts meet the threshold when they have a score of 3.25 or more out of 4.
+      
+                </div>
+                <div>
+                  <p>
+                    
+        
+                    <strong>
+                      Note:
+                    </strong>
+                     The historic underinvestment burden is 
+                    <strong>
+                      not available
+                    </strong>
+                     for tracts that were not included in the original HOLC maps because there is no underlying data.
+      
+                  </p>
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Housing category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    National Community Reinvestment Coalition (NCRC)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.openicpsr.org/openicpsr/project/141121/version/V2/view"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Dataset of formerly redlined areas
+                    </a>
+                     using digitized maps from the Home Owners Loan Corporation (HOLC), using 2010 census boundaries
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    Metro areas of U.S. that were graded by the Home Owners’ Loan Corporation
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="house-burden"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Housing cost
+                  </h3>
+                </div>
+                <div>
+                  
+        Share of households that are both earning less than 80% of Housing and Urban Development’s Area Median Family Income and are spending more than 30% of their income on housing costs.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Housing category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Department of Housing and Urban Development (HUD)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.huduser.gov/portal/datasets/cp.html"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Comprehensive Housing Affordability Strategy dataset
+                    </a>
+                     from 2014-2018
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="green-space"
+              >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Lack of green space
+                  </h3>
+                </div>
+                <div>
+                  
+        Share of land with developed surfaces covered with artificial materials like concrete or pavement, excluding crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.
+
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Housing category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    
+      Data from 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.mrlc.gov/about"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Multi-Resolution Land Characteristics
+                    </a>
+                     (MRLC) consortium; data analysis provided by 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.tpl.org/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      The Trust for Public Lands
+                    </a>
+                     and 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.americanforests.org/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      American Forests
+                    </a>
+                    
+    
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.mrlc.gov/data/nlcd-2019-percent-developed-imperviousness-conus"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Percent Developed Imperviousness
+                    </a>
+                     (CONUS)  from 2019
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All contiguous U.S. states and the District of Columbia 
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="indoor-plumb"
+              >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Lack of indoor plumbing
+                  </h3>
+                </div>
+                <div>
+                  
+        Housing without indoor kitchen facilities or complete plumbing facilities.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Housing category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Department of Housing and Urban Development (HUD)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.huduser.gov/portal/datasets/cp.html"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Comprehensive Housing Affordability Strategy dataset
+                    </a>
+                     from 2014-2018
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="lead-paint"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Lead paint
+                  </h3>
+                </div>
+                <div>
+                  
+        Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) that are less likely to face health risks from lead paint exposure are not included.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Housing category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    U.S. Census
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.census.gov/programs-surveys/acs"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      American Community Survey
+                    </a>
+                     from 2015-2019
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="mine-land"
+              >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Abandoned mine land
+                  </h3>
+                </div>
+                <div>
+                  
+        Presence of an abandoned mine left by legacy coal mining operations.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Legacy pollution category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Department of the Interior (DOI)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.osmre.gov/programs/e-amlis"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Abandoned Mine Land Inventory System (e-AMLIS)
+                    </a>
+                     from 2017
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states and the District of Columbia
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="fuds"
+              >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Formerly Used Defense Sites
+                  </h3>
+                </div>
+                <div>
+                  
+      Properties that were owned, leased, or possessed by the United States, under the jurisdiction of the Secretary of Defense prior to October 1986.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Legacy pollution category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    U.S. Army Corps of Engineers
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.usace.army.mil/Missions/Environmental/Formerly-Used-Defense-Sites/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Formerly Used Defense Sites
+                    </a>
+                     (FUDS) from 2019
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states and the District of Columbia
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="prox-haz"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Proximity to hazardous waste facilities
+                  </h3>
+                </div>
+                <div>
+                  
+        Number of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by distance in kilometers.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Legacy pollution category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Environmental Protection Agency (EPA)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    
+      
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://enviro.epa.gov/facts/rcrainfo/search.html"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Treatment, Storage, and Disposal Facilities (TSDF) data
+                    </a>
+                     from 2020 calculated from EPA's RCRA database as compiled 
+      by EPA's EJScreen
+    
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="prox-npl"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Proximity to Superfund sites
+                  </h3>
+                </div>
+                <div>
+                  
+        Number of proposed or listed Superfund or National Priorities list (NPL) sites within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
+        
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Legacy pollution category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Environmental Protection Agency (EPA)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://cumulis.epa.gov/supercpad/cursites/srchsites.cfm"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      CERCLIS database
+                    </a>
+                     from 2020 as compiled by EPA’s EJScreen
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="prox-rmp"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Proximity to Risk Management Plan (RMP) facilities
+                  </h3>
+                </div>
+                <div>
+                  
+        Count of Risk Management Plan (RMP) facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers. These facilities are mandated by the Clean Air Act to file RMPs because they handle substances with significant environmental and public health risks.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Legacy pollution category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Environmental Protection Agency (EPA)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      RMP database
+                    </a>
+                     from 2020 as compiled by EPA’s EJScreen
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="diesel-pm"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Diesel particulate matter exposure
+                  </h3>
+                </div>
+                <div>
+                  
+        Mixture of particles in diesel exhaust in the air, measured as micrograms per cubic meter.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Transportation category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Environmental Protection Agency (EPA)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      National Air Toxics Assessment (NATA)
+                    </a>
+                     from 2014 as compiled by EPA's EJScreen
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="trans-barrier"
+              >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Transportation barriers
+                  </h3>
+                </div>
+                <div>
+                  
+        Average relative cost and time spent on transportation relative to all other tracts.
+      
+                </div>
+                <div>
+                  <p>
+                    
+      
+                    <strong>
+                      Note: 
+                    </strong>
+                     this burden only applies for census tracts with populations greater than 20 people.
+    
+                  </p>
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Transportation category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Department of Transportation (DOT)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.transportation.gov/equity-Justice40#:~:text=Transportation%20access%20disadvantage%20identifies%20communities%20and%20places%20that%20spend%20more%2C%20and%20take%20longer%2C%20to%20get%20where%20they%20need%20to%20go.%20(4)"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Transportation access disadvantage
+                    </a>
+                     from 2022
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states and the District of Columbia
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="traffic-vol"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Traffic proximity and volume
+                  </h3>
+                </div>
+                <div>
+                  
+        Number of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Transportation category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Department of Transportation (DOT)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Traffic data
+                    </a>
+                     from 2017 as compiled by EPA's EJScreen
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="leaky-uwt"
+              >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Underground storage tanks and releases
+                  </h3>
+                </div>
+                <div>
+                  
+        Weighted formula of the density of leaking underground storage tanks and the number of all active underground storage tanks within 1,500 feet of the census tract boundaries.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Water and wastewater category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Environmental Protection Agency (EPA)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    Calculated from EPA’s 
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.epa.gov/ust/ust-finder"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      UST Finder
+                    </a>
+                     from 2021 as compiled by EPA's EJScreen
+    
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="waste-water"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Wastewater discharge
+                  </h3>
+                </div>
+                <div>
+                  
+        Risk-Screening Environmental Indicators (RSEI) modeled toxic concentrations at
+        stream segments within 500 meters, divided by distance in kilometers.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Water and wastewater category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Environmental Protection Agency (EPA)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Risk-Screening Environmental Indicators (RSEI) model
+                    </a>
+                     from 2020 as compiled by EPA’s EJScreen
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="ling-iso"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Linguistic isolation
+                  </h3>
+                </div>
+                <div>
+                  
+        Share of households where no one over age 14 speaks English very well.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Workforce development category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    U.S. Census
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.census.gov/programs-surveys/acs"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      American Community Survey
+                    </a>
+                     from 2015-2019
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states and the District of Columbia
+                  </li>
+                </ul>
+                <div>
+                  <p>
+                    
+      
+                    <strong>
+                      Note: 
+                    </strong>
+                    Linguistic isolation was removed for Puerto Rico based on feedback during the beta period.
+      
+                  </p>
+                </div>
+              </div>
+              <div
+                id="low-med-inc"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Low median income
+                  </h3>
+                </div>
+                <div>
+                  
+        Low median income calculated as a share of the area’s median income.
       
                 </div>
                 <div>
@@ -1974,7 +2692,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <strong>
                       Note: 
                     </strong>
-                    The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median income when compared to area median income.
+                    The tool reverses the percentiles for this burden. This means that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median incomes.
       
                   </p>
                 </div>
@@ -1983,13 +2701,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Training and workforce development category
+                    Workforce development category
                   </li>
                   <li>
                     <span>
                       Responsible Party: 
                     </span>
-                    Census
+                    U.S. Census
                   </li>
                   <li>
                     <span>
@@ -2031,135 +2749,24 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Available for: 
                     </span>
-                    American Samoa and the Northern Mariana Islands
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="ling-iso"
-              >
-                <h3>
-                  Linguistic isolation
-                </h3>
-                <div>
-                  
-        Percent of households where no one over the age 14 speaks English well.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Training and workforce development category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Census
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      American Community Survey
-                    </a>
-                     from 2015-2019
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states, the District of Columbia, and Puerto Rico
-                  </li>
-                </ul>
-              </div>
-              <div
-                id="unemploy"
-              >
-                <h3>
-                  Unemployment
-                </h3>
-                <div>
-                  
-      Number of unemployed people as a percentage of the civilian labor force.
-      
-                </div>
-                <ul>
-                  <li>
-                    <span>
-                      Used in: 
-                    </span>
-                    Training and workforce development category
-                  </li>
-                  <li>
-                    <span>
-                      Responsible Party: 
-                    </span>
-                    Census
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      American Community Survey
-                    </a>
-                     from 2015-2019
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    All U.S. states, the District of Columbia, and Puerto Rico
-                  </li>
-                  <li>
-                    <span>
-                      Source: 
-                    </span>
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.census.gov/data/developers/data-sets/acs-5year/2010.html"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      American Community Survey
-                    </a>
-                     from 2010
-                  </li>
-                  <li>
-                    <span>
-                      Available for: 
-                    </span>
-                    American Samoa and the Northern Mariana Islands
+                    American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands
+    
                   </li>
                 </ul>
               </div>
               <div
                 id="poverty"
               >
-                <h3>
-                  Poverty
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    Poverty
+                  </h3>
+                </div>
                 <div>
                   
-        Percent of a census tract's population in households where the household income is at or below 100% of
-        the Federal poverty level.
+        Share of people living at or below 100% of the Federal poverty level.
       
                 </div>
                 <ul>
@@ -2167,13 +2774,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Training and workforce development category
+                    Workforce development category
                   </li>
                   <li>
                     <span>
                       Responsible Party: 
                     </span>
-                    Census
+                    U.S. Census
                   </li>
                   <li>
                     <span>
@@ -2215,19 +2822,97 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Available for: 
                     </span>
-                    American Samoa and the Northern Mariana Islands
+                    American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands
+    
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="unemploy"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Unemployment
+                  </h3>
+                </div>
+                <div>
+                  
+        Number of unemployed people as a share of the labor force.
+      
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    Workforce development category
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    U.S. Census
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.census.gov/programs-surveys/acs"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      American Community Survey
+                    </a>
+                     from 2015-2019
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and Puerto Rico
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.census.gov/data/developers/data-sets/acs-5year/2010.html"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      American Community Survey
+                    </a>
+                     from 2010
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands
+    
                   </li>
                 </ul>
               </div>
               <div
                 id="high-school"
               >
-                <h3>
-                  High school degree non-attainment
-                </h3>
+                <div
+                  class=""
+                >
+                  <h3>
+                    High school education
+                  </h3>
+                </div>
                 <div>
                   
-        Percent of people age 25 years or older in a census tract whose education level is less than a high school diploma.
+        Share of people aged 25 years or older who didn’t graduate from high school.
       
                 </div>
                 <ul>
@@ -2235,13 +2920,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Training and workforce development category
+                    Workforce development category
                   </li>
                   <li>
                     <span>
                       Responsible Party: 
                     </span>
-                    Census
+                    U.S. Census
                   </li>
                   <li>
                     <span>
@@ -2283,7 +2968,78 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Available for: 
                     </span>
-                    American Samoa and the Northern Mariana Islands
+                    American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands
+    
+                  </li>
+                </ul>
+              </div>
+              <div
+                id="tribal-lands"
+              >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
+                  <h3>
+                    Tribes
+                  </h3>
+                </div>
+                <div>
+                  
+      The Land Area Representation (LAR) dataset depicts American Indian land areas for Federally Recognized Tribes.
+      
+                </div>
+                <div>
+                  <p>
+                    
+        
+                    <strong>
+                      Note: 
+                    </strong>
+                    The LAR dataset depicts the exterior extent of a Federal Indian land area.  Not all Federally Recognized Tribes have a designated land area; therefore, they may not have an associated land area represented in the land area dataset.
+      
+                  </p>
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    
+        Displaying land within the boundaries of Federally Recognized Tribes and point locations of Alaska Native Villages on the map
+      
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Bureau of Indian Affairs (BIA)
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.bia.gov/bia/ots/dpmc/bogs"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Land Area Representation (LAR) dataset
+                    </a>
+                     from 2018
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    Federally Recognized Tribes, including Alaska Native villages 
                   </li>
                 </ul>
               </div>
@@ -2292,6 +3048,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
         <div>
           <a
+            class="usa-link"
             href="/en/methodology"
           >
             Return to top
@@ -2358,6 +3115,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     </div>
                   </address>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="sign-up-for-updates"
+                    href="https://lp.constantcontactpages.com/su/Vm8pCFj/spring"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Sign up for updates
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -2377,30 +3147,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
-                    href="/en/public-engagement"
-                  >
-                    Engagement calendar
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy="request-for-information"
-                    href="https://www.federalregister.gov/d/2022-03920"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Request for Information
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -2519,7 +3266,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <a
-        href="https://www.surveymonkey.com/r/cejst-survey"
+        href="https://www.surveymonkey.com/r/P3LWTSB"
         rel="noreferrer"
         target="_blank"
       >
@@ -2528,7 +3275,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="button"
           type="button"
         >
-          Help improve the site & data
+          Help improve the tool
           <img
             alt="launch icon"
             src="test-file-stub"

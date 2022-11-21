@@ -43,7 +43,7 @@ const PublicEvent = ({event}:IPublicEvent) => {
       }>
 
       {/* Heading */}
-      <CollectionHeading>
+      <CollectionHeading headingLevel='h3'>
         {isEventExpired ? eventName : <LinkTypeWrapper
           linkText={eventName}
           internal={false}

@@ -1,0 +1,40 @@
+@use '../../styles/design-system.scss' as *;
+@import "../utils.scss";
+
+.donutCopyContainer{
+    @include u-display('flex');
+    flex-direction: column;
+    @include u-padding-left(2);
+    @include u-padding-right(2.5);
+    @include u-padding-top(2);
+
+    .donutRow {
+        @include u-display('flex');
+        justify-content: space-between;
+
+        .donutRowLabel {
+            font-weight: bold;
+        }
+
+        .valueSubTextContainer {
+            @include u-display('flex');
+            flex-direction: column;
+            .subTextContainer{
+                @include indicatorValueSubTextContainer();
+            }
+        }
+    }
+
+    .donutRow:first-child {
+        @include u-padding-bottom("05");
+    }
+
+    .invert {
+        align-self: flex-end;
+        @include invert();
+    }
+    
+    .noInvert {
+        align-self: flex-end;
+    }
+}

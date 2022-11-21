@@ -2,7 +2,7 @@ import React from 'react';
 import {GovBanner} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
-import Language from '../Language';
+// import Language from '../Language';
 
 import * as styles from './GovernmentBanner.module.scss';
 
@@ -14,7 +14,8 @@ const GovernmentBanner = () => {
       <div className={styles.bannerContainer}>
 
         <GovBanner language={intl.locale === 'es' ? 'spanish' : 'english'}/>
-        <Language isDesktop={true}/>
+        {/* Temporarily removing while language is translated */}
+        {/* <Language isDesktop={true}/> */}
 
       </div>
     </div>

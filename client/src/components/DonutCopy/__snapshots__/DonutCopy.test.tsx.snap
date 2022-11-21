@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of DonutCopy Component checks if component renders when adjacency is false 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <div>
+        Completely surrounded
+      </div>
+      <div
+        class=""
+      >
+        No
+      </div>
+    </div>
+    <div>
+      <div>
+        Adjusted low income
+      </div>
+      <div>
+        <div>
+          3
+          <sup
+            style="top: -0.2em;"
+          >
+            th
+          </sup>
+        </div>
+        <div>
+          <div>
+            above 50
+            <sup
+              style="top: -0.2em;"
+            >
+              th
+            </sup>
+             percentile
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of DonutCopy Component checks if component renders when adjacency is false 2`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <div>
+        Completely surrounded
+      </div>
+      <div>
+        YES
+      </div>
+    </div>
+    <div>
+      <div>
+        Adjusted low income
+      </div>
+      <div>
+        <div>
+          3
+          <sup
+            style="top: -0.2em;"
+          >
+            th
+          </sup>
+        </div>
+        <div>
+          <div>
+            above 50
+            <sup
+              style="top: -0.2em;"
+            >
+              th
+            </sup>
+             percentile
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
