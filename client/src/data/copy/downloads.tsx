@@ -571,17 +571,17 @@ export const DOWNLOAD_LINKS = {
   />,
   LINK4: <FormattedMessage
     id={'download.page.download.file.4'}
-    defaultMessage={`<link4>Technical support document</link4> (.pdf {tsdFileSize})`}
+    defaultMessage={`Technical support document (version 1.0 coming soon)`}
     description={'Navigate to the download page. This is fourth download file link'}
     values={{
-      link4: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.TSD.URL, false, true),
-      link4es: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.TSD_ES.URL, false, true),
-      tsdFileSize: <FormattedNumber
-        value={DOWNLOAD_FILES.NARWAL.TSD.SIZE}
-        style="unit"
-        unit="megabyte"
-        unitDisplay="narrow"
-      />,
+      // link4: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.TSD.URL, false, true),
+      // link4es: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.TSD_ES.URL, false, true),
+      // tsdFileSize: <FormattedNumber
+      //   value={DOWNLOAD_FILES.NARWAL.TSD.SIZE}
+      //   style="unit"
+      //   unit="megabyte"
+      //   unitDisplay="narrow"
+      // />,
     }}
   />,
   LINK5: <FormattedMessage
