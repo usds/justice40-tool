@@ -65,8 +65,8 @@ export const DOWNLOAD_FILES = {
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     HOW_TO_COMMUNITIES: {
-      SIZE: 658.3, // KB
-      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_HOW_TO_COMMUNITIES_PDF, false),
+      SIZE: 687.9, // KB
+      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_COMMUNITIES_LIST_PDF, false),
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     INSTRUCTIONS: {
