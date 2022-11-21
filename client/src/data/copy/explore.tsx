@@ -1031,8 +1031,8 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   // Water
   LEAKY_TANKS: {
     id: 'explore.map.page.side.panel.indicator.leaky.tanks',
-    defaultMessage: 'Leaking underground storage tanks',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Leaking underground storage tanks`,
+    defaultMessage: 'Underground storage tanks and releases',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Underground storage tanks and releases`,
   },
   WASTE_WATER: {
     id: 'explore.map.page.side.panel.indicator.wasteWater',
@@ -1293,7 +1293,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   // Water
   LEAKY_TANKS: {
     id: 'explore.map.page.side.panel.indicator.description.leaky.tanks',
-    defaultMessage: `Formula that counts leaking underground storage tanks and number of all underground storage tanks within 1500 feet
+    defaultMessage: `Formula of the density of leaking underground storage tanks and number of all active underground storage tanks within 1500 feet of the census tract boundaries
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of leaky storage tanks`,
   },

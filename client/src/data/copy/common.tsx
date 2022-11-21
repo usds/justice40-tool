@@ -35,7 +35,7 @@ export const METH_BETA_RELEASE_DATE = new Date(2022, 1, 18, 11, 59, 59); // Feb 
 // Beta Banner
 export const BETA_BANNER_CONTENT = <FormattedMessage
   id={'common.pages.alerts.banner.beta.content'}
-  defaultMessage={`<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}.`}
+  defaultMessage={`<bold1>This tool has been updated.</bold1> The 1.0 version of the tool was released on {relDate}.`}
   description={`Alert body that appears on landing page.`}
   values={{
     bold1: boldFn,

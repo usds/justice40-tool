@@ -27,7 +27,7 @@ export const PAGE = defineMessages({
   PARA1_BULLET1: {
     id: 'methodology.page.paragraph.1.bullet.1',
     defaultMessage: `
-      If they are in census tracts that meet the thresholds for at least one of tool’s categories of burden, or
+      If they are in census tracts that meet the thresholds for at least one of the tool’s categories of burden, or
     `,
     description: 'Navigate to the methodology page. This is the methodology paragraph 1, bullet 1',
   },
@@ -98,7 +98,7 @@ export const FORMULA = {
   PARA4: <FormattedMessage
     id={'methodology.page.paragraph.4'}
     defaultMessage={`
-      Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
+      Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 
       census boundaries.    
     `}
     description={'Navigate to the methodology page. This is the methodology paragraph 4'}
@@ -141,7 +141,7 @@ export const CATEGORY_AND_CLAUSE = {
   />,
   HS_DEG_GTE_10: <FormattedMessage
     id={'methodology.page.category.and.clause.hs.ed.higher.ed'}
-    defaultMessage={`<boldtag>AND</boldtag> fewer than 10% of people ages 25 or older have a <link1>high school education</link1>  level less than a high school diploma
+    defaultMessage={`<boldtag>AND</boldtag> fewer than 10% of people ages 25 or older have a <link1>high school education</link1> (i.e. graduated with a high school degree)
   `}
     description={'Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate'}
     values={{
@@ -477,20 +477,83 @@ export const DATE_RANGE = {
 };
 
 export const RESPONSIBLE_PARTIES = {
-  BIA: `Bureau of Indian Affairs (BIA)`,
-  CDC: `Centers for Disease Control and Prevention (CDC)`,
-  CENSUS: `U.S. Census`,
-  DOE: `Department of Energy (DOE)`,
-  DOI: `Department of the Interior (DOI)`,
-  DOT: `Department of Transportation (DOT)`,
-  EPA: `Environmental Protection Agency (EPA)`,
-  EPA_OAR: `Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)`,
-  FIRST: `First Street Foundation`,
-  FEMA: `Federal Emergency Management Agency (FEMA)`,
-  HUD: `Department of Housing and Urban Development (HUD)`,
-  NCRC: `National Community Reinvestment Coalition (NCRC)`,
-  TPL: `The Trust for Public Lands and American Forestry`,
-  USACE: `U.S. Army Corps of Engineers`,
+  BIA: <FormattedMessage
+    id={'methodology.page.cat.res.part.BIA'}
+    defaultMessage={'Bureau of Indian Affairs (BIA)'}
+    description={'responsible party text'}
+  />,
+  CDC: <FormattedMessage
+    id={'methodology.page.cat.res.part.CDC'}
+    defaultMessage={'Centers for Disease Control and Prevention (CDC)'}
+    description={'responsible party text'}
+  />,
+  CENSUS: <FormattedMessage
+    id={'methodology.page.cat.res.part.CENSUS'}
+    defaultMessage={'U.S. Census'}
+    description={'responsible party text'}
+  />,
+  DOE: <FormattedMessage
+    id={'methodology.page.cat.res.part.DOE'}
+    defaultMessage={'Department of Energy (DOE)'}
+    description={'responsible party text'}
+  />,
+  DOI: <FormattedMessage
+    id={'methodology.page.cat.res.part.DOI'}
+    defaultMessage={'Department of the Interior (DOI)'}
+    description={'responsible party text'}
+  />,
+  DOT: <FormattedMessage
+    id={'methodology.page.cat.res.part.DOT'}
+    defaultMessage={'Department of Transportation (DOT)'}
+    description={'responsible party text'}
+  />,
+  EPA: <FormattedMessage
+    id={'methodology.page.cat.res.part.EPA'}
+    defaultMessage={'Environmental Protection Agency (EPA)'}
+    description={'responsible party text'}
+  />,
+  EPA_OAR: <FormattedMessage
+    id={'methodology.page.cat.res.part.EPA_OAR'}
+    defaultMessage={'Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)'}
+    description={'responsible party text'}
+  />,
+  FIRST: <FormattedMessage
+    id={'methodology.page.cat.res.part.FIRST'}
+    defaultMessage={'First Street Foundation'}
+    description={'responsible party text'}
+  />,
+  FEMA: <FormattedMessage
+    id={'methodology.page.cat.res.part.FEMA'}
+    defaultMessage={'Federal Emergency Management Agency (FEMA)'}
+    description={'responsible party text'}
+  />,
+  HUD: <FormattedMessage
+    id={'methodology.page.cat.res.part.HUD'}
+    defaultMessage={'Department of Housing and Urban Development (HUD)'}
+    description={'responsible party text'}
+  />,
+  NCRC: <FormattedMessage
+    id={'methodology.page.cat.res.part.NCRC'}
+    defaultMessage={'National Community Reinvestment Coalition (NCRC)'}
+    description={'responsible party text'}
+  />,
+  GREEN_SPACE: <FormattedMessage
+    id={'methodology.page.cat.res.part.GREEN_SPACE'}
+    defaultMessage={`
+      Data from <link1>Multi-Resolution Land Characteristics (MRLC)</link1> consortium; data analysis provided by <link2>The Trust for Public Lands</link2> and <link3>American Forests</link3>
+    `}
+    description={'responsible party text'}
+    values={{
+      link1: linkFn('https://www.mrlc.gov/about', false, true),
+      link2: linkFn('https://www.tpl.org/', false, true),
+      link3: linkFn('https://www.americanforests.org/', false, true),
+    }}
+  />,
+  USACE: <FormattedMessage
+    id={'methodology.page.cat.res.part.USACE'}
+    defaultMessage={'U.S. Army Corps of Engineers'}
+    description={'responsible party text'}
+  />,
 };
 
 export const SOURCE_LINKS = {
@@ -523,7 +586,7 @@ export const SOURCE_LINKS = {
   />,
   DOE_LEAD: <FormattedMessage
     id={'methodology.page.category.source.doe.lead.link'}
-    defaultMessage={`<link1>LEAD Score</link1> from {date18}`}
+    defaultMessage={`<link1>LEAD Tool</link1> from {date18}`}
     description={'Navigate to the Methodology page. This is the source link for DOE FEMA'}
     values={{
       link1: linkFn('https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool', false, true),
@@ -599,7 +662,7 @@ export const SOURCE_LINKS = {
   />,
   EPA_RSEI: <FormattedMessage
     id={'methodology.page.category.source.epa.rsei.link'}
-    defaultMessage={`<link1>Risk-Screening Environmental Indicators (RSEI) Model</link1> from {date20} as compiled by EPA’s EJScreen`}
+    defaultMessage={`<link1>Risk-Screening Environmental Indicators (RSEI) model</link1> from {date20} as compiled by EPA’s EJScreen`}
     description={'Navigate to the Methodology page. This is the source link for EPA RSEI'}
     values={{
       link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
@@ -671,7 +734,7 @@ export const SOURCE_LINKS = {
   />,
   TRANS_BUR: <FormattedMessage
     id={'methodology.page.category.source.trans.bur.link'}
-    defaultMessage={`<link1>Transportation Burdens indicator</link1>  from {date22}`}
+    defaultMessage={`<link1>Transportation access disadvantage 3</link1>  from {date22}`}
     description={'Navigate to the Methodology page. This is the source link for Transportation burdens'}
     values={{
       link1: linkFn('https://www.transportation.gov/equity-Justice40#:~:text=Transportation%20access%20disadvantage%20identifies%20communities%20and%20places%20that%20spend%20more%2C%20and%20take%20longer%2C%20to%20get%20where%20they%20need%20to%20go.%20(4)', false, true),
@@ -745,7 +808,7 @@ export interface IIndicators {
   description: JSX.Element,
   note?: JSX.Element,
   usedIn: JSX.Element,
-  responsibleParty: string,
+  responsibleParty: JSX.Element,
   sources: {
     source: JSX.Element,
     availableFor: { // Todo remove this and replace with MessageDescriptor when ticket #2000 is fixed
@@ -844,6 +907,16 @@ export const INDICATORS = [
 
       `}
       description={'Navigate to the Methodology page. This is the description text for exp pop loss rate'}
+    />,
+    note: <FormattedMessage
+      id={'methodology.page.category.exp.pop.loss.rate.note.text'}
+      defaultMessage={`
+        <boldtag>Note: </boldtag>this burden only applies for census tracts with populations greater than 20 people.
+      `}
+      description={'Navigate to the Methodology page. This is the note text for low life expectancy'}
+      values={{
+        boldtag: boldFn,
+      }}
     />,
     usedIn: CATEGORIES.CLIMATE_CHANGE.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.FEMA,
@@ -1133,7 +1206,7 @@ export const INDICATORS = [
       description={'Navigate to the Methodology page. This is the description text for housing burden'}
     />,
     usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.TPL,
+    responsibleParty: RESPONSIBLE_PARTIES.GREEN_SPACE,
     sources: [
       {
         source: SOURCE_LINKS.PDI,
@@ -1294,7 +1367,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.prox.rmp.description.text'}
       defaultMessage={`
-        Count of Risk Management Plan (RMP), or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
+        Count of Risk Management Plan (RMP) facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers. These facilities are mandated by the Clean Air Act to file RMPs because they handle substances with significant environmental and public health risks.
       `}
       description={'Navigate to the Methodology page. This is the description text for proximity to rmp'}
     />,
@@ -1347,6 +1420,16 @@ export const INDICATORS = [
       `}
       description={'Navigate to the Methodology page. This is the description text for Transportation barriers'}
     />,
+    note: <FormattedMessage
+      id={'methodology.page.category.trans.barrier.note.text'}
+      defaultMessage={`
+      <boldtag>Note: </boldtag> this burden only applies for census tracts with populations greater than 20 people
+    `}
+      description={'Navigate to the Methodology page. This is the note text for trans.barrier'}
+      values={{
+        boldtag: boldFn,
+      }}
+    />,
     usedIn: CATEGORIES.CLEAN_TRANSPORT.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.DOT,
     sources: [
@@ -1385,16 +1468,16 @@ export const INDICATORS = [
     domID: 'leaky-uwt',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.leaky.uwt.title.text'}
-      defaultMessage={`Leaking underground storage tanks`}
-      description={'Navigate to the Methodology page. This is the title text for the Leaking underground storage tanks'}
+      defaultMessage={`Underground storage tanks and releases`}
+      description={'Navigate to the Methodology page. This is the title text for the Underground storage tanks and releases'}
     />,
     isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.leaky.uwt.description.text'}
       defaultMessage={`
-        Weighted formula of number of leaking underground storage tanks and the number of all underground storage tanks within 1,500 feet.
+        Weighted formula of the density of leaking underground storage tanks and the number of all active underground storage tanks within 1,500 feet of the census tract boundaries.
       `}
-      description={'Navigate to the Methodology page. This is the description text for Leaking underground storage tanks'}
+      description={'Navigate to the Methodology page. This is the description text for Underground storage tanks and releases'}
     />,
     usedIn: CATEGORIES.CLEAN_WATER.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.EPA,

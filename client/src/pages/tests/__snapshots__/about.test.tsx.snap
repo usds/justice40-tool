@@ -145,9 +145,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     <div>
       <div>
         <strong>
-          This site has been updated.
+          This tool has been updated.
         </strong>
-         The current version of the site is 1.0 that was released on Nov 22, 2022.
+         The 1.0 version of the tool was released on Nov 22, 2022.
       </div>
     </div>
     <div
@@ -425,7 +425,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 Executive Order 14008
               </a>
-              . The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.
+              . The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens in eight categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.
 
     
             </p>
@@ -495,7 +495,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               statistical areas
             </a>
-             are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.
+             are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.
     
           </p>
           <p>
@@ -550,7 +550,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </h3>
                   <p>
                     
-      Zoom-in and select any census tract to see if it is considered disadvantaged.
+      Zoom in and select any census tract to see if it is considered disadvantaged.
     
                   </p>
                   <div

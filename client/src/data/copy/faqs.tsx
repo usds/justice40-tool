@@ -308,27 +308,31 @@ export const FAQ_ANSWERS = {
   />,
   Q2_P3: <FormattedMessage
     id={ 'faqs.page.answers.Q2_P3'}
-    defaultMessage={ 'Not all disadvantaged communities can be shown on the map. Some communities, such as migrant workers, do not live in just one place. The Interim Implementation Guidance on the Justice40 Initiative also directs Federal agencies to consider geographically dispersed communities when implementing programs included in the Justice40 Initiative.'}
+    defaultMessage={ 'Not all disadvantaged communities can be shown on the map. Some communities do not live in just one place. The Interim Implementation Guidance on the Justice40 Initiative also directs Federal agencies to consider geographically dispersed communities when implementing programs included in the Justice40 Initiative.'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q2_P3'}
   />,
   Q2_P4: <FormattedMessage
     id={ 'faqs.page.answers.Q2_P4'}
-    defaultMessage={ '<boldtag>The tool uses census tracts.</boldtag> Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.'}
+    defaultMessage={ 'The tool uses census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q2_P4'}
     values={{
-      boldtag: boldFn,
       link1: linkFn(`https://www.census.gov/programs-surveys/acs/geography-acs/geography-boundaries-by-year.html`, false, true),
     }}
   />,
   Q3_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q3_P1'}
-    defaultMessage={ 'No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool offers data about race and age only as information when a census tract is selected. It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.'}
+    defaultMessage={ 'No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool displays data about race and age only to provide information when a census tract is selected.'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q3_P1'}
   />,
   Q3_P2: <FormattedMessage
     id={ 'faqs.page.answers.Q3_P2'}
-    defaultMessage={ 'Although the CEJST does not use race in its methodology, the tool creates a map that seeks to reflect the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.'}
+    defaultMessage={ 'It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q3_P2'}
+  />,
+  Q3_P3: <FormattedMessage
+    id={ 'faqs.page.answers.Q3_P3'}
+    defaultMessage={ 'Although the CEJST does not use race in its methodology, the tool creates a map that seeks to reflect the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.'}
+    description={ 'Navigate to the FAQs page, this will be an answer, Q3_P3'}
   />,
   Q4_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q4_P1'}
@@ -345,7 +349,7 @@ export const FAQ_ANSWERS = {
   />,
   Q4_P3: <FormattedMessage
     id={ 'faqs.page.answers.Q4_P3'}
-    defaultMessage={ '<boldtag>American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands:</boldtag> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period. '}
+    defaultMessage={ '<boldtag>American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands:</boldtag> For these U.S. territories, the tool uses the following data: unemployment, poverty, low median income, and high school education. These burdens are in the workforce development category. '}
     description={ 'Navigate to the FAQs page, this will be an answer, Q4_P3'}
     values={{
       boldtag: boldFn,
@@ -383,12 +387,13 @@ export const FAQ_ANSWERS = {
   />,
   Q6_P2: <FormattedMessage
     id={ 'faqs.page.answers.Q6_P2'}
-    defaultMessage={ ` : Disadvantaged census tracts`}
+    defaultMessage={ ` : Disadvantaged census tracts (meets threshold methodology OR contains lands of Tribes)`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q6_P2'}
   />,
   Q6_P3: <FormattedMessage
     id={ 'faqs.page.answers.Q6_P3'}
-    defaultMessage={ ` : Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes `}
+    defaultMessage={ ` : Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes (meets threshold methodology AND contains lands of Tribes)
+    `}
     description={ 'Navigate to the FAQs page, this will be an answer, Q6_P3'}
   />,
   Q6_P4: <FormattedMessage

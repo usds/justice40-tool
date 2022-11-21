@@ -145,9 +145,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     <div>
       <div>
         <strong>
-          This site has been updated.
+          This tool has been updated.
         </strong>
-         The current version of the site is 1.0 that was released on Nov 22, 2022.
+         The 1.0 version of the tool was released on Nov 22, 2022.
       </div>
     </div>
     <div
@@ -499,13 +499,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
                 <p>
-                  Not all disadvantaged communities can be shown on the map. Some communities, such as migrant workers, do not live in just one place. The Interim Implementation Guidance on the Justice40 Initiative also directs Federal agencies to consider geographically dispersed communities when implementing programs included in the Justice40 Initiative.
+                  Not all disadvantaged communities can be shown on the map. Some communities do not live in just one place. The Interim Implementation Guidance on the Justice40 Initiative also directs Federal agencies to consider geographically dispersed communities when implementing programs included in the Justice40 Initiative.
                 </p>
                 <p>
-                  <strong>
-                    The tool uses census tracts.
-                  </strong>
-                   Census tracts are small units of geography. Census tract boundaries for 
+                  The tool uses census tracts. Census tracts are small units of geography. Census tract boundaries for 
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -538,7 +535,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-2"
               >
                 <p>
-                  No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool offers data about race and age only as information when a census tract is selected. It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.
+                  No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool displays data about race and age only to provide information when a census tract is selected.
+                </p>
+                <p>
+                  It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.
                 </p>
                 <p>
                   Although the CEJST does not use race in its methodology, the tool creates a map that seeks to reflect the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.
@@ -576,7 +576,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <strong>
                     American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands:
                   </strong>
-                   The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period. 
+                   For these U.S. territories, the tool uses the following data: unemployment, poverty, low median income, and high school education. These burdens are in the workforce development category. 
                 </p>
               </div>
               <h2
@@ -687,7 +687,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <div
                     style="padding-left: 2px;"
                   >
-                     : Disadvantaged census tracts
+                     : Disadvantaged census tracts (meets threshold methodology OR contains lands of Tribes)
                   </div>
                 </div>
                 <div
@@ -698,11 +698,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       a blue circle icon informing the user of what a disadvantaged community is depicted as
     "
                     src="test-file-stub"
+                    style="align-self: baseline; padding-top: 5px;"
                   />
                   <div
                     style="padding-left: 2px;"
                   >
-                     : Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes 
+                     : Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes (meets threshold methodology AND contains lands of Tribes)
+    
                   </div>
                 </div>
                 <p>

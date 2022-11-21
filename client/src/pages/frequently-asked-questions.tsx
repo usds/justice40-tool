@@ -30,6 +30,11 @@ const dotStyles = {
   },
 };
 
+const dotStylesTribal = {
+  alignSelf: 'baseline',
+  paddingTop: '5px',
+};
+
 const accordionContainerStyle = {
   marginTop: `1.2rem`,
 };
@@ -66,6 +71,7 @@ const FAQPage = ({location}: IFAQPageProps) => {
       <>
         <p key={3}>{FAQS_COPY.FAQ_ANSWERS.Q3_P1}</p>
         <p>{FAQS_COPY.FAQ_ANSWERS.Q3_P2}</p>
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q3_P3}</p>
       </>
     ),
     (
@@ -96,7 +102,7 @@ const FAQPage = ({location}: IFAQPageProps) => {
           <div style={dotStyles.p}>{FAQS_COPY.FAQ_ANSWERS.Q6_P2}</div>
         </div>
         <div style={dotStyles}>
-          <img src={tribalDotIcon}
+          <img style={dotStylesTribal} src={tribalDotIcon}
             alt={intl.formatMessage(SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.DAC_CIRCLE)}
           />
           <div style={dotStyles.p}>{FAQS_COPY.FAQ_ANSWERS.Q6_P3}</div>

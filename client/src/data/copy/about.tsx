@@ -25,7 +25,7 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.paragraph.1'}
     defaultMessage={`
-      In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.
+      In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens in eight categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.
 
     `}
     description={'Navigate to the About page. This is the paragraph 1'}
@@ -105,7 +105,7 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.how.to.use.tool.para1'}
     defaultMessage={`
-      The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.
+      The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 census boundaries.  The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.
     `}
     description={'Navigate to the About page. This is the paragraph 4'}
     values={{
@@ -146,7 +146,7 @@ export const HOW_TO_USE_TOOL = defineMessages({
   USE_MAP_PARA: {
     id: 'about.page.use.map.para',
     defaultMessage: `
-      Zoom-in and select any census tract to see if it is considered disadvantaged.
+      Zoom in and select any census tract to see if it is considered disadvantaged.
     `,
     description: 'Navigate to the About page. This is the paragraph of Using the map',
   },

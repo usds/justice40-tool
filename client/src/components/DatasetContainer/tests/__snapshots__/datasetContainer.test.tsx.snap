@@ -243,6 +243,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
 
       
               </div>
+              <div>
+                <p>
+                  
+        
+                  <strong>
+                    Note: 
+                  </strong>
+                  this burden only applies for census tracts with populations greater than 20 people.
+      
+                </p>
+              </div>
               <ul>
                 <li>
                   <span>
@@ -432,7 +443,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    LEAD Score
+                    LEAD Tool
                   </a>
                    from 2018
                 </li>
@@ -877,7 +888,39 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Responsible Party: 
                   </span>
-                  The Trust for Public Lands and American Forestry
+                  
+      Data from 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.mrlc.gov/about"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Multi-Resolution Land Characteristics (MRLC)
+                  </a>
+                   consortium; data analysis provided by 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.tpl.org/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    The Trust for Public Lands
+                  </a>
+                   and 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.americanforests.org/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    American Forests
+                  </a>
+                  
+    
                 </li>
                 <li>
                   <span>
@@ -1242,7 +1285,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </div>
               <div>
                 
-        Count of Risk Management Plan (RMP), or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
+        Count of Risk Management Plan (RMP) facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers. These facilities are mandated by the Clean Air Act to file RMPs because they handle substances with significant environmental and public health risks.
       
               </div>
               <ul>
@@ -1353,6 +1396,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         Average relative cost and time spent on transportation relative to all other tracts.
       
               </div>
+              <div>
+                <p>
+                  
+      
+                  <strong>
+                    Note: 
+                  </strong>
+                   this burden only applies for census tracts with populations greater than 20 people
+    
+                </p>
+              </div>
               <ul>
                 <li>
                   <span>
@@ -1377,7 +1431,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Transportation Burdens indicator
+                    Transportation access disadvantage 3
                   </a>
                     from 2022
                 </li>
@@ -1453,12 +1507,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </span>
                 </div>
                 <h3>
-                  Leaking underground storage tanks
+                  Underground storage tanks and releases
                 </h3>
               </div>
               <div>
                 
-        Weighted formula of number of leaking underground storage tanks and the number of all underground storage tanks within 1,500 feet.
+        Weighted formula of the density of leaking underground storage tanks and the number of all active underground storage tanks within 1,500 feet of the census tract boundaries.
       
               </div>
               <ul>
@@ -1539,7 +1593,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Risk-Screening Environmental Indicators (RSEI) Model
+                    Risk-Screening Environmental Indicators (RSEI) model
                   </a>
                    from 2020 as compiled by EPA’s EJScreen
                 </li>

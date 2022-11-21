@@ -8,7 +8,7 @@
     "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.how.to.use.tool.para1": {
-    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.",
+    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 census boundaries. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages.",
     "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.how.to.use.tool.para2": {
@@ -64,7 +64,7 @@
     "description": "Navigate to the About page. This is the list item 2"
   },
   "about.page.paragraph.1": {
-    "defaultMessage": "In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.",
+    "defaultMessage": "In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens in eight categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.",
     "description": "Navigate to the About page. This is the paragraph 1"
   },
   "about.page.paragraph.2": {
@@ -112,7 +112,7 @@
     "description": "Navigate to the About page. This is the sub heading of Using the map"
   },
   "about.page.use.map.para": {
-    "defaultMessage": "Zoom-in and select any census tract to see if it is considered disadvantaged.",
+    "defaultMessage": "Zoom in and select any census tract to see if it is considered disadvantaged.",
     "description": "Navigate to the About page. This is the paragraph of Using the map"
   },
   "common.pages.alerts.additional_docs_available.description": {
@@ -120,7 +120,7 @@
     "description": "Alert title that appears at the top of pages."
   },
   "common.pages.alerts.banner.beta.content": {
-    "defaultMessage": "<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}.",
+    "defaultMessage": "<bold1>This tool has been updated.</bold1> The 1.0 version of the tool was released on {relDate}.",
     "description": "Alert body that appears on landing page."
   },
   "common.pages.alerts.census.tract.title": {
@@ -960,7 +960,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes that are likely to have lead paint   \n    "
   },
   "explore.map.page.side.panel.indicator.description.leaky.tanks": {
-    "defaultMessage": "Formula that counts leaking underground storage tanks and number of all underground storage tanks within 1500 feet",
+    "defaultMessage": "Formula of the density of leaking underground storage tanks and number of all active underground storage tanks within 1500 feet of the census tract boundaries",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of leaky storage tanks"
   },
   "explore.map.page.side.panel.indicator.description.lifeExpect": {
@@ -1084,8 +1084,8 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lead paint"
   },
   "explore.map.page.side.panel.indicator.leaky.tanks": {
-    "defaultMessage": "Leaking underground storage tanks",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Leaking underground storage tanks"
+    "defaultMessage": "Underground storage tanks and releases",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Underground storage tanks and releases"
   },
   "explore.map.page.side.panel.indicator.lifeExpect": {
     "defaultMessage": "Low life expectancy",
@@ -1684,20 +1684,24 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q2_P2_2"
   },
   "faqs.page.answers.Q2_P3": {
-    "defaultMessage": "Not all disadvantaged communities can be shown on the map. Some communities, such as migrant workers, do not live in just one place. The Interim Implementation Guidance on the Justice40 Initiative also directs Federal agencies to consider geographically dispersed communities when implementing programs included in the Justice40 Initiative.",
+    "defaultMessage": "Not all disadvantaged communities can be shown on the map. Some communities do not live in just one place. The Interim Implementation Guidance on the Justice40 Initiative also directs Federal agencies to consider geographically dispersed communities when implementing programs included in the Justice40 Initiative.",
     "description": "Navigate to the FAQs page, this will be an answer, Q2_P3"
   },
   "faqs.page.answers.Q2_P4": {
-    "defaultMessage": "<boldtag>The tool uses census tracts.</boldtag> Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.",
+    "defaultMessage": "The tool uses census tracts. Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.",
     "description": "Navigate to the FAQs page, this will be an answer, Q2_P4"
   },
   "faqs.page.answers.Q3_P1": {
-    "defaultMessage": "No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool offers data about race and age only as information when a census tract is selected. It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.",
+    "defaultMessage": "No. The Climate and Economic Justice Screening Tool (CEJST) does not use racial demographics in its methodology. The current version of the tool displays data about race and age only to provide information when a census tract is selected.",
     "description": "Navigate to the FAQs page, this will be an answer, Q3_P1"
   },
   "faqs.page.answers.Q3_P2": {
-    "defaultMessage": "Although the CEJST does not use race in its methodology, the tool creates a map that seeks to reflect the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.",
+    "defaultMessage": "It is well-documented that communities of color suffer disproportionately from environmental and health burdens. Due to decades of underinvestment, they also face greater risks from climate change.",
     "description": "Navigate to the FAQs page, this will be an answer, Q3_P2"
+  },
+  "faqs.page.answers.Q3_P3": {
+    "defaultMessage": "Although the CEJST does not use race in its methodology, the tool creates a map that seeks to reflect the on-the-ground burdens and realities that disadvantaged communities face. The tool shows communities that have environmental burdens and face injustice.",
+    "description": "Navigate to the FAQs page, this will be an answer, Q3_P3"
   },
   "faqs.page.answers.Q4_P1": {
     "defaultMessage": "Yes, the version 1.0 of the CEJST has some data for all the territories but not all the CEJST data are available or used for all U.S. territories.",
@@ -1708,7 +1712,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q4_P2"
   },
   "faqs.page.answers.Q4_P3": {
-    "defaultMessage": "<boldtag>American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands:</boldtag> The data used for Puerto Rico are from all relevant and available fields in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.",
+    "defaultMessage": "<boldtag>American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands:</boldtag> For these U.S. territories, the tool uses the following data: unemployment, poverty, low median income, and high school education. These burdens are in the workforce development category.",
     "description": "Navigate to the FAQs page, this will be an answer, Q4_P3"
   },
   "faqs.page.answers.Q5_P1": {
@@ -1728,11 +1732,11 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q6_P1"
   },
   "faqs.page.answers.Q6_P2": {
-    "defaultMessage": ": Disadvantaged census tracts",
+    "defaultMessage": ": Disadvantaged census tracts (meets threshold methodology OR contains lands of Tribes)",
     "description": "Navigate to the FAQs page, this will be an answer, Q6_P2"
   },
   "faqs.page.answers.Q6_P3": {
-    "defaultMessage": ": Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes",
+    "defaultMessage": ": Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes (meets threshold methodology AND contains lands of Tribes)",
     "description": "Navigate to the FAQs page, this will be an answer, Q6_P3"
   },
   "faqs.page.answers.Q6_P4": {
@@ -1827,8 +1831,64 @@
     "defaultMessage": "Focus on {territory}",
     "description": "Focus on the bounds of a specific territory"
   },
+  "methodology.page.cat.res.part.BIA": {
+    "defaultMessage": "Bureau of Indian Affairs (BIA)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.CDC": {
+    "defaultMessage": "Centers for Disease Control and Prevention (CDC)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.CENSUS": {
+    "defaultMessage": "U.S. Census",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.DOE": {
+    "defaultMessage": "Department of Energy (DOE)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.DOI": {
+    "defaultMessage": "Department of the Interior (DOI)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.DOT": {
+    "defaultMessage": "Department of Transportation (DOT)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.EPA": {
+    "defaultMessage": "Environmental Protection Agency (EPA)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.EPA_OAR": {
+    "defaultMessage": "Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.FEMA": {
+    "defaultMessage": "Federal Emergency Management Agency (FEMA)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.FIRST": {
+    "defaultMessage": "First Street Foundation",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.GREEN_SPACE": {
+    "defaultMessage": "Data from <link1>Multi-Resolution Land Characteristics (MRLC)</link1> consortium; data analysis provided by <link2>The Trust for Public Lands</link2> and <link3>American Forests</link3>",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.HUD": {
+    "defaultMessage": "Department of Housing and Urban Development (HUD)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.NCRC": {
+    "defaultMessage": "National Community Reinvestment Coalition (NCRC)",
+    "description": "responsible party text"
+  },
+  "methodology.page.cat.res.part.USACE": {
+    "defaultMessage": "U.S. Army Corps of Engineers",
+    "description": "responsible party text"
+  },
   "methodology.page.category.and.clause.hs.ed.higher.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> fewer than 10% of people ages 25 or older have a <link1>high school education</link1> level less than a high school diploma",
+    "defaultMessage": "<boldtag>AND</boldtag> fewer than 10% of people ages 25 or older have a <link1>high school education</link1> (i.e. graduated with a high school degree)",
     "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
   },
   "methodology.page.category.and.clause.low.inc": {
@@ -1867,6 +1927,10 @@
     "defaultMessage": "Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the population loss rate.",
     "description": "Navigate to the Methodology page. This is the description text for exp pop loss rate"
   },
+  "methodology.page.category.exp.pop.loss.rate.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>this burden only applies for census tracts with populations greater than 20 people.",
+    "description": "Navigate to the Methodology page. This is the note text for low life expectancy"
+  },
   "methodology.page.category.flood.risk.rate.description.text": {
     "defaultMessage": "A high precision, climate-adjusted model that projects flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not consider property value.",
     "description": "Navigate to the Methodology page. This is the description text for exp bld loss rate"
@@ -1900,8 +1964,8 @@
     "description": "Navigate to the Methodology page. This is the description text for lead paint"
   },
   "methodology.page.category.leaky.uwt.description.text": {
-    "defaultMessage": "Weighted formula of number of leaking underground storage tanks and the number of all underground storage tanks within 1,500 feet.",
-    "description": "Navigate to the Methodology page. This is the description text for Leaking underground storage tanks"
+    "defaultMessage": "Weighted formula of the density of leaking underground storage tanks and the number of all active underground storage tanks within 1,500 feet of the census tract boundaries.",
+    "description": "Navigate to the Methodology page. This is the description text for Underground storage tanks and releases"
   },
   "methodology.page.category.linguistic.iso.description.text": {
     "defaultMessage": "Share of households where no one over age 14 speaks English very well.",
@@ -1956,7 +2020,7 @@
     "description": "Navigate to the Methodology page. This is the description text for proximity to npl"
   },
   "methodology.page.category.prox.rmp.description.text": {
-    "defaultMessage": "Count of Risk Management Plan (RMP), or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.",
+    "defaultMessage": "Count of Risk Management Plan (RMP) facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers. These facilities are mandated by the Clean Air Act to file RMPs because they handle substances with significant environmental and public health risks.",
     "description": "Navigate to the Methodology page. This is the description text for proximity to rmp"
   },
   "methodology.page.category.source.aml.link": {
@@ -1984,7 +2048,7 @@
     "description": "Navigate to the Methodology page. This is the source link for Census ACS"
   },
   "methodology.page.category.source.doe.lead.link": {
-    "defaultMessage": "<link1>LEAD Score</link1> from {date18}",
+    "defaultMessage": "<link1>LEAD Tool</link1> from {date18}",
     "description": "Navigate to the Methodology page. This is the source link for DOE FEMA"
   },
   "methodology.page.category.source.dot.epa.link": {
@@ -2008,7 +2072,7 @@
     "description": "Navigate to the Methodology page. This is the source link for EPA RMP"
   },
   "methodology.page.category.source.epa.rsei.link": {
-    "defaultMessage": "<link1>Risk-Screening Environmental Indicators (RSEI) Model</link1> from {date20} as compiled by EPA’s EJScreen",
+    "defaultMessage": "<link1>Risk-Screening Environmental Indicators (RSEI) model</link1> from {date20} as compiled by EPA’s EJScreen",
     "description": "Navigate to the Methodology page. This is the source link for EPA RSEI"
   },
   "methodology.page.category.source.epa.tsdf.link": {
@@ -2040,7 +2104,7 @@
     "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
   },
   "methodology.page.category.source.trans.bur.link": {
-    "defaultMessage": "<link1>Transportation Burdens indicator</link1> from {date22}",
+    "defaultMessage": "<link1>Transportation access disadvantage 3</link1> from {date22}",
     "description": "Navigate to the Methodology page. This is the source link for Transportation burdens"
   },
   "methodology.page.category.source.ust.find.link": {
@@ -2054,6 +2118,10 @@
   "methodology.page.category.trans.barrier.description.text": {
     "defaultMessage": "Average relative cost and time spent on transportation relative to all other tracts.",
     "description": "Navigate to the Methodology page. This is the description text for Transportation barriers"
+  },
+  "methodology.page.category.trans.barrier.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag> this burden only applies for census tracts with populations greater than 20 people",
+    "description": "Navigate to the Methodology page. This is the note text for trans.barrier"
   },
   "methodology.page.category.tribal.lands.description.text": {
     "defaultMessage": "The Land Area Representation (LAR) dataset depicts American Indian land areas for Federally Recognized Tribes.",
@@ -2172,8 +2240,8 @@
     "description": "Navigate to the Methodology page. This is the title text for the lead paint dataset"
   },
   "methodology.page.dataset.indicator.leaky.uwt.title.text": {
-    "defaultMessage": "Leaking underground storage tanks",
-    "description": "Navigate to the Methodology page. This is the title text for the Leaking underground storage tanks"
+    "defaultMessage": "Underground storage tanks and releases",
+    "description": "Navigate to the Methodology page. This is the title text for the Underground storage tanks and releases"
   },
   "methodology.page.dataset.indicator.life.exp.title.text": {
     "defaultMessage": "Low life expectancy",
@@ -2388,7 +2456,7 @@
     "description": "Navigate to the methodology page. This is the methodology paragraph 1"
   },
   "methodology.page.paragraph.1.bullet.1": {
-    "defaultMessage": "If they are in census tracts that meet the thresholds for at least one of tool’s categories of burden, or",
+    "defaultMessage": "If they are in census tracts that meet the thresholds for at least one of the tool’s categories of burden, or",
     "description": "Navigate to the methodology page. This is the methodology paragraph 1, bullet 1"
   },
   "methodology.page.paragraph.1.bullet.2": {
@@ -2400,7 +2468,7 @@
     "description": "Navigate to the methodology page. This is the methodology paragraph 3"
   },
   "methodology.page.paragraph.4": {
-    "defaultMessage": "Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.",
+    "defaultMessage": "Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 census boundaries.",
     "description": "Navigate to the methodology page. This is the methodology paragraph 4"
   },
   "methodology.page.paragraph.5": {
