@@ -4,7 +4,6 @@
   @include u-bg("gray-cool-2");
 
   .betaBanner {
-    @include u-display("flex");
     @include u-height(3);
     max-width: 70.25rem; // Needs this exact value to align with GovBanner
     @include u-font("body", "3xs");
@@ -22,17 +21,5 @@
       @include u-height(6);
     }
 
-    .betaPillIcon {
-      @include u-bg("yellow-20v");
-      @include u-height(1);
-      @include u-width(2);
-      @include u-radius("2px");
-      @include u-margin-right(1);
-      margin-top: 0.4rem; //Needs this exact value for vertical alignment
-    }
-
-    .betaHeading {
-      @include u-text("bold");
-    }
   }
 }

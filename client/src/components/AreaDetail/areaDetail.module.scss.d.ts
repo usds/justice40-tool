@@ -18,6 +18,9 @@ declare namespace MapModuleScssNamespace {
     buttonText: string;
     buttonImage: string;
     categorySpacer: string;
+    testSignals: string;
+    prioCopy: string;
+    federalRecogTribes: string;
   }
 }
 

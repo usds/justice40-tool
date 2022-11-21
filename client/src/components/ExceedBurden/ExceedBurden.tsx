@@ -5,7 +5,7 @@ import * as EXPLORE_COPY from '../../data/copy/explore';
 
 interface IExceedBurden {
     text: React.ReactElement;
-    isBurdened: boolean;
+    isBurdened: boolean | null;
 }
 const ExceedBurden = ({text, isBurdened}:IExceedBurden) => {
   return (

@@ -10,11 +10,13 @@ exports[`rendering of the Language component on mobile checks if component rende
       src="test-file-stub"
     />
     <a
+      class="usa-link"
       href="#"
     >
       English
     </a>
     <a
+      class="usa-link"
       href="#"
     >
       Español

@@ -1,15 +1,16 @@
 import * as React from 'react';
-import {Grid} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
+import {Grid} from '@trussworks/react-uswds';
+import {useWindowSize} from 'react-use';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import PublicEngageButton from '../components/PublicEngageButton';
+import ReleaseUpdate from '../components/ReleaseUpdate';
 import SubPageNav from '../components/SubPageNav';
-import {useWindowSize} from 'react-use';
 
 import * as DOWNLOADS_COPY from '../data/copy/downloads';
-import * as CONSTANTS from '../data/constants';
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
 interface IDownloadsPageProps {
   location: Location;
 }
@@ -31,9 +32,15 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
         <Grid row gap className={'j40-mb5-mt3'}>
 
           <Grid col={12} tablet={{col: 8}}>
-            <h2>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING2)}</h2>
+
+            <h2 className={'j40-mt-0 j40-mb-3'}>{DOWNLOADS_COPY.DOWNLOAD_LINKS.TITLE}</h2>
+
+            <section>
+              <ReleaseUpdate />
+            </section>
+
             <p>
-              {intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
+              {DOWNLOADS_COPY.DOWNLOAD_LINKS.TEXT}
             </p>
             <p>
               {DOWNLOADS_COPY.DOWNLOAD_LINKS.LINK1}
@@ -58,9 +65,16 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
           </Grid>
 
           {/* Third column - Only show the SubPagNav component on desktop width */}
-          {width > CONSTANTS.USWDS_BREAKPOINTS.DESKTOP ?
+          {width > USWDS_BREAKPOINTS.DESKTOP ?
           <Grid col={12} tablet={{col: 3}}>
-            <SubPageNav activeSubPageIndex={2}/>
+            <SubPageNav
+              activeSubPageIndex={1}
+              endPoints={[
+                PAGES_ENDPOINTS.METHODOLOGY,
+                PAGES_ENDPOINTS.DOWNLOADS,
+                PAGES_ENDPOINTS.PREVIOUS_VERSIONS,
+              ]}
+            />
           </Grid> : ''}
         </Grid>
 

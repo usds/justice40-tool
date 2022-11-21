@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of DatasetsButton Component checks if component renders 1`] = `
+<DocumentFragment>
+  <a
+    rel="noreferrer"
+    target="_blank"
+  >
+    <button
+      class="usa-button"
+      data-testid="button"
+      type="button"
+    >
+      Share data sources with CEQ
+      <img
+        alt="launch icon"
+        src="test-file-stub"
+      />
+    </button>
+  </a>
+</DocumentFragment>
+`;

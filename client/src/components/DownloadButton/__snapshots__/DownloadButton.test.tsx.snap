@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of DownloadButton Component checks if component renders 1`] = `
+<DocumentFragment>
+  <a
+    download=""
+    href="https://google.com"
+  >
+    <button
+      class="usa-button"
+      data-testid="button"
+      type="button"
+    >
+      <div>
+        <div>
+          Hello
+        </div>
+        <img
+          alt="download button"
+          src="test-file-stub"
+        />
+      </div>
+    </button>
+  </a>
+</DocumentFragment>
+`;

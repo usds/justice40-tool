@@ -11,13 +11,11 @@
   .languageLink {
     @include u-display("inline-block");
     @include u-margin-left(1.5);
+    
     cursor: pointer;
     font-size: .8rem; // government banner text size not a token
     @include u-padding-top('2px');
     
-    &:hover {
-      text-decoration-line: underline;
-    }
   }
 }
 

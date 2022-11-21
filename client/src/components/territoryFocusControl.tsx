@@ -30,10 +30,10 @@ const TerritoryFocusControl = ({onClick}: ITerritoryFocusControl) => {
       short: intl.formatMessage(EXPLORE_COPY.MAP.PR_SHORT),
       long: intl.formatMessage(EXPLORE_COPY.MAP.PR_LONG),
     },
-    // {
-    //   short: intl.formatMessage(EXPLORE_COPY.MAP.GU_SHORT),
-    //   long: intl.formatMessage(EXPLORE_COPY.MAP.GU_LONG),
-    // },
+    {
+      short: intl.formatMessage(EXPLORE_COPY.MAP.GU_SHORT),
+      long: intl.formatMessage(EXPLORE_COPY.MAP.GU_LONG),
+    },
     {
       short: intl.formatMessage(EXPLORE_COPY.MAP.AS_SHORT),
       long: intl.formatMessage(EXPLORE_COPY.MAP.AS_LONG),
@@ -42,10 +42,10 @@ const TerritoryFocusControl = ({onClick}: ITerritoryFocusControl) => {
       short: intl.formatMessage(EXPLORE_COPY.MAP.MP_SHORT),
       long: intl.formatMessage(EXPLORE_COPY.MAP.MP_LONG),
     },
-    // {
-    //   short: intl.formatMessage(EXPLORE_COPY.MAP.VI_SHORT),
-    //   long: intl.formatMessage(EXPLORE_COPY.MAP.VI_LONG),
-    // },
+    {
+      short: intl.formatMessage(EXPLORE_COPY.MAP.VI_SHORT),
+      long: intl.formatMessage(EXPLORE_COPY.MAP.VI_LONG),
+    },
   ];
   // the offset for this array should map the territories variable
   const territoriesIconClassName = [
@@ -53,10 +53,10 @@ const TerritoryFocusControl = ({onClick}: ITerritoryFocusControl) => {
     'mapboxgl-ctrl-zoom-to-ak',
     'mapboxgl-ctrl-zoom-to-hi',
     'mapboxgl-ctrl-zoom-to-pr',
-    // 'mapboxgl-ctrl-zoom-to-gu',
+    'mapboxgl-ctrl-zoom-to-gu',
     'mapboxgl-ctrl-zoom-to-as',
     'mapboxgl-ctrl-zoom-to-mp',
-    // 'mapboxgl-ctrl-zoom-to-vi',
+    'mapboxgl-ctrl-zoom-to-vi',
   ];
 
   return (

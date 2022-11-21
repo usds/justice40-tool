@@ -59,13 +59,13 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
               <h3>{props.header}</h3>
               {props.children}
               <div className={'j40-aboutcard-sm-link'}>
-                <LinkTypeWrapper
+                {props.url && <LinkTypeWrapper
                   linkText={props.linkText}
                   internal={props.internal}
                   url={props.url ? props.url : ''}
                   openUrlNewTab={props.openUrlNewTab}
-                  className={'j40-aboutcard-link'}
-                />
+                  // className={'j40-aboutcard-link'}
+                />}
               </div>
             </Grid>
           </Grid>

@@ -140,36 +140,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
           </div>
         </section>
-        <div>
-          <img
-            alt="language icon for selecting language"
-            src="test-file-stub"
-          />
-          <a
-            href="#"
-          >
-            English
-          </a>
-          <a
-            href="#"
-          >
-            Español
-          </a>
-        </div>
       </div>
     </div>
     <div>
       <div>
-        <div />
-        <div>
-          <span>
-            This is a beta site. 
-          </span>
-          <span>
-            It is an early, in-progress version of the tool with limited datasets that will 
-    be regularly updated.
-          </span>
-        </div>
+        <strong>
+          This tool has been updated.
+        </strong>
+         The 1.0 version of the tool was released on Nov 22, 2022.
       </div>
     </div>
     <div
@@ -184,28 +162,29 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           class="grid-col-1"
           data-testid="grid"
         >
-          <img
-            alt="Climate and Economic Justice Screening Tool"
-            src="test-file-stub"
-          />
+          <a
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
+            <img
+              alt="Climate and Economic Justice Screening Tool"
+              src="test-file-stub"
+            />
+          </a>
         </div>
         <div
           class="grid-col-6"
           data-testid="grid"
         >
-          <div>
+          <a
+            class="remove-link-style"
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
             <div>
-              Climate and Economic Justice
+              Climate and Economic Justice Screening Tool
             </div>
-            <div>
-              <div>
-                 Screening Tool 
-              </div>
-              <div>
-                BETA
-              </div>
-            </div>
-          </div>
+          </a>
         </div>
         <div
           class="grid-col-fill"
@@ -249,7 +228,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 <button
                   aria-controls="methMenu"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   class="usa-accordion__button usa-nav__link"
                   data-cy="nav-dropdown-methodology"
                   data-testid="navDropDownButton"
@@ -261,6 +240,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </button>
                 <ul
                   class="usa-nav__submenu"
+                  hidden=""
                   id="methMenu"
                 >
                   <li
@@ -283,17 +263,69 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Downloads
                     </a>
                   </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-previous-versions"
+                      href="/en/previous-versions"
+                    >
+                      Previous versions
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-about"
-                  href="/en/about"
+                <button
+                  aria-controls="aboutMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-about"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  About
-                </a>
+                  <span>
+                    About
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="aboutMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-about"
+                      href="/en/about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
+                    >
+                      Engagement calendar
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-faqs"
+                      href="/en/frequently-asked-questions"
+                    >
+                      Frequently asked questions
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -305,30 +337,32 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Contact
                 </a>
               </li>
-              <li
-                class="usa-nav__primary-item"
-              >
-                <div>
-                  <div>
-                    <img
-                      alt="language icon for selecting language"
-                      src="test-file-stub"
-                    />
-                    <a
-                      href="#"
-                    >
-                      English
-                    </a>
-                    <a
-                      href="#"
-                    >
-                      Español
-                    </a>
-                  </div>
-                </div>
-              </li>
             </ul>
           </nav>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="usa-alert usa-alert--info"
+        data-testid="alert"
+      >
+        <div
+          class="usa-alert__body"
+        >
+          <h1
+            class="usa-alert__heading"
+          >
+            Version 1.0 of the tool is now available
+          </h1>
+          <p
+            class="usa-alert__text"
+          >
+            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on 11/22/2022. For more information about the improvements to the tool, CEQ’s press release will be coming soon.
+          </p>
         </div>
       </div>
     </div>
@@ -409,6 +443,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     </div>
                   </address>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="sign-up-for-updates"
+                    href="https://lp.constantcontactpages.com/su/Vm8pCFj/spring"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Sign up for updates
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -428,30 +475,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
-                    href="/en/public-engagement"
-                  >
-                    Engagement calendar
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy="request-for-information"
-                    href="https://www.federalregister.gov/d/2022-03920"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Request for Information
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -570,7 +594,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <a
-        href="https://www.surveymonkey.com/r/cejst-survey"
+        href="https://www.surveymonkey.com/r/P3LWTSB"
         rel="noreferrer"
         target="_blank"
       >
@@ -579,7 +603,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="button"
           type="button"
         >
-          Help improve the site & data
+          Help improve the tool
           <img
             alt="launch icon"
             src="test-file-stub"

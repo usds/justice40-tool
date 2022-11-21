@@ -77,7 +77,6 @@ exports[`rendering of the AboutCard checks if small cards component renders 1`] 
             class="j40-aboutcard-sm-link"
           >
             <a
-              class="j40-aboutcard-link"
               data-cy=""
               href="#"
             >

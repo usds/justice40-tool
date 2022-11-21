@@ -1,0 +1,17 @@
+@use "../../styles/design-system.scss" as *;
+@import "../utils.scss";
+
+
+.tractInfoContainer {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 1.2rem 1rem 0 1.2rem;
+  font-size: medium;
+
+  .tractInfoLabel {
+    @include sidePanelLabelStyle;
+  }
+
+}

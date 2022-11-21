@@ -1,66 +1,81 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
+import ReactTooltip from 'react-tooltip';
 
-import {indicatorInfo} from '../AreaDetail/AreaDetail';
+import {indicatorInfo, indicatorType} from '../AreaDetail/AreaDetail';
 
 import * as styles from './Indicator.module.scss';
 import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
 // @ts-ignore
-import downArrow from '/node_modules/uswds/dist/img/usa-icons/arrow_downward.svg';
-// @ts-ignore
-import upArrow from '/node_modules/uswds/dist/img/usa-icons/arrow_upward.svg';
-// @ts-ignore
-import unAvailable from '/node_modules/uswds/dist/img/usa-icons/do_not_disturb.svg';
+import infoIcon from '/node_modules/uswds/dist/img/usa-icons/info.svg';
 
 interface IIndicator {
-    indicator: indicatorInfo,
+  indicator: indicatorInfo,
+  isImpute?: boolean,
+  population?: number | string,
 }
-
-interface IIndicatorValueIcon {
-  value: number | null,
-  isAboveThresh: boolean,
-};
-
 interface IIndicatorValueSubText {
-  value: number | null,
+  type: indicatorType,
+  value: number | null | boolean,
   isAboveThresh: boolean,
   threshold: number,
-  isPercent: boolean | undefined,
 }
 
 interface IIndicatorValue {
-  isPercent: boolean | undefined,
+  type: indicatorType,
   displayStat: number | null,
 }
 
 /**
- * This component will determine what indicator's icon should be (arrowUp, arrowDown or unavailable) and
- * return the appropriate JSX.
+ * This component will render an info icon in the indicator value
  *
- * @param {number | null} props
  * @return {JSX.Element}
  */
-export const IndicatorValueIcon = ({value, isAboveThresh}: IIndicatorValueIcon) => {
+export const IndicatorInfoIcon = ({isImpute, population}: Omit<IIndicator, 'indicator'>) => {
   const intl = useIntl();
+  let showTilde = false;
 
-  if (value == null) {
-    return <img className={styles.unavailable}
-      src={unAvailable}
-      alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
-    />;
-  } else {
-    return isAboveThresh ?
+  const getToolTipCopy = () => {
+    if (population === constants.MISSING_DATA_STRING) {
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_POP_NULL);
+    } else if (population !== constants.MISSING_DATA_STRING && isImpute) {
+      showTilde = true;
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_POP_NOT_NULL);
+    } else {
+      return null;
+    }
+  };
+
+  /**
+   * This library react-tooltip creates random DOM ID which will not allow for snapshot testing as
+   * the IDs change on each build. Due to time constraints, we simply removed the AreaDetails test.
+   * The AreaDetails component is made up of sub component and each sub component has tests so this
+   * is low risk.
+   *
+   * This is a temporary solution. Some longer terms solutions may be
+   * 1. Remove this library and get the USWDS tool tip to work
+   * 2. Re-factor the areaDetail.tests.tsx snapshot tests to do more DOM assertions rather than snapshots
+   * 3. Some combination of the two.
+   */
+  return (
+    <>
+      <ReactTooltip
+        id="lowIncomeIcon"
+        multiline={true}
+      />
       <img
-        src={upArrow}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_UP)}
-      /> :
-      <img
-        src={downArrow}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN)}
-      />;
-  }
+        data-for="lowIncomeIcon"
+        data-tip={getToolTipCopy()}
+        data-iscapture="true"
+        className={styles.info}
+        src={infoIcon}
+        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.INFO)}
+      />
+      {showTilde && <span className={styles.infoTilde}>{ ` ~ ` }</span>}
+    </>
+  );
 };
 
 /**
@@ -69,32 +84,40 @@ export const IndicatorValueIcon = ({value, isAboveThresh}: IIndicatorValueIcon) 
  *   "below 20 percent"
  *   "data is not available"
  *
- *  Todo: refactor into single component, add to i18n and add to tests
- *
+ * @param {IIndicatorValueSubText} {}
  * @return {JSX.Element}
  */
-export const IndicatorValueSubText = ({value, isAboveThresh, threshold, isPercent}:IIndicatorValueSubText) => {
-  return value == null ?
-    <div>
-      {EXPLORE_COPY.SIDE_PANEL_VALUES.UNAVAILBLE_MSG}
-    </div> :
-    <div>
-      {
-        isAboveThresh ?
-        EXPLORE_COPY.SIDE_PANEL_VALUES.ABOVE :
-        EXPLORE_COPY.SIDE_PANEL_VALUES.BELOW
-      }
-      {threshold ?
-        <IndicatorValue isPercent={isPercent} displayStat={threshold} /> :
-        <IndicatorValue isPercent={isPercent} displayStat={90} />
-      }
-      {` `}
-      {
-        isPercent ?
-        EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENT :
-        EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
-      }
-    </div>;
+export const IndicatorValueSubText = ({type, value, isAboveThresh, threshold}:IIndicatorValueSubText) => {
+  if (value === null) {
+    return (
+      <div>
+        {EXPLORE_COPY.SIDE_PANEL_VALUES.UNAVAILBLE_MSG}
+      </div>
+    );
+  } else if (type === 'percent' || type === 'percentile') {
+    return (
+      <div>
+        {
+          isAboveThresh ?
+          EXPLORE_COPY.SIDE_PANEL_VALUES.ABOVE :
+          EXPLORE_COPY.SIDE_PANEL_VALUES.BELOW
+        }
+        {
+          threshold ?
+          <IndicatorValue type={type} displayStat={threshold}/> :
+          <IndicatorValue type={type} displayStat={90}/>
+        }
+        {` `}
+        {
+          type === 'percent' ?
+          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENT :
+          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
+        }
+      </div>
+    );
+  } else {
+    return (<></>);
+  }
 };
 
 /**
@@ -138,46 +161,61 @@ export const superscriptOrdinal = (indicatorValueWithSuffix:string) => {
 };
 
 /**
- * This component will return the indicators's value with an ordinal suffix
- * or a percentage sign using i18n functions
+ * This component will return the indicators's value. The value depends on the
+ * indicator type. Each type renders a different UI.
  *
  * @return {JSX.Element | null}
  */
-export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
+export const IndicatorValue = ({type, displayStat}:IIndicatorValue) => {
   const intl = useIntl();
 
-  if (displayStat === null) return <React.Fragment></React.Fragment>;
+  if (displayStat === null) return <>{constants.MISSING_DATA_STRING}</>;
 
-  const i18nOrdinalSuffix: string = intl.formatMessage(
-      {
-        id: 'explore.map.page.side.panel.indicator.percentile.value.ordinal.suffix',
-        // eslint-disable-next-line max-len
-        description: `Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc.`,
-        defaultMessage: `
+  if (type === 'percent' || type === 'percentile') {
+    // In this case we will show no value and an icon only
+
+    if (type === 'percent') {
+      // If the type is percent, return the intl percent format
+      return (
+        <span>
+          {intl.formatNumber(
+              displayStat,
+              {
+                style: 'unit',
+                unit: 'percent',
+                unitDisplay: 'short',
+              },
+          )}
+        </span>
+      );
+    } else {
+    // If the type is percentile, create the intl ordinal and return it as a superscript
+      const i18nOrdinalSuffix: string = intl.formatMessage(
+          {
+            id: 'explore.map.page.side.panel.indicator.percentile.value.ordinal.suffix',
+            // eslint-disable-next-line max-len
+            description: `Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc.`,
+            defaultMessage: `
         {indicatorValue, selectordinal, 
           one {#st} 
           two {#nd}
           =3 {#rd} 
           other {#th}
-      }
-      `,
-      },
-      {
-        indicatorValue: displayStat,
-      },
-  );
-
-  return isPercent ?
-    <span>
-      {intl.formatNumber(
-          displayStat,
-          {
-            style: 'unit',
-            unit: 'percent',
-            unitDisplay: 'short',
+        }
+        `,
           },
-      )}
-    </span> : superscriptOrdinal(i18nOrdinalSuffix);
+          {
+            indicatorValue: displayStat,
+          },
+      );
+      return superscriptOrdinal(i18nOrdinalSuffix);
+    }
+  } else {
+    // when the type === boolean the display stat will be either 100 (true) or 0 (false)
+    return displayStat === 0 ?
+      EXPLORE_COPY.SIDE_PANEL_SPACERS.NO :
+      EXPLORE_COPY.SIDE_PANEL_SPACERS.YES;
+  }
 };
 
 /**
@@ -186,9 +224,17 @@ export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
  * @param {IIndicator} indicator
  * @return {JSX.Element}
  */
-const Indicator = ({indicator}:IIndicator) => {
-  // Convert the decimal value to a stat to display
-  const displayStat = indicator.value !== null ? Math.floor(indicator.value * 100) : null;
+const Indicator = ({indicator, isImpute, population}:IIndicator) => {
+  /**
+   * The indicator value could be a number | boolean | null. In all cases we coerce to number
+   * before flooring.
+   *
+   * In the case where indicator.value is a boolean, the displayStat will be either 100 or 0, depending
+   * on if indicator.value is true or false respectively.
+   *
+   * Todo: The way the displayStat handles the boolean indicators should be refactored
+   */
+  const displayStat = indicator.value !== null ? Math.floor(Number(indicator.value) * 100) : null;
 
   // If the threshold exists, set it, otherwise set it to the default value
   const threshold = indicator.threshold ? indicator.threshold : constants.DEFAULT_THRESHOLD_PERCENTILE;
@@ -196,10 +242,15 @@ const Indicator = ({indicator}:IIndicator) => {
   // A boolean to represent if the indicator is above or below the threshold
   const isAboveThresh = displayStat !== null && displayStat >= threshold ? true : false;
 
+  // Show an info icon on the low icome indicator if:
+  const showLowIncomeInfoIcon = (
+    (indicator.label === 'Low income' && (isImpute)) ||
+    (indicator.label === 'Low income' && population === constants.MISSING_DATA_STRING && !isImpute)
+  );
 
   return (
     <li
-      className={indicator.isDisadvagtaged ? styles.disadvantagedIndicator : styles.indicatorBoxMain}
+      className={styles.indicatorBoxMain}
       data-cy={'indicatorBox'}
       data-testid='indicator-box'>
       <div className={styles.indicatorRow}>
@@ -216,18 +267,26 @@ const Indicator = ({indicator}:IIndicator) => {
         <div className={styles.indicatorValueCol}>
           <div className={styles.indicatorValueRow}>
 
-            {/* Indicator value */}
-            <div className={styles.indicatorValue}>
-              <IndicatorValue isPercent={indicator.isPercent} displayStat={displayStat}/>
-            </div>
+            {/* Indicator info icon */}
+            { showLowIncomeInfoIcon &&
+              <div className={styles.indicatorInfo}>
+                <IndicatorInfoIcon
+                  isImpute={isImpute}
+                  population={population}
+                />
+              </div>
+            }
 
-            {/* Indicator icon - up arrow, down arrow, or unavailable */}
-            <div className={styles.indicatorArrow}>
-              <IndicatorValueIcon
-                value={displayStat}
-                isAboveThresh={isAboveThresh}
+            {/* Indicator value */}
+            <div className={indicator.isDisadvagtaged ?
+              styles.disIndicatorValue : styles.indicatorValue}
+            >
+              <IndicatorValue
+                type={indicator.type}
+                displayStat={displayStat}
               />
             </div>
+
           </div>
 
           {/* Indicator sub-text */}
@@ -236,9 +295,10 @@ const Indicator = ({indicator}:IIndicator) => {
               value={displayStat}
               isAboveThresh={isAboveThresh}
               threshold={threshold}
-              isPercent={indicator.isPercent}
+              type={indicator.type}
             />
           </div>
+
         </div>
       </div>
     </li>

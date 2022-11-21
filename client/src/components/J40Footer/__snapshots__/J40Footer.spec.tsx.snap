@@ -60,6 +60,19 @@ exports[`J40Footer renders correctly 1`] = `
                     </div>
                   </address>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="sign-up-for-updates"
+                    href="https://lp.constantcontactpages.com/su/Vm8pCFj/spring"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Sign up for updates
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -79,30 +92,7 @@ exports[`J40Footer renders correctly 1`] = `
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
-                    href="/en/public-engagement"
-                  >
-                    Engagement calendar
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy="request-for-information"
-                    href="https://www.federalregister.gov/d/2022-03920"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Request for Information
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -221,7 +211,7 @@ exports[`J40Footer renders correctly 1`] = `
       data-testid="gridContainer"
     >
       <a
-        href="https://www.surveymonkey.com/r/cejst-survey"
+        href="https://www.surveymonkey.com/r/P3LWTSB"
         rel="noreferrer"
         target="_blank"
       >
@@ -230,7 +220,7 @@ exports[`J40Footer renders correctly 1`] = `
           data-testid="button"
           type="button"
         >
-          Help improve the site & data
+          Help improve the tool
           <img
             alt="launch icon"
             src="test-file-stub"

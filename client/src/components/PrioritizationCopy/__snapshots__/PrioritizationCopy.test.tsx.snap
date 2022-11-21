@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it meets 1 burden threshold  when totCats = 2, totBurds = 1, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
+<DocumentFragment>
+  <div>
+    This tract is considered disadvantaged because it meets 1 burden threshold 
+    <strong>
+      AND
+    </strong>
+     the associated socioeconomic threshold.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it meets more than 1 burden threshold  when totCats = 2, totBurds = 5, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
+<DocumentFragment>
+  <div>
+    This tract is considered disadvantaged because it meets more than 1 burden threshold 
+    <strong>
+      AND
+    </strong>
+     the associated socioeconomic threshold.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It does not meet any burden thresholds  when totCats = 0, totBurds = 0, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
+<DocumentFragment>
+  <div>
+    This tract is not considered disadvantaged. It does not meet any burden thresholds 
+    <strong>
+      OR
+    </strong>
+     at least one associated socioeconomic threshold.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It meets 1 burden threshold when totCats = 0, totBurds = 1, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
+<DocumentFragment>
+  <div>
+    This tract is not considered disadvantaged. It meets 1 burden threshold 
+    <strong>
+      BUT
+    </strong>
+     no associated socioeconomic thresholds.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It meets more than 1 burden threshold  when totCats = 0, totBurds = 5, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
+<DocumentFragment>
+  <div>
+    This tract is not considered disadvantaged. It meets more than 1 burden threshold 
+    <strong>
+      BUT
+    </strong>
+     no associated socioeconomic thresholds.
+  </div>
+</DocumentFragment>
+`;

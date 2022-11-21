@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <span>
+      View 
+      <a
+        aria-controls="releaseUpdate-panel"
+        class="usa-link"
+        href="javascript:void(0)"
+        id="releaseUpdate-header"
+        tabindex="0"
+      >
+        release notes
+      </a>
+      <img
+        alt="expand icon"
+        src="test-file-stub"
+      />
+    </span>
+    <section
+      aria-labelledby="releaseUpdate-header"
+      hidden=""
+      id="releaseUpdate-panel"
+    >
+      <div>
+        <div>
+          Version 1.0 Release update - Nov 22, 2022
+        </div>
+        <div>
+          New & improved
+        </div>
+        <div>
+          <ul>
+            <li>
+              Added lands within the boundaries of Federally Recognized Tribes and 
+    locations of Alaska Native Villages using data from the Bureau of Indian
+    Affairs at the U.S. Department of the Interior
+            </li>
+            <ul>
+              <li>
+                Added new data for indicators of burden
+              </li>
+              <li>
+                Climate change
+              </li>
+              <ul>
+                <li>
+                  Projected flood risk
+                </li>
+                <li>
+                  Projected wildfire risk
+                </li>
+              </ul>
+              <li>
+                Housing
+              </li>
+              <ul>
+                <li>
+                  Historic underinvestment due to redlining
+                </li>
+                <li>
+                  Lack of green space
+                </li>
+                <li>
+                  Lack of plumbing
+                </li>
+              </ul>
+              <li>
+                Legacy pollution
+              </li>
+              <ul>
+                <li>
+                  Abandoned mine lands
+                </li>
+                <li>
+                  Formerly used defense sites
+                </li>
+              </ul>
+              <li>
+                Transportation
+              </li>
+              <ul>
+                <li>
+                  Transportation barriers
+                </li>
+              </ul>
+              <li>
+                Water
+              </li>
+              <ul>
+                <li>
+                  Leaking underground storage tanks
+                </li>
+              </ul>
+            </ul>
+            <li>
+              Included communities that are completely surrounded by other 
+    disadvantaged communities and that meet an adjusted low income 
+    threshold
+            </li>
+            <li>
+              Made technical changes to enhance accuracy of the tool
+            </li>
+            <ul>
+              <li>
+                Removed income data for students enrolled in higher education in the low income indicator
+              </li>
+              <li>
+                Imputed income for census tracts missing income data
+              </li>
+              <li>
+                Used transportation barriers and expected population loss rate 
+    data burdens only for census tracts with populations of 20 or 
+    more to exclude areas such as airports
+              </li>
+            </ul>
+            <li>
+              Improved the user interface
+            </li>
+            <ul>
+              <li>
+                Added demographics (race & age) for census tracts to map side panel
+              </li>
+              <li>
+                Improved the design of the map side panel
+              </li>
+              <li>
+                Updated the site copy of the website
+              </li>
+            </ul>
+            <li>
+              Added new data for all the U.S. Territories, and also made a small methodology change for Puerto Rico
+            </li>
+            <ul>
+              <li>
+                USVI
+              </li>
+              <ul>
+                <li>
+                  Included data from 2010 decennial census for US Virgin Islands
+                </li>
+              </ul>
+              <li>
+                Guam
+              </li>
+              <ul>
+                <li>
+                  Included data from 2010 decennial census for Guam
+                </li>
+              </ul>
+              <li>
+                Puerto Rico
+              </li>
+              <ul>
+                <li>
+                  Removed linguistic isolation as an indicator in the methodology for Puerto Rico
+                </li>
+                <li>
+                  Imported additional available data for Puerto Rico
+                </li>
+                <ul>
+                  <li>
+                    Energy cost
+                  </li>
+                  <li>
+                    Housing cost
+                  </li>
+                  <li>
+                    Abandoned mine lands
+                  </li>
+                  <li>
+                    Proximity to hazardous waste sites
+                  </li>
+                  <li>
+                    Proximity to Superfund (National Priorities List (NPL)) sites
+                  </li>
+                  <li>
+                    Proximity to Risk Management Plan (RMP) sites
+                  </li>
+                </ul>
+              </ul>
+            </ul>
+            <li>
+              Enhanced the technical files:
+            </li>
+            <ul>
+              <li>
+                Added all new data indicators and demographics to .xls, .csv, and shapefiles
+              </li>
+              <li>
+                Added previous versions page to access the beta version’s 
+    download files
+              </li>
+              <li>
+                Updated codebook
+              </li>
+              <li>
+                Updated Technical Support Document
+              </li>
+            </ul>
+            <li>
+              Improved the way that users provide feedback on the tool:
+            </li>
+            <ul>
+              <li>
+                Data survey
+              </li>
+              <li>
+                Site experience survey
+              </li>
+              <li>
+                Census tract feedback
+              </li>
+              <li>
+                General contact form
+              </li>
+            </ul>
+            <li>
+              Added a link to sign up for email mailing list managed by CEQ
+            </li>
+          </ul>
+        </div>
+        <div>
+          Fixes
+        </div>
+        <div>
+          <ul>
+            <li>
+              Bug fix: loaded missing life expectancy data for Maine and Wisconsin
+            </li>
+            <li>
+              Bug fix: Census tracts that are 100% water should not be 
+    included on the map
+            </li>
+          </ul>
+        </div>
+        <div>
+          release version 1.0
+        </div>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;

@@ -3,6 +3,7 @@
 exports[`rendering of the DownloadLink disadvantaged checks if component renders 1`] = `
 <DocumentFragment>
   <a
+    class="usa-link"
     download=""
     href="https://google.com"
   >

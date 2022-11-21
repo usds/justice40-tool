@@ -1,4 +1,5 @@
 @use '../../styles/design-system.scss' as *;
+@import "../utils.scss";
 
 .disadvantagedDotSmall {
     @include u-circle('105');
@@ -12,7 +13,7 @@
     @include u-circle(4);
     margin: 2.3rem 1.5rem 2rem 0;
     // opacity: .6;
-    border: 3px solid #1A4480;
+    border: 3px solid $disadvantagedDotColor;
     
     //Maintain aspect ratio as screen width decreases
     flex: 1 0 2rem;

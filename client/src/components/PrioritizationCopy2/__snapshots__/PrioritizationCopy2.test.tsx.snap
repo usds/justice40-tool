@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of PrioritizationCopy2 Component checks if component renders The lands of Federally Recognized Tribes that cover 2% of this tract are also considered disadvantaged. when totCats = 0, totBurds = 0, isAdj = true, isAdjLI = true, tribal % = 2, 1`] = `
+<DocumentFragment>
+  <div>
+    The lands of Federally Recognized Tribes that cover 2% of this tract are also considered disadvantaged.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of PrioritizationCopy2 Component checks if component renders The lands of Federally Recognized Tribes that cover 4% of this tract are also considered disadvantaged. when totCats = 0, totBurds = 1, isAdj = true, isAdjLI = true, tribal % = 4, 1`] = `
+<DocumentFragment>
+  <div>
+    The lands of Federally Recognized Tribes that cover 4% of this tract are also considered disadvantaged.
+  </div>
+</DocumentFragment>
+`;

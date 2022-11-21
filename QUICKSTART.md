@@ -10,7 +10,7 @@ Cloning into 'justice40-tool'...
 $ cd justice40-tool
 ```
 
-Install [`docker`](https://www.docker.com/). See [Install Docker](INSTALLATION.md#install-docker).
+Install [`docker`](https://docs.docker.com/get-docker/). See [Install Docker](INSTALLATION.md#install-docker).
 
 > *Important*: To be able to run the entire application, you may need to increase the memory allocated for docker to at least 8096 MB. See [this post](https://stackoverflow.com/a/44533437) for more details.
 

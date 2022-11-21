@@ -140,36 +140,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
           </div>
         </section>
-        <div>
-          <img
-            alt="language icon for selecting language"
-            src="test-file-stub"
-          />
-          <a
-            href="#"
-          >
-            English
-          </a>
-          <a
-            href="#"
-          >
-            Español
-          </a>
-        </div>
       </div>
     </div>
     <div>
       <div>
-        <div />
-        <div>
-          <span>
-            This is a beta site. 
-          </span>
-          <span>
-            It is an early, in-progress version of the tool with limited datasets that will 
-    be regularly updated.
-          </span>
-        </div>
+        <strong>
+          This tool has been updated.
+        </strong>
+         The 1.0 version of the tool was released on Nov 22, 2022.
       </div>
     </div>
     <div
@@ -184,28 +162,29 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           class="grid-col-1"
           data-testid="grid"
         >
-          <img
-            alt="Climate and Economic Justice Screening Tool"
-            src="test-file-stub"
-          />
+          <a
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
+            <img
+              alt="Climate and Economic Justice Screening Tool"
+              src="test-file-stub"
+            />
+          </a>
         </div>
         <div
           class="grid-col-6"
           data-testid="grid"
         >
-          <div>
+          <a
+            class="remove-link-style"
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
             <div>
-              Climate and Economic Justice
+              Climate and Economic Justice Screening Tool
             </div>
-            <div>
-              <div>
-                 Screening Tool 
-              </div>
-              <div>
-                BETA
-              </div>
-            </div>
-          </div>
+          </a>
         </div>
         <div
           class="grid-col-fill"
@@ -249,7 +228,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 <button
                   aria-controls="methMenu"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   class="usa-accordion__button usa-nav__link"
                   data-cy="nav-dropdown-methodology"
                   data-testid="navDropDownButton"
@@ -261,6 +240,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </button>
                 <ul
                   class="usa-nav__submenu"
+                  hidden=""
                   id="methMenu"
                 >
                   <li
@@ -283,17 +263,69 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Downloads
                     </a>
                   </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-previous-versions"
+                      href="/en/previous-versions"
+                    >
+                      Previous versions
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-about"
-                  href="/en/about"
+                <button
+                  aria-controls="aboutMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-about"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  About
-                </a>
+                  <span>
+                    About
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="aboutMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-about"
+                      href="/en/about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
+                    >
+                      Engagement calendar
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-faqs"
+                      href="/en/frequently-asked-questions"
+                    >
+                      Frequently asked questions
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -305,30 +337,32 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Contact
                 </a>
               </li>
-              <li
-                class="usa-nav__primary-item"
-              >
-                <div>
-                  <div>
-                    <img
-                      alt="language icon for selecting language"
-                      src="test-file-stub"
-                    />
-                    <a
-                      href="#"
-                    >
-                      English
-                    </a>
-                    <a
-                      href="#"
-                    >
-                      Español
-                    </a>
-                  </div>
-                </div>
-              </li>
             </ul>
           </nav>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="usa-alert usa-alert--info"
+        data-testid="alert"
+      >
+        <div
+          class="usa-alert__body"
+        >
+          <h1
+            class="usa-alert__heading"
+          >
+            Version 1.0 of the tool is now available
+          </h1>
+          <p
+            class="usa-alert__text"
+          >
+            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on 11/22/2022. For more information about the improvements to the tool, CEQ’s press release will be coming soon.
+          </p>
         </div>
       </div>
     </div>
@@ -376,16 +410,261 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           class="grid-col-12 tablet:grid-col-8"
           data-testid="grid"
         >
-          <h2>
-            File formats
+          <h2
+            class="j40-mt-0 j40-mb-3"
+          >
+            Version 1.0 file formats
           </h2>
+          <section>
+            <div>
+              <span>
+                View 
+                <a
+                  aria-controls="releaseUpdate-panel"
+                  class="usa-link"
+                  href="javascript:void(0)"
+                  id="releaseUpdate-header"
+                  tabindex="0"
+                >
+                  release notes
+                </a>
+                <img
+                  alt="expand icon"
+                  src="test-file-stub"
+                />
+              </span>
+              <section
+                aria-labelledby="releaseUpdate-header"
+                hidden=""
+                id="releaseUpdate-panel"
+              >
+                <div>
+                  <div>
+                    Version 1.0 Release update - Nov 22, 2022
+                  </div>
+                  <div>
+                    New & improved
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        Added lands within the boundaries of Federally Recognized Tribes and 
+    locations of Alaska Native Villages using data from the Bureau of Indian
+    Affairs at the U.S. Department of the Interior
+                      </li>
+                      <ul>
+                        <li>
+                          Added new data for indicators of burden
+                        </li>
+                        <li>
+                          Climate change
+                        </li>
+                        <ul>
+                          <li>
+                            Projected flood risk
+                          </li>
+                          <li>
+                            Projected wildfire risk
+                          </li>
+                        </ul>
+                        <li>
+                          Housing
+                        </li>
+                        <ul>
+                          <li>
+                            Historic underinvestment due to redlining
+                          </li>
+                          <li>
+                            Lack of green space
+                          </li>
+                          <li>
+                            Lack of plumbing
+                          </li>
+                        </ul>
+                        <li>
+                          Legacy pollution
+                        </li>
+                        <ul>
+                          <li>
+                            Abandoned mine lands
+                          </li>
+                          <li>
+                            Formerly used defense sites
+                          </li>
+                        </ul>
+                        <li>
+                          Transportation
+                        </li>
+                        <ul>
+                          <li>
+                            Transportation barriers
+                          </li>
+                        </ul>
+                        <li>
+                          Water
+                        </li>
+                        <ul>
+                          <li>
+                            Leaking underground storage tanks
+                          </li>
+                        </ul>
+                      </ul>
+                      <li>
+                        Included communities that are completely surrounded by other 
+    disadvantaged communities and that meet an adjusted low income 
+    threshold
+                      </li>
+                      <li>
+                        Made technical changes to enhance accuracy of the tool
+                      </li>
+                      <ul>
+                        <li>
+                          Removed income data for students enrolled in higher education in the low income indicator
+                        </li>
+                        <li>
+                          Imputed income for census tracts missing income data
+                        </li>
+                        <li>
+                          Used transportation barriers and expected population loss rate 
+    data burdens only for census tracts with populations of 20 or 
+    more to exclude areas such as airports
+                        </li>
+                      </ul>
+                      <li>
+                        Improved the user interface
+                      </li>
+                      <ul>
+                        <li>
+                          Added demographics (race & age) for census tracts to map side panel
+                        </li>
+                        <li>
+                          Improved the design of the map side panel
+                        </li>
+                        <li>
+                          Updated the site copy of the website
+                        </li>
+                      </ul>
+                      <li>
+                        Added new data for all the U.S. Territories, and also made a small methodology change for Puerto Rico
+                      </li>
+                      <ul>
+                        <li>
+                          USVI
+                        </li>
+                        <ul>
+                          <li>
+                            Included data from 2010 decennial census for US Virgin Islands
+                          </li>
+                        </ul>
+                        <li>
+                          Guam
+                        </li>
+                        <ul>
+                          <li>
+                            Included data from 2010 decennial census for Guam
+                          </li>
+                        </ul>
+                        <li>
+                          Puerto Rico
+                        </li>
+                        <ul>
+                          <li>
+                            Removed linguistic isolation as an indicator in the methodology for Puerto Rico
+                          </li>
+                          <li>
+                            Imported additional available data for Puerto Rico
+                          </li>
+                          <ul>
+                            <li>
+                              Energy cost
+                            </li>
+                            <li>
+                              Housing cost
+                            </li>
+                            <li>
+                              Abandoned mine lands
+                            </li>
+                            <li>
+                              Proximity to hazardous waste sites
+                            </li>
+                            <li>
+                              Proximity to Superfund (National Priorities List (NPL)) sites
+                            </li>
+                            <li>
+                              Proximity to Risk Management Plan (RMP) sites
+                            </li>
+                          </ul>
+                        </ul>
+                      </ul>
+                      <li>
+                        Enhanced the technical files:
+                      </li>
+                      <ul>
+                        <li>
+                          Added all new data indicators and demographics to .xls, .csv, and shapefiles
+                        </li>
+                        <li>
+                          Added previous versions page to access the beta version’s 
+    download files
+                        </li>
+                        <li>
+                          Updated codebook
+                        </li>
+                        <li>
+                          Updated Technical Support Document
+                        </li>
+                      </ul>
+                      <li>
+                        Improved the way that users provide feedback on the tool:
+                      </li>
+                      <ul>
+                        <li>
+                          Data survey
+                        </li>
+                        <li>
+                          Site experience survey
+                        </li>
+                        <li>
+                          Census tract feedback
+                        </li>
+                        <li>
+                          General contact form
+                        </li>
+                      </ul>
+                      <li>
+                        Added a link to sign up for email mailing list managed by CEQ
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    Fixes
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        Bug fix: loaded missing life expectancy data for Maine and Wisconsin
+                      </li>
+                      <li>
+                        Bug fix: Census tracts that are 100% water should not be 
+    included on the map
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    release version 1.0
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
           <p>
-            The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:
+            The dataset used in the 1.0 version of the tool, along with a codebook, and information about how to use the list of communities (.pdf) are available for download:
           </p>
           <p>
             
       
             <a
+              class="usa-link"
               download=""
               href="//"
             >
@@ -395,11 +674,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               alt="The icon used to indicate that the file is downloadable"
               src="test-file-stub"
             />
-             (.xlsx 24.9MB)
+             (.xlsx 35.6MB)
       
           </p>
           <p>
             <a
+              class="usa-link"
               download=""
               href="//"
             >
@@ -409,10 +689,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               alt="The icon used to indicate that the file is downloadable"
               src="test-file-stub"
             />
-             (.csv 28.1MB)
+             (.csv 42MB)
           </p>
           <p>
             <a
+              class="usa-link"
               download=""
               href="//"
             >
@@ -422,7 +703,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               alt="The icon used to indicate that the file is downloadable"
               src="test-file-stub"
             />
-             (Codebook included with geojson 741MB unzipped)
+             (Codebook included with shapefile 356.8MB unzipped)
           </p>
           <p>
             <a
@@ -434,7 +715,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               Technical support document
             </a>
-             (.pdf 2.5MB)
+             (.pdf 2.4MB)
           </p>
           <p>
             <a
@@ -446,7 +727,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               How to use the list of communities
             </a>
-             (.pdf 674kB)
+             (.pdf 687.9kB)
           </p>
         </div>
         <div
@@ -514,6 +795,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     </div>
                   </address>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="sign-up-for-updates"
+                    href="https://lp.constantcontactpages.com/su/Vm8pCFj/spring"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Sign up for updates
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -533,30 +827,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
-                    href="/en/public-engagement"
-                  >
-                    Engagement calendar
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy="request-for-information"
-                    href="https://www.federalregister.gov/d/2022-03920"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Request for Information
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -675,7 +946,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <a
-        href="https://www.surveymonkey.com/r/cejst-survey"
+        href="https://www.surveymonkey.com/r/P3LWTSB"
         rel="noreferrer"
         target="_blank"
       >
@@ -684,7 +955,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="button"
           type="button"
         >
-          Help improve the site & data
+          Help improve the tool
           <img
             alt="launch icon"
             src="test-file-stub"

@@ -1,5 +1,6 @@
 /* eslint-disable valid-jsdoc */
 import React from 'react';
+import {Tag} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
 import * as styles from './datasetCard.module.scss';
@@ -17,11 +18,21 @@ interface IDatasetCardProps {
  */
 const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
   const intl = useIntl();
+  const isNoteAtEnd = datasetCardProps.domID === 'ling-iso' ? true : false;
 
   return (
     <div className={styles.datasetCard} id={datasetCardProps.domID}>
       {/* Dataset header */}
-      <h3 className={styles.datasetCardIndicator}>{datasetCardProps.indicator}</h3>
+      <div className={datasetCardProps.isNew ? styles.datasetCardHeader : ''}>
+        {datasetCardProps.isNew &&
+          <div className={styles.tagContainer}>
+            <Tag className={styles.newTag}>{intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.NEW)}</Tag>
+          </div>
+        }
+        <h3 className={styles.datasetCardIndicator}>
+          {datasetCardProps.indicator}
+        </h3>
+      </div>
 
       {/* Dataset description */}
       <div className={styles.datasetCardDescription}>
@@ -29,7 +40,7 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
       </div>
 
       {/* Dataset note */}
-      {datasetCardProps.note && <div className={styles.datasetCardDescription}>
+      {(datasetCardProps.note && !isNoteAtEnd) && <div className={styles.datasetCardDescription}>
         <p>{datasetCardProps.note}</p>
       </div>}
 
@@ -73,6 +84,11 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
         ))}
 
       </ul>
+
+      {/* Dataset note */}
+      {(datasetCardProps.note && isNoteAtEnd) && <div className={styles.datasetCardDescription}>
+        <p>{datasetCardProps.note}</p>
+      </div>}
     </div>
   );
 };

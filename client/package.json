@@ -29,7 +29,8 @@
     "intl:compile-en": "formatjs compile src/intl/en.json --ast --out-file compiled-lang/en.json",
     "test:intl-extraction": "node src/intl/testIntlExtraction",
     "prepare": "cd .. && husky install client/.husky",
-    "gc": "node .generate_component $1"
+    "gc": "node .generate_component $1",
+    "compile": "tsc"
   },
   "devDependencies": {
     "@formatjs/cli": "^4.8.2",
@@ -77,7 +78,7 @@
   "dependencies": {
     "-": "^0.0.1",
     "@sentry/gatsby": "^7.7.0",
-    "@trussworks/react-uswds": "^2.9.0",
+    "@trussworks/react-uswds": "^3.1.0",
     "@turf/bbox": "^6.5.0",
     "d3-ease": "^3.0.1",
     "gatsby-plugin-env-variables": "^2.2.0",
@@ -92,8 +93,9 @@
     "react-helmet": "^6.1.0",
     "react-intl": "^5.24.7",
     "react-map-gl": "^6.1.19",
+    "react-tooltip": "^4.2.21",
     "react-use": "^17.3.2",
-    "uswds": "^2.11.2"
+    "uswds": "^2.13.3"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false

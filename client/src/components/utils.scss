@@ -6,13 +6,34 @@
 */
 
 //Styles associated with the side panel
-$sidePanelBorderColor: #f2f2f2;
+$sidePanelBorderColor: #F2F2F2;
 $sidePanelBorder: 2px solid $sidePanelBorderColor;
-$mobileBreakpoint: 400px;
-$featureSelectBorderColor: #00bde3;
+$mobileBreakpoint: 400px; // Todo replace with USWDS breakpoint
+$disadvantagedDotColor: #1A4480;
 $additionalCardsBGColor: #FAFAFA;
+$sidePanelLabelFontColor: #171716;
+
+@mixin sidePanelLabelStyle {
+    font-size: medium;
+    color: $sidePanelLabelFontColor;
+    font-weight: 600;
+  }
+  
 
 //Styles with Dataset container
-$datasetContainerColor: #eef6fb;
-$headingFontColor: #122e51;
-$j40AlertWarningColor: #faf3d1;
+$datasetContainerColor: #EEF6FB;
+$headingFontColor: #122E51;
+$j40AlertWarningColor: #FAF3D1;
+
+@mixin invert {
+  background-color: $disadvantagedDotColor;
+  color: white;
+  @include u-padding-left('05');
+  @include u-padding-right('05');
+}
+
+@mixin indicatorValueSubTextContainer {
+  text-align: right;
+  @include typeset('sans', 'micro', 2);
+  @include u-text('thin'); 
+}

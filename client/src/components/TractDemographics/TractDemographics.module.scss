@@ -1,0 +1,57 @@
+@use '../../styles/design-system.scss' as *;
+@import "../utils.scss";
+
+.demographicsContainer{
+    padding: 1.2rem 1rem 0 1.2rem;
+    
+    .demographicsTitle {
+        @include sidePanelLabelStyle;
+    }
+
+    .demographicItem {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: .5rem;
+    
+        span {
+            font-size: .8rem;
+            margin-top: 0;
+        }
+    }
+
+    .demographicItem:first-child {
+        @include u-margin-top(.5);
+    }
+    .demographicHeading {
+        @include u-margin-top(1);
+        font-size: .875rem;
+        
+        span{
+            @include u-margin-left(1);
+        }
+
+        .showHideText {
+            //remove styling of button
+            border: none;
+            background-color: white;
+    
+            //emulate a link
+            cursor:pointer;
+            text-decoration:underline;
+    
+            min-width: 45px;
+            padding-left: 0;
+        }
+
+        .showHideIcon{
+            vertical-align: middle;
+            height: 1rem;
+            filter: invert(8%) sepia(90%) saturate(7490%) hue-rotate(247deg) brightness(105%) contrast(143%);
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+    }
+}

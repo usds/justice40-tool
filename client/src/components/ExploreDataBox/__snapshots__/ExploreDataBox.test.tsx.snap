@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of ExploreDataBox Component checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="usa-summary-box"
+    data-testid="summary-box"
+  >
+    <div
+      class="usa-summary-box__body"
+    >
+      <h2
+        class="usa-summary-box__heading"
+      >
+        Get the data
+        <img
+          alt="
+      a plus icon indicating that the user can zoom in
+    *"
+          src="test-file-stub"
+          tabindex="0"
+        />
+      </h2>
+      <div
+        class="usa-summary-box__text"
+      >
+        
+    Download the data with documentation and shapefile from the 
+        <a
+          class="usa-link"
+          href="/en/downloads"
+        >
+          downloads
+        </a>
+         page.
+  
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

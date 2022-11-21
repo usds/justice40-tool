@@ -14,6 +14,7 @@ export const PAGES_ENDPOINTS = {
   FAQS: '/frequently-asked-questions',
   PUBLIC_ENG: '/public-engagement',
   CONTACT: '/contact',
+  PREVIOUS_VERSIONS: '/previous-versions',
 };
 
 // Performance markers
@@ -25,6 +26,15 @@ export type J40Properties = { [key: string]: any };
 
 // ****** SIDE PANEL BACKEND SIGNALS ***********
 
+export const MISSING_DATA_STRING = '--';
+
+// Tribal signals
+export const TRIBAL_ID = 'tribalId';
+export const LAND_AREA_NAME = 'landAreaName';
+export const TRIBAL_AREAS_PERCENTAGE = 'TA_PERC_FE';
+export const TRIBAL_AREAS_COUNT_AK = 'TA_COUNT_AK';
+export const TRIBAL_AREAS_COUNT_CONUS = 'TA_COUNT_C';
+
 // Set the threshold percentile used by most indicators in the side panel
 export const DEFAULT_THRESHOLD_PERCENTILE = 90;
 
@@ -33,6 +43,20 @@ export const GEOID_PROPERTY = 'GEOID10';
 export const COUNTY_NAME = 'CF';
 export const STATE_NAME = 'SF';
 export const TOTAL_POPULATION = 'TPF';
+
+
+// Demographics
+export const DEMO_NON_HISPANIC_WHITE = 'DM_W';
+export const DEMO_BLACK = 'DM_B';
+export const DEMO_AMERICAN_INDIAN = 'DM_AI';
+export const DEMO_ASIAN = 'DM_A';
+export const DEMO_HAWAIIAN = 'DM_HI';
+export const DEMO_OTHER_RACE = 'DM_O';
+export const DEMO_TWO_OR_MORE_RACES = 'DM_T';
+export const DEMO_HISPANIC = 'DM_H';
+export const DEMO_AGE_UNDER_10 = 'AGE_10';
+export const DEMO_AGE_MID = 'AGE_MIDDLE';
+export const DEMO_AGE_OVER_64 = 'AGE_OLD';
 
 /**
  * The SCORE_BOUNDAY_THRESHOLD will determine if the tract is disadvantaged
@@ -46,6 +70,8 @@ export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
 export const TOTAL_NUMBER_OF_INDICATORS = 'THRHLD';
 export const COUNT_OF_CATEGORIES_DISADV = 'CC';
+export const SCORE_N_COMMUNITIES = 'SN_C';
+export const SCORE_N_TRIBAL = 'SN_T';
 
 export const SIDE_PANEL_STATE = 'UI_EXP';
 export const SIDE_PANEL_STATE_VALUES = {
@@ -55,8 +81,8 @@ export const SIDE_PANEL_STATE_VALUES = {
 };
 
 // Climate category
-export const IS_CLIMATE_FACTOR_DISADVANTAGED_M = 'M_CLT';
-export const IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_CLT_EOMI';
+export const IS_CLIMATE_FACTOR_DISADVANTAGED = 'N_CLT';
+export const IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS = 'N_CLT_EOMI';
 
 export const EXP_AGRICULTURE_LOSS_PERCENTILE = 'EALR_PFS';
 export const IS_EXCEEDS_THRESH_FOR_EXP_AGR_LOSS = 'EAL_ET';
@@ -67,9 +93,15 @@ export const IS_EXCEEDS_THRESH_FOR_EXP_BLD_LOSS = 'EBL_ET';
 export const EXP_POPULATION_LOSS_PERCENTILE = 'EPLR_PFS';
 export const IS_EXCEEDS_THRESH_FOR_EXP_POP_LOSS = 'EPL_ET';
 
-export const IS_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_EBSI';
+export const FLOODING_PERCENTILE = 'FLD_PFS';
+export const IS_EXCEEDS_THRESH_FLOODING = 'FLD_ET';
 
-export const POVERTY_BELOW_200_PERCENTILE = 'P200_PFS';
+export const WILDFIRE_PERCENTILE = 'WFR_PFS';
+export const IS_EXCEEDS_THRESH_WILDFIRE = 'WFR_ET';
+
+export const IS_EXCEED_BOTH_SOCIO_INDICATORS = 'N_EBSI';
+
+export const POVERTY_BELOW_200_PERCENTILE = 'P200_I_PFS';
 export const IS_FEDERAL_POVERTY_LEVEL_200 = 'FPL200S';
 
 export const HIGHER_ED_PERCENTILE = 'CA';
@@ -79,8 +111,8 @@ export const NON_HIGHER_ED_PERCENTILE = 'NCA';
 
 
 // Energy category
-export const IS_ENERGY_FACTOR_DISADVANTAGED_M = 'M_ENY';
-export const IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_ENY_EOMI';
+export const IS_ENERGY_FACTOR_DISADVANTAGED = 'N_ENY';
+export const IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS = 'N_ENY_EOMI';
 
 export const ENERGY_PERCENTILE = 'EBF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_ENERGY_BURDEN = 'EB_ET';
@@ -90,32 +122,50 @@ export const IS_EXCEEDS_THRESH_FOR_PM25 = 'PM25_ET';
 
 
 // Transport category
-export const IS_TRANSPORT_FACTOR_DISADVANTAGED_M = 'M_TRN';
-export const IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_TRN_EOMI';
+export const IS_TRANSPORT_FACTOR_DISADVANTAGED = 'N_TRN';
+export const IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS = 'N_TRN_EOMI';
 
 export const DIESEL_MATTER_PERCENTILE = 'DSF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_DIESEL_PM = 'DS_ET';
+
+export const TRAVEL_DISADV_PERCENTILE = 'TD_PFS';
+export const IS_EXCEEDS_THRESH_TRAVEL_DISADV = 'TD_ET';
 
 export const TRAFFIC_PERCENTILE = 'TF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_TRAFFIC_PROX = 'TP_ET';
 
 
 // Housing category
-export const IS_HOUSING_FACTOR_DISADVANTAGED_M = 'M_HSG';
-export const IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_HSG_EOMI';
+export const IS_HOUSING_FACTOR_DISADVANTAGED = 'N_HSG';
+export const IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS = 'N_HSG_EOMI';
+
+export const HISTORIC_UNDERINVESTMENT_EXCEED_THRESH = 'HRS_ET';
+export const HISTORIC_UNDERINVESTMENT_RAW_YES = '1';
 
 export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'HBF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN = 'HB_ET';
 
+export const IMPERVIOUS_PERCENTILE = 'IS_PFS';
+export const IS_EXCEEDS_THRESH_IMPERVIOUS = 'IS_ET';
+
+export const KITCHEN_PLUMB_PERCENTILE = 'KP_PFS';
+export const IS_EXCEEDS_THRESH_KITCHEN_PLUMB = 'KP_ET';
+
 export const LEAD_PAINT_PERCENTILE = 'LPF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL = 'LPP_ET';
 
-// export const MEDIAN_HOME_VALUE_PERCENTILE = 'MHVF_PFS'; // No longer showing in UI
-
 
 // Pollution category
-export const IS_POLLUTION_FACTOR_DISADVANTAGED_M = 'M_PLN';
-export const IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_PLN_EOMI';
+export const IS_POLLUTION_FACTOR_DISADVANTAGED = 'N_PLN';
+export const IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS = 'N_PLN_EOMI';
+
+export const AML_RAW_YES = 1;
+export const ABANDON_LAND_MINES_EXCEEDS_THRESH = 'AML_ET';
+
+export const FORMER_DEF_SITES_RAW_VALUE = 'FUDS_RAW';
+export const FUDS_RAW_YES = 1;
+export const FUDS_RAW_NO = 0;
+export const FORMER_DEF_SITES_EXCEEDS_THRESH = 'FUDS_ET';
 
 export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_HAZARD_WASTE = 'TSDF_ET';
@@ -128,16 +178,19 @@ export const IS_EXCEEDS_THRESH_FOR_RMP = 'RMP_ET';
 
 
 // Water category
-export const IS_WATER_FACTOR_DISADVANTAGED_M = 'M_WTR';
-export const IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_WTR_EOMI';
+export const IS_WATER_FACTOR_DISADVANTAGED = 'N_WTR';
+export const IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS = 'N_WTR_EOMI';
+
+export const LEAKY_UNDER_PERCENTILE = 'UST_PFS';
+export const IS_EXCEEDS_THRESH_LEAKY_UNDER = 'UST_ET';
 
 export const WASTEWATER_PERCENTILE = 'WF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_WASTEWATER = 'WD_ET';
 
 
 // Health category
-export const IS_HEALTH_FACTOR_DISADVANTAGED_M = 'M_HLTH';
-export const IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_HLTH_EOMI';
+export const IS_HEALTH_FACTOR_DISADVANTAGED = 'N_HLTH';
+export const IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS = 'N_HLTH_EOMI';
 
 export const ASTHMA_PERCENTILE = 'AF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_ASTHMA = 'A_ET';
@@ -153,8 +206,8 @@ export const IS_EXCEEDS_THRESH_FOR_LOW_LIFE_EXP = 'LLE_ET';
 
 
 // Workforce category
-export const IS_WORKFORCE_FACTOR_DISADVANTAGED_M = 'M_WKFC';
-export const IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_WKFC_EOMI';
+export const IS_WORKFORCE_FACTOR_DISADVANTAGED = 'N_WKFC';
+export const IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS = 'N_WKFC_EOMI';
 
 export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'LIF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_LINGUISITIC_ISO = 'LISO_ET';
@@ -174,12 +227,18 @@ export const IS_EXCEEDS_THRESH_FOR_BELOW_100_POVERTY = 'POV_ET';
 export const ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD= 'IAPLHSE_PFS';
 export const IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_BELOW_100_POVERTY = 'IA_POV_ET';
 
-export const IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_WKFC_EBSI';
+export const IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS = 'N_WKFC_EBSI';
 
 export const HIGH_SCHOOL_PROPERTY_PERCENTILE = `HSEF`;
 export const IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED = 'LHE';
 export const ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD= 'IAHSEF';
 export const ISLAND_AREA_LOW_HS_EDU = 'IALHE';
+
+// Misc category
+export const ADJACENCY_EXCEEDS_THRESH = 'ADJ_ET';
+export const ADJACENCY_LOW_INCOME_EXCEEDS_THRESH = 'AJDLI_ET';
+
+export const IMPUTE_FLAG = 'IMP_FLG';
 
 
 // ********** MAP CONSTANTS ***************
@@ -187,19 +246,24 @@ export const ISLAND_AREA_LOW_HS_EDU = 'IALHE';
 export const BASE_MAP_SOURCE_NAME = 'base-map-source-name';
 export const HIGH_ZOOM_SOURCE_NAME = 'high-zoom-source-name';
 export const LOW_ZOOM_SOURCE_NAME = 'low-zoom-source-name';
+export const TRIBAL_SOURCE_NAME = 'tribal-source-name';
 
 // Layer ID constants
 export const SCORE_SOURCE_LAYER = 'blocks'; // The name of the layer within the tiles that contains the score
+export const TRIBAL_SOURCE_LAYER = 'blocks';
 export const BASE_MAP_LAYER_ID = 'base-map-layer-id';
 export const HIGH_ZOOM_LAYER_ID = 'high-zoom-layer-id';
 export const PRIORITIZED_HIGH_ZOOM_LAYER_ID = 'prioritized-high-zoom-layer-id';
 export const LOW_ZOOM_LAYER_ID = 'low-zoom-layer-id';
 export const FEATURE_BORDER_LAYER_ID = 'feature-border-layer-id';
 export const SELECTED_FEATURE_BORDER_LAYER_ID = 'selected-feature-border-layer-id';
+export const TRIBAL_LAYER_ID = 'tribal-layer-id';
+export const SELECTED_TRIBAL_FEATURE_BORDER_LAYER_ID = 'selected-feature-tribal-border-layer-id';
+export const TRIBAL_ALASKA_POINTS_LAYER_ID = 'tribal-alaska-points-layer-id';
 
 // Used in layer filters:
-export const SCORE_PROPERTY_LOW = 'M_SCORE';
-export const SCORE_PROPERTY_HIGH = 'SM_PFS';
+export const SCORE_PROPERTY_LOW = 'SCORE';
+export const SCORE_PROPERTY_HIGH = 'SN_C';
 
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;
@@ -213,21 +277,31 @@ export const GLOBAL_MAX_ZOOM_HIGH = 11;
 
 export const GLOBAL_MIN_ZOOM_FEATURE_BORDER = 5;
 export const GLOBAL_MAX_ZOOM_FEATURE_BORDER = 22;
+export const TRIBAL_MIN_ZOOM = 3;
+export const TRIBAL_MAX_ZOOM = 22;
 
 // Opacity
 export const FEATURE_BORDER_OPACITY = 0.5;
 export const HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY = 0.3;
 export const LOW_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY = 0.6;
 export const NON_PRIORITIZED_FEATURE_FILL_OPACITY = 0;
+export const TRIBAL_FEATURE_FILL_OPACITY = 0.3;
 
 // Colors
 export const FEATURE_BORDER_COLOR = '#4EA5CF';
 export const SELECTED_FEATURE_BORDER_COLOR = '#1A4480';
 export const PRIORITIZED_FEATURE_FILL_COLOR = '#768FB3';
 
+export const TRIBAL_BORDER_COLOR = '##4EA5CF';
+export const SELECTED_TRIBAL_BORDER_COLOR = '#1A4480';
+export const TRIBAL_FILL_COLOR = '#768FB3';
+export const TRIBAL_ALASKA_CIRCLE_FILL_COLOR = '#768FB3';
+export const TRIBAL_ALASKA_CIRCLE_RADIUS = 5;
+
 // Widths
 export const FEATURE_BORDER_WIDTH = 0.8;
 export const SELECTED_FEATURE_BORDER_WIDTH = 5.0;
+export const ALAKSA_POINTS_STROKE_WIDTH = 1.0;
 
 // Bounds - these bounds can be obtained by using the getCurrentMapBoundingBox() function in the map
 export const GLOBAL_MAX_BOUNDS: LngLatBoundsLike = [

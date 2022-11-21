@@ -1,6 +1,7 @@
 declare namespace DatasetCardScssNamespace {
     export interface IDatasetCardScss {
         datasetCard: string;
+        datasetCardHeader: string;
         datasetCardAdditional:string;
         datasetCardIndicator:string;
         datasetCardWhatIsIt: string;
@@ -9,6 +10,8 @@ declare namespace DatasetCardScssNamespace {
         datasetCardList: string;
         datasetCardListItemSource: string;
         datasetCardListItem: string;
+        newTag: string;
+        tagContainer: string;
     }
   }
 
