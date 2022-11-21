@@ -231,6 +231,8 @@ const Indicator = ({indicator, isImpute, population}:IIndicator) => {
    *
    * In the case where indicator.value is a boolean, the displayStat will be either 100 or 0, depending
    * on if indicator.value is true or false respectively.
+   *
+   * Todo: The way the displayStat handles the boolean indicators should be refactored
    */
   const displayStat = indicator.value !== null ? Math.floor(Number(indicator.value) * 100) : null;
 
