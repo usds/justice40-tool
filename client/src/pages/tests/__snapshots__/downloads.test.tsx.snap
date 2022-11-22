@@ -706,16 +706,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
              (Codebook included with shapefile 356.8MB unzipped)
           </p>
           <p>
-            <a
-              class="usa-link usa-link--external"
-              data-cy=""
-              href="//"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Technical support document
-            </a>
-             (.pdf 2.4MB)
+            Technical support document (version 1.0 coming soon)
           </p>
           <p>
             <a
