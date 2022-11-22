@@ -501,11 +501,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                           </li>
                         </ul>
                         <li>
-                          Water
+                          Water and wastewater
                         </li>
                         <ul>
                           <li>
-                            Leaking underground storage tanks
+                            Underground storage tanks and releases
                           </li>
                         </ul>
                       </ul>

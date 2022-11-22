@@ -222,12 +222,12 @@ export const RELEASE_1_0 = {
   />,
   SECTION1_B2_5: <FormattedMessage
     id={'download.page.release.update.SECTION1_B2_5'}
-    defaultMessage={`Water`}
+    defaultMessage={`Water and wastewater`}
     description={'Navigate to the download page. This is SECTION1_B2_5'}
   />,
   SECTION1_B2_5_1: <FormattedMessage
     id={'download.page.release.update.SECTION1_B2_5_1'}
-    defaultMessage={`Leaking underground storage tanks`}
+    defaultMessage={`Underground storage tanks and releases`}
     description={'Navigate to the download page. This is SECTION1_B2_5_1'}
   />,
   SECTION1_B3: <FormattedMessage
