@@ -87,11 +87,11 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
                 </li>
               </ul>
               <li>
-                Water
+                Water and wastewater
               </li>
               <ul>
                 <li>
-                  Leaking underground storage tanks
+                  Underground storage tanks and releases
                 </li>
               </ul>
             </ul>
