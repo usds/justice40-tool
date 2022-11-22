@@ -296,7 +296,7 @@
     "description": "Navigate to the download page. This is third download file link"
   },
   "download.page.download.file.4": {
-    "defaultMessage": "Technical support document (version 1.0 coming soon)",
+    "defaultMessage": "<link4>Technical support document</link4> (.pdf {tsdFileSize})",
     "description": "Navigate to the download page. This is fourth download file link"
   },
   "download.page.download.file.5": {
