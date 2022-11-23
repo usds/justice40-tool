@@ -754,12 +754,12 @@ export const COMMUNITY = {
   />,
   NOT_OF_FOCUS: <FormattedMessage
     id= {'explore.map.page.side.panel.not.community.of.focus'}
-    defaultMessage= {'No'}
+    defaultMessage= {'NO'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is not focused on`}
   />,
   PARTIAL: <FormattedMessage
     id= {'explore.map.page.side.panel.partial.community.of.focus'}
-    defaultMessage= {'Partially'}
+    defaultMessage= {'PARTIALLY'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is partially focused on`}
   />,
   IS_FOCUS: <FormattedMessage
@@ -1064,7 +1064,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   HIGH_SCL: {
     id: 'explore.map.page.side.panel.indicator.high.school',
     defaultMessage: 'High school education',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school degree achievement rate`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school diploma achievement rate`,
   },
 
   // Testing

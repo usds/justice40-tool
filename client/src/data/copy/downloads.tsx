@@ -75,8 +75,8 @@ export const DOWNLOAD_FILES = {
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     COMP_CHART: {
-      SIZE: .8, // KB // Todo: Update when actual file is uploaded
-      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_COMP_CHART_PDF, false),
+      SIZE: 33.1, // KB
+      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_TOOL_COMP_PDF, false),
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
   },

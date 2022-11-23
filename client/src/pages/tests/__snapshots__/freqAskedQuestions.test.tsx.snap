@@ -361,7 +361,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <p
             class="usa-alert__text"
           >
-            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on 11/22/2022. For more information about the improvements to the tool, CEQ’s press release will be coming soon.
+            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on 11/22/2022. For more information about the improvements to the tool, read CEQ's 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="https://www.whitehouse.gov/ceq/news-updates/2022/11/22/biden-harris-administration-launches-version-1-0-of-climate-and-economic-justice-screening-tool-key-step-in-implementing-president-bidens-justice40-initiative/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              press release
+            </a>
+            .
           </p>
         </div>
       </div>
@@ -921,6 +931,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p>
                   In contrast, the CEJST will help Federal agencies to identify disadvantaged communities that will benefit from programs included in the Justice40 Initiative.
                 </p>
+                <p>
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="//"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    This chart
+                  </a>
+                   is helpful for understanding how the CEJST differs from some of the other Federal environmental screening tools.
+                </p>
               </div>
               <h2
                 class="usa-accordion__heading"
@@ -1057,7 +1079,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="faq-id-15"
               >
                 <p>
-                  The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in November, 2022. The tool is no longer in beta.
+                  The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.whitehouse.gov/ceq/news-updates/2022/11/22/biden-harris-administration-launches-version-1-0-of-climate-and-economic-justice-screening-tool-key-step-in-implementing-president-bidens-justice40-initiative/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    November, 2022
+                  </a>
+                  . The tool is no longer in beta.
                 </p>
                 <p>
                   The tool will be improved over time. The Council on Environmental Quality (CEQ) will update the tool each year based on public feedback, research, and the availability of new data.

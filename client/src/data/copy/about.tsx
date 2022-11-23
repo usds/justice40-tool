@@ -109,7 +109,7 @@ export const CONTENT = {
     `}
     description={'Navigate to the About page. This is the paragraph 4'}
     values={{
-      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link1: linkFn('https://www.census.gov/programs-surveys/acs/geography-acs/geography-boundaries-by-year.html', false, true),
     }}
   />,
   HOW_TO_USE_PARA3:
