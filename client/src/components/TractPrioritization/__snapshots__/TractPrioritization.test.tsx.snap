@@ -1,49 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of TractPrioritization Component checks if component renders No when score N communities = false, tribal points in AK = null tribal % = null 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders NO when score N communities = false, tribal points in AK = null tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
-    No
+    NO
   </h3>
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders Partially when score N communities = false, tribal points in AK = 1 tribal % = null 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders PARTIALLY when score N communities = false, tribal points in AK = 1 tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
-    Partially
+    PARTIALLY
   </h3>
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders Partially when score N communities = false, tribal points in AK = 2 tribal % = 0 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders PARTIALLY when score N communities = false, tribal points in AK = 2 tribal % = 0 1`] = `
 <DocumentFragment>
   <h3>
-    Partially
+    PARTIALLY
   </h3>
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders Partially when score N communities = false, tribal points in AK = 3 tribal % = 0.13 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders PARTIALLY when score N communities = false, tribal points in AK = 3 tribal % = 0.13 1`] = `
 <DocumentFragment>
   <h3>
-    Partially
+    PARTIALLY
   </h3>
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders Partially when score N communities = false, tribal points in AK = null tribal % = 0 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders PARTIALLY when score N communities = false, tribal points in AK = null tribal % = 0 1`] = `
 <DocumentFragment>
   <h3>
-    Partially
+    PARTIALLY
   </h3>
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders Partially when score N communities = false, tribal points in AK = null tribal % = 0.13 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders PARTIALLY when score N communities = false, tribal points in AK = null tribal % = 0.13 1`] = `
 <DocumentFragment>
   <h3>
-    Partially
+    PARTIALLY
   </h3>
 </DocumentFragment>
 `;

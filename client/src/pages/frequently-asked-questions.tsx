@@ -163,7 +163,7 @@ const FAQPage = ({location}: IFAQPageProps) => {
         </ul>
         <p>{FAQS_COPY.FAQ_ANSWERS.Q12_P2}</p>
         <p>{FAQS_COPY.FAQ_ANSWERS.Q12_P3}</p>
-        {/* <p>{FAQS_COPY.FAQ_ANSWERS.Q12_P4}</p> */}
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q12_P4}</p>
       </>
     ),
     (

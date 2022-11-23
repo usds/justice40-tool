@@ -128,7 +128,7 @@
     "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
   },
   "common.pages.alerts.public_comment_period.description": {
-    "defaultMessage": "The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on {ver1RelDate}. For more information about the improvements to the tool, CEQ’s press release will be coming soon.",
+    "defaultMessage": "The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on {ver1RelDate}. For more information about the improvements to the tool, read CEQ's <link1>press release</link1>.",
     "description": "Alert body that appears on landing page."
   },
   "common.pages.alerts.version.1.release..title": {
@@ -1057,7 +1057,7 @@
   },
   "explore.map.page.side.panel.indicator.high.school": {
     "defaultMessage": "High school education",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school degree achievement rate"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school diploma achievement rate"
   },
   "explore.map.page.side.panel.indicator.historic.underinvest": {
     "defaultMessage": "Historic underinvestment",
@@ -1344,7 +1344,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show asking IF the communities is focused on"
   },
   "explore.map.page.side.panel.not.community.of.focus": {
-    "defaultMessage": "No",
+    "defaultMessage": "NO",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is not focused on"
   },
   "explore.map.page.side.panel.num.categories.exceeded": {
@@ -1352,7 +1352,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many categories are exceeded"
   },
   "explore.map.page.side.panel.partial.community.of.focus": {
-    "defaultMessage": "Partially",
+    "defaultMessage": "PARTIALLY",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is partially focused on"
   },
   "explore.map.page.side.panel.prio.copy.not.prio": {
@@ -1620,7 +1620,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q16"
   },
   "faqs.page.answers.Q17_P1": {
-    "defaultMessage": "The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in November, 2022. The tool is no longer in beta.",
+    "defaultMessage": "The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in <link1>November, 2022</link1>. The tool is no longer in beta.",
     "description": "Navigate to the FAQs page, this will be an answer, Q17_P1"
   },
   "faqs.page.answers.Q17_P2": {
@@ -1888,8 +1888,8 @@
     "description": "responsible party text"
   },
   "methodology.page.category.and.clause.hs.ed.higher.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> fewer than 10% of people ages 25 or older have a <link1>high school education</link1> (i.e. graduated with a high school degree)",
-    "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
+    "defaultMessage": "<boldtag>AND</boldtag> fewer than 10% of people ages 25 or older have a <link1>high school education</link1> (i.e. graduated with a high school diploma)",
+    "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school diploma rate"
   },
   "methodology.page.category.and.clause.low.inc": {
     "defaultMessage": "<boldtag>AND</boldtag> are at or above the 65th percentile for <link1>low income</link1>",

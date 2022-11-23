@@ -70,9 +70,10 @@ export const ALERTS = {
   EXPIRATION_DATE: RFI_EXPIRATION_DATE,
   ALERT_1_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.public_comment_period.description'}
-    defaultMessage={`The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on {ver1RelDate}. For more information about the improvements to the tool, CEQ’s press release will be coming soon.`}
+    defaultMessage={`The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on {ver1RelDate}. For more information about the improvements to the tool, read CEQ's <link1>press release</link1>.`}
     description={`Alert body that appears on landing page.`}
     values={{
+      link1: linkFn('https://www.whitehouse.gov/ceq/news-updates/2022/11/22/biden-harris-administration-launches-version-1-0-of-climate-and-economic-justice-screening-tool-key-step-in-implementing-president-bidens-justice40-initiative/', false, true),
       ver1RelDate: <FormattedDate
         value={METH_1_0_RELEASE_DATE}
         year="numeric"

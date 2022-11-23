@@ -12,12 +12,12 @@ describe('rendering of TractPrioritization Component', () => {
     {scoreNComm: true, tribalCountAK: 2, percentTribal: 0, isDAC: 'YES'},
     {scoreNComm: true, tribalCountAK: 3, percentTribal: .45, isDAC: 'YES'},
 
-    {scoreNComm: false, tribalCountAK: null, percentTribal: null, isDAC: 'No'},
-    {scoreNComm: false, tribalCountAK: null, percentTribal: 0, isDAC: 'Partially'},
-    {scoreNComm: false, tribalCountAK: null, percentTribal: .13, isDAC: 'Partially'},
-    {scoreNComm: false, tribalCountAK: 1, percentTribal: null, isDAC: 'Partially'},
-    {scoreNComm: false, tribalCountAK: 2, percentTribal: 0, isDAC: 'Partially'},
-    {scoreNComm: false, tribalCountAK: 3, percentTribal: .13, isDAC: 'Partially'},
+    {scoreNComm: false, tribalCountAK: null, percentTribal: null, isDAC: 'NO'},
+    {scoreNComm: false, tribalCountAK: null, percentTribal: 0, isDAC: 'PARTIALLY'},
+    {scoreNComm: false, tribalCountAK: null, percentTribal: .13, isDAC: 'PARTIALLY'},
+    {scoreNComm: false, tribalCountAK: 1, percentTribal: null, isDAC: 'PARTIALLY'},
+    {scoreNComm: false, tribalCountAK: 2, percentTribal: 0, isDAC: 'PARTIALLY'},
+    {scoreNComm: false, tribalCountAK: 3, percentTribal: .13, isDAC: 'PARTIALLY'},
 
   ];
 

@@ -602,8 +602,11 @@ export const FAQ_ANSWERS = {
   />,
   Q17_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q17_P1'}
-    defaultMessage={ `The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in November, 2022. The tool is no longer in beta.`}
+    defaultMessage={ `The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in <link1>November, 2022</link1>. The tool is no longer in beta.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q17_P1'}
+    values={{
+      link1: linkFn('https://www.whitehouse.gov/ceq/news-updates/2022/11/22/biden-harris-administration-launches-version-1-0-of-climate-and-economic-justice-screening-tool-key-step-in-implementing-president-bidens-justice40-initiative/', false, true),
+    }}
   />,
   Q17_P2: <FormattedMessage
     id={ 'faqs.page.answers.Q17_P2'}
