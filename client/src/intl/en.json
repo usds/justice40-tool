@@ -2356,7 +2356,7 @@
     "description": "Navigate to the Methodology page. This is the description of the dataset section"
   },
   "methodology.page.datasets.all.except.workforce.used.in.text": {
-    "defaultMessage": "All categories except for the training and workforce development category",
+    "defaultMessage": "All categories except for the workforce development category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies except the workforce development"
   },
   "methodology.page.datasets.all.used.in.text": {

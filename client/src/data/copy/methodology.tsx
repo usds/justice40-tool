@@ -161,7 +161,7 @@ export const CATEGORIES = {
   />,
   ALL_EXCEPT_WORKFORCE: <FormattedMessage
     id={'methodology.page.datasets.all.except.workforce.used.in.text'}
-    defaultMessage={`All categories except for the training and workforce development category`}
+    defaultMessage={`All categories except for the workforce development category`}
     description={'Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies except the workforce development'}
   />,
   CLIMATE_CHANGE: {
