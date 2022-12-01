@@ -12,7 +12,7 @@ env:
   CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
 jobs:
   generate-score-tiles:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-
     defaults:
       run:
         working-directory: data/data-pipeline
@@ -40,7 +40,6 @@ jobs:
         run: poetry show -v
       - name: Install GDAL/ogr2ogr
         run: |
-          sudo add-apt-repository ppa:ubuntugis/ppa
           sudo apt-get update
           sudo apt-get -y install gdal-bin
           ogrinfo --version
