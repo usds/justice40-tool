@@ -12,7 +12,7 @@ env:
   CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
 jobs:
   generate-score-tiles:
-    runs-on: ubuntu-
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: data/data-pipeline
