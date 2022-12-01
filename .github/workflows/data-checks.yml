@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Upgrade wheel
-      - run: pip install -U wheel
+        run: pip install -U wheel
       - name: Print variables to help debug
         uses: hmarr/debug-action@v2
       - name: Load cached Poetry installation
