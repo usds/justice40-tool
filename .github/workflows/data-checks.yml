@@ -22,9 +22,11 @@ jobs:
       # one execution of the tests per version listed above
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Upgrade wheel
+      - run: pip install -U wheel
       - name: Print variables to help debug
         uses: hmarr/debug-action@v2
       - name: Load cached Poetry installation
