@@ -25,9 +25,10 @@ jobs:
       - name: Print variables to help debug
         uses: hmarr/debug-action@v2
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+      - run: pip install -U wheel
       - name: Load cached Poetry installation
         id: cached-poetry-dependencies
         uses: actions/cache@v2
@@ -35,12 +36,11 @@ jobs:
           path: ~/.cache/pypoetry/virtualenvs
           key: env-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/deploy_be_staging.yml') }}
       - name: Install poetry
-        uses: snok/install-poetry@v1
+        uses: snok/install-poetry@v1.3.3
       - name: Print Poetry settings
         run: poetry show -v
       - name: Install GDAL/ogr2ogr
         run: |
-          sudo add-apt-repository ppa:ubuntugis/ppa
           sudo apt-get update
           sudo apt-get -y install gdal-bin
           ogrinfo --version
