@@ -36,7 +36,7 @@ Homebrew is an easy way to manage software downloads on MacOS. You don't _have_ 
 
 You should regularly run `brew update` and `brew doctor` to make sure your packages are up to date and in good condition.
 
-### Install Node using NVM 
+### Install Node using NVM
 
 This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
 
@@ -54,7 +54,7 @@ You should then be able to switch to that version of node by:
 
 To validate you are using node 14, type:
 
-`node -v` 
+`node -v`
 
 This should return *Now using node 14.x.x (npm v6.x.x)*
 

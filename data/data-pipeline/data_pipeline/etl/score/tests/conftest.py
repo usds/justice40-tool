@@ -5,7 +5,8 @@ from pathlib import Path
 import pandas as pd
 import pytest
 from data_pipeline import config
-from data_pipeline.etl.score import etl_score_post, tests
+from data_pipeline.etl.score import etl_score_post
+from data_pipeline.etl.score import tests
 from data_pipeline.etl.score.etl_score_post import PostScoreETL
 
 

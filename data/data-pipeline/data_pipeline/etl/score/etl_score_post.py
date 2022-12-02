@@ -1,35 +1,29 @@
-from pathlib import Path
 import json
-from numpy import float64
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
-from data_pipeline.content.schemas.download_schemas import (
-    CSVConfig,
-    CodebookConfig,
-    ExcelConfig,
-)
-
+from data_pipeline.content.schemas.download_schemas import CodebookConfig
+from data_pipeline.content.schemas.download_schemas import CSVConfig
+from data_pipeline.content.schemas.download_schemas import ExcelConfig
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.score.etl_utils import floor_series, create_codebook
-from data_pipeline.utils import (
-    get_module_logger,
-    zip_files,
-    load_yaml_dict_from_file,
-    column_list_from_yaml_object_fields,
-    load_dict_from_yaml_object_fields,
-)
+from data_pipeline.etl.score.etl_utils import create_codebook
+from data_pipeline.etl.score.etl_utils import floor_series
+from data_pipeline.etl.sources.census.etl_utils import check_census_data_source
 from data_pipeline.score import field_names
+from data_pipeline.utils import column_list_from_yaml_object_fields
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import load_dict_from_yaml_object_fields
+from data_pipeline.utils import load_yaml_dict_from_file
+from data_pipeline.utils import zip_files
+from numpy import float64
 
-
-from data_pipeline.etl.sources.census.etl_utils import (
-    check_census_data_source,
-)
 from . import constants
 
 logger = get_module_logger(__name__)
 
 # Define the DAC variable
-DISADVANTAGED_COMMUNITIES_FIELD = field_names.SCORE_M_COMMUNITIES
+DISADVANTAGED_COMMUNITIES_FIELD = field_names.SCORE_N_COMMUNITIES
 
 
 class PostScoreETL(ExtractTransformLoad):
@@ -45,7 +39,6 @@ class PostScoreETL(ExtractTransformLoad):
         self.input_counties_df: pd.DataFrame
         self.input_states_df: pd.DataFrame
         self.input_score_df: pd.DataFrame
-        self.input_national_tract_df: pd.DataFrame
 
         self.output_score_county_state_merged_df: pd.DataFrame
         self.output_score_tiles_df: pd.DataFrame
@@ -92,7 +85,9 @@ class PostScoreETL(ExtractTransformLoad):
     def _extract_score(self, score_path: Path) -> pd.DataFrame:
         logger.info("Reading Score CSV")
         df = pd.read_csv(
-            score_path, dtype={self.GEOID_TRACT_FIELD_NAME: "string"}
+            score_path,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
         )
 
         # Convert total population to an int
@@ -101,18 +96,6 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         return df
-
-    def _extract_national_tract(
-        self, national_tract_path: Path
-    ) -> pd.DataFrame:
-        logger.info("Reading national tract file")
-        return pd.read_csv(
-            national_tract_path,
-            names=[self.GEOID_TRACT_FIELD_NAME],
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-            header=None,
-        )
 
     def extract(self) -> None:
         logger.info("Starting Extraction")
@@ -135,9 +118,6 @@ class PostScoreETL(ExtractTransformLoad):
         )
         self.input_score_df = self._extract_score(
             constants.DATA_SCORE_CSV_FULL_FILE_PATH
-        )
-        self.input_national_tract_df = self._extract_national_tract(
-            constants.DATA_CENSUS_CSV_FILE_PATH
         )
 
     def _transform_counties(
@@ -185,7 +165,6 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _create_score_data(
         self,
-        national_tract_df: pd.DataFrame,
         counties_df: pd.DataFrame,
         states_df: pd.DataFrame,
         score_df: pd.DataFrame,
@@ -217,28 +196,11 @@ class PostScoreETL(ExtractTransformLoad):
             right_on=self.STATE_CODE_COLUMN,
             how="left",
         )
-
-        # check if there are census tracts without score
-        logger.info("Removing tract rows without score")
-
-        # merge census tracts with score
-        merged_df = national_tract_df.merge(
-            score_county_state_merged,
-            on=self.GEOID_TRACT_FIELD_NAME,
-            how="left",
-        )
-
-        # recast population to integer
-        score_county_state_merged["Total population"] = (
-            merged_df["Total population"].fillna(0).astype(int)
-        )
-
-        de_duplicated_df = merged_df.dropna(
-            subset=[DISADVANTAGED_COMMUNITIES_FIELD]
-        )
-
+        assert score_county_merged[
+            self.GEOID_TRACT_FIELD_NAME
+        ].is_unique, "Merging state/county data introduced duplicate rows"
         # set the score to the new df
-        return de_duplicated_df
+        return score_county_state_merged
 
     def _create_tile_data(
         self,
@@ -254,8 +216,8 @@ class PostScoreETL(ExtractTransformLoad):
             tiles_score_column_titles
         ].copy()
 
-        # Currently, we do not want USVI or Guam on the map, so this will drop all
-        # rows with the FIPS codes (first two digits of the census tract)
+        # We may not want some states/territories on the map, so this will drop all
+        # rows with those FIPS codes (first two digits of the census tract)
         logger.info(
             f"Dropping specified FIPS codes from tile data: {constants.DROP_FIPS_CODES}"
         )
@@ -269,16 +231,15 @@ class PostScoreETL(ExtractTransformLoad):
         score_tiles = score_tiles[
             ~score_tiles[field_names.GEOID_TRACT_FIELD].isin(tracts_to_drop)
         ]
-
-        score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
-            constants.TILES_SCORE_FLOAT_COLUMNS
-        ].apply(
-            func=lambda series: floor_series(
-                series=series,
-                number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
-            ),
-            axis=0,
-        )
+        float_cols = [
+            col
+            for col, col_dtype in score_tiles.dtypes.items()
+            if col_dtype == np.dtype("float64")
+        ]
+        scale_factor = 10**constants.TILES_ROUND_NUM_DECIMALS
+        score_tiles[float_cols] = (
+            score_tiles[float_cols] * scale_factor
+        ).apply(np.floor) / scale_factor
 
         logger.info("Adding fields for island areas and Puerto Rico")
         # The below operation constructs variables for the front end.
@@ -427,7 +388,6 @@ class PostScoreETL(ExtractTransformLoad):
         transformed_score = self._transform_score(self.input_score_df)
 
         output_score_county_state_merged_df = self._create_score_data(
-            self.input_national_tract_df,
             transformed_counties,
             transformed_states,
             transformed_score,
@@ -521,8 +481,6 @@ class PostScoreETL(ExtractTransformLoad):
         score_tiles_df.to_csv(tile_score_path, index=False, encoding="utf-8")
 
     def _load_downloadable_zip(self, downloadable_info_path: Path) -> None:
-        logger.info("Saving Downloadable CSV")
-
         downloadable_info_path.mkdir(parents=True, exist_ok=True)
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
@@ -583,6 +541,22 @@ class PostScoreETL(ExtractTransformLoad):
                 "fields"
             ],
         )
+        assert codebook_df["csv_label"].equals(codebook_df["excel_label"]), (
+            "CSV and Excel differ. If that's intentional, "
+            "remove this assertion. Otherwise, fix it."
+        )
+        # Check the codebook to make sure it matches the download files
+        assert not set(codebook_df["csv_label"].dropna()).difference(
+            downloadable_df.columns
+        ), "Codebook is missing columns from downloadable files"
+        assert (
+            len(
+                downloadable_df.columns.difference(
+                    set(codebook_df["csv_label"])
+                )
+            )
+            == 0
+        ), "Codebook has columns the downloadable files do not"
 
         # load codebook to disk
         codebook_df.to_csv(codebook_path, index=False)

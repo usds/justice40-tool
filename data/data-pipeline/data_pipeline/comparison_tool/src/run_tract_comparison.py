@@ -12,12 +12,12 @@ To see more: https://buildmedia.readthedocs.org/media/pdf/papermill/latest/paper
 To run:
 ` $ python src/run_tract_comparison.py --template_notebook=TEMPLATE.ipynb --parameter_yaml=PARAMETERS.yaml`
 """
-
-import os
-import datetime
 import argparse
-import yaml
+import datetime
+import os
+
 import papermill as pm
+import yaml
 
 
 def _read_param_file(param_file: str) -> dict:

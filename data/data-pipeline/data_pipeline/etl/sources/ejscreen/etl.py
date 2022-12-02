@@ -1,6 +1,6 @@
 import pandas as pd
-
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 
@@ -8,21 +8,22 @@ logger = get_module_logger(__name__)
 
 
 class EJSCREENETL(ExtractTransformLoad):
-    """Load EJSCREEN data.
+    """Load updated EJSCREEN data."""
 
-    Data dictionary:
-        https://gaftp.epa.gov/EJSCREEN/2019/2019_EJSCREEN_columns_explained.csv
-    """
+    NAME = "ejscreen"
+    GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+    INPUT_GEOID_TRACT_FIELD_NAME: str = "ID"
 
     def __init__(self):
-        self.EJSCREEN_FTP_URL = "https://edap-arcgiscloud-data-commons.s3.amazonaws.com/EJSCREEN2020/EJSCREEN_Tract_2020_USPR.csv.zip"
-        self.EJSCREEN_CSV = self.get_tmp_path() / "EJSCREEN_Tract_2020_USPR.csv"
-        self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen_2019"
+        self.EJSCREEN_FTP_URL = "https://gaftp.epa.gov/EJSCREEN/2021/EJSCREEN_2021_USPR_Tracts.csv.zip"
+        self.EJSCREEN_CSV = (
+            self.get_tmp_path() / "EJSCREEN_2021_USPR_Tracts.csv"
+        )
+        self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen"
         self.df: pd.DataFrame
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.TOTAL_POP_FIELD,
             # pylint: disable=duplicate-code
             field_names.AIR_TOXICS_CANCER_RISK_FIELD,
             field_names.RESPIRATORY_HAZARD_FIELD,
@@ -39,6 +40,7 @@ class EJSCREENETL(ExtractTransformLoad):
             field_names.OVER_64_FIELD,
             field_names.UNDER_5_FIELD,
             field_names.LEAD_PAINT_FIELD,
+            field_names.UST_FIELD,
         ]
 
     def extract(self) -> None:
@@ -53,19 +55,16 @@ class EJSCREENETL(ExtractTransformLoad):
         logger.info("Transforming EJScreen Data")
         self.df = pd.read_csv(
             self.EJSCREEN_CSV,
-            dtype={"ID": "string"},
+            dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
             # EJSCREEN writes the word "None" for NA data.
             na_values=["None"],
             low_memory=False,
         )
 
         # rename ID to Tract ID
-        self.df.rename(
+        self.output_df = self.df.rename(
             columns={
-                "ID": self.GEOID_TRACT_FIELD_NAME,
-                # Note: it is currently unorthodox to use `field_names` in an ETL class,
-                # but I think that's the direction we'd like to move all ETL classes. - LMB
-                "ACSTOTPOP": field_names.TOTAL_POP_FIELD,
+                self.INPUT_GEOID_TRACT_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME,
                 "CANCER": field_names.AIR_TOXICS_CANCER_RISK_FIELD,
                 "RESP": field_names.RESPIRATORY_HAZARD_FIELD,
                 "DSLPM": field_names.DIESEL_FIELD,
@@ -81,14 +80,6 @@ class EJSCREENETL(ExtractTransformLoad):
                 "OVER64PCT": field_names.OVER_64_FIELD,
                 "UNDER5PCT": field_names.UNDER_5_FIELD,
                 "PRE1960PCT": field_names.LEAD_PAINT_FIELD,
+                "UST": field_names.UST_FIELD,  # added for 2021 update
             },
-            inplace=True,
-        )
-
-    def load(self) -> None:
-        logger.info("Saving EJScreen CSV")
-        # write nationwide csv
-        self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df[self.COLUMNS_TO_KEEP].to_csv(
-            self.CSV_PATH / "usa.csv", index=False
         )

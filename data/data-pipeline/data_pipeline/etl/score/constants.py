@@ -2,8 +2,10 @@ import os
 from pathlib import Path
 
 from data_pipeline.config import settings
-
 from data_pipeline.score import field_names
+
+## note: to keep map porting "right" fields, keeping descriptors the same.
+
 
 # Base Paths
 DATA_PATH = Path(settings.APP_ROOT) / "data"
@@ -115,7 +117,7 @@ ISLAND_AREAS_EXPLANATION = (
 CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 
 # Drop FIPS codes from map
-DROP_FIPS_CODES = ["66", "78"]
+DROP_FIPS_CODES = []
 
 # Drop FIPS codes from incrementing
 DROP_FIPS_FROM_NON_WTD_THRESHOLDS = "72"
@@ -138,7 +140,7 @@ TILES_ROUND_NUM_DECIMALS = 2
 # Controlling Tile user experience columns
 THRESHOLD_COUNT_TO_SHOW_FIELD_NAME = "THRHLD"
 TILES_ISLAND_AREAS_THRESHOLD_COUNT = 3
-TILES_PUERTO_RICO_THRESHOLD_COUNT = 4
+TILES_PUERTO_RICO_THRESHOLD_COUNT = 10
 TILES_NATION_THRESHOLD_COUNT = 21
 
 # Note that the FIPS code is a string
@@ -146,6 +148,58 @@ TILES_NATION_THRESHOLD_COUNT = 21
 # 60: American Samoa, 66: Guam, 69: N. Mariana Islands, 78: US Virgin Islands
 TILES_ISLAND_AREA_FIPS_CODES = ["60", "66", "69", "78"]
 TILES_PUERTO_RICO_FIPS_CODE = ["72"]
+TILES_ALASKA_AND_HAWAII_FIPS_CODE = ["02", "15"]
+TILES_CONTINENTAL_US_FIPS_CODE = [
+    "01",
+    "04",
+    "05",
+    "06",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+    "51",
+    "53",
+    "54",
+    "55",
+    "56",
+]
 
 # Constant to reflect UI Experience version
 # "Nation" referring to 50 states and DC is from Census
@@ -189,16 +243,17 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "LIF_PFS",
     field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "LMI_PFS",
-    field_names.MEDIAN_HOUSE_VALUE_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX: "MHVF_PFS",
     field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "PM25F_PFS",
     field_names.HIGH_SCHOOL_ED_FIELD: "HSEF",
     field_names.POVERTY_LESS_THAN_100_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "P100_PFS",
-    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX: "P200_PFS",
+    field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "P200_I_PFS",
+    field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS: "AJDLI_ET",
     field_names.LEAD_PAINT_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "LPF_PFS",
+    field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "KP_PFS",
     field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "NPL_PFS",
     field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "RMP_PFS",
     field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "TSDF_PFS",
@@ -208,37 +263,24 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "UF_PFS",
     field_names.WASTEWATER_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "WF_PFS",
-    field_names.M_WATER: "M_WTR",
-    field_names.M_WORKFORCE: "M_WKFC",
-    field_names.M_CLIMATE: "M_CLT",
-    field_names.M_ENERGY: "M_ENY",
-    field_names.M_TRANSPORTATION: "M_TRN",
-    field_names.M_HOUSING: "M_HSG",
-    field_names.M_POLLUTION: "M_PLN",
-    field_names.M_HEALTH: "M_HLTH",
-    field_names.SCORE_M_COMMUNITIES: "SM_C",
-    field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX: "SM_PFS",
-    field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EPLRLI",
-    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EALRLI",
-    field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EBLRLI",
-    field_names.PM25_EXPOSURE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "PM25LI",
-    field_names.ENERGY_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EBLI",
-    field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_LOW_HIGHER_ED_FIELD: "DPMLI",
-    field_names.TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD: "TPLI",
-    field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "LPMHVLI",
-    field_names.HOUSING_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD: "HBLI",
-    field_names.RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD: "RMPLI",
-    field_names.SUPERFUND_LOW_INCOME_LOW_HIGHER_ED_FIELD: "SFLI",
-    field_names.HAZARDOUS_WASTE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "HWLI",
-    field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "WDLI",
-    field_names.DIABETES_LOW_INCOME_LOW_HIGHER_ED_FIELD: "DLI",
-    field_names.ASTHMA_LOW_INCOME_LOW_HIGHER_ED_FIELD: "ALI",
-    field_names.HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "HDLI",
-    field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD: "LLELI",
-    field_names.LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD: "LILHSE",
-    field_names.POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD: "PLHSE",
-    field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD: "LMILHSE",
-    field_names.UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD: "ULHSE",
+    field_names.UST_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "UST_PFS",
+    field_names.N_WATER: "N_WTR",
+    field_names.N_WORKFORCE: "N_WKFC",
+    field_names.N_CLIMATE: "N_CLT",
+    field_names.N_ENERGY: "N_ENY",
+    field_names.N_TRANSPORTATION: "N_TRN",
+    field_names.N_HOUSING: "N_HSG",
+    field_names.N_POLLUTION: "N_PLN",
+    field_names.N_HEALTH: "N_HLTH",
+    # temporarily update this so that it's the Narwhal score that gets visualized on the map
+    # The NEW final score value INCLUDES the adjacency index.
+    field_names.FINAL_SCORE_N_BOOLEAN: "SN_C",
+    field_names.IS_TRIBAL_DAC: "SN_T",
+    field_names.DIABETES_LOW_INCOME_FIELD: "DLI",
+    field_names.ASTHMA_LOW_INCOME_FIELD: "ALI",
+    field_names.POVERTY_LOW_HS_EDUCATION_FIELD: "PLHSE",
+    field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD: "LMILHSE",
+    field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD: "ULHSE",
     # new booleans only for the environmental factors
     field_names.EXPECTED_POPULATION_LOSS_EXCEEDS_PCTILE_THRESHOLD: "EPL_ET",
     field_names.EXPECTED_AGRICULTURAL_LOSS_EXCEEDS_PCTILE_THRESHOLD: "EAL_ET",
@@ -248,11 +290,14 @@ TILES_SCORE_COLUMNS = {
     field_names.DIESEL_EXCEEDS_PCTILE_THRESHOLD: "DS_ET",
     field_names.TRAFFIC_PROXIMITY_PCTILE_THRESHOLD: "TP_ET",
     field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD: "LPP_ET",
+    field_names.HISTORIC_REDLINING_SCORE_EXCEEDED: "HRS_ET",
+    field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD: "KP_ET",
     field_names.HOUSING_BURDEN_PCTILE_THRESHOLD: "HB_ET",
     field_names.RMP_PCTILE_THRESHOLD: "RMP_ET",
     field_names.NPL_PCTILE_THRESHOLD: "NPL_ET",
     field_names.TSDF_PCTILE_THRESHOLD: "TSDF_ET",
     field_names.WASTEWATER_PCTILE_THRESHOLD: "WD_ET",
+    field_names.UST_PCTILE_THRESHOLD: "UST_ET",
     field_names.DIABETES_PCTILE_THRESHOLD: "DB_ET",
     field_names.ASTHMA_PCTILE_THRESHOLD: "A_ET",
     field_names.HEART_DISEASE_PCTILE_THRESHOLD: "HD_ET",
@@ -278,79 +323,56 @@ TILES_SCORE_COLUMNS = {
     field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009
     + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "IAULHSE_PFS",
-    field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD: "LHE",
+    field_names.LOW_HS_EDUCATION_FIELD: "LHE",
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD: "IALHE",
     # Percentage of HS Degree completion for Islands
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
-    field_names.COLLEGE_ATTENDANCE_FIELD: "CA",
-    field_names.COLLEGE_NON_ATTENDANCE_FIELD: "NCA",
-    # This is logically equivalent to "non-college greater than 80%"
-    field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
     # Booleans for the front end about the types of thresholds exceeded
-    field_names.CLIMATE_THRESHOLD_EXCEEDED: "M_CLT_EOMI",
-    field_names.ENERGY_THRESHOLD_EXCEEDED: "M_ENY_EOMI",
-    field_names.TRAFFIC_THRESHOLD_EXCEEDED: "M_TRN_EOMI",
-    field_names.HOUSING_THREHSOLD_EXCEEDED: "M_HSG_EOMI",
-    field_names.POLLUTION_THRESHOLD_EXCEEDED: "M_PLN_EOMI",
-    field_names.WATER_THRESHOLD_EXCEEDED: "M_WTR_EOMI",
-    field_names.HEALTH_THRESHOLD_EXCEEDED: "M_HLTH_EOMI",
-    field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
+    field_names.CLIMATE_THRESHOLD_EXCEEDED: "N_CLT_EOMI",
+    field_names.ENERGY_THRESHOLD_EXCEEDED: "N_ENY_EOMI",
+    field_names.TRAFFIC_THRESHOLD_EXCEEDED: "N_TRN_EOMI",
+    field_names.HOUSING_THREHSOLD_EXCEEDED: "N_HSG_EOMI",
+    field_names.POLLUTION_THRESHOLD_EXCEEDED: "N_PLN_EOMI",
+    field_names.WATER_THRESHOLD_EXCEEDED: "N_WTR_EOMI",
+    field_names.HEALTH_THRESHOLD_EXCEEDED: "N_HLTH_EOMI",
+    field_names.WORKFORCE_THRESHOLD_EXCEEDED: "N_WKFC_EOMI",
     # These are the booleans for socioeconomic indicators
     ## this measures low income boolean
-    field_names.FPL_200_SERIES: "FPL200S",
-    ## Low high school and low higher ed for t&wd
-    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
-    ## FPL 200 and low higher ed for all others
-    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "M_EBSI",
+    field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED: "FPL200S",
+    ## Low high school for t&wd
+    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "N_WKFC_EBSI",
+    field_names.DOT_BURDEN_PCTILE_THRESHOLD: "TD_ET",
+    field_names.DOT_TRAVEL_BURDEN_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "TD_PFS",
+    field_names.FUTURE_FLOOD_RISK_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "FLD_PFS",
+    field_names.FUTURE_WILDFIRE_RISK_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "WFR_PFS",
+    field_names.HIGH_FUTURE_FLOOD_RISK_FIELD: "FLD_ET",
+    field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD: "WFR_ET",
+    field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD: "ADJ_ET",
+    field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
+    + field_names.PERCENTILE_FIELD_SUFFIX: "IS_PFS",
+    field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME: "IS_ET",
+    field_names.AML_BOOLEAN_FILLED_IN: "AML_ET",
+    field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME: "FUDS_RAW",
+    field_names.ELIGIBLE_FUDS_FILLED_IN_FIELD_NAME: "FUDS_ET",
+    field_names.IMPUTED_INCOME_FLAG_FIELD_NAME: "IMP_FLG",
+    ## FPL 200 and low higher ed for all others should no longer be M_EBSI, but rather
+    ## FPL_200 (there is no higher ed in narwhal)
+    field_names.PERCENT_BLACK_FIELD_NAME: "DM_B",
+    field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME: "DM_AI",
+    field_names.PERCENT_ASIAN_FIELD_NAME: "DM_A",
+    field_names.PERCENT_HAWAIIAN_FIELD_NAME: "DM_HI",
+    field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME: "DM_T",
+    field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME: "DM_W",
+    field_names.PERCENT_HISPANIC_FIELD_NAME: "DM_H",
+    field_names.PERCENT_OTHER_RACE_FIELD_NAME: "DM_O",
+    field_names.PERCENT_AGE_UNDER_10: "AGE_10",
+    field_names.PERCENT_AGE_10_TO_64: "AGE_MIDDLE",
+    field_names.PERCENT_AGE_OVER_64: "AGE_OLD",
+    field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_AK: "TA_COUNT_AK",
+    field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_CONUS: "TA_COUNT_C",
+    field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT: "TA_PERC",
+    field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY: "TA_PERC_FE",
 }
-
-# columns to round floats to 2 decimals
-# TODO refactor to use much smaller subset of fields we DON'T want to round
-TILES_SCORE_FLOAT_COLUMNS = [
-    field_names.DIABETES_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.ASTHMA_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.HEART_DISEASE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.ENERGY_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.HOUSING_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.LOW_LIFE_EXPECTANCY_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.LINGUISTIC_ISO_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.MEDIAN_HOUSE_VALUE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.POVERTY_LESS_THAN_100_FPL_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.LEAD_PAINT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.TRAFFIC_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.UNEMPLOYMENT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    # Percentiles for Island areas' workforce columns
-    # To be clear: the island areas pull from 2009 census. PR does not.
-    field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009
-    + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009
-    + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    # Island areas HS degree attainment rate
-    field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009,
-    field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD,
-    field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
-    field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.COLLEGE_NON_ATTENDANCE_FIELD,
-    field_names.COLLEGE_ATTENDANCE_FIELD,
-]

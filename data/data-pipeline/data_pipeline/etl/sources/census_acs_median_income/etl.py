@@ -1,13 +1,14 @@
 import json
 from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import requests
-
-from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
-from data_pipeline.utils import unzip_file_from_url, download_file_from_url
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.utils import download_file_from_url
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 
@@ -282,12 +283,20 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
 
         # Download MSA median incomes
         logger.info("Starting download of MSA median incomes.")
-        download = requests.get(self.MSA_MEDIAN_INCOME_URL, verify=None)
+        download = requests.get(
+            self.MSA_MEDIAN_INCOME_URL,
+            verify=None,
+            timeout=settings.REQUESTS_DEFAULT_TIMOUT,
+        )
         self.msa_median_incomes = json.loads(download.content)
 
         # Download state median incomes
         logger.info("Starting download of state median incomes.")
-        download_state = requests.get(self.STATE_MEDIAN_INCOME_URL, verify=None)
+        download_state = requests.get(
+            self.STATE_MEDIAN_INCOME_URL,
+            verify=None,
+            timeout=settings.REQUESTS_DEFAULT_TIMOUT,
+        )
         self.state_median_incomes = json.loads(download_state.content)
         ## NOTE we already have PR's MI here
 

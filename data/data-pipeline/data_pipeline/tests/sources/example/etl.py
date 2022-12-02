@@ -1,8 +1,9 @@
 import zipfile
-import pandas as pd
 
+import pandas as pd
 from data_pipeline.config import settings
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -21,6 +22,7 @@ class ExampleETL(ExtractTransformLoad):
     LAST_UPDATED_YEAR = 2017
     SOURCE_URL = "https://www.example.com/example.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    LOAD_YAML_CONFIG: bool = True
 
     def __init__(self):
         self.COLUMNS_TO_KEEP = [

@@ -1,14 +1,19 @@
-# pylint: disable=protected-access,unsubscriptable-object
+# pylint: disable=protected-access, unsubscriptable-object, unnecessary-dunder-call
 import copy
 import os
 import pathlib
+from typing import Optional
 from typing import Type
-import pytest
+from unittest import mock
 
 import numpy as np
 import pandas as pd
-
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+import pytest
+import requests
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
+from data_pipeline.etl.score.constants import TILES_ALASKA_AND_HAWAII_FIPS_CODE
+from data_pipeline.etl.score.constants import TILES_CONTINENTAL_US_FIPS_CODE
 from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
 
@@ -39,7 +44,7 @@ class TestETL:
     # so that we do not have to manually copy the "sample data" when we run the tests.
     _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
     _SAMPLE_DATA_FILE_NAME = "input.csv"
-    _SAMPLE_DATA_ZIP_FILE_NAME = "input.zip"
+    _SAMPLE_DATA_ZIP_FILE_NAME: Optional[str] = "input.zip"
     _EXTRACT_TMP_FOLDER_NAME = "ExampleETL"
 
     # Note: We used shared census tract IDs so that later our tests can join all the
@@ -47,9 +52,9 @@ class TestETL:
     # we use the same tract IDs across fixtures.
     # The test fixtures may also contain other tract IDs that are not on this list.
     _FIXTURES_SHARED_TRACT_IDS = [
-        "06007040300",
-        "06001020100",
-        "06007040500",
+        "06027000800",
+        "06069000802",
+        "06061021322",
         "15001021010",
         "15001021101",
         "15007040603",
@@ -84,7 +89,25 @@ class TestETL:
         self._DATA_DIRECTORY_FOR_TEST = pathlib.Path(filename).parent / "data"
 
     def _get_instance_of_etl_class(self) -> Type[ExtractTransformLoad]:
-        return self._ETL_CLASS()
+        etl_class = self._ETL_CLASS()
+
+        # Find out what unique state codes are present in the test fixture data.
+        states_expected_from_fixtures = {
+            x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
+        }
+
+        # Set values to match test fixtures
+        etl_class.EXPECTED_MISSING_STATES = [
+            x
+            for x in TILES_CONTINENTAL_US_FIPS_CODE
+            + TILES_ALASKA_AND_HAWAII_FIPS_CODE
+            if x not in states_expected_from_fixtures
+        ]
+        etl_class.PUERTO_RICO_EXPECTED_IN_DATA = False
+        etl_class.ISLAND_AREAS_EXPECTED_IN_DATA = False
+        etl_class.ALASKA_AND_HAWAII_EXPECTED_IN_DATA = True
+
+        return etl_class
 
     def _setup_etl_instance_and_run_extract(
         self, mock_etl, mock_paths
@@ -98,18 +121,47 @@ class TestETL:
         In order to re-implement this method, usually it will involve a
         decent amount of work to monkeypatch `requests` or another method that's
         used to retrieve data in order to force that method to retrieve the fixture
-        data.
+        data. A basic version of that patching is included here for classes that can use it.
         """
-        # When running this in child classes, make sure the child class re-implements
-        # this method.
-        if self._ETL_CLASS is not ExampleETL:
-            raise NotImplementedError(
-                "Prepare and run extract method not defined for this class."
-            )
 
-        # The rest of this method applies for `ExampleETL` only.
-        etl = self._get_instance_of_etl_class()
-        etl.extract()
+        with mock.patch(
+            "data_pipeline.utils.requests"
+        ) as requests_mock, mock.patch(
+            "data_pipeline.etl.score.etl_utils.get_state_fips_codes"
+        ) as mock_get_state_fips_codes:
+            tmp_path = mock_paths[1]
+            if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
+                zip_file_fixture_src = (
+                    self._DATA_DIRECTORY_FOR_TEST
+                    / self._SAMPLE_DATA_ZIP_FILE_NAME
+                )
+
+                # Create mock response.
+                with open(zip_file_fixture_src, mode="rb") as file:
+                    file_contents = file.read()
+            else:
+                with open(
+                    self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_FILE_NAME,
+                    "rb",
+                ) as file:
+                    file_contents = file.read()
+            response_mock = requests.Response()
+            response_mock.status_code = 200
+            # pylint: disable=protected-access
+            response_mock._content = file_contents
+            # Return text fixture:
+            requests_mock.get = mock.MagicMock(return_value=response_mock)
+            mock_get_state_fips_codes.return_value = [
+                x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
+            ]
+            # Instantiate the ETL class.
+            etl = self._get_instance_of_etl_class()
+
+            # Monkey-patch the temporary directory to the one used in the test
+            etl.TMP_PATH = tmp_path
+
+            # Run the extract method.
+            etl.extract()
 
         return etl
 
@@ -154,6 +206,16 @@ class TestETL:
 
         assert actual_file_path == expected_file_path
 
+    def test_tract_id_lengths(self, mock_etl, mock_paths):
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+        etl.transform()
+        etl.validate()
+        etl.load()
+        df = etl.get_data_frame()
+        assert (df[etl.GEOID_TRACT_FIELD_NAME].str.len() == 11).all()
+
     def test_fixtures_contain_shared_tract_ids_base(self, mock_etl, mock_paths):
         """Check presence of necessary shared tract IDs.
         Note: We used shared census tract IDs so that later our tests can join all the
@@ -185,9 +247,14 @@ class TestETL:
         """This will test that the sample data exists where it's supposed to as it's supposed to
         As per conversation with Jorge, here we can *just* test that the zip file exists.
         """
-        assert (
-            self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_ZIP_FILE_NAME
-        ).exists()
+        if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
+            assert (
+                self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_ZIP_FILE_NAME
+            ).exists()
+        else:
+            assert (
+                self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_FILE_NAME
+            ).exists()
 
     def test_extract_unzips_base(self, mock_etl, mock_paths):
         """Tests the extract method.
@@ -195,17 +262,18 @@ class TestETL:
         As per conversation with Jorge, no longer includes snapshot. Instead, verifies that the
         file was unzipped from a "fake" downloaded zip (located in data) in a  temporary path.
         """
-        tmp_path = mock_paths[1]
+        if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
+            tmp_path = mock_paths[1]
 
-        _ = self._setup_etl_instance_and_run_extract(
-            mock_etl=mock_etl,
-            mock_paths=mock_paths,
-        )
-        assert (
-            tmp_path
-            / self._EXTRACT_TMP_FOLDER_NAME
-            / self._SAMPLE_DATA_FILE_NAME
-        ).exists()
+            _ = self._setup_etl_instance_and_run_extract(
+                mock_etl=mock_etl,
+                mock_paths=mock_paths,
+            )
+            assert (
+                tmp_path
+                / self._EXTRACT_TMP_FOLDER_NAME
+                / self._SAMPLE_DATA_FILE_NAME
+            ).exists()
 
     def test_extract_produces_valid_data(self, snapshot, mock_etl, mock_paths):
         """Tests the extract method.
@@ -363,9 +431,14 @@ class TestETL:
             etl_with_duplicate_geo_field.output_df = actual_output_df.copy(
                 deep=True
             )
+            etl_with_duplicate_geo_field.output_df.reset_index(inplace=True)
             etl_with_duplicate_geo_field.output_df.loc[
                 0:1, ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
-            ] = "06007040300"
+            ] = etl_with_duplicate_geo_field.output_df[
+                ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            ].iloc[
+                0
+            ]
             with pytest.raises(ValueError) as error:
                 etl_with_duplicate_geo_field.validate()
             assert str(error.value).startswith("Duplicate values:")
@@ -436,7 +509,7 @@ class TestETL:
 
         # Remove another column to keep and make sure error occurs.
         etl_with_missing_column = copy.deepcopy(etl)
-        columns_to_keep = actual_output_df.columns[:-1]
+        columns_to_keep = etl.COLUMNS_TO_KEEP[:-1]
         etl_with_missing_column.output_df = actual_output_df[columns_to_keep]
         with pytest.raises(ValueError) as error:
             etl_with_missing_column.validate()

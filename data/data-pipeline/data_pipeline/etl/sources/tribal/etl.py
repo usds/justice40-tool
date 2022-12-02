@@ -1,18 +1,25 @@
 from pathlib import Path
+
 import geopandas as gpd
 import pandas as pd
-
+from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.utils import get_module_logger, unzip_file_from_url
+from data_pipeline.score import field_names
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 
 
 class TribalETL(ExtractTransformLoad):
     def __init__(self):
-        self.GEOJSON_BASE_PATH = self.DATA_PATH / "tribal" / "geojson"
+        self.GEOGRAPHIC_BASE_PATH = (
+            self.DATA_PATH / "tribal" / "geographic_data"
+        )
         self.CSV_BASE_PATH = self.DATA_PATH / "tribal" / "csv"
-        self.NATIONAL_TRIBAL_GEOJSON_PATH = self.GEOJSON_BASE_PATH / "usa.json"
+        self.NATIONAL_TRIBAL_GEOJSON_PATH = (
+            self.GEOGRAPHIC_BASE_PATH / "usa.json"
+        )
         self.USA_TRIBAL_DF_LIST = []
 
     def extract(self) -> None:
@@ -23,43 +30,66 @@ class TribalETL(ExtractTransformLoad):
         """
         logger.info("Downloading Tribal Data")
 
-        bia_geojson_url = "https://justice40-data.s3.amazonaws.com/data-sources/BIA_National_LAR_json.zip"
-        alaska_geojson_url = "https://justice40-data.s3.amazonaws.com/data-sources/Alaska_Native_Villages_json.zip"
+        bia_shapefile_zip_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/BIA_National_LAR_updated_20220929.zip"
+        )
+
+        tsa_and_aian_geojson_zip_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/BIA_TSA_and_AIAN_json.zip"
+        )
+
+        alaska_geojson_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/Alaska_Native_Villages_json.zip"
+        )
 
         unzip_file_from_url(
-            bia_geojson_url,
+            bia_shapefile_zip_url,
             self.TMP_PATH,
-            self.DATA_PATH / "tribal" / "geojson" / "bia_national_lar",
+            self.GEOGRAPHIC_BASE_PATH / "bia_national_lar",
+        )
+
+        unzip_file_from_url(
+            tsa_and_aian_geojson_zip_url,
+            self.TMP_PATH,
+            self.GEOGRAPHIC_BASE_PATH / "tsa_and_aian",
         )
 
         unzip_file_from_url(
             alaska_geojson_url,
             self.TMP_PATH,
-            self.DATA_PATH / "tribal" / "geojson" / "alaska_native_villages",
+            self.GEOGRAPHIC_BASE_PATH / "alaska_native_villages",
         )
-        pass
 
-    def _transform_bia_national_lar(self, tribal_geojson_path: Path) -> None:
+    def _transform_bia_national_lar(self, path: Path) -> None:
         """Transform the Tribal BIA National Lar Geodataframe and appends it to the
         national Tribal Dataframe List
 
         Args:
-            tribal_geojson_path (Path): the Path to the Tribal Geojson
+            path (Path): the Path to the BIA National Lar
 
         Returns:
             None
         """
 
-        bia_national_lar_df = gpd.read_file(tribal_geojson_path)
+        bia_national_lar_df = gpd.read_file(path)
+
+        # DELETE
+        logger.info(f"Columns: {bia_national_lar_df.columns}\n")
 
         bia_national_lar_df.drop(
-            ["OBJECTID", "GISAcres", "Shape_Length", "Shape_Area"],
+            ["GISAcres"],
             axis=1,
             inplace=True,
         )
 
         bia_national_lar_df.rename(
-            columns={"TSAID": "tribalId", "LARName": "landAreaName"},
+            columns={
+                "LARID": field_names.TRIBAL_ID,
+                "LARName": field_names.TRIBAL_LAND_AREA_NAME,
+            },
             inplace=True,
         )
 
@@ -87,7 +117,10 @@ class TribalETL(ExtractTransformLoad):
         )
 
         bia_aian_supplemental_df.rename(
-            columns={"OBJECTID": "tribalId", "Land_Area_": "landAreaName"},
+            columns={
+                "OBJECTID": field_names.TRIBAL_ID,
+                "Land_Area_": field_names.TRIBAL_LAND_AREA_NAME,
+            },
             inplace=True,
         )
 
@@ -113,7 +146,10 @@ class TribalETL(ExtractTransformLoad):
         )
 
         bia_tsa_df.rename(
-            columns={"TSAID": "tribalId", "LARName": "landAreaName"},
+            columns={
+                "TSAID": field_names.TRIBAL_ID,
+                "LARName": field_names.TRIBAL_LAND_AREA_NAME,
+            },
             inplace=True,
         )
 
@@ -136,8 +172,8 @@ class TribalETL(ExtractTransformLoad):
 
         alaska_native_villages_df.rename(
             columns={
-                "GlobalID": "tribalId",
-                "TRIBALOFFICENAME": "landAreaName",
+                "GlobalID": field_names.TRIBAL_ID,
+                "TRIBALOFFICENAME": field_names.TRIBAL_LAND_AREA_NAME,
             },
             inplace=True,
         )
@@ -152,27 +188,30 @@ class TribalETL(ExtractTransformLoad):
         """
         logger.info("Transforming Tribal Data")
 
-        # load the geojsons
-        bia_national_lar_geojson = (
-            self.GEOJSON_BASE_PATH / "bia_national_lar" / "BIA_TSA.json"
+        # Set the filepaths:
+        bia_national_lar_shapefile = (
+            self.GEOGRAPHIC_BASE_PATH / "bia_national_lar"
         )
+
         bia_aian_supplemental_geojson = (
-            self.GEOJSON_BASE_PATH
-            / "bia_national_lar"
+            self.GEOGRAPHIC_BASE_PATH
+            / "tsa_and_aian"
             / "BIA_AIAN_Supplemental.json"
         )
-        bia_tsa_geojson_geojson = (
-            self.GEOJSON_BASE_PATH / "bia_national_lar" / "BIA_TSA.json"
+
+        bia_tsa_geojson = (
+            self.GEOGRAPHIC_BASE_PATH / "tsa_and_aian" / "BIA_TSA.json"
         )
+
         alaska_native_villages_geojson = (
-            self.GEOJSON_BASE_PATH
+            self.GEOGRAPHIC_BASE_PATH
             / "alaska_native_villages"
             / "AlaskaNativeVillages.gdb.geojson"
         )
 
-        self._transform_bia_national_lar(bia_national_lar_geojson)
+        self._transform_bia_national_lar(bia_national_lar_shapefile)
         self._transform_bia_aian_supplemental(bia_aian_supplemental_geojson)
-        self._transform_bia_tsa(bia_tsa_geojson_geojson)
+        self._transform_bia_tsa(bia_tsa_geojson)
         self._transform_alaska_native_villages(alaska_native_villages_geojson)
 
     def load(self) -> None:
@@ -182,13 +221,13 @@ class TribalETL(ExtractTransformLoad):
             None
         """
         logger.info("Saving Tribal GeoJson and CSV")
-
         usa_tribal_df = gpd.GeoDataFrame(
             pd.concat(self.USA_TRIBAL_DF_LIST, ignore_index=True)
         )
         usa_tribal_df = usa_tribal_df.to_crs(
             "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
         )
+
         logger.info("Writing national geojson file")
         usa_tribal_df.to_file(
             self.NATIONAL_TRIBAL_GEOJSON_PATH, driver="GeoJSON"

@@ -1,26 +1,24 @@
-from typing import List, Union
 import datetime
 import json
 import logging
 import os
-import sys
 import shutil
+import sys
 import uuid
 import zipfile
 from pathlib import Path
-from marshmallow import ValidationError
-import urllib3
+from typing import List
+from typing import Union
+
 import requests
+import urllib3
 import yaml
-from marshmallow_dataclass import class_schema
-
 from data_pipeline.config import settings
-from data_pipeline.content.schemas.download_schemas import (
-    CSVConfig,
-    CodebookConfig,
-    ExcelConfig,
-)
-
+from data_pipeline.content.schemas.download_schemas import CodebookConfig
+from data_pipeline.content.schemas.download_schemas import CSVConfig
+from data_pipeline.content.schemas.download_schemas import ExcelConfig
+from marshmallow import ValidationError
+from marshmallow_dataclass import class_schema
 
 ## zlib is not available on all systems
 try:
@@ -149,7 +147,9 @@ def download_file_from_url(
         os.mkdir(download_file_name.parent)
 
     logger.info(f"Downloading {file_url}")
-    response = requests.get(file_url, verify=verify)
+    response = requests.get(
+        file_url, verify=verify, timeout=settings.REQUESTS_DEFAULT_TIMOUT
+    )
     if response.status_code == 200:
         file_contents = response.content
     else:
@@ -1409,6 +1409,8 @@ def get_excel_column_name(index: int) -> str:
         "ALI",
         "ALJ",
         "ALK",
+        "ALL",
+        "ALM",
     ]
 
     return excel_column_names[index]

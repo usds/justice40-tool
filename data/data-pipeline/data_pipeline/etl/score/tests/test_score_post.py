@@ -1,14 +1,11 @@
 # pylint: disable=W0212
 ## Above disables warning about access to underscore-prefixed methods
-
 from importlib import reload
 from pathlib import Path
+
 import pandas.api.types as ptypes
 import pandas.testing as pdt
-from data_pipeline.content.schemas.download_schemas import (
-    CSVConfig,
-)
-
+from data_pipeline.content.schemas.download_schemas import CSVConfig
 from data_pipeline.etl.score import constants
 from data_pipeline.utils import load_yaml_dict_from_file
 
@@ -67,14 +64,12 @@ def test_transform_score(etl, score_data_initial, score_transformed_expected):
 # pylint: disable=too-many-arguments
 def test_create_score_data(
     etl,
-    national_tract_df,
     counties_transformed_expected,
     states_transformed_expected,
     score_transformed_expected,
     score_data_expected,
 ):
     score_data_actual = etl._create_score_data(
-        national_tract_df,
         counties_transformed_expected,
         states_transformed_expected,
         score_transformed_expected,

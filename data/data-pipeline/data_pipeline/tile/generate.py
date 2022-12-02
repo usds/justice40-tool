@@ -2,7 +2,8 @@ import os
 from pathlib import Path
 from subprocess import call
 
-from data_pipeline.utils import get_module_logger, remove_all_from_dir
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import remove_all_from_dir
 
 logger = get_module_logger(__name__)
 
@@ -41,6 +42,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         logger.info("Generating USA High mbtiles file")
         cmd = "tippecanoe "
         cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --layer=blocks "
+        cmd += "--no-feature-limit --no-tile-size-limit "
         cmd += f"--output={high_tile_path}/usa_high.mbtiles "
         cmd += str(score_geojson_dir / "usa-high.json")
         call(cmd, shell=True)
@@ -49,7 +51,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         logger.info("Generating USA High mvt folders and files")
         cmd = "tippecanoe "
         cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --no-tile-compression "
-        cmd += "--drop-densest-as-needed "
+        cmd += "--no-feature-limit  --no-tile-size-limit "
         cmd += f"--output-to-directory={high_tile_path} --layer=blocks "
         cmd += str(score_geojson_dir / "usa-high.json")
         call(cmd, shell=True)

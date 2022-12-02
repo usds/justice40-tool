@@ -2,11 +2,11 @@
 # but it may be a known bug. https://github.com/PyCQA/pylint/issues/1498
 # pylint: disable=unsubscriptable-object
 # pylint: disable=unsupported-assignment-operation
-
 import pandas as pd
-
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -15,8 +15,21 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
     NAME = "national_risk_index"
-    SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+
+    if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+        SOURCE_URL = (
+            f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+            "national_risk_index/NRI_Table_CensusTracts.zip"
+        )
+    else:
+        SOURCE_URL = (
+            "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload/"
+            "NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+        )
+
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
+    LOAD_YAML_CONFIG: bool = True
 
     # Output score variables (values set on datasets.yml) for linting purposes
     RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME: str
@@ -33,9 +46,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     AGRIVALUE_LOWER_BOUND = 408000
 
     def __init__(self):
-        # load YAML config
-        self.DATASET_CONFIG = super().yaml_config_load()
-
         # define the full path for the input CSV file
         self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
 
@@ -155,6 +165,27 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         ].clip(
             lower=self.AGRIVALUE_LOWER_BOUND
         )
+
+        ## Check that this clip worked -- that the only place the value has changed is when the clip took effect
+        base_expectation = (
+            disaster_agriculture_sum_series
+            / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
+        )
+        assert (
+            df_nri[
+                df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME]
+                != base_expectation
+            ][self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME].max()
+            <= self.AGRIVALUE_LOWER_BOUND
+        ), (
+            "Clipping the agrivalue did not work. There are places where the value doesn't "
+            + "match an unclipped ratio, even where the agrivalue is above the lower bound!"
+        )
+
+        assert (
+            df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME]
+            != base_expectation
+        ).sum() > 0, "Clipping the agrivalue did nothing!"
 
         # This produces a boolean that is True in the case of non-zero agricultural value
         df_nri[self.CONTAINS_AGRIVALUE] = (

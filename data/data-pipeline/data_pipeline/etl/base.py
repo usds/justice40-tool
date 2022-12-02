@@ -5,15 +5,15 @@ import typing
 from typing import Optional
 
 import pandas as pd
-
 from data_pipeline.config import settings
-from data_pipeline.etl.score.schemas.datasets import DatasetsConfig
-from data_pipeline.utils import (
-    load_yaml_dict_from_file,
-    unzip_file_from_url,
-    remove_all_from_dir,
-    get_module_logger,
+from data_pipeline.etl.score.etl_utils import (
+    compare_to_list_of_expected_state_fips_codes,
 )
+from data_pipeline.etl.score.schemas.datasets import DatasetsConfig
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import load_yaml_dict_from_file
+from data_pipeline.utils import remove_all_from_dir
+from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 
@@ -43,10 +43,11 @@ class ExtractTransformLoad:
     APP_ROOT: pathlib.Path = settings.APP_ROOT
 
     # Directories
-    DATA_PATH: pathlib.Path = APP_ROOT / "data"
+    DATA_PATH: pathlib.Path = settings.DATA_PATH
     TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
     CONTENT_CONFIG: pathlib.Path = APP_ROOT / "content" / "config"
-    DATASET_CONFIG: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
+    DATASET_CONFIG_PATH: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
+    DATASET_CONFIG: Optional[dict] = None
 
     # Parameters
     GEOID_FIELD_NAME: str = "GEOID10"
@@ -81,6 +82,23 @@ class ExtractTransformLoad:
     # NULL_REPRESENTATION is how nulls are represented on the input field
     NULL_REPRESENTATION: str = None
 
+    # Whether this ETL contains data for the continental nation (DC & the US states
+    # except for Alaska and Hawaii)
+    CONTINENTAL_US_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for Alaska and Hawaii
+    ALASKA_AND_HAWAII_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for Puerto Rico
+    PUERTO_RICO_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for the island areas
+    ISLAND_AREAS_EXPECTED_IN_DATA: bool = False
+
+    # Whether this ETL contains known missing data for any additional
+    # states/territories
+    EXPECTED_MISSING_STATES: typing.List[str] = []
+
     # Thirteen digits in a census block group ID.
     EXPECTED_CENSUS_BLOCK_GROUPS_CHARACTER_LENGTH: int = 13
     # TODO: investigate. Census says there are only 217,740 CBGs in the US. This might
@@ -94,17 +112,24 @@ class ExtractTransformLoad:
     #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160
 
+    # Should this dataset load its configuration from
+    # the YAML files?
+    LOAD_YAML_CONFIG: bool = False
+
     # We use output_df as the final dataframe to use to write to the CSV
     # It is used on the "load" base class method
     output_df: pd.DataFrame = None
 
+    def __init_subclass__(cls) -> None:
+        if cls.LOAD_YAML_CONFIG:
+            cls.DATASET_CONFIG = cls.yaml_config_load()
+
     @classmethod
     def yaml_config_load(cls) -> dict:
         """Generate config dictionary and set instance variables from YAML dataset."""
-
         # check if the class instance has score YAML definitions
         datasets_config = load_yaml_dict_from_file(
-            cls.DATASET_CONFIG / "datasets.yml",
+            cls.DATASET_CONFIG_PATH / "datasets.yml",
             DatasetsConfig,
         )
 
@@ -123,9 +148,10 @@ class ExtractTransformLoad:
             sys.exit()
 
         # set some of the basic fields
-        cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
-            "input_geoid_tract_field_name"
-        ]
+        if "input_geoid_tract_field_name" in dataset_config:
+            cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
+                "input_geoid_tract_field_name"
+            ]
 
         # get the columns to write on the CSV
         # and set the constants
@@ -134,11 +160,7 @@ class ExtractTransformLoad:
         ]
         for field in dataset_config["load_fields"]:
             cls.COLUMNS_TO_KEEP.append(field["long_name"])
-
-            # set the constants for the class
             setattr(cls, field["df_field_name"], field["long_name"])
-
-        # return the config dict
         return dataset_config
 
     # This is a classmethod so it can be used by `get_data_frame` without
@@ -176,14 +198,18 @@ class ExtractTransformLoad:
         to get the file from a source url, unzips it and stores it on an
         extract_path."""
 
-        # this can be accessed via super().extract()
-        if source_url and extract_path:
-            unzip_file_from_url(
-                file_url=source_url,
-                download_path=self.get_tmp_path(),
-                unzipped_file_path=extract_path,
-                verify=verify,
-            )
+        if source_url is None:
+            source_url = self.SOURCE_URL
+
+        if extract_path is None:
+            extract_path = self.get_tmp_path()
+
+        unzip_file_from_url(
+            file_url=source_url,
+            download_path=self.get_tmp_path(),
+            unzipped_file_path=extract_path,
+            verify=verify,
+        )
 
     def transform(self) -> None:
         """Transform the data extracted into a format that can be consumed by the
@@ -280,6 +306,24 @@ class ExtractTransformLoad:
                         f"`{geo_field}`."
                     )
 
+        # Check whether data contains expected states
+        states_in_output_df = (
+            self.output_df[self.GEOID_TRACT_FIELD_NAME]
+            .str[0:2]
+            .unique()
+            .tolist()
+        )
+
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=states_in_output_df,
+            continental_us_expected=self.CONTINENTAL_US_EXPECTED_IN_DATA,
+            alaska_and_hawaii_expected=self.ALASKA_AND_HAWAII_EXPECTED_IN_DATA,
+            puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
+            island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
+            additional_fips_codes_not_expected=self.EXPECTED_MISSING_STATES,
+            dataset_name=self.NAME,
+        )
+
     def load(self, float_format=None) -> None:
         """Saves the transformed data.
 
@@ -318,6 +362,9 @@ class ExtractTransformLoad:
                 f"No file found at `{output_file_path}`."
             )
 
+        logger.info(
+            f"Reading in CSV `{output_file_path}` for ETL of class `{cls}`."
+        )
         output_df = pd.read_csv(
             output_file_path,
             dtype={

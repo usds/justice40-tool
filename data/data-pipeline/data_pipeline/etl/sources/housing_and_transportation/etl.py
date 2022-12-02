@@ -1,9 +1,9 @@
 import pandas as pd
-from pandas.errors import EmptyDataError
-
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
-from data_pipeline.utils import get_module_logger, unzip_file_from_url
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import unzip_file_from_url
+from pandas.errors import EmptyDataError
 
 logger = get_module_logger(__name__)
 
@@ -35,7 +35,7 @@ class HousingTransportationETL(ExtractTransformLoad):
 
             # New file name:
             tmp_csv_file_path = (
-                zip_file_dir / f"htaindex_data_tracts_{fips}.csv"
+                zip_file_dir / f"htaindex2019_data_tracts_{fips}.csv"
             )
 
             try:

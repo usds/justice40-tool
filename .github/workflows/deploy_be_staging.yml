@@ -25,9 +25,10 @@ jobs:
       - name: Print variables to help debug
         uses: hmarr/debug-action@v2
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+      - run: pip install -U wheel
       - name: Load cached Poetry installation
         id: cached-poetry-dependencies
         uses: actions/cache@v2
@@ -35,9 +36,14 @@ jobs:
           path: ~/.cache/pypoetry/virtualenvs
           key: env-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/deploy_be_staging.yml') }}
       - name: Install poetry
-        uses: snok/install-poetry@v1
+        uses: snok/install-poetry@v1.3.3
       - name: Print Poetry settings
         run: poetry show -v
+      - name: Install GDAL/ogr2ogr
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install gdal-bin
+          ogrinfo --version
       - name: Install dependencies
         run: poetry add s4cmd && poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
@@ -47,12 +53,21 @@ jobs:
           aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+      - name: Download census geo data for later user
+        run: |
+          poetry run python3 data_pipeline/application.py pull-census-data -s aws
       - name: Generate Score
         run: |
           poetry run python3 data_pipeline/application.py score-full-run
       - name: Generate Score Post
         run: |
-          poetry run python3 data_pipeline/application.py generate-score-post -s aws
+          poetry run python3 data_pipeline/application.py generate-score-post
+      - name: Generate Score Geo
+        run: |
+          poetry run python3 data_pipeline/application.py geo-score
+      - name: Run Smoketests
+        run: |
+          poetry run pytest data_pipeline/ -m smoketest
       - name: Deploy Score to Geoplatform AWS
         run: |
           poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --force --API-ACL=public-read
@@ -63,19 +78,13 @@ jobs:
         with:
           # Deploy to S3 for the Staging URL
           message: |
-            ** Score Deployed! **   
-            Find it here: 
+            ** Score Deployed! **
+            Find it here:
             - Score Full usa.csv: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv/full/usa.csv
             - Download Zip Packet: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable/Screening_Tool_Data.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
           allow-repeats: false
-      - name: Install GDAL/ogr2ogr
-        run: |
-          sudo add-apt-repository ppa:ubuntugis/ppa
-          sudo apt-get update
-          sudo apt-get -y install gdal-bin
-          ogrinfo --version
       - name: Set timezone for tippecanoe
         uses: szenius/set-timezone@v1.0
         with:
@@ -93,9 +102,6 @@ jobs:
           mkdir -p /usr/local/bin
           cp tippecanoe /usr/local/bin/tippecanoe
           tippecanoe -v
-      - name: Generate Score Geo
-        run: |
-          poetry run python3 data_pipeline/application.py geo-score
       - name: Generate Tiles
         run: |
           poetry run python3 data_pipeline/application.py generate-map-tiles
@@ -110,8 +116,8 @@ jobs:
         with:
           # Deploy to S3 for the staging URL
           message: |
-            ** Map Deployed! **   
-            Map with Staging Backend: https://screeningtool.geoplatform.gov/en/?flags=stage_hash=${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}
+            ** Map Deployed! **
+            Map with Staging Backend: https://screeningtool.geoplatform.gov/en?flags=stage_hash=${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}
             Find tiles here: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"

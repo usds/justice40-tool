@@ -1,24 +1,20 @@
 import concurrent.futures
 import math
 import os
+
+import geopandas as gpd
 import numpy as np
 import pandas as pd
-import geopandas as gpd
-
+from data_pipeline.content.schemas.download_schemas import CSVConfig
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score import constants
-from data_pipeline.etl.sources.census.etl_utils import (
-    check_census_data_source,
-)
 from data_pipeline.etl.score.etl_utils import check_score_data_source
+from data_pipeline.etl.sources.census.etl_utils import check_census_data_source
 from data_pipeline.score import field_names
-from data_pipeline.content.schemas.download_schemas import CSVConfig
-from data_pipeline.utils import (
-    get_module_logger,
-    zip_files,
-    load_yaml_dict_from_file,
-    load_dict_from_yaml_object_fields,
-)
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import load_dict_from_yaml_object_fields
+from data_pipeline.utils import load_yaml_dict_from_file
+from data_pipeline.utils import zip_files
 
 logger = get_module_logger(__name__)
 
@@ -41,23 +37,25 @@ class GeoScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
-        self.DATA_SOURCE = data_source
         self.CENSUS_USA_GEOJSON = (
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
 
-        # Import the shortened name for Score M percentile ("SM_PFS") that's used on the
-        # tiles.
+        # Import the shortened name for Score N to be used on tiles.
+        # We should no longer be using PFS
+
+        ## TODO: We really should not have this any longer changing
         self.TARGET_SCORE_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
-            field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX
+            field_names.FINAL_SCORE_N_BOOLEAN
         ]
-        self.TARGET_SCORE_RENAME_TO = "M_SCORE"
+        self.TARGET_SCORE_RENAME_TO = "SCORE"
 
         # Import the shortened name for tract ("GTF") that's used on the tiles.
         self.TRACT_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
             field_names.GEOID_TRACT_FIELD
         ]
         self.GEOMETRY_FIELD_NAME = "geometry"
+        self.LAND_FIELD_NAME = "ALAND10"
 
         # We will adjust this upwards while there is some fractional value
         # in the score. This is a starting value.
@@ -84,17 +82,28 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
         logger.info("Reading US GeoJSON (~6 minutes)")
-        self.geojson_usa_df = gpd.read_file(
+        full_geojson_usa_df = gpd.read_file(
             self.CENSUS_USA_GEOJSON,
             dtype={self.GEOID_FIELD_NAME: "string"},
-            usecols=[self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME],
+            usecols=[
+                self.GEOID_FIELD_NAME,
+                self.GEOMETRY_FIELD_NAME,
+                self.LAND_FIELD_NAME,
+            ],
             low_memory=False,
         )
+
+        # We only want to keep tracts to visualize that have non-0 land
+        self.geojson_usa_df = full_geojson_usa_df[
+            full_geojson_usa_df[self.LAND_FIELD_NAME] > 0
+        ]
 
         logger.info("Reading score CSV")
         self.score_usa_df = pd.read_csv(
             self.TILE_SCORE_CSV,
-            dtype={self.TRACT_SHORT_FIELD: "string"},
+            dtype={
+                self.TRACT_SHORT_FIELD: str,
+            },
             low_memory=False,
         )
 
@@ -134,7 +143,7 @@ class GeoScoreETL(ExtractTransformLoad):
             columns={self.TARGET_SCORE_SHORT_FIELD: self.TARGET_SCORE_RENAME_TO}
         )
 
-        logger.info("Converting to geojson into tracts")
+        logger.info("Converting geojson into geodf with tracts")
         usa_tracts = gpd.GeoDataFrame(
             usa_tracts,
             columns=[
@@ -270,8 +279,10 @@ class GeoScoreETL(ExtractTransformLoad):
         # Create separate threads to run each write to disk.
         def write_high_to_file():
             logger.info("Writing usa-high (~9 minutes)")
+
             self.geojson_score_usa_high.to_file(
-                filename=self.SCORE_HIGH_GEOJSON, driver="GeoJSON"
+                filename=self.SCORE_HIGH_GEOJSON,
+                driver="GeoJSON",
             )
             logger.info("Completed writing usa-high")
 
@@ -294,7 +305,6 @@ class GeoScoreETL(ExtractTransformLoad):
                 pd.Series(codebook)
                 .reset_index()
                 .rename(
-                    # kept as strings because no downstream impacts
                     columns={
                         0: internal_column_name_field,
                         "index": shapefile_column_field,

@@ -1,0 +1,38 @@
+exclude: ^client|\.csv
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.3.0
+  hooks:
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+
+- repo: https://github.com/lucasmbrown/mirrors-autoflake
+  rev: v1.3
+  hooks:
+    - id: autoflake
+      args:
+        [
+          "--in-place",
+          "--remove-all-unused-imports",
+          "--remove-unused-variable",
+          "--ignore-init-module-imports",
+        ]
+
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
+  hooks:
+    - id: isort
+      name: isort (python)
+      args:
+        [
+        "--force-single-line-imports",
+        "--profile=black",
+        "--line-length=80",
+        "--src-path=.:data/data-pipeline"
+        ]
+
+- repo: https://github.com/ambv/black
+  rev: 22.8.0
+  hooks:
+    - id: black
+      args: [--config=./data/data-pipeline/pyproject.toml]

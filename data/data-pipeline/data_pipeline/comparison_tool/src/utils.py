@@ -1,9 +1,9 @@
 import pathlib
+
 import pandas as pd
 import xlsxwriter
-
-from data_pipeline.score import field_names
 from data_pipeline.etl.sources.census.etl_utils import get_state_information
+from data_pipeline.score import field_names
 
 # Some excel parameters
 DEFAULT_COLUMN_WIDTH = 18
@@ -40,7 +40,7 @@ def validate_new_data(
     assert (
         checking_df[score_col].nunique() <= 3
     ), f"Error: there are too many values possible in {score_col}"
-    assert (True in checking_df[score_col].unique()) & (
+    assert (True in checking_df[score_col].unique()) | (
         False in checking_df[score_col].unique()
     ), f"Error: {score_col} should be a boolean"
 

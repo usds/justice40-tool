@@ -12,11 +12,14 @@
       - [2. Extract-Transform-Load (ETL) the data](#2-extract-transform-load-etl-the-data)
       - [3. Combined dataset](#3-combined-dataset)
       - [4. Tileset](#4-tileset)
+      - [5. Shapefiles](#5-shapefiles)
     - [Score generation and comparison workflow](#score-generation-and-comparison-workflow)
       - [Workflow Diagram](#workflow-diagram)
       - [Step 0: Set up your environment](#step-0-set-up-your-environment)
       - [Step 1: Run the script to download census data or download from the Justice40 S3 URL](#step-1-run-the-script-to-download-census-data-or-download-from-the-justice40-s3-url)
       - [Step 2: Run the ETL script for each data source](#step-2-run-the-etl-script-for-each-data-source)
+        - [Table of commands](#table-of-commands)
+        - [ETL steps](#etl-steps)
       - [Step 3: Calculate the Justice40 score experiments](#step-3-calculate-the-justice40-score-experiments)
       - [Step 4: Compare the Justice40 score experiments to other indices](#step-4-compare-the-justice40-score-experiments-to-other-indices)
     - [Data Sources](#data-sources)
@@ -26,21 +29,27 @@
     - [MacOS](#macos)
     - [Windows Users](#windows-users)
     - [Setting up Poetry](#setting-up-poetry)
-    - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs](#downloading-census-block-groups-geojson-and-generating-cbg-csvs)
+    - [Running tox](#running-tox)
+    - [The Application entrypoint](#the-application-entrypoint)
+    - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs (not normally required)](#downloading-census-block-groups-geojson-and-generating-cbg-csvs-not-normally-required)
+    - [Run all ETL, score and map generation processes](#run-all-etl-score-and-map-generation-processes)
+    - [Run both ETL and score generation processes](#run-both-etl-and-score-generation-processes)
+    - [Run all ETL processes](#run-all-etl-processes)
     - [Generating Map Tiles](#generating-map-tiles)
     - [Serve the map locally](#serve-the-map-locally)
     - [Running Jupyter notebooks](#running-jupyter-notebooks)
     - [Activating variable-enabled Markdown for Jupyter notebooks](#activating-variable-enabled-markdown-for-jupyter-notebooks)
-  - [Miscellaneous](#miscellaneous)
   - [Testing](#testing)
     - [Background](#background)
-    - [Configuration / Fixtures](#configuration--fixtures)
+    - [Score and post-processing tests](#score-and-post-processing-tests)
       - [Updating Pickles](#updating-pickles)
-      - [Future Enchancements](#future-enchancements)
-    - [ETL Unit Tests](#etl-unit-tests)
+      - [Future Enhancements](#future-enhancements)
+    - [Fixtures used in ETL "snapshot tests"](#fixtures-used-in-etl-snapshot-tests)
+    - [Other ETL Unit Tests](#other-etl-unit-tests)
       - [Extract Tests](#extract-tests)
       - [Transform Tests](#transform-tests)
       - [Load Tests](#load-tests)
+    - [Smoketests](#smoketests)
 
 <!-- /TOC -->
 
@@ -196,7 +205,7 @@ Here's a list of commands:
 
 ## Local development
 
-You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippecanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
+You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. For score generation, you will need [libspatialindex](https://libspatialindex.org/en/latest/). And to generate tiles for a local map, you will need [Mapbox tippecanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
 
 ### VSCode
 
@@ -218,6 +227,7 @@ To install the above-named executables:
 
 - gdal: `brew install gdal`
 - Tippecanoe: `brew install tippecanoe`
+- spatialindex: `brew install spatialindex`
 
 Note: For MacOS Monterey or M1 Macs, [you might need to follow these steps](https://stackoverflow.com/a/70880741) to install Scipy.
 
@@ -229,9 +239,70 @@ If you want to run tile generation, please install TippeCanoe [following these i
 
 - Start a terminal
 - Change to this directory (`/data/data-pipeline/`)
-- Make sure you have at least Python 3.7 installed: `python -V` or `python3 -V`
+- Make sure you have at least Python 3.8 installed: `python -V` or `python3 -V`
 - We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
 - Install Poetry requirements with `poetry install`
+
+### Running tox
+
+Our full test and check suite is run using tox. This can be run using commands such
+as `poetry run tox`.
+
+Each run can take a while to build the whole environment. If you'd like to save time,
+you can use the previously built environment by running `poetry run tox -e lint`
+which will drastically speed up the linting process.
+
+### Configuring pre-commit hooks
+
+<!-- markdown-link-check-disable -->
+To promote consistent code style and quality, we use git pre-commit hooks to
+automatically lint and reformat our code before every commit we make to the codebase.
+Pre-commit hooks are defined in the file [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
+<!-- markdown-link-check-enable -->
+
+1.  First, install [`pre-commit`](https://pre-commit.com/) globally:
+
+        $ brew install pre-commit
+
+2.  While in the `data/data-pipeline` directory, run `pre-commit install` to install
+    the specific git hooks used in this repository.
+
+Now, any time you commit code to the repository, the hooks will run on all modified files automatically. If you wish,
+you can force a re-run on all files with `pre-commit run --all-files`.
+
+#### Conflicts between backend and frontend git hooks
+<!-- markdown-link-check-disable -->
+In the front-end part of the codebase (the `justice40-tool/client` folder), we use
+`Husky` to run pre-commit hooks for the front-end. This is different than the
+`pre-commit` framework we use for the backend. The frontend `Husky` hooks are
+configured at
+[client/.husky](client/.husky).
+
+It is not possible to run both our `Husky` hooks and `pre-commit` hooks on every
+commit; either one or the other will run.
+
+<!-- markdown-link-check-enable -->
+
+`Husky` is installed every time you run `npm install`. To use the `Husky` front-end
+hooks during front-end development, simply run `npm install`.
+
+However, running `npm install` overwrites the backend hooks setup by `pre-commit`.
+To restore the backend hooks after running `npm install`, do the following:
+
+1. Run `pre-commit install` while in the `data/data-pipeline` directory.
+2. The terminal should respond with an error message such as:
+```
+[ERROR] Cowardly refusing to install hooks with `core.hooksPath` set.
+hint: `git config --unset-all core.hooksPath`
+```
+
+This error is caused by having previously run `npm install` which used `Husky` to
+overwrite the hooks path.
+
+3. Follow the hint and run `git config --unset-all core.hooksPath`.
+4. Run `pre-commit install` again.
+
+Now `pre-commit` and the backend hooks should take precedence.
 
 ### The Application entrypoint
 
@@ -303,7 +374,11 @@ see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nb
 
 ### Background
 
-For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
+<!-- markdown-link-check-disable -->
+For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes.
+<!-- markdown-link-check-enable-->
+
+To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
 
 Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
 
@@ -350,7 +425,8 @@ We have four pickle files that correspond to expected files:
 
 To update the pickles, let's go one by one:
 
-For the `score_transformed_expected.pkl`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L58), before the `pdt.assert_frame_equal` and run:
+For the `score_transformed_expected.pkl`, put a breakpoint on [this line]
+(https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L62), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_transform_score`
 
 Once on the breakpoint, capture the df to a pickle as follows:
@@ -378,7 +454,7 @@ score_data_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" / "tes
 
 Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_score_data`
 
-For the `tile_data_expected.pkl`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L86), before the `pdt.assert_frame_equal` and run:
+For the `tile_data_expected.pkl`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L90), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_tile_data`
 
 Once on the breakpoint, capture the df to a pickle as follows:
@@ -418,7 +494,9 @@ In the future, we could adopt any of the below strategies to work around this:
 
 1. We could use [pytest-snapshot](https://pypi.org/project/pytest-snapshot/) to automatically store the output of each test as data changes. This would make it so that you could avoid having to generate a pickle for each method - instead, you would only need to call `generate` once , and only when the dataframe had changed.
 
+<!-- markdown-link-check-disable -->
 Additionally, you could use a pandas type schema annotation such as [pandera](https://pandera.readthedocs.io/en/stable/schema_models.html?highlight=inputschema#basic-usage) to annotate input/output schemas for given functions, and your unit tests could use these to validate explicitly. This could be of very high value for annotating expectations.
+<!-- markdown-link-check-enable-->
 
 Alternatively, or in conjunction, you could move toward using a more strictly-typed container format for read/writes such as SQL/SQLite, and use something like [SQLModel](https://github.com/tiangolo/sqlmodel) to handle more explicit type guarantees.
 
@@ -440,19 +518,19 @@ In order to update the snapshot fixtures of an ETL class, follow the following s
 
 1. If you need to manually update the fixtures, update the "furthest upstream" source
    that is called by `_setup_etl_instance_and_run_extract`. For instance, this may
-   involve creating a new zip file that imitates the source data. (e.g., for the 
-   National Risk Index test, update 
-   `data_pipeline/tests/sources/national_risk_index/data/NRI_Table_CensusTracts.zip` 
+   involve creating a new zip file that imitates the source data. (e.g., for the
+   National Risk Index test, update
+   `data_pipeline/tests/sources/national_risk_index/data/NRI_Table_CensusTracts.zip`
    which is a 64kb imitation of the 405MB source NRI data.)
 2. Run `pytest . -rsx --update_snapshots` to update snapshots for all files, or you
-   can pass a specific file name to pytest to be more precise (e.g., `pytest 
+   can pass a specific file name to pytest to be more precise (e.g., `pytest
    data_pipeline/tests/sources/national_risk_index/test_etl.py -rsx --update_snapshots`)
 3. Re-run pytest without the `update_snapshots` flag (e.g., `pytest . -rsx`) to
    ensure the tests now pass.
 4. Carefully check the `git diff` for the updates to all test fixtures to make sure
    these are as expected. This part is very important. For instance, if you changed a
-    column name, you would only expect the column name to change in the output. If 
-    you modified the calculation of some data, spot check the results to see if the 
+    column name, you would only expect the column name to change in the output. If
+    you modified the calculation of some data, spot check the results to see if the
     numbers in the updated fixtures are as expected.
 
 ### Other ETL Unit Tests
@@ -485,3 +563,13 @@ See above [Fixtures](#configuration--fixtures) section for information about whe
 These make use of [tmp_path_factory](https://docs.pytest.org/en/latest/how-to/tmp_path.html) to create a file-system located under `temp_dir`, and validate whether the correct files are written to the correct locations.
 
 Additional future modifications could include the use of Pandera and/or other schema validation tools, and or a more explicit test that the data written to file can be read back in and yield the same dataframe.
+
+### Smoketests
+
+To ensure the score and tiles process correctly, there is a suite of "smoke tests" that can be run after the ETL and score data have been run, and outputs like the frontend GEOJSON have been created.
+These tests are implemented as pytest test, but are skipped by default. To run them.
+
+1. Generate a full score with `poetry run python3 data_pipeline/application.py score-full-run`
+2. Generate the tile data with `poetry run python3 data_pipeline/application.py generate-score-post`
+3. Generate the frontend GEOJSON with `poetry run python3 data_pipeline/application.py geo-score`
+4. Select the smoke tests for pytest with `poetry run pytest data_pipeline/tests -k smoketest`

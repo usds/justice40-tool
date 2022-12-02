@@ -59,7 +59,7 @@ pytest-snapshot = "^0.8.1"
 nb-black = "^1.0.7"
 seaborn = "^0.11.2"
 papermill = "^2.3.4"
-jupyterlab = "^3.4.4"
+jupyterlab = "3.4.4"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
@@ -93,6 +93,8 @@ disable = [
   "R0801", # Disables duplicate code. There are a couple places we have similar code and
    # unfortunately you can't disable this rule for individual lines or files, it's a
    # known bug. https://github.com/PyCQA/pylint/issues/214#
+  "C0411", # Disables wrong-import-order. Import order is now enforced by isort as a
+   # pre-commit hook.
 ]
 
 [tool.pylint.FORMAT]
