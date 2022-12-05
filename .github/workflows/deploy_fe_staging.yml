@@ -48,11 +48,11 @@ jobs:
       - name: Test
         run: npm test
       - name: Show npm version
-        run: $ npm -v
+        run: npm -v
       - name: Show node version
-        run: $ node -v        
+        run: node -v        
       - name: Check for security vulnerabilities
-        run: $ npm audit --production
+        run: npm audit --production
       # - name: Cypress / Gherkin integration tests 🌃
       #   uses: cypress-io/github-action@v4
       #   with:
