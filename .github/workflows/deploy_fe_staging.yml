@@ -47,10 +47,6 @@ jobs:
       #   run: npm run licenses
       - name: Test
         run: npm test
-      - name: Show npm version
-        run: npm -v
-      - name: Show node version
-        run: node -v        
       - name: Check for security vulnerabilities
         run: npm audit --production
       # - name: Cypress / Gherkin integration tests 🌃
