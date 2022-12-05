@@ -47,8 +47,8 @@ jobs:
       #   run: npm run licenses
       - name: Test
         run: npm test
-      # - name: Check for security vulnerabilities
-      #   run: $ npm audit --production
+      - name: Check for security vulnerabilities
+        run: $ npm audit --production
       # - name: Cypress / Gherkin integration tests 🌃
       #   uses: cypress-io/github-action@v4
       #   with:
