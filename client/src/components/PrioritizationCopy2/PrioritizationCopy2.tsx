@@ -129,7 +129,7 @@ const PrioritizationCopy2 =
        if (percentTractTribal !== null && percentTractTribal == 0) {
          prioCopy2Rendered = EXPLORE_COPY.getPrioFRTCopy(`less than 1%`, false);
          // if 2-2
-       } else if (percentTractTribal !== null && percentTractTribal >= 0) {
+       } else if (percentTractTribal !== null && percentTractTribal >= 1) {
          prioCopy2Rendered = EXPLORE_COPY.getPrioFRTCopy(`${percentTractTribal}%`, false);
        }
        // if 3-1
@@ -147,7 +147,7 @@ const PrioritizationCopy2 =
       (isAdjacencyThreshMet && !isAdjacencyLowIncome) &&
       tribalCountAK === null &&
       (tribalCountUS !== null && tribalCountUS >= 1) &&
-      (percentTractTribal !== null && percentTractTribal >= 0)
+      (percentTractTribal !== null && percentTractTribal >= 1)
      ) {
        prioCopy2Rendered = EXPLORE_COPY.getPrioFRTPointsCopy(tribalCountUS, false);
        // if 3-3
