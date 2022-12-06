@@ -12,16 +12,15 @@ exports[`rendering of the PublicVideoBox checks if component renders when it is 
       <h2
         class="usa-summary-box__heading"
       >
-        Need information about the latest version of the tool?
+        What's new overview
       </h2>
       <div
         class="usa-summary-box__text"
       >
         
-    See what's new in the version 1.0 of the Climate and Economic Justice Screening tool.
+    Watch a recorded update from CEQ on the changes in the 1.0 version of the tool.
   
         <a
-          href="https://www.youtube.com/watch?v=QwHWcXbhw28"
           rel="noreferrer"
           target="_blank"
         >
@@ -36,26 +35,6 @@ exports[`rendering of the PublicVideoBox checks if component renders when it is 
               </div>
               <img
                 alt="the icon to show that this button will open in a new tab"
-                src="test-file-stub"
-              />
-            </div>
-          </button>
-        </a>
-        <a
-          download=""
-          href="//"
-        >
-          <button
-            class="usa-button"
-            data-testid="button"
-            type="button"
-          >
-            <div>
-              <div>
-                Download slide deck
-              </div>
-              <img
-                alt="the icon to show that this button will download the file"
                 src="test-file-stub"
               />
             </div>
@@ -88,7 +67,6 @@ exports[`rendering of the PublicVideoBox checks if component renders when it is 
       Watch a recorded version of the beta version of the CEJST training on YouTube.
   
         <a
-          href="https://www.youtube.com/watch?v=QwHWcXbhw28"
           rel="noreferrer"
           target="_blank"
         >

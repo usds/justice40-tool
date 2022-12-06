@@ -71,7 +71,7 @@ export const RICH_COPY = {
   PAGE_DESCRIPTION3: <FormattedMessage
     id= {`public.eng.page.description3.text`}
     defaultMessage={`
-    As they become available, additional public trainings and engagement opportunities on the  Climate and Economic Justice Screening Tool will also be posted on this page. <link1>Sign-up</link1> for updates from CEQ
+    As they become available, additional public trainings and engagement opportunities on the  Climate and Economic Justice Screening Tool will also be posted on this page. <link1>Sign-up</link1> for updates from CEQ.
   `}
     description={`Navigate to the public engagement page, this will be the publiceng page description 3 text`}
     values={{
@@ -97,7 +97,7 @@ export const RICH_COPY = {
   VIDEO_BOX_BODY1: <FormattedMessage
     id={ 'public.eng.page.video.box.body.text'}
     defaultMessage={ `
-    See what's new in the version {version} of the Climate and Economic Justice Screening tool.
+    Watch a recorded update from CEQ on the changes in the 1.0 version of the tool.
   `}
     description={'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text.'}
     values={{
@@ -119,7 +119,7 @@ export const RICH_COPY = {
 export const PUBLIC_ENG_VIDEO = defineMessages({
   TITLE: {
     id: 'public.eng.page.video.box.title.text',
-    defaultMessage: `Need information about the latest version of the tool?`,
+    defaultMessage: `What's new overview`,
     description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text.',
   },
   TITLE_BETA: {

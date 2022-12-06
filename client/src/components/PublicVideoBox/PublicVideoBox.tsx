@@ -13,9 +13,10 @@ import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
 
 interface IPublicVideoBox {
   isBeta: boolean,
+  youTubeLink: string,
 }
 
-const PublicVideoBox = ({isBeta}:IPublicVideoBox) => {
+const PublicVideoBox = ({isBeta, youTubeLink}:IPublicVideoBox) => {
   const intl = useIntl();
 
   return (
@@ -32,7 +33,7 @@ const PublicVideoBox = ({isBeta}:IPublicVideoBox) => {
         {isBeta ? PUBLIC_COPY.RICH_COPY.VIDEO_BOX_BODY2 : PUBLIC_COPY.RICH_COPY.VIDEO_BOX_BODY1}
         <a
           className={styles.publicVideoLink}
-          href={`https://www.youtube.com/watch?v=QwHWcXbhw28`}
+          href={youTubeLink}
           target={'_blank'}
           rel="noreferrer"
         >
@@ -55,7 +56,7 @@ const PublicVideoBox = ({isBeta}:IPublicVideoBox) => {
             </div>
           </Button>
         </a>
-        <DownloadButton
+        {isBeta && <DownloadButton
           downloadLink={getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_BETA_TRAINING_SLIDES_PPT, true)}
           buttonText={isBeta ?
             intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.BUTTON2_BETA_TEXT) :
@@ -63,7 +64,7 @@ const PublicVideoBox = ({isBeta}:IPublicVideoBox) => {
           }
           imageAltTagText={intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.IMG_ALT_TEXT2)}
           color={isBeta ? 'gray' : 'yellow'}
-        />
+        />}
       </SummaryBoxContent>
     </SummaryBox>
   );

@@ -40,7 +40,7 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
             </p>
           </Grid>
           <Grid desktop={{col: 4}}>
-            {/* <PublicVideoBox isBeta={false}/> */}
+            <PublicVideoBox isBeta={false} youTubeLink='https://www.youtube.com/watch?v=XwilQp3EXRQ'/>
           </Grid>
         </Grid>
 
@@ -61,7 +61,7 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
             </Collection>
           </Grid>
           <Grid desktop={{col: 4}}>
-            <PublicVideoBox isBeta={true}/>
+            <PublicVideoBox isBeta={true} youTubeLink='https://www.youtube.com/watch?v=QwHWcXbhw28'/>
           </Grid>
         </Grid>
 
