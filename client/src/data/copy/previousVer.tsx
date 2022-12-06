@@ -12,7 +12,7 @@ export const PAGE = defineMessages({
 
 export const CARD = {
   TITLE: <FormattedMessage
-    id={'previous.versions.page.title.text'}
+    id={'previous.versions.page.card.text'}
     defaultMessage={'Beta version'}
     description={'Navigate to the previous version page. This is the Cards title text'}
   />,

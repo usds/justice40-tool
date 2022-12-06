@@ -31,7 +31,7 @@ const Categories = () => {
             <h2>{METHODOLOGY_COPY.CATEGORY.HEADING}</h2>
             <p>{intl.formatMessage(METHODOLOGY_COPY.PAGE.PARA3)}</p>
             <p>{intl.formatMessage(METHODOLOGY_COPY.PAGE.PARA4)}</p>
-            <p>{METHODOLOGY_COPY.FORMULA.PARA4}</p>
+            <p>{METHODOLOGY_COPY.FORMULA.PARA6}</p>
           </Grid>
         </Grid>
 
