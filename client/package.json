@@ -58,7 +58,7 @@
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-formatjs": "^2.21.0",
     "eslint-plugin-react": "^7.29.4",
-    "gatsby": "^3.14.6",
+    "gatsby": "^5.2.0",
     "gatsby-cli": "^3.14.2",
     "gatsby-plugin-intl": "^0.3.3",
     "gatsby-plugin-prettier-eslint": "^1.0.6",
