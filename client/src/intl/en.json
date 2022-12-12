@@ -231,6 +231,10 @@
     "defaultMessage": "Methodology & data",
     "description": "Navigate to the about page. This is Header navigate item to the Methodology page"
   },
+  "common.pages.header.previous_versions": {
+    "defaultMessage": "Previous versions",
+    "description": "Navigate to the about page. This is Header navigate item to the technical support document page"
+  },
   "common.pages.header.public.eng": {
     "defaultMessage": "Engagement calendar",
     "description": "Navigate to the about page. This is Header navigate item to the public eng page"
@@ -240,7 +244,7 @@
     "description": "Navigate to the about page. This is Title in nav header"
   },
   "common.pages.header.tsd": {
-    "defaultMessage": "Previous versions",
+    "defaultMessage": "Technical Support Document",
     "description": "Navigate to the about page. This is Header navigate item to the technical support document page"
   },
   "common.pages.tsd.url": {
@@ -968,8 +972,8 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Average number of years of life a person can expect to live"
   },
   "explore.map.page.side.panel.indicator.description.ling.iso": {
-    "defaultMessage": "A flag to inform imputation?",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator about adjacency"
+    "defaultMessage": "Share of households where no one over age 14 speaks English very well",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of households where no one over the age 14 speaks English well"
   },
   "explore.map.page.side.panel.indicator.description.low.income": {
     "defaultMessage": "People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed",
@@ -1288,6 +1292,10 @@
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Zoom in"
   },
   "explore.map.page.side.panel.info.para.1.part.2": {
+    "defaultMessage": ", search",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show search"
+  },
+  "explore.map.page.side.panel.info.para.1.part.3": {
     "defaultMessage": ", or locate yourself",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show or locate yourself"
   },
@@ -1308,6 +1316,10 @@
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool uses census tracts"
   },
   "explore.map.page.side.panel.info.para.2.part.2": {
+    "defaultMessage": ". Census tracts are a small unit of geography. They generally have populations",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people."
+  },
+  "explore.map.page.side.panel.info.para.2.part.3": {
     "defaultMessage": "of between 1,200 - 8,000 people.",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people."
   },
@@ -1335,7 +1347,11 @@
     "defaultMessage": ". Percentiles show how much burden each tract experiences when compared to other tracts.",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show percentages"
   },
-  "explore.map.page.side.panel.info.para.6": {
+  "explore.map.page.side.panel.info.para.6.part1": {
+    "defaultMessage": "Land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages are highlighted",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged."
+  },
+  "explore.map.page.side.panel.info.para.6.part2": {
     "defaultMessage": "on the map. These communities are also considered disadvantaged.",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged."
   },
@@ -1375,17 +1391,33 @@
     "defaultMessage": "This tract is partially disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold. The adjustment does not apply to any of the categories.",
     "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It is surrounded by tracts that are disadvantaged <bold>BUT</bold> does not meet the adjusted low income threshold."
   },
+  "explore.map.page.side.panel.prio.copy.prio.akus": {
+    "defaultMessage": "The {numAKpoints} Alaska Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are {also} considered disadvantaged.",
+    "description": "Navigate to the explore the map page. Click on tract, The {numAKpoints} Alaska Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are considered disadvantaged."
+  },
+  "explore.map.page.side.panel.prio.copy.prio.anv": {
+    "defaultMessage": "The {numPoints} Alaska Native Villages in this tract that are Federally Recognized are {also} considered disadvantaged.",
+    "description": "Navigate to the explore the map page. Click on tract, The {numPoints} of this tract that are Federally Recognized Tribal lands are {also} considered disadvantaged."
+  },
   "explore.map.page.side.panel.prio.copy.prio.donut": {
     "defaultMessage": "This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories.",
     "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged <bold>AND</bold> meets an adjusted low income threshold. The adjustment does not apply to any of the categories."
   },
-  "explore.map.page.side.panel.prio.copy.prio.frt.n.perc": {
-    "defaultMessage": "The lands of Federally Recognized Tribes that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged.",
-    "description": "Navigate to the explore the map page. Click on tract, The Federally Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged."
+  "explore.map.page.side.panel.prio.copy.prio.frt": {
+    "defaultMessage": "The lands of Federally Recognized Tribes that cover {amount} of this tract are {also} considered disadvantaged.",
+    "description": "Navigate to the explore the map page. Click on tract, The lands of Federally Recognized Tribes that cover [#%] of this tract are considered disadvantaged."
+  },
+  "explore.map.page.side.panel.prio.copy.prio.frt.n.points": {
+    "defaultMessage": "The {numPoints} that are Federally Recognized Tribes in this tract are are {also} considered disadvantaged.",
+    "description": "Navigate to the explore the map page. Click on tract, The {numPoints} that are Federally Recognized Tribes in this tract ares are {also} considered disadvantaged."
   },
   "explore.map.page.side.panel.prio.copy.prio.n.burden": {
     "defaultMessage": "This tract is considered disadvantaged because it meets {burdens} burden threshold <bold>AND</bold> the associated socioeconomic threshold.",
     "description": "Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds <bold>AND</bold> the associated socioeconomic threshold."
+  },
+  "explore.map.page.side.panel.prio.copy.prio.perc.num.points": {
+    "defaultMessage": "The lands of Federally Recognized Tribes that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged.",
+    "description": "Navigate to the explore the map page. Click on tract, The Federally Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged."
   },
   "explore.map.page.side.panel.send.feedback.alt.img": {
     "defaultMessage": "Send feedback",
@@ -2356,7 +2388,7 @@
     "description": "Navigate to the Methodology page. This is the description of the dataset section"
   },
   "methodology.page.datasets.all.except.workforce.used.in.text": {
-    "defaultMessage": "All categories except for the training and workforce development category",
+    "defaultMessage": "All categories except for the workforce development category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies except the workforce development"
   },
   "methodology.page.datasets.all.used.in.text": {
@@ -2468,12 +2500,16 @@
     "description": "Navigate to the methodology page. This is the methodology paragraph 3"
   },
   "methodology.page.paragraph.4": {
-    "defaultMessage": "Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 census boundaries.",
-    "description": "Navigate to the methodology page. This is the methodology paragraph 4"
+    "defaultMessage": "In addition, a census tract that is completely surrounded by disadvantaged communities and is at or above the 50% percentile for low income is also considered disadvantaged.",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 3"
   },
   "methodology.page.paragraph.5": {
     "defaultMessage": "Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities.",
     "description": "Navigate to the methodology page. This is the methodology paragraph 5"
+  },
+  "methodology.page.paragraph.6": {
+    "defaultMessage": "Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 census boundaries.",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 4"
   },
   "methodology.page.return.to.top.link": {
     "defaultMessage": "Return to top",
@@ -2527,9 +2563,13 @@
     "defaultMessage": "Shapefile & codebook",
     "description": "Navigate to the previous version page. This is the Cards button2 text"
   },
-  "previous.versions.page.title.text": {
+  "previous.versions.page.card.text": {
     "defaultMessage": "Beta version",
     "description": "Navigate to the previous version page. This is the Cards title text"
+  },
+  "previous.versions.page.title.text": {
+    "defaultMessage": "Previous versions",
+    "description": "Navigate to the previous version page. This is the page title text"
   },
   "public.eng.page.button.img.alt.tag": {
     "defaultMessage": "an icon that represents a calendar",
@@ -2552,7 +2592,7 @@
     "description": "Navigate to the public engagement page, this will be the publiceng page description 2 text"
   },
   "public.eng.page.description3.text": {
-    "defaultMessage": "As they become available, additional public trainings and engagement opportunities on the Climate and Economic Justice Screening Tool will also be posted on this page. <link1>Sign-up</link1> for updates from CEQ",
+    "defaultMessage": "As they become available, additional public trainings and engagement opportunities on the Climate and Economic Justice Screening Tool will also be posted on this page. <link1>Sign-up</link1> for updates from CEQ.",
     "description": "Navigate to the public engagement page, this will be the publiceng page description 3 text"
   },
   "public.eng.page.event.info.label": {
@@ -2652,7 +2692,7 @@
     "description": "Navigate to the public engagement page, this will be the publiceng page title text"
   },
   "public.eng.page.video.box.body.text": {
-    "defaultMessage": "See what's new in the version {version} of the Climate and Economic Justice Screening tool.",
+    "defaultMessage": "Watch a recorded update from CEQ on the changes in the 1.0 version of the tool.",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text."
   },
   "public.eng.page.video.box.body2.text": {
@@ -2688,7 +2728,7 @@
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
   },
   "public.eng.page.video.box.title.text": {
-    "defaultMessage": "Need information about the latest version of the tool?",
+    "defaultMessage": "What's new overview",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
   },
   "public.eng.page.whejac.meeting.day.1.info": {

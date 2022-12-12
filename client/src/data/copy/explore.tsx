@@ -254,7 +254,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show search',
   },
   PARA1_PART3: {
-    id: 'explore.map.page.side.panel.info.para.1.part.2',
+    id: 'explore.map.page.side.panel.info.para.1.part.3',
     defaultMessage: `
       , or locate yourself 
     `,
@@ -296,7 +296,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.',
   },
   PARA2_PART3: {
-    id: 'explore.map.page.side.panel.info.para.2.part.2',
+    id: 'explore.map.page.side.panel.info.para.2.part.3',
     defaultMessage: `
       of between 1,200 - 8,000 people.
     `,
@@ -359,14 +359,14 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
   },
   PARA6_PART1: {
-    id: 'explore.map.page.side.panel.info.para.6',
+    id: 'explore.map.page.side.panel.info.para.6.part1',
     defaultMessage: `
       Land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages are highlighted
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
   },
   PARA6_PART2: {
-    id: 'explore.map.page.side.panel.info.para.6',
+    id: 'explore.map.page.side.panel.info.para.6.part2',
     defaultMessage: `
       on the map. These communities are also considered disadvantaged.
     `,
@@ -662,7 +662,7 @@ export const getPrioNBurdenCopy = (burdens:string) => {
 export const getPrioFRTCopy = (amount:string, isAlso:boolean = false) => {
   return (
     <FormattedMessage
-      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
+      id={'explore.map.page.side.panel.prio.copy.prio.frt'}
       defaultMessage={ 'The lands of Federally Recognized Tribes that cover {amount} of this tract are {also} considered disadvantaged.'}
       description={`Navigate to the explore the map page. Click on tract, The lands of Federally Recognized Tribes that cover [#%] of this tract are considered disadvantaged.`}
       values={{
@@ -677,7 +677,7 @@ export const getPrioFRTCopy = (amount:string, isAlso:boolean = false) => {
 export const getPrioFRTPointsCopy = (numPoints:string, isAlso:boolean = false) => {
   return (
     <FormattedMessage
-      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
+      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.points'}
       defaultMessage={ 'The {numPoints} that are Federally Recognized Tribes in this tract are are {also} considered disadvantaged.'}
       description={`Navigate to the explore the map page. Click on tract, The {numPoints} that are Federally Recognized Tribes in this tract ares are {also} considered disadvantaged.`}
       values={{
@@ -692,7 +692,7 @@ export const getPrioFRTPointsCopy = (numPoints:string, isAlso:boolean = false) =
 export const getPrioANVCopy = (numPoints:number, isAlso:boolean = false) => {
   return (
     <FormattedMessage
-      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
+      id={'explore.map.page.side.panel.prio.copy.prio.anv'}
       defaultMessage={ 'The {numPoints} Alaska Native Villages in this tract that are Federally Recognized are {also} considered disadvantaged.'}
       description={`Navigate to the explore the map page. Click on tract, The {numPoints} of this tract that are Federally Recognized Tribal lands are {also} considered disadvantaged.`}
       values={{
@@ -707,7 +707,7 @@ export const getPrioANVCopy = (numPoints:number, isAlso:boolean = false) => {
 export const getPrioAKUSCopy = (numAKpoints:number, numUSpoints:number, isAlso:boolean = false) => {
   return (
     <FormattedMessage
-      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
+      id={'explore.map.page.side.panel.prio.copy.prio.akus'}
       defaultMessage={ 'The {numAKpoints} Alaska Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are {also} considered disadvantaged.'}
       description={`Navigate to the explore the map page. Click on tract, The {numAKpoints} Alaska Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are considered disadvantaged.`}
       values={{
@@ -723,7 +723,7 @@ export const getPrioAKUSCopy = (numAKpoints:number, numUSpoints:number, isAlso:b
 export const getPrioPercAndNumPointsAlsoCopy = (amount:string, numPoints:number) => {
   return (
     <FormattedMessage
-      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
+      id={'explore.map.page.side.panel.prio.copy.prio.perc.num.points'}
       defaultMessage={ 'The lands of Federally Recognized Tribes that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged.'}
       description={`Navigate to the explore the map page. Click on tract, The Federally Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged.`}
       values={{
@@ -1336,22 +1336,6 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
       Percent of people ages 25 years or older whose high school education is less than a high school diploma
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older who did not graduate high school`,
-  },
-
-  // Testing
-  ADJ: {
-    id: 'explore.map.page.side.panel.indicator.description.ling.iso',
-    defaultMessage: `
-      Adjacency percentile?
-    `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator about adjacency`,
-  },
-  IMP_FLG: {
-    id: 'explore.map.page.side.panel.indicator.description.ling.iso',
-    defaultMessage: `
-      A flag to inform imputation?
-    `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator about adjacency`,
   },
 });
 

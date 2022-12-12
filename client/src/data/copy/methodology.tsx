@@ -95,8 +95,8 @@ export const FORMULA = {
       boldtag: boldFn,
     }}
   />,
-  PARA4: <FormattedMessage
-    id={'methodology.page.paragraph.4'}
+  PARA6: <FormattedMessage
+    id={'methodology.page.paragraph.6'}
     defaultMessage={`
       Census tracts are small units of geography. Census tract boundaries for <link1>statistical areas</link1> are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen because many of the data sources in the tool currently use the 2010 
       census boundaries.    
@@ -161,7 +161,7 @@ export const CATEGORIES = {
   />,
   ALL_EXCEPT_WORKFORCE: <FormattedMessage
     id={'methodology.page.datasets.all.except.workforce.used.in.text'}
-    defaultMessage={`All categories except for the training and workforce development category`}
+    defaultMessage={`All categories except for the workforce development category`}
     description={'Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies except the workforce development'}
   />,
   CLIMATE_CHANGE: {

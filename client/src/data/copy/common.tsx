@@ -149,7 +149,7 @@ export const HEADER = defineMessages({
     description: 'Navigate to the about page. This is Header navigate item to the technical support document page',
   },
   PREVIOUS_VERSIONS: {
-    id: 'common.pages.header.tsd',
+    id: 'common.pages.header.previous_versions',
     defaultMessage: 'Previous versions',
     description: 'Navigate to the about page. This is Header navigate item to the technical support document page',
   },
