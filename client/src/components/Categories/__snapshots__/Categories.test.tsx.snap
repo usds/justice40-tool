@@ -340,7 +340,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           class="usa-link"
           href="#prox-npl"
         >
-          proximity to Superfind sites (National Priorities List (NPL))
+          proximity to Superfund sites (National Priorities List (NPL))
         </a>
          OR 
         <a
