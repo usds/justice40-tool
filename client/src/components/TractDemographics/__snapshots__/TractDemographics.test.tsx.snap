@@ -65,7 +65,7 @@ exports[`rendering of TractDemographics component does it render a tract in Alas
       </div>
       <div>
         <span>
-          Native Hawiian or Pacific Islander
+          Native Hawaiian or Pacific Islander
         </span>
         <span>
           0%
@@ -215,7 +215,7 @@ exports[`rendering of TractDemographics component does it render a tract in Amer
       </div>
       <div>
         <span>
-          Native Hawiian or Pacific Islander
+          Native Hawaiian or Pacific Islander
         </span>
         <span>
           --
@@ -365,7 +365,7 @@ exports[`rendering of TractDemographics component does it render a tract in NYC 
       </div>
       <div>
         <span>
-          Native Hawiian or Pacific Islander
+          Native Hawaiian or Pacific Islander
         </span>
         <span>
           0%
