@@ -834,19 +834,19 @@ export const INDICATORS = [
   {
     domID: 'census-tract-info',
     indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.low.income.title.text'}
+      id={'methodology.page.dataset.indicator.census.tract.title.text'}
       defaultMessage={`Census tract information and demographics`}
       description={'Navigate to the Methodology page. This is the title text for the census tract dataset'}
     />,
     description: <FormattedMessage
-      id={'methodology.page.category.low.income.description.text'}
+      id={'methodology.page.category.census.tract.description.text'}
       defaultMessage={`
         Used to identify and locate each tract in a state and county. The demographic information, race/ethnicity and age, are included to better characterize the people living in the tract.
       `}
       description={'Navigate to the Methodology page. This is the description text for low income'}
     />,
     note: <FormattedMessage
-      id={'methodology.page.category.exp.pop.loss.rate.note.text'}
+      id={'methodology.page.category.census.tract.note.text'}
       defaultMessage={`
       <boldtag>Note: </boldtag>The demographics are included as information only and are not considered as a part of the tool's methodology.
     `}
