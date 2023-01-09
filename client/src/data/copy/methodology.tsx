@@ -487,6 +487,11 @@ export const RESPONSIBLE_PARTIES = {
     defaultMessage={'Centers for Disease Control and Prevention (CDC)'}
     description={'responsible party text'}
   />,
+  CEN: <FormattedMessage
+    id={'methodology.page.cat.res.part.CENSUS'}
+    defaultMessage={'Census'}
+    description={'responsible party text'}
+  />,
   CENSUS: <FormattedMessage
     id={'methodology.page.cat.res.part.CENSUS'}
     defaultMessage={'U.S. Census'}
@@ -768,6 +773,11 @@ export const AVAILABLE_FOR = defineMessages({
     defaultMessage: `All U.S. states and the District of Columbia`,
     description: 'Methodology page dataset card available for US and DC type',
   },
+  ALL_US_DC_TERR: {
+    id: 'methodology.page.dataset.card.availableFor.US_DC',
+    defaultMessage: `All U.S. states, the District of Columbia, and U.S. territories`,
+    description: 'Methodology page dataset card available for US and DC type',
+  },
   ALL_US_DC_PR: {
     id: 'methodology.page.dataset.card.availableFor.US_DC_PR',
     defaultMessage: `All U.S. states, the District of Columbia, and Puerto Rico`,
@@ -821,6 +831,39 @@ export interface IIndicators {
 
 export const INDICATORS = [
   // All categories:
+  {
+    domID: 'census-tract-info',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.low.income.title.text'}
+      defaultMessage={`Census tract information and demographics`}
+      description={'Navigate to the Methodology page. This is the title text for the census tract dataset'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.low.income.description.text'}
+      defaultMessage={`
+        Used to identify and locate each tract in a state and county. The demographic information, race/ethnicity and age, are included to better characterize the people living in the tract.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for low income'}
+    />,
+    note: <FormattedMessage
+      id={'methodology.page.category.exp.pop.loss.rate.note.text'}
+      defaultMessage={`
+      <boldtag>Note: </boldtag>The demographics are included as information only and are not considered as a part of the tool's methodology.
+    `}
+      description={'Navigate to the Methodology page. This is the note text for low life expectancy'}
+      values={{
+        boldtag: boldFn,
+      }}
+    />,
+    usedIn: CATEGORIES.ALL,
+    responsibleParty: RESPONSIBLE_PARTIES.CEN,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_TERR,
+      },
+    ],
+  },
   {
     domID: 'low-income',
     indicator: <FormattedMessage

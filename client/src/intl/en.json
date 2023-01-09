@@ -2200,7 +2200,7 @@
     "description": "Methodology page dataset card available for METRO_US_HOLC"
   },
   "methodology.page.dataset.card.availableFor.US_DC": {
-    "defaultMessage": "All U.S. states and the District of Columbia",
+    "defaultMessage": "All U.S. states, the District of Columbia, and U.S. territories",
     "description": "Methodology page dataset card available for US and DC type"
   },
   "methodology.page.dataset.card.availableFor.US_DC_PR": {
