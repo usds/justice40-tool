@@ -1935,6 +1935,14 @@
     "defaultMessage": "Communities are <boldtag>identified as disadvantaged</boldtag> if they are in census tracts that:",
     "description": "Navigate to the methodology page. Navigate to the category section. This is category heading"
   },
+  "methodology.page.category.census.tract.description.text": {
+    "defaultMessage": "Used to identify and locate each tract in a state and county. The demographic information, race/ethnicity and age, are included to better characterize the people living in the tract.",
+    "description": "Navigate to the Methodology page. This is the description text for low income"
+  },
+  "methodology.page.category.census.tract.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>The demographics are included as information only and are not considered as a part of the tool's methodology.",
+    "description": "Navigate to the Methodology page. This is the note text for low life expectancy"
+  },
   "methodology.page.category.diabetes.description.text": {
     "defaultMessage": "Share of people ages 18 years and older who have been told by a health professional that they have diabetes other than diabetes during pregnancy.",
     "description": "Navigate to the Methodology page. This is the description text for diabetes"
@@ -2200,7 +2208,7 @@
     "description": "Methodology page dataset card available for METRO_US_HOLC"
   },
   "methodology.page.dataset.card.availableFor.US_DC": {
-    "defaultMessage": "All U.S. states and the District of Columbia",
+    "defaultMessage": "All U.S. states, the District of Columbia, and U.S. territories",
     "description": "Methodology page dataset card available for US and DC type"
   },
   "methodology.page.dataset.card.availableFor.US_DC_PR": {
@@ -2210,6 +2218,10 @@
   "methodology.page.dataset.indicator.asthma.title.text": {
     "defaultMessage": "Asthma",
     "description": "Navigate to the Methodology page. This is the title text for the asthma dataset"
+  },
+  "methodology.page.dataset.indicator.census.tract.title.text": {
+    "defaultMessage": "Census tract information and demographics",
+    "description": "Navigate to the Methodology page. This is the title text for the census tract dataset"
   },
   "methodology.page.dataset.indicator.diabetes.title.text": {
     "defaultMessage": "Diabetes",

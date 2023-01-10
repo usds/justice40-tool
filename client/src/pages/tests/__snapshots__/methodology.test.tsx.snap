@@ -1087,6 +1087,68 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             <div>
               <div
+                id="census-tract-info"
+              >
+                <div
+                  class=""
+                >
+                  <h3>
+                    Census tract information and demographics
+                  </h3>
+                </div>
+                <div>
+                  
+        Used to identify and locate each tract in a state and county. The demographic information, race/ethnicity and age, are included to better characterize the people living in the tract.
+      
+                </div>
+                <div>
+                  <p>
+                    
+      
+                    <strong>
+                      Note: 
+                    </strong>
+                    The demographics are included as information only and are not considered as a part of the tool's methodology.
+    
+                  </p>
+                </div>
+                <ul>
+                  <li>
+                    <span>
+                      Used in: 
+                    </span>
+                    All categories
+                  </li>
+                  <li>
+                    <span>
+                      Responsible Party: 
+                    </span>
+                    Census
+                  </li>
+                  <li>
+                    <span>
+                      Source: 
+                    </span>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.census.gov/programs-surveys/acs"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      American Community Survey
+                    </a>
+                     from 2015-2019
+                  </li>
+                  <li>
+                    <span>
+                      Available for: 
+                    </span>
+                    All U.S. states, the District of Columbia, and U.S. territories
+                  </li>
+                </ul>
+              </div>
+              <div
                 id="low-income"
               >
                 <div
