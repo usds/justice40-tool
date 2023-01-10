@@ -5,9 +5,15 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
   <div
     id="census-tract-info"
   >
-    <div
-      class=""
-    >
+    <div>
+      <div>
+        <span
+          class="usa-tag"
+          data-testid="tag"
+        >
+          NEW
+        </span>
+      </div>
       <h3>
         Census tract information and demographics
       </h3>

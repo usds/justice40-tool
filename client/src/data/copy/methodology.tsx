@@ -838,6 +838,7 @@ export const INDICATORS = [
       defaultMessage={`Census tract information and demographics`}
       description={'Navigate to the Methodology page. This is the title text for the census tract dataset'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.census.tract.description.text'}
       defaultMessage={`

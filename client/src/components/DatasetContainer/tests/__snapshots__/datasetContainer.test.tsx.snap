@@ -76,9 +76,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="census-tract-info"
             >
-              <div
-                class=""
-              >
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
                 <h3>
                   Census tract information and demographics
                 </h3>
