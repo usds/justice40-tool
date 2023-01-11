@@ -488,7 +488,7 @@ export const RESPONSIBLE_PARTIES = {
     description={'responsible party text'}
   />,
   CEN: <FormattedMessage
-    id={'methodology.page.cat.res.part.CENSUS'}
+    id={'methodology.page.cat.res.part.CEN'}
     defaultMessage={'Census'}
     description={'responsible party text'}
   />,
@@ -774,7 +774,7 @@ export const AVAILABLE_FOR = defineMessages({
     description: 'Methodology page dataset card available for US and DC type',
   },
   ALL_US_DC_TERR: {
-    id: 'methodology.page.dataset.card.availableFor.US_DC',
+    id: 'methodology.page.dataset.card.availableFor.US_DC_TERR',
     defaultMessage: `All U.S. states, the District of Columbia, and U.S. territories`,
     description: 'Methodology page dataset card available for US and DC type',
   },
