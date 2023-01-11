@@ -1871,6 +1871,10 @@
     "defaultMessage": "Centers for Disease Control and Prevention (CDC)",
     "description": "responsible party text"
   },
+  "methodology.page.cat.res.part.CEN": {
+    "defaultMessage": "Census",
+    "description": "responsible party text"
+  },
   "methodology.page.cat.res.part.CENSUS": {
     "defaultMessage": "U.S. Census",
     "description": "responsible party text"
@@ -2208,12 +2212,16 @@
     "description": "Methodology page dataset card available for METRO_US_HOLC"
   },
   "methodology.page.dataset.card.availableFor.US_DC": {
-    "defaultMessage": "All U.S. states, the District of Columbia, and U.S. territories",
+    "defaultMessage": "All U.S. states and the District of Columbia",
     "description": "Methodology page dataset card available for US and DC type"
   },
   "methodology.page.dataset.card.availableFor.US_DC_PR": {
     "defaultMessage": "All U.S. states, the District of Columbia, and Puerto Rico",
     "description": "Methodology page dataset card available for US, DC and Puerto Rico type"
+  },
+  "methodology.page.dataset.card.availableFor.US_DC_TERR": {
+    "defaultMessage": "All U.S. states, the District of Columbia, and U.S. territories",
+    "description": "Methodology page dataset card available for US and DC type"
   },
   "methodology.page.dataset.indicator.asthma.title.text": {
     "defaultMessage": "Asthma",
