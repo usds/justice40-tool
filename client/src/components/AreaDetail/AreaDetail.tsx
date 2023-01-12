@@ -443,8 +443,8 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAD_PAINT),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LEAD_PAINT),
     type: 'percentile',
-    value: properties.hasOwnProperty(constants.LEAD_PAINT_PERCENTILE) ?
-      properties[constants.LEAD_PAINT_PERCENTILE] : null,
+    value: properties.hasOwnProperty(constants.LEAD_PAINT_HOUSE_VALUE_FIELD_PCTILE) ?
+      properties[constants.LEAD_PAINT_HOUSE_VALUE_FIELD_PCTILE] : null,
     isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] ?
       properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] : null,
   };
