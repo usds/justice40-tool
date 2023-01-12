@@ -201,6 +201,9 @@ sheets:
       - score_name: Percent pre-1960s housing (lead paint indicator)
         label: Percent pre-1960s housing (lead paint indicator)
         format: percentage
+      - score_name: Percent pre-1960s housing (lead paint indicator), and the median house value is less than 90th percentile (percentile)
+        label: Percent pre-1960s housing (lead paint indicator), and the median house value is less than 90th percentile (percentile)
+        format: percentage
       - score_name: Median value ($) of owner-occupied housing units (percentile)
         label: Median value ($) of owner-occupied housing units (percentile)
         format: percentage
