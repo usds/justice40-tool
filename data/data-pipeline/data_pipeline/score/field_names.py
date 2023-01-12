@@ -126,6 +126,11 @@ PM25_FIELD = "PM2.5 in the air"
 OZONE_FIELD = "Ozone"
 TRAFFIC_FIELD = "Traffic proximity and volume"
 LEAD_PAINT_FIELD = "Percent pre-1960s housing (lead paint indicator)"
+LEAD_PAINT_HOUSE_VALUE_FIELD_PCTILE = (
+    LEAD_PAINT_FIELD + ", and"
+    f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile " + PERCENTILE_FIELD_SUFFIX
+)
 WASTEWATER_FIELD = "Wastewater discharge"
 AGGREGATION_POLLUTION_FIELD = "Pollution Burden"
 RMP_FIELD = "Proximity to Risk Management Plan (RMP) facilities"

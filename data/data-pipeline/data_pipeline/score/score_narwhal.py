@@ -409,6 +409,25 @@ class ScoreNarwhal(Score):
             <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
         )
 
+        # Create a field only used for output. This field is:
+        # (a) the percentile of lead paint, but
+        # (b) it is set to None for all tracts with >90th percentile median house value.
+        self.df[field_names.LEAD_PAINT_HOUSE_VALUE_FIELD_PCTILE] = np.where(
+            # If house value <= 90th percentile,
+            self.df[
+                field_names.MEDIAN_HOUSE_VALUE_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            <= self.MEDIAN_HOUSE_VALUE_THRESHOLD,
+            # Then show lead paint percentile.
+            self.df[
+                field_names.LEAD_PAINT_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ],
+            # Otherwise, set to nothing.
+            None,
+        )
+
         self.df[field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD] = (
             self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
