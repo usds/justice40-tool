@@ -25,4 +25,4 @@ $ docker-compose up
 
 After it initializes, you should be able to open the application in your browser at [http://localhost:8000](http://localhost:8000).
 
-> Note: if you are seeing issues with port 5000 already in use, you may need to turn off AirPlay settings: https://nono.ma/port-5000-used-by-control-center-in-macos-controlce#:~:text=The%20process%20running%20on%20this,Receiver%20to%20release%20port%205000%20.
+Mac Note: if you are seeing issues with port 5000 already in use, you may need to turn off AirPlay settings: https://nono.ma/port-5000-used-by-control-center-in-macos-controlce#:~:text=The%20process%20running%20on%20this,Receiver%20to%20release%20port%205000%20.
