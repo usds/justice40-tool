@@ -24,7 +24,11 @@ RUN /bin/sh -c make && make install
 
 ## gdal
 RUN add-apt-repository ppa:ubuntugis/ppa
-RUN apt-get -y install gdal-bin
+RUN apt-get -y install gdal-bin libgdal-dev
+
+## visualization/spatial queries
+RUN apt-get -y install libspatialindex-dev
+
 
 # Python package installation using poetry. See:
 # https://stackoverflow.com/questions/53835198/integrating-python-poetry-with-docker
