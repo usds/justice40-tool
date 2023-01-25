@@ -46,7 +46,7 @@ COPY . /data-pipeline
 RUN pip install "poetry==$POETRY_VERSION"
 RUN poetry config virtualenvs.create false \
   && poetry config virtualenvs.in-project false \
-  && poetry install --no-dev --no-interaction --no-ansi
+  && poetry install --no-interaction --no-ansi
 
 # Copy all project files into the container
 
