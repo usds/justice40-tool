@@ -190,7 +190,7 @@ Once completed, run `docker-compose up`. Docker will spin up 3 containers: the c
 
 If you want to run specific data tasks, you can open a terminal window, navigate to the root folder for this repository and then execute any command for the application using this format:
 
-`docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application [command]`
+`docker-compose run score --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data python3 -m data_pipeline.application [command]`
 
 Here's a list of commands:
 
