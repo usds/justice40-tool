@@ -17,6 +17,7 @@ Install [`docker`](https://docs.docker.com/get-docker/). See [Install Docker](IN
 Use `docker-compose` to run the application:
 
 ```sh
+$ docker-compose build
 $ docker-compose up
 ```
 
