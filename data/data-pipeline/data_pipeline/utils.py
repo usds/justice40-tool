@@ -17,6 +17,7 @@ from data_pipeline.config import settings
 from data_pipeline.content.schemas.download_schemas import CodebookConfig
 from data_pipeline.content.schemas.download_schemas import CSVConfig
 from data_pipeline.content.schemas.download_schemas import ExcelConfig
+from data_pipeline.etl.score.constants import SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH
 from marshmallow import ValidationError
 from marshmallow_dataclass import class_schema
 
@@ -218,8 +219,25 @@ def score_folder_cleanup() -> None:
     remove_all_from_dir(data_path / "score" / "csv")
     remove_all_from_dir(data_path / "score" / "geojson")
     remove_all_from_dir(data_path / "score" / "tiles")
+    remove_all_from_dir(data_path / "score" / "shapefile")
     downloadable_cleanup()
 
+
+def geo_score_folder_cleanup() -> None:
+    """Removes the necessary files to run geo-score. This works out to be
+    zip files, since if we don't remove them python's zip utils continuously
+    add to them instead of overwriting the contents."""
+    
+    data_path = settings.APP_ROOT / "data"
+    
+    logger.info("Removing zip files")
+    remove_files_from_dir(data_path / "score" / "shapefile", ".zip")
+    
+    shapefile_and_codebook_zipped = SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH
+    
+    if os.path.isfile(shapefile_and_codebook_zipped):
+        os.remove(shapefile_and_codebook_zipped)
+    
 
 def downloadable_cleanup() -> None:
     """Remove all files from downloadable directory in the local data/score path"""

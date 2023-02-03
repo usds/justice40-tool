@@ -22,6 +22,7 @@ from data_pipeline.utils import downloadable_cleanup
 from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import score_folder_cleanup
 from data_pipeline.utils import temp_folder_cleanup
+from data_pipeline.utils import geo_score_folder_cleanup
 
 logger = get_module_logger(__name__)
 
@@ -58,6 +59,7 @@ def data_cleanup():
     tribal_reset(data_path)
     score_folder_cleanup()
     temp_folder_cleanup()
+    geo_score_folder_cleanup()
 
     logger.info("Cleaned up all data folders")
     sys.exit()
@@ -179,6 +181,7 @@ def geo_score(data_source: str):
         None
     """
 
+    geo_score_folder_cleanup()
     score_geo(data_source=data_source)
     sys.exit()
 
