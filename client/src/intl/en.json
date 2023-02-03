@@ -1200,7 +1200,7 @@
     "description": "indicating above threshold"
   },
   "explore.map.page.side.panel.indicator.value.subtext.below": {
-    "defaultMessage": "below",
+    "defaultMessage": "not above",
     "description": "indicating below threshold"
   },
   "explore.map.page.side.panel.indicator.value.subtext.percent": {
