@@ -87,9 +87,9 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
           <div>
             <ul>
               <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B1}</li>
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2}</li>
 
               <ul>
-                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2}</li>
                 <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_1}</li>
                 <ul>
                   <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_1_1}</li>
