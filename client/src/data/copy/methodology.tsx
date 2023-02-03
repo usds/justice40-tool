@@ -255,7 +255,7 @@ export const CATEGORIES = {
     />,
     IF: <FormattedMessage
       id={'methodology.page.indicator.categories.afford.house.if'}
-      defaultMessage={`Experienced <link0>historic underinvestment</link0> OR are at or above the 90th percentile for the <link1>housing cost</link1> OR <link2>lack of green space</link2> OR <link3>lack of indoor plumbing</link3> OR <link4>lead paint</link4>`}
+      defaultMessage={`Experienced <link0>historic underinvestment</link0> OR are at or above the 90th percentile for <link1>housing cost</link1> OR <link2>lack of green space</link2> OR <link3>lack of indoor plumbing</link3> OR <link4>lead paint</link4>`}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values={{
         link0: simpleLink('#hist-underinv'),
@@ -434,7 +434,7 @@ export const DATASET_CARD_LABELS = defineMessages({
   },
   RESP_PARTY: {
     id: 'methodology.page.datasetCard.responsible.party',
-    defaultMessage: 'Responsible Party: ',
+    defaultMessage: 'Responsible party: ',
     description: 'Navigate to the Methodology page. This is the label associated with explaining the card',
   },
   DATE_RANGE: {
