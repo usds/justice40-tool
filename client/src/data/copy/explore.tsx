@@ -1090,7 +1090,7 @@ export const SIDE_PANEL_VALUES = {
   BELOW: <FormattedMessage
     id={'explore.map.page.side.panel.indicator.value.subtext.below'}
     description={'indicating below threshold'}
-    defaultMessage={`below `}
+    defaultMessage={`not above `}
   />,
   PERCENT: <FormattedMessage
     id={'explore.map.page.side.panel.indicator.value.subtext.percent'}

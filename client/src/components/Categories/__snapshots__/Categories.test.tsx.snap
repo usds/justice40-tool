@@ -254,7 +254,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           historic underinvestment
         </a>
-         OR are at or above the 90th percentile for the 
+         OR are at or above the 90th percentile for 
         <a
           class="usa-link"
           href="#house-burden"
