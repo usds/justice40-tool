@@ -57,13 +57,13 @@ const AboutPage = ({location}: IAboutPageProps) => {
               <p>
                 {ABOUT_COPY.CONTENT.PARA2}
               </p>
-              {/* <div className={'j40-p-tag'}>
+              <div className={'j40-p-tag'}>
                 {ABOUT_COPY.CONTENT.PARA3}
                 <ul>
                   <li> {ABOUT_COPY.CONTENT.LI1}</li>
                   <li> {ABOUT_COPY.CONTENT.LI2}</li>
                 </ul>
-              </div> */}
+              </div>
               <p>
                 {ABOUT_COPY.CONTENT.PARA4}
               </p>

@@ -56,11 +56,11 @@
     "description": "Navigate to the About page. This is the join the community heading"
   },
   "about.page.list.item.1": {
-    "defaultMessage": "Addendum to the Justice40 Initiative Interim Guidance on Using CEJST",
+    "defaultMessage": "<link1>Memorandum</link1> on Using the CEJST for the Justice40 Initiative",
     "description": "Navigate to the About page. This is the list item 1"
   },
   "about.page.list.item.2": {
-    "defaultMessage": "Instructions to Federal Agencies on Using the CEJST",
+    "defaultMessage": "<link1>Instructions</link1> to Federal Agencies on using the CEJST",
     "description": "Navigate to the About page. This is the list item 2"
   },
   "about.page.paragraph.1": {
@@ -1680,11 +1680,11 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q1_P3"
   },
   "faqs.page.answers.Q1_P3_1": {
-    "defaultMessage": "Addendum to the Justice40 Interim Guidance",
+    "defaultMessage": "<link1>Memorandum</link1> on Using the CEJST for the Justice40 Initiative",
     "description": "Navigate to the FAQs page, this will be an answer, Q1_P3_1"
   },
   "faqs.page.answers.Q1_P3_2": {
-    "defaultMessage": "Instructions to Federal Agencies on Using the CEJST",
+    "defaultMessage": "<link1>Instructions</link1> to Federal Agencies on using the CEJST",
     "description": "Navigate to the FAQs page, this will be an answer, Q1_P3_2"
   },
   "faqs.page.answers.Q1_P4": {

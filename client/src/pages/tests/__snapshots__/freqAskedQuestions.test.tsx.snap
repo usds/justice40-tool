@@ -463,6 +463,35 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Federal agencies will use the tool for the Justice40 Initiative. It will help them identify disadvantaged communities that should receive 40% of the overall benefits of programs included in the Justice40 Initiative. The Justice40 Initiative seeks to deliver 40% of the overall benefits in climate, clean energy, and other related areas to disadvantaged communities.
                 </p>
                 <p>
+                  Other useful links for Federal agencies:
+                </p>
+                <ul>
+                  <li>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://www.whitehouse.gov/wp-content/uploads/2023/01/M-23-09_Signed_CEQ_CPO.pdf"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Memorandum
+                    </a>
+                     on Using the CEJST for the Justice40 Initiative
+                  </li>
+                  <li>
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/CEQ-CEJST-Instructions.pdf"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Instructions
+                    </a>
+                     to Federal Agencies on using the CEJST
+                  </li>
+                </ul>
+                <p>
                   The public can find communities of interest and provide feedback. This feedback will be used to improve the tool.
                 </p>
               </div>
