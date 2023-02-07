@@ -52,7 +52,7 @@ class ScoreL(Score):
             [column_from_island_areas, column_from_decennial_census]
         ].mean(axis=1, skipna=True)
 
-        logger.info(
+        logger.debug(
             f"Combined field `{combined_column_name}` has "
             f"{df[combined_column_name].isnull().sum()} "
             f"({df[combined_column_name].isnull().sum() * 100 / len(df):.2f}%) "
@@ -64,7 +64,7 @@ class ScoreL(Score):
             a=df[combined_column_name], q=threshold_cutoff_for_island_areas
         )
 
-        logger.info(
+        logger.debug(
             f"For combined field `{combined_column_name}`, "
             f"the {threshold_cutoff_for_island_areas*100:.0f} percentile cutoff is a "
             f"raw value of {raw_threshold:.3f}."
@@ -627,7 +627,7 @@ class ScoreL(Score):
             .sum()
         )
 
-        logger.info(
+        logger.debug(
             f"For workforce criteria in island areas, "
             f"{workforce_combined_criteria_for_island_areas.sum()} ("
             f"{percent_of_island_tracts_highlighted:.2f}% of tracts that have non-null data "
@@ -642,7 +642,7 @@ class ScoreL(Score):
         )
 
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score L")
+        logger.debug("Adding Score L")
 
         self.df[field_names.THRESHOLD_COUNT] = 0
         self.df[field_names.FPL_200_SERIES] = self._create_low_income_threshold(

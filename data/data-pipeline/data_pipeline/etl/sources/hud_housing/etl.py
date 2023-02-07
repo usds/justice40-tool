@@ -56,7 +56,6 @@ class HudHousingETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Extracting 1.09 GB HUD Housing Data")
         super().extract(
             self.HOUSING_FTP_URL,
             self.HOUSING_ZIP_FILE_DIR,
@@ -80,8 +79,6 @@ class HudHousingETL(ExtractTransformLoad):
         return tmp_df
 
     def transform(self) -> None:
-        logger.info("Transforming HUD Housing Data")
-
         table_8 = self._read_chas_table("Table8.csv")
         table_3 = self._read_chas_table("Table3.csv")
 

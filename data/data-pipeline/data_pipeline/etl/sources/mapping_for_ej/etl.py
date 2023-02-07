@@ -39,7 +39,6 @@ class MappingForEJETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading Mapping for EJ Data")
         super().extract(
             self.MAPPING_FOR_EJ_VA_URL,
             self.get_tmp_path(),
@@ -50,8 +49,6 @@ class MappingForEJETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Transforming Mapping for EJ Data")
-
         # Join (here, it's just concatenating) the two dataframes from
         # CO and VA
         self.df = pd.concat(
@@ -86,12 +83,12 @@ class MappingForEJETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info("Saving Mapping for EJ CSV")
         # write selected states csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
             self.CSV_PATH / "co_va.csv", index=False
         )
-
+        
     def validate(self) -> None:
-        logger.info("Validating Mapping For EJ Data")
+        logging.debug("Skipping validation for MappingForEJETL")
+        

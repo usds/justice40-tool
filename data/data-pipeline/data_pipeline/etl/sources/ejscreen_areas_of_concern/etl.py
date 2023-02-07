@@ -39,7 +39,7 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
 
     def extract(self) -> None:
         if self.ejscreen_areas_of_concern_data_exists():
-            logger.info("Loading EJSCREEN Areas of Concern Data Locally")
+            logger.debug("Loading EJSCREEN Areas of Concern Data Locally")
             self.df = pd.read_csv(
                 filepath_or_buffer=self.EJSCREEN_AREAS_OF_CONCERN_SOURCE_DATA,
                 dtype={
@@ -48,24 +48,24 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
                 low_memory=False,
             )
         else:
-            logger.info(
+            logger.warning(
                 "EJSCREEN areas of concern data does not exist locally. Not loading the data."
             )
 
     def transform(self) -> None:
-        logger.info("Transforming EJSCREEN Areas of Concern Data")
+        logger.debug("Transforming EJSCREEN Areas of Concern Data")
 
         # TO DO: As a one off we did all the processing in a separate Notebook
         # Can add here later for a future PR
 
     def load(self) -> None:
         if self.ejscreen_areas_of_concern_data_exists():
-            logger.info("Saving EJSCREEN Areas of Concern Data")
+            logger.debug("Saving EJSCREEN Areas of Concern Data")
             # write nationwide csv
             self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
             self.df.to_csv(self.OUTPUT_PATH / "usa.csv", index=False)
 
         else:
-            logger.info(
+            logger.warning(
                 "EJSCREEN areas of concern data does not exist locally. Not saving the data."
             )

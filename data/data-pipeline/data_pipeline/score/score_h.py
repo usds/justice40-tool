@@ -8,7 +8,7 @@ logger = get_module_logger(__name__)
 
 class ScoreH(Score):
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score H")
+        logger.debug("Adding Score H")
 
         high_school_cutoff_threshold = 0.06
 

@@ -39,7 +39,6 @@ def get_state_fips_codes(data_path: Path) -> list:
     """Returns a list with state data"""
     fips_csv_path = data_path / "census" / "csv" / "fips_states_2010.csv"
 
-    logger.info("Downloading fips from S3 repository")
     unzip_file_from_url(
         settings.AWS_JUSTICE40_DATASOURCES_URL + "/fips_states_2010.zip",
         data_path / "tmp",
@@ -97,7 +96,6 @@ def check_census_data_source(
 
     # download from s3 if census_data_source is aws
     if census_data_source == "aws":
-        logger.info("Fetching Census data from AWS S3")
         unzip_file_from_url(
             CENSUS_DATA_S3_URL,
             DATA_PATH / "tmp",
@@ -106,14 +104,13 @@ def check_census_data_source(
     else:
         # check if census data is found locally
         if not os.path.isfile(census_data_path / "geojson" / "us.json"):
-            logger.info(
+            logger.error(
                 "No local census data found. Please use '-s aws` to fetch from AWS"
             )
             sys.exit()
 
 
 def zip_census_data():
-    logger.info("Compressing census files to data/tmp folder")
 
     CENSUS_DATA_PATH = settings.APP_ROOT / "data" / "census"
     TMP_PATH = settings.APP_ROOT / "data" / "tmp"

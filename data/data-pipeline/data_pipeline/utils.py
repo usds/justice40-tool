@@ -43,11 +43,12 @@ def get_module_logger(module_name: str) -> logging.Logger:
     logger = logging.getLogger(module_name)
     handler = logging.StreamHandler()
     formatter = logging.Formatter(
-        "%(asctime)s [%(name)-12s] %(levelname)-8s %(message)s"
+        "%(asctime)s [%(name)40.40s] %(levelname)-8s %(message)s"
     )
     handler.setFormatter(formatter)
     logger.addHandler(handler)
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
+    logger.propagate = False # don't send log messages to the parent logger (to avoid duplicate log messages)
     return logger
 
 
@@ -81,7 +82,6 @@ def remove_files_from_dir(
             if not file.endswith(extension):
                 continue
         os.remove(files_path / file)
-        logger.info(f"Removing {file}")
 
 
 def remove_all_from_dir(files_path: Path) -> None:
@@ -103,9 +103,8 @@ def remove_all_from_dir(files_path: Path) -> None:
                 os.remove(files_path / file)
             else:
                 shutil.rmtree(files_path / file)
-            logger.info(f"Removing {file}")
     else:
-        logger.info(f"The following path does not exist: `{files_path}`.")
+        logger.warning(f"The following path does not exist: `{files_path}`.")
 
 
 def remove_all_dirs_from_dir(dir_path: Path) -> None:
@@ -122,7 +121,6 @@ def remove_all_dirs_from_dir(dir_path: Path) -> None:
         file_path = os.path.join(dir_path, filename)
         if os.path.isdir(file_path):
             shutil.rmtree(file_path)
-            logging.info(f"Removing directory {file_path}")
 
 
 def download_file_from_url(
@@ -147,7 +145,6 @@ def download_file_from_url(
     if not os.path.isdir(download_file_name.parent):
         os.mkdir(download_file_name.parent)
 
-    logger.info(f"Downloading {file_url}")
     response = requests.get(
         file_url, verify=verify, timeout=settings.REQUESTS_DEFAULT_TIMOUT
     )
@@ -193,7 +190,6 @@ def unzip_file_from_url(
         verify=verify,
     )
 
-    logger.info(f"Extracting {zip_file_path}")
     with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
         zip_ref.extractall(unzipped_file_path)
 
@@ -206,7 +202,7 @@ def data_folder_cleanup() -> None:
 
     data_path = settings.APP_ROOT / "data"
 
-    logger.info("Initializing all dataset directoriees")
+    logger.debug("Initializing all dataset directoriees")
     remove_all_from_dir(data_path / "dataset")
 
 
@@ -215,7 +211,7 @@ def score_folder_cleanup() -> None:
 
     data_path = settings.APP_ROOT / "data"
 
-    logger.info("Initializing all score data")
+    logger.debug("Initializing all score data")
     remove_all_from_dir(data_path / "score" / "csv")
     remove_all_from_dir(data_path / "score" / "geojson")
     remove_all_from_dir(data_path / "score" / "tiles")
@@ -230,7 +226,7 @@ def geo_score_folder_cleanup() -> None:
     
     data_path = settings.APP_ROOT / "data"
     
-    logger.info("Removing zip files")
+    logger.debug("Removing zip files")
     remove_files_from_dir(data_path / "score" / "shapefile", ".zip")
     
     shapefile_and_codebook_zipped = SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH
@@ -251,7 +247,7 @@ def temp_folder_cleanup() -> None:
 
     data_path = settings.APP_ROOT / "data"
 
-    logger.info("Initializing all temp directories")
+    logger.debug("Initializing all temp directories")
     remove_all_from_dir(data_path / "tmp")
 
 
@@ -308,7 +304,6 @@ def zip_files(zip_file_path: Path, files_to_compress: List[Path]):
         for f in files_to_compress:
             zf.write(f, arcname=Path(f).name, compress_type=compression)
     zip_info = get_zip_info(zip_file_path)
-    logger.info(json.dumps(zip_info, indent=4, sort_keys=True, default=str))
 
 
 def zip_directory(
@@ -327,7 +322,6 @@ def zip_directory(
     def zipdir(origin_directory: Path, ziph: zipfile.ZipFile):
         for root, dirs, files in os.walk(origin_directory):
             for file in files:
-                logger.info(f"Compressing file: {file}")
                 ziph.write(
                     os.path.join(root, file),
                     os.path.relpath(
@@ -337,7 +331,6 @@ def zip_directory(
                     compress_type=compression,
                 )
 
-    logger.info(f"Compressing {Path(origin_zip_directory).name} directory")
     zip_file_name = f"{Path(origin_zip_directory).name}.zip"
 
     # start archiving
@@ -346,10 +339,6 @@ def zip_directory(
     )
     zipdir(f"{origin_zip_directory}/", zipf)
     zipf.close()
-
-    logger.info(
-        f"Completed compression of {Path(origin_zip_directory).name} directory"
-    )
 
 
 def load_yaml_dict_from_file(

@@ -51,8 +51,16 @@ def census_cleanup():
 @cli.command(help="Clean up all data folders")
 def data_cleanup():
     """CLI command to clean up the all the data folders"""
+    
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Clean Up Data                                    ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
 
     data_path = settings.APP_ROOT / "data"
+
+    logger.info("*** Cleaning up all data folders")
 
     census_reset(data_path)
     data_folder_cleanup()
@@ -61,7 +69,8 @@ def data_cleanup():
     temp_folder_cleanup()
     geo_score_folder_cleanup()
 
-    logger.info("Cleaned up all data folders")
+    logger.info("*** Cleaned up all data folders")
+    logger.info("Bye")
     sys.exit()
 
 
@@ -78,7 +87,11 @@ def census_data_download(zip_compress):
     """CLI command to download all census shape files from the Census FTP and extract the geojson
     to generate national and by state Census Block Group CSVs"""
 
-    logger.info("Initializing all census data")
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Download Census Data                             ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
 
     data_path = settings.APP_ROOT / "data"
     census_reset(data_path)
@@ -103,6 +116,13 @@ def census_data_download(zip_compress):
     help=dataset_cli_help,
 )
 def pull_census_data(data_source: str):
+    
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Pull Census Data                                 ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
+    
     logger.info("Pulling census data from %s", data_source)
     data_path = settings.APP_ROOT / "data" / "census"
     check_census_data_source(data_path, data_source)
@@ -129,6 +149,11 @@ def etl_run(dataset: str):
     Returns:
         None
     """
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Run ETL                                          ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
 
     etl_runner(dataset)
     sys.exit()
@@ -150,6 +175,13 @@ def score_run():
 )
 def score_full_run():
     """CLI command to run ETL and generate the score in one command"""
+    
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Score Full Run                                   ***")
+    logger.info("*** Run ETL and Generate Score (no tiles)            ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
 
     data_folder_cleanup()
     score_folder_cleanup()
@@ -159,7 +191,7 @@ def score_full_run():
     sys.exit()
 
 
-@cli.command(help="Generate Geojson files with scores baked in")
+@cli.command(help="Generate GeoJSON files with scores baked in")
 @click.option(
     "-s",
     "--data-source",
@@ -180,6 +212,12 @@ def geo_score(data_source: str):
     Returns:
         None
     """
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Generate GeoJSON                                 ***")
+    logger.info("*** Combine Score and GeoJSON                        ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
 
     geo_score_folder_cleanup()
     score_geo(data_source=data_source)
@@ -199,6 +237,12 @@ def geo_score(data_source: str):
 )
 def generate_map_tiles(generate_tribal_layer):
     """CLI command to generate the map tiles"""
+    
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Generate Map Tiles                               ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
 
     data_path = settings.APP_ROOT / "data"
     generate_tiles(data_path, generate_tribal_layer)
@@ -228,6 +272,12 @@ def generate_score_post(data_source: str):
     Returns:
         None
     """
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Generate Score Post                              ***")
+    logger.info("*** Create Score CSV, Tile CSV, Downloadable ZIP     ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
 
     downloadable_cleanup()
     score_post(data_source)
@@ -264,6 +314,13 @@ def data_full_run(check: bool, data_source: str):
      Returns:
         None
     """
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Full Run                                         ***")
+    logger.info("*** Census DL, ETL, Score, Combine, Generate Tiles   ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
+    
     data_path = settings.APP_ROOT / "data"
 
     if check:
@@ -274,7 +331,7 @@ def data_full_run(check: bool, data_source: str):
 
     else:
         # census directories
-        logger.info("*** Initializing all data folders")
+        logger.info("*** Cleaning up data folders")
         census_reset(data_path)
         data_folder_cleanup()
         score_folder_cleanup()
@@ -287,24 +344,26 @@ def data_full_run(check: bool, data_source: str):
         logger.info("*** Running all ETLs")
         etl_runner()
 
-        logger.info("*** Generating Score")
+        logger.info("*** Generating score")
         score_generate()
 
-        logger.info("*** Running Post Score scripts")
+        logger.info("*** Running post score scripts")
         downloadable_cleanup()
         score_post(data_source)
 
-    logger.info("*** Combining Score with Census Geojson")
+    logger.info("*** Combining score with census GeoJSON")
     score_geo(data_source)
 
-    logger.info("*** Generating Map Tiles")
+    logger.info("*** Generating map tiles")
     generate_tiles(data_path, True)
+
+    logger.info("*** Completing pipeline ***")
 
     file = "first_run.txt"
     cmd = f"touch {data_path}/{file}"
     call(cmd, shell=True)
 
-    logger.info("*** Map data ready")
+    logger.info("*** Bye ***")
     sys.exit()
 
 

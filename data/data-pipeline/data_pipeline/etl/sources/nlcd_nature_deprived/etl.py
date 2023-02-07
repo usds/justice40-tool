@@ -53,8 +53,7 @@ class NatureDeprivedETL(ExtractTransformLoad):
 
         - Renames columns as needed
         """
-        logger.info("Transforming NLCD Data")
-
+        
         df_ncld: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},

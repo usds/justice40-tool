@@ -352,9 +352,7 @@ class CensusDecennialETL(ExtractTransformLoad):
         dfs = []
         dfs_vi = []
         for island in self.ISLAND_TERRITORIES:
-            logger.info(
-                f"Downloading data for state/territory {island['state_abbreviation']}"
-            )
+            logger.debug(f"Downloading data for state/territory {island['state_abbreviation']}")
             for county in island["county_fips"]:
                 api_url = self.API_URL.format(
                     self.DECENNIAL_YEAR,
@@ -369,7 +367,11 @@ class CensusDecennialETL(ExtractTransformLoad):
                     timeout=settings.REQUESTS_DEFAULT_TIMOUT,
                 )
 
-                df = json.loads(download.content)
+                try:
+                    df = json.loads(download.content)
+                except ValueError as e:
+                    logger.error(f"Could not load content in census decennial ETL because {e}. Content is {download.content}.")
+                
                 # First row is the header
                 df = pd.DataFrame(df[1:], columns=df[0])
 
@@ -393,8 +395,6 @@ class CensusDecennialETL(ExtractTransformLoad):
         self.df_vi = pd.concat(dfs_vi)
 
     def transform(self) -> None:
-        logger.info("Starting Census Decennial Transform")
-
         # Rename All Fields
         self.df.rename(columns=self.FIELD_NAME_XWALK, inplace=True)
         self.df_vi.rename(columns=self.FIELD_NAME_XWALK, inplace=True)
@@ -489,13 +489,11 @@ class CensusDecennialETL(ExtractTransformLoad):
         # Reporting Missing Values
         for col in self.df_all.columns:
             missing_value_count = self.df_all[col].isnull().sum()
-            logger.info(
+            logger.debug(
                 f"There are {missing_value_count} missing values in the field {col} out of a total of {self.df_all.shape[0]} rows"
             )
 
     def load(self) -> None:
-        logger.info("Saving Census Decennial Data")
-
         # mkdir census
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 

@@ -62,7 +62,7 @@ class PostScoreETL(ExtractTransformLoad):
         # End YAML definition constants
 
     def _extract_counties(self, county_path: Path) -> pd.DataFrame:
-        logger.info("Reading Counties CSV")
+        logger.debug("Reading Counties CSV")
         return pd.read_csv(
             county_path,
             sep="\t",
@@ -75,7 +75,7 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
     def _extract_states(self, state_path: Path) -> pd.DataFrame:
-        logger.info("Reading States CSV")
+        logger.debug("Reading States CSV")
         return pd.read_csv(
             state_path,
             dtype={"fips": "string", "state_abbreviation": "string"},
@@ -83,7 +83,7 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
     def _extract_score(self, score_path: Path) -> pd.DataFrame:
-        logger.info("Reading Score CSV")
+        logger.debug("Reading Score CSV")
         df = pd.read_csv(
             score_path,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
@@ -98,8 +98,6 @@ class PostScoreETL(ExtractTransformLoad):
         return df
 
     def extract(self) -> None:
-        logger.info("Starting Extraction")
-
         # check census data
         check_census_data_source(
             census_data_path=self.DATA_PATH / "census",
@@ -170,7 +168,7 @@ class PostScoreETL(ExtractTransformLoad):
         score_df: pd.DataFrame,
     ) -> pd.DataFrame:
 
-        logger.info("Merging county info with score info")
+        logger.debug("Merging county info with score info")
         score_county_merged = score_df.merge(
             # We drop state abbreviation so we don't get it twice
             counties_df[["GEOID", "County Name"]],
@@ -178,7 +176,7 @@ class PostScoreETL(ExtractTransformLoad):
             how="left",
         )
 
-        logger.info("Merging state info with county-score info")
+        logger.debug("Merging state info with county-score info")
         # Here, we need to join on a separate key, since there's no
         # entry for the island areas in the counties df (there are no
         # counties!) Thus, unless we join state separately from county,
@@ -207,7 +205,7 @@ class PostScoreETL(ExtractTransformLoad):
         score_county_state_merged_df: pd.DataFrame,
     ) -> pd.DataFrame:
 
-        logger.info("Rounding Decimals")
+        logger.debug("Rounding Decimals")
         # grab all the keys from tiles score columns
         tiles_score_column_titles = list(constants.TILES_SCORE_COLUMNS.keys())
 
@@ -218,7 +216,7 @@ class PostScoreETL(ExtractTransformLoad):
 
         # We may not want some states/territories on the map, so this will drop all
         # rows with those FIPS codes (first two digits of the census tract)
-        logger.info(
+        logger.debug(
             f"Dropping specified FIPS codes from tile data: {constants.DROP_FIPS_CODES}"
         )
         tracts_to_drop = []
@@ -241,7 +239,7 @@ class PostScoreETL(ExtractTransformLoad):
             score_tiles[float_cols] * scale_factor
         ).apply(np.floor) / scale_factor
 
-        logger.info("Adding fields for island areas and Puerto Rico")
+        logger.debug("Adding fields for island areas and Puerto Rico")
         # The below operation constructs variables for the front end.
         # Since the Island Areas, Puerto Rico, and the nation all have a different
         # set of available data, each has its own user experience.
@@ -381,8 +379,6 @@ class PostScoreETL(ExtractTransformLoad):
         return final_df
 
     def transform(self) -> None:
-        logger.info("Transforming data sources for Score + County CSVs")
-
         transformed_counties = self._transform_counties(self.input_counties_df)
         transformed_states = self._transform_states(self.input_states_df)
         transformed_score = self._transform_score(self.input_score_df)
@@ -403,7 +399,7 @@ class PostScoreETL(ExtractTransformLoad):
     def _load_score_csv_full(
         self, score_county_state_merged: pd.DataFrame, score_csv_path: Path
     ) -> None:
-        logger.info("Saving Full Score CSV with County Information")
+        logger.debug("Saving Full Score CSV with County Information")
         score_csv_path.parent.mkdir(parents=True, exist_ok=True)
         score_county_state_merged.to_csv(
             score_csv_path,
@@ -476,7 +472,7 @@ class PostScoreETL(ExtractTransformLoad):
     def _load_tile_csv(
         self, score_tiles_df: pd.DataFrame, tile_score_path: Path
     ) -> None:
-        logger.info("Saving Tile Score CSV")
+        logger.debug("Saving Tile Score CSV")
         tile_score_path.parent.mkdir(parents=True, exist_ok=True)
         score_tiles_df.to_csv(tile_score_path, index=False, encoding="utf-8")
 
@@ -498,13 +494,13 @@ class PostScoreETL(ExtractTransformLoad):
             constants.SCORE_VERSIONING_DATA_DOCUMENTATION_ZIP_FILE_PATH
         )
 
-        logger.info("Writing downloadable excel")
+        logger.debug("Writing downloadable excel")
         excel_config = self._load_excel_from_df(
             excel_df=self.output_score_county_state_merged_df,
             excel_path=excel_path,
         )
 
-        logger.info("Writing downloadable csv")
+        logger.debug("Writing downloadable csv")
         # open yaml config
         downloadable_csv_config = load_yaml_dict_from_file(
             self.CONTENT_CONFIG / "csv.yml", CSVConfig
@@ -516,7 +512,7 @@ class PostScoreETL(ExtractTransformLoad):
         )
         downloadable_df.to_csv(csv_path, index=False)
 
-        logger.info("Creating codebook for download zip")
+        logger.debug("Creating codebook for download zip")
 
         # consolidate all excel fields from the config yml. The codebook
         # code takes in a list of fields, but the excel config file
@@ -562,17 +558,17 @@ class PostScoreETL(ExtractTransformLoad):
         codebook_df.to_csv(codebook_path, index=False)
 
         # zip assets
-        logger.info("Compressing csv files")
+        logger.debug("Compressing csv files")
         files_to_compress = [csv_path, codebook_path, readme_path]
         zip_files(csv_zip_path, files_to_compress)
 
-        logger.info("Compressing xls files")
+        logger.debug("Compressing xls files")
         files_to_compress = [excel_path, codebook_path, readme_path]
         zip_files(xls_zip_path, files_to_compress)
 
         # Per #1557
         # zip file that contains the .xls, .csv, .pdf, tech support document, checksum file
-        logger.info("Compressing data and documentation files")
+        logger.debug("Compressing data and documentation files")
         files_to_compress = [
             excel_path,
             csv_path,

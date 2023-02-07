@@ -60,7 +60,6 @@ class AbandonedMineETL(ExtractTransformLoad):
         self.output_df: pd.DataFrame
 
     def transform(self) -> None:
-        logger.info("Starting eAMLIS transforms.")
         df = pd.read_csv(
             self.get_tmp_path() / "eAMLIS export of all data.tsv",
             sep="\t",

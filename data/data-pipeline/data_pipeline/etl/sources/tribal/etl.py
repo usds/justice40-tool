@@ -28,7 +28,6 @@ class TribalETL(ExtractTransformLoad):
         Returns:
             None
         """
-        logger.info("Downloading Tribal Data")
 
         bia_shapefile_zip_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
@@ -77,7 +76,7 @@ class TribalETL(ExtractTransformLoad):
         bia_national_lar_df = gpd.read_file(path)
 
         # DELETE
-        logger.info(f"Columns: {bia_national_lar_df.columns}\n")
+        logger.debug(f"Columns: {bia_national_lar_df.columns}\n")
 
         bia_national_lar_df.drop(
             ["GISAcres"],
@@ -186,8 +185,6 @@ class TribalETL(ExtractTransformLoad):
         Returns:
             None
         """
-        logger.info("Transforming Tribal Data")
-
         # Set the filepaths:
         bia_national_lar_shapefile = (
             self.GEOGRAPHIC_BASE_PATH / "bia_national_lar"
@@ -220,7 +217,7 @@ class TribalETL(ExtractTransformLoad):
         Returns:
             None
         """
-        logger.info("Saving Tribal GeoJson and CSV")
+        logger.debug("Saving Tribal GeoJson and CSV")
         usa_tribal_df = gpd.GeoDataFrame(
             pd.concat(self.USA_TRIBAL_DF_LIST, ignore_index=True)
         )
@@ -228,7 +225,7 @@ class TribalETL(ExtractTransformLoad):
             "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
         )
 
-        logger.info("Writing national geojson file")
+        logger.debug("Writing national geojson file")
         usa_tribal_df.to_file(
             self.NATIONAL_TRIBAL_GEOJSON_PATH, driver="GeoJSON"
         )

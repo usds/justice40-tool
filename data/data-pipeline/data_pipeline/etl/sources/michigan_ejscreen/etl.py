@@ -33,7 +33,6 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading Michigan EJSCREEN Data")
         self.df = pd.read_csv(
             filepath_or_buffer=self.MICHIGAN_EJSCREEN_S3_URL,
             dtype={"GEO_ID": "string"},
@@ -41,8 +40,6 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Transforming Michigan EJSCREEN Data")
-
         self.df.rename(
             columns={
                 "GEO_ID": self.GEOID_TRACT_FIELD_NAME,
@@ -60,7 +57,6 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info("Saving Michigan Environmental Screening Tool to CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(

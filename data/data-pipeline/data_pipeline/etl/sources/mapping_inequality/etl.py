@@ -75,14 +75,12 @@ class MappingInequalityETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading Mapping Inequality Data")
         download_file_from_url(
             file_url=self.MAPPING_INEQUALITY_CSV_URL,
             download_file_name=self.MAPPING_INEQUALITY_CSV,
         )
 
     def transform(self) -> None:
-        logger.info("Transforming Mapping Inequality Data")
         df: pd.DataFrame = pd.read_csv(
             self.MAPPING_INEQUALITY_CSV,
             dtype={self.TRACT_INPUT_FIELD: "string"},
@@ -207,7 +205,6 @@ class MappingInequalityETL(ExtractTransformLoad):
         self.df = grouped_df
 
     def load(self) -> None:
-        logger.info("Saving Mapping Inequality CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
