@@ -71,7 +71,7 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.list.item.2'}
     defaultMessage={`
-     <link1>Instructions</link1> to Federal Agencies on using the CEJST
+     <link1>Instructions</link1> to Federal agencies on using the CEJST
     `}
     description={'Navigate to the About page. This is the list item 2'}
     values={{

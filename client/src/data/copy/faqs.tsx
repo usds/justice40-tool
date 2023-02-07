@@ -278,7 +278,7 @@ export const FAQ_ANSWERS = {
   />,
   Q1_P3_2: <FormattedMessage
     id={ 'faqs.page.answers.Q1_P3_2'}
-    defaultMessage={ '<link1>Instructions</link1> to Federal Agencies on using the CEJST'}
+    defaultMessage={ '<link1>Instructions</link1> to Federal agencies on using the CEJST'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q1_P3_2'}
     values={{
       link1: linkFn(CEJST_INSTRUCT, false, true),
