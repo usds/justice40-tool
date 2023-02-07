@@ -30,6 +30,7 @@ dataset_cli_help = "Grab the data from either 'local' for local access or 'aws' 
 
 LOG_LINE_WIDTH = 60
 
+
 @click.group()
 def cli():
     """Defines a click group for the commands below"""
@@ -110,7 +111,7 @@ def pull_census_data(data_source: str):
 
     log_title("Pull Census Data")
 
-    log_info("Pulling census data from %s", data_source)
+    log_info(f"Pulling census data from {data_source}")
     data_path = settings.APP_ROOT / "data" / "census"
     check_census_data_source(data_path, data_source)
 
@@ -208,7 +209,9 @@ def generate_score_post(data_source: str):
     Returns:
         None
     """
-    log_title("Generate Score Post ", "Create Score CSV, Tile CSV, Downloadable ZIP")
+    log_title(
+        "Generate Score Post ", "Create Score CSV, Tile CSV, Downloadable ZIP"
+    )
 
     log_info("Cleaning up downloadable folder")
     downloadable_cleanup()
@@ -345,7 +348,7 @@ def data_full_run(check: bool, data_source: str):
     log_info("Generating map tiles")
     generate_tiles(data_path, True)
 
-    log_.info("Completing pipeline")
+    log_info("Completing pipeline")
     file = "first_run.txt"
     cmd = f"touch {data_path}/{file}"
     call(cmd, shell=True)
@@ -353,25 +356,28 @@ def data_full_run(check: bool, data_source: str):
     log_goodbye()
     sys.exit()
 
+
 def log_title(title: str, subtitle: str = None):
-    """Logs a title in our fancy title format"""    
-    logger.info("-"*LOG_LINE_WIDTH)
+    """Logs a title in our fancy title format"""
+    logger.info("-" * LOG_LINE_WIDTH)
     logger.info("")
     logger.info(f"{title}")
     if subtitle:
         logger.info(f"{subtitle}")
     logger.info("")
-    logger.info("-"*LOG_LINE_WIDTH)
+    logger.info("-" * LOG_LINE_WIDTH)
     logger.info("")
 
-    
+
 def log_info(info: str):
     """Logs a general informational message"""
     logger.info(f"- {info}")
-    
+
+
 def log_goodbye():
     """Logs a goodbye message"""
-    logger.info("- Finished. Bye!")  
+    logger.info("- Finished. Bye!")
+
 
 if __name__ == "__main__":
     cli()
