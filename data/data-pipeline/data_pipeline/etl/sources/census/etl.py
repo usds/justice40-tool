@@ -83,7 +83,9 @@ class CensusETL(ExtractTransformLoad):
     def extract(self) -> None:
         logger.debug("Extracting census data")
         for index, fips_code in enumerate(self.STATE_FIPS_CODES):
-            logger.debug(f"Extracting shape for FIPS {fips_code} – {index+1} of {len(self.STATE_FIPS_CODES)}")
+            logger.debug(
+                f"Extracting shape for FIPS {fips_code} – {index+1} of {len(self.STATE_FIPS_CODES)}"
+            )
             self._extract_shp(fips_code)
 
     def _transform_to_geojson(self, fips_code: str) -> None:
@@ -114,7 +116,7 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         logger.debug("Transforming tracts")
-        
+
         for file in self.GEOJSON_BASE_PATH.iterdir():
             if file.suffix == ".json":
                 logger.debug(f"Adding GEOID10 for file {file.name}")
@@ -138,14 +140,15 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         logger.debug("Transforming census data")
-        
+
         logger.debug("Transforming SHP files to GeoJSON")
         for index, fips_code in enumerate(self.STATE_FIPS_CODES):
-            logger.debug(f"Transforming FIPS {fips_code} to GeoJSON – {index+1} of {len(self.STATE_FIPS_CODES)}")
+            logger.debug(
+                f"Transforming FIPS {fips_code} to GeoJSON – {index+1} of {len(self.STATE_FIPS_CODES)}"
+            )
             self._transform_to_geojson(fips_code)
-        
-        self._generate_tract_table()
 
+        self._generate_tract_table()
 
     def _load_into_state_csvs(self, fips_code: str) -> None:
         """Load state CSVs into individual CSV files
@@ -183,7 +186,7 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         logger.debug("Loading national US.csv")
-        
+
         if not self.NATIONAL_TRACT_CSV_PATH.is_file():
             with open(
                 self.NATIONAL_TRACT_CSV_PATH,
@@ -211,7 +214,7 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         logger.debug("Loading National GeoJson")
-        
+
         usa_df = gpd.GeoDataFrame()
 
         for file_name in self.GEOJSON_BASE_PATH.rglob("*.json"):
@@ -222,10 +225,9 @@ class CensusETL(ExtractTransformLoad):
         usa_df = usa_df.to_crs(
             "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
         )
-        
+
         logger.debug("Saving national GeoJSON file")
         usa_df.to_file(self.NATIONAL_TRACT_JSON_PATH, driver="GeoJSON")
-        
 
     def load(self) -> None:
         """Create state CSVs, National CSV, and National GeoJSON
@@ -234,12 +236,12 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         logger.debug("Loading census data")
-        
+
         logger.debug("Loading individual state csv files")
         for fips_code in self.TRACT_PER_STATE:
             self._load_into_state_csvs(fips_code)
-            
+
         self._load_national_csv()
         self._load_national_geojson()
-        
+
         logger.debug("Census data complete")

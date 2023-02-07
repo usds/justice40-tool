@@ -352,7 +352,9 @@ class CensusDecennialETL(ExtractTransformLoad):
         dfs = []
         dfs_vi = []
         for island in self.ISLAND_TERRITORIES:
-            logger.debug(f"Downloading data for state/territory {island['state_abbreviation']}")
+            logger.debug(
+                f"Downloading data for state/territory {island['state_abbreviation']}"
+            )
             for county in island["county_fips"]:
                 api_url = self.API_URL.format(
                     self.DECENNIAL_YEAR,
@@ -370,8 +372,10 @@ class CensusDecennialETL(ExtractTransformLoad):
                 try:
                     df = json.loads(download.content)
                 except ValueError as e:
-                    logger.error(f"Could not load content in census decennial ETL because {e}. Content is {download.content}.")
-                
+                    logger.error(
+                        f"Could not load content in census decennial ETL because {e}. Content is {download.content}."
+                    )
+
                 # First row is the header
                 df = pd.DataFrame(df[1:], columns=df[0])
 

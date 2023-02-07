@@ -23,7 +23,9 @@ class HousingTransportationETL(ExtractTransformLoad):
         dfs = []
         zip_file_dir = self.get_tmp_path() / "housing_and_transportation_index"
         for fips in get_state_fips_codes(self.DATA_PATH):
-            logger.debug(f"Downloading housing data for state/territory with FIPS code {fips}")
+            logger.debug(
+                f"Downloading housing data for state/territory with FIPS code {fips}"
+            )
 
             unzip_file_from_url(
                 f"{self.HOUSING_FTP_URL}{fips}",
@@ -39,7 +41,9 @@ class HousingTransportationETL(ExtractTransformLoad):
             try:
                 tmp_df = pd.read_csv(filepath_or_buffer=tmp_csv_file_path)
             except EmptyDataError:
-                logger.error(f"Could not read Housing and Transportation data for state/territory with FIPS code {fips}")
+                logger.error(
+                    f"Could not read Housing and Transportation data for state/territory with FIPS code {fips}"
+                )
 
             dfs.append(tmp_df)
 

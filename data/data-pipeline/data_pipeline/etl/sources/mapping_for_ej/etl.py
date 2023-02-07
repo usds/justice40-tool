@@ -88,7 +88,6 @@ class MappingForEJETL(ExtractTransformLoad):
         self.df[self.COLUMNS_TO_KEEP].to_csv(
             self.CSV_PATH / "co_va.csv", index=False
         )
-        
+
     def validate(self) -> None:
-        logging.debug("Skipping validation for MappingForEJETL")
-        
+        logger.debug("Skipping validation for MappingForEJETL")

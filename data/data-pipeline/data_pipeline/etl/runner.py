@@ -42,9 +42,9 @@ def _get_datasets_to_run(dataset_to_run: str) -> typing.List[dict]:
 
 def _run_one_dataset(dataset: dict) -> None:
     """Runs one etl process."""
-    
+
     logger.info(f"Running ETL for {dataset['name']}")
-        
+
     etl_module = importlib.import_module(
         f"data_pipeline.etl.sources.{dataset['module_dir']}.etl"
     )

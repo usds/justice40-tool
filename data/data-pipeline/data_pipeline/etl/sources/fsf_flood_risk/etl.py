@@ -48,7 +48,7 @@ class FloodRiskETL(ExtractTransformLoad):
         - Renames the Census Tract column to match the other datasets
         - Calculates share of properties at risk, left-clipping number of properties at 250
         """
-        
+
         # read in the unzipped csv data source then rename the
         # Census Tract column for merging
         df_fsf_flood: pd.DataFrame = pd.read_csv(

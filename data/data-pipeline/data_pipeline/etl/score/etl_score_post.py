@@ -234,7 +234,7 @@ class PostScoreETL(ExtractTransformLoad):
             for col, col_dtype in score_tiles.dtypes.items()
             if col_dtype == np.dtype("float64")
         ]
-        scale_factor = 10**constants.TILES_ROUND_NUM_DECIMALS
+        scale_factor = 10 ** constants.TILES_ROUND_NUM_DECIMALS
         score_tiles[float_cols] = (
             score_tiles[float_cols] * scale_factor
         ).apply(np.floor) / scale_factor

@@ -190,7 +190,7 @@ def score_run():
 )
 def score_full_run():
     """CLI command to run ETL and generate the score in one command"""
-    
+
     logger.info("********************************************************")
     logger.info("***                                                  ***")
     logger.info("*** Score Full Run                                   ***")
@@ -203,20 +203,22 @@ def score_full_run():
     score_folder_cleanup()
     temp_folder_cleanup()
     logger.info("*** Cleaned up data folders ***")
-    
+
     logger.info("*** Running all ETLs ***")
     etl_runner()
     logger.info("*** Completed running all ETLs ***")
-    
+
     logger.info("*** Generating score ***")
     score_generate()
     logger.info("*** Generated score ***")
-    
+
     logger("*** Bye ***")
     sys.exit()
 
 
-@cli.command(help="Run etl_score_post to create score csv, tile csv, and downloadable zip")
+@cli.command(
+    help="Run etl_score_post to create score csv, tile csv, and downloadable zip"
+)
 @click.option(
     "-s",
     "--data-source",
@@ -227,13 +229,13 @@ def score_full_run():
 )
 def generate_score_post(data_source: str):
     """CLI command to generate score, tile, and downloadable files
-    
+
     Args:
         data_source (str): Source for the census data (optional)
                            Options:
                            - local: fetch census and score data from the local data directory
                            - aws: fetch census and score from AWS S3 J40 data repository
-    
+
     Returns:
         None
     """
@@ -243,15 +245,15 @@ def generate_score_post(data_source: str):
     logger.info("*** Create Score CSV, Tile CSV, Downloadable ZIP     ***")
     logger.info("***                                                  ***")
     logger.info("********************************************************")
-    
+
     logger.info("*** Cleaning up downloadable folder ***")
     downloadable_cleanup()
     logger.info("*** Cleaned up downloadable folder ***")
-        
+
     logger.info("*** Running score post activities ***")
     score_post(data_source)
     logger.info("*** Completed running score post activities ***")
-        
+
     logger.info("*** Bye ***")
     sys.exit()
 
@@ -287,11 +289,11 @@ def geo_score(data_source: str):
     logger.info("*** Cleaning up geo score folder ***")
     geo_score_folder_cleanup()
     logger.info("*** Cleaned up geo score folder ***")
-    
+
     logger.info("*** Combining score with GeoJSON ***")
     score_geo(data_source=data_source)
     logger.info("*** Combined score with GeoJSON ***")
-    
+
     logger.info("*** Bye ***")
     sys.exit()
 
@@ -309,7 +311,7 @@ def geo_score(data_source: str):
 )
 def generate_map_tiles(generate_tribal_layer):
     """CLI command to generate the map tiles"""
-    
+
     logger.info("********************************************************")
     logger.info("***                                                  ***")
     logger.info("*** Generate Map Tiles                               ***")
@@ -317,11 +319,11 @@ def generate_map_tiles(generate_tribal_layer):
     logger.info("********************************************************")
 
     data_path = settings.APP_ROOT / "data"
-    
+
     logger.info("*** Generating tiles ***")
     generate_tiles(data_path, generate_tribal_layer)
     logger.info("*** Generated tiles ***")
-    
+
     logger.info("*** Bye ***")
     sys.exit()
 
@@ -362,7 +364,7 @@ def data_full_run(check: bool, data_source: str):
     logger.info("*** Census DL, ETL, Score, Combine, Generate Tiles   ***")
     logger.info("***                                                  ***")
     logger.info("********************************************************")
-    
+
     data_path = settings.APP_ROOT / "data"
 
     if check:
