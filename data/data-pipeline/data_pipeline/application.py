@@ -37,21 +37,27 @@ def cli():
 @cli.command(help="Clean up all census data folders")
 def census_cleanup():
     """CLI command to clean up the census data folder"""
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Clean Up Census Data                             ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
 
     data_path = settings.APP_ROOT / "data"
 
     # census directories
-    logger.info("Initializing all census data")
+    logger.info("*** Cleaning up all census data ***")
     census_reset(data_path)
+    logger.info("*** Cleaned up all census data ***")
 
-    logger.info("Cleaned up all census data files")
+    logger.info("*** Bye ***")
     sys.exit()
 
 
 @cli.command(help="Clean up all data folders")
 def data_cleanup():
     """CLI command to clean up the all the data folders"""
-    
+
     logger.info("********************************************************")
     logger.info("***                                                  ***")
     logger.info("*** Clean Up Data                                    ***")
@@ -60,7 +66,7 @@ def data_cleanup():
 
     data_path = settings.APP_ROOT / "data"
 
-    logger.info("*** Cleaning up all data folders")
+    logger.info("*** Cleaning up all data folders ***")
 
     census_reset(data_path)
     data_folder_cleanup()
@@ -69,8 +75,8 @@ def data_cleanup():
     temp_folder_cleanup()
     geo_score_folder_cleanup()
 
-    logger.info("*** Cleaned up all data folders")
-    logger.info("Bye")
+    logger.info("*** Cleaned up all data folders ***")
+    logger.info("*** Bye ***")
     sys.exit()
 
 
@@ -96,13 +102,16 @@ def census_data_download(zip_compress):
     data_path = settings.APP_ROOT / "data"
     census_reset(data_path)
 
-    logger.info("Downloading census data")
+    logger.info("*** Downloading census data ***")
     etl_runner("census")
+    logger.info("*** Downloaded census data ***")
 
     if zip_compress:
+        logger.info("*** Zipping census data ***")
         zip_census_data()
+        logger.info("*** Zipped census data ***")
 
-    logger.info("Completed downloading census data")
+    logger.info("*** Bye ***")
     sys.exit()
 
 
@@ -116,17 +125,19 @@ def census_data_download(zip_compress):
     help=dataset_cli_help,
 )
 def pull_census_data(data_source: str):
-    
+
     logger.info("********************************************************")
     logger.info("***                                                  ***")
     logger.info("*** Pull Census Data                                 ***")
     logger.info("***                                                  ***")
     logger.info("********************************************************")
-    
-    logger.info("Pulling census data from %s", data_source)
+
+    logger.info("*** Pulling census data from %s ***", data_source)
     data_path = settings.APP_ROOT / "data" / "census"
     check_census_data_source(data_path, data_source)
-    logger.info("Finished pulling census data")
+    logger.info("*** Pulled census data ***")
+
+    logger.info("*** Bye ***")
     sys.exit()
 
 
@@ -155,7 +166,11 @@ def etl_run(dataset: str):
     logger.info("***                                                  ***")
     logger.info("********************************************************")
 
+    logger.info("*** Running dataset(s) ***")
     etl_runner(dataset)
+    logger.info("*** Completed running dataset(s) ***")
+
+    logger.info("*** Bye ***")
     sys.exit()
 
 
@@ -183,11 +198,61 @@ def score_full_run():
     logger.info("***                                                  ***")
     logger.info("********************************************************")
 
+    logger.info("*** Cleaning up data folders ***")
     data_folder_cleanup()
     score_folder_cleanup()
     temp_folder_cleanup()
+    logger.info("*** Cleaned up data folders ***")
+    
+    logger.info("*** Running all ETLs ***")
     etl_runner()
+    logger.info("*** Completed running all ETLs ***")
+    
+    logger.info("*** Generating score ***")
     score_generate()
+    logger.info("*** Generated score ***")
+    
+    logger("*** Bye ***")
+    sys.exit()
+
+
+@cli.command(help="Run etl_score_post to create score csv, tile csv, and downloadable zip")
+@click.option(
+    "-s",
+    "--data-source",
+    default="local",
+    required=False,
+    type=str,
+    help=dataset_cli_help,
+)
+def generate_score_post(data_source: str):
+    """CLI command to generate score, tile, and downloadable files
+    
+    Args:
+        data_source (str): Source for the census data (optional)
+                           Options:
+                           - local: fetch census and score data from the local data directory
+                           - aws: fetch census and score from AWS S3 J40 data repository
+    
+    Returns:
+        None
+    """
+    logger.info("********************************************************")
+    logger.info("***                                                  ***")
+    logger.info("*** Generate Score Post                              ***")
+    logger.info("*** Create Score CSV, Tile CSV, Downloadable ZIP     ***")
+    logger.info("***                                                  ***")
+    logger.info("********************************************************")
+    
+    logger.info("*** Cleaning up downloadable folder ***")
+    downloadable_cleanup()
+    logger.info("*** Cleaned up downloadable folder ***")
+        
+    logger.info("*** Running score post activities ***")
+    score_post(data_source)
+    logger.info("*** Completed running score post activities ***")
+        
+    logger.info("*** Bye ***")
     sys.exit()
 
 
@@ -219,8 +284,15 @@ def geo_score(data_source: str):
     logger.info("***                                                  ***")
     logger.info("********************************************************")
 
+    logger.info("*** Cleaning up geo score folder ***")
     geo_score_folder_cleanup()
+    logger.info("*** Cleaned up geo score folder ***")
+    
+    logger.info("*** Combining score with GeoJSON ***")
     score_geo(data_source=data_source)
+    logger.info("*** Combined score with GeoJSON ***")
+    
+    logger.info("*** Bye ***")
     sys.exit()
 
 
@@ -245,42 +317,12 @@ def generate_map_tiles(generate_tribal_layer):
     logger.info("********************************************************")
 
     data_path = settings.APP_ROOT / "data"
+    
+    logger.info("*** Generating tiles ***")
     generate_tiles(data_path, generate_tribal_layer)
-    sys.exit()
-
-
-@cli.command(
-    help="Run etl_score_post to create score csv, tile csv, and downloadable zip",
-)
-@click.option(
-    "-s",
-    "--data-source",
-    default="local",
-    required=False,
-    type=str,
-    help=dataset_cli_help,
-)
-def generate_score_post(data_source: str):
-    """CLI command to generate score, tile, and downloadable files
-
-    Args:
-        data_source (str): Source for the census data (optional)
-                           Options:
-                           - local: fetch census and score data from the local data directory
-                           - aws: fetch census and score from AWS S3 J40 data repository
-
-    Returns:
-        None
-    """
-    logger.info("********************************************************")
-    logger.info("***                                                  ***")
-    logger.info("*** Generate Score Post                              ***")
-    logger.info("*** Create Score CSV, Tile CSV, Downloadable ZIP     ***")
-    logger.info("***                                                  ***")
-    logger.info("********************************************************")
-
-    downloadable_cleanup()
-    score_post(data_source)
+    logger.info("*** Generated tiles ***")
+    
+    logger.info("*** Bye ***")
     sys.exit()
 
 
@@ -326,42 +368,49 @@ def data_full_run(check: bool, data_source: str):
     if check:
         if not check_first_run():
             # check if the data full run has been run before
-            logger.info("*** The data full run was already executed")
+            logger.info("*** The data full run was already executed ***")
             sys.exit()
 
     else:
         # census directories
-        logger.info("*** Cleaning up data folders")
+        logger.info("*** Cleaning up data folders ***")
         census_reset(data_path)
         data_folder_cleanup()
         score_folder_cleanup()
         temp_folder_cleanup()
+        logger.info("*** Cleaned up data folders ***")
 
         if data_source == "local":
-            logger.info("*** Downloading census data")
+            logger.info("*** Downloading census data ***")
             etl_runner("census")
+            logger.info("*** Downloaded census data ***")
 
-        logger.info("*** Running all ETLs")
+        logger.info("*** Running all ETLs ***")
         etl_runner()
+        logger.info("*** Completed running all ETLs ***")
 
-        logger.info("*** Generating score")
+        logger.info("*** Generating score ***")
         score_generate()
+        logger.info("*** Generated score ***")
 
-        logger.info("*** Running post score scripts")
+        logger.info("*** Running post score ***")
         downloadable_cleanup()
         score_post(data_source)
+        logger.info("*** Completed running post score ***")
 
-    logger.info("*** Combining score with census GeoJSON")
+    logger.info("*** Combining score with census GeoJSON ***")
     score_geo(data_source)
+    logger.info("*** Combined score with census GeoJSON ***")
 
-    logger.info("*** Generating map tiles")
+    logger.info("*** Generating map tiles ***")
     generate_tiles(data_path, True)
+    logger.info("*** Generated map tiles ***")
 
     logger.info("*** Completing pipeline ***")
-
     file = "first_run.txt"
     cmd = f"touch {data_path}/{file}"
     call(cmd, shell=True)
+    logger.info("*** Completed pipeline ***")
 
     logger.info("*** Bye ***")
     sys.exit()
