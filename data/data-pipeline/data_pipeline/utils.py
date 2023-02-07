@@ -306,7 +306,6 @@ def zip_files(zip_file_path: Path, files_to_compress: List[Path]):
     with zipfile.ZipFile(zip_file_path, "w") as zf:
         for f in files_to_compress:
             zf.write(f, arcname=Path(f).name, compress_type=compression)
-    zip_info = get_zip_info(zip_file_path)
 
 
 def zip_directory(
