@@ -12,6 +12,8 @@ export const FAQS_LINK = 'https://www.whitehouse.gov/wp-content/uploads/2022/02/
 export const FED_RECOGNIZED_INDIAN_ENTITIES = `https://www.federalregister.gov/documents/2022/01/28/2022-01789/indian-entities-recognized-by-and-eligible-to-receive-services-from-the-united-states-bureau-of`;
 export const EJSCREEN = 'https://www.epa.gov/ejscreen/how-does-epa-use-ejscreen';
 
+export const CEJST_INSTRUCT = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/CEQ-CEJST-Instructions.pdf`;
+export const CEJST_MEMO = `https://www.whitehouse.gov/wp-content/uploads/2023/01/M-23-09_Signed_CEQ_CPO.pdf`;
 export const PAGE = defineMessages({
   TITLE: {
     id: 'about.page.title.text',
@@ -58,17 +60,23 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.list.item.1'}
     defaultMessage={`
-      Addendum to the Justice40 Initiative Interim Guidance on Using CEJST
+      <link1>Memorandum</link1> on Using the CEJST for the Justice40 Initiative
     `}
     description={'Navigate to the About page. This is the list item 1'}
+    values={{
+      link1: linkFn(CEJST_MEMO, false, true),
+    }}
   />,
   LI2:
   <FormattedMessage
     id={'about.page.list.item.2'}
     defaultMessage={`
-      Instructions to Federal Agencies on Using the CEJST
+     <link1>Instructions</link1> to Federal agencies on using the CEJST
     `}
     description={'Navigate to the About page. This is the list item 2'}
+    values={{
+      link1: linkFn(CEJST_INSTRUCT, false, true),
+    }}
   />,
   PARA4:
   <FormattedMessage
