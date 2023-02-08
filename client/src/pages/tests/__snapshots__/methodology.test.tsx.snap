@@ -1045,6 +1045,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       The tool's datasets are public and consistent nationwide. They come from different sources and are high quality. The Council on Environmental Quality (CEQ) chose them based on relevance,  availability, and quality. They identify climate, environmental, and other burdens on communities.
     
             </p>
+            <p>
+              
+      This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.
+    
+            </p>
           </div>
           <div
             class="desktop:grid-col-1"

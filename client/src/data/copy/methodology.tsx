@@ -403,6 +403,13 @@ export const DATASETS = defineMessages({
     `,
     description: 'Navigate to the Methodology page. This is the description of the dataset section',
   },
+  CENSUS_DISCLAIMER: {
+    id: 'methodology.page.datasetContainer.census.disclaimer',
+    defaultMessage: `
+      This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.
+    `,
+    description: 'Navigate to the Methodology page. This is the disclaimer when using census data',
+  },
   ADDITIONAL_HEADING: {
     id: 'methodology.page.datasetContainer.additional.heading',
     defaultMessage: 'Additional Indicators',
