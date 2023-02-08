@@ -166,6 +166,7 @@ li.usa-nav__primary-item a:hover::after{
   .page-heading {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 
     @include at-media-max("tablet"){
       flex-direction: column;
