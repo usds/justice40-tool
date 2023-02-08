@@ -889,7 +889,7 @@ class ScoreNarwhal(Score):
             .sum()
         )
 
-        logger.info(
+        logger.debug(
             f"For workforce criteria in island areas, "
             f"{workforce_combined_criteria_for_island_areas.sum()} ("
             f"{percent_of_island_tracts_highlighted:.2f}% of tracts that have non-null data "
@@ -947,7 +947,7 @@ class ScoreNarwhal(Score):
 
         We calculate "donut holes" after the initial score generation
         """
-        logger.info("Marking donut hole tracts")
+        logger.debug("Marking donut hole tracts")
 
         # This is the boolean we pass to the front end for the donut-hole-specific
         # low income criterion
@@ -1025,7 +1025,7 @@ class ScoreNarwhal(Score):
         )
 
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score Narhwal")
+        logger.debug("Adding Score Narhwal")
         self.df[field_names.THRESHOLD_COUNT] = 0
 
         self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED] = (

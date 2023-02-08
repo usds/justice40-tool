@@ -81,7 +81,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         return df
 
     def extract(self) -> None:
-        logger.info("Starting data download.")
 
         all_usa_raw_df = self._download_and_prep_data(
             file_url=self.USA_FILE_URL,
@@ -102,13 +101,13 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             additional_fips_codes_not_expected=self.STATES_MISSING_FROM_USA_FILE,
         )
 
-        logger.info("Downloading data for Maine")
+        logger.debug("Downloading data for Maine")
         maine_raw_df = self._download_and_prep_data(
             file_url=self.MAINE_FILE_URL,
             download_file_name=self.get_tmp_path() / "maine.csv",
         )
 
-        logger.info("Downloading data for Wisconsin")
+        logger.debug("Downloading data for Wisconsin")
         wisconsin_raw_df = self._download_and_prep_data(
             file_url=self.WISCONSIN_FILE_URL,
             download_file_name=self.get_tmp_path() / "wisconsin.csv",
@@ -138,7 +137,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         self.raw_df = combined_df
 
     def transform(self) -> None:
-        logger.info("Starting CDC life expectancy transform.")
 
         self.output_df = self.raw_df.rename(
             columns={
@@ -148,7 +146,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info("Saving CDC Life Expectancy CSV")
 
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.output_df[self.COLUMNS_TO_KEEP].to_csv(

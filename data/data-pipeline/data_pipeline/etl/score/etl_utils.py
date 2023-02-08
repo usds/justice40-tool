@@ -47,14 +47,14 @@ def check_score_data_source(
 
     # download from s3 if census_data_source is aws
     if score_data_source == "aws":
-        logger.info("Fetching Score Tile data from AWS S3")
+        logger.debug("Fetching Score Tile data from AWS S3")
         download_file_from_url(
             file_url=TILE_SCORE_CSV_S3_URL, download_file_name=TILE_SCORE_CSV
         )
     else:
         # check if score data is found locally
         if not os.path.isfile(TILE_SCORE_CSV):
-            logger.info(
+            logger.warning(
                 "No local score tiles data found. Please use '-s aws` to fetch from AWS"
             )
             sys.exit()
@@ -96,7 +96,7 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
     if series.isin(unacceptable_values).any():
         series.replace(mapping, regex=False, inplace=True)
 
-    multiplication_factor = 10**number_of_decimals
+    multiplication_factor = 10 ** number_of_decimals
 
     # In order to safely cast NaNs
     # First coerce series to float type: series.astype(float)
@@ -409,7 +409,7 @@ def compare_to_list_of_expected_state_fips_codes(
             f"{sorted(list(actual_state_fips_codes_set - expected_states_set))}\n"
         )
     else:
-        logger.info(
+        logger.debug(
             "Data matches expected state and territory representation"
             f"{dataset_name_phrase}."
         )

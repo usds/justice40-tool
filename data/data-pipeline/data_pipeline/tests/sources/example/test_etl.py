@@ -202,7 +202,7 @@ class TestETL:
 
         expected_file_path = data_path / "dataset" / etl.NAME / "usa.csv"
 
-        logger.info(f"Expected: {expected_file_path}")
+        logger.debug(f"Expected: {expected_file_path}")
 
         assert actual_file_path == expected_file_path
 
@@ -545,7 +545,7 @@ class TestETL:
         # Delete output file.
         output_file_path = etl._get_output_file_path()
         if os.path.exists(output_file_path):
-            logger.info("Deleting output file created by other tests.")
+            logger.debug("Deleting output file created by other tests.")
             os.remove(output_file_path)
 
         # Run more steps to generate test data.

@@ -65,14 +65,12 @@ class ChildOpportunityIndex(ExtractTransformLoad):
         self.output_df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Starting 51MB data download.")
         super().extract(
             source_url=self.SOURCE_URL,
             extract_path=self.get_tmp_path(),
         )
 
     def transform(self) -> None:
-        logger.info("Starting transforms.")
         raw_df = pd.read_csv(
             filepath_or_buffer=self.get_tmp_path() / "raw.csv",
             # The following need to remain as strings for all of their digits, not get

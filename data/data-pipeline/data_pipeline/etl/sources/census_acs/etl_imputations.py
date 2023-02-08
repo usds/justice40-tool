@@ -88,7 +88,7 @@ def _prepare_dataframe_for_imputation(
     ][geoid_field].unique()
 
     # Check that imputation is a valid choice for this set of fields
-    logger.info(f"Imputing values for {len(tract_list)} unique tracts.")
+    logger.debug(f"Imputing values for {len(tract_list)} unique tracts.")
     assert len(tract_list) > 0, "Error: No missing values to impute"
 
     return tract_list, geo_df
@@ -156,7 +156,7 @@ def calculate_income_measures(
                     mask_to_use
                 ][impute_var_pair.raw_field_name].mean()
 
-    logger.info("Casting geodataframe as a typical dataframe")
+    logger.debug("Casting geodataframe as a typical dataframe")
     # get rid of the geometry column and cast as a typical df
     df = pd.DataFrame(
         geo_df[[col for col in geo_df.columns if col != "geometry"]]

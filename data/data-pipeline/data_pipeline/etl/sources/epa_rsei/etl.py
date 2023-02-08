@@ -65,8 +65,6 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Starting 2.5 MB data download.")
-
         # the column headers from the above dataset are actually a census tract's data at this point
         # We will use this data structure later to specify the column names
         input_columns = [
@@ -98,8 +96,6 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Starting transforms.")
-
         score_columns = [x for x in self.df.columns if "SCORE" in x]
 
         # coerce dataframe type to perform correct next steps
@@ -157,8 +153,6 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
             )
 
     def load(self) -> None:
-        logger.info("Saving CSV")
-
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False

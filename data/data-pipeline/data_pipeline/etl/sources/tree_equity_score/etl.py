@@ -77,7 +77,6 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         ]
 
     def extract(self) -> None:
-        logger.info("Downloading Tree Equity Score Data")
         for state in self.states:
             super().extract(
                 f"{self.TES_URL}{state}.zip.zip",
@@ -85,7 +84,6 @@ class TreeEquityScoreETL(ExtractTransformLoad):
             )
 
     def transform(self) -> None:
-        logger.info("Transforming Tree Equity Score Data")
         tes_state_dfs = []
         for state in self.states:
             tes_state_dfs.append(
@@ -103,7 +101,6 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info("Saving Tree Equity Score CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df = self.df[

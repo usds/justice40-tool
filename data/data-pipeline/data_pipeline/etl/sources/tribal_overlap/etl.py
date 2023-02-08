@@ -94,8 +94,6 @@ class TribalOverlapETL(ExtractTransformLoad):
         self.tribal_gdf = get_tribal_geojson()
 
     def transform(self) -> None:
-        logger.info("Starting tribal overlap transforms.")
-
         # First, calculate whether tracts include any areas from the Tribal areas,
         # for both the points in AK and the polygons in the continental US (CONUS).
         tribal_overlap_with_tracts = add_tracts_for_geometries(

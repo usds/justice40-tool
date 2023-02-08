@@ -34,9 +34,6 @@ class GeoCorrETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info(
-            "Starting to download 2MB GeoCorr Urban Rural Census Tract Map file."
-        )
         unzip_file_from_url(
             file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/geocorr_urban_rural.csv.zip",
@@ -53,7 +50,6 @@ class GeoCorrETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Starting GeoCorr Urban Rural Map transform")
         # Put in logic from Jupyter Notebook transform when we switch in the hyperlink to Geocorr
 
         self.output_df = self.df.rename(

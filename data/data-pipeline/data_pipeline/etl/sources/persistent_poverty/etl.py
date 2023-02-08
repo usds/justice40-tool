@@ -76,8 +76,6 @@ class PersistentPovertyETL(ExtractTransformLoad):
         return df
 
     def extract(self) -> None:
-        logger.info("Starting to download 86MB persistent poverty file.")
-
         unzipped_file_path = self.get_tmp_path()
 
         unzip_file_from_url(
@@ -124,7 +122,6 @@ class PersistentPovertyETL(ExtractTransformLoad):
         self.df = self._join_input_dfs(temporary_input_dfs)
 
     def transform(self) -> None:
-        logger.info("Starting persistent poverty transform")
         transformed_df = self.df
 
         # Note: the fields are defined as following.

@@ -100,7 +100,6 @@ class CensusACS2010ETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Starting Census 2010 ACS Transform")
         # Define the variables to retrieve
         variables = (
             self.UNEMPLOYED_FIELDS
@@ -118,8 +117,6 @@ class CensusACS2010ETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Starting Census 2010 ACS Transform")
-
         df = self.df
 
         # Calculate percent unemployment.
@@ -184,8 +181,6 @@ class CensusACS2010ETL(ExtractTransformLoad):
         self.df = output_df
 
     def load(self) -> None:
-        logger.info("Saving Census 2010 ACS Data")
-
         # mkdir census
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 

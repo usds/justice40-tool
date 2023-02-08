@@ -33,15 +33,12 @@ class CalEnviroScreenETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading CalEnviroScreen Data")
         super().extract(
             self.CALENVIROSCREEN_FTP_URL,
             self.get_tmp_path(),
         )
 
     def transform(self) -> None:
-        logger.info("Transforming CalEnviroScreen Data")
-
         # Data from https://calenviroscreen-oehha.hub.arcgis.com/#Data, specifically:
         # https://oehha.ca.gov/media/downloads/calenviroscreen/document/calenviroscreen40resultsdatadictionaryd12021.zip
         # Load comparison index (CalEnviroScreen 4)
@@ -70,7 +67,6 @@ class CalEnviroScreenETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info("Saving CalEnviroScreen CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df.to_csv(self.CSV_PATH / "data06.csv", index=False)

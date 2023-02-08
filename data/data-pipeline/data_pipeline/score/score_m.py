@@ -768,7 +768,7 @@ class ScoreM(Score):
             .sum()
         )
 
-        logger.info(
+        logger.debug(
             f"For workforce criteria in island areas, "
             f"{workforce_combined_criteria_for_island_areas.sum()} ("
             f"{percent_of_island_tracts_highlighted:.2f}% of tracts that have non-null data "
@@ -812,7 +812,7 @@ class ScoreM(Score):
         )
 
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score M")
+        logger.debug("Adding Score M")
 
         self.df[field_names.THRESHOLD_COUNT] = 0
 
