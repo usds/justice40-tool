@@ -4,7 +4,7 @@ import data_pipeline.etl.score.constants as constants
 import data_pipeline.score.field_names as field_names
 import numpy as np
 import pandas as pd
-from data_pipeline.score.score import Score
+from data_pipeline.score.score import Score # this just adds the framework of the score class
 from data_pipeline.score.utils import calculate_tract_adjacency_scores
 from data_pipeline.utils import get_module_logger
 
@@ -14,8 +14,8 @@ logger = get_module_logger(__name__)
 class ScoreNarwhal(Score):
     """Score N, aka Narwhal."""
 
-    LOW_INCOME_THRESHOLD: float = 0.65
-    MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20
+    LOW_INCOME_THRESHOLD: float = 0.65               # this is the low income threshold that gets compared against the other indicators. It is a percentile rank score
+    MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20   
     ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
     MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
     LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
@@ -24,7 +24,7 @@ class ScoreNarwhal(Score):
     # DACs (score threshold = 1) and above median for low income, as a starting
     # point. As we ground-truth, these thresholds might change.
     LOW_INCOME_THRESHOLD_DONUT: float = 0.50
-    SCORE_THRESHOLD_DONUT: float = 1.00
+    SCORE_THRESHOLD_DONUT: float = 1.001
 
     def _combine_island_areas_with_states_and_set_thresholds(
         self,
@@ -369,7 +369,7 @@ class ScoreNarwhal(Score):
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
             field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
-            field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME,
+            field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME
         ]
 
         # Historic disinvestment
@@ -378,7 +378,7 @@ class ScoreNarwhal(Score):
         ] = (
             self.df[field_names.HISTORIC_REDLINING_SCORE_EXCEEDED]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
-        )
+            )
 
         # Kitchen / plumbing
         self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD] = (
@@ -440,8 +440,8 @@ class ScoreNarwhal(Score):
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
-        # any of the burdens
-        self.df[field_names.HOUSING_THREHSOLD_EXCEEDED] = self.df[
+        # any of the burdens 
+        self.df[field_names.HOUSING_THREHSOLD_EXCEEDED] = self.df[   # we need this to include all of the ones that are intersected with low income in order to properly calculate the total score. 
             housing_eligibility_columns
         ].any(axis="columns")
 
@@ -461,7 +461,7 @@ class ScoreNarwhal(Score):
         # Source: Census's American Community Survey
 
         pollution_eligibility_columns = [
-            field_names.RMP_LOW_INCOME_FIELD,
+            field_names.RMP_LOW_INCOME_FIELD,              # include low income in these fields because they help calculate the overall score
             field_names.SUPERFUND_LOW_INCOME_FIELD,
             field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD,
             field_names.AML_LOW_INCOME_FIELD,
