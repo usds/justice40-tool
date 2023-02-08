@@ -857,7 +857,7 @@ export const INDICATORS = [
       }}
     />,
     usedIn: CATEGORIES.ALL,
-    responsibleParty: RESPONSIBLE_PARTIES.CEN,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
     sources: [
       {
         source: SOURCE_LINKS.CENSUS_ACS_15_19,
