@@ -23,7 +23,7 @@ def toy_score_df(scope="module"):
 
 
 def _helper_test_dropping_tracts(toy_score_df, drop_tracts):
-    logger.info(drop_tracts)
+    logger.debug(drop_tracts)
     test_frame = toy_score_df[
         ~toy_score_df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts)
     ]

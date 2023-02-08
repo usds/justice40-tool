@@ -48,7 +48,6 @@ class CDCSVIIndex(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading 43 MB CDC SVI INDEX")
         self.df = pd.read_csv(
             filepath_or_buffer=self.CDC_SVI_INDEX_URL,
             dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: "string"},
@@ -56,7 +55,6 @@ class CDCSVIIndex(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Starting CDC SVI INDEX transform")
         # Note: In this dataset all US census tracts are ranked against one another.
         # Puerto Rico is not included in this dataset
         self.df.rename(
@@ -109,8 +107,6 @@ class CDCSVIIndex(ExtractTransformLoad):
             )
 
     def load(self) -> None:
-        logger.info("Saving CDC SVI Index Data")
-
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
         self.df[self.COLUMNS_TO_KEEP].to_csv(

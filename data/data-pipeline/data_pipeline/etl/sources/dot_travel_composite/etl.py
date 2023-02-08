@@ -53,7 +53,6 @@ class TravelCompositeETL(ExtractTransformLoad):
         - Renames the Census Tract column to match the other datasets
         - Converts to CSV
         """
-        logger.info("Transforming DOT Travel Disadvantage Data")
 
         # read in the unzipped shapefile from data source
         # reformat it to be standard df, remove unassigned rows, and

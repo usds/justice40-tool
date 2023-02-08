@@ -49,8 +49,6 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Starting data download.")
-
         unzip_file_from_url(
             file_url=self.DEFINITION_ALTERNATIVE_FILE_URL,
             download_path=self.get_tmp_path(),
@@ -70,8 +68,6 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Starting transforms.")
-
         self.df = self.df.rename(
             columns={
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
@@ -105,8 +101,6 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info("Saving CSV")
-
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False

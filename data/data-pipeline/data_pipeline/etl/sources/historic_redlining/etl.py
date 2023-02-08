@@ -43,7 +43,6 @@ class HistoricRedliningETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def transform(self) -> None:
-        logger.info("Transforming Historic Redlining Data")
         # this is obviously temporary
         historic_redlining_data = pd.read_excel(
             self.HISTORIC_REDLINING_FILE_PATH
@@ -55,7 +54,7 @@ class HistoricRedliningETL(ExtractTransformLoad):
             columns={"HRS2010": self.REDLINING_SCALAR}
         )
 
-        logger.info(f"{historic_redlining_data.columns}")
+        logger.debug(f"{historic_redlining_data.columns}")
 
         # Calculate lots of different score thresholds for convenience
         for threshold in [3.25, 3.5, 3.75]:

@@ -30,14 +30,14 @@ def retrieve_census_acs_data(
     dfs = []
     for fips in get_state_fips_codes(data_path_for_fips_codes):
         if fips in CENSUS_ACS_FIPS_CODES_TO_SKIP:
-            logger.info(
+            logger.debug(
                 f"Skipping download for state/territory with FIPS code {fips}"
             )
         else:
             census_api_key = ""
             if os.environ.get("CENSUS_API_KEY"):
                 census_api_key = "with API key"
-            logger.info(
+            logger.debug(
                 f"Downloading data for state/territory with FIPS code {fips} {census_api_key}"
             )
 
@@ -55,7 +55,7 @@ def retrieve_census_acs_data(
 
             except ValueError as e:
                 logger.error(
-                    f"Could not download data for state/territory with FIPS code {fips}"
+                    f"Could not download data for state/territory with FIPS code {fips} because {e}"
                 )
                 raise e
 

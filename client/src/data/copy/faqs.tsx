@@ -4,7 +4,7 @@ import {defineMessages, FormattedMessage} from 'gatsby-plugin-intl';
 
 import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
-import {EJSCREEN, EXEC_ORDER_LINK, FED_RECOGNIZED_INDIAN_ENTITIES} from './about';
+import {EJSCREEN, EXEC_ORDER_LINK, FED_RECOGNIZED_INDIAN_ENTITIES, CEJST_INSTRUCT, CEJST_MEMO} from './about';
 import {boldFn, linkFn, FEEDBACK_EMAIL} from './common';
 import {PAGES_ENDPOINTS} from '../constants';
 import {EXPLORE_PAGE_LINKS} from './explore';
@@ -270,13 +270,20 @@ export const FAQ_ANSWERS = {
   />,
   Q1_P3_1: <FormattedMessage
     id={ 'faqs.page.answers.Q1_P3_1'}
-    defaultMessage={ 'Addendum to the Justice40 Interim Guidance'}
+    defaultMessage={ '<link1>Memorandum</link1> on Using the CEJST for the Justice40 Initiative'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q1_P3_1'}
+    values={{
+      link1: linkFn(CEJST_MEMO, false, true),
+    }}
   />,
   Q1_P3_2: <FormattedMessage
     id={ 'faqs.page.answers.Q1_P3_2'}
-    defaultMessage={ 'Instructions to Federal Agencies on Using the CEJST'}
+    defaultMessage={ '<link1>Instructions</link1> to Federal agencies on using the CEJST'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q1_P3_2'}
+    values={{
+      link1: linkFn(CEJST_INSTRUCT, false, true),
+    }}
+
   />,
   Q1_P4: <FormattedMessage
     id={ 'faqs.page.answers.Q1_P4'}

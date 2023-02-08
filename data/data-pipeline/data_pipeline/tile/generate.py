@@ -39,7 +39,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         os.mkdir(low_tile_path)
 
         # generate high mbtiles file
-        logger.info("Generating USA High mbtiles file")
+        logger.debug("Generating USA High mbtiles file")
         cmd = "tippecanoe "
         cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --layer=blocks "
         cmd += "--no-feature-limit --no-tile-size-limit "
@@ -48,7 +48,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         call(cmd, shell=True)
 
         # generate high mvts
-        logger.info("Generating USA High mvt folders and files")
+        logger.debug("Generating USA High mvt folders and files")
         cmd = "tippecanoe "
         cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --no-tile-compression "
         cmd += "--no-feature-limit  --no-tile-size-limit "
@@ -57,7 +57,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         call(cmd, shell=True)
 
         # generate low mbtiles file
-        logger.info("Generating USA Low mbtiles file")
+        logger.debug("Generating USA Low mbtiles file")
         cmd = "tippecanoe "
         cmd += f"--minimum-zoom={USA_LOW_MIN_ZOOM} --maximum-zoom={USA_LOW_MAX_ZOOM} --layer=blocks "
         cmd += f"--output={low_tile_path}/usa_low.mbtiles "
@@ -65,7 +65,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         call(cmd, shell=True)
 
         # generate low mvts
-        logger.info("Generating USA Low mvt folders and files")
+        logger.debug("Generating USA Low mvt folders and files")
         cmd = "tippecanoe "
         cmd += f"--minimum-zoom={USA_LOW_MIN_ZOOM} --maximum-zoom={USA_LOW_MAX_ZOOM} --no-tile-compression "
         cmd += "--drop-densest-as-needed "
@@ -86,7 +86,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         remove_all_from_dir(tribal_tiles_path)
 
         # generate mbtiles file
-        logger.info("Generating Tribal mbtiles file")
+        logger.debug("Generating Tribal mbtiles file")
         cmd = "tippecanoe "
         cmd += "--layer=blocks "
         cmd += "--base-zoom=3 "
@@ -96,7 +96,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         call(cmd, shell=True)
 
         # generate mvts
-        logger.info("Generating Tribal mvt folders and files")
+        logger.debug("Generating Tribal mvt folders and files")
         cmd = "tippecanoe "
         cmd += "--layer=blocks "
         cmd += "--base-zoom=3 "

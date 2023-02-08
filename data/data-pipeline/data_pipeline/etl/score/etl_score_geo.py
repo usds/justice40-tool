@@ -118,7 +118,7 @@ class GeoScoreETL(ExtractTransformLoad):
         fields = [self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME]
 
         # TODO update this join
-        logger.info("Merging and compressing score CSV with USA GeoJSON")
+        logger.info("Merging and compressing score csv with USA GeoJSON")
         self.geojson_score_usa_high = self.score_usa_df.set_index(
             self.GEOID_FIELD_NAME
         ).merge(
@@ -143,7 +143,7 @@ class GeoScoreETL(ExtractTransformLoad):
             columns={self.TARGET_SCORE_SHORT_FIELD: self.TARGET_SCORE_RENAME_TO}
         )
 
-        logger.info("Converting geojson into geodf with tracts")
+        logger.info("Converting GeoJSON into GeoDataFrame with tracts")
         usa_tracts = gpd.GeoDataFrame(
             usa_tracts,
             columns=[
@@ -154,15 +154,15 @@ class GeoScoreETL(ExtractTransformLoad):
             crs="EPSG:4326",
         )
 
-        logger.info("Creating buckets from tracts")
+        logger.debug("Creating buckets from tracts")
         usa_bucketed, keep_high_zoom_df = self._create_buckets_from_tracts(
             usa_tracts, self.NUMBER_OF_BUCKETS
         )
 
-        logger.info("Aggregating buckets")
+        logger.debug("Aggregating buckets")
         usa_aggregated = self._aggregate_buckets(usa_bucketed, agg_func="mean")
 
-        logger.info("Breaking up polygons")
+        logger.debug("Breaking up polygons")
         compressed = self._breakup_multipolygons(
             usa_aggregated, self.NUMBER_OF_BUCKETS
         )
@@ -220,7 +220,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 len(state_tracts.index) / self.NUMBER_OF_BUCKETS
             )
 
-        logger.info(
+        logger.debug(
             f"The number of buckets has increased to {self.NUMBER_OF_BUCKETS}"
         )
         for i in range(len(state_tracts.index)):

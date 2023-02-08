@@ -363,18 +363,16 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Starting Census ACS Transform")
-
         df = self.df
 
         # Here we join the geometry of the US to the dataframe so that we can impute
         # The income of neighbors. first this looks locally; if there's no local
         # geojson file for all of the US, this will read it off of S3
-        logger.info("Reading in geojson for the country")
+        logger.debug("Reading in geojson for the country")
         if not os.path.exists(
             self.DATA_PATH / "census" / "geojson" / "us.json"
         ):
-            logger.info("Fetching Census data from AWS S3")
+            logger.debug("Fetching Census data from AWS S3")
             unzip_file_from_url(
                 CENSUS_DATA_S3_URL,
                 self.DATA_PATH / "tmp",
@@ -406,7 +404,7 @@ class CensusACSETL(ExtractTransformLoad):
             self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
         ]:
             missing_value_count = sum(df[field] == -666666666)
-            logger.info(
+            logger.debug(
                 f"There are {missing_value_count} ({int(100*missing_value_count/df[field].count())}%) values of "
                 + f"`{field}` being marked as null values."
             )
@@ -591,7 +589,7 @@ class CensusACSETL(ExtractTransformLoad):
 
         # we impute income for both income measures
         ## TODO: Convert to pydantic for clarity
-        logger.info("Imputing income information")
+        logger.debug("Imputing income information")
         ImputeVariables = namedtuple(
             "ImputeVariables", ["raw_field_name", "imputed_field_name"]
         )
@@ -612,7 +610,7 @@ class CensusACSETL(ExtractTransformLoad):
             minimum_population_required_for_imputation=self.MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION,
         )
 
-        logger.info("Calculating with imputed values")
+        logger.debug("Calculating with imputed values")
 
         df[
             self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
@@ -644,7 +642,7 @@ class CensusACSETL(ExtractTransformLoad):
             == 0
         ), "Error: not all values were filled..."
 
-        logger.info("Renaming columns...")
+        logger.debug("Renaming columns...")
         df = df.rename(
             columns={
                 self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME: field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,

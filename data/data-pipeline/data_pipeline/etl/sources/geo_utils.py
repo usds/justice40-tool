@@ -16,7 +16,7 @@ logger = get_module_logger(__name__)
 def get_tract_geojson(
     _tract_data_path: Optional[Path] = None,
 ) -> gpd.GeoDataFrame:
-    logger.info("Loading tract geometry data from census ETL")
+    logger.debug("Loading tract geometry data from census ETL")
     GEOJSON_PATH = _tract_data_path
     if GEOJSON_PATH is None:
         GEOJSON_PATH = CensusETL.NATIONAL_TRACT_JSON_PATH
@@ -40,7 +40,7 @@ def get_tract_geojson(
 def get_tribal_geojson(
     _tribal_data_path: Optional[Path] = None,
 ) -> gpd.GeoDataFrame:
-    logger.info("Loading Tribal geometry data from Tribal ETL")
+    logger.debug("Loading Tribal geometry data from Tribal ETL")
     GEOJSON_PATH = _tribal_data_path
     if GEOJSON_PATH is None:
         GEOJSON_PATH = TribalETL().NATIONAL_TRIBAL_GEOJSON_PATH

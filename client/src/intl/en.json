@@ -56,11 +56,11 @@
     "description": "Navigate to the About page. This is the join the community heading"
   },
   "about.page.list.item.1": {
-    "defaultMessage": "Addendum to the Justice40 Initiative Interim Guidance on Using CEJST",
+    "defaultMessage": "<link1>Memorandum</link1> on Using the CEJST for the Justice40 Initiative",
     "description": "Navigate to the About page. This is the list item 1"
   },
   "about.page.list.item.2": {
-    "defaultMessage": "Instructions to Federal Agencies on Using the CEJST",
+    "defaultMessage": "<link1>Instructions</link1> to Federal agencies on using the CEJST",
     "description": "Navigate to the About page. This is the list item 2"
   },
   "about.page.paragraph.1": {
@@ -1200,7 +1200,7 @@
     "description": "indicating above threshold"
   },
   "explore.map.page.side.panel.indicator.value.subtext.below": {
-    "defaultMessage": "below",
+    "defaultMessage": "not above",
     "description": "indicating below threshold"
   },
   "explore.map.page.side.panel.indicator.value.subtext.percent": {
@@ -1680,11 +1680,11 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q1_P3"
   },
   "faqs.page.answers.Q1_P3_1": {
-    "defaultMessage": "Addendum to the Justice40 Interim Guidance",
+    "defaultMessage": "<link1>Memorandum</link1> on Using the CEJST for the Justice40 Initiative",
     "description": "Navigate to the FAQs page, this will be an answer, Q1_P3_1"
   },
   "faqs.page.answers.Q1_P3_2": {
-    "defaultMessage": "Instructions to Federal Agencies on Using the CEJST",
+    "defaultMessage": "<link1>Instructions</link1> to Federal agencies on using the CEJST",
     "description": "Navigate to the FAQs page, this will be an answer, Q1_P3_2"
   },
   "faqs.page.answers.Q1_P4": {
@@ -2372,7 +2372,7 @@
     "description": "Navigate to the Methodology page. This is the label associated with a NEW card"
   },
   "methodology.page.datasetCard.responsible.party": {
-    "defaultMessage": "Responsible Party:",
+    "defaultMessage": "Responsible party:",
     "description": "Navigate to the Methodology page. This is the label associated with explaining the card"
   },
   "methodology.page.datasetCard.source": {
@@ -2428,7 +2428,7 @@
     "description": "Navigate to the methodology page. This is the methodology page header text"
   },
   "methodology.page.indicator.categories.afford.house.if": {
-    "defaultMessage": "Experienced <link0>historic underinvestment</link0> OR are at or above the 90th percentile for the <link1>housing cost</link1> OR <link2>lack of green space</link2> OR <link3>lack of indoor plumbing</link3> OR <link4>lead paint</link4>",
+    "defaultMessage": "Experienced <link0>historic underinvestment</link0> OR are at or above the 90th percentile for <link1>housing cost</link1> OR <link2>lack of green space</link2> OR <link3>lack of indoor plumbing</link3> OR <link4>lead paint</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.afford.housing.methodology": {

@@ -343,7 +343,7 @@ exports[`test rendering of Indicator value sub-text renders the "above 90 percen
 exports[`test rendering of Indicator value sub-text renders the "below 90 percentile" 1`] = `
 <DocumentFragment>
   <div>
-    below 90
+    not above 90
     <sup
       style="top: -0.2em;"
     >
