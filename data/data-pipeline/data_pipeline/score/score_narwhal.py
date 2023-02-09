@@ -26,7 +26,7 @@ class ScoreNarwhal(Score):
     # DACs (score threshold = 1) and above median for low income, as a starting
     # point. As we ground-truth, these thresholds might change.
     LOW_INCOME_THRESHOLD_DONUT: float = 0.50
-    SCORE_THRESHOLD_DONUT: float = 1.001
+    SCORE_THRESHOLD_DONUT: float = 1.00
 
     def _combine_island_areas_with_states_and_set_thresholds(
         self,
