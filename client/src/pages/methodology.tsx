@@ -8,7 +8,7 @@ import DatasetContainer from '../components/DatasetContainer';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import SubPageNav from '../components/SubPageNav';
-import PublicEngageButton from '../components/PublicEngageButton';
+import DatasetsButton from '../components/DatasetsButton';
 
 import {USWDS_BREAKPOINTS} from '../data/constants';
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
@@ -29,7 +29,7 @@ const IndexPage = ({location}: MethodPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(METHODOLOGY_COPY.PAGE.HEADING)}</h1>
-          <PublicEngageButton />
+          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
         </section>
 
         <Grid row gap className={'j40-mt3'}>

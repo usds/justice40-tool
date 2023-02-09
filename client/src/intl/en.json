@@ -2395,6 +2395,10 @@
     "defaultMessage": "Share data sources with CEQ",
     "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score with a button labeled: Share data sources with CEQ"
   },
+  "methodology.page.datasetContainer.census.disclaimer": {
+    "defaultMessage": "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.",
+    "description": "Navigate to the Methodology page. This is the disclaimer when using census data"
+  },
   "methodology.page.datasetContainer.heading": {
     "defaultMessage": "Datasets used in beta methodology",
     "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score"
