@@ -3,6 +3,9 @@ import pathlib
 import sys
 import typing
 from typing import Optional
+from abc import ABC, abstractmethod
+
+from dataclasses import dataclass
 
 import pandas as pd
 from data_pipeline.config import settings
@@ -14,6 +17,7 @@ from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import load_yaml_dict_from_file
 from data_pipeline.utils import remove_all_from_dir
 from data_pipeline.utils import unzip_file_from_url
+from data_pipeline.etl.datasource import DataSource
 
 logger = get_module_logger(__name__)
 
@@ -22,10 +26,10 @@ class ValidGeoLevel(enum.Enum):
     """Enum used for indicating output data's geographic resolution."""
 
     CENSUS_TRACT = enum.auto()
-    CENSUS_BLOCK_GROUP = enum.auto()
+    CENSUS_BLOCK_GROUP = enum.auto()    
 
 
-class ExtractTransformLoad:
+class ExtractTransformLoad(ABC):
     """
     A class used to instantiate an ETL object to retrieve and process data from
     datasets.
@@ -177,16 +181,19 @@ class ExtractTransformLoad:
         output_file_path = cls.DATA_PATH / "dataset" / f"{cls.NAME}" / "usa.csv"
         return output_file_path
 
-    def get_tmp_path(self) -> pathlib.Path:
-        """Returns the temporary path associated with this ETL class."""
-        # Note: the temporary path will be defined on `init`, because it uses the class
-        # of the instance which is often a child class.
-        tmp_path = self.DATA_PATH / "tmp" / str(self.__class__.__name__)
 
-        # Create directory if it doesn't exist
-        tmp_path.mkdir(parents=True, exist_ok=True)
+    @abstractmethod
+    def get_data_sources(self) -> [DataSource]:
+        pass
+        
+        
+    def fetch(self) -> None:
+        """Fetch all data sources for this ETL. When data sources are fetched, they
+        are stored in a cache directory that can be checked into source control
+        for consistency between runs."""
+        for ds in self.get_data_sources():
+            ds.fetch()
 
-        return tmp_path
 
     def extract(
         self,
@@ -211,11 +218,12 @@ class ExtractTransformLoad:
             verify=verify,
         )
 
+
+    @abstractmethod
     def transform(self) -> None:
         """Transform the data extracted into a format that can be consumed by the
         score generator"""
-
-        raise NotImplementedError
+        pass
 
     def validate(self) -> None:
         """Validates the output.
@@ -380,3 +388,27 @@ class ExtractTransformLoad:
     def cleanup(self) -> None:
         """Clears out any files stored in the TMP folder"""
         remove_all_from_dir(self.get_tmp_path())
+        
+        
+    def get_tmp_path(self) -> pathlib.Path:
+        """Returns the temporary path associated with this ETL class."""
+        # Note: the temporary path will be defined on `init`, because it uses the class
+        # of the instance which is often a child class.
+        tmp_path = self.DATA_PATH / "tmp" / str(self.__class__.__name__)
+    
+        # Create directory if it doesn't exist
+        tmp_path.mkdir(parents=True, exist_ok=True)
+    
+        return tmp_path
+    
+    
+    def get_sources_path(self) -> pathlib.Path:
+        """Returns the sources path associated with this ETL class. The sources path
+        is the home for cached data sources used by this ETL."""
+        
+        sources_path = self.DATA_PATH / "sources" / str(self.__class__.__name__)
+    
+        # Create directory if it doesn't exist
+        sources_path.mkdir(parents=True, exist_ok=True)
+    
+        return sources_path

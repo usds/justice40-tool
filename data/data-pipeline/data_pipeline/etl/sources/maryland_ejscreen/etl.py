@@ -4,6 +4,8 @@ import geopandas as gpd
 import pandas as pd
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 
@@ -17,11 +19,16 @@ class MarylandEJScreenETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        self.MARYLAND_EJSCREEN_URL = (
+        
+        # fetch
+        self.maryland_ejscreen_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL + "/MD_EJScreen.zip"
         )
 
-        self.SHAPE_FILES_PATH = self.get_tmp_path() / "mdejscreen"
+        # input
+        self.shape_files_source = self.get_sources_path() / "mdejscreen"
+        
+        # output
         self.OUTPUT_CSV_PATH = self.DATA_PATH / "dataset" / "maryland_ejscreen"
 
         self.COLUMNS_TO_KEEP = [
@@ -31,24 +38,28 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         ]
 
         self.df: pd.DataFrame
+        
+        
+    def get_data_sources(self) -> [DataSource]:
+        return[ZIPDataSource(self.__class__.__name__, source=self.maryland_ejscreen_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+
 
     def extract(self) -> None:
+        
         logger.debug("Downloading 207MB Maryland EJSCREEN Data")
-        super().extract(
-            self.MARYLAND_EJSCREEN_URL,
-            self.get_tmp_path(),
-        )
-
-    def transform(self) -> None:
-        list_of_files = list(glob(str(self.SHAPE_FILES_PATH) + "/*.shp"))
-
-        # Ignore counties becauses this is not the level of measurement
+        list_of_files = list(glob(str(self.shape_files_source) + "/*.shp"))
+        
+        # Ignore counties because this is not the level of measurement
         # that is consistent with our current scoring and ranking methodology.
-        dfs_list = [
+        self.dfs_list = [
             gpd.read_file(f)
             for f in list_of_files
             if not f.endswith("CountiesEJScore.shp")
         ]
+
+
+    def transform(self) -> None:
+        
 
         # Set the Census tract as the index and drop the geometry column
         # that produces the census tract boundaries.
@@ -56,12 +67,12 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         # are duplicate geometry columns.
         # Moreover, since the unit of measurement is at the tract level
         # we can consistantly merge this with other datasets
-        dfs_list = [
+        self.dfs_list = [
             df.set_index("Census_Tra").drop("geometry", axis=1)
-            for df in dfs_list
+            for df in self.dfs_list
         ]
         # pylint: disable=unsubscriptable-object
-        self.df = gpd.GeoDataFrame(pd.concat(dfs_list, axis=1))
+        self.df = gpd.GeoDataFrame(pd.concat(self.dfs_list, axis=1))
 
         # Reset index so that we no longer have the tract as our index
         self.df = self.df.reset_index()
@@ -101,6 +112,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             ]
             >= 0.75
         )
+
 
     def load(self) -> None:
         # write maryland tracts to csv

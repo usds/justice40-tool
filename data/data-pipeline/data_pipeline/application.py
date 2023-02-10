@@ -7,6 +7,8 @@ from data_pipeline.etl.runner import etl_runner
 from data_pipeline.etl.runner import score_generate
 from data_pipeline.etl.runner import score_geo
 from data_pipeline.etl.runner import score_post
+from data_pipeline.etl.runner import get_data_sources
+from data_pipeline.etl.runner import fetch_data_sources as fetch_ds
 from data_pipeline.etl.sources.census.etl_utils import check_census_data_source
 from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
@@ -352,6 +354,69 @@ def data_full_run(check: bool, data_source: str):
     file = "first_run.txt"
     cmd = f"touch {data_path}/{file}"
     call(cmd, shell=True)
+
+    log_goodbye()
+    sys.exit()
+    
+
+@cli.command(
+    help="Print data sources for all ETL processes (or a specific one)",
+)
+@click.option(
+    "-d",
+    "--dataset",
+    required=False,
+    type=str,
+    help=dataset_cli_help,
+)
+def print_data_sources(dataset: str):
+    """Print data sources for all ETL processes (or a specific one)
+
+    Args:
+        dataset (str): Name of the ETL module to be run (optional)
+
+    Returns:
+        None
+    """
+    log_title("Print ETL Datasources")
+
+    log_info("Retrieving dataset(s)")
+    sources = get_data_sources(dataset)
+    
+    sources.sort(key=lambda x: x.name, reverse=False)
+    
+    log_info(f"Discovered {len(sources)} files")
+    
+    for s in sources:
+        log_info(s)
+
+    log_goodbye()
+    sys.exit()
+
+
+@cli.command(
+    help="Fetch data sources for all ETL processes (or a specific one)",
+)
+@click.option(
+    "-d",
+    "--dataset",
+    required=False,
+    type=str,
+    help=dataset_cli_help,
+)
+def fetch_data_sources(dataset: str):
+    """Fetch and cache data sources for all ETL processes (or a specific one)
+
+    Args:
+        dataset (str): Name of the ETL module to be run (optional)
+
+    Returns:
+        None
+    """
+    log_title("Fetch ETL Datasources")
+
+    log_info("Fetching data source(s)")
+    fetch_ds(dataset)
 
     log_goodbye()
     sys.exit()

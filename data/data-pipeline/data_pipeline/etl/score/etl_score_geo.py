@@ -15,6 +15,7 @@ from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import load_dict_from_yaml_object_fields
 from data_pipeline.utils import load_yaml_dict_from_file
 from data_pipeline.utils import zip_files
+from data_pipeline.etl.datasource import DataSource
 
 logger = get_module_logger(__name__)
 
@@ -67,6 +68,11 @@ class GeoScoreETL(ExtractTransformLoad):
         self.score_usa_df: pd.DataFrame
         self.geojson_score_usa_high: gpd.GeoDataFrame
         self.geojson_score_usa_low: gpd.GeoDataFrame
+
+
+    def get_data_sources(self) -> [DataSource]:
+        return [] # we have all prerequisite sources locally as a result of generating the previous steps in the pipeline
+
 
     def extract(self) -> None:
         # check census data

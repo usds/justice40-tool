@@ -1,5 +1,6 @@
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -9,18 +10,24 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
     # Note: while we normally set these properties in `__init__`,
     # we are setting them as class properties here so they can be accessed by the
     # class method `ejscreen_areas_of_concern_data_exists`.
-    LOCAL_CSV_PATH = ExtractTransformLoad.DATA_PATH / "local"
-    EJSCREEN_AREAS_OF_CONCERN_SOURCE_DATA = (
-        LOCAL_CSV_PATH / "ejscreen_areas_of_concerns_indicators.csv"
-    )
-
+    
+    EJSCREEN_AREAS_OF_CONCERN_SOURCE = ExtractTransformLoad.DATA_PATH / "sources" / "EJSCREENAreasOfConcernETL" / "ejscreen_areas_of_concerns_indicators.csv"
+    
     def __init__(self):
+        
+        # output
         self.OUTPUT_PATH = (
             self.DATA_PATH / "dataset" / "ejscreen_areas_of_concern"
         )
 
         # TO DO: Load from actual source; the issue is that this dataset is not public for now
         self.df: pd.DataFrame
+
+
+    def get_data_sources(self) -> [DataSource]:
+        """The source for this must be downloaded and saved manually. It is not publicly available"""
+        return []
+
 
     @classmethod
     def ejscreen_areas_of_concern_data_exists(cls):
@@ -35,13 +42,14 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
         not reference this data.
 
         """
-        return cls.EJSCREEN_AREAS_OF_CONCERN_SOURCE_DATA.is_file()
+        return cls.EJSCREEN_AREAS_OF_CONCERN_SOURCE.is_file()
 
     def extract(self) -> None:
+        logger.info(self.EJSCREEN_AREAS_OF_CONCERN_SOURCE)
         if self.ejscreen_areas_of_concern_data_exists():
             logger.debug("Loading EJSCREEN Areas of Concern Data Locally")
             self.df = pd.read_csv(
-                filepath_or_buffer=self.EJSCREEN_AREAS_OF_CONCERN_SOURCE_DATA,
+                filepath_or_buffer=EJSCREEN_AREAS_OF_CONCERN_SOURCE,
                 dtype={
                     self.GEOID_FIELD_NAME: "string",
                 },

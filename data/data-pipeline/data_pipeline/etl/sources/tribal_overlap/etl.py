@@ -4,6 +4,7 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
 from data_pipeline.etl.sources.geo_utils import get_tract_geojson
@@ -66,6 +67,11 @@ class TribalOverlapETL(ExtractTransformLoad):
         self.output_df: pd.DataFrame
         self.census_tract_gdf: gpd.GeoDataFrame
         self.tribal_gdf: gpd.GeoDataFrame
+
+    
+    def get_data_sources(self) -> [DataSource]:
+        return [] # this uses already retrieved / calculated data
+
 
     @staticmethod
     def _create_string_from_list(series: pd.Series) -> str:

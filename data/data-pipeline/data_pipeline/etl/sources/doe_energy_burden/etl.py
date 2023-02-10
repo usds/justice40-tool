@@ -5,22 +5,30 @@ from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 
 logger = get_module_logger(__name__)
 
 
 class DOEEnergyBurden(ExtractTransformLoad):
+    
     NAME = "doe_energy_burden"
-    SOURCE_URL: str = (
-        settings.AWS_JUSTICE40_DATASOURCES_URL
-        + "/DOE_LEAD_AMI_TRACT_2018_ALL.csv.zip"
-    )
+    
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     LOAD_YAML_CONFIG: bool = True
 
     REVISED_ENERGY_BURDEN_FIELD_NAME: str
 
     def __init__(self):
+    
+        # fetch
+        self.doe_energy_burden_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/DOE_LEAD_AMI_TRACT_2018_ALL.csv.zip"
+        
+        # input
+        self.doe_energy_burden_source = self.get_sources_path() / "DOE_LEAD_AMI_TRACT_2018_ALL.csv"
+        
+        # output
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "doe_energy_burden"
         )
@@ -29,10 +37,14 @@ class DOEEnergyBurden(ExtractTransformLoad):
         self.raw_df: pd.DataFrame
         self.output_df: pd.DataFrame
 
-    def transform(self) -> None:
-        raw_df: pd.DataFrame = pd.read_csv(
-            filepath_or_buffer=self.get_tmp_path()
-            / "DOE_LEAD_AMI_TRACT_2018_ALL.csv",
+    def get_data_sources(self) -> [DataSource]:
+        return [ZIPDataSource(self.__class__.__name__, source=self.doe_energy_burden_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+
+    
+    def extract(self) -> None:
+        
+        self.raw_df = pd.read_csv(
+            filepath_or_buffer=self.doe_energy_burden_source,
             # The following need to remain as strings for all of their digits, not get converted to numbers.
             dtype={
                 self.INPUT_GEOID_TRACT_FIELD_NAME: "string",
@@ -40,8 +52,10 @@ class DOEEnergyBurden(ExtractTransformLoad):
             low_memory=False,
         )
 
+    def transform(self) -> None:
+
         logger.debug("Renaming columns and ensuring output format is correct")
-        output_df = raw_df.rename(
+        output_df = self.raw_df.rename(
             columns={
                 self.INPUT_ENERGY_BURDEN_FIELD_NAME: self.REVISED_ENERGY_BURDEN_FIELD_NAME,
                 self.INPUT_GEOID_TRACT_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME,

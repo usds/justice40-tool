@@ -1,6 +1,8 @@
 import geopandas as gpd
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -20,10 +22,15 @@ class TreeEquityScoreETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        self.TES_URL = "https://national-tes-data-share.s3.amazonaws.com/national_tes_share/"
-        self.TES_CSV = self.get_tmp_path() / "tes_2021_data.csv"
+        
+        # input
+        self.TES_CSV = self.get_sources_path() / "tes_2021_data.csv"
+        
+        # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "tree_equity_score"
         self.df: gpd.GeoDataFrame
+        
+        # config
         self.states = [
             "al",
             "az",
@@ -76,21 +83,31 @@ class TreeEquityScoreETL(ExtractTransformLoad):
             "wy",
         ]
 
-    def extract(self) -> None:
+
+    def get_data_sources(self) -> [DataSource]:
+        
+        tes_url = "https://national-tes-data-share.s3.amazonaws.com/national_tes_share/"
+        
+        sources = []
         for state in self.states:
-            super().extract(
-                f"{self.TES_URL}{state}.zip.zip",
-                f"{self.get_tmp_path()}/{state}",
+            sources.append(ZIPDataSource(self.__class__.__name__, source=f"{tes_url}{state}.zip.zip", download=self.get_tmp_path() / state, destination=self.get_sources_path() / state))
+
+        return sources
+
+
+    def extract(self) -> None:
+        
+        self.tes_state_dfs = []
+        for state in self.states:
+            self.tes_state_dfs.append(
+                gpd.read_file(f"{self.get_sources_path()}/{state}/{state}.shp")
             )
 
+
     def transform(self) -> None:
-        tes_state_dfs = []
-        for state in self.states:
-            tes_state_dfs.append(
-                gpd.read_file(f"{self.get_tmp_path()}/{state}/{state}.shp")
-            )
+
         self.df = gpd.GeoDataFrame(
-            pd.concat(tes_state_dfs), crs=tes_state_dfs[0].crs
+            pd.concat(self.tes_state_dfs), crs=self.tes_state_dfs[0].crs
         )
 
         # rename ID to Tract ID
@@ -99,6 +116,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
             columns={"geoid": ExtractTransformLoad.GEOID_FIELD_NAME},
             inplace=True,
         )
+
 
     def load(self) -> None:
         # write nationwide csv

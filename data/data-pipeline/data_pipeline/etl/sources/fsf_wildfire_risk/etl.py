@@ -4,6 +4,8 @@ import pandas as pd
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -15,7 +17,7 @@ class WildfireRiskETL(ExtractTransformLoad):
     NAME = "fsf_wildfire_risk"
     # These data were emailed to the J40 team while first street got
     # their official data sharing channels setup.
-    SOURCE_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/fsf_fire.zip"
+    
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
     LOAD_YAML_CONFIG: bool = True
@@ -29,9 +31,14 @@ class WildfireRiskETL(ExtractTransformLoad):
     SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_IN_30_YEARS: str
 
     def __init__(self):
-        # define the full path for the input CSV file
-        self.INPUT_CSV = self.get_tmp_path() / "fsf_fire" / "fire-tract2010.csv"
-
+        
+        # fetch
+        self.fsf_fire_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/fsf_fire.zip"
+        
+        # input
+        self.fsf_fire_source = self.get_sources_path() / "fsf_fire" / "fire-tract2010.csv"
+        
+        # output
         # this is the main dataframe
         self.df: pd.DataFrame
 
@@ -40,6 +47,20 @@ class WildfireRiskETL(ExtractTransformLoad):
         self.COUNT_PROPERTIES_AT_RISK_TODAY = "burnprob_year00_flag"
         self.COUNT_PROPERTIES_AT_RISK_30_YEARS = "burnprob_year30_flag"
         self.CLIP_PROPERTIES_COUNT = 250
+
+    
+    def get_data_sources(self) -> [DataSource]:
+        return [ZIPDataSource(self.__class__.__name__, source=self.fsf_fire_url, download=self.get_tmp_path(), destination=self.get_sources_path())]    
+
+
+    def extract(self) -> None:
+        
+        self.df_fsf_fire = pd.read_csv(
+            self.fsf_fire_source,
+            dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
+            low_memory=False,
+        )
+
 
     def transform(self) -> None:
         """Reads the unzipped data file into memory and applies the following
@@ -50,31 +71,26 @@ class WildfireRiskETL(ExtractTransformLoad):
         """
         # read in the unzipped csv data source then rename the
         # Census Tract column for merging
-        df_fsf_fire: pd.DataFrame = pd.read_csv(
-            self.INPUT_CSV,
-            dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
-            low_memory=False,
-        )
 
-        df_fsf_fire[self.GEOID_TRACT_FIELD_NAME] = df_fsf_fire[
+        self.df_fsf_fire[self.GEOID_TRACT_FIELD_NAME] = self.df_fsf_fire[
             self.INPUT_GEOID_TRACT_FIELD_NAME
         ].str.zfill(11)
 
-        df_fsf_fire[self.COUNT_PROPERTIES] = df_fsf_fire[
+        self.df_fsf_fire[self.COUNT_PROPERTIES] = self.df_fsf_fire[
             self.COUNT_PROPERTIES_NATIVE_FIELD_NAME
         ].clip(lower=self.CLIP_PROPERTIES_COUNT)
 
-        df_fsf_fire[self.SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_TODAY] = (
-            df_fsf_fire[self.COUNT_PROPERTIES_AT_RISK_TODAY]
-            / df_fsf_fire[self.COUNT_PROPERTIES]
+        self.df_fsf_fire[self.SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_TODAY] = (
+            self.df_fsf_fire[self.COUNT_PROPERTIES_AT_RISK_TODAY]
+            / self.df_fsf_fire[self.COUNT_PROPERTIES]
         )
-        df_fsf_fire[self.SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_IN_30_YEARS] = (
-            df_fsf_fire[self.COUNT_PROPERTIES_AT_RISK_30_YEARS]
-            / df_fsf_fire[self.COUNT_PROPERTIES]
+        self.df_fsf_fire[self.SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_IN_30_YEARS] = (
+            self.df_fsf_fire[self.COUNT_PROPERTIES_AT_RISK_30_YEARS]
+            / self.df_fsf_fire[self.COUNT_PROPERTIES]
         )
 
         # Assign the final df to the class' output_df for the load method with rename
-        self.output_df = df_fsf_fire.rename(
+        self.output_df = self.df_fsf_fire.rename(
             columns={
                 self.COUNT_PROPERTIES_AT_RISK_TODAY: self.PROPERTIES_AT_RISK_FROM_FIRE_TODAY,
                 self.COUNT_PROPERTIES_AT_RISK_30_YEARS: self.PROPERTIES_AT_RISK_FROM_FIRE_IN_30_YEARS,

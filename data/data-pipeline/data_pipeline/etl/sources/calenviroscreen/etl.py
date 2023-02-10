@@ -1,23 +1,30 @@
 import pandas as pd
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-
 class CalEnviroScreenETL(ExtractTransformLoad):
+    """California environmental screen
+    
+    TODO: Need good description
+    """
+    
     def __init__(self):
-        self.CALENVIROSCREEN_FTP_URL = (
-            settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/CalEnviroScreen_4.0_2021.zip"
-        )
-        self.CALENVIROSCREEN_CSV = (
-            self.get_tmp_path() / "CalEnviroScreen_4.0_2021.csv"
-        )
-        self.CSV_PATH = self.DATA_PATH / "dataset" / "calenviroscreen4"
+        
+        # fetch
+        self.calenviroscreen_ftp_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/CalEnviroScreen_4.0_2021.zip"
+        
+        # input
+        self.calenviroscreen_source = self.get_sources_path() / "CalEnviroScreen_4.0_2021.csv"
+        
+        # output
+        self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "calenviroscreen4"
 
-        # Definining some variable names
+        # Defining some variable names
         self.CALENVIROSCREEN_SCORE_FIELD_NAME = "calenviroscreen_score"
         self.CALENVIROSCREEN_PERCENTILE_FIELD_NAME = (
             "calenviroscreen_percentile"
@@ -31,20 +38,19 @@ class CalEnviroScreenETL(ExtractTransformLoad):
         self.CALENVIROSCREEN_PRIORITY_COMMUNITY_THRESHOLD = 75
 
         self.df: pd.DataFrame
+        
+
+    def get_data_sources(self) -> [DataSource]:
+        return [ZIPDataSource(self.__class__.__name__, source=self.calenviroscreen_ftp_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+
 
     def extract(self) -> None:
-        super().extract(
-            self.CALENVIROSCREEN_FTP_URL,
-            self.get_tmp_path(),
-        )
+        self.df = pd.read_csv(self.calenviroscreen_source, dtype={"Census Tract": "string"})
 
     def transform(self) -> None:
         # Data from https://calenviroscreen-oehha.hub.arcgis.com/#Data, specifically:
         # https://oehha.ca.gov/media/downloads/calenviroscreen/document/calenviroscreen40resultsdatadictionaryd12021.zip
         # Load comparison index (CalEnviroScreen 4)
-        self.df = pd.read_csv(
-            self.CALENVIROSCREEN_CSV, dtype={"Census Tract": "string"}
-        )
 
         self.df.rename(
             columns={
@@ -68,5 +74,5 @@ class CalEnviroScreenETL(ExtractTransformLoad):
 
     def load(self) -> None:
         # write nationwide csv
-        self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.CSV_PATH / "data06.csv", index=False)
+        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
+        self.df.to_csv(self.OUTPUT_PATH / "data06.csv", index=False)

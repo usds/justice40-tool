@@ -8,6 +8,8 @@ from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import FileDataSource
 
 pd.options.mode.chained_assignment = "raise"
 
@@ -348,6 +350,25 @@ class CensusDecennialETL(ExtractTransformLoad):
         self.df_vi: pd.DataFrame
         self.df_all: pd.DataFrame
 
+    def get_data_sources(self) -> [DataSource]:
+        
+        sources = []
+        
+        for island in self.ISLAND_TERRITORIES:
+            for county in island["county_fips"]:
+                
+                api_url = self.API_URL.format(
+                    self.DECENNIAL_YEAR,
+                    island["state_abbreviation"],
+                    island["var_list"],
+                    island["fips"],
+                    county,
+                )
+                
+                sources.append(FileDataSource(self.__class__.__name__, source=api_url, destination=self.get_sources_path() / str(self.DECENNIAL_YEAR) / island["state_abbreviation"] / island["fips"] / county / "census.json"))
+        
+        return sources
+
     def extract(self) -> None:
         dfs = []
         dfs_vi = []
@@ -356,21 +377,10 @@ class CensusDecennialETL(ExtractTransformLoad):
                 f"Downloading data for state/territory {island['state_abbreviation']}"
             )
             for county in island["county_fips"]:
-                api_url = self.API_URL.format(
-                    self.DECENNIAL_YEAR,
-                    island["state_abbreviation"],
-                    island["var_list"],
-                    island["fips"],
-                    county,
-                )
-                logger.debug(f"CENSUS: Requesting {api_url}")
-                download = requests.get(
-                    api_url,
-                    timeout=settings.REQUESTS_DEFAULT_TIMOUT,
-                )
 
                 try:
-                    df = json.loads(download.content)
+                    filepath=self.get_sources_path() / str(self.DECENNIAL_YEAR) / island["state_abbreviation"] / island["fips"] / county / "census.json"
+                    df = json.load(filepath.open())
                 except ValueError as e:
                     logger.error(
                         f"Could not load content in census decennial ETL because {e}. Content is {download.content}."

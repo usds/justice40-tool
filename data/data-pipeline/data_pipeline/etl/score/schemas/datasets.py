@@ -3,7 +3,8 @@ from dataclasses import field
 from enum import Enum
 from typing import List
 from typing import Optional
-
+from pathlib import Path
+    
 
 class FieldType(Enum):
     STRING = "string"

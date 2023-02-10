@@ -3,6 +3,8 @@ import pathlib
 import numpy as np
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import FileDataSource
 from data_pipeline.score import field_names
 from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
@@ -19,30 +21,30 @@ class MappingInequalityETL(ExtractTransformLoad):
 
     Information on the mapping of this data to census tracts is available at
     https://github.com/americanpanorama/Census_HOLC_Research.
-
     """
 
     def __init__(self):
+        
+        # fetch        
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-            self.MAPPING_INEQUALITY_CSV_URL = (
+            self.mapping_inequality_csv_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
                 "mapping_inequality/holc_tract_lookup.csv"
             )
         else:
-            self.MAPPING_INEQUALITY_CSV_URL = (
+            self.mapping_inequality_csv_url = (
                 "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/"
                 "main/2010_Census_Tracts/holc_tract_lookup.csv"
             )
-        self.MAPPING_INEQUALITY_CSV = (
-            self.get_tmp_path() / "holc_tract_lookup.csv"
+        
+        # input
+        self.mapping_inequality_source = self.get_sources_path() / "holc_tract_lookup.csv"
+        self.holc_manual_mapping_source = ( # here be dragons – this file is pulled from a different place than most
+            pathlib.Path(__file__).parent / "data" / "holc_grades_manually_mapped.csv"
         )
+        
+        # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "mapping_inequality"
-
-        self.HOLC_MANUAL_MAPPING_CSV_PATH = (
-            pathlib.Path(__file__).parent
-            / "data"
-            / "holc_grades_manually_mapped.csv"
-        )
 
         # Some input field names. From documentation: 'Census Tracts were intersected
         # with HOLC Polygons. Census information can be joined via the "geoid" field.
@@ -74,21 +76,31 @@ class MappingInequalityETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-    def extract(self) -> None:
-        download_file_from_url(
-            file_url=self.MAPPING_INEQUALITY_CSV_URL,
-            download_file_name=self.MAPPING_INEQUALITY_CSV,
-        )
 
-    def transform(self) -> None:
-        df: pd.DataFrame = pd.read_csv(
-            self.MAPPING_INEQUALITY_CSV,
+    def get_data_sources(self) -> [DataSource]:
+        return [FileDataSource(self.__class__.__name__, source=self.mapping_inequality_csv_url, destination=self.mapping_inequality_source)]
+
+
+    def extract(self) -> None:
+        
+        self.df = pd.read_csv(
+            self.mapping_inequality_source,
             dtype={self.TRACT_INPUT_FIELD: "string"},
             low_memory=False,
         )
+        
+        # Some data needs to be manually mapped to its grade.
+        # TODO: Investigate more data that may need to be manually mapped.
+        self.holc_manually_mapped_df = pd.read_csv(
+            filepath_or_buffer=self.holc_manual_mapping_source,
+            low_memory=False,
+        )
 
+
+    def transform(self) -> None:
+        
         # rename Tract ID
-        df.rename(
+        self.df.rename(
             columns={
                 self.TRACT_INPUT_FIELD: self.GEOID_TRACT_FIELD_NAME,
             },
@@ -98,28 +110,21 @@ class MappingInequalityETL(ExtractTransformLoad):
         # Keep the first character, which is the HOLC grade (A, B, C, D).
         # TODO: investigate why this dataframe triggers these pylint errors.
         # pylint: disable=unsupported-assignment-operation, unsubscriptable-object
-        df[self.HOLC_GRADE_DERIVED_FIELD] = df[
+        self.df[self.HOLC_GRADE_DERIVED_FIELD] = self.df[
             self.HOLC_GRADE_AND_ID_FIELD
         ].str[0:1]
 
         # Remove nonsense when the field has no grade or invalid grades.
         valid_grades = ["A", "B", "C", "D"]
-        df.loc[
+        self.df.loc[
             # pylint: disable=unsubscriptable-object
-            ~df[self.HOLC_GRADE_DERIVED_FIELD].isin(valid_grades),
+            ~self.df[self.HOLC_GRADE_DERIVED_FIELD].isin(valid_grades),
             self.HOLC_GRADE_DERIVED_FIELD,
         ] = None
 
-        # Some data needs to be manually mapped to its grade.
-        # TODO: Investigate more data that may need to be manually mapped.
-        holc_manually_mapped_df = pd.read_csv(
-            filepath_or_buffer=self.HOLC_MANUAL_MAPPING_CSV_PATH,
-            low_memory=False,
-        )
-
         # Join on the existing data
-        merged_df = df.merge(
-            right=holc_manually_mapped_df,
+        merged_df =self. df.merge(
+            right=self.holc_manually_mapped_df,
             on=[self.HOLC_GRADE_AND_ID_FIELD, self.CITY_INPUT_FIELD],
             how="left",
         )
@@ -203,6 +208,7 @@ class MappingInequalityETL(ExtractTransformLoad):
 
         # Save to self.
         self.df = grouped_df
+
 
     def load(self) -> None:
         # write nationwide csv

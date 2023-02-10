@@ -2,6 +2,8 @@ import pandas as pd
 import requests
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import FileDataSource
 from data_pipeline.utils import get_module_logger
 
 
@@ -9,46 +11,46 @@ logger = get_module_logger(__name__)
 
 
 class HudRecapETL(ExtractTransformLoad):
+    
     def __init__(self):
 
+        # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-            self.HUD_RECAP_CSV_URL = (
+            self.hud_recap_csv_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
                 "hud_recap/Racially_or_Ethnically_Concentrated_Areas_of_Poverty__R_ECAPs_.csv"
             )
         else:
-            self.HUD_RECAP_CSV_URL = (
+            self.hud_recap_csv_url = (
                 "https://opendata.arcgis.com/api/v3/datasets/"
                 "56de4edea8264fe5a344da9811ef5d6e_0/downloads/data?format=csv&spatialRefId=4326"
             )
 
-        self.HUD_RECAP_CSV = (
-            self.get_tmp_path()
-            / "Racially_or_Ethnically_Concentrated_Areas_of_Poverty__R_ECAPs_.csv"
-        )
+        # input
+        self.hud_recap_source = self.get_sources_path() / "Racially_or_Ethnically_Concentrated_Areas_of_Poverty__R_ECAPs_.csv"
+        
+        # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "hud_recap"
 
-        # Definining some variable names
+        # Defining some variable names
         self.HUD_RECAP_PRIORITY_COMMUNITY_FIELD_NAME = (
             "hud_recap_priority_community"
         )
 
         self.df: pd.DataFrame
 
+
+    def get_data_sources(self) -> [DataSource]:
+        return [FileDataSource(self.__class__.__name__, source=self.hud_recap_csv_url, destination=self.hud_recap_source)]
+
+
     def extract(self) -> None:
-        download = requests.get(
-            self.HUD_RECAP_CSV_URL,
-            verify=None,
-            timeout=settings.REQUESTS_DEFAULT_TIMOUT,
-        )
-        file_contents = download.content
-        csv_file = open(self.HUD_RECAP_CSV, "wb")
-        csv_file.write(file_contents)
-        csv_file.close()
+
+        # Load comparison index (CalEnviroScreen 4)
+        self.df = pd.read_csv(self.hud_recap_source, dtype={"GEOID": "string"})
+
 
     def transform(self) -> None:
-        # Load comparison index (CalEnviroScreen 4)
-        self.df = pd.read_csv(self.HUD_RECAP_CSV, dtype={"GEOID": "string"})
 
         self.df.rename(
             columns={
@@ -70,6 +72,7 @@ class HudRecapETL(ExtractTransformLoad):
         self.df[self.HUD_RECAP_PRIORITY_COMMUNITY_FIELD_NAME].value_counts()
 
         self.df.sort_values(by=self.GEOID_TRACT_FIELD_NAME, inplace=True)
+
 
     def load(self) -> None:
         # write nationwide csv

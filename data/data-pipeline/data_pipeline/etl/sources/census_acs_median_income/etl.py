@@ -9,6 +9,9 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import unzip_file_from_url
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
+from data_pipeline.etl.datasource import FileDataSource
 
 logger = get_module_logger(__name__)
 
@@ -21,6 +24,10 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
             / "dataset"
             / f"census_acs_median_income_{self.ACS_YEAR}"
         )
+
+        self.GEOCORR_ALL_STATES_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/geocorr2014_all_states_tracts_only.csv.zip"
+        self.GEOCORR_ALL_STATES_PATH = self.get_sources_path() / "geocorr"
+        self.GEOCORR_ALL_STATES_SOURCE = self.GEOCORR_ALL_STATES_PATH / "geocorr2014_all_states_tracts_only.csv"
 
         # Set constants for Geocorr MSAs data.
         self.PLACE_FIELD_NAME: str = "Census Place Name"
@@ -39,10 +46,12 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
             f"https://api.census.gov/data/{self.ACS_YEAR}/acs/acs5?get=B19013_001E"
             + "&for=metropolitan%20statistical%20area/micropolitan%20statistical%20area"
         )
+        self.MSA_MEDIAN_INCOME_SOURCE = self.get_sources_path() / "msa" / "msa_median_income.json"
         self.MSA_INCOME_FIELD_NAME: str = f"Median household income in the past 12 months (MSA; {self.ACS_YEAR} inflation-adjusted dollars)"
 
         # Set constants for state median incomes
         self.STATE_MEDIAN_INCOME_URL: str = f"https://api.census.gov/data/{self.ACS_YEAR}/acs/acs5?get=B19013_001E&for=state"
+        self.STATE_MEDIAN_INCOME_SOURCE = self.get_sources_path() / "state" / "state_median_income.json"
         self.STATE_GEOID_FIELD_NAME: str = "GEOID2"
         self.STATE_MEDIAN_INCOME_FIELD_NAME: str = f"Median household income (State; {self.ACS_YEAR} inflation-adjusted dollars)"
 
@@ -50,6 +59,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         self.PUERTO_RICO_S3_LINK: str = (
             settings.AWS_JUSTICE40_DATASOURCES_URL + "/PR_census_tracts.csv"
         )
+        self.PUERTO_RICO_ALL_STATES_SOURCE = self.get_sources_path() / "pr_tracts" / "pr_tracts.csv"
 
         # Constants for output
         self.AMI_REFERENCE_FIELD_NAME: str = "AMI Reference"
@@ -75,6 +85,15 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         self.msa_median_incomes: dict
         self.state_median_incomes: dict
         self.pr_tracts: pd.DataFrame
+
+
+    def get_data_sources(self) -> [DataSource]:
+        
+        return [ZIPDataSource(self.__class__.__name__, source=self.GEOCORR_ALL_STATES_URL, download=self.get_tmp_path() / "geocorr", destination=self.GEOCORR_ALL_STATES_PATH),
+        FileDataSource(self.__class__.__name__, source=self.PUERTO_RICO_S3_LINK, destination=self.PUERTO_RICO_ALL_STATES_SOURCE),
+        FileDataSource(self.__class__.__name__, source=self.MSA_MEDIAN_INCOME_URL, destination=self.MSA_MEDIAN_INCOME_SOURCE),
+        FileDataSource(self.__class__.__name__, source=self.STATE_MEDIAN_INCOME_URL, destination=self.STATE_MEDIAN_INCOME_SOURCE),]
+
 
     def _transform_geocorr(self) -> pd.DataFrame:
         # Transform the geocorr data
@@ -240,17 +259,8 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         # - CBSA Type (Metro or Micro)
         logger.debug("Starting download of 1.5MB Geocorr information.")
 
-        unzip_file_from_url(
-            file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/geocorr2014_all_states_tracts_only.csv.zip",
-            download_path=self.get_tmp_path(),
-            unzipped_file_path=self.get_tmp_path() / "geocorr",
-        )
-
         self.raw_geocorr_df = pd.read_csv(
-            filepath_or_buffer=self.get_tmp_path()
-            / "geocorr"
-            / "geocorr2014_all_states_tracts_only.csv",
+            filepath_or_buffer=self.GEOCORR_ALL_STATES_SOURCE,
             # Skip second row, which has descriptions.
             skiprows=[1],
             # The following need to remain as strings for all of their digits, not get converted to numbers.
@@ -264,39 +274,19 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-        logger.debug("Pulling PR tract list down.")
-        # This step is necessary because PR is not in geocorr at the level that gets joined
-        pr_file = self.get_tmp_path() / "pr_tracts" / "pr_tracts.csv"
-        download_file_from_url(
-            file_url=self.PUERTO_RICO_S3_LINK, download_file_name=pr_file
-        )
         self.pr_tracts = pd.read_csv(
-            filepath_or_buffer=self.get_tmp_path()
-            / "pr_tracts"
-            / "pr_tracts.csv",
+            filepath_or_buffer=self.PUERTO_RICO_ALL_STATES_SOURCE,
             # The following need to remain as strings for all of their digits, not get converted to numbers.
             dtype={"GEOID10_TRACT": str},
             low_memory=False,
         )
         self.pr_tracts["State Abbreviation"] = "PR"
 
-        # Download MSA median incomes
-        logger.debug("Starting download of MSA median incomes.")
-        download = requests.get(
-            self.MSA_MEDIAN_INCOME_URL,
-            verify=None,
-            timeout=settings.REQUESTS_DEFAULT_TIMOUT,
-        )
-        self.msa_median_incomes = json.loads(download.content)
-
-        # Download state median incomes
-        logger.debug("Starting download of state median incomes.")
-        download_state = requests.get(
-            self.STATE_MEDIAN_INCOME_URL,
-            verify=None,
-            timeout=settings.REQUESTS_DEFAULT_TIMOUT,
-        )
-        self.state_median_incomes = json.loads(download_state.content)
+        with self.MSA_MEDIAN_INCOME_SOURCE.open() as source:
+            self.msa_median_incomes = json.load(source)
+        
+        with self.STATE_MEDIAN_INCOME_SOURCE.open() as source:
+            self.state_median_incomes = json.load(source)
         ## NOTE we already have PR's MI here
 
     def transform(self) -> None:

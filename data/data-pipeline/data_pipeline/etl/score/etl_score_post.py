@@ -16,6 +16,7 @@ from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import load_dict_from_yaml_object_fields
 from data_pipeline.utils import load_yaml_dict_from_file
 from data_pipeline.utils import zip_files
+from data_pipeline.etl.datasource import DataSource
 from numpy import float64
 
 from . import constants
@@ -60,6 +61,11 @@ class PostScoreETL(ExtractTransformLoad):
         self.yaml_global_config_rounding_num_float = "float"
         self.yaml_global_config_sort_by_label = "sort_by_label"
         # End YAML definition constants
+
+
+    def get_data_sources(self) -> [DataSource]:
+        return [] # we have all prerequisite sources locally as a result of generating the score
+
 
     def _extract_counties(self, county_path: Path) -> pd.DataFrame:
         logger.debug("Reading Counties CSV")

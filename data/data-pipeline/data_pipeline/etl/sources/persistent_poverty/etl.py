@@ -3,6 +3,8 @@ import functools
 import pandas as pd
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import unzip_file_from_url
@@ -23,6 +25,18 @@ class PersistentPovertyETL(ExtractTransformLoad):
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
+        
+        # fetch
+        self.poverty_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/LTDB_Std_All_Sample.zip"
+        
+        # source 
+        self.poverty_sources = [
+            self.get_sources_path() / "ltdb_std_all_sample" / "ltdb_std_1990_sample.csv",
+            self.get_sources_path() / "ltdb_std_all_sample" / "ltdb_std_2000_sample.csv",
+            self.get_sources_path() / "ltdb_std_all_sample" / "ltdb_std_2010_sample.csv",
+        ]
+        
+        # output
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "persistent_poverty"
 
         # Need to change hyperlink to S3
@@ -43,6 +57,11 @@ class PersistentPovertyETL(ExtractTransformLoad):
         ]
 
         self.df: pd.DataFrame
+
+
+    def get_data_sources(self) -> [DataSource]:
+        return [ZIPDataSource(self.__class__.__name__, source=self.poverty_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+
 
     def _join_input_dfs(self, dfs: list) -> pd.DataFrame:
         df = functools.reduce(
@@ -75,28 +94,14 @@ class PersistentPovertyETL(ExtractTransformLoad):
 
         return df
 
+
     def extract(self) -> None:
-        unzipped_file_path = self.get_tmp_path()
-
-        unzip_file_from_url(
-            file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/LTDB_Std_All_Sample.zip",
-            download_path=self.get_tmp_path(),
-            unzipped_file_path=unzipped_file_path,
-        )
-
-        file_names = [
-            "ltdb_std_1990_sample.csv",
-            "ltdb_std_2000_sample.csv",
-            "ltdb_std_2010_sample.csv",
-        ]
 
         temporary_input_dfs = []
 
-        for file_name in file_names:
+        for file_name in self.poverty_sources:
             temporary_input_df = pd.read_csv(
-                filepath_or_buffer=unzipped_file_path
-                / f"ltdb_std_all_sample/{file_name}",
+                filepath_or_buffer=file_name,
                 dtype={
                     self.GEOID_TRACT_INPUT_FIELD_NAME_1: "string",
                     self.GEOID_TRACT_INPUT_FIELD_NAME_2: "string",
@@ -120,6 +125,7 @@ class PersistentPovertyETL(ExtractTransformLoad):
             temporary_input_dfs.append(temporary_input_df)
 
         self.df = self._join_input_dfs(temporary_input_dfs)
+
 
     def transform(self) -> None:
         transformed_df = self.df

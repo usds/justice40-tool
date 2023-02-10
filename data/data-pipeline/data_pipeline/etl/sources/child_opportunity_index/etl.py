@@ -38,16 +38,23 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
+        
+        # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-            self.SOURCE_URL = (
+            self.child_opportunity_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
                 "child_opportunity_index/raw.zip"
             )
         else:
-            self.SOURCE_URL = (
+            self.child_opportunity_url = (
                 "https://data.diversitydatakids.org/datastore/zip/f16fff12-b1e5-4f60-85d3-"
                 "3a0ededa30a0?format=csv"
             )
+
+        # input
+        self.child_opportunity_index_source = elf.get_sources_path() / "raw.csv"
+        
+        # output
 
         # TODO: Decide about nixing this
         self.TRACT_INPUT_COLUMN_NAME = self.INPUT_GEOID_TRACT_FIELD_NAME
@@ -64,15 +71,15 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         self.output_df: pd.DataFrame
 
-    def extract(self) -> None:
-        super().extract(
-            source_url=self.SOURCE_URL,
-            extract_path=self.get_tmp_path(),
-        )
 
-    def transform(self) -> None:
-        raw_df = pd.read_csv(
-            filepath_or_buffer=self.get_tmp_path() / "raw.csv",
+    def get_data_sources(self) -> [DataSource]:  
+        return [ZIPDataSource(self.__class__.__name__, source=self.child_opportunity_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+
+
+    def extract(self) -> None:
+        
+        self.raw_df = pd.read_csv(
+            filepath_or_buffer=self.child_opportunity_index_source,
             # The following need to remain as strings for all of their digits, not get
             # converted to numbers.
             dtype={
@@ -81,7 +88,9 @@ class ChildOpportunityIndex(ExtractTransformLoad):
             low_memory=False,
         )
 
-        output_df = raw_df.rename(
+    def transform(self) -> None:
+
+        output_df = self.raw_df.rename(
             columns={
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
                 self.EXTREME_HEAT_INPUT_FIELD: self.EXTREME_HEAT_FIELD,

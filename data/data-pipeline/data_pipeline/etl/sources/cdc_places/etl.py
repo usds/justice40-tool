@@ -7,11 +7,15 @@ from data_pipeline.score import field_names
 from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import FileDataSource
 
 logger = get_module_logger(__name__)
 
 
 class CDCPlacesETL(ExtractTransformLoad):
+    """#TODO: Need description"""
+    
     NAME = "cdc_places"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
@@ -21,15 +25,21 @@ class CDCPlacesETL(ExtractTransformLoad):
     CDC_MEASURE_FIELD_NAME = "Measure"
 
     def __init__(self):
-        self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_places"
-
+    
+        # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-            self.CDC_PLACES_URL = (
+            self.cdc_places_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
                 "cdc_places/PLACES__Local_Data_for_Better_Health__Census_Tract_Data_2021_release.csv"
             )
         else:
-            self.CDC_PLACES_URL = "https://chronicdata.cdc.gov/api/views/cwsq-ngmh/rows.csv?accessType=DOWNLOAD"
+            self.cdc_places_url = "https://chronicdata.cdc.gov/api/views/cwsq-ngmh/rows.csv?accessType=DOWNLOAD"
+
+        # input
+        self.places_source = self.get_sources_path() / "census_tract.csv"
+
+        # output
+        self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_places"
 
         self.COLUMNS_TO_KEEP: typing.List[str] = [
             self.GEOID_TRACT_FIELD_NAME,
@@ -43,19 +53,20 @@ class CDCPlacesETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-    def extract(self) -> None:
-        file_path = download_file_from_url(
-            file_url=self.CDC_PLACES_URL,
-            download_file_name=self.get_tmp_path() / "census_tract.csv",
-        )
 
+    def get_data_sources(self) -> [DataSource]:
+        return [FileDataSource(self.__class__.__name__, source=self.cdc_places_url, destination=self.places_source)]
+
+
+    def extract(self) -> None:
         self.df = pd.read_csv(
-            filepath_or_buffer=file_path,
+            filepath_or_buffer=self.places_source,
             dtype={self.CDC_GEOID_FIELD_NAME: "string"},
             low_memory=False,
         )
 
     def transform(self) -> None:
+        
         # Rename GEOID field
         self.df.rename(
             columns={self.CDC_GEOID_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME},
