@@ -70,7 +70,7 @@ export const DOWNLOAD_FILES = {
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
     INSTRUCTIONS: {
-      SIZE: .8, // KB // Todo: Update when actual file is uploaded
+      SIZE: 228.4, // KB // Todo: Update when actual file is uploaded
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_INSTRUCT_PDF, false),
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
@@ -592,6 +592,20 @@ export const DOWNLOAD_LINKS = {
       link5: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.HOW_TO_COMMUNITIES.URL, false, true),
       howToCommFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.NARWAL.HOW_TO_COMMUNITIES.SIZE}
+        style="unit"
+        unit="kilobyte"
+        unitDisplay="narrow"
+      />,
+    }}
+  />,
+  LINK6: <FormattedMessage
+    id={'download.page.download.file.6'}
+    defaultMessage={`<link6>Instructions to Federal agencies on using the CEJST</link6> (.pdf {instructions})`}
+    description={'Navigate to the download page. This is sixth download file link'}
+    values={{
+      link6: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.INSTRUCTIONS.URL, false, true),
+      instructions: <FormattedNumber
+        value={DOWNLOAD_FILES.NARWAL.INSTRUCTIONS.SIZE}
         style="unit"
         unit="kilobyte"
         unitDisplay="narrow"
