@@ -74,7 +74,8 @@ class GeoScoreETL(ExtractTransformLoad):
         return [] # we have all prerequisite sources locally as a result of generating the previous steps in the pipeline
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
         # check census data
         check_census_data_source(
             census_data_path=self.DATA_PATH / "census",

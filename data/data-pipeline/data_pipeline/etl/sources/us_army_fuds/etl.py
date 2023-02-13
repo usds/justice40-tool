@@ -8,7 +8,6 @@ from data_pipeline.etl.datasource import DataSource
 from data_pipeline.etl.datasource import FileDataSource
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
-from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 
@@ -59,11 +58,8 @@ class USArmyFUDS(ExtractTransformLoad):
                 "data?format=geojson&spatialRefId=4326&where=1%3D1"
             )
         
-        return [FileDataSource(self.__class__.__name__, source=fuds_url, destination=self.fuds_source)]
+        return [FileDataSource(source=fuds_url, destination=self.fuds_source)]
 
-
-    def extract(self) -> None:
-        pass
 
 
     def transform(self) -> None:

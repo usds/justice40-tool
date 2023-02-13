@@ -67,7 +67,7 @@ class HudHousingETL(ExtractTransformLoad):
         
         
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(self.__class__.__name__, source=self.housing_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+        return [ZIPDataSource(source=self.housing_url, destination=self.get_sources_path())]
 
 
     def _read_chas_table(self, file_name):
@@ -88,7 +88,9 @@ class HudHousingETL(ExtractTransformLoad):
         return tmp_df
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
         
         table_8 = self._read_chas_table("Table8.csv")
         table_3 = self._read_chas_table("Table3.csv")
@@ -96,7 +98,6 @@ class HudHousingETL(ExtractTransformLoad):
         self.df = table_8.merge(
             table_3, how="outer", on=self.GEOID_TRACT_FIELD_NAME
         )
-
 
 
     def transform(self) -> None:

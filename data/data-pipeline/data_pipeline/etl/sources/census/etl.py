@@ -75,13 +75,9 @@ class CensusETL(ExtractTransformLoad):
             tract_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/TRACT/2010/tl_2010_{fips_code}_tract10.zip"
             destination_path = self.shape_file_path / fips_code
             
-            sources.append(ZIPDataSource(self.__class__.__name__, source=tract_state_url, download=self.get_tmp_path() / "shp" / fips_code, destination=destination_path))
+            sources.append(ZIPDataSource(source=tract_state_url, destination=destination_path))
         
         return sources
-
-
-    def extract(self) -> None:
-        pass
 
 
     def _transform_to_geojson(self, fips_code: str) -> None:

@@ -60,7 +60,8 @@ class ScoreETL(ExtractTransformLoad):
     def get_data_sources(self) -> [DataSource]:
         return [] # we have all prerequisite sources locally as a result of running the ETLs
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
         # EJSCreen csv Load
         ejscreen_csv = constants.DATA_PATH / "dataset" / "ejscreen" / "usa.csv"
         self.ejscreen_df = pd.read_csv(

@@ -53,15 +53,18 @@ class NatureDeprivedETL(ExtractTransformLoad):
 
 
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(self.__class__.__name__, source=self.nature_deprived_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+        return [ZIPDataSource(source=self.nature_deprived_url, destination=self.get_sources_path())]
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
         """Reads the unzipped data file into memory and applies the following
         transformations to prepare it for the load() method:
         
         - Renames columns as needed
         """
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
+        
         self.df_ncld: pd.DataFrame = pd.read_csv(
             self.nature_deprived_source,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},

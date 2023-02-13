@@ -41,10 +41,12 @@ class HudRecapETL(ExtractTransformLoad):
 
 
     def get_data_sources(self) -> [DataSource]:
-        return [FileDataSource(self.__class__.__name__, source=self.hud_recap_csv_url, destination=self.hud_recap_source)]
+        return [FileDataSource(source=self.hud_recap_csv_url, destination=self.hud_recap_source)]
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
 
         # Load comparison index (CalEnviroScreen 4)
         self.df = pd.read_csv(self.hud_recap_source, dtype={"GEOID": "string"})

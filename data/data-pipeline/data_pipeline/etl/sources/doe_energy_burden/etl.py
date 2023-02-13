@@ -38,10 +38,12 @@ class DOEEnergyBurden(ExtractTransformLoad):
         self.output_df: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(self.__class__.__name__, source=self.doe_energy_burden_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+        return [ZIPDataSource(source=self.doe_energy_burden_url, destination=self.get_sources_path())]
 
     
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
         
         self.raw_df = pd.read_csv(
             filepath_or_buffer=self.doe_energy_burden_source,

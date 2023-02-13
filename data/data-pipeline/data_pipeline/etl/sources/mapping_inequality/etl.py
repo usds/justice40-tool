@@ -6,7 +6,6 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.datasource import DataSource
 from data_pipeline.etl.datasource import FileDataSource
 from data_pipeline.score import field_names
-from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 
@@ -78,10 +77,12 @@ class MappingInequalityETL(ExtractTransformLoad):
 
 
     def get_data_sources(self) -> [DataSource]:
-        return [FileDataSource(self.__class__.__name__, source=self.mapping_inequality_csv_url, destination=self.mapping_inequality_source)]
+        return [FileDataSource(source=self.mapping_inequality_csv_url, destination=self.mapping_inequality_source)]
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
         
         self.df = pd.read_csv(
             self.mapping_inequality_source,

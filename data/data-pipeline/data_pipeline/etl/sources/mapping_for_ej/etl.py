@@ -49,12 +49,14 @@ class MappingForEJETL(ExtractTransformLoad):
 
     def get_data_sources(self) -> [DataSource]:
         return [
-            ZIPDataSource(self.__class__.__name__, source=self.mapping_for_ej_va_url, download=self.get_tmp_path(), destination=self.get_sources_path()),
-            ZIPDataSource(self.__class__.__name__, source=self.mapping_for_ej_co_url, download=self.get_tmp_path(), destination=self.get_sources_path())
+            ZIPDataSource(source=self.mapping_for_ej_va_url, destination=self.get_sources_path()),
+            ZIPDataSource(source=self.mapping_for_ej_co_url, destination=self.get_sources_path())
         ]
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
         
         # Join (here, it's just concatenating) the two dataframes from
         # CO and VA

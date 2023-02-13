@@ -55,7 +55,7 @@ def _get_dataset(dataset: dict) -> ExtractTransformLoad:
     return etl_instance
 
 
-def _run_one_dataset(dataset: dict) -> None:
+def _run_one_dataset(dataset: dict, use_cache: bool = False) -> None:
     """Runs one etl process."""
 
     logger.info(f"Running ETL for {dataset['name']}")
@@ -63,7 +63,7 @@ def _run_one_dataset(dataset: dict) -> None:
 
     # run extract
     logger.debug(f"Extracting {dataset['name']}")
-    etl_instance.extract()
+    etl_instance.extract(use_cache)
 
     # run transform
     logger.debug(f"Transforming {dataset['name']}")
@@ -84,11 +84,12 @@ def _run_one_dataset(dataset: dict) -> None:
     logger.info(f"Finished ETL for dataset {dataset['name']}")
 
 
-def etl_runner(dataset_to_run: str = None) -> None:
+def etl_runner(dataset_to_run: str = None, use_cache: bool = False) -> None:
     """Runs all etl processes or a specific one
 
     Args:
         dataset_to_run (str): Run a specific ETL process. If missing, runs all processes (optional)
+        use_cache (bool): Use the cached data sources – if they exist – rather than downloading them all from scratch
 
     Returns:
         None
@@ -115,7 +116,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
         logger.info("Running concurrent ETL jobs")
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
-                executor.submit(_run_one_dataset, dataset=dataset)
+                executor.submit(_run_one_dataset, dataset=dataset, use_cache=use_cache)
                 for dataset in concurrent_datasets
             }
 
@@ -129,7 +130,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
     if high_memory_datasets:
         logger.info("Running high-memory ETL jobs")
         for dataset in high_memory_datasets:
-            _run_one_dataset(dataset=dataset)
+            _run_one_dataset(dataset=dataset, use_cache=use_cache)
 
 
 def get_data_sources(dataset_to_run: str = None) -> [DataSource]:
@@ -147,14 +148,24 @@ def get_data_sources(dataset_to_run: str = None) -> [DataSource]:
     return sources
 
 
-def fetch_data_sources(dataset_to_run: str = None) -> None:
+def extract_data_sources(dataset_to_run: str = None, use_cache: bool = False) -> None:
 
     dataset_list = _get_datasets_to_run(dataset_to_run)
     
     for dataset in dataset_list:
         etl_instance = _get_dataset(dataset)
-        logger.info(f"Fetching dataset for {etl_instance.__class__.__name__}")
-        etl_instance.fetch()
+        logger.info(f"Extracting data set for {etl_instance.__class__.__name__}")
+        etl_instance.extract(use_cache)
+
+
+def clear_data_source_cache(dataset_to_run: str = None) -> None:
+ 
+    dataset_list = _get_datasets_to_run(dataset_to_run)
+    
+    for dataset in dataset_list:
+        etl_instance = _get_dataset(dataset)
+        logger.info(f"Clearing data set cache for {etl_instance.__class__.__name__}")
+        etl_instance.clear_data_source_cache()
 
 
 def score_generate() -> None:

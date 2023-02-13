@@ -60,7 +60,7 @@ class PersistentPovertyETL(ExtractTransformLoad):
 
 
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(self.__class__.__name__, source=self.poverty_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+        return [ZIPDataSource(source=self.poverty_url, destination=self.get_sources_path())]
 
 
     def _join_input_dfs(self, dfs: list) -> pd.DataFrame:
@@ -95,7 +95,9 @@ class PersistentPovertyETL(ExtractTransformLoad):
         return df
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
 
         temporary_input_dfs = []
 

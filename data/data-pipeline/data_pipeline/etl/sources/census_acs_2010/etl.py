@@ -113,10 +113,13 @@ class CensusACS2010ETL(ExtractTransformLoad):
             + self.POVERTY_FIELDS
         )
         
-        return [CensusDataSource(name=self.__class__.__name__, source=None, destination=self.census_acs_source, acs_year=self.ACS_YEAR, variables=variables,    tract_output_field_name=self.GEOID_TRACT_FIELD_NAME, data_path_for_fips_codes=self.DATA_PATH, acs_type=self.ACS_TYPE)]
+        return [CensusDataSource(source=None, destination=self.census_acs_source, acs_year=self.ACS_YEAR, variables=variables,    tract_output_field_name=self.GEOID_TRACT_FIELD_NAME, data_path_for_fips_codes=self.DATA_PATH, acs_type=self.ACS_TYPE)]
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
+        
         self.df = pd.read_csv(self.census_acs_source, dtype={"GEOID10_TRACT": "string"})
 
 

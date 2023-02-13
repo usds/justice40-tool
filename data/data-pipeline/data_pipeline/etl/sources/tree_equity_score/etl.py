@@ -90,12 +90,14 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         
         sources = []
         for state in self.states:
-            sources.append(ZIPDataSource(self.__class__.__name__, source=f"{tes_url}{state}.zip.zip", download=self.get_tmp_path() / state, destination=self.get_sources_path() / state))
+            sources.append(ZIPDataSource(source=f"{tes_url}{state}.zip.zip", destination=self.get_sources_path() / state))
 
         return sources
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
         
         self.tes_state_dfs = []
         for state in self.states:

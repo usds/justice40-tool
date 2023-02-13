@@ -365,11 +365,14 @@ class CensusDecennialETL(ExtractTransformLoad):
                     county,
                 )
                 
-                sources.append(FileDataSource(self.__class__.__name__, source=api_url, destination=self.get_sources_path() / str(self.DECENNIAL_YEAR) / island["state_abbreviation"] / island["fips"] / county / "census.json"))
+                sources.append(FileDataSource(source=api_url, destination=self.get_sources_path() / str(self.DECENNIAL_YEAR) / island["state_abbreviation"] / island["fips"] / county / "census.json"))
         
         return sources
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
+        
         dfs = []
         dfs_vi = []
         for island in self.ISLAND_TERRITORIES:

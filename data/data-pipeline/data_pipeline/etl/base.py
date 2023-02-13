@@ -2,6 +2,7 @@ import enum
 import pathlib
 import sys
 import typing
+import shutil
 from typing import Optional
 from abc import ABC, abstractmethod
 
@@ -124,9 +125,11 @@ class ExtractTransformLoad(ABC):
     # It is used on the "load" base class method
     output_df: pd.DataFrame = None
 
+
     def __init_subclass__(cls) -> None:
         if cls.LOAD_YAML_CONFIG:
             cls.DATASET_CONFIG = cls.yaml_config_load()
+
 
     @classmethod
     def yaml_config_load(cls) -> dict:
@@ -167,6 +170,7 @@ class ExtractTransformLoad(ABC):
             setattr(cls, field["df_field_name"], field["long_name"])
         return dataset_config
 
+
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.
     @classmethod
@@ -180,6 +184,18 @@ class ExtractTransformLoad(ABC):
 
         output_file_path = cls.DATA_PATH / "dataset" / f"{cls.NAME}" / "usa.csv"
         return output_file_path
+     
+        
+    def get_sources_path(self) -> pathlib.Path:
+        """Returns the sources path associated with this ETL class. The sources path
+        is the home for cached data sources used by this ETL."""
+        
+        sources_path = self.DATA_PATH / "sources" / str(self.__class__.__name__)
+        
+        # Create directory if it doesn't exist
+        sources_path.mkdir(parents=True, exist_ok=True)
+        
+        return sources_path
 
 
     @abstractmethod
@@ -187,36 +203,39 @@ class ExtractTransformLoad(ABC):
         pass
         
         
-    def fetch(self) -> None:
+    def _fetch(self) -> None:
         """Fetch all data sources for this ETL. When data sources are fetched, they
-        are stored in a cache directory that can be checked into source control
-        for consistency between runs."""
+        are stored in a cache directory for consistency between runs."""
         for ds in self.get_data_sources():
             ds.fetch()
 
 
-    def extract(
-        self,
-        source_url: str = None,
-        extract_path: pathlib.Path = None,
-        verify: Optional[bool] = True,
-    ) -> None:
-        """Extract the data from a remote source. By default it provides code
-        to get the file from a source url, unzips it and stores it on an
-        extract_path."""
+    def clear_data_source_cache(self) -> None:
+        """Clears the cache for this ETLs data source(s)"""
+        shutil.rmtree(self.get_sources_path())
 
-        if source_url is None:
-            source_url = self.SOURCE_URL
 
-        if extract_path is None:
-            extract_path = self.get_tmp_path()
-
-        unzip_file_from_url(
-            file_url=source_url,
-            download_path=self.get_tmp_path(),
-            unzipped_file_path=extract_path,
-            verify=verify,
-        )
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        """Extract (download) data from a remote source, and validate
+        that data. By default, this method fetches data from the set of 
+        data sources returned by get_data_sources. 
+        
+        If use_cached_data_sources is true, this method attempts to use cached data 
+        rather than re-downloading from the original source. The cache algorithm is very 
+        simple: it just looks to see if the directory has any contents. If so, it uses 
+        that content. If not, it downloads all data sources.
+        
+        Subclasses should call super() before performing any work if they wish to take
+        advantage of the automatic downloading and caching ability of this superclass.
+        """
+        
+        if use_cached_data_sources and any(self.get_sources_path().iterdir()):
+            logger.info(f"Using cached data sources for {self.__class__.__name__}")
+        else:
+            self.clear_data_source_cache()
+            self._fetch()
+            
+        # the rest of the work should be performed here        
 
 
     @abstractmethod
@@ -352,6 +371,7 @@ class ExtractTransformLoad(ABC):
 
         logger.debug(f"File written to `{output_file_path}`.")
 
+
     # This is a classmethod so it can be used without needing to create an instance of
     # the class. This is a use case in `etl_score`.
     @classmethod
@@ -385,9 +405,11 @@ class ExtractTransformLoad(ABC):
 
         return output_df
 
+
     def cleanup(self) -> None:
         """Clears out any files stored in the TMP folder"""
         remove_all_from_dir(self.get_tmp_path())
+        
         
         
     def get_tmp_path(self) -> pathlib.Path:
@@ -401,14 +423,3 @@ class ExtractTransformLoad(ABC):
     
         return tmp_path
     
-    
-    def get_sources_path(self) -> pathlib.Path:
-        """Returns the sources path associated with this ETL class. The sources path
-        is the home for cached data sources used by this ETL."""
-        
-        sources_path = self.DATA_PATH / "sources" / str(self.__class__.__name__)
-    
-        # Create directory if it doesn't exist
-        sources_path.mkdir(parents=True, exist_ok=True)
-    
-        return sources_path

@@ -10,7 +10,6 @@ from data_pipeline.etl.score.etl_utils import (
 from data_pipeline.etl.datasource import DataSource
 from data_pipeline.etl.datasource import FileDataSource
 from data_pipeline.score import field_names
-from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 
@@ -73,9 +72,9 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
     def get_data_sources(self) -> [DataSource]:  
         return [
-            FileDataSource(self.__class__.__name__, source=self.usa_file_url, destination=self.usa_source),
-            FileDataSource(self.__class__.__name__, source=self.maine_file_url, destination=self.maine_source),
-            FileDataSource(self.__class__.__name__, source=self.wisconsin_file_url, destination=self.wisconsin_source),
+            FileDataSource(source=self.usa_file_url, destination=self.usa_source),
+            FileDataSource(source=self.maine_file_url, destination=self.maine_source),
+            FileDataSource(source=self.wisconsin_file_url, destination=self.wisconsin_source),
         ]
 
 
@@ -94,7 +93,9 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         return df
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
 
         all_usa_raw_df = self._read_data(self.usa_source)
 
@@ -112,10 +113,8 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             additional_fips_codes_not_expected=self.STATES_MISSING_FROM_USA_FILE,
         )
 
-        logger.debug("Downloading data for Maine")
         maine_raw_df = self._read_data(self.maine_source,)
 
-        logger.debug("Downloading data for Wisconsin")
         wisconsin_raw_df = self._read_data(self.wisconsin_source)
 
         combined_df = pd.concat(
@@ -141,6 +140,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         # Save the updated version
         self.raw_df = combined_df
 
+
     def transform(self) -> None:
 
         self.output_df = self.raw_df.rename(
@@ -149,6 +149,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
             }
         )
+
 
     def load(self) -> None:
 

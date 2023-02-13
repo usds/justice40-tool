@@ -44,10 +44,12 @@ class FloodRiskETL(ExtractTransformLoad):
         
     
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(self.__class__.__name__, source=self.flood_tract_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+        return [ZIPDataSource(source=self.flood_tract_url, destination=self.get_sources_path())]
     
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
         
         # read in the unzipped csv data source then rename the
         # Census Tract column for merging

@@ -2,7 +2,9 @@ import json
 from pathlib import Path
 
 import numpy as np
+from numpy import float64
 import pandas as pd
+
 from data_pipeline.content.schemas.download_schemas import CodebookConfig
 from data_pipeline.content.schemas.download_schemas import CSVConfig
 from data_pipeline.content.schemas.download_schemas import ExcelConfig
@@ -17,7 +19,7 @@ from data_pipeline.utils import load_dict_from_yaml_object_fields
 from data_pipeline.utils import load_yaml_dict_from_file
 from data_pipeline.utils import zip_files
 from data_pipeline.etl.datasource import DataSource
-from numpy import float64
+from data_pipeline.etl.downloader import Downloader
 
 from . import constants
 
@@ -103,17 +105,19 @@ class PostScoreETL(ExtractTransformLoad):
 
         return df
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
+                
         # check census data
         check_census_data_source(
             census_data_path=self.DATA_PATH / "census",
             census_data_source=self.DATA_SOURCE,
         )
 
-        super().extract(
-            constants.CENSUS_COUNTIES_ZIP_URL,
-            constants.TMP_PATH,
-        )
+        # TODO would could probably add this to the data sources for this file
+        Downloader.download_zip_file_from_url(constants.CENSUS_COUNTIES_ZIP_URL, constants.TMP_PATH)
+
         self.input_counties_df = self._extract_counties(
             constants.CENSUS_COUNTIES_FILE_NAME
         )

@@ -4,7 +4,6 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.score import field_names
-from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 from data_pipeline.etl.datasource import DataSource
@@ -55,10 +54,13 @@ class CDCPlacesETL(ExtractTransformLoad):
 
 
     def get_data_sources(self) -> [DataSource]:
-        return [FileDataSource(self.__class__.__name__, source=self.cdc_places_url, destination=self.places_source)]
+        return [FileDataSource(source=self.cdc_places_url, destination=self.places_source)]
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
+        
         self.df = pd.read_csv(
             filepath_or_buffer=self.places_source,
             dtype={self.CDC_GEOID_FIELD_NAME: "string"},

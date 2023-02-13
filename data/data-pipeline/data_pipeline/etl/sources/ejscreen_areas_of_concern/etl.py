@@ -44,7 +44,10 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
         """
         return cls.EJSCREEN_AREAS_OF_CONCERN_SOURCE.is_file()
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
+        
         logger.info(self.EJSCREEN_AREAS_OF_CONCERN_SOURCE)
         if self.ejscreen_areas_of_concern_data_exists():
             logger.debug("Loading EJSCREEN Areas of Concern Data Locally")

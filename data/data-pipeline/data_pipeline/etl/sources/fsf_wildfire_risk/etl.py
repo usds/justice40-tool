@@ -50,10 +50,12 @@ class WildfireRiskETL(ExtractTransformLoad):
 
     
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(self.__class__.__name__, source=self.fsf_fire_url, download=self.get_tmp_path(), destination=self.get_sources_path())]    
+        return [ZIPDataSource(source=self.fsf_fire_url, destination=self.get_sources_path())]    
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
         
         self.df_fsf_fire = pd.read_csv(
             self.fsf_fire_source,

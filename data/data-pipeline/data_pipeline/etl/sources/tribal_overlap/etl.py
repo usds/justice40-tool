@@ -95,7 +95,10 @@ class TribalOverlapETL(ExtractTransformLoad):
 
         return percentage_float
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
+        
         self.census_tract_gdf = get_tract_geojson()
         self.tribal_gdf = get_tribal_geojson()
 

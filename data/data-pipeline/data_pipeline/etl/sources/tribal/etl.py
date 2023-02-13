@@ -34,14 +34,10 @@ class TribalETL(ExtractTransformLoad):
         alaska_native_villages_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/Alaska_Native_Villages_json.zip"
         
         return[
-            ZIPDataSource(self.__class__.__name__, national_lar_url, download=self.get_tmp_path(), destination=self.get_sources_path() / "bia_national_lar"),
-            ZIPDataSource(self.__class__.__name__, source=tsa_and_aian_url, download=self.get_tmp_path(), destination=self.get_sources_path() / "tsa_and_aian"),
-            ZIPDataSource(self.__class__.__name__, source=alaska_native_villages_url, download=self.get_tmp_path(), destination=self.get_sources_path() / "alaska_native_villages")
+            ZIPDataSource(national_lar_url, destination=self.get_sources_path() / "bia_national_lar"),
+            ZIPDataSource(source=tsa_and_aian_url, destination=self.get_sources_path() / "tsa_and_aian"),
+            ZIPDataSource(source=alaska_native_villages_url, destination=self.get_sources_path() / "alaska_native_villages")
         ]
-        
-        
-    def extract(self) -> None:
-        pass
         
 
     def _transform_bia_national_lar(self, path: Path) -> None:

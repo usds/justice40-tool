@@ -74,10 +74,12 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
 
 
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(self.__class__.__name__, source=self.aggregated_rsei_score_file_url, download=self.get_tmp_path(), destination=self.get_sources_path())]
+        return [ZIPDataSource(source=self.aggregated_rsei_score_file_url, destination=self.get_sources_path())]
 
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+        
+        super().extract(use_cached_data_sources) # download and extract data sources
         
         # the column headers from the above dataset are actually a census tract's data at this point
         # We will use this data structure later to specify the column names

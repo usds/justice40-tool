@@ -3,8 +3,8 @@ from typing import Protocol, List
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
+from data_pipeline.etl.downloader import Downloader
 from data_pipeline.utils import unzip_file_from_url
-from data_pipeline.utils import download_file_from_url
 from data_pipeline.etl.sources.census_acs.etl_utils import (
 	retrieve_census_acs_data,
 )
@@ -23,15 +23,12 @@ class DataSource(ABC):
 	from a remote location.
 	
 	Attributes:
-	name : str
-		a user-friendly name used to identify this data source
 	source : str
 		the location of this data source, as a url
 	destination : Path
 		the Path where the data source should be saved locally upon being fetched
 	
 	"""
-	name: str
 	source: str
 	destination: Path
 	
@@ -52,11 +49,14 @@ class FileDataSource(DataSource):
 		"""Fetches a single file from a source and saves it to a destination."""
 		
 		self.destination.parent.mkdir(parents=True, exist_ok=True)
-		download_file_from_url(
+		Downloader.download_file_from_url(
 			file_url=self.source,
 			download_file_name=self.destination,
 			verify=True,
 		)
+		
+	def __str__(self):
+		return f"File – {self.source}"
 
 	
 @dataclass 
@@ -65,18 +65,18 @@ class ZIPDataSource(DataSource):
 	
 	Zip files will be fetched and placed in the destination folder, then unzipped.
 	"""
-	download: Path
 	
 	def fetch(self) -> None:
 		
-		self.download.mkdir(parents=True, exist_ok=True)
 		self.destination.mkdir(parents=True, exist_ok=True)
-		unzip_file_from_url(
+		Downloader.download_zip_file_from_url(
 			file_url=self.source,
-			download_path=self.download,
 			unzipped_file_path=self.destination,
 			verify=True,
 		)
+		
+	def __str__(self):
+		return f"Zip – {self.source}"
 		
 		
 @dataclass
@@ -99,3 +99,6 @@ class CensusDataSource(DataSource):
 		
 		# Write CSV representation of census data
 		df.to_csv(self.destination, index=False)
+		
+	def __str__(self):
+		return f"Census – {self.acs_type}, {self.acs_year}"

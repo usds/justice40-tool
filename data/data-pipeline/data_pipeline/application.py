@@ -8,7 +8,8 @@ from data_pipeline.etl.runner import score_generate
 from data_pipeline.etl.runner import score_geo
 from data_pipeline.etl.runner import score_post
 from data_pipeline.etl.runner import get_data_sources
-from data_pipeline.etl.runner import fetch_data_sources as fetch_ds
+from data_pipeline.etl.runner import extract_data_sources as extract_ds
+from data_pipeline.etl.runner import clear_data_source_cache as clear_ds_cache
 from data_pipeline.etl.sources.census.etl_utils import check_census_data_source
 from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
@@ -81,7 +82,14 @@ def data_cleanup():
     is_flag=True,
     help="Upload to AWS S3 a zipped archive of the census data.",
 )
-def census_data_download(zip_compress):
+@click.option(
+    "-u",
+    "--use-cache",
+    is_flag=True,
+    default=False,
+    help="Check if data source has been downloaded already, and if it has, use the cached version of the data source.",
+)
+def census_data_download(zip_compress, use_cache):
     """CLI command to download all census shape files from the Census FTP and extract the geojson
     to generate national and by state Census Block Group CSVs"""
     log_title("Download Census Data ")
@@ -90,7 +98,7 @@ def census_data_download(zip_compress):
     census_reset(data_path)
 
     log_info("Downloading census data")
-    etl_runner("census")
+    etl_runner("census", use_cache)
 
     if zip_compress:
         log_info("Zipping census data")
@@ -131,7 +139,14 @@ def pull_census_data(data_source: str):
     type=str,
     help=dataset_cli_help,
 )
-def etl_run(dataset: str):
+@click.option(
+    "-u",
+    "--use-cache",
+    is_flag=True,
+    default=False,
+    help="Check if data source has been downloaded already, and if it has, use the cached version of the data source.",
+)
+def etl_run(dataset: str, use_cache: bool):
     """Run a specific or all ETL processes
 
     Args:
@@ -143,7 +158,7 @@ def etl_run(dataset: str):
     log_title("Run ETL")
 
     log_info("Running dataset(s)")
-    etl_runner(dataset)
+    etl_runner(dataset, use_cache)
 
     log_goodbye()
     sys.exit()
@@ -169,7 +184,14 @@ def score_run():
 @cli.command(
     help="Run ETL + Score Generation",
 )
-def score_full_run():
+@click.option(
+    "-u",
+    "--use-cache",
+    is_flag=True,
+    default=False,
+    help="Check if data source has been downloaded already, and if it has, use the cached version of the data source.",
+)
+def score_full_run(use_cache: bool):
     """CLI command to run ETL and generate the score in one command"""
     log_title("Score Full Run", "Run ETL and Generate Score (no tiles)")
 
@@ -179,7 +201,7 @@ def score_full_run():
     temp_folder_cleanup()
 
     log_info("Running all ETLs")
-    etl_runner()
+    etl_runner(use_cache=use_cache)
 
     log_info("Generating score")
     score_generate()
@@ -299,7 +321,14 @@ def generate_map_tiles(generate_tribal_layer):
     type=str,
     help=dataset_cli_help,
 )
-def data_full_run(check: bool, data_source: str):
+@click.option(
+    "-u",
+    "--use-cache",
+    is_flag=True,
+    default=False,
+    help="Check if data source has been downloaded already, and if it has, use the cached version of the data source.",
+)
+def data_full_run(check: bool, data_source: str, use_cache: bool):
     """CLI command to run ETL, score, JSON combine and generate tiles in one command
 
     Args:
@@ -332,10 +361,10 @@ def data_full_run(check: bool, data_source: str):
 
         if data_source == "local":
             log_info("Downloading census data")
-            etl_runner("census")
+            etl_runner("census", use_cache)
 
         log_info("Running all ETLs")
-        etl_runner()
+        etl_runner(use_cache=use_cache)
 
         log_info("Generating score")
         score_generate()
@@ -383,8 +412,6 @@ def print_data_sources(dataset: str):
     log_info("Retrieving dataset(s)")
     sources = get_data_sources(dataset)
     
-    sources.sort(key=lambda x: x.name, reverse=False)
-    
     log_info(f"Discovered {len(sources)} files")
     
     for s in sources:
@@ -404,11 +431,19 @@ def print_data_sources(dataset: str):
     type=str,
     help=dataset_cli_help,
 )
-def fetch_data_sources(dataset: str):
-    """Fetch and cache data sources for all ETL processes (or a specific one)
+@click.option(
+    "-u",
+    "--use-cache",
+    is_flag=True,
+    default=False,
+    help="Check if data source has been downloaded already, and if it has, use the cached version of the data source.",
+)
+def extract_data_sources(dataset: str, use_cache: bool):
+    """Extract and cache data source(s) for all ETL processes (or a specific one)
 
     Args:
-        dataset (str): Name of the ETL module to be run (optional)
+        dataset (str): Name of the ETL module whose data sources you wish to fetch
+        use_cache (bool): Use this flag if you wish to use the cached data sources (if they exist)
 
     Returns:
         None
@@ -416,11 +451,39 @@ def fetch_data_sources(dataset: str):
     log_title("Fetch ETL Datasources")
 
     log_info("Fetching data source(s)")
-    fetch_ds(dataset)
+    extract_ds(dataset, use_cache)
 
     log_goodbye()
     sys.exit()
 
+
+@cli.command(
+        help="Clear data source cache for all ETL processes (or a specific one)",
+)
+@click.option(
+    "-d",
+    "--dataset",
+    required=False,
+    type=str,
+    help=dataset_cli_help,
+)
+def clear_data_source_cache(dataset: str):
+    """Clear data source(s) cache for all ETL processes (or a specific one)
+
+    Args:
+        dataset (str): Name of the ETL module whose cache you wish to clear
+
+    Returns:
+        None
+    """
+    log_title("Fetch ETL Datasources")
+
+    log_info("Clear data source cache")
+    clear_ds_cache(dataset)
+
+    log_goodbye()
+    sys.exit()
+        
 
 def log_title(title: str, subtitle: str = None):
     """Logs a title in our fancy title format"""
