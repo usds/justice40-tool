@@ -23,8 +23,8 @@ class MappingInequalityETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        
-        # fetch        
+
+        # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.mapping_inequality_csv_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
@@ -35,13 +35,17 @@ class MappingInequalityETL(ExtractTransformLoad):
                 "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/"
                 "main/2010_Census_Tracts/holc_tract_lookup.csv"
             )
-        
+
         # input
-        self.mapping_inequality_source = self.get_sources_path() / "holc_tract_lookup.csv"
-        self.holc_manual_mapping_source = ( # here be dragons – this file is pulled from a different place than most
-            pathlib.Path(__file__).parent / "data" / "holc_grades_manually_mapped.csv"
+        self.mapping_inequality_source = (
+            self.get_sources_path() / "holc_tract_lookup.csv"
         )
-        
+        self.holc_manual_mapping_source = (  # here be dragons – this file is pulled from a different place than most
+            pathlib.Path(__file__).parent
+            / "data"
+            / "holc_grades_manually_mapped.csv"
+        )
+
         # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "mapping_inequality"
 
@@ -75,21 +79,26 @@ class MappingInequalityETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [FileDataSource(source=self.mapping_inequality_csv_url, destination=self.mapping_inequality_source)]
-
+        return [
+            FileDataSource(
+                source=self.mapping_inequality_csv_url,
+                destination=self.mapping_inequality_source,
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df = pd.read_csv(
             self.mapping_inequality_source,
             dtype={self.TRACT_INPUT_FIELD: "string"},
             low_memory=False,
         )
-        
+
         # Some data needs to be manually mapped to its grade.
         # TODO: Investigate more data that may need to be manually mapped.
         self.holc_manually_mapped_df = pd.read_csv(
@@ -97,9 +106,8 @@ class MappingInequalityETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-
     def transform(self) -> None:
-        
+
         # rename Tract ID
         self.df.rename(
             columns={
@@ -124,7 +132,7 @@ class MappingInequalityETL(ExtractTransformLoad):
         ] = None
 
         # Join on the existing data
-        merged_df =self. df.merge(
+        merged_df = self.df.merge(
             right=self.holc_manually_mapped_df,
             on=[self.HOLC_GRADE_AND_ID_FIELD, self.CITY_INPUT_FIELD],
             how="left",
@@ -209,7 +217,6 @@ class MappingInequalityETL(ExtractTransformLoad):
 
         # Save to self.
         self.df = grouped_df
-
 
     def load(self) -> None:
         # write nationwide csv

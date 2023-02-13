@@ -27,15 +27,19 @@ class NatureDeprivedETL(ExtractTransformLoad):
     TRACT_PERCENT_NON_NATURAL_FIELD_NAME: str
     TRACT_PERCENT_CROPLAND_FIELD_NAME: str
 
-
     def __init__(self):
-        
+
         # fetch
-        self.nature_deprived_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/usa_conus_nat_dep__compiled_by_TPL.csv.zip"
-        
+        self.nature_deprived_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/usa_conus_nat_dep__compiled_by_TPL.csv.zip"
+        )
+
         # source
         # define the full path for the input CSV file
-        self.nature_deprived_source = self.get_sources_path() / "usa_conus_nat_dep__compiled_by_TPL.csv"
+        self.nature_deprived_source = (
+            self.get_sources_path() / "usa_conus_nat_dep__compiled_by_TPL.csv"
+        )
 
         # output
         # this is the main dataframe
@@ -51,31 +55,36 @@ class NatureDeprivedETL(ExtractTransformLoad):
         # for area. This does indeed remove tracts from the 90th+ percentile later on
         self.TRACT_ACRES_LOWER_BOUND = 35
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.nature_deprived_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.nature_deprived_url,
+                destination=self.get_sources_path(),
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
         """Reads the unzipped data file into memory and applies the following
         transformations to prepare it for the load() method:
-        
+
         - Renames columns as needed
         """
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df_ncld: pd.DataFrame = pd.read_csv(
             self.nature_deprived_source,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
             low_memory=False,
-        )        
-        
-        
+        )
+
     def transform(self) -> None:
 
         self.df_ncld[self.ELIGIBLE_FOR_NATURE_DEPRIVED_FIELD_NAME] = (
-            self.df_ncld[self.TRACT_ACRES_FIELD_NAME] >= self.TRACT_ACRES_LOWER_BOUND
+            self.df_ncld[self.TRACT_ACRES_FIELD_NAME]
+            >= self.TRACT_ACRES_LOWER_BOUND
         )
         self.df_ncld[self.TRACT_PERCENT_NON_NATURAL_FIELD_NAME] = (
             100 - self.df_ncld[self.PERCENT_NATURAL_FIELD_NAME]

@@ -17,16 +17,21 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        
+
         # fetch
-        self.michigan_ejscreen_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/michigan_ejscore_12212021.csv"
-        
+        self.michigan_ejscreen_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/michigan_ejscore_12212021.csv"
+        )
+
         # input
-        self.michigan_ejscreen_source = self.get_sources_path() / "michigan_ejscore_12212021.csv"
-        
+        self.michigan_ejscreen_source = (
+            self.get_sources_path() / "michigan_ejscore_12212021.csv"
+        )
+
         # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "michigan_ejscreen"
-        
+
         self.MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_THRESHOLD: float = 0.75
 
         self.COLUMNS_TO_KEEP = [
@@ -38,24 +43,28 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return[FileDataSource(source=self.michigan_ejscreen_url, destination=self.michigan_ejscreen_source)]
-
+        return [
+            FileDataSource(
+                source=self.michigan_ejscreen_url,
+                destination=self.michigan_ejscreen_source,
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df = pd.read_csv(
             filepath_or_buffer=self.michigan_ejscreen_source,
             dtype={"GEO_ID": "string"},
             low_memory=False,
         )
 
-
     def transform(self) -> None:
-        
+
         self.df.rename(
             columns={
                 "GEO_ID": self.GEOID_TRACT_FIELD_NAME,
@@ -71,7 +80,6 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
             self.df[field_names.MICHIGAN_EJSCREEN_PERCENTILE_FIELD]
             >= self.MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_THRESHOLD
         )
-
 
     def load(self) -> None:
         # write nationwide csv

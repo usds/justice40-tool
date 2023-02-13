@@ -38,7 +38,7 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
-        
+
         # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.child_opportunity_url = (
@@ -53,7 +53,7 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         # input
         self.child_opportunity_index_source = elf.get_sources_path() / "raw.csv"
-        
+
         # output
 
         # TODO: Decide about nixing this
@@ -71,15 +71,20 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         self.output_df: pd.DataFrame
 
-
-    def get_data_sources(self) -> [DataSource]:  
-        return [ZIPDataSource(source=self.child_opportunity_url, destination=self.get_sources_path())]
-
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            ZIPDataSource(
+                source=self.child_opportunity_url,
+                destination=self.get_sources_path(),
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.raw_df = pd.read_csv(
             filepath_or_buffer=self.child_opportunity_index_source,
             # The following need to remain as strings for all of their digits, not get
@@ -89,7 +94,6 @@ class ChildOpportunityIndex(ExtractTransformLoad):
             },
             low_memory=False,
         )
-
 
     def transform(self) -> None:
 

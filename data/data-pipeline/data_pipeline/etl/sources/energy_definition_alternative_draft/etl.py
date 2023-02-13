@@ -14,14 +14,18 @@ logger = get_module_logger(__name__)
 
 
 class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
-    
     def __init__(self):
-        
+
         # fetch
-        self.definition_alternative_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/alternative DAC definition.csv.zip"
+        self.definition_alternative_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/alternative DAC definition.csv.zip"
+        )
 
         # input
-        self.definition_alternative_source = self.get_sources_path() / "J40 alternative DAC definition.csv"
+        self.definition_alternative_source = (
+            self.get_sources_path() / "J40 alternative DAC definition.csv"
+        )
 
         # output
         self.OUTPUT_PATH: Path = (
@@ -54,15 +58,20 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
         ]
 
         self.df: pd.DataFrame
-        
-    
+
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.definition_alternative_url, destination=self.get_sources_path())]
-    
+        return [
+            ZIPDataSource(
+                source=self.definition_alternative_url,
+                destination=self.get_sources_path(),
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
 
         self.df = pd.read_csv(
             filepath_or_buffer=self.definition_alternative_source,
@@ -73,9 +82,8 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
             low_memory=False,
         )
 
-
     def transform(self) -> None:
-        
+
         self.df = self.df.rename(
             columns={
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
@@ -107,7 +115,6 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
         ].astype(
             "bool"
         )
-
 
     def load(self) -> None:
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)

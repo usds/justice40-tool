@@ -13,12 +13,12 @@ logger = get_module_logger(__name__)
 class CDCSVIIndex(ExtractTransformLoad):
     """CDC SVI Index class ingests 2018 dataset located
     here: https://www.atsdr.cdc.gov/placeandhealth/svi/index.html
-    
+
     Please see the README in this module for further details.
     """
 
     def __init__(self):
-        
+
         # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.cdc_svi_index_url = (
@@ -27,10 +27,10 @@ class CDCSVIIndex(ExtractTransformLoad):
             )
         else:
             self.cdc_svi_index_url = "https://svi.cdc.gov/Documents/Data/2018_SVI_Data/CSV/SVI2018_US.csv"
-        
+
         # input
         self.svi_source = self.get_sources_path() / "SVI2018_US.csv"
-        
+
         # output
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_svi_index"
 
@@ -55,21 +55,24 @@ class CDCSVIIndex(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [FileDataSource(source=self.cdc_svi_index_url, destination=self.svi_source)]
-
+        return [
+            FileDataSource(
+                source=self.cdc_svi_index_url, destination=self.svi_source
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df = pd.read_csv(
             filepath_or_buffer=self.svi_source,
             dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: "string"},
             low_memory=False,
         )
-
 
     def transform(self) -> None:
         # Note: In this dataset all US census tracts are ranked against one another.
@@ -123,9 +126,8 @@ class CDCSVIIndex(ExtractTransformLoad):
                 f"GEOID Tract must be length of {expected_census_tract_field_length}"
             )
 
-
     def load(self) -> None:
-        
+
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False

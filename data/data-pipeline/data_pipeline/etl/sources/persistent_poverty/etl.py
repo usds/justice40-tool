@@ -25,17 +25,25 @@ class PersistentPovertyETL(ExtractTransformLoad):
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
-        
+
         # fetch
-        self.poverty_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/LTDB_Std_All_Sample.zip"
-        
-        # source 
+        self.poverty_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL + "/LTDB_Std_All_Sample.zip"
+        )
+
+        # source
         self.poverty_sources = [
-            self.get_sources_path() / "ltdb_std_all_sample" / "ltdb_std_1990_sample.csv",
-            self.get_sources_path() / "ltdb_std_all_sample" / "ltdb_std_2000_sample.csv",
-            self.get_sources_path() / "ltdb_std_all_sample" / "ltdb_std_2010_sample.csv",
+            self.get_sources_path()
+            / "ltdb_std_all_sample"
+            / "ltdb_std_1990_sample.csv",
+            self.get_sources_path()
+            / "ltdb_std_all_sample"
+            / "ltdb_std_2000_sample.csv",
+            self.get_sources_path()
+            / "ltdb_std_all_sample"
+            / "ltdb_std_2010_sample.csv",
         ]
-        
+
         # output
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "persistent_poverty"
 
@@ -58,10 +66,12 @@ class PersistentPovertyETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.poverty_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.poverty_url, destination=self.get_sources_path()
+            )
+        ]
 
     def _join_input_dfs(self, dfs: list) -> pd.DataFrame:
         df = functools.reduce(
@@ -94,10 +104,11 @@ class PersistentPovertyETL(ExtractTransformLoad):
 
         return df
 
-
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
 
         temporary_input_dfs = []
 
@@ -127,7 +138,6 @@ class PersistentPovertyETL(ExtractTransformLoad):
             temporary_input_dfs.append(temporary_input_df)
 
         self.df = self._join_input_dfs(temporary_input_dfs)
-
 
     def transform(self) -> None:
         transformed_df = self.df

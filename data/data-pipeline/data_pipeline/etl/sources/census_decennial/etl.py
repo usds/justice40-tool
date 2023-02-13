@@ -351,12 +351,12 @@ class CensusDecennialETL(ExtractTransformLoad):
         self.df_all: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:
-        
+
         sources = []
-        
+
         for island in self.ISLAND_TERRITORIES:
             for county in island["county_fips"]:
-                
+
                 api_url = self.API_URL.format(
                     self.DECENNIAL_YEAR,
                     island["state_abbreviation"],
@@ -364,15 +364,27 @@ class CensusDecennialETL(ExtractTransformLoad):
                     island["fips"],
                     county,
                 )
-                
-                sources.append(FileDataSource(source=api_url, destination=self.get_sources_path() / str(self.DECENNIAL_YEAR) / island["state_abbreviation"] / island["fips"] / county / "census.json"))
-        
+
+                sources.append(
+                    FileDataSource(
+                        source=api_url,
+                        destination=self.get_sources_path()
+                        / str(self.DECENNIAL_YEAR)
+                        / island["state_abbreviation"]
+                        / island["fips"]
+                        / county
+                        / "census.json",
+                    )
+                )
+
         return sources
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         dfs = []
         dfs_vi = []
         for island in self.ISLAND_TERRITORIES:
@@ -382,7 +394,14 @@ class CensusDecennialETL(ExtractTransformLoad):
             for county in island["county_fips"]:
 
                 try:
-                    filepath=self.get_sources_path() / str(self.DECENNIAL_YEAR) / island["state_abbreviation"] / island["fips"] / county / "census.json"
+                    filepath = (
+                        self.get_sources_path()
+                        / str(self.DECENNIAL_YEAR)
+                        / island["state_abbreviation"]
+                        / island["fips"]
+                        / county
+                        / "census.json"
+                    )
                     df = json.load(filepath.open())
                 except ValueError as e:
                     logger.error(

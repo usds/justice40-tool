@@ -10,13 +10,12 @@ logger = get_module_logger(__name__)
 
 
 class HudHousingETL(ExtractTransformLoad):
-    
+
     NAME = "hud_housing"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
 
     def __init__(self):
-        
-        
+
         # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.housing_url = (
@@ -25,11 +24,11 @@ class HudHousingETL(ExtractTransformLoad):
             )
         else:
             self.housing_url = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
-        
+
         # source
-        
+
         # output
-        
+
         self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
 
         self.HOUSING_ZIP_FILE_DIR = self.get_tmp_path()
@@ -64,11 +63,13 @@ class HudHousingETL(ExtractTransformLoad):
         # Table 3 is the desired table for no kitchen or indoor plumbing
 
         self.df: pd.DataFrame
-        
-        
-    def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.housing_url, destination=self.get_sources_path())]
 
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            ZIPDataSource(
+                source=self.housing_url, destination=self.get_sources_path()
+            )
+        ]
 
     def _read_chas_table(self, file_name):
 
@@ -77,28 +78,28 @@ class HudHousingETL(ExtractTransformLoad):
             filepath_or_buffer=tmp_csv_file_path,
             encoding="latin-1",
         )
-        
+
         # The CHAS data has census tract ids such as `14000US01001020100`
         # Whereas the rest of our data uses, for the same tract, `01001020100`.
         # This reformats and renames this field.
         tmp_df[self.GEOID_TRACT_FIELD_NAME] = tmp_df["geoid"].str.replace(
             r"^.*?US", "", regex=True
         )
-        
+
         return tmp_df
 
-
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         table_8 = self._read_chas_table("Table8.csv")
         table_3 = self._read_chas_table("Table3.csv")
-        
+
         self.df = table_8.merge(
             table_3, how="outer", on=self.GEOID_TRACT_FIELD_NAME
         )
-
 
     def transform(self) -> None:
 

@@ -18,16 +18,18 @@ class EJSCREENETL(ExtractTransformLoad):
     INPUT_GEOID_TRACT_FIELD_NAME: str = "ID"
 
     def __init__(self):
-        
+
         # fetch
         self.ejscreen_url = "https://gaftp.epa.gov/EJSCREEN/2021/EJSCREEN_2021_USPR_Tracts.csv.zip"
-        
+
         # input
-        self.ejscreen_source = self.get_sources_path() / "EJSCREEN_2021_USPR_Tracts.csv"
-        
-        # output        
+        self.ejscreen_source = (
+            self.get_sources_path() / "EJSCREEN_2021_USPR_Tracts.csv"
+        )
+
+        # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen"
-        
+
         self.df: pd.DataFrame
 
         self.COLUMNS_TO_KEEP = [
@@ -51,15 +53,19 @@ class EJSCREENETL(ExtractTransformLoad):
             field_names.UST_FIELD,
         ]
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.ejscreen_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.ejscreen_url, destination=self.get_sources_path()
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df = pd.read_csv(
             self.ejscreen_source,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
@@ -67,7 +73,6 @@ class EJSCREENETL(ExtractTransformLoad):
             na_values=["None"],
             low_memory=False,
         )
-
 
     def transform(self) -> None:
 

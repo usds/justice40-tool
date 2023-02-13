@@ -19,7 +19,7 @@ logger = get_module_logger(__name__)
 
 class CDCLifeExpectancy(ExtractTransformLoad):
     """#TODO: create description"""
-    
+
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
@@ -34,18 +34,17 @@ class CDCLifeExpectancy(ExtractTransformLoad):
     TRACT_INPUT_COLUMN_NAME = "Tract ID"
     STATE_INPUT_COLUMN_NAME = "STATE2KX"
 
-    raw_df: pd.DataFrame # result of extraction
-    output_df: pd.DataFrame # result of transformation
-
+    raw_df: pd.DataFrame  # result of extraction
+    output_df: pd.DataFrame  # result of transformation
 
     def __init__(self):
-        
+
         # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.usa_file_url = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/US_A.CSV"
         else:
             self.usa_file_url: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
-        
+
         # For some reason, LEEP does not include Maine or Wisconsin in its "All of USA" file. Load these separately.
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.wisconsin_file_url: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/WI_A.CSV"
@@ -53,30 +52,35 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         else:
             self.wisconsin_file_url: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/WI_A.CSV"
             self.maine_file_url: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
-        
+
         # input
         self.usa_source = self.get_sources_path() / "USA.csv"
         self.maine_source = self.get_sources_path() / "Maine.csv"
         self.wisconsin_source = self.get_sources_path() / "Wisconsin.csv"
-        
+
         # output
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "cdc_life_expectancy"
         )
 
-        self.COLUMNS_TO_KEEP = [ # the columns to save on output
+        self.COLUMNS_TO_KEEP = [  # the columns to save on output
             self.GEOID_TRACT_FIELD_NAME,
             field_names.LIFE_EXPECTANCY_FIELD,
         ]
 
-
-    def get_data_sources(self) -> [DataSource]:  
+    def get_data_sources(self) -> [DataSource]:
         return [
-            FileDataSource(source=self.usa_file_url, destination=self.usa_source),
-            FileDataSource(source=self.maine_file_url, destination=self.maine_source),
-            FileDataSource(source=self.wisconsin_file_url, destination=self.wisconsin_source),
+            FileDataSource(
+                source=self.usa_file_url, destination=self.usa_source
+            ),
+            FileDataSource(
+                source=self.maine_file_url, destination=self.maine_source
+            ),
+            FileDataSource(
+                source=self.wisconsin_file_url,
+                destination=self.wisconsin_source,
+            ),
         ]
-
 
     def _read_data(self, file_name: pathlib.Path) -> pd.DataFrame:
 
@@ -92,10 +96,11 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
         return df
 
-
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
 
         all_usa_raw_df = self._read_data(self.usa_source)
 
@@ -113,7 +118,9 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             additional_fips_codes_not_expected=self.STATES_MISSING_FROM_USA_FILE,
         )
 
-        maine_raw_df = self._read_data(self.maine_source,)
+        maine_raw_df = self._read_data(
+            self.maine_source,
+        )
 
         wisconsin_raw_df = self._read_data(self.wisconsin_source)
 
@@ -140,7 +147,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         # Save the updated version
         self.raw_df = combined_df
 
-
     def transform(self) -> None:
 
         self.output_df = self.raw_df.rename(
@@ -149,7 +155,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
             }
         )
-
 
     def load(self) -> None:
 

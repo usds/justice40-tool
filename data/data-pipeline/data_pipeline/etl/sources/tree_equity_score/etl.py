@@ -22,14 +22,14 @@ class TreeEquityScoreETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        
+
         # input
         self.TES_CSV = self.get_sources_path() / "tes_2021_data.csv"
-        
+
         # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "tree_equity_score"
         self.df: gpd.GeoDataFrame
-        
+
         # config
         self.states = [
             "al",
@@ -83,28 +83,32 @@ class TreeEquityScoreETL(ExtractTransformLoad):
             "wy",
         ]
 
-
     def get_data_sources(self) -> [DataSource]:
-        
+
         tes_url = "https://national-tes-data-share.s3.amazonaws.com/national_tes_share/"
-        
+
         sources = []
         for state in self.states:
-            sources.append(ZIPDataSource(source=f"{tes_url}{state}.zip.zip", destination=self.get_sources_path() / state))
+            sources.append(
+                ZIPDataSource(
+                    source=f"{tes_url}{state}.zip.zip",
+                    destination=self.get_sources_path() / state,
+                )
+            )
 
         return sources
 
-
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.tes_state_dfs = []
         for state in self.states:
             self.tes_state_dfs.append(
                 gpd.read_file(f"{self.get_sources_path()}/{state}/{state}.shp")
             )
-
 
     def transform(self) -> None:
 
@@ -118,7 +122,6 @@ class TreeEquityScoreETL(ExtractTransformLoad):
             columns={"geoid": ExtractTransformLoad.GEOID_FIELD_NAME},
             inplace=True,
         )
-
 
     def load(self) -> None:
         # write nationwide csv

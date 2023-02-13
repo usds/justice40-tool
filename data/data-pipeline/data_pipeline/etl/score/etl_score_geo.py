@@ -69,13 +69,13 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_score_usa_high: gpd.GeoDataFrame
         self.geojson_score_usa_low: gpd.GeoDataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [] # we have all prerequisite sources locally as a result of generating the previous steps in the pipeline
-
+        return (
+            []
+        )  # we have all prerequisite sources locally as a result of generating the previous steps in the pipeline
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
+
         # check census data
         check_census_data_source(
             census_data_path=self.DATA_PATH / "census",

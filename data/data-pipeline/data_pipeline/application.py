@@ -386,7 +386,7 @@ def data_full_run(check: bool, data_source: str, use_cache: bool):
 
     log_goodbye()
     sys.exit()
-    
+
 
 @cli.command(
     help="Print data sources for all ETL processes (or a specific one)",
@@ -411,9 +411,9 @@ def print_data_sources(dataset: str):
 
     log_info("Retrieving dataset(s)")
     sources = get_data_sources(dataset)
-    
+
     log_info(f"Discovered {len(sources)} files")
-    
+
     for s in sources:
         log_info(s)
 
@@ -458,7 +458,7 @@ def extract_data_sources(dataset: str, use_cache: bool):
 
 
 @cli.command(
-        help="Clear data source cache for all ETL processes (or a specific one)",
+    help="Clear data source cache for all ETL processes (or a specific one)",
 )
 @click.option(
     "-d",
@@ -483,7 +483,7 @@ def clear_data_source_cache(dataset: str):
 
     log_goodbye()
     sys.exit()
-        
+
 
 def log_title(title: str, subtitle: str = None):
     """Logs a title in our fancy title format"""

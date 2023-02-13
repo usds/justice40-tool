@@ -27,9 +27,9 @@ class CensusACSETL(ExtractTransformLoad):
     MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION = 1
 
     def __init__(self):
-        
+
         self.census_acs_source = self.get_sources_path() / "acs.csv"
-        
+
         self.TOTAL_UNEMPLOYED_FIELD = "B23025_005E"
         self.TOTAL_IN_LABOR_FORCE = "B23025_003E"
         self.EMPLOYMENT_FIELDS = [
@@ -312,7 +312,7 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         self.df: pd.DataFrame
-        
+
     def get_data_sources(self) -> [DataSource]:
         # Define the variables to retrieve
         variables = (
@@ -328,8 +328,18 @@ class CensusACSETL(ExtractTransformLoad):
             + self.COLLEGE_ATTENDANCE_FIELDS
             + self.AGE_INPUT_FIELDS
         )
-        
-        return [CensusDataSource(source=None, destination=self.census_acs_source, acs_year=self.ACS_YEAR, variables=variables, tract_output_field_name=self.GEOID_TRACT_FIELD_NAME, data_path_for_fips_codes=self.DATA_PATH, acs_type="acs5")]
+
+        return [
+            CensusDataSource(
+                source=None,
+                destination=self.census_acs_source,
+                acs_year=self.ACS_YEAR,
+                variables=variables,
+                tract_output_field_name=self.GEOID_TRACT_FIELD_NAME,
+                data_path_for_fips_codes=self.DATA_PATH,
+                acs_type="acs5",
+            )
+        ]
 
     # pylint: disable=too-many-arguments
     def _merge_geojson(
@@ -360,10 +370,15 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
 
-        self.df = pd.read_csv(self.census_acs_source, dtype={self.GEOID_TRACT_FIELD_NAME: "string"})
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
+        self.df = pd.read_csv(
+            self.census_acs_source,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+        )
 
     def transform(self) -> None:
         df = self.df

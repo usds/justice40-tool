@@ -42,18 +42,19 @@ class AbandonedMineETL(ExtractTransformLoad):
         "55",
     ]
 
-
     def __init__(self):
-        
+
         # fetch
         self.eamlis_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/eAMLIS export of all data.tsv.zip"
         )
-        
+
         # input
-        self.eamlis_source = self.get_sources_path() / "eAMLIS export of all data.tsv"
-        
+        self.eamlis_source = (
+            self.get_sources_path() / "eAMLIS export of all data.tsv"
+        )
+
         # output
         self.TRACT_INPUT_COLUMN_NAME = self.INPUT_GEOID_TRACT_FIELD_NAME
 
@@ -68,24 +69,27 @@ class AbandonedMineETL(ExtractTransformLoad):
 
         self.output_df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.eamlis_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.eamlis_url, destination=self.get_sources_path()
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df = pd.read_csv(
             self.eamlis_source,
             sep="\t",
             low_memory=False,
         )
 
-
     def transform(self) -> None:
-        
+
         gdf = gpd.GeoDataFrame(
             self.df,
             geometry=gpd.points_from_xy(
@@ -98,5 +102,5 @@ class AbandonedMineETL(ExtractTransformLoad):
         gdf_tracts = add_tracts_for_geometries(gdf)
         gdf_tracts = gdf_tracts.drop_duplicates(self.GEOID_TRACT_FIELD_NAME)
         gdf_tracts[self.AML_BOOLEAN] = True
-        
+
         self.output_df = gdf_tracts[self.COLUMNS_TO_KEEP]

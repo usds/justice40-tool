@@ -12,20 +12,25 @@ logger = get_module_logger(__name__)
 
 
 class GeoCorrETL(ExtractTransformLoad):
-    
+
     NAME = "geocorr"
-    
+
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
-        
+
         # fetch
-        self.geocorr_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/geocorr_urban_rural.csv.zip"
-        
+        self.geocorr_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/geocorr_urban_rural.csv.zip"
+        )
+
         # input
-        self.geocorr_source = self.get_sources_path() / "geocorr_urban_rural.csv"
-        
+        self.geocorr_source = (
+            self.get_sources_path() / "geocorr_urban_rural.csv"
+        )
+
         # output
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "geocorr"
 
@@ -46,14 +51,18 @@ class GeoCorrETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.geocorr_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.geocorr_url, destination=self.get_sources_path()
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
 
         self.df = pd.read_csv(
             filepath_or_buffer=self.geocorr_source,
@@ -62,7 +71,6 @@ class GeoCorrETL(ExtractTransformLoad):
             },
             low_memory=False,
         )
-
 
     def transform(self) -> None:
         # Put in logic from Jupyter Notebook transform when we switch in the hyperlink to Geocorr

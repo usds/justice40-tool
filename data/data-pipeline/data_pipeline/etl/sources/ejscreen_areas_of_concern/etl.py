@@ -10,11 +10,16 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
     # Note: while we normally set these properties in `__init__`,
     # we are setting them as class properties here so they can be accessed by the
     # class method `ejscreen_areas_of_concern_data_exists`.
-    
-    EJSCREEN_AREAS_OF_CONCERN_SOURCE = ExtractTransformLoad.DATA_PATH / "sources" / "EJSCREENAreasOfConcernETL" / "ejscreen_areas_of_concerns_indicators.csv"
-    
+
+    EJSCREEN_AREAS_OF_CONCERN_SOURCE = (
+        ExtractTransformLoad.DATA_PATH
+        / "sources"
+        / "EJSCREENAreasOfConcernETL"
+        / "ejscreen_areas_of_concerns_indicators.csv"
+    )
+
     def __init__(self):
-        
+
         # output
         self.OUTPUT_PATH = (
             self.DATA_PATH / "dataset" / "ejscreen_areas_of_concern"
@@ -23,11 +28,9 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
         # TO DO: Load from actual source; the issue is that this dataset is not public for now
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
         """The source for this must be downloaded and saved manually. It is not publicly available"""
         return []
-
 
     @classmethod
     def ejscreen_areas_of_concern_data_exists(cls):
@@ -45,9 +48,11 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
         return cls.EJSCREEN_AREAS_OF_CONCERN_SOURCE.is_file()
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         logger.info(self.EJSCREEN_AREAS_OF_CONCERN_SOURCE)
         if self.ejscreen_areas_of_concern_data_exists():
             logger.debug("Loading EJSCREEN Areas of Concern Data Locally")

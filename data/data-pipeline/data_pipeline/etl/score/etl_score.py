@@ -58,10 +58,12 @@ class ScoreETL(ExtractTransformLoad):
         self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS: List[str] = []
 
     def get_data_sources(self) -> [DataSource]:
-        return [] # we have all prerequisite sources locally as a result of running the ETLs
+        return (
+            []
+        )  # we have all prerequisite sources locally as a result of running the ETLs
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
+
         # EJSCreen csv Load
         ejscreen_csv = constants.DATA_PATH / "dataset" / "ejscreen" / "usa.csv"
         self.ejscreen_df = pd.read_csv(

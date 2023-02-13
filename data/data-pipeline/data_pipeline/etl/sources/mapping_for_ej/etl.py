@@ -11,9 +11,8 @@ logger = get_module_logger(__name__)
 
 
 class MappingForEJETL(ExtractTransformLoad):
-    
     def __init__(self):
-        
+
         # fetch
         self.mapping_for_ej_va_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL + "/VA_mej.zip"
@@ -21,11 +20,15 @@ class MappingForEJETL(ExtractTransformLoad):
         self.mapping_for_ej_co_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL + "/CO_mej.zip"
         )
-        
+
         # input
-        self.va_shp_file_source = self.get_sources_path() / "mej_virginia_7_1.shp"
-        self.co_shp_file_source = self.get_sources_path() / "mej_colorado_final.shp"
-        
+        self.va_shp_file_source = (
+            self.get_sources_path() / "mej_virginia_7_1.shp"
+        )
+        self.co_shp_file_source = (
+            self.get_sources_path() / "mej_colorado_final.shp"
+        )
+
         # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "mapping_for_ej"
 
@@ -46,18 +49,24 @@ class MappingForEJETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
         return [
-            ZIPDataSource(source=self.mapping_for_ej_va_url, destination=self.get_sources_path()),
-            ZIPDataSource(source=self.mapping_for_ej_co_url, destination=self.get_sources_path())
+            ZIPDataSource(
+                source=self.mapping_for_ej_va_url,
+                destination=self.get_sources_path(),
+            ),
+            ZIPDataSource(
+                source=self.mapping_for_ej_co_url,
+                destination=self.get_sources_path(),
+            ),
         ]
 
-
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         # Join (here, it's just concatenating) the two dataframes from
         # CO and VA
         self.df = pd.concat(
@@ -66,10 +75,9 @@ class MappingForEJETL(ExtractTransformLoad):
                 gpd.read_file(self.co_shp_file_source),
             ]
         )
-        
 
     def transform(self) -> None:
-        
+
         # Fill Census tract to get it to be 11 digits, incl. leading 0s
         # Note that VA and CO should never have leading 0s, so this isn't
         # strictly necessary, but if in the future, there are more states
@@ -94,14 +102,12 @@ class MappingForEJETL(ExtractTransformLoad):
             >= self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PERCENTILE_THRESHOLD
         )
 
-
     def load(self) -> None:
         # write selected states csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
             self.CSV_PATH / "co_va.csv", index=False
         )
-
 
     def validate(self) -> None:
         logger.debug("Skipping validation for MappingForEJETL")

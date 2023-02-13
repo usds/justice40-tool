@@ -19,7 +19,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        
+
         # fetch
         self.maryland_ejscreen_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL + "/MD_EJScreen.zip"
@@ -27,7 +27,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
 
         # input
         self.shape_files_source = self.get_sources_path() / "mdejscreen"
-        
+
         # output
         self.OUTPUT_CSV_PATH = self.DATA_PATH / "dataset" / "maryland_ejscreen"
 
@@ -38,19 +38,24 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         ]
 
         self.df: pd.DataFrame
-        
-        
-    def get_data_sources(self) -> [DataSource]:
-        return[ZIPDataSource(source=self.maryland_ejscreen_url, destination=self.get_sources_path())]
 
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            ZIPDataSource(
+                source=self.maryland_ejscreen_url,
+                destination=self.get_sources_path(),
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         logger.debug("Downloading 207MB Maryland EJSCREEN Data")
         list_of_files = list(glob(str(self.shape_files_source) + "/*.shp"))
-        
+
         # Ignore counties because this is not the level of measurement
         # that is consistent with our current scoring and ranking methodology.
         self.dfs_list = [
@@ -59,9 +64,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             if not f.endswith("CountiesEJScore.shp")
         ]
 
-
     def transform(self) -> None:
-        
 
         # Set the Census tract as the index and drop the geometry column
         # that produces the census tract boundaries.
@@ -114,7 +117,6 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             ]
             >= 0.75
         )
-
 
     def load(self) -> None:
         # write maryland tracts to csv

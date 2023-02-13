@@ -64,10 +64,10 @@ class PostScoreETL(ExtractTransformLoad):
         self.yaml_global_config_sort_by_label = "sort_by_label"
         # End YAML definition constants
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [] # we have all prerequisite sources locally as a result of generating the score
-
+        return (
+            []
+        )  # we have all prerequisite sources locally as a result of generating the score
 
     def _extract_counties(self, county_path: Path) -> pd.DataFrame:
         logger.debug("Reading Counties CSV")
@@ -106,9 +106,11 @@ class PostScoreETL(ExtractTransformLoad):
         return df
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-                
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         # check census data
         check_census_data_source(
             census_data_path=self.DATA_PATH / "census",
@@ -116,7 +118,9 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         # TODO would could probably add this to the data sources for this file
-        Downloader.download_zip_file_from_url(constants.CENSUS_COUNTIES_ZIP_URL, constants.TMP_PATH)
+        Downloader.download_zip_file_from_url(
+            constants.CENSUS_COUNTIES_ZIP_URL, constants.TMP_PATH
+        )
 
         self.input_counties_df = self._extract_counties(
             constants.CENSUS_COUNTIES_FILE_NAME

@@ -36,9 +36,8 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     # This is defined as roughly the 10th percentile for "rural tracts"
     AGRIVALUE_LOWER_BOUND = 408000
 
-
     def __init__(self):
-        
+
         # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.risk_index_url = (
@@ -50,9 +49,11 @@ class NationalRiskIndexETL(ExtractTransformLoad):
                 "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload/"
                 "NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
             )
-            
+
         # source
-        self.risk_index_source = self.get_sources_path() / "NRI_Table_CensusTracts.csv"
+        self.risk_index_source = (
+            self.get_sources_path() / "NRI_Table_CensusTracts.csv"
+        )
 
         # output
         # this is the main dataframe
@@ -71,15 +72,19 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         self.POPULATION_INPUT_FIELD_NAME = "POPULATION"
         self.BUILDING_VALUE_INPUT_FIELD_NAME = "BUILDVALUE"
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.risk_index_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.risk_index_url, destination=self.get_sources_path()
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging
         self.df_nri: pd.DataFrame = pd.read_csv(
@@ -88,7 +93,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             na_values=["None"],
             low_memory=False,
         )
-
 
     def transform(self) -> None:
         """Reads the unzipped data file into memory and applies the following
@@ -144,13 +148,17 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             if f"{x}_EALB" in list(self.df_nri.columns)
         ]
 
-        disaster_population_sum_series = self.df_nri[population_columns].sum(axis=1)
+        disaster_population_sum_series = self.df_nri[population_columns].sum(
+            axis=1
+        )
 
         disaster_agriculture_sum_series = self.df_nri[agriculture_columns].sum(
             axis=1
         )
 
-        disaster_buildings_sum_series = self.df_nri[buildings_columns].sum(axis=1)
+        disaster_buildings_sum_series = self.df_nri[buildings_columns].sum(
+            axis=1
+        )
 
         # Population EAL Rate = Eal Valp / Population
         self.df_nri[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = (
@@ -208,7 +216,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # Assign the final df to the class' output_df for the load method
         self.output_df = self.df_nri
-
 
     def load(self) -> None:
         # Suppress scientific notation.

@@ -39,8 +39,11 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
             )
 
         # input
-        self.aggregated_rsei_score_source = self.get_sources_path() / "CensusMicroTracts2019_2019_aggregated.csv"
-        
+        self.aggregated_rsei_score_source = (
+            self.get_sources_path()
+            / "CensusMicroTracts2019_2019_aggregated.csv"
+        )
+
         # output
         self.OUTPUT_PATH: Path = self.DATA_PATH / "dataset" / "epa_rsei"
         self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = 0.75
@@ -72,15 +75,20 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.aggregated_rsei_score_file_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.aggregated_rsei_score_file_url,
+                destination=self.get_sources_path(),
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         # the column headers from the above dataset are actually a census tract's data at this point
         # We will use this data structure later to specify the column names
         input_columns = [
@@ -102,7 +110,6 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
             low_memory=False,
             names=input_columns,
         )
-
 
     def transform(self) -> None:
         score_columns = [x for x in self.df.columns if "SCORE" in x]
@@ -160,7 +167,6 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
             raise ValueError(
                 f"GEOID Tract must be length of {expected_census_tract_field_length}"
             )
-
 
     def load(self) -> None:
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)

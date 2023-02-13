@@ -11,7 +11,6 @@ logger = get_module_logger(__name__)
 
 
 class HousingTransportationETL(ExtractTransformLoad):
-
     def __init__(self):
 
         self.OUTPUT_PATH = (
@@ -19,25 +18,30 @@ class HousingTransportationETL(ExtractTransformLoad):
         )
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        
+
         self.housing_url = (
             "https://htaindex.cnt.org/download/download.php?focus=tract&geoid="
         )
-        
+
         sources = []
-        
+
         for fips in get_state_fips_codes(self.DATA_PATH):
-            sources.append(ZIPDataSource(source=f"{self.housing_url}{fips}", destination=self.get_sources_path()))
-            
+            sources.append(
+                ZIPDataSource(
+                    source=f"{self.housing_url}{fips}",
+                    destination=self.get_sources_path(),
+                )
+            )
+
         return sources
 
-
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         # Download each state / territory individually
         dfs = []
         for fips in get_state_fips_codes(self.DATA_PATH):
@@ -56,7 +60,6 @@ class HousingTransportationETL(ExtractTransformLoad):
             dfs.append(tmp_df)
 
         self.df = pd.concat(dfs)
-
 
     def transform(self) -> None:
         # Rename and reformat tract ID

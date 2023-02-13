@@ -68,10 +68,8 @@ class TribalOverlapETL(ExtractTransformLoad):
         self.census_tract_gdf: gpd.GeoDataFrame
         self.tribal_gdf: gpd.GeoDataFrame
 
-    
     def get_data_sources(self) -> [DataSource]:
-        return [] # this uses already retrieved / calculated data
-
+        return []  # this uses already retrieved / calculated data
 
     @staticmethod
     def _create_string_from_list(series: pd.Series) -> str:
@@ -96,9 +94,11 @@ class TribalOverlapETL(ExtractTransformLoad):
         return percentage_float
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.census_tract_gdf = get_tract_geojson()
         self.tribal_gdf = get_tribal_geojson()
 

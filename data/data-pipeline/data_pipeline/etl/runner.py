@@ -51,7 +51,7 @@ def _get_dataset(dataset: dict) -> ExtractTransformLoad:
     )
     etl_class = getattr(etl_module, dataset["class_name"])
     etl_instance = etl_class()
-    
+
     return etl_instance
 
 
@@ -116,7 +116,9 @@ def etl_runner(dataset_to_run: str = None, use_cache: bool = False) -> None:
         logger.info("Running concurrent ETL jobs")
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
-                executor.submit(_run_one_dataset, dataset=dataset, use_cache=use_cache)
+                executor.submit(
+                    _run_one_dataset, dataset=dataset, use_cache=use_cache
+                )
                 for dataset in concurrent_datasets
             }
 
@@ -134,37 +136,45 @@ def etl_runner(dataset_to_run: str = None, use_cache: bool = False) -> None:
 
 
 def get_data_sources(dataset_to_run: str = None) -> [DataSource]:
-    
+
     dataset_list = _get_datasets_to_run(dataset_to_run)
-    
+
     sources = []
-    
+
     for dataset in dataset_list:
         etl_instance = _get_dataset(dataset)
         sources.append(etl_instance.get_data_sources())
-        
-    sources = reduce(list.__add__, sources) # flatten the list of lists into a single list
-        
+
+    sources = reduce(
+        list.__add__, sources
+    )  # flatten the list of lists into a single list
+
     return sources
 
 
-def extract_data_sources(dataset_to_run: str = None, use_cache: bool = False) -> None:
+def extract_data_sources(
+    dataset_to_run: str = None, use_cache: bool = False
+) -> None:
 
     dataset_list = _get_datasets_to_run(dataset_to_run)
-    
+
     for dataset in dataset_list:
         etl_instance = _get_dataset(dataset)
-        logger.info(f"Extracting data set for {etl_instance.__class__.__name__}")
+        logger.info(
+            f"Extracting data set for {etl_instance.__class__.__name__}"
+        )
         etl_instance.extract(use_cache)
 
 
 def clear_data_source_cache(dataset_to_run: str = None) -> None:
- 
+
     dataset_list = _get_datasets_to_run(dataset_to_run)
-    
+
     for dataset in dataset_list:
         etl_instance = _get_dataset(dataset)
-        logger.info(f"Clearing data set cache for {etl_instance.__class__.__name__}")
+        logger.info(
+            f"Clearing data set cache for {etl_instance.__class__.__name__}"
+        )
         etl_instance.clear_data_source_cache()
 
 

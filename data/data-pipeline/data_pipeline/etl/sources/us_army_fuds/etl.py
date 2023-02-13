@@ -44,7 +44,7 @@ class USArmyFUDS(ExtractTransformLoad):
         self.output_df: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:
-        
+
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             fuds_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
@@ -57,10 +57,8 @@ class USArmyFUDS(ExtractTransformLoad):
                 "3f8354667d5b4b1b8ad7a6e00c3cf3b1_1/downloads/"
                 "data?format=geojson&spatialRefId=4326&where=1%3D1"
             )
-        
+
         return [FileDataSource(source=fuds_url, destination=self.fuds_source)]
-
-
 
     def transform(self) -> None:
         # before we try to do any transformation, get the tract data

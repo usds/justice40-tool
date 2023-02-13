@@ -22,7 +22,7 @@ class GeoFileType(Enum):
 
 
 class CensusETL(ExtractTransformLoad):
-    #SHP_BASE_PATH = ExtractTransformLoad.DATA_PATH / "census" / "shp"
+    # SHP_BASE_PATH = ExtractTransformLoad.DATA_PATH / "census" / "shp"
     GEOJSON_BASE_PATH = ExtractTransformLoad.DATA_PATH / "census" / "geojson"
     CSV_BASE_PATH = ExtractTransformLoad.DATA_PATH / "census" / "csv"
     GEOJSON_PATH = ExtractTransformLoad.DATA_PATH / "census" / "geojson"
@@ -31,24 +31,24 @@ class CensusETL(ExtractTransformLoad):
     GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
 
     def __init__(self):
-        
+
         self.shape_file_path = self.get_sources_path() / "shp"
-        
+
         # the fips_states_2010.csv is generated from data here
         # https://www.census.gov/geographies/reference-files/time-series/geo/tallies.html
         self.STATE_FIPS_CODES = get_state_fips_codes(self.DATA_PATH)
         self.TRACT_PER_STATE: dict = {}  # in-memory dict per state
         self.TRACT_NATIONAL: list = []  # in-memory global list
-        
+
     def _path_for_fips_file(
         self, fips_code: str, file_type: GeoFileType
     ) -> Path:
         """Get paths for associated geospatial files for the provided FIPS code
-    
+
         Args:
             fips_code (str): the FIPS code for the region of interest
             file_type (GeoFileType): the geo file type of interest
-    
+
         Returns:
             Path on disk to the file_type file corresponding to this FIPS
         """
@@ -64,21 +64,23 @@ class CensusETL(ExtractTransformLoad):
         elif file_type == GeoFileType.CSV:
             file_path = Path(self.CSV_BASE_PATH / f"{fips_code}.csv")
         return file_path
-        
-        
+
     def get_data_sources(self) -> [DataSource]:
-        
+
         sources = []
-        
+
         for fips_code in self.STATE_FIPS_CODES:
-            
+
             tract_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/TRACT/2010/tl_2010_{fips_code}_tract10.zip"
             destination_path = self.shape_file_path / fips_code
-            
-            sources.append(ZIPDataSource(source=tract_state_url, destination=destination_path))
-        
-        return sources
 
+            sources.append(
+                ZIPDataSource(
+                    source=tract_state_url, destination=destination_path
+                )
+            )
+
+        return sources
 
     def _transform_to_geojson(self, fips_code: str) -> None:
         """Convert the downloaded SHP file for the associated FIPS to geojson

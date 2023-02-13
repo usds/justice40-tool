@@ -12,22 +12,27 @@ logger = get_module_logger(__name__)
 
 
 class DOEEnergyBurden(ExtractTransformLoad):
-    
+
     NAME = "doe_energy_burden"
-    
+
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     LOAD_YAML_CONFIG: bool = True
 
     REVISED_ENERGY_BURDEN_FIELD_NAME: str
 
     def __init__(self):
-    
+
         # fetch
-        self.doe_energy_burden_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/DOE_LEAD_AMI_TRACT_2018_ALL.csv.zip"
-        
+        self.doe_energy_burden_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/DOE_LEAD_AMI_TRACT_2018_ALL.csv.zip"
+        )
+
         # input
-        self.doe_energy_burden_source = self.get_sources_path() / "DOE_LEAD_AMI_TRACT_2018_ALL.csv"
-        
+        self.doe_energy_burden_source = (
+            self.get_sources_path() / "DOE_LEAD_AMI_TRACT_2018_ALL.csv"
+        )
+
         # output
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "doe_energy_burden"
@@ -38,13 +43,19 @@ class DOEEnergyBurden(ExtractTransformLoad):
         self.output_df: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.doe_energy_burden_url, destination=self.get_sources_path())]
+        return [
+            ZIPDataSource(
+                source=self.doe_energy_burden_url,
+                destination=self.get_sources_path(),
+            )
+        ]
 
-    
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.raw_df = pd.read_csv(
             filepath_or_buffer=self.doe_energy_burden_source,
             # The following need to remain as strings for all of their digits, not get converted to numbers.

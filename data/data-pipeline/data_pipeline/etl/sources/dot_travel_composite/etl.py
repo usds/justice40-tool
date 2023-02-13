@@ -25,7 +25,7 @@ class TravelCompositeETL(ExtractTransformLoad):
     TRAVEL_BURDEN_FIELD_NAME: str
 
     def __init__(self):
-        
+
         # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.travel_composite_url = (
@@ -34,13 +34,14 @@ class TravelCompositeETL(ExtractTransformLoad):
             )
         else:
             self.travel_composite_url = "https://www.transportation.gov/sites/dot.gov/files/Shapefile_and_Metadata.zip"
-        
-        # input 
+
+        # input
         # define the full path for the input CSV file
         self.disadvantage_layer_shape_source = (
-            self.get_sources_path() / "DOT_Disadvantage_Layer_Final_April2022.shp"
+            self.get_sources_path()
+            / "DOT_Disadvantage_Layer_Final_April2022.shp"
         )
-        
+
         # output
         # this is the main dataframe
         self.df: pd.DataFrame
@@ -51,18 +52,22 @@ class TravelCompositeETL(ExtractTransformLoad):
         ## See metadata for more information
         self.INPUT_TRAVEL_DISADVANTAGE_FIELD_NAME = "Transp_TH"
         self.INPUT_GEOID_TRACT_FIELD_NAME = "FIPS"
-        
 
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.travel_composite_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.travel_composite_url,
+                destination=self.get_sources_path(),
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
-        self.df_dot = gpd.read_file(self.disadvantage_layer_shape_source)
 
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
+        self.df_dot = gpd.read_file(self.disadvantage_layer_shape_source)
 
     def transform(self) -> None:
         """Reads the unzipped data file into memory and applies the following
@@ -74,13 +79,13 @@ class TravelCompositeETL(ExtractTransformLoad):
 
         # reformat it to be standard df, remove unassigned rows, and
         # then rename the Census Tract column for merging
-        
+
         self.df_dot = self.df_dot.rename(
             columns={
                 self.INPUT_GEOID_TRACT_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME,
                 self.INPUT_TRAVEL_DISADVANTAGE_FIELD_NAME: self.TRAVEL_BURDEN_FIELD_NAME,
             }
         ).dropna(subset=[self.GEOID_TRACT_FIELD_NAME])
-        
+
         # Assign the final df to the class' output_df for the load method
         self.output_df = self.df_dot

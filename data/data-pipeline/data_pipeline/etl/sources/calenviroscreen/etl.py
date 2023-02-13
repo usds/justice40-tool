@@ -7,20 +7,26 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
+
 class CalEnviroScreenETL(ExtractTransformLoad):
     """California environmental screen
-    
+
     TODO: Need good description
     """
-    
+
     def __init__(self):
-        
+
         # fetch
-        self.calenviroscreen_ftp_url = settings.AWS_JUSTICE40_DATASOURCES_URL + "/CalEnviroScreen_4.0_2021.zip"
-        
+        self.calenviroscreen_ftp_url = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/CalEnviroScreen_4.0_2021.zip"
+        )
+
         # input
-        self.calenviroscreen_source = self.get_sources_path() / "CalEnviroScreen_4.0_2021.csv"
-        
+        self.calenviroscreen_source = (
+            self.get_sources_path() / "CalEnviroScreen_4.0_2021.csv"
+        )
+
         # output
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "calenviroscreen4"
 
@@ -38,17 +44,24 @@ class CalEnviroScreenETL(ExtractTransformLoad):
         self.CALENVIROSCREEN_PRIORITY_COMMUNITY_THRESHOLD = 75
 
         self.df: pd.DataFrame
-        
 
     def get_data_sources(self) -> [DataSource]:
-        return [ZIPDataSource(source=self.calenviroscreen_ftp_url, destination=self.get_sources_path())]
-
+        return [
+            ZIPDataSource(
+                source=self.calenviroscreen_ftp_url,
+                destination=self.get_sources_path(),
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
-        self.df = pd.read_csv(self.calenviroscreen_source, dtype={"Census Tract": "string"})
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
+        self.df = pd.read_csv(
+            self.calenviroscreen_source, dtype={"Census Tract": "string"}
+        )
 
     def transform(self) -> None:
         # Data from https://calenviroscreen-oehha.hub.arcgis.com/#Data, specifically:

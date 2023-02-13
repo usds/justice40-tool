@@ -14,7 +14,7 @@ logger = get_module_logger(__name__)
 
 class CDCPlacesETL(ExtractTransformLoad):
     """#TODO: Need description"""
-    
+
     NAME = "cdc_places"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
@@ -24,7 +24,7 @@ class CDCPlacesETL(ExtractTransformLoad):
     CDC_MEASURE_FIELD_NAME = "Measure"
 
     def __init__(self):
-    
+
         # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.cdc_places_url = (
@@ -52,15 +52,19 @@ class CDCPlacesETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-
     def get_data_sources(self) -> [DataSource]:
-        return [FileDataSource(source=self.cdc_places_url, destination=self.places_source)]
-
+        return [
+            FileDataSource(
+                source=self.cdc_places_url, destination=self.places_source
+            )
+        ]
 
     def extract(self, use_cached_data_sources: bool = False) -> None:
-        
-        super().extract(use_cached_data_sources) # download and extract data sources
-        
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df = pd.read_csv(
             filepath_or_buffer=self.places_source,
             dtype={self.CDC_GEOID_FIELD_NAME: "string"},
@@ -68,7 +72,7 @@ class CDCPlacesETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        
+
         # Rename GEOID field
         self.df.rename(
             columns={self.CDC_GEOID_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME},
