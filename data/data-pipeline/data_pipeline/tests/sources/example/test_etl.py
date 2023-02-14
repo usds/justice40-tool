@@ -273,24 +273,22 @@ class TestETL:
                 self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_FILE_NAME
             ).exists()
 
-    #     def test_extract_unzips_base(self, mock_etl, mock_paths):
-    #         """Tests the extract method.
-    #
-    #         As per conversation with Jorge, no longer includes snapshot. Instead, verifies that the
-    #         file was unzipped from a "fake" downloaded zip (located in data) in a  temporary path.
-    #         """
-    #         if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
-    #             tmp_path = mock_paths[1]
-    #
-    #             _ = self._setup_etl_instance_and_run_extract(
-    #                 mock_etl=mock_etl,
-    #                 mock_paths=mock_paths,
-    #             )
-    #             assert (
-    #                 tmp_path
-    #                 / self._EXTRACT_TMP_FOLDER_NAME
-    #                 / self._SAMPLE_DATA_FILE_NAME
-    #             ).exists()
+    def test_extract_unzips_base(self, mock_etl, mock_paths):
+        """Tests the extract method.
+
+        As per conversation with Jorge, no longer includes snapshot. Instead, verifies that the
+        file was unzipped from a "fake" downloaded zip (located in data) in a  temporary path.
+        """
+        if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
+            tmp_path = mock_paths[1]
+
+            etl = self._setup_etl_instance_and_run_extract(
+                mock_etl=mock_etl,
+                mock_paths=mock_paths,
+            )
+            assert (
+                etl.get_sources_path()
+            ).exists()
 
     def test_extract_produces_valid_data(self, snapshot, mock_etl, mock_paths):
         """Tests the extract method.
