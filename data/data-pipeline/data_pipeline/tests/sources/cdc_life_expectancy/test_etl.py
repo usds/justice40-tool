@@ -65,7 +65,7 @@ class TestCDCLifeExpectency(TestETL):
         ) as sources_mock, mock.patch(
             "data_pipeline.etl.score.etl_utils.get_state_fips_codes"
         ) as mock_get_state_fips_codes:
-        
+
             data_path, tmp_path = mock_paths
 
             # requests mock
@@ -85,15 +85,15 @@ class TestCDCLifeExpectency(TestETL):
                 return response_mock
 
             requests_mock.get = fake_get
-            
+
             # fips codes mock
             mock_get_state_fips_codes.return_value = [
                 x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
             ]
-            
-            # sources mock                            
+
+            # sources mock
             sources_mock.return_value = sources_path
-            
+
             # Instantiate the ETL class.
             etl = self._get_instance_of_etl_class()
 
@@ -103,12 +103,12 @@ class TestCDCLifeExpectency(TestETL):
 
             # Run the extract method.
             etl.extract()
-            
+
         def fake_get_sources_path() -> pathlib.PosixPath:
             return sources_path
-            
+
         mock.patch.object(etl, "get_sources_path", wraps=fake_get_sources_path)
-            
+
         return etl
 
     def test_init(self, mock_etl, mock_paths):

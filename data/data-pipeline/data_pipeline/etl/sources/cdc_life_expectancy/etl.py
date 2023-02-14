@@ -134,7 +134,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         states_in_combined_df = list(
             combined_df[self.STATE_INPUT_COLUMN_NAME].unique()
         )
-        
+
         # Expect that PR and Island Areas are the only things now missing
         compare_to_list_of_expected_state_fips_codes(
             actual_state_fips_codes=states_in_combined_df,
