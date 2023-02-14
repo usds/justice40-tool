@@ -1,8 +1,6 @@
 import os
-import sys
 import uuid
 import urllib3
-import logging
 import requests
 import zipfile
 
@@ -25,7 +23,8 @@ class Downloader:
         Args:
                 file_url (str): URL where the zip file is located
                 download_file_name (pathlib.Path): file path where the file will be downloaded (called downloaded.zip by default)
-                verify (bool): A flag to check if the certificate is valid. If truthy, an invalid certificate will throw an error (optional, default to False)
+                verify (bool): A flag to check if the certificate is valid. If truthy, an invalid certificate will throw an
+                error (optional, default to False)
 
         Returns:
                 None
@@ -65,7 +64,8 @@ class Downloader:
         Args:
                 file_url (str): URL where the zip file is located
                 unzipped_file_path (pathlib.Path): directory and name of the extracted file
-                verify (bool): A flag to check if the certificate is valid. If truthy, an invalid certificate will throw an error (optional, default to False)
+                verify (bool): A flag to check if the certificate is valid. If truthy, an invalid certificate will throw an
+                error (optional, default to False)
 
         Returns:
                 None

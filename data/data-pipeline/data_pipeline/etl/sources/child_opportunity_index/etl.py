@@ -5,6 +5,8 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 
 logger = get_module_logger(__name__)
 
@@ -52,7 +54,9 @@ class ChildOpportunityIndex(ExtractTransformLoad):
             )
 
         # input
-        self.child_opportunity_index_source = elf.get_sources_path() / "raw.csv"
+        self.child_opportunity_index_source = (
+            self.get_sources_path() / "raw.csv"
+        )
 
         # output
 
@@ -69,6 +73,7 @@ class ChildOpportunityIndex(ExtractTransformLoad):
         self.IMPENETRABLE_SURFACES_INPUT_FIELD = "HE_GREEN"
         self.READING_INPUT_FIELD = "ED_READING"
 
+        self.raw_df: pd.DataFrame
         self.output_df: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:

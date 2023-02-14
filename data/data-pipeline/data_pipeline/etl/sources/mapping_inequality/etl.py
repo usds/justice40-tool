@@ -78,6 +78,7 @@ class MappingInequalityETL(ExtractTransformLoad):
         ]
 
         self.df: pd.DataFrame
+        self.holc_manually_mapped_df: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:
         return [

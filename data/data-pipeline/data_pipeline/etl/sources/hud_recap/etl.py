@@ -1,5 +1,5 @@
 import pandas as pd
-import requests
+
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.datasource import DataSource

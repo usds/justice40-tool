@@ -46,6 +46,8 @@ class WildfireRiskETL(ExtractTransformLoad):
         # this is the main dataframe
         self.df: pd.DataFrame
 
+        self.df_fsf_fire: pd.DataFrame
+
         # Start dataset-specific vars here
         self.COUNT_PROPERTIES_NATIVE_FIELD_NAME = "count_properties"
         self.COUNT_PROPERTIES_AT_RISK_TODAY = "burnprob_year00_flag"

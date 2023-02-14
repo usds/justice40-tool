@@ -6,8 +6,6 @@ import shutil
 from typing import Optional
 from abc import ABC, abstractmethod
 
-from dataclasses import dataclass
-
 import pandas as pd
 from data_pipeline.config import settings
 from data_pipeline.etl.score.etl_utils import (
@@ -17,7 +15,6 @@ from data_pipeline.etl.score.schemas.datasets import DatasetsConfig
 from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import load_yaml_dict_from_file
 from data_pipeline.utils import remove_all_from_dir
-from data_pipeline.utils import unzip_file_from_url
 from data_pipeline.etl.datasource import DataSource
 
 logger = get_module_logger(__name__)
@@ -50,6 +47,7 @@ class ExtractTransformLoad(ABC):
     # Directories
     DATA_PATH: pathlib.Path = settings.DATA_PATH
     TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
+    SOURCES_PATH: pathlib.Path = DATA_PATH / "sources"
     CONTENT_CONFIG: pathlib.Path = APP_ROOT / "content" / "config"
     DATASET_CONFIG_PATH: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
     DATASET_CONFIG: Optional[dict] = None
@@ -186,7 +184,7 @@ class ExtractTransformLoad(ABC):
         """Returns the sources path associated with this ETL class. The sources path
         is the home for cached data sources used by this ETL."""
 
-        sources_path = self.DATA_PATH / "sources" / str(self.__class__.__name__)
+        sources_path = self.SOURCES_PATH / str(self.__class__.__name__)
 
         # Create directory if it doesn't exist
         sources_path.mkdir(parents=True, exist_ok=True)

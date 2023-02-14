@@ -46,6 +46,7 @@ class HistoricRedliningETL(ExtractTransformLoad):
         ]
 
         self.df: pd.DataFrame
+        self.historic_redlining_data: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:
         return [

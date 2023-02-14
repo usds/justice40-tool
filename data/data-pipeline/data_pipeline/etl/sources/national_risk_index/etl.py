@@ -58,6 +58,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # output
         # this is the main dataframe
         self.df: pd.DataFrame
+        self.df_nri: pd.DataFrame
 
         # Start dataset-specific vars here
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
@@ -87,7 +88,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging
-        self.df_nri: pd.DataFrame = pd.read_csv(
+        self.df_nri = pd.read_csv(
             self.risk_index_source,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: "string"},
             na_values=["None"],

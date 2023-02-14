@@ -3,8 +3,6 @@ from typing import List
 
 import numpy as np
 import pandas as pd
-import requests
-from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
@@ -405,7 +403,7 @@ class CensusDecennialETL(ExtractTransformLoad):
                     df = json.load(filepath.open())
                 except ValueError as e:
                     logger.error(
-                        f"Could not load content in census decennial ETL because {e}. Content is {download.content}."
+                        f"Could not load content in census decennial ETL because {e}."
                     )
 
                 # First row is the header

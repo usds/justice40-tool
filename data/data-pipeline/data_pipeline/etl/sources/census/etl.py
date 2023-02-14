@@ -8,7 +8,6 @@ import geopandas as gpd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
-from data_pipeline.utils import unzip_file_from_url
 from data_pipeline.etl.datasource import DataSource
 from data_pipeline.etl.datasource import ZIPDataSource
 

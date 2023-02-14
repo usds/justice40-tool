@@ -45,6 +45,8 @@ class NatureDeprivedETL(ExtractTransformLoad):
         # this is the main dataframe
         self.df: pd.DataFrame
 
+        self.df_ncld: pd.DataFrame
+
         # Start dataset-specific vars here
         self.PERCENT_NATURAL_FIELD_NAME = "PctNatural"
         self.PERCENT_IMPERVIOUS_FIELD_NAME = "PctImperv"
@@ -74,7 +76,7 @@ class NatureDeprivedETL(ExtractTransformLoad):
             use_cached_data_sources
         )  # download and extract data sources
 
-        self.df_ncld: pd.DataFrame = pd.read_csv(
+        self.df_ncld = pd.read_csv(
             self.nature_deprived_source,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
             low_memory=False,

@@ -4,7 +4,6 @@ from data_pipeline.etl.datasource import DataSource
 from data_pipeline.etl.datasource import ZIPDataSource
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
-from data_pipeline.utils import unzip_file_from_url
 from pandas.errors import EmptyDataError
 
 logger = get_module_logger(__name__)
@@ -20,7 +19,7 @@ class HousingTransportationETL(ExtractTransformLoad):
 
     def get_data_sources(self) -> [DataSource]:
 
-        self.housing_url = (
+        housing_url = (
             "https://htaindex.cnt.org/download/download.php?focus=tract&geoid="
         )
 
@@ -29,7 +28,7 @@ class HousingTransportationETL(ExtractTransformLoad):
         for fips in get_state_fips_codes(self.DATA_PATH):
             sources.append(
                 ZIPDataSource(
-                    source=f"{self.housing_url}{fips}",
+                    source=f"{housing_url}{fips}",
                     destination=self.get_sources_path(),
                 )
             )

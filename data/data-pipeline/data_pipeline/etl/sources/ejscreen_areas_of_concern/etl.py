@@ -57,7 +57,7 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
         if self.ejscreen_areas_of_concern_data_exists():
             logger.debug("Loading EJSCREEN Areas of Concern Data Locally")
             self.df = pd.read_csv(
-                filepath_or_buffer=EJSCREEN_AREAS_OF_CONCERN_SOURCE,
+                filepath_or_buffer=self.EJSCREEN_AREAS_OF_CONCERN_SOURCE,
                 dtype={
                     self.GEOID_FIELD_NAME: "string",
                 },

@@ -1,6 +1,5 @@
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.datasource import DataSource
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger

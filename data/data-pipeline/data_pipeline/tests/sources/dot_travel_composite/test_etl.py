@@ -28,7 +28,7 @@ class TestTravelCompositeETL(TestETL):
             mock_paths=mock_paths,
         )
         df = gpd.read_file(
-            etl.get_tmp_path() / self._SAMPLE_DATA_FILE_NAME,
+            etl.get_sources_path() / self._SAMPLE_DATA_FILE_NAME,
             dtype={etl.GEOID_TRACT_FIELD_NAME: str},
         )
         assert df.shape[0] == 30

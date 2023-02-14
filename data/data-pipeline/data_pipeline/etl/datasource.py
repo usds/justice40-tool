@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
 from data_pipeline.etl.downloader import Downloader
-from data_pipeline.utils import unzip_file_from_url
 from data_pipeline.etl.sources.census_acs.etl_utils import (
     retrieve_census_acs_data,
 )

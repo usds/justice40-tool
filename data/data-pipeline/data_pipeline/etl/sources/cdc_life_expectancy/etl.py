@@ -54,9 +54,9 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             self.maine_file_url: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
 
         # input
-        self.usa_source = self.get_sources_path() / "USA.csv"
-        self.maine_source = self.get_sources_path() / "Maine.csv"
-        self.wisconsin_source = self.get_sources_path() / "Wisconsin.csv"
+        self.usa_source = self.get_sources_path() / "US_A.CSV"
+        self.maine_source = self.get_sources_path() / "ME_A.CSV"
+        self.wisconsin_source = self.get_sources_path() / "WI_A.CSV"
 
         # output
         self.OUTPUT_PATH: Path = (
@@ -134,7 +134,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         states_in_combined_df = list(
             combined_df[self.STATE_INPUT_COLUMN_NAME].unique()
         )
-
+        
         # Expect that PR and Island Areas are the only things now missing
         compare_to_list_of_expected_state_fips_codes(
             actual_state_fips_codes=states_in_combined_df,

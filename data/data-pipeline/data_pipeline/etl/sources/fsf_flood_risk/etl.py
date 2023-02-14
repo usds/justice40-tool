@@ -46,6 +46,8 @@ class FloodRiskETL(ExtractTransformLoad):
         self.COUNT_PROPERTIES_AT_RISK_30_YEARS = "mid_depth_100_year30"
         self.CLIP_PROPERTIES_COUNT = 250
 
+        self.df_fsf_flood: pd.DataFrame
+
     def get_data_sources(self) -> [DataSource]:
         return [
             ZIPDataSource(

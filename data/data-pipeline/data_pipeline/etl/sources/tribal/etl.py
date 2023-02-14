@@ -8,7 +8,6 @@ from data_pipeline.etl.datasource import DataSource
 from data_pipeline.etl.datasource import ZIPDataSource
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
-from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 

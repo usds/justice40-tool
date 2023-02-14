@@ -38,6 +38,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         ]
 
         self.df: pd.DataFrame
+        self.dfs_list: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:
         return [

@@ -68,6 +68,7 @@ class AbandonedMineETL(ExtractTransformLoad):
         ]
 
         self.output_df: pd.DataFrame
+        self.df: pd.DataFrame
 
     def get_data_sources(self) -> [DataSource]:
         return [

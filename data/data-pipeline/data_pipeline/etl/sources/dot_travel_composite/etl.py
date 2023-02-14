@@ -46,6 +46,8 @@ class TravelCompositeETL(ExtractTransformLoad):
         # this is the main dataframe
         self.df: pd.DataFrame
 
+        self.df_dot: pd.DataFrame
+
         # Start dataset-specific vars here
         ## Average of Transportation Indicator Percentiles (calculated)
         ## Calculated: Average of (EPL_TCB+EPL_NWKI+EPL_NOVEH+EPL_COMMUTE) excluding NULLS

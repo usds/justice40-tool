@@ -30,6 +30,8 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         self.CSV_PATH = self.DATA_PATH / "dataset" / "tree_equity_score"
         self.df: gpd.GeoDataFrame
 
+        self.tes_state_dfs = []
+
         # config
         self.states = [
             "al",
@@ -104,7 +106,6 @@ class TreeEquityScoreETL(ExtractTransformLoad):
             use_cached_data_sources
         )  # download and extract data sources
 
-        self.tes_state_dfs = []
         for state in self.states:
             self.tes_state_dfs.append(
                 gpd.read_file(f"{self.get_sources_path()}/{state}/{state}.shp")
