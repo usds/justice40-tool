@@ -55,6 +55,9 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
               {DOWNLOADS_COPY.DOWNLOAD_LINKS.LINK4}
             </p>
             <p>
+              {DOWNLOADS_COPY.DOWNLOAD_LINKS.LINK6}
+            </p>
+            <p>
               {DOWNLOADS_COPY.DOWNLOAD_LINKS.LINK5}
             </p>
           </Grid>

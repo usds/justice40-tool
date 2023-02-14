@@ -307,6 +307,10 @@
     "defaultMessage": "<link5>How to use the list of communities</link5> (.pdf {howToCommFileSize})",
     "description": "Navigate to the download page. This is fifth download file link"
   },
+  "download.page.download.file.6": {
+    "defaultMessage": "<link6>Instructions to Federal agencies on using the CEJST</link6> (.pdf {instructions})",
+    "description": "Navigate to the download page. This is sixth download file link"
+  },
   "download.page.files.section.title": {
     "defaultMessage": "Version {version} file formats",
     "description": "Navigate to the download page. This is first download file link"
