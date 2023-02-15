@@ -23,7 +23,7 @@ class TestCDCLifeExpectency(TestETL):
     _ETL_CLASS = CDCLifeExpectancy
 
     _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
-    _SAMPLE_DATA_FILE_NAME = "US_A.csv"
+    _SAMPLE_DATA_FILE_NAME = "US_A.CSV"
     _SAMPLE_DATA_ZIP_FILE_NAME = None
     _EXTRACT_TMP_FOLDER_NAME = "CDCLifeExpectanc"
     _EXTRACT_CSV_FILE_NAME = "extract.csv"
@@ -65,8 +65,6 @@ class TestCDCLifeExpectency(TestETL):
         ) as sources_mock, mock.patch(
             "data_pipeline.etl.score.etl_utils.get_state_fips_codes"
         ) as mock_get_state_fips_codes:
-
-            data_path, tmp_path = mock_paths
 
             # requests mock
             def fake_get(url, *args, **kwargs):

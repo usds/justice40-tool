@@ -280,15 +280,12 @@ class TestETL:
         file was unzipped from a "fake" downloaded zip (located in data) in a  temporary path.
         """
         if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
-            tmp_path = mock_paths[1]
 
             etl = self._setup_etl_instance_and_run_extract(
                 mock_etl=mock_etl,
                 mock_paths=mock_paths,
             )
-            assert (
-                etl.get_sources_path()
-            ).exists()
+            assert (etl.get_sources_path()).exists()
 
     def test_extract_produces_valid_data(self, snapshot, mock_etl, mock_paths):
         """Tests the extract method.
