@@ -94,7 +94,6 @@ Once we have all the data from the previous stages, we convert it to tiles to ma
 
 If you want to use the shapefiles in mapping applications, you can access them [here](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/shapefile/usa.zip).
 
-
 ### Score generation and comparison workflow
 
 The descriptions below provide a more detailed outline of what happens at each step of ETL and score calculation workflow.
@@ -121,14 +120,15 @@ TODO add mermaid diagram
 ##### Table of commands
 
 | VS code command           | actual command      | run time | what it does                                                                                                                     | where it writes to                                     | notes                                                                                               |
-|---------------------------|---------------------|----------|----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| ------------------------- | ------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
 | ETL run                   | etl-run             |          | Downloads the data set files                                                                                                     | data/dataset                                           | check if there are any changes in data_pipeline/etl/sources. if there are none this can be skipped. |
 | Score run                 | score-run           | 6 mins   | consume the etl outputs and combine into a score csv full.                                                                       | data/score/csv/full/usa.csv                            |                                                                                                     |
 | Generate Score post       | generate-score-post | 9 mins   | 1. combines the score/csv/full with counties. 2. downloadable assets (xls, csv, zip), 3. creates the tiles/csv                   | data/score/csv/tiles/usa.csv, data/ score/downloadable | check destination folder to see if newly created                                                    |
 | Combine score and geoJson | geo-score           | 26 mins  | 1. combine the data/score/csv/tiles/usa.csv with the census tiger geojson data 2. aggregates into super tracts for usa-low layer | data/score/geojson (usa high / low)                    |                                                                                                     |
-| Generate Map Tiles        | generate-map-tiles  |    35 mins | ogr-ogr pbf / mvt tiles generator that consume the geojson usa high / usa low                                                    | data/score/tiles/ high or low / {zoomLevel}            |                                                                                                     |
+| Generate Map Tiles        | generate-map-tiles  | 35 mins  | ogr-ogr pbf / mvt tiles generator that consume the geojson usa high / usa low                                                    | data/score/tiles/ high or low / {zoomLevel}            |                                                                                                     |
 
 ##### ETL steps
+
 1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
    - With Docker: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application etl-run`
    - With Poetry: `poetry run python3 data_pipeline/application.py etl-run`
@@ -137,6 +137,7 @@ TODO add mermaid diagram
 
 _**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command using the `-d` flag, which will limit the execution of the ETL process to that specific data source._
 _For example: `poetry run python3 data_pipeline/application.py etl-run -d ejscreen` would only run the ETL process for EJSCREEN data._
+_You also have the option to cache the external data sources downloaded by each ETL. Pass the `-u` flag to use the cached data sources if they are available._
 
 #### Step 3: Calculate the Justice40 score experiments
 
@@ -255,9 +256,11 @@ which will drastically speed up the linting process.
 ### Configuring pre-commit hooks
 
 <!-- markdown-link-check-disable -->
+
 To promote consistent code style and quality, we use git pre-commit hooks to
 automatically lint and reformat our code before every commit we make to the codebase.
 Pre-commit hooks are defined in the file [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
+
 <!-- markdown-link-check-enable -->
 
 1.  First, install [`pre-commit`](https://pre-commit.com/) globally:
@@ -271,7 +274,9 @@ Now, any time you commit code to the repository, the hooks will run on all modif
 you can force a re-run on all files with `pre-commit run --all-files`.
 
 #### Conflicts between backend and frontend git hooks
+
 <!-- markdown-link-check-disable -->
+
 In the front-end part of the codebase (the `justice40-tool/client` folder), we use
 `Husky` to run pre-commit hooks for the front-end. This is different than the
 `pre-commit` framework we use for the backend. The frontend `Husky` hooks are
@@ -291,6 +296,7 @@ To restore the backend hooks after running `npm install`, do the following:
 
 1. Run `pre-commit install` while in the `data/data-pipeline` directory.
 2. The terminal should respond with an error message such as:
+
 ```
 [ERROR] Cowardly refusing to install hooks with `core.hooksPath` set.
 hint: `git config --unset-all core.hooksPath`
@@ -311,6 +317,7 @@ After installing the poetry dependencies, you can see a list of commands with th
 - Start a terminal
 - Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py --help`
+- Note: Several command have the option to use cached data sources for the ETLs if those sources exist. Pass the `-u` flag to those commands to use the cache.
 
 ### Downloading Census Block Groups GeoJSON and Generating CBG CSVs (not normally required)
 
@@ -325,7 +332,7 @@ After installing the poetry dependencies, you can see a list of commands with th
 - Start a terminal
 - Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py data-full-run -s aws`
-- Note: The `-s` flag is optional if you have generated/downloaded the census data
+- Note: The `-s` flag is optional if you have generated/downloaded the census data.
 
 ### Run both ETL and score generation processes
 
@@ -375,7 +382,9 @@ see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nb
 ### Background
 
 <!-- markdown-link-check-disable -->
+
 For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes.
+
 <!-- markdown-link-check-enable-->
 
 To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
@@ -495,7 +504,9 @@ In the future, we could adopt any of the below strategies to work around this:
 1. We could use [pytest-snapshot](https://pypi.org/project/pytest-snapshot/) to automatically store the output of each test as data changes. This would make it so that you could avoid having to generate a pickle for each method - instead, you would only need to call `generate` once , and only when the dataframe had changed.
 
 <!-- markdown-link-check-disable -->
+
 Additionally, you could use a pandas type schema annotation such as [pandera](https://pandera.readthedocs.io/en/stable/schema_models.html?highlight=inputschema#basic-usage) to annotate input/output schemas for given functions, and your unit tests could use these to validate explicitly. This could be of very high value for annotating expectations.
+
 <!-- markdown-link-check-enable-->
 
 Alternatively, or in conjunction, you could move toward using a more strictly-typed container format for read/writes such as SQL/SQLite, and use something like [SQLModel](https://github.com/tiangolo/sqlmodel) to handle more explicit type guarantees.
@@ -523,15 +534,14 @@ In order to update the snapshot fixtures of an ETL class, follow the following s
    `data_pipeline/tests/sources/national_risk_index/data/NRI_Table_CensusTracts.zip`
    which is a 64kb imitation of the 405MB source NRI data.)
 2. Run `pytest . -rsx --update_snapshots` to update snapshots for all files, or you
-   can pass a specific file name to pytest to be more precise (e.g., `pytest
-   data_pipeline/tests/sources/national_risk_index/test_etl.py -rsx --update_snapshots`)
+   can pass a specific file name to pytest to be more precise (e.g., `pytest data_pipeline/tests/sources/national_risk_index/test_etl.py -rsx --update_snapshots`)
 3. Re-run pytest without the `update_snapshots` flag (e.g., `pytest . -rsx`) to
    ensure the tests now pass.
 4. Carefully check the `git diff` for the updates to all test fixtures to make sure
    these are as expected. This part is very important. For instance, if you changed a
-    column name, you would only expect the column name to change in the output. If
-    you modified the calculation of some data, spot check the results to see if the
-    numbers in the updated fixtures are as expected.
+   column name, you would only expect the column name to change in the output. If
+   you modified the calculation of some data, spot check the results to see if the
+   numbers in the updated fixtures are as expected.
 
 ### Other ETL Unit Tests
 
