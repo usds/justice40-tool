@@ -1,5 +1,6 @@
 import json
 from typing import List
+import os
 
 import numpy as np
 import pandas as pd
@@ -341,6 +342,10 @@ class CensusDecennialETL(ExtractTransformLoad):
             "https://api.census.gov/data/{}/dec/{}?get=NAME,{}"
             + "&for=tract:*&in=state:{}%20county:{}"
         )
+
+        census_api_key = os.environ.get("CENSUS_API_KEY")
+        if census_api_key:
+            self.API_URL = self.API_URL + f"&key={census_api_key}"
 
         self.final_race_fields: List[str] = []
 

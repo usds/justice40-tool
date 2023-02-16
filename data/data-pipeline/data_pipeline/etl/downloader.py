@@ -1,8 +1,8 @@
-import os
 import uuid
 import urllib3
 import requests
 import zipfile
+import shutil
 
 from pathlib import Path
 from data_pipeline.config import settings
@@ -71,8 +71,7 @@ class Downloader:
                 None
 
         """
-        # file_id allows us to evade race conditions on parallel ETLs
-        file_id = uuid.uuid4()
+        # dir_id allows us to evade race conditions on parallel ETLs
         dir_id = uuid.uuid4()
 
         zip_download_path = (
@@ -80,7 +79,7 @@ class Downloader:
             / "tmp"
             / "downloads"
             / f"{dir_id}"
-            / f"download-{file_id}.zip"
+            / "download.zip"
         )
 
         zip_file_path = Downloader.download_file_from_url(
@@ -92,5 +91,5 @@ class Downloader:
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(unzipped_file_path)
 
-        # cleanup temporary file
-        os.remove(zip_file_path)
+        # cleanup temporary file and directory
+        shutil.rmtree(zip_download_path.parent)

@@ -1,3 +1,4 @@
+import os
 import json
 from pathlib import Path
 
@@ -70,6 +71,15 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         self.PUERTO_RICO_ALL_STATES_SOURCE = (
             self.get_sources_path() / "pr_tracts" / "pr_tracts.csv"
         )
+
+        census_api_key = os.environ.get("CENSUS_API_KEY")
+        if census_api_key:
+            self.MSA_MEDIAN_INCOME_URL = (
+                self.MSA_MEDIAN_INCOME_URL + f"&key={census_api_key}"
+            )
+            self.STATE_MEDIAN_INCOME_URL = (
+                self.STATE_MEDIAN_INCOME_URL + f"&key={census_api_key}"
+            )
 
         # Constants for output
         self.AMI_REFERENCE_FIELD_NAME: str = "AMI Reference"

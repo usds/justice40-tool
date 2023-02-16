@@ -1,5 +1,25 @@
+"""This module defines a set of classes that can be used to fetch data
+from a remote source. They are meant to be used in conjuction with ETLs
+or other classes that require downloading data.
+
+There are three types of data sources defined in this file:
+
+FileDataSource – meant to be used when you have a single file to
+retrive from a remote location and save to a destination.
+
+ZipDataSource – used when you need to fetch and unzip a file, and save
+the contents of that file to a destination.
+
+CensusDataSource – used to download data from the Census API and store
+the contents to a destination.
+
+DataSource subclasses must implement the fetch method to define how
+they will reach out to a remote source, download the data, and save
+that data to the destination.
+"""
+
 from pathlib import Path
-from typing import Protocol, List
+from typing import List
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
@@ -7,14 +27,6 @@ from data_pipeline.etl.downloader import Downloader
 from data_pipeline.etl.sources.census_acs.etl_utils import (
     retrieve_census_acs_data,
 )
-
-
-class Fetchable(Protocol):
-    """Defines a protocol for fetchable things. That is, things that
-    can be fetched from some origin and saved to some other place."""
-
-    def fetch(self) -> None:
-        pass
 
 
 @dataclass
