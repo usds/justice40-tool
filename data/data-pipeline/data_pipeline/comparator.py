@@ -3,9 +3,6 @@ import click
 import difflib
 import pandas as pd
 
-from pathlib import Path
-
-from data_pipeline.config import settings
 from data_pipeline.etl.score import constants
 from data_pipeline.utils import get_module_logger, download_file_from_url
 from data_pipeline.application import log_title, log_info, log_goodbye
@@ -15,128 +12,155 @@ logger = get_module_logger(__name__)
 pd.set_option("display.max_columns", None)
 pd.set_option("display.max_colwidth", None)
 pd.set_option("display.max_rows", None)
-pd.set_option('display.width', 10000)
-pd.set_option('display.colheader_justify', 'left')
+pd.set_option("display.width", 10000)
+pd.set_option("display.colheader_justify", "left")
+
 
 @click.group()
 def cli():
-	"""
-	A helper tool to run comparisons between files in production and those
-	in the local file system.
-	"""
-	
+    """
+    A helper tool to run comparisons between files in production and those
+    in the local file system.
+    """
+
+
 @cli.command(
-	help="Compare score stored in the AWS production environment to the production score. Defaults to checking against version 1.0.",
+    help="Compare score stored in the AWS production environment to the production score. Defaults to checking against version 1.0.",
 )
 @click.option(
-	"-v",
-	"--compare-to-version",
-	default="1.0",
-	required=False,
-	type=str,
+    "-v",
+    "--compare-to-version",
+    default="1.0",
+    required=False,
+    type=str,
 )
 def compare_score(compare_to_version: str):
-	"""Compares the score in the production environment to the locally generated score. The
-	algorithm is pretty simple: 
-	
-	1. Fetch and load both scores into dataframes.
-	2. Round floats to a number of decimal places to account for differences in the machine
-	and python versions used to generate the scores. If we skip this step, there are usually
-	thousands of extremely minor differences.
-	3. Compare the columns. Print out the deltas.
-	4. Compare the values. Print out the deltas. Save the deltas to deltas.csv.
-	5. Save a nice summary to comparison-summary.md. End.
-	"""
-	
-	FLOAT_ROUNDING_PLACES = 2
-	WORKING_PATH = constants.TMP_PATH / "Comparator" / "Score"
-	
-	summary = "### Score Comparison Summary\n"
-	summary += "I compared the score in production to the newly calculated score. Here are the results.\n"
-	
-	log_title("Compare Score", "Compare production score to local score")
-	
-	locally_generated_score_path = constants.DATA_SCORE_CSV_FULL_FILE_PATH
-	if not locally_generated_score_path.is_file():
-		logger.error(f"- No score file exists at {locally_generated_score_path}. Please generate the score and try again.")
-		sys.exit(1)
+    """Compares the score in the production environment to the locally generated score. The
+    algorithm is pretty simple:
 
-	# TODO: transition to downloader code when it's available
-	production_score_url = f"https://justice40-data.s3.amazonaws.com/data-versions/{compare_to_version}/data/score/csv/full/usa.csv"
-	production_score_path = WORKING_PATH / "usa.csv"
+    1. Fetch and load both scores into dataframes.
+    2. Round floats to a number of decimal places to account for differences in the machine
+    and python versions used to generate the scores. If we skip this step, there are usually
+    thousands of extremely minor differences.
+    3. Compare the columns. Print out the deltas.
+    4. Compare the values. Print out the deltas. Save the deltas to deltas.csv.
+    5. Save a nice summary to comparison-summary.md. End.
+    """
 
-	log_info(f"Fetching score version {compare_to_version} from AWS")
-	production_score_path.parent.mkdir(parents=True, exist_ok=True)
-	download_file_from_url(
-		file_url=production_score_url, download_file_name=production_score_path
-	)
+    FLOAT_ROUNDING_PLACES = 2
+    WORKING_PATH = constants.TMP_PATH / "Comparator" / "Score"
 
-	log_info("Loading files into pandas for comparisons")
-	
-	local_score_df = pd.read_csv(locally_generated_score_path, index_col="GEOID10_TRACT", dtype={"GEOID10_TRACT": str}, low_memory=False).sort_index()
-	production_score_df = pd.read_csv(production_score_path, index_col="GEOID10_TRACT", dtype={"GEOID10_TRACT": str}, low_memory=False).sort_index()
+    summary = "### Score Comparison Summary\n"
+    summary += "I compared the score in production to the newly calculated score. Here are the results.\n"
 
-	# Because of variations in Python versions and machine-level calculations, some of
-	# our numbers can be really close but not the same. That throws off our comparisons.
-	# So we're going to round to a reasonable amount of digits before doing anything else.
-		
-	production_score_df = production_score_df.round(FLOAT_ROUNDING_PLACES)
-	local_score_df = local_score_df.round(FLOAT_ROUNDING_PLACES)
-	
-	local_score_df_columns = sorted(local_score_df.columns.values.tolist())
-	production_score_df_columns = sorted(production_score_df.columns.values.tolist())
-	
-	log_info("Comparing columns (production vs local). Differences are: ")
-	summary += "\n#### Columns\n"
-	
-	col_diff = difflib.unified_diff(production_score_df_columns, local_score_df_columns)
-	col_diff_res = ""
-	for d in col_diff:
-		col_diff_res += str(d) + "\n"
-	
-	if len(col_diff_res) == 0:
-		log_info("None. Columns are the same")
-		summary += "There are no differences in the column names.\n"
-	else:
-		log_info("There are differences. The diff is:")
-		log_info(col_diff_res)
-		summary += f"There are differences in the column names. Here's a diff:\n{col_diff_res}\n"
-	
-	log_info("Comparing dataframe contents (production vs local)")
-	summary += "\n#### Scores\n"
-	
-	production_row_count = len(production_score_df.index)
-	local_row_count = len(local_score_df.index)
-	
-	summary += f"The production score has {production_row_count} rows, and the locally generated score has {local_row_count} rows.\n"
-	
-	try:
-		
-		comparison_results_df = production_score_df.compare(local_score_df, align_axis=1, keep_shape=False, keep_equal=False).rename({'self': 'Production', 'other': 'Local'}, axis=1, level=1)
-		
-		summary += f"I compared all of the rows. There are {len(comparison_results_df.index)} rows with differences. Please view the logs or run the score comparison locally to view them all.\n"	
-		log_info(f"There are {len(comparison_results_df.index)} rows with differences")
+    log_title("Compare Score", "Compare production score to local score")
 
-		log_info("Those differences are:")
-		log_info("\n" + str(comparison_results_df))
-	
-		comparison_path = WORKING_PATH / "deltas.csv"
-		comparison_results_df.to_csv(path_or_buf=comparison_path)
-	
-		log_info(f"Wrote comparison results to {comparison_path}")
-		
-	except Exception as e:
-		summary += "I could not run a full comparison. This is likely because there are column differences. Please view the logs or run the score comparison locally to find out more.\n"
-		log_info(f"Encountered an exception while performing the comparison: {repr(e)}")
-		
-	summary_path = WORKING_PATH / "comparison-summary.md"
-	
-	with open(summary_path, "w") as f:
-		f.write(summary)
-		log_info(f"Wrote comparison summary to {summary_path}")
+    locally_generated_score_path = constants.DATA_SCORE_CSV_FULL_FILE_PATH
+    if not locally_generated_score_path.is_file():
+        logger.error(
+            f"- No score file exists at {locally_generated_score_path}. Please generate the score and try again."
+        )
+        sys.exit(1)
 
-	log_goodbye()
-	sys.exit()
+    # TODO: transition to downloader code when it's available
+    production_score_url = f"https://justice40-data.s3.amazonaws.com/data-versions/{compare_to_version}/data/score/csv/full/usa.csv"
+    production_score_path = WORKING_PATH / "usa.csv"
+
+    log_info(f"Fetching score version {compare_to_version} from AWS")
+    production_score_path.parent.mkdir(parents=True, exist_ok=True)
+    download_file_from_url(
+        file_url=production_score_url, download_file_name=production_score_path
+    )
+
+    log_info("Loading files into pandas for comparisons")
+
+    local_score_df = pd.read_csv(
+        locally_generated_score_path,
+        index_col="GEOID10_TRACT",
+        dtype={"GEOID10_TRACT": str},
+        low_memory=False,
+    ).sort_index()
+    production_score_df = pd.read_csv(
+        production_score_path,
+        index_col="GEOID10_TRACT",
+        dtype={"GEOID10_TRACT": str},
+        low_memory=False,
+    ).sort_index()
+
+    # Because of variations in Python versions and machine-level calculations, some of
+    # our numbers can be really close but not the same. That throws off our comparisons.
+    # So we're going to round to a reasonable amount of digits before doing anything else.
+
+    production_score_df = production_score_df.round(FLOAT_ROUNDING_PLACES)
+    local_score_df = local_score_df.round(FLOAT_ROUNDING_PLACES)
+
+    local_score_df_columns = sorted(local_score_df.columns.array.tolist())
+    production_score_df_columns = sorted(
+        production_score_df.columns.array.tolist()
+    )
+
+    log_info("Comparing columns (production vs local). Differences are: ")
+    summary += "\n#### Columns\n"
+
+    col_diff = difflib.unified_diff(
+        production_score_df_columns, local_score_df_columns
+    )
+    col_diff_res = ""
+    for d in col_diff:
+        col_diff_res += str(d) + "\n"
+
+    if len(col_diff_res) == 0:
+        log_info("None. Columns are the same")
+        summary += "There are no differences in the column names.\n"
+    else:
+        log_info("There are differences. The diff is:")
+        log_info(col_diff_res)
+        summary += f"There are differences in the column names. Here's a diff:\n{col_diff_res}\n"
+
+    log_info("Comparing dataframe contents (production vs local)")
+    summary += "\n#### Scores\n"
+
+    production_row_count = len(production_score_df.index)
+    local_row_count = len(local_score_df.index)
+
+    summary += f"The production score has {production_row_count} rows, and the locally generated score has {local_row_count} rows.\n"
+
+    try:
+
+        comparison_results_df = production_score_df.compare(
+            local_score_df, align_axis=1, keep_shape=False, keep_equal=False
+        ).rename({"self": "Production", "other": "Local"}, axis=1, level=1)
+
+        summary += f"I compared all of the rows. There are {len(comparison_results_df.index)} rows with differences."
+        summary += " Please view the logs or run the score comparison locally to view them all.\n"
+        log_info(
+            f"There are {len(comparison_results_df.index)} rows with differences"
+        )
+
+        log_info("Those differences are:")
+        log_info("\n" + str(comparison_results_df))
+
+        comparison_path = WORKING_PATH / "deltas.csv"
+        comparison_results_df.to_csv(path_or_buf=comparison_path)
+
+        log_info(f"Wrote comparison results to {comparison_path}")
+
+    except ValueError as e:
+        summary += "I could not run a full comparison. This is likely because there are column or index differences."
+        summary += " Please view the logs or run the score comparison locally to find out more.\n"
+        log_info(
+            f"Encountered an exception while performing the comparison: {repr(e)}"
+        )
+
+    summary_path = WORKING_PATH / "comparison-summary.md"
+
+    with open(summary_path, "w", encoding="utf-8") as f:
+        f.write(summary)
+        log_info(f"Wrote comparison summary to {summary_path}")
+
+    log_goodbye()
+    sys.exit()
+
 
 if __name__ == "__main__":
-	cli()
+    cli()
