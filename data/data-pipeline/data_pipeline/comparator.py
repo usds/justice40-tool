@@ -50,8 +50,9 @@ def compare_score(compare_to_version: str):
     FLOAT_ROUNDING_PLACES = 2
     WORKING_PATH = constants.TMP_PATH / "Comparator" / "Score"
 
-    summary = "### Score Comparison Summary\n"
-    summary += "I compared the score in production to the newly calculated score. Here are the results.\n"
+    summary = "# Score Comparison Summary\n"
+    summary += f"Hi, I'm the Score Comparator. Today I compared the score in production (version {compare_to_version}) to the"
+    summary += " newly calculated score. Here are the results.\n"
 
     log_title("Compare Score", "Compare production score to local score")
 
@@ -100,7 +101,8 @@ def compare_score(compare_to_version: str):
     )
 
     log_info("Comparing columns (production vs local). Differences are: ")
-    summary += "\n#### Columns\n"
+    summary += "\n## Columns\n"
+    summary += "I compared the columns. Here's what I found.\n"
 
     col_diff = difflib.unified_diff(
         production_score_df_columns, local_score_df_columns
@@ -111,19 +113,20 @@ def compare_score(compare_to_version: str):
 
     if len(col_diff_res) == 0:
         log_info("None. Columns are the same")
-        summary += "There are no differences in the column names.\n"
+        summary += "* There are no differences in the column names.\n"
     else:
         log_info("There are differences. The diff is:")
         log_info(col_diff_res)
-        summary += f"There are differences in the column names. Here's a diff:\n{col_diff_res}\n"
+        summary += f"* There are differences in the column names. Here's a diff:\n{col_diff_res}\n"
 
     log_info("Comparing dataframe contents (production vs local)")
-    summary += "\n#### Scores\n"
+    summary += "\n## Scores\n"
+    summary += "I compared the scores. Here's what I found.\n"
 
     production_row_count = len(production_score_df.index)
     local_row_count = len(local_score_df.index)
 
-    summary += f"The production score has {production_row_count} rows, and the locally generated score has {local_row_count} rows.\n"
+    summary += f"* The production score has {production_row_count:,} rows, and the locally generated score has {local_row_count:,} rows.\n"
 
     try:
 
@@ -131,7 +134,7 @@ def compare_score(compare_to_version: str):
             local_score_df, align_axis=1, keep_shape=False, keep_equal=False
         ).rename({"self": "Production", "other": "Local"}, axis=1, level=1)
 
-        summary += f"I compared all of the rows. There are {len(comparison_results_df.index)} rows with differences."
+        summary += f"* I compared all of the rows. There are {len(comparison_results_df.index):,} rows with differences."
         summary += " Please view the logs or run the score comparison locally to view them all.\n"
         log_info(
             f"There are {len(comparison_results_df.index)} rows with differences"
@@ -146,7 +149,7 @@ def compare_score(compare_to_version: str):
         log_info(f"Wrote comparison results to {comparison_path}")
 
     except ValueError as e:
-        summary += "I could not run a full comparison. This is likely because there are column or index differences."
+        summary += "* I could not run a full comparison. This is likely because there are column or index differences."
         summary += " Please view the logs or run the score comparison locally to find out more.\n"
         log_info(
             f"Encountered an exception while performing the comparison: {repr(e)}"
