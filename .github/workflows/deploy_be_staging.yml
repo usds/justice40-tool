@@ -88,7 +88,7 @@ jobs:
         run: |
           poetry run python3 data_pipeline/comparator.py compare-score
       - name: Update PR with Score Comparisons
-        uses: mshick/add-pr-comment@v1
+        uses: mshick/add-pr-comment@v2
         with:
           message-path: ./data_pipeline/data/tmp/Comparator/Score/comparison-summary.md
           repo-token: ${{ secrets.GITHUB_TOKEN }}
