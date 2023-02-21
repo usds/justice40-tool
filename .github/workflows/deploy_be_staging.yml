@@ -90,9 +90,8 @@ jobs:
       - name: Update PR with Score Comparisons
         uses: mshick/add-pr-comment@v2
         with:
-          message-path: ./data_pipeline/data/tmp/Comparator/Score/comparison-summary.md
+          message-path: ./data/data-pipeline/data_pipeline/data/tmp/Comparator/Score/comparison-summary.md
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: "github-actions[bot]"
           allow-repeats: false
       - name: Set timezone for tippecanoe
         uses: szenius/set-timezone@v1.0
