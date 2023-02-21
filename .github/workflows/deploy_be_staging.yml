@@ -72,7 +72,6 @@ jobs:
         run: |
           poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --force --API-ACL=public-read
           poetry run s4cmd put ./data_pipeline/files/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --force --API-ACL=public-read
-
       - name: Update PR with deployed Score URLs
         uses: mshick/add-pr-comment@v1
         with:
@@ -84,6 +83,15 @@ jobs:
             - Download Zip Packet: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable/Screening_Tool_Data.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
+          allow-repeats: false
+      - name: Perform Score Comparisons
+        run: |
+          poetry run python3 data_pipeline/comparator.py compare-score
+      - name: Update PR with Score Comparisons
+        uses: mshick/add-pr-comment@v2
+        with:
+          message-path: ./data/data-pipeline/data_pipeline/data/tmp/Comparator/Score/comparison-summary.md
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           allow-repeats: false
       - name: Set timezone for tippecanoe
         uses: szenius/set-timezone@v1.0
