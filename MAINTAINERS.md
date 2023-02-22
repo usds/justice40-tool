@@ -22,3 +22,7 @@ See [CODEOWNERS file](/.github/CODEOWNERS) for definitive list.
 ## Design
 
 - Katrina Langer
+
+## Project Leadership Emeritus
+
+- Lucas Brown

@@ -22,3 +22,7 @@ Consultar la lista definitiva en [archivo CODEOWNERS](/.github/CODEOWNERS).
 ## Diseño
 
 - Katrina Langer
+
+# Liderazgo de Proyectos Emérito
+
+- Lucas Brown
