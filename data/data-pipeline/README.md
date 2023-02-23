@@ -39,7 +39,7 @@ If you wish to access our data without running the Justice40 Data Pipeline and S
 
 ## Installing the Data Pipeline and Scoring Application
 
-If you wish to run the Justice40 Data Pipeline and Scoring Application in your own environment, you have the option of using Docker or setting up for local development. Docker allows you to install and run the application inside a container without setting up a local environment, and is the quickest and easiest option. Local development requires you to set up your local environment manually, but provides the ability to make changes and is the most flexible option.
+If you wish to run the Justice40 Data Pipeline and Scoring Application in your own environment, you have the option of using Docker or setting up for local development. Docker allows you to install and run the application inside a container without setting up a local environment, and is the quickest and easiest option. Local development requires you to set up your local environment manually, but provides the ability to make changes and run individual parts of the application.
 
 With either choice, you'll first need to perform some installation steps.
 
@@ -61,7 +61,7 @@ The Justice40 Data Pipeline and Scoring Application is a multistep process that,
 4. Generates map tiles for use in the client website
 
 ```mermaid
-flowchart LR
+graph LR
     A[Run ETL on all External\nData Sources] --> B[Calculate Score]
     B --> C[Combine Score with\nGeographic Data]
     C --> D[Generate Map Tiles]
