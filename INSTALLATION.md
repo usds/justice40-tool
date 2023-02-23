@@ -4,7 +4,7 @@ _[¡Lea esto en español!](INSTALLATION-es.md)_
 
 This page documents the installation steps for some of the prerequisite software needed to work with this project. It covers steps for macOS and Win10. If you are not on either of those platforms, install the software using steps appropriate for your operating system and device.
 
-> **NOTE** :bulb:  
+> :bulb: **NOTE**  
 > If all you want to do is run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).
 
 ## Prerequisites
@@ -49,15 +49,15 @@ Once you've completed the nvm installation, use nvm to install Node.js version 1
 
 `nvm install 14`
 
-You should then be able to switch to that version of node through the command:
+You should then be able to switch to that version of Node.js through the command:
 
 `nvm use 14`
 
-To validate you are using node 14, type:
+To validate you are using Node.js 14, type:
 
 `node -v`
 
-This should return something like _Now using node 14.x.x (npm v6.x.x)_.
+This should return something like `v14.x.x`.
 
 ### 4. Set Up Your IDE (Optional)
 

@@ -1,198 +1,91 @@
-# Justice 40 Score application
+# Justice40 Data Pipeline and Scoring Application
 
 <details open="open">
-<summary>Table of Contents</summary>
+  <summary>Table of Contents</summary>
 
-<!-- TOC -->
+  <!-- TOC -->
 
-- [Justice 40 Score application](#justice-40-score-application)
-  - [About this application](#about-this-application)
-    - [Using the data](#using-the-data)
-      - [1. Source data](#1-source-data)
-      - [2. Extract-Transform-Load (ETL) the data](#2-extract-transform-load-etl-the-data)
-      - [3. Combined dataset](#3-combined-dataset)
-      - [4. Tileset](#4-tileset)
-      - [5. Shapefiles](#5-shapefiles)
-    - [Score generation and comparison workflow](#score-generation-and-comparison-workflow)
-      - [Workflow Diagram](#workflow-diagram)
-      - [Step 0: Set up your environment](#step-0-set-up-your-environment)
-      - [Step 1: Run the script to download census data or download from the Justice40 S3 URL](#step-1-run-the-script-to-download-census-data-or-download-from-the-justice40-s3-url)
-      - [Step 2: Run the ETL script for each data source](#step-2-run-the-etl-script-for-each-data-source)
-        - [Table of commands](#table-of-commands)
-        - [ETL steps](#etl-steps)
-      - [Step 3: Calculate the Justice40 score experiments](#step-3-calculate-the-justice40-score-experiments)
-      - [Step 4: Compare the Justice40 score experiments to other indices](#step-4-compare-the-justice40-score-experiments-to-other-indices)
-    - [Data Sources](#data-sources)
-  - [Running using Docker](#running-using-docker)
-  - [Local development](#local-development)
-    - [VSCode](#vscode)
-    - [MacOS](#macos)
-    - [Windows Users](#windows-users)
-    - [Setting up Poetry](#setting-up-poetry)
-    - [Running tox](#running-tox)
-    - [The Application entrypoint](#the-application-entrypoint)
-    - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs (not normally required)](#downloading-census-block-groups-geojson-and-generating-cbg-csvs-not-normally-required)
-    - [Run all ETL, score and map generation processes](#run-all-etl-score-and-map-generation-processes)
-    - [Run both ETL and score generation processes](#run-both-etl-and-score-generation-processes)
-    - [Run all ETL processes](#run-all-etl-processes)
-    - [Generating Map Tiles](#generating-map-tiles)
-    - [Serve the map locally](#serve-the-map-locally)
-    - [Running Jupyter notebooks](#running-jupyter-notebooks)
-    - [Activating variable-enabled Markdown for Jupyter notebooks](#activating-variable-enabled-markdown-for-jupyter-notebooks)
-  - [Testing](#testing)
-    - [Background](#background)
-    - [Score and post-processing tests](#score-and-post-processing-tests)
-      - [Updating Pickles](#updating-pickles)
-      - [Future Enhancements](#future-enhancements)
-    - [Fixtures used in ETL "snapshot tests"](#fixtures-used-in-etl-snapshot-tests)
-    - [Other ETL Unit Tests](#other-etl-unit-tests)
-      - [Extract Tests](#extract-tests)
-      - [Transform Tests](#transform-tests)
-      - [Load Tests](#load-tests)
-    - [Smoketests](#smoketests)
+- [About](#about)
+- [Installing the Data Pipeline and Scoring Application](#installing-the-data-pipeline-and-scoring-application)
+- [Running the Data Pipeline and Scoring Application](#running-the-data-pipeline-and-scoring-application)
+- [How Scoring Works](#how-scoring-works)
+- [Comparing Scores](#comparing-scores)
+- [Testing](#testing)
 
-<!-- /TOC -->
+  <!-- /TOC -->
 
 </details>
 
-## About this application
+## About
 
-This application is used to compare experimental versions of the Justice40 score to established environmental justice indices, such as EJSCREEN, CalEnviroScreen, and so on.
+The Justice40 Data Pipeline and Scoring Application is used to retrieve input data sources, perform Extract-Transform-Load (ETL) operations on those data sources, and ultimately generate the scores and supporting data consumed by the [Climate and Economic Justice Screening Tool (CEJST) website](https://screeningtool.geoplatform.gov/). This data can also be used to compare experimental versions of the Justice40 score to established environmental justice indices, such as EJSCREEN and CalEnviroScreen.
 
-_**NOTE:** These scores **do not** represent final versions of the Justice40 scores and are merely used for comparative purposes. As a result, the specific input columns and formulas used to calculate them are likely to change over time._
+> :exclamation: **ATTENTION**  
+> The Council on Environmental Quality (CEQ) [made version 1.0 of the CEJST available in November 2022](https://www.whitehouse.gov/ceq/news-updates/2022/11/22/biden-harris-administration-launches-version-1-0-of-climate-and-economic-justice-screening-tool-key-step-in-implementing-president-bidens-justice40-initiative/). Future versions are in continuous development, and scores are likely to change over time. Only versions made publicly available via the CEJST by CEQ may be used for the Justice40 Initiative.
 
-### Using the data
+### Development Principles
 
-One of our primary development principles is that the entire data pipeline should be open and replicable end-to-end. As part of this, in addition to all code being open, we also strive to make data visible and available for use at every stage of our pipeline. You can follow the instructions below in this README to spin up the data pipeline yourself in your own environment; you can also access the data we've already processed on our S3 bucket.
+One of our primary development principles is that the entire data pipeline should be open and replicable end-to-end. As part of this, in addition to all code being open, we also strive to make data visible and available for use at every stage of our pipeline. You can follow the installation instructions below to spin up the data pipeline yourself in your own environment; you can also access the data we've already processed.
 
-In the sub-sections below, we outline what each stage of the data provenance looks like and where you can find the data output by that stage. If you'd like to actually perform each step in your own environment, skip down to [Score generation and comparison workflow](#score-generation-and-comparison-workflow).
+### Accessing Data
 
-#### 1. Source data
+If you wish to access our data without running the Justice40 Data Pipeline and Scoring Application locally, you can do so using the following links.
 
-If you would like to find and use the raw source data, you can find the source URLs in the `etl.py` files located within each directory in `data/data-pipeline/etl/sources`.
+| Dataset                                          | Location                                                                                                                           |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Source Data                                      | You can find the source URLs in the `etl.py` files located within each directory in `data/data-pipeline/etl/sources`               |
+| Version 1.0 Combined Datasets (from all Sources) | [Download](https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/csv/full/usa.csv)                        |
+| Shape Files for Mapping Applications             | [Download](https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/1.0-shapefile-codebook.zip) |
 
-#### 2. Extract-Transform-Load (ETL) the data
+## Installing the Data Pipeline and Scoring Application
 
-The first step of processing we perform is a simple ETL process for each of the source datasets. Code is available in `data/data-pipeline/etl/sources`, and the output of this process is a number of CSVs available at the following locations:
+If you wish to run the Justice40 Data Pipeline and Scoring Application in your own environment, you have the option of using Docker or setting up for local development. Docker allows you to install and run the application inside a container without setting up a local environment, and is the quickest and easiest option. Local development requires you to set up your local environment manually, but provides the ability to make changes and is the most flexible option.
 
-- EJScreen: <https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/ejscreen_2019/usa.csv>
-- Census ACS 2019: <https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/census_acs_2019/usa.csv>
-- Housing and Transportation Index: <https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/housing_and_transportation_index/usa.csv>
-- HUD Housing: <https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/hud_housing/usa.csv>
+With either choice, you'll first need to perform some installation steps.
 
-Each CSV may have a different column name for the census tract or census block group identifier. You can find what the name is in the ETL code. Please note that when you view these files you should make sure that your text editor or spreadsheet software does not remove the initial `0` from this identifier field (many IDs begin with `0`).
+### Installing Docker
 
-#### 3. Combined dataset
+To install Docker, follow these [instructions](https://docs.docker.com/get-docker/). After installation is complete, visit [Running with Docker](#running-with-docker) for more information.
 
-The CSV with the combined data from all of these sources [can be accessed here](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/csv/full/usa.csv).
+### Installing for Local Development
 
-#### 4. Tileset
+The detailed steps for performing [local development installation can be found in our guide](INSTALLATION.md). After installation is complete, visit [Running the Application Locally](#running-for-local-development) for more information.
 
-Once we have all the data from the previous stages, we convert it to tiles to make it usable on a map. We render the map on the client side which can be seen using `docker-compose up`.
+## Running the Data Pipeline and Scoring Application
 
-#### 5. Shapefiles
+The Justice40 Data Pipeline and Scoring Application is a multistep process that,
 
-If you want to use the shapefiles in mapping applications, you can access them [here](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/shapefile/usa.zip).
+1. Retrieves input data sources (extract), standardizes those input data sources' data into an intermediate format (transform), and saves the results to the file system (load). This step is performed for every input data source (found at `data/data-pipeline/etl/sources`).
+2. Calculates a score
+3. Combines the score with geographic data
+4. Generates map tiles for use in the client website
 
+```mermaid
+flowchart LR
+    A[Run ETL on all External\nData Sources] --> B[Calculate Score]
+    B --> C[Combine Score with\nGeographic Data]
+    C --> D[Generate Map Tiles]
+```
 
-### Score generation and comparison workflow
+You can perform these steps either using Docker or by running for local development.
 
-The descriptions below provide a more detailed outline of what happens at each step of ETL and score calculation workflow.
+### Running with Docker
 
-#### Workflow Diagram
+Docker can be used to run the application inside a container without setting up a local environment.
 
-TODO add mermaid diagram
+> :exclamation: **ATTENTION**  
+> You must increase the memory resource of your container to at least 8096 MB to run Docker
 
-#### Step 0: Set up your environment
+Before running with Docker, you must build the Docker container. Make sure you're in the root directory of the repository (`/justice40-tool`) and run `docker-compose build --no-cache`.
 
-1. Choose whether you'd like to run this application using Docker or if you'd like to install the dependencies locally so you can contribute to the project.
-   - **With Docker:** Follow these [installation instructions](https://docs.docker.com/get-docker/) and skip down to the [Running with Docker section](#running-with-docker) for more information
-   - **For Local Development:** Skip down to the [Local Development section](#local-development) for more detailed installation instructions
+Once you've built the Docker container, run `docker-compose up`. Docker will spin up 3 containers: the client container, the static server container and the data container. Once all data is generated, you can see the application by navigating to `http://localhost:8000` in your browser.
 
-#### Step 1: Run the script to download census data or download from the Justice40 S3 URL
+<details>
+<summary>View additional commands</summary>
 
-1. Call the `census_data_download` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application census-data-download`
-   - With Poetry: `poetry run download_census` (Install GDAL as described [below](#local-development))
-2. If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Then unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census/` folder/
-
-#### Step 2: Run the ETL script for each data source
-
-##### Table of commands
-
-| VS code command           | actual command      | run time | what it does                                                                                                                     | where it writes to                                     | notes                                                                                               |
-|---------------------------|---------------------|----------|----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| ETL run                   | etl-run             |          | Downloads the data set files                                                                                                     | data/dataset                                           | check if there are any changes in data_pipeline/etl/sources. if there are none this can be skipped. |
-| Score run                 | score-run           | 6 mins   | consume the etl outputs and combine into a score csv full.                                                                       | data/score/csv/full/usa.csv                            |                                                                                                     |
-| Generate Score post       | generate-score-post | 9 mins   | 1. combines the score/csv/full with counties. 2. downloadable assets (xls, csv, zip), 3. creates the tiles/csv                   | data/score/csv/tiles/usa.csv, data/ score/downloadable | check destination folder to see if newly created                                                    |
-| Combine score and geoJson | geo-score           | 26 mins  | 1. combine the data/score/csv/tiles/usa.csv with the census tiger geojson data 2. aggregates into super tracts for usa-low layer | data/score/geojson (usa high / low)                    |                                                                                                     |
-| Generate Map Tiles        | generate-map-tiles  |    35 mins | ogr-ogr pbf / mvt tiles generator that consume the geojson usa high / usa low                                                    | data/score/tiles/ high or low / {zoomLevel}            |                                                                                                     |
-
-##### ETL steps
-1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application etl-run`
-   - With Poetry: `poetry run python3 data_pipeline/application.py etl-run`
-2. This command will execute the corresponding ETL script for each data source in `data_pipeline/etl/sources/`. For example, `data_pipeline/etl/sources/ejscreen/etl.py` is the ETL script for EJSCREEN data.
-3. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data_pipeline/data/dataset/`. For example, HUD Housing data is stored in `data_pipeline/data/dataset/hud_housing/usa.csv`
-
-_**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command using the `-d` flag, which will limit the execution of the ETL process to that specific data source._
-_For example: `poetry run python3 data_pipeline/application.py etl-run -d ejscreen` would only run the ETL process for EJSCREEN data._
-
-#### Step 3: Calculate the Justice40 score experiments
-
-1. Call the `score-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application score-run`
-   - With Poetry: `poetry run python3 data_pipeline/application.py score-run`
-1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
-1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
-   - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
-   - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
-1. The standardized columns are then used to calculate each of the Justice40 score experiments described in greater detail below, and the results are exported to a `.csv` file in [`data_pipeline/data/score/csv`](data_pipeline/data/score/csv)
-
-#### Step 4: Compare the Justice40 score experiments to other indices
-
-We are building a comparison tool to enable easy (or at least straightforward) comparison of the Justice40 score with other existing indices. The goal of having this is so that as we experiment and iterate with a scoring methodology, we can understand how our score overlaps with or differs from other indices that communities, nonprofits, and governmentss use to inform decision making.
-
-Right now, our comparison tool exists simply as a python notebook in `data/data-pipeline/data_pipeline/ipython/scoring_comparison.ipynb`.
-
-To run this comparison tool:
-
-1. Make sure you've gone through the above steps to run the data ETL and score generation.
-1. From the package directory (`data/data-pipeline/data_pipeline/`), navigate to the `ipython` directory: `cd ipython`.
-1. Ensure you have `pandoc` installed on your computer. If you're on a Mac, run `brew install pandoc`; for other OSes, see pandoc's [installation guide](https://pandoc.org/installing.html).
-1. Start the notebooks: `jupyter notebook`
-1. In your browser, navigate to one of the URLs returned by the above command.
-1. Select `scoring_comparison.ipynb` from the options in your browser.
-1. Run through the steps in the notebook. You can step through them one at a time by clicking the "Run" button for each cell, or open the "Cell" menu and click "Run all" to run them all at once.
-1. Reports and spreadsheets generated by the comparison tool will be available in `data/data-pipeline/data_pipeline/data/comparison_outputs`.
-
-_NOTE:_ This may take several minutes or over an hour to fully execute and generate the reports.
-
-### Data Sources
-
-- **[EJSCREEN](data_pipeline/etl/sources/ejscreen):** TODO Add description of data source
-- **[Census](data_pipeline/etl/sources/census):** TODO Add description of data source
-- **[American Communities Survey](data_pipeline/etl/sources/census_acs):** TODO Add description of data source
-- **[Housing and Transportation](data_pipeline/etl/sources/housing_and_transportation):** TODO Add description of data source
-- **[HUD Housing](data_pipeline/etl/sources/hud_housing):** TODO Add description of data source
-- **[HUD Recap](data_pipeline/etl/sources/hud_recap):** TODO Add description of data source
-- **[CalEnviroScreen](data_pipeline/etl/sources/calenviroscreen):** TODO Add description of data source
-
-## Running using Docker
-
-We use Docker to install the necessary libraries in a container that can be run in any operating system.
-
-_Important_: To be able to run the data Docker containers, you need to increase the memory resource of your container to at leat 8096 MB.
-
-To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build --no-cache`.
-
-Once completed, run `docker-compose up`. Docker will spin up 3 containers: the client container, the static server container and the data container. Once all data is generated, you can see the application using a browser and navigating to `http://localhost:8000`.
-
-If you want to run specific data tasks, you can open a terminal window, navigate to the root folder for this repository and then execute any command for the application using this format:
+If you want to run specific data tasks, you can open a terminal window, navigate to the root folder for this repository, and execute any command for the application using this format:
 
 `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application [command]`
-
-Here's a list of commands:
 
 - Get help: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application --help`
 - Generate census data: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application census-data-download`
@@ -203,196 +96,103 @@ Here's a list of commands:
 - Combine Score with Geojson and generate high and low zoom map tile sets: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application geo-score`
 - Generate Map Tiles: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application generate-map-tiles`
 
-## Local development
+To learn more about these commands and when they should be run, refer to [Running for Local Development](#running-for-local-development).
 
-You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. For score generation, you will need [libspatialindex](https://libspatialindex.org/en/latest/). And to generate tiles for a local map, you will need [Mapbox tippecanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
+</details>
 
-### VSCode
+### Running for Local Development
 
-If you are using VSCode, you can make use of the `.vscode` folder checked in under `data/data-pipeline/.vscode`. To do this, open this directory with `code data/data-pipeline`.
+When running for local development, each step of the application can be run individually or as a group.
 
-Here's whats included:
+> :bulb: **NOTE**  
+> This is only describing the steps to run the Justice40 Data Pipeline and Scoring Application. If you'd like to run the client application, visit the [client README](/client/README.md). Please note that the client application does not use the data locally generated by the application by default.
 
-1. `launch.json` - launch commands that allow for debugging the various commands in `application.py`. Note that because we are using the otherwise excellent [Click CLI](https://click.palletsprojects.com/en/8.0.x/), and Click in turn uses `console_scripts` to parse and execute command line options, it is necessary to run the equivalent of `python -m data_pipeline.application [command]` within `launch.json` to be able to set and hit breakpoints (this is what is currently implemented. Otherwise, you may find that the script times out after 5 seconds. More about this [here](https://stackoverflow.com/questions/64556874/how-can-i-debug-python-console-script-command-line-apps-with-the-vscode-debugger).
+Start by familiarizing yourself with the available commands. To do this, navigate to `justice40-tool/data/data-pipeline` and run `poetry run python3 data_pipeline/application.py --help`. You'll see a list of commands and what those commands do. You can also get help on any individual command to get more information about command options (e.g. `poetry run python3 data_pipeline/application.py etl-run --help`).
 
-2. `settings.json` - these ensure that you're using the default linter (`pylint`), formatter (`flake8`), and test library (`pytest`) that the team is using.
+> :exclamation: **ATTENTION**  
+> Some commands fetch large amounts of data from remote data sources or run resource-intensive calculations. They may take a long time to complete (e.g. generate-map-tiles can take over 30 minutes). Those that fetch data from remote data sources (e.g. `etl-run`) should not be run too often; if they are, you may get throttled or eventually blocked by the sites serving the data.
 
-3. `tasks.json` - these enable you to use `Terminal->Run Task` to run our preferred formatters and linters within your project.
+#### Download Census Data
 
-Users are instructed to only add settings to this file that should be shared across the team, and not to add settings here that only apply to local development environments (particularly full absolute paths which can differ between setups). If you are looking to add something to this file, check in with the rest of the team to ensure the proposed settings should be shared.
+Begin the local development process by downloading census data.
 
-### MacOS
+> :bulb: **NOTE**  
+> You'll only need to do this once (unless you clean your census data folder)! Subsequent runs will use the data you've already downloaded.
 
-To install the above-named executables:
+To download census data, run the command `poetry run python3 data_pipeline/application.py census-data-download`.
 
-- gdal: `brew install gdal`
-- Tippecanoe: `brew install tippecanoe`
-- spatialindex: `brew install spatialindex`
+> :bulb: **NOTE**  
+> If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census/` folder/
 
-Note: For MacOS Monterey or M1 Macs, [you might need to follow these steps](https://stackoverflow.com/a/70880741) to install Scipy.
+#### Run the Application
 
-### Windows Users
+Running for local development allows the most flexibility. You can pick and choose which commands you run, and test parts of the application individually or as a group. While we can't anticipate all of your individual development scenarios, we can give you the steps you'll need to run the application from start to finish.
 
-If you want to run tile generation, please install TippeCanoe [following these instructions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally. It's definitely easier if you have access to WSL (Windows Subsystem Linux), and install these packages using commands similar to our [Dockerfile](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/Dockerfile).
+Once you've downloaded the census data, run the following commands – in order – to run the entire Data Pipeline and Scoring Application. The commands can be run by `poetry run python3 data_pipeline/application.py insert-name-of-command-here`.
 
-### Setting up Poetry
+| Step | Command               | Description                                                                                                                                                           | Example Output                                            |
+| ---- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----- |
+| 1    | `etl-run`             | Performs the ETL steps on all external data sources, and saves the resulting intermediate file                                                                        | `data/dataset`                                            |
+| 2    | `score-run`           | Generates and stores the score                                                                                                                                        | `data/score/csv/full/usa.csv`                             |
+| 3    | `generate-score-post` | Performs a host of post-score activities, including adding county and state data to the score, shortening column names, and generating a downloadable package of data | `data/score/csv/tiles/usa.csv`, `data/score/downloadable` |
+| 4    | `geo-score`           | Merges geoJSON data with score data, creating both high and low resolution results                                                                                    | `data/score/geojson[usa high                              | low]` |
+| 5    | `generate-map-tiles`  | Generates map tiles for use in client website                                                                                                                         | `data/score/tiles/ high or low / {zoomLevel}`             |
 
-- Start a terminal
-- Change to this directory (`/data/data-pipeline/`)
-- Make sure you have at least Python 3.8 installed: `python -V` or `python3 -V`
-- We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
-- Install Poetry requirements with `poetry install`
+Many commands have options. For example, you can run a single dataset with `etl-run` by passing the command line parameter `-d name-of-dataset-to-run`. Please use the `--help` option to find out more.
 
-### Running tox
+## How Scoring Works
 
-Our full test and check suite is run using tox. This can be run using commands such
-as `poetry run tox`.
+Scores are generated by running the `score-run` command via Poetry or Docker. This command executes `data_pipeline/etl/score/etl.py`. During execution,
 
-Each run can take a while to build the whole environment. If you'd like to save time,
-you can use the previously built environment by running `poetry run tox -e lint`
-which will drastically speed up the linting process.
+1. Source files from the `data_pipeline/data/dataset` directory are loaded into memory (these source files were generated by the `etl-run` command)
+2. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
+   - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
+   - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
+3. The standardized columns are then used to calculate each of the Justice40 scores, and the results are exported to `data_pipeline/data/score/csv/full/usa.csv`. Different versions – including the current version – of the score can be found in `data_pipeline/score`.
 
-### Configuring pre-commit hooks
+## Comparing Scores
 
-<!-- markdown-link-check-disable -->
-To promote consistent code style and quality, we use git pre-commit hooks to
-automatically lint and reformat our code before every commit we make to the codebase.
-Pre-commit hooks are defined in the file [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
-<!-- markdown-link-check-enable -->
+We are building a comparison tool to enable easy (or at least straightforward) comparison of the Justice40 score with other existing indices. The goal of having this is so that as we experiment and iterate with a scoring methodology, we can understand how our score overlaps with or differs from other indices that communities, nonprofits, and governments use to inform decision making.
 
-1.  First, install [`pre-commit`](https://pre-commit.com/) globally:
+Right now, our comparison tool exists simply as a python notebook in `data/data-pipeline/data_pipeline/ipython/scoring_comparison.ipynb`.
 
-        $ brew install pre-commit
+To run this comparison tool:
 
-2.  While in the `data/data-pipeline` directory, run `pre-commit install` to install
-    the specific git hooks used in this repository.
+1. Make sure you've gone through the above steps to run the data ETL and score generation.
+1. From the package directory (`data/data-pipeline/data_pipeline/`), navigate to the `ipython` directory.
+1. Ensure you have `pandoc` installed on your computer. If you're on a Mac, run `brew install pandoc`; for other OSes, see pandoc's [installation guide](https://pandoc.org/installing.html).
+1. Start the notebooks: `jupyter notebook`
+1. In your browser, navigate to one of the URLs returned by the above command.
+1. Select `scoring_comparison.ipynb` from the options in your browser.
+1. Run through the steps in the notebook. You can step through them one at a time by clicking the "Run" button for each cell, or open the "Cell" menu and click "Run all" to run them all at once.
+1. Reports and spreadsheets generated by the comparison tool will be available in `data/data-pipeline/data_pipeline/data/comparison_outputs`.
 
-Now, any time you commit code to the repository, the hooks will run on all modified files automatically. If you wish,
-you can force a re-run on all files with `pre-commit run --all-files`.
-
-#### Conflicts between backend and frontend git hooks
-<!-- markdown-link-check-disable -->
-In the front-end part of the codebase (the `justice40-tool/client` folder), we use
-`Husky` to run pre-commit hooks for the front-end. This is different than the
-`pre-commit` framework we use for the backend. The frontend `Husky` hooks are
-configured at
-[client/.husky](client/.husky).
-
-It is not possible to run both our `Husky` hooks and `pre-commit` hooks on every
-commit; either one or the other will run.
-
-<!-- markdown-link-check-enable -->
-
-`Husky` is installed every time you run `npm install`. To use the `Husky` front-end
-hooks during front-end development, simply run `npm install`.
-
-However, running `npm install` overwrites the backend hooks setup by `pre-commit`.
-To restore the backend hooks after running `npm install`, do the following:
-
-1. Run `pre-commit install` while in the `data/data-pipeline` directory.
-2. The terminal should respond with an error message such as:
-```
-[ERROR] Cowardly refusing to install hooks with `core.hooksPath` set.
-hint: `git config --unset-all core.hooksPath`
-```
-
-This error is caused by having previously run `npm install` which used `Husky` to
-overwrite the hooks path.
-
-3. Follow the hint and run `git config --unset-all core.hooksPath`.
-4. Run `pre-commit install` again.
-
-Now `pre-commit` and the backend hooks should take precedence.
-
-### The Application entrypoint
-
-After installing the poetry dependencies, you can see a list of commands with the following steps:
-
-- Start a terminal
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- Then run `poetry run python3 data_pipeline/application.py --help`
-
-### Downloading Census Block Groups GeoJSON and Generating CBG CSVs (not normally required)
-
-- Start a terminal
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- If you want to clear out all data and tiles from all directories, you can run: `poetry run python3 data_pipeline/application.py data-cleanup`.
-- Then run `poetry run python3 data_pipeline/application.py census-data-download`
-  Note: Census files are hosted in the Justice40 S3 and you can skip this step by passing the `-s aws` or `--data-source aws` flag in the scripts below
-
-### Run all ETL, score and map generation processes
-
-- Start a terminal
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- Then run `poetry run python3 data_pipeline/application.py data-full-run -s aws`
-- Note: The `-s` flag is optional if you have generated/downloaded the census data
-
-### Run both ETL and score generation processes
-
-- Start a terminal
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- Then run `poetry run python3 data_pipeline/application.py score-full-run`
-
-### Run all ETL processes
-
-- Start a terminal
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- Then run `poetry run python3 data_pipeline/application.py etl-run`
-
-### Generating Map Tiles
-
-- Start a terminal
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- Then run `poetry run python3 data_pipeline/application.py generate-map-tiles -s aws`
-- If you have S3 keys, you can sync to the dev repo by doing `aws s3 sync ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --acl public-read --delete`
-- Note: The `-s` flag is optional if you have generated/downloaded the score data
-
-### Serve the map locally
-
-- Start a terminal
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- For USA high zoom: `docker run --rm -it -v ${PWD}/data/score/tiles/high:/data -p 8080:80 maptiler/tileserver-gl`
-
-### Running Jupyter notebooks
-
-- Start a terminal
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- Run `poetry run jupyter notebook`. Your browser should open with a Jupyter Notebook tab
-
-### Activating variable-enabled Markdown for Jupyter notebooks
-
-- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
-- Activate a Poetry Shell (see above)
-- Run `jupyter contrib nbextension install --user`
-- Run `jupyter nbextension enable python-markdown/main`
-- Make sure you've loaded the Jupyter notebook in a "Trusted" state. (See button near top right of Notebook screen.)
-
-For more information, see [nbextensions docs](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html) and
-see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/python-markdown).
+> :exclamation: **ATTENTION**  
+> This may take several minutes or over an hour to fully execute and generate the reports.
 
 ## Testing
 
 ### Background
 
 <!-- markdown-link-check-disable -->
+
 For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes.
+
 <!-- markdown-link-check-enable-->
 
 To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
 
 Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
 
-### Score and post-processing tests
+### Score and Post-Processing Tests
 
-The fixtures used in the score post-processing tests are slightly different. These fixtures utilize [pickle files](https://docs.python.org/3/library/pickle.html) to store dataframes to disk. This is ultimately because if you assert equality on two dataframes, even if column values have the same "visible" value, if their types are mismatching they will be counted as not being equal.
+The fixtures used in the score post-processing tests are slightly different. These fixtures use [pickle files](https://docs.python.org/3/library/pickle.html) to store dataframes to disk. This is ultimately because if you assert equality on two dataframes, even if column values have the same _visible_ value, if their types are mismatching they will be counted as not being equal.
 
 In a bit more detail:
 
 1. Pandas dataframes are typed, and by default, types are inferred when you create one from scratch. If you create a dataframe using the `DataFrame` [constructors](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame), there is no guarantee that types will be correct, without explicit `dtype` annotations. Explicit `dtype` annotations are possible, but, and this leads us to point #2:
-
-2. Our transformations/dataframes in the source code under test itself doesn't always require specific types, and it is often sufficient in the code itself to just rely on the `object` type. I attempted adding explicit typing based on the "logical" type of given columns, but in practice it resulted in non-matching dataframes that _actually_ had the same value -- in particular it was very common to have one dataframe column of type `string` and another of type `object` that carried the same values. So, that is to say, even if we did create a "correctly" typed dataframe (according to our logical assumptions about what types should be), they were still counted as mismatched against the dataframes that are actually used in our program. To fix this "the right way", it is necessary to explicitly annotate types at the point of the `read_csv` call, which definitely has other potential unintended side effects and would need to be done carefully.
-
-3. For larger dataframes (some of these have 150+ values), it was initially deemed too difficult/time consuming to manually annotate all types, and further, to modify those type annotations based on what is expected in the souce code under test.
+2. Our transformations/dataframes in the source code under test itself doesn't always require specific types, and it is often sufficient in the code itself to just rely on the `object` type. I attempted adding explicit typing based on the "logical" type of given columns, but in practice it resulted in non-matching dataframes that _actually_ had the same value – in particular it was very common to have one dataframe column of type `string` and another of type `object` that carried the same values. So, that is to say, even if we did create a "correctly" typed dataframe (according to our logical assumptions about what types should be), they were still counted as mismatched against the dataframes that are actually used in our program. To fix this "the right way", it is necessary to explicitly annotate types at the point of the `read_csv` call, which definitely has other potential unintended side effects and would need to be done carefully.
+3. For larger dataframes (some of these have 150+ values), it was initially deemed too difficult/time consuming to manually annotate all types, and further, to modify those type annotations based on what is expected in the soucre code under test.
 
 #### Updating Pickles
 
@@ -414,16 +214,21 @@ score_initial_df = pd.read_csv(score_csv_path, dtype={"GEOID10_TRACT": "string"}
 score_initial_df.to_csv(data_path / "data_pipeline" / "etl" / "score" / "tests" / "sample_data" /"score_data_initial.csv", index=False)
 ```
 
-Now you can move on to updating individual pickles for the tests. Note that it is helpful to do them in this order:
+Now you can move on to updating individual pickles for the tests.
+
+> :bulb: **NOTE**  
+> It is helpful to perform the steps in VS Code, and in this order.
 
 We have four pickle files that correspond to expected files:
 
-- `score_data_expected.pkl`: Initial score without counties
-- `score_transformed_expected.pkl`: Intermediate score with `etl._extract_score` and `etl. _transform_score` applied. There's no file for this intermediate process, so we need to capture the pickle mid-process.
-- `tile_data_expected.pkl`: Score with columns to be baked in tiles
-- `downloadable_data_expected.pk1`: Downloadable csv
+| Pickle                           | Purpose                                                                                                                                                                        |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `score_data_expected.pkl`        | Initial score without counties                                                                                                                                                 |
+| `score_transformed_expected.pkl` | Intermediate score with `etl._extract_score` and `etl. _transform_score` applied. There's no file for this intermediate process, so we need to capture the pickle mid-process. |
+| `tile_data_expected.pkl`         | Score with columns to be baked in tiles                                                                                                                                        |
+| `downloadable_data_expected.pk1` | Downloadable csv                                                                                                                                                               |
 
-To update the pickles, let's go one by one:
+To update the pickles, go one by one:
 
 For the `score_transformed_expected.pkl`, put a breakpoint on [this line]
 (https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L62), before the `pdt.assert_frame_equal` and run:
@@ -495,48 +300,31 @@ In the future, we could adopt any of the below strategies to work around this:
 1. We could use [pytest-snapshot](https://pypi.org/project/pytest-snapshot/) to automatically store the output of each test as data changes. This would make it so that you could avoid having to generate a pickle for each method - instead, you would only need to call `generate` once , and only when the dataframe had changed.
 
 <!-- markdown-link-check-disable -->
+
 Additionally, you could use a pandas type schema annotation such as [pandera](https://pandera.readthedocs.io/en/stable/schema_models.html?highlight=inputschema#basic-usage) to annotate input/output schemas for given functions, and your unit tests could use these to validate explicitly. This could be of very high value for annotating expectations.
+
 <!-- markdown-link-check-enable-->
 
 Alternatively, or in conjunction, you could move toward using a more strictly-typed container format for read/writes such as SQL/SQLite, and use something like [SQLModel](https://github.com/tiangolo/sqlmodel) to handle more explicit type guarantees.
 
-### Fixtures used in ETL "snapshot tests"
+### Fixtures used in ETL "Snapshot Tests"
 
-ETLs are tested for the results of their extract, transform, and load steps by
-borrowing the concept of "snapshot testing" from the world of front-end development.
+ETLs are tested for the results of their extract, transform, and load steps by borrowing the concept of "snapshot testing" from the world of front-end development.
 
-Snapshots are easy to update and demonstrate the results of a series of changes to
-the code base. They are good for making sure no results have changed if you don't
-expect them to change, and they are good when you expect the results to significantly
-change in a way that would be tedious to update in traditional unit tests.
+Snapshots are easy to update and demonstrate the results of a series of changes to the code base. They are good for making sure no results have changed if you don't expect them to change, and they are good when you expect the results to significantly change in a way that would be tedious to update in traditional unit tests.
 
-However, snapshot tests are also dangerous. An unthinking developer may update the
-snapshot fixtures and unknowingly encode a bug into the supposed intended output of
-the test.
+However, snapshot tests are also dangerous. An unthinking developer may update the snapshot fixtures and unknowingly encode a bug into the supposed intended output of the test.
 
 In order to update the snapshot fixtures of an ETL class, follow the following steps:
 
-1. If you need to manually update the fixtures, update the "furthest upstream" source
-   that is called by `_setup_etl_instance_and_run_extract`. For instance, this may
-   involve creating a new zip file that imitates the source data. (e.g., for the
-   National Risk Index test, update
-   `data_pipeline/tests/sources/national_risk_index/data/NRI_Table_CensusTracts.zip`
-   which is a 64kb imitation of the 405MB source NRI data.)
-2. Run `pytest . -rsx --update_snapshots` to update snapshots for all files, or you
-   can pass a specific file name to pytest to be more precise (e.g., `pytest
-   data_pipeline/tests/sources/national_risk_index/test_etl.py -rsx --update_snapshots`)
-3. Re-run pytest without the `update_snapshots` flag (e.g., `pytest . -rsx`) to
-   ensure the tests now pass.
-4. Carefully check the `git diff` for the updates to all test fixtures to make sure
-   these are as expected. This part is very important. For instance, if you changed a
-    column name, you would only expect the column name to change in the output. If
-    you modified the calculation of some data, spot check the results to see if the
-    numbers in the updated fixtures are as expected.
+1. If you need to manually update the fixtures, update the "furthest upstream" source that is called by `_setup_etl_instance_and_run_extract`. For instance, this may involve creating a new zip file that imitates the source data. (e.g., for the National Risk Index test, update `data_pipeline/tests/sources/national_risk_index/data/NRI_Table_CensusTracts.zip` which is a 64kb imitation of the 405MB source NRI data.)
+2. Run `pytest . -rsx --update_snapshots` to update snapshots for all files, or you can pass a specific file name to pytest to be more precise (e.g., `pytest data_pipeline/tests/sources/national_risk_index/test_etl.py -rsx --update_snapshots`)
+3. Re-run pytest without the `update_snapshots` flag (e.g., `pytest . -rsx`) to ensure the tests now pass.
+4. Carefully check the `git diff` for the updates to all test fixtures to make sure these are as expected. This part is very important. For instance, if you changed a column name, you would only expect the column name to change in the output. If you modified the calculation of some data, spot check the results to see if the numbers in the updated fixtures are as expected.
 
 ### Other ETL Unit Tests
 
-Outside of the ETL snapshot tests discussed above, ETL unit tests are typically
-organized into three buckets:
+Outside of the ETL snapshot tests discussed above, ETL unit tests are typically organized into three buckets:
 
 - Extract Tests
 - Transform Tests, and
