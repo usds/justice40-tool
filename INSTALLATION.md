@@ -4,7 +4,7 @@ _[¡Lea esto en español!](INSTALLATION-es.md)_
 
 This page documents the installation steps for some of the prerequisite software needed to work with this project. It covers steps for macOS and Win10. If you are not on either of those platforms, install the software using steps appropriate for your operating system and device.
 
-> :bulb: **NOTE**  
+> **NOTE** :bulb:  
 > If all you want to do is run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).
 
 ## Prerequisites
