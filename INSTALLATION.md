@@ -4,7 +4,7 @@ _[¡Lea esto en español!](INSTALLATION-es.md)_
 
 This page documents the installation steps for some of the prerequisite software needed to work with this project. It covers steps for macOS and Win10. If you are not on either of those platforms, install the software using steps appropriate for your operating system and device.
 
-> **NOTE**
+> :bulb: **NOTE**  
 > If all you want to do is run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).
 
 ## Prerequisites
@@ -42,7 +42,7 @@ Node version manager (nvm) allows you to install, manage, and use different Node
 
 Follow [these instructions](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8) to install nvm. Be sure to read through all of the instructions to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section titled _Install NVM with Homebrew_).
 
-> **NOTE**
+> :bulb: **NOTE**  
 > If you install nvm using Homebrew, make sure to read the terminal output. There are additional installation instructions you must follow (such as adding lines to your bash or zsh profile).
 
 Once you've completed the nvm installation, use nvm to install Node.js version 14.
