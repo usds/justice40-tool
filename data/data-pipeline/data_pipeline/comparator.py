@@ -25,7 +25,7 @@ def cli():
 
 
 @cli.command(
-    help="Compare score stored in the AWS production environment to the production score. Defaults to checking against version 1.0.",
+    help="Compare score stored in the AWS production environment to the locally generated score. Defaults to checking against version 1.0.",
 )
 @click.option(
     "-v",
