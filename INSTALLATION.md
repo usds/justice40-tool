@@ -71,7 +71,7 @@ This should return something like `v14.x.x`.
 
 While any IDE can be used to contribute to this project, many of our developers use Visual Studio Code (VS Code). Because of this, we've included a few [VS Code configurations to make it easier to develop the data pipeline](data/data-pipeline/INSTALLATION.md#visual-studio-code).
 
-1. On macOS :apple:, open the terminal and type `brew install --cask visual-studio-code` and press return. If this doesn't work – or you're using Win10 :window: – you can [download VS Code](https://code.visualstudio.com/).
+1. On macOS :apple:, open the terminal and type `brew install --cask visual-studio-code` and press return. If this doesn't work – or you're using Win10 :window: – you can [download and install VS Code](https://code.visualstudio.com/) directly.
 2. After [forking this repo](https://github.com/usds/justice40-tool/blob/main/CONTRIBUTING.md#code-contributions), you can clone your forked repo into VS Code.
 
 <!-- TODO: this belongs in the client readme -->
@@ -91,19 +91,19 @@ We recommend the following VS Code Extensions:
 2. [Live Server](https://github.com/ritwickdey/vscode-live-server)
 3. [Live Share](https://github.com/MicrosoftDocs/live-share)
 4. [Live Share Audio](https://github.com/MicrosoftDocs/live-share)
-5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
+5. [Live Share Extension Pack](https://github.com/MicrosoftDocs/live-share)
 <!-- markdown-link-check-enable -->
 
 ---
 
 ### 5. Install Docker (Optional)
 
-Using Docker is optional; the data pipeline and client can be run without Docker. If you wish to install Docker, follow the [Docker installation
+Using Docker is optional; the Frontend Client and the Data Pipeline and Scoring Application can be run without Docker. If you wish to install Docker, follow the [Docker installation
 instructions](https://docs.docker.com/get-docker/) for your platform.
 
 ## Next Steps
 
-After you've completed the prerequisites, you can continue on to specific installation steps for the part of the platform you're interested in using.
+After you've completed the prerequisites, you can continue on to specific installation steps for the part of the platform you're interested in exploring.
 
 | Platform                              | Instructions                                               |
 | ------------------------------------- | ---------------------------------------------------------- |
