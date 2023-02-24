@@ -13,7 +13,7 @@ This page documents the installation steps for some of the prerequisite software
 
 Our project is hosted on Github, and can be forked using Git. You can use Git via the command line or any number of first or third party visual clients (the scope of which is beyond these instructions).
 
-#### macOS
+#### macOS :apple:
 
 To install Git on macOS,
 
@@ -22,11 +22,11 @@ To install Git on macOS,
 3. Open the terminal, type `git --version`, and press return
 4. Validate that a version number is returned (e.g. `git version 2.37.1`). If a version number is returned, git is properly installed
 
-#### Win10
+#### Win10 :window:
 
 On Win10, download and install Git following the instructions on [git-scm.com](https://git-scm.com/download/win).
 
-### 2. Install Homebrew (macOS only)
+### 2. Install Homebrew (macOS :apple: only)
 
 Homebrew is an easy way to manage software packages on macOS. Homebrew is _not_ a requirement, but we recommend it and further instructions will use Homebrew.
 
@@ -63,7 +63,7 @@ This should return something like `v14.x.x`.
 
 While any IDE can be used to contribute to this project, many of our developers use Visual Studio Code (VS Code). Because of this, we've included a few VS Code configurations to make it easier to develop the data pipeline.
 
-1. On macOS, open the terminal and type `brew install --cask visual-studio-code` and press return. If this doesn't work – or you're using Win10 – you can [download VS Code](https://code.visualstudio.com/).
+1. On macOS :apple:, open the terminal and type `brew install --cask visual-studio-code` and press return. If this doesn't work – or you're using Win10 :window: – you can [download VS Code](https://code.visualstudio.com/).
 2. After [forking this repo](https://github.com/usds/justice40-tool/blob/main/CONTRIBUTING.md#code-contributions), you can clone your forked repo into VS Code.
 
 <!-- TODO: this belongs in the client readme -->
