@@ -182,9 +182,15 @@ For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) fo
 
 <!-- markdown-link-check-enable-->
 
-To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
+To run tests, simply run `poetry run pytest` in this directory (`justice40-tool/data/data-pipeline`).
 
 Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
+
+### Running the Full Suite
+
+Our _full_ test and check suite – including security and code format checks – is configured using [`tox`](tox.ini). This suite can be run using the command `poetry run tox` from the `justice40-tool/data/data-pipeline` directory.
+
+Each run takes a while to build the environment from scratch. If you'd like to save time, you can use the previously built environment by running `poetry run tox -e lint`.
 
 ### Score and Post-Processing Tests
 
