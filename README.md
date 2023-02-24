@@ -14,7 +14,7 @@ Please visit our [Open Source Community Orientation](docs/Justice40_Open_Source_
 
 ## Core Team
 
-The core Justice40 team building this tool is a small group of designers, developers, and product managers from the US Digital Service in partnership with the [Council on Environmental Quality (CEQ)](https://www.whitehouse.gov/ceq/).
+The core Justice40 team building this tool is a small group of designers, developers, and product managers from the [US Digital Service](https://www.usds.gov) in partnership with the [Council on Environmental Quality (CEQ)](https://www.whitehouse.gov/ceq/).
 
 An up-to-date list of core team members can be found in [MAINTAINERS.md](MAINTAINERS.md). The engineering members of the core team who maintain the code in this repo are listed in [.github/CODEOWNERS](.github/CODEOWNERS).
 
@@ -24,7 +24,7 @@ The Justice40 team is taking a community-first and open source approach to the p
 
 We know that we can learn from a wide variety of communities, including those who will use or will be impacted by the tool, who are experts in data science or technology, or who have experience in climate, economic, or environmental justice work. We are dedicated to creating forums for continuous conversation and feedback to help shape the design and development of the tool.
 
-We also recognize capacity building as a key part of involving a diverse open source community. We are doing our best to use accessible language, provide technical and process documents in multiple languages, and offer support – both directly and in the form of group chats and training – to community members with a wide variety of backgrounds and skillsets. If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming folks into our community, please let us know in the [Google Group](https://groups.google.com/u/4/g/justice40-open-source) or email us at justice40open@usds.gov.
+We also recognize capacity building as a key part of involving a diverse open source community. We are doing our best to use accessible language, provide technical and process documents in multiple languages, and offer support – both directly and in the form of group chats and training – to community members with a wide variety of backgrounds and skillsets. If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming people into our community, please let us know in the [Google Group](https://groups.google.com/u/4/g/justice40-open-source) or email us at justice40open@usds.gov.
 
 ### Community Guidelines
 
@@ -36,13 +36,13 @@ Our [Google Group](https://groups.google.com/u/4/g/justice40-open-source) is ope
 
 The core team uses the group to post updates on the program and tech/data issues, and to share the agenda and call for community participation in the community chat.
 
-Curious about whether to ask a question here as a Github issue or in the Google Group? The rule of thumb is that Github issues are for actionable topics related to the tool or data itself (e.g. questions about a specific data set in use, or suggestion for a new tool feature), and the Google Group is for general topics or questions. If you can't decide, use the Google Group and we'll discuss it there before moving to Github if appropriate!
+Curious about whether to ask a question here as a Github issue or in the Google Group? Github issues are for actionable topics related to the tool or data itself (e.g. questions about a specific data set in use, or suggestion for a new tool feature), and the Google Group is for general topics or questions. If you can't decide where your question fits, use the Google Group and we'll discuss it there before moving to Github if appropriate!
 
 ### Open Source Community Chats
 
 We host open source community chats every third Monday of the month at 5-6pm ET. You can find information about the agenda and how to participate in our [Google Group](https://groups.google.com/u/4/g/justice40-open-source).
 
-Community members are welcome to use our Google Group share updates or propose topics for discussion in community chats.
+Community members are welcome to use our Google Group to share updates or propose topics for discussion in community chats.
 
 ## Contributing
 
@@ -54,7 +54,7 @@ Visit [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
 ### Datasets
 
-The intermediate steps of the data pipeline and the final output that is consumed by the frontend are all public and can be accessed directly. Visit [DATASETS.md](DATASETS.md) for these direct download links.
+The intermediate steps of the data pipeline, the scores, and the final output that is consumed by the frontend are all public and can be accessed directly. Visit [DATASETS.md](DATASETS.md) for these direct download links.
 
 ### Local Quickstart
 
@@ -62,7 +62,7 @@ If you want to run the entire application locally, visit [QUICKSTART.md](QUICKST
 
 ### Advanced Guides
 
-If you have software experience or more specific use cases, for more in-depth documentation of how to work with this project visit [INSTALLATION.md](INSTALLATION.md).
+If you have software experience or more specific use cases, in-depth documentation of how to work with this project can be found in [INSTALLATION.md](INSTALLATION.md).
 
 ### Project Documentation
 

@@ -5,9 +5,11 @@ _[¡Lea esto en español!](INSTALLATION-es.md)_
 This page documents the installation steps for some of the prerequisite software needed to work with this project. It covers steps for macOS and Win10. If you are not on either of those platforms, install the software using steps appropriate for your operating system and device.
 
 > :bulb: **NOTE**  
-> If all you want to do is run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).
+> If all you want to do is try out the application locally, visit [`QUICKSTART.md`](QUICKSTART.md).
 
 ## Prerequisites
+
+There are several prerequisites necessary for downloading the source code and creating the environment necessary to run both the Frontend Client and the Data Pipeline and Scoring Application.
 
 ### 1. Install Git
 
@@ -17,24 +19,28 @@ Our project is hosted on Github, and can be forked using Git. You can use Git vi
 
 To install Git on macOS,
 
-1. Open the terminal, type `git`, press return
+1. Open the terminal, type `git`, and press return
 2. If dev tools are not installed, a window will prompt you to install dev tools. Follow those instructions to complete the installation
-3. Open the terminal, type `git --version`, and press return
-4. Validate that a version number is returned (e.g. `git version 2.37.1`). If a version number is returned, git is properly installed
+3. Once dev tools are installed, open the terminal, type `git --version`, and press return
+4. Validate that a version number is returned (e.g. `git version 2.37.1`). If a version number is returned, Git is properly installed
 
 #### Win10 :window:
 
 On Win10, download and install Git following the instructions on [git-scm.com](https://git-scm.com/download/win).
 
+---
+
 ### 2. Install Homebrew (macOS :apple: only)
 
-Homebrew is an easy way to manage software packages on macOS. Homebrew is _not_ a requirement, but we recommend it and further instructions will use Homebrew.
+Homebrew is an easy way to manage software packages on macOS. Homebrew is _not_ a requirement. However, we recommend it, and our installation instructions will assume you have Homebrew installed.
 
 1. Open your terminal and run `brew -v` to determine whether you have Homebrew installed. If you get a response that looks something like `Homebrew 3.1.9`, you've already got it! If you get nothing back, or an error, continue with these instructions.
 2. Follow [the instructions on the Homebrew home page](https://brew.sh) to install Homebrew on your machine.
 3. Validate installation by typing `brew -v` in the terminal; ensure a version number – like in step 1 – is shown.
 
 Don't forget to regularly run `brew update` and `brew doctor` to make sure your packages are up to date and in good condition.
+
+---
 
 ### 3. Install Node
 
@@ -58,6 +64,8 @@ To validate you are using Node.js 14, type:
 `node -v`
 
 This should return something like `v14.x.x`.
+
+---
 
 ### 4. Set Up Your IDE (Optional)
 
@@ -86,6 +94,8 @@ We recommend the following VS Code Extensions:
 5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
 <!-- markdown-link-check-enable -->
 
+---
+
 ### 5. Install Docker (Optional)
 
 Using Docker is optional; the data pipeline and client can be run without Docker. If you wish to install Docker, follow the [Docker installation
@@ -95,8 +105,8 @@ instructions](https://docs.docker.com/get-docker/) for your platform.
 
 After you've completed the prerequisites, you can continue on to specific installation steps for the part of the platform you're interested in using.
 
-| Platform           | Instructions                                               |
-| ------------------ | ---------------------------------------------------------- |
-| Frontend Client    | [Frontend Client Instructions](client/README.md)           |
-| Data Pipeline      | [Data Pipeline Instructions](data/data-pipeline/README.md) |
-| Deployment Process | [Github Workflows README](.github/workflows/README.md)     |
+| Platform                              | Instructions                                               |
+| ------------------------------------- | ---------------------------------------------------------- |
+| Frontend Client                       | [Frontend Client Instructions](client/README.md)           |
+| Data Pipeline and Scoring Application | [Data Pipeline Instructions](data/data-pipeline/README.md) |
+| Deployment Process                    | [Github Workflows README](.github/workflows/README.md)     |

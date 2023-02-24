@@ -8,7 +8,7 @@ _[¡Lea esto en español!](MAINTAINERS-es.md)_
 
 ## Engineering
 
-See [CODEOWNERS file](/.github/CODEOWNERS) for definitive list.
+See [CODEOWNERS](/.github/CODEOWNERS) for definitive list.
 
 - Vim Shah
 - Travis Newby
