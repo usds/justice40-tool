@@ -67,7 +67,7 @@ You can perform these steps either using Docker or by running the application in
 Docker can be used to run the application inside a container without setting up a local environment.
 
 > :exclamation: **ATTENTION**  
-> You must increase the memory resource of your container to at least 8096 MB to run Docker
+> You must increase the memory resource of your container to at least 8096 MB to run this application in Docker
 
 Before running with Docker, you must build the Docker container. Make sure you're in the root directory of the repository (`/justice40-tool`) and run `docker-compose build --no-cache`.
 
@@ -238,8 +238,7 @@ We have four pickle files that correspond to expected files:
 
 To update the pickles, go one by one:
 
-For the `score_transformed_expected.pkl`, put a breakpoint on [this line]
-(https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L62), before the `pdt.assert_frame_equal` and run:
+For the `score_transformed_expected.pkl`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L62), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_transform_score`
 
 Once on the breakpoint, capture the df to a pickle as follows:
