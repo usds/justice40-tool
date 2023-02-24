@@ -6,6 +6,7 @@
   <!-- TOC -->
 
 - [About](#about)
+- [Accessing Data](#accessing-data)
 - [Installing the Data Pipeline and Scoring Application](#installing-the-data-pipeline-and-scoring-application)
 - [Running the Data Pipeline and Scoring Application](#running-the-data-pipeline-and-scoring-application)
 - [How Scoring Works](#how-scoring-works)
@@ -18,16 +19,14 @@
 
 ## About
 
-The Justice40 Data Pipeline and Scoring Application is used to retrieve input data sources, perform Extract-Transform-Load (ETL) operations on those data sources, and ultimately generate the scores and supporting data consumed by the [Climate and Economic Justice Screening Tool (CEJST) website](https://screeningtool.geoplatform.gov/). This data can also be used to compare experimental versions of the Justice40 score to established environmental justice indices, such as EJSCREEN and CalEnviroScreen.
+The Justice40 Data Pipeline and Scoring Application is used to retrieve input data sources, perform Extract-Transform-Load (ETL) operations on those data sources, and ultimately generate the scores and supporting data (e.g. map tiles) consumed by the [Climate and Economic Justice Screening Tool (CEJST) website](https://screeningtool.geoplatform.gov/). This data can also be used to compare experimental versions of the Justice40 score to established environmental justice indices, such as EJSCREEN and CalEnviroScreen.
 
 > :exclamation: **ATTENTION**  
 > The Council on Environmental Quality (CEQ) [made version 1.0 of the CEJST available in November 2022](https://www.whitehouse.gov/ceq/news-updates/2022/11/22/biden-harris-administration-launches-version-1-0-of-climate-and-economic-justice-screening-tool-key-step-in-implementing-president-bidens-justice40-initiative/). Future versions are in continuous development, and scores are likely to change over time. Only versions made publicly available via the CEJST by CEQ may be used for the Justice40 Initiative.
 
-### Development Principles
+We believe that the entire data pipeline should be open and replicable end-to-end. As part of this, in addition to all code being open, we also strive to make data visible and available for use at every stage of our pipeline. You can follow the installation instructions below to spin up the data pipeline yourself in your own environment; you can also access the data we've already processed.
 
-One of our primary development principles is that the entire data pipeline should be open and replicable end-to-end. As part of this, in addition to all code being open, we also strive to make data visible and available for use at every stage of our pipeline. You can follow the installation instructions below to spin up the data pipeline yourself in your own environment; you can also access the data we've already processed.
-
-### Accessing Data
+## Accessing Data
 
 If you wish to access our data without running the Justice40 Data Pipeline and Scoring Application locally, you can do so using the following links.
 
@@ -36,10 +35,11 @@ If you wish to access our data without running the Justice40 Data Pipeline and S
 | Source Data                                      | You can find the source URLs in the `etl.py` files located within each directory in `data/data-pipeline/etl/sources`               |
 | Version 1.0 Combined Datasets (from all Sources) | [Download](https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/csv/full/usa.csv)                        |
 | Shape Files for Mapping Applications             | [Download](https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/1.0-shapefile-codebook.zip) |
+| Documentation and Other Downloads                | [Climate and Economic Justice Screening Tool Downloads](https://screeningtool.geoplatform.gov/en/downloads)                        |
 
 ## Installing the Data Pipeline and Scoring Application
 
-If you wish to run the Justice40 Data Pipeline and Scoring Application in your own environment, you have the option of using Docker or setting up for local development. Docker allows you to install and run the application inside a container without setting up a local environment, and is the quickest and easiest option. Local development requires you to set up your local environment manually, but provides the ability to make changes and run individual parts of the application.
+If you wish to run the Justice40 Data Pipeline and Scoring Application in your own environment, you have the option of using Docker or setting up a local environment. Docker allows you to install and run the application inside a container without setting up a local environment, and is the quickest and easiest option. A local environment requires you to set up your system manually, but provides the ability to make changes and run individual parts of the application without the need for Docker.
 
 With either choice, you'll first need to perform some installation steps.
 
@@ -47,15 +47,15 @@ With either choice, you'll first need to perform some installation steps.
 
 To install Docker, follow these [instructions](https://docs.docker.com/get-docker/). After installation is complete, visit [Running with Docker](#running-with-docker) for more information.
 
-### Installing for Local Development
+### Installing Your Local Environment
 
-The detailed steps for performing [local development installation can be found in our guide](INSTALLATION.md). After installation is complete, visit [Running the Application Locally](#running-for-local-development) for more information.
+The detailed steps for performing [local environment installation can be found in our guide](INSTALLATION.md). After installation is complete, visit [Running the Application Locally](#running-in-your-local-environment) for more information.
 
 ## Running the Data Pipeline and Scoring Application
 
 The Justice40 Data Pipeline and Scoring Application is a multistep process that,
 
-1. Retrieves input data sources (extract), standardizes those input data sources' data into an intermediate format (transform), and saves the results to the file system (load). This step is performed for every input data source (found at `data/data-pipeline/etl/sources`).
+1. Retrieves input data sources (extract), standardizes those input data sources' data into an intermediate format (transform), and saves the results to the file system (load). This step is performed for each configured input data source (found at [`data_pipeline/etl/sources`](data_pipeline/etl/sources))
 2. Calculates a score
 3. Combines the score with geographic data
 4. Generates map tiles for use in the client website
@@ -67,7 +67,7 @@ graph LR
     C --> D[Generate Map Tiles]
 ```
 
-You can perform these steps either using Docker or by running for local development.
+You can perform these steps either using Docker or by running the application in your local environment.
 
 ### Running with Docker
 
@@ -78,7 +78,7 @@ Docker can be used to run the application inside a container without setting up 
 
 Before running with Docker, you must build the Docker container. Make sure you're in the root directory of the repository (`/justice40-tool`) and run `docker-compose build --no-cache`.
 
-Once you've built the Docker container, run `docker-compose up`. Docker will spin up 3 containers: the client container, the static server container and the data container. Once all data is generated, you can see the application by navigating to `http://localhost:8000` in your browser.
+Once you've built the Docker container, run `docker-compose up`. Docker will spin up 3 containers: the client container, the static server container and the data container. Once all data is generated, you can see the application by navigating to [http://localhost:8000](http://localhost:8000) in your browser.
 
 <details>
 <summary>View additional commands</summary>
@@ -100,9 +100,9 @@ To learn more about these commands and when they should be run, refer to [Runnin
 
 </details>
 
-### Running for Local Development
+### Running in Your Local Environment
 
-When running for local development, each step of the application can be run individually or as a group.
+When running in your local environment, each step of the application can be run individually or as a group.
 
 > :bulb: **NOTE**  
 > This section only describes the steps necessary to run the Justice40 Data Pipeline and Scoring Application. If you'd like to run the client application, visit the [client README](/client/README.md). Please note that the client application does not use the data locally generated by the application by default.
@@ -114,21 +114,20 @@ Start by familiarizing yourself with the available commands. To do this, navigat
 
 #### Download Census Data
 
-Begin the local development process by downloading census data.
+Begin the process of running the application in your local environment by downloading census data.
 
 > :bulb: **NOTE**  
 > You'll only need to do this once (unless you clean your census data folder)! Subsequent runs will use the data you've already downloaded.
 
 To download census data, run the command `poetry run python3 data_pipeline/application.py census-data-download`.
 
-> :bulb: **NOTE**  
-> If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census/` folder/
+If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census` folder.
 
 #### Run the Application
 
-Running for local development allows the most flexibility. You can pick and choose which commands you run, and test parts of the application individually or as a group. While we can't anticipate all of your individual development scenarios, we can give you the steps you'll need to run the application from start to finish.
+Running the application in your local environment allows the most flexibility. You can pick and choose which commands you run, and test parts of the application individually or as a group. While we can't anticipate all of your individual development scenarios, we can give you the steps you'll need to run the application from start to finish.
 
-Once you've downloaded the census data, run the following commands – in order – to run the entire Data Pipeline and Scoring Application. The commands can be run by `poetry run python3 data_pipeline/application.py insert-name-of-command-here`.
+Once you've downloaded the census data, run the following commands – in order – to exercise the entire Data Pipeline and Scoring Application. The commands can be run from `justice40-tool/data/data-pipeline` in the form `poetry run python3 data_pipeline/application.py insert-name-of-command-here`.
 
 | Step | Command               | Description                                                                                                                                                           | Example Output                                            |
 | ---- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
@@ -142,13 +141,13 @@ Many commands have options. For example, you can run a single dataset with `etl-
 
 ## How Scoring Works
 
-Scores are generated by running the `score-run` command via Poetry or Docker. This command executes `data_pipeline/etl/score/etl.py`. During execution,
+Scores are generated by running the `score-run` command via Poetry or Docker. This command executes [`data_pipeline/etl/score/etl.py`](data_pipeline/etl/score/etl.py). During execution,
 
-1. Source files from the `data_pipeline/data/dataset` directory are loaded into memory (these source files were generated by the `etl-run` command)
+1. Source files from the [`data_pipeline/data/dataset`](data_pipeline/data/dataset) directory are loaded into memory (these source files were generated by the `etl-run` command)
 2. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
    - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
    - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
-3. The standardized columns are then used to calculate each of the Justice40 scores, and the results are exported to `data_pipeline/data/score/csv/full/usa.csv`. Different versions – including the current version – of the score can be found in `data_pipeline/score`.
+3. The standardized columns are then used to calculate each of the Justice40 scores, and the results are exported to `data_pipeline/data/score/csv/full/usa.csv`. Different versions of the scoring algorithm – including the current version – can be found in [`data_pipeline/score`](data_pipeline/score).
 
 ## Comparing Scores
 
@@ -168,7 +167,7 @@ To run this comparison tool:
 1. Reports and spreadsheets generated by the comparison tool will be available in `data/data-pipeline/data_pipeline/data/comparison_outputs`.
 
 > :exclamation: **ATTENTION**  
-> This may take several minutes or over an hour to fully execute and generate the reports.
+> This may take over an hour to fully execute and generate the reports.
 
 ## Testing
 
