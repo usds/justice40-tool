@@ -61,7 +61,7 @@ This should return something like `v14.x.x`.
 
 ### 4. Set Up Your IDE (Optional)
 
-While any IDE can be used to contribute to this project, many of our developers use Visual Studio Code (VS Code). Because of this, we've included a few VS Code configurations to make it easier to develop the data pipeline.
+While any IDE can be used to contribute to this project, many of our developers use Visual Studio Code (VS Code). Because of this, we've included a few [VS Code configurations to make it easier to develop the data pipeline](data/data-pipeline/INSTALLATION.md).
 
 1. On macOS :apple:, open the terminal and type `brew install --cask visual-studio-code` and press return. If this doesn't work – or you're using Win10 :window: – you can [download VS Code](https://code.visualstudio.com/).
 2. After [forking this repo](https://github.com/usds/justice40-tool/blob/main/CONTRIBUTING.md#code-contributions), you can clone your forked repo into VS Code.
@@ -80,11 +80,11 @@ We recommend the following VS Code Extensions:
 <!-- markdown-link-check-disable -->
 
 1. [Browser Preview](https://github.com/auchenberg/vscode-browser-preview)
-<!-- markdown-link-check-enable -->
 2. [Live Server](https://github.com/ritwickdey/vscode-live-server)
 3. [Live Share](https://github.com/MicrosoftDocs/live-share)
 4. [Live Share Audio](https://github.com/MicrosoftDocs/live-share)
 5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
+<!-- markdown-link-check-enable -->
 
 ### 5. Install Docker (Optional)
 

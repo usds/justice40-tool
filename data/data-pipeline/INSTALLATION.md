@@ -83,7 +83,7 @@ If you want to run tile generation, please install TippeCanoe [following these i
 
 <!-- markdown-link-check-disable -->
 
-To promote consistent code style and quality, we use git [pre-commit](https://pre-commit.com) hooks to automatically lint and reformat our code before every commit. This project's pre-commit hooks are defined in [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
+To promote consistent code style and quality, we use Git [pre-commit](https://pre-commit.com) hooks to automatically lint and reformat our code before every commit. This project's pre-commit hooks are defined in [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
 
 After following the installation instructions for your platform, navigate to the `justice40-tool/data/data-pipeline` directory and run `pre-commit install` to install the pre-commit hooks used in this repository.
 
@@ -99,7 +99,7 @@ Follow [the Homebrew installation instructions on the pre-commit website](https:
 
 Follow [the instructions on the pre-commit website](https://pre-commit.com/#install) to install pre-commit on Win10.
 
-#### Conflicts between backend and frontend git hooks
+#### Conflicts between backend and frontend Git hooks
 
 In the client part of the codebase (the `justice40-tool/client` folder), we use a different tool, `Husky`, to run pre-commit hooks. It is not possible to run both our `Husky` hooks and `pre-commit` hooks on every commit; either one or the other will run.
 
