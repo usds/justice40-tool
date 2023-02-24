@@ -1,9 +1,6 @@
 # Justice40 Data Pipeline and Scoring Application
 
-<details open="open">
-  <summary>Table of Contents</summary>
-
-  <!-- TOC -->
+## Table of Contents
 
 - [About](#about)
 - [Accessing Data](#accessing-data)
@@ -12,10 +9,6 @@
 - [How Scoring Works](#how-scoring-works)
 - [Comparing Scores](#comparing-scores)
 - [Testing](#testing)
-
-  <!-- /TOC -->
-
-</details>
 
 ## About
 
@@ -55,7 +48,7 @@ The detailed steps for performing [local environment installation can be found i
 
 The Justice40 Data Pipeline and Scoring Application is a multistep process that,
 
-1. Retrieves input data sources (extract), standardizes those input data sources' data into an intermediate format (transform), and saves the results to the file system (load). This step is performed for each configured input data source (found at [`data_pipeline/etl/sources`](data_pipeline/etl/sources))
+1. Retrieves input data sources (extract), standardizes those input data sources' data into an intermediate format (transform), and saves the results to the file system (load). It performs those steps for each configured input data source (found at [`data_pipeline/etl/sources`](data_pipeline/etl/sources))
 2. Calculates a score
 3. Combines the score with geographic data
 4. Generates map tiles for use in the client website
