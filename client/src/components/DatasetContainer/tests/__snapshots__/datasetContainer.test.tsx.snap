@@ -36,6 +36,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       The tool's datasets are public and consistent nationwide. They come from different sources and are high quality. The Council on Environmental Quality (CEQ) chose them based on relevance,  availability, and quality. They identify climate, environmental, and other burdens on communities.
     
           </p>
+          <p>
+            
+      This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.
+    
+          </p>
         </div>
         <div
           class="desktop:grid-col-1"
@@ -114,9 +119,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
-                  Census
+                  U.S. Census
                 </li>
                 <li>
                   <span>
@@ -166,7 +171,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   U.S. Census
                 </li>
@@ -217,7 +222,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Federal Emergency Management Agency (FEMA)
                 </li>
@@ -268,7 +273,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Federal Emergency Management Agency (FEMA)
                 </li>
@@ -331,7 +336,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Federal Emergency Management Agency (FEMA)
                 </li>
@@ -388,7 +393,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   First Street Foundation
                 </li>
@@ -445,7 +450,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   First Street Foundation
                 </li>
@@ -496,7 +501,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Department of Energy (DOE)
                 </li>
@@ -547,7 +552,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)
                 </li>
@@ -599,7 +604,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Centers for Disease Control and Prevention (CDC)
                 </li>
@@ -650,7 +655,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Centers for Disease Control and Prevention (CDC)
                 </li>
@@ -701,7 +706,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Centers for Disease Control and Prevention (CDC)
                 </li>
@@ -763,7 +768,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Centers for Disease Control and Prevention (CDC)
                 </li>
@@ -845,7 +850,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   National Community Reinvestment Coalition (NCRC)
                 </li>
@@ -896,7 +901,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Department of Housing and Urban Development (HUD)
                 </li>
@@ -954,7 +959,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   
       Data from 
@@ -1043,7 +1048,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Department of Housing and Urban Development (HUD)
                 </li>
@@ -1094,7 +1099,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   U.S. Census
                 </li>
@@ -1151,7 +1156,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Department of the Interior (DOI)
                 </li>
@@ -1208,7 +1213,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   U.S. Army Corps of Engineers
                 </li>
@@ -1259,7 +1264,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
@@ -1314,7 +1319,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
@@ -1365,7 +1370,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
@@ -1416,7 +1421,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
@@ -1484,7 +1489,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Department of Transportation (DOT)
                 </li>
@@ -1535,7 +1540,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Department of Transportation (DOT)
                 </li>
@@ -1592,7 +1597,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
@@ -1646,7 +1651,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
@@ -1697,7 +1702,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   U.S. Census
                 </li>
@@ -1770,7 +1775,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   U.S. Census
                 </li>
@@ -1843,7 +1848,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   U.S. Census
                 </li>
@@ -1916,7 +1921,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   U.S. Census
                 </li>
@@ -1989,7 +1994,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   U.S. Census
                 </li>
@@ -2081,7 +2086,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible party: 
                   </span>
                   Bureau of Indian Affairs (BIA)
                 </li>

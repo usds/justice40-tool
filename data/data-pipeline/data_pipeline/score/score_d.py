@@ -8,7 +8,7 @@ logger = get_module_logger(__name__)
 
 class ScoreD(Score):
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Scores D and E")
+        logger.debug("Adding Scores D and E")
         fields_to_use_in_score = [
             field_names.UNEMPLOYMENT_FIELD,
             field_names.LINGUISTIC_ISO_FIELD,

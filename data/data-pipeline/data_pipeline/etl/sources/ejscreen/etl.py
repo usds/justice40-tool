@@ -44,7 +44,6 @@ class EJSCREENETL(ExtractTransformLoad):
         ]
 
     def extract(self) -> None:
-        logger.info("Downloading EJScreen Data")
         super().extract(
             self.EJSCREEN_FTP_URL,
             self.get_tmp_path(),
@@ -52,7 +51,6 @@ class EJSCREENETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Transforming EJScreen Data")
         self.df = pd.read_csv(
             self.EJSCREEN_CSV,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},

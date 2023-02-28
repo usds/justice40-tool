@@ -23,7 +23,7 @@ class HousingTransportationETL(ExtractTransformLoad):
         dfs = []
         zip_file_dir = self.get_tmp_path() / "housing_and_transportation_index"
         for fips in get_state_fips_codes(self.DATA_PATH):
-            logger.info(
+            logger.debug(
                 f"Downloading housing data for state/territory with FIPS code {fips}"
             )
 
@@ -50,8 +50,6 @@ class HousingTransportationETL(ExtractTransformLoad):
         self.df = pd.concat(dfs)
 
     def transform(self) -> None:
-        logger.info("Transforming Housing and Transportation Data")
-
         # Rename and reformat tract ID
         self.df.rename(
             columns={"tract": self.GEOID_TRACT_FIELD_NAME}, inplace=True
@@ -61,7 +59,5 @@ class HousingTransportationETL(ExtractTransformLoad):
         ].str.replace('"', "")
 
     def load(self) -> None:
-        logger.info("Saving Housing and Transportation Data")
-
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)

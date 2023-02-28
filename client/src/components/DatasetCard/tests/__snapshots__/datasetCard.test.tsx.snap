@@ -43,9 +43,9 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
       </li>
       <li>
         <span>
-          Responsible Party: 
+          Responsible party: 
         </span>
-        Census
+        U.S. Census
       </li>
       <li>
         <span>

@@ -225,8 +225,8 @@ class ExtractTransformLoad:
         # TODO: remove this once all ETL classes are converted to using the new
         #  base class parameters and patterns.
         if self.GEO_LEVEL is None:
-            logger.info(
-                "Skipping validation step for this class because it does not "
+            logger.warning(
+                f"Skipping validation step for {self.__class__.__name__} because it does not "
                 "seem to be converted to new ETL class patterns."
             )
             return
@@ -331,7 +331,7 @@ class ExtractTransformLoad:
 
         Uses the directory and the file name from `self._get_output_file_path`.
         """
-        logger.info(f"Saving `{self.NAME}` CSV")
+        logger.debug(f"Saving `{self.NAME}` CSV")
 
         # Create directory if necessary.
         output_file_path = self._get_output_file_path()
@@ -342,7 +342,7 @@ class ExtractTransformLoad:
             output_file_path, index=False, float_format=float_format
         )
 
-        logger.info(f"File written to `{output_file_path}`.")
+        logger.debug(f"File written to `{output_file_path}`.")
 
     # This is a classmethod so it can be used without needing to create an instance of
     # the class. This is a use case in `etl_score`.
@@ -362,7 +362,7 @@ class ExtractTransformLoad:
                 f"No file found at `{output_file_path}`."
             )
 
-        logger.info(
+        logger.debug(
             f"Reading in CSV `{output_file_path}` for ETL of class `{cls}`."
         )
         output_df = pd.read_csv(

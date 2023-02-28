@@ -33,15 +33,13 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading 207MB Maryland EJSCREEN Data")
+        logger.debug("Downloading 207MB Maryland EJSCREEN Data")
         super().extract(
             self.MARYLAND_EJSCREEN_URL,
             self.get_tmp_path(),
         )
 
     def transform(self) -> None:
-        logger.info("Transforming Maryland EJSCREEN Data")
-
         list_of_files = list(glob(str(self.SHAPE_FILES_PATH) + "/*.shp"))
 
         # Ignore counties becauses this is not the level of measurement
@@ -105,7 +103,6 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info("Saving Maryland EJSCREEN CSV")
         # write maryland tracts to csv
         self.OUTPUT_CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(

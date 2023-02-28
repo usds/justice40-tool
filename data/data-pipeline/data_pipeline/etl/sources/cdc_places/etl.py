@@ -44,7 +44,6 @@ class CDCPlacesETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Starting to download 520MB CDC Places file.")
         file_path = download_file_from_url(
             file_url=self.CDC_PLACES_URL,
             download_file_name=self.get_tmp_path() / "census_tract.csv",
@@ -57,8 +56,6 @@ class CDCPlacesETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Starting CDC Places transform")
-
         # Rename GEOID field
         self.df.rename(
             columns={self.CDC_GEOID_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME},

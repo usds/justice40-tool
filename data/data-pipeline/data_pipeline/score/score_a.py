@@ -8,7 +8,7 @@ logger = get_module_logger(__name__)
 
 class ScoreA(Score):
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score A")
+        logger.debug("Adding Score A")
         self.df[field_names.SCORE_A] = self.df[
             [
                 field_names.POVERTY_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,

@@ -42,6 +42,9 @@ def _get_datasets_to_run(dataset_to_run: str) -> typing.List[dict]:
 
 def _run_one_dataset(dataset: dict) -> None:
     """Runs one etl process."""
+
+    logger.info(f"Running ETL for {dataset['name']}")
+
     etl_module = importlib.import_module(
         f"data_pipeline.etl.sources.{dataset['module_dir']}.etl"
     )
@@ -49,21 +52,26 @@ def _run_one_dataset(dataset: dict) -> None:
     etl_instance = etl_class()
 
     # run extract
+    logger.debug(f"Extracting {dataset['name']}")
     etl_instance.extract()
 
     # run transform
+    logger.debug(f"Transforming {dataset['name']}")
     etl_instance.transform()
 
     # run load
+    logger.debug(f"Loading {dataset['name']}")
     etl_instance.load()
 
     # run validate
+    logger.debug(f"Validating {dataset['name']}")
     etl_instance.validate()
 
     # cleanup
+    logger.debug(f"Cleaning up {dataset['name']}")
     etl_instance.cleanup()
 
-    logger.info(f"Finished `etl-run` for dataset `{dataset['name']}`.")
+    logger.info(f"Finished ETL for dataset {dataset['name']}")
 
 
 def etl_runner(dataset_to_run: str = None) -> None:
@@ -94,7 +102,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
     ]
 
     if concurrent_datasets:
-        logger.info("Running concurrent jobs")
+        logger.info("Running concurrent ETL jobs")
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
                 executor.submit(_run_one_dataset, dataset=dataset)
@@ -106,10 +114,10 @@ def etl_runner(dataset_to_run: str = None) -> None:
                 # Otherwise, the exceptions are silently ignored.
                 fut.result()
 
-    # Note: these high-memory datasets also usually require the Census geojson to be
-    # generated, and one of them requires the Tribal geojson to be generated.
+    # Note: these high-memory datasets also usually require the Census GeoJSON to be
+    # generated, and one of them requires the Tribal GeoJSON to be generated.
     if high_memory_datasets:
-        logger.info("Running high-memory jobs")
+        logger.info("Running high-memory ETL jobs")
         for dataset in high_memory_datasets:
             _run_one_dataset(dataset=dataset)
 

@@ -72,7 +72,7 @@ class ScoreC(Score):
 
     # "CalEnviroScreen for the US" score
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score C")
+        logger.debug("Adding Score C")
         # Average all the percentile values in each bucket into a single score for each of the four buckets.
         for bucket in self.BUCKETS:
             self.df[bucket.name] = self.df[bucket.fields].mean(axis=1)

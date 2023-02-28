@@ -392,27 +392,23 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         >
           About
         </h1>
-        <div>
-          <a
-            href="/en/public-engagement"
+        <a
+          href="https://www.surveymonkey.com/r/6G9TQJ8"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button
+            class="usa-button"
+            data-testid="button"
+            type="button"
           >
-            <button
-              class="usa-button"
-              data-testid="button"
-              type="button"
-            >
-              <div>
-                <img
-                  alt="an icon that represents a calendar"
-                  src="test-file-stub"
-                />
-                <div>
-                  Public engagement
-                </div>
-              </div>
-            </button>
-          </a>
-        </div>
+            Share data sources with CEQ
+            <img
+              alt="launch icon"
+              src="test-file-stub"
+            />
+          </button>
+        </a>
       </section>
       <div
         class="grid-row grid-gap j40-mb5-mt3"
@@ -425,7 +421,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <section>
             <p>
               
-      In January of 2020, President Biden issued 
+      In January of 2021, President Biden issued 
               <a
                 class="usa-link usa-link--external"
                 data-cy=""
@@ -454,6 +450,45 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               . The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.
     
             </p>
+            <div
+              class="j40-p-tag"
+            >
+              
+      Federal agencies should also use the following:
+    
+              <ul>
+                <li>
+                   
+      
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.whitehouse.gov/wp-content/uploads/2023/01/M-23-09_Signed_CEQ_CPO.pdf"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Memorandum
+                  </a>
+                   on Using the CEJST for the Justice40 Initiative
+    
+                </li>
+                <li>
+                   
+     
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/CEQ-CEJST-Instructions.pdf"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Instructions
+                  </a>
+                   to Federal agencies on using the CEJST
+    
+                </li>
+              </ul>
+            </div>
             <p>
               
       CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version 1.0. 

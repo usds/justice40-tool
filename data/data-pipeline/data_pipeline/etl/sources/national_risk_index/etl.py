@@ -69,7 +69,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         """Unzips NRI dataset from the FEMA data source and writes the files
         to the temporary data folder for use in the transform() method
         """
-        logger.info("Downloading 405MB National Risk Index Data")
 
         super().extract(
             source_url=self.SOURCE_URL,
@@ -84,7 +83,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         - Applies the NRI score for each Census Tract to the Census Block
           Groups inside of that Tract
         """
-        logger.info("Transforming National Risk Index Data")
 
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging

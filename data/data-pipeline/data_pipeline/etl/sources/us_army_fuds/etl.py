@@ -56,8 +56,6 @@ class USArmyFUDS(ExtractTransformLoad):
         self.output_df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Starting FUDS data download.")
-
         download_file_from_url(
             file_url=self.FILE_URL,
             download_file_name=self.DOWNLOAD_FILE_NAME,
@@ -65,11 +63,10 @@ class USArmyFUDS(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info("Starting FUDS transform.")
         # before we try to do any transformation, get the tract data
         # so it's loaded and the census ETL is out of scope
 
-        logger.info("Loading FUDS data as GeoDataFrame for transform")
+        logger.debug("Loading FUDS data as GeoDataFrame for transform")
         raw_df = gpd.read_file(
             filename=self.DOWNLOAD_FILE_NAME,
             low_memory=False,

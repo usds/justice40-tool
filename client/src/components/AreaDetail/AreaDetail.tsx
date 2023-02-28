@@ -20,7 +20,7 @@ import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
 // @ts-ignore
-import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail_outline.svg';
+import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
 
 interface IAreaDetailProps {
   properties: constants.J40Properties,
@@ -886,7 +886,7 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
             </div>
             <img
               className={styles.buttonImage}
-              src={mailIcon}
+              src={launchIcon}
               alt={intl.formatMessage(EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.IMG_ICON.ALT_TAG)}
             />
           </div>

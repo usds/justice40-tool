@@ -10,7 +10,7 @@ class ScoreF(Score):
     # TODO Make variables and constants clearer (meaning and type)
 
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score F")
+        logger.debug("Adding Score F")
         ami_and_high_school_field = "Low AMI, Low HS graduation"
         meets_socio_field = "Meets socioeconomic criteria"
         meets_burden_field = "Meets burden criteria"

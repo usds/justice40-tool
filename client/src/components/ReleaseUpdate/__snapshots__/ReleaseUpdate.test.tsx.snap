@@ -38,10 +38,10 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
     locations of Alaska Native Villages using data from the Bureau of Indian
     Affairs at the U.S. Department of the Interior
             </li>
+            <li>
+              Added new data for indicators of burden
+            </li>
             <ul>
-              <li>
-                Added new data for indicators of burden
-              </li>
               <li>
                 Climate change
               </li>
