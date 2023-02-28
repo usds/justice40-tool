@@ -14,7 +14,7 @@ The Justice40 Data Pipeline and Scoring Application is written in Python. It can
 
 ### 1. Install Python
 
-The application is written in Python, and requires at least Python 3.8 to be installed.
+The application is written in Python, and requires the installation of Python 3.8 or newer (we recommend 3.10).
 
 #### macOS :apple:
 
@@ -22,7 +22,7 @@ There are many ways to install Python on macOS, and you can choose any of those 
 
 One such way is by using [`pyenv`](https://github.com/pyenv/pyenv). `pyenv` allows you to manage multiple Python versions on the same device. To install `pyenv` on your system, follow [these instructions](https://github.com/pyenv/pyenv#installation). Be sure to follow any post-installation steps listed by Homebrew, as well as any extra steps listed in the installation instructions.
 
-Once `pyenv` is installed, you can use it to install Python. Execute the command `pyenv install 3.10.6` to install Python 3.10. After installing Python, navigate to the `justice40-tool` directory and set this Python to be your default by issuing the command `pyenv local 3.10.6`. Use `python --version` to make sure this worked.
+Once `pyenv` is installed, you can use it to install Python. Execute the command `pyenv install 3.10.6` to install Python 3.10. After installing Python, navigate to the `justice40-tool` directory and set this Python to be your default by issuing the command `pyenv local 3.10.6`. Run the command `python --version` to make sure this worked.
 
 > :warning: **WARNING**
 > We've had trouble with 3rd party dependencies in Python 3.11 on macOS machines with Apple silicon. In case of odd dependency issues, please use Python 3.10.
