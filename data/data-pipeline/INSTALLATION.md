@@ -22,7 +22,7 @@ There are many ways to install Python on macOS, and you can choose any of those 
 
 One such way is by using [`pyenv`](https://github.com/pyenv/pyenv). `pyenv` allows you to manage multiple Python versions on the same device. To install `pyenv` on your system, follow [these instructions](https://github.com/pyenv/pyenv#installation). Be sure to follow any post-installation steps listed by Homebrew, as well as any extra steps listed in the installation instructions.
 
-Once `pyenv` is installed, you can use it to install Python. Execute the command `pyenv install 3.10.6` to install Python 3.10. After installing Python, navigate to the `Justice40-tool` directory and set this Python to be your default by issuing the command `pyenv local 3.10.6`. Use `python --version` to make sure this worked.
+Once `pyenv` is installed, you can use it to install Python. Execute the command `pyenv install 3.10.6` to install Python 3.10. After installing Python, navigate to the `justice40-tool` directory and set this Python to be your default by issuing the command `pyenv local 3.10.6`. Use `python --version` to make sure this worked.
 
 > :warning: **WARNING**
 > We've had trouble with 3rd party dependencies in Python 3.11 on macOS machines with Apple silicon. In case of odd dependency issues, please use Python 3.10.
@@ -68,14 +68,14 @@ Use Homebrew to install the three tools.
 
 - GDAL: `brew install gdal`
 - libspatialindex: `brew install spatialindex`
-- Tippecanoe: `brew install tippecanoe`
+- tippecanoe: `brew install tippecanoe`
 
 > :exclamation: **ATTENTION**  
 > For macOS Monterey or Macs with Apple silicon, you may need to follow [these steps](https://stackoverflow.com/a/70880741) to install Scipy.
 
 #### Win10 :window:
 
-If you want to run tile generation, please install TippeCanoe [following these instructions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas (as specified in the Poetry requirements). Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally. It's definitely easier if you have access to WSL (Windows Subsystem Linux), and install these packages using commands similar to our [Dockerfile](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/Dockerfile).
+If you want to run tile generation, please install tippecanoe [following these instructions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas (as specified in the Poetry requirements). Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally. It's definitely easier if you have access to WSL (Windows Subsystem Linux), and install these packages using commands similar to our [Dockerfile](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/Dockerfile).
 
 ---
 
