@@ -64,7 +64,7 @@
     "description": "Navigate to the About page. This is the list item 2"
   },
   "about.page.paragraph.1": {
-    "defaultMessage": "In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens in eight categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.",
+    "defaultMessage": "In January of 2021, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens in eight categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. The tool uses this information to identify communities that are experiencing these burdens. These are the communities that are disadvantaged because they are overburdened and underserved.",
     "description": "Navigate to the About page. This is the paragraph 1"
   },
   "about.page.paragraph.2": {
@@ -306,6 +306,10 @@
   "download.page.download.file.5": {
     "defaultMessage": "<link5>How to use the list of communities</link5> (.pdf {howToCommFileSize})",
     "description": "Navigate to the download page. This is fifth download file link"
+  },
+  "download.page.download.file.6": {
+    "defaultMessage": "<link6>Instructions to Federal agencies on using the CEJST</link6> (.pdf {instructions})",
+    "description": "Navigate to the download page. This is sixth download file link"
   },
   "download.page.files.section.title": {
     "defaultMessage": "Version {version} file formats",
@@ -2394,6 +2398,10 @@
   "methodology.page.datasetContainer.button.text": {
     "defaultMessage": "Share data sources with CEQ",
     "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score with a button labeled: Share data sources with CEQ"
+  },
+  "methodology.page.datasetContainer.census.disclaimer": {
+    "defaultMessage": "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.",
+    "description": "Navigate to the Methodology page. This is the disclaimer when using census data"
   },
   "methodology.page.datasetContainer.heading": {
     "defaultMessage": "Datasets used in beta methodology",

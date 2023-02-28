@@ -2,85 +2,111 @@
 
 _[¡Lea esto en español!](INSTALLATION-es.md)_
 
-This page documents the installation steps for some of the software needed to work with this project.
+This page documents the installation steps for some of the prerequisite software needed to work with this project. It covers steps for macOS and Win10. If you are not on either of those platforms, install the software using steps appropriate for your operating system and device.
 
-> **NOTE: If all you want to do is quickly run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).**
+> :bulb: **NOTE**  
+> If all you want to do is try out the application locally, visit [`QUICKSTART.md`](QUICKSTART.md).
 
-After the generic installation steps on this page, continue to one of the following, depending on what you are trying to do:
+## Prerequisites
 
-- If you are working with the frontend, see [`client/README.md`](client/README.md).
-- If you are working with the data pipeline, see [`data/data-pipeline/README.md`](data/data-pipeline/README.md).
-- If you want to understand the current deployment process, see [`.github/workflows/README.md`](.github/workflows/README.md).
+There are several prerequisites necessary for downloading the source code and creating the environment necessary to run both the Frontend Client and the Data Pipeline and Scoring Application.
 
-## Install Git
+### 1. Install Git
 
-### MacOS
-1. Open the terminal and type `git` and hit RETURN.
-2. If dev tools are not installed a window will prompt you to install dev tools.
-3. Open the terminal and type `git --version` and hit RETURN.
-4. Validate that a version number is returned. If so, git is properly installed.
+Our project is hosted on Github, and can be forked using Git. You can use Git via the command line or any number of first or third party visual clients (the scope of which is beyond these instructions).
 
-### Win10
-Download from [website](https://git-scm.com/download/win)
+#### macOS :apple:
 
-## Install Homebrew (MacOS only)
+To install Git on macOS,
 
-Homebrew is an easy way to manage software downloads on MacOS. You don't _have_ to use it, but we recommend it.
+1. Open the terminal, type `git`, and press return
+2. If dev tools are not installed, a window will prompt you to install dev tools. Follow those instructions to complete the installation
+3. Once dev tools are installed, open the terminal, type `git --version`, and press return
+4. Validate that a version number is returned (e.g. `git version 2.37.1`). If a version number is returned, Git is properly installed
 
-1. First, open your terminal and run `brew -v` to determine whether you have Homebrew installed. If you get a response that looks something like `Homebrew 3.1.9`, you've already got it! If you get nothing back, or an error, continue.
-2. Open the terminal and copy/paste this command and hit RETURN. Go through the prompts (you will need to grant `sudo` access).
+#### Win10 :window:
 
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+On Win10, download and install Git following the instructions on [git-scm.com](https://git-scm.com/download/win).
 
-2. Validate installation by typing `brew -v` in the terminal and ensure a version number is shown.
+---
 
-You should regularly run `brew update` and `brew doctor` to make sure your packages are up to date and in good condition.
+### 2. Install Homebrew (macOS :apple: only)
 
-### Install Node using NVM
+Homebrew is an easy way to manage software packages on macOS. Homebrew is _not_ a requirement. However, we recommend it, and our installation instructions will assume you have Homebrew installed.
 
-This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
+1. Open your terminal and run `brew -v` to determine whether you have Homebrew installed. If you get a response that looks something like `Homebrew 3.1.9`, you've already got it! If you get nothing back, or an error, continue with these instructions.
+2. Follow [the instructions on the Homebrew home page](https://brew.sh) to install Homebrew on your machine.
+3. Validate installation by typing `brew -v` in the terminal; ensure a version number – like in step 1 – is shown.
 
-If you install NVM using Homebrew, make sure to read the output in terminal after you run `brew install nvm`. You will need to add a few lines to your ~/.bash_profile and perhaps complete a couple other tasks.
+Don't forget to regularly run `brew update` and `brew doctor` to make sure your packages are up to date and in good condition.
 
-Once you install NVM, don't forget to install Node! This is included in the linked tutorial above.
+---
 
-After you've downloaded the nvm and the latest node (using the above steps) also install node version 14 by:
+### 3. Install Node
 
-`brew install node@14`
+Node version manager (nvm) allows you to install, manage, and use different Node.js versions on your machine. It's our preferred method to install Node.js.
 
-You should then be able to switch to that version of node by:
+Follow [these instructions](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8) to install nvm. Be sure to read through all of the instructions to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section titled _Install NVM with Homebrew_).
+
+> :bulb: **NOTE**  
+> If you install nvm using Homebrew, make sure to read the terminal output. There are additional installation instructions you must follow (such as adding lines to your bash or zsh profile).
+
+Once you've completed the nvm installation, use nvm to install Node.js version 14.
+
+`nvm install 14`
+
+You should then be able to switch to that version of Node.js through the command:
 
 `nvm use 14`
 
-To validate you are using node 14, type:
+To validate you are using Node.js 14, type:
 
 `node -v`
 
-This should return *Now using node 14.x.x (npm v6.x.x)*
+This should return something like `v14.x.x`.
 
-## IDE set up (Optional)
-While any IDE can be used, we're outlining how to set up VS Code
+---
 
-1. Open the terminal and type `brew install --cask visual-studio-code` and hit RETURN.
-    1. If this doesn't work or for Win10, you can download VS Code from the [website](https://code.visualstudio.com/).
-2. After [forking this repo](https://github.com/usds/justice40-tool/blob/main/CONTRIBUTING.md#code-contributions), you can clone your forked repo into VS Code
-3. VS Code with prompt you to "clone a repo"
-4. Open the terminal and navigate to `client` directory
-5. Type `npm install` to load dependencies
-6. Type `gatsby develop` to spin up the app
-7. Navigate to `localhost:8000` to view the app
+### 4. Set Up Your IDE (Optional)
 
-### Recommended VS Code Extensions
+While any IDE can be used to contribute to this project, many of our developers use Visual Studio Code (VS Code). Because of this, we've included a few [VS Code configurations to make it easier to develop the data pipeline](data/data-pipeline/INSTALLATION.md#visual-studio-code).
+
+1. On macOS :apple:, open the terminal and type `brew install --cask visual-studio-code` and press return. If this doesn't work – or you're using Win10 :window: – you can [download and install VS Code](https://code.visualstudio.com/) directly.
+2. After [forking this repo](https://github.com/usds/justice40-tool/blob/main/CONTRIBUTING.md#code-contributions), you can clone your forked repo into VS Code.
+
+<!-- TODO: this belongs in the client readme -->
+
+To use the client in VS Code,
+
+1. Open the terminal and navigate to `client` directory
+2. Type `npm install` to load dependencies
+3. Type `gatsby develop` to spin up the app
+4. Navigate to `localhost:8000` to view the app
+
+We recommend the following VS Code Extensions:
 
 <!-- markdown-link-check-disable -->
+
 1. [Browser Preview](https://github.com/auchenberg/vscode-browser-preview)
-<!-- markdown-link-check-enable -->
 2. [Live Server](https://github.com/ritwickdey/vscode-live-server)
 3. [Live Share](https://github.com/MicrosoftDocs/live-share)
 4. [Live Share Audio](https://github.com/MicrosoftDocs/live-share)
-5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
+5. [Live Share Extension Pack](https://github.com/MicrosoftDocs/live-share)
+<!-- markdown-link-check-enable -->
 
-## Install Docker
+---
 
-Follow the [Docker installation
+### 5. Install Docker (Optional)
+
+Using Docker is optional; the Frontend Client and the Data Pipeline and Scoring Application can be run without Docker. If you wish to install Docker, follow the [Docker installation
 instructions](https://docs.docker.com/get-docker/) for your platform.
+
+## Next Steps
+
+After you've completed the prerequisites, you can continue on to specific installation steps for the part of the platform you're interested in exploring.
+
+| Platform                              | Instructions                                               |
+| ------------------------------------- | ---------------------------------------------------------- |
+| Frontend Client                       | [Frontend Client Instructions](client/README.md)           |
+| Data Pipeline and Scoring Application | [Data Pipeline Instructions](data/data-pipeline/README.md) |
+| Deployment Process                    | [Github Workflows README](.github/workflows/README.md)     |

@@ -1,23 +1,28 @@
 # Mantenedores del proyecto Justice40
 
-*[Read this in English!](MAINTAINERS.md)*
+_[Read this in English!](MAINTAINERS.md)_
 
 ## Dirección del proyecto
-- Lucas Brown - lucasmbrown-usds
+
+- Kameron Kerger
 
 ## Ingeniería
+
 Consultar la lista definitiva en [archivo CODEOWNERS](/.github/CODEOWNERS).
 
-- Shelby Switzer - switzersc-usds - dirección de ingeniería
-- Jorge Escobar - esfoobar-usds
-- Tom Nielsen - TomNUSDS
-- Vim Shah - vim-usds
+- Vim Shah
+- Travis Newby
+- Sam Powers
+- Matt Bowen
 
 ## Producto
-- Katherine Mlika - katherinedm-usds
-- Beth Mattern - BethMattern
+
+- Katherine Mlika
 
 ## Diseño
-- Kameron Kerger - KameronKerger
-- Jane Lien - janelien
-- Glennette Clark - glennettec
+
+- Katrina Langer
+
+# Liderazgo de Proyectos Emérito
+
+- Lucas Brown

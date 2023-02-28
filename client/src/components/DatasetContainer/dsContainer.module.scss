@@ -12,3 +12,7 @@
   justify-content: flex-end;
   @include u-margin-bottom(4);
 }
+
+.alignItemsCenter {
+  align-items: center;
+}

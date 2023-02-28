@@ -6,7 +6,7 @@ import {Card, CardBody, CardFooter, CardHeader, Grid} from '@trussworks/react-us
 import DownloadButton from '../components/DownloadButton';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
-import PublicEngageButton from '../components/PublicEngageButton';
+import DatasetsButton from '../components/DatasetsButton';
 import SubPageNav from '../components/SubPageNav';
 
 import * as PREV_VER_COPY from '../data/copy/previousVer';
@@ -33,7 +33,7 @@ const PreviousVersions = ({location}: IPreviousVersionsProps) => {
 
         <section className={'page-heading'}>
           <h1 data-cy={'about-page-heading'}>{intl.formatMessage(PREV_VER_COPY.PAGE.TITLE)}</h1>
-          <PublicEngageButton />
+          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>
