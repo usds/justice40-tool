@@ -35,7 +35,7 @@ Follow the Get Started guide on [python.org](https://www.python.org/) to downloa
 
 ### 2. Install Poetry
 
-The Justice40 Data Pipeline and Scoring Application uses [Poetry](https://python-poetry.org/) to manage Python dependencies. Please follow the installation instructions for your platform.
+The Justice40 Data Pipeline and Scoring Application uses [Poetry](https://python-poetry.org/) to manage Python dependencies. Those dependencies are defined in [pyproject.toml](pyproject.toml), and exact versions of all dependencies can be found in [poetry.lock](poetry.lock).
 
 Once Poetry is installed, you can download project dependencies by navigating to `justice40-tool/data/data-pipeline` and running `poetry install`.
 
