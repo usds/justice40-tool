@@ -52,7 +52,7 @@ def compare_score(compare_to_version: str):
 
     summary = "# Score Comparison Summary\n"
     summary += f"Hi! I'm the Score Comparator. I compared the score in production (version {compare_to_version}) to the"
-    summary += " freshly calculated score. Here are the results.\n"
+    summary += " locally calculated score. Here are the results.\n"
 
     log_title("Compare Score", "Compare production score to local score")
 
@@ -133,16 +133,108 @@ def compare_score(compare_to_version: str):
         else " They don't match.\n"
     )
 
+    production_total_population = production_score_df["Total population"].sum()
+    local_total_population = local_score_df["Total population"].sum()
+
+    log_info(
+        f"The total population in all census tracts in production is {production_total_population:,}."
+    )
+    log_info(
+        f"The total population in all census tracts locally is {local_total_population:,}."
+    )
+    log_info(
+        f"The difference in population is {abs(production_total_population - local_total_population):,}."
+    )
+
+    summary += f"* The total population in all census tracts in the production score is {production_total_population:,}."
+    summary += f" The total population in all census tracts locally is {local_total_population:,}."
+    summary += (
+        " They match!\n"
+        if production_total_population == local_total_population
+        else f"  The difference is {abs(production_total_population - local_total_population):,}.\n"
+    )
+
+    production_disadvantaged_tracts_df = production_score_df.query(
+        "`Definition N community, including adjacency index tracts` == True"
+    )
+    local_disadvantaged_tracts_df = local_score_df.query(
+        "`Definition N community, including adjacency index tracts` == True"
+    )
+
+    production_disadvantaged_tracts_set = set(
+        production_disadvantaged_tracts_df.index.array
+    )
+    local_disadvantaged_tracts_set = set(
+        local_disadvantaged_tracts_df.index.array
+    )
+
+    production_pct_of_population_represented = (
+        production_disadvantaged_tracts_df["Total population"].sum()
+        / production_total_population
+    )
+    local_pct_of_population_represented = (
+        local_disadvantaged_tracts_df["Total population"].sum()
+        / local_total_population
+    )
+
+    log_info(
+        f"There are {len(production_disadvantaged_tracts_set):,} disadvantaged tracts in the production score."
+    )
+    log_info(
+        f"This represents {production_pct_of_population_represented:.1%} of the total population."
+    )
+    log_info(
+        f"There are {len(local_disadvantaged_tracts_set):,} in the locally generated score."
+    )
+    log_info(
+        f"This represents {local_pct_of_population_represented:.1%} of the total population."
+    )
+    log_info(
+        f"The difference is {abs(len(production_disadvantaged_tracts_set) - len(local_disadvantaged_tracts_set)):,} tract(s)."
+    )
+
+    summary += f"* There are {len(production_disadvantaged_tracts_set):,} disadvantaged tracts in the production score representing"
+    summary += f" {production_pct_of_population_represented:.1%} of the total population, and {len(local_disadvantaged_tracts_set):,}"
+    summary += f" in the locally generated score representing {local_pct_of_population_represented:.1%} of the total population."
+    summary += (
+        " The number of tracts match!\n"
+        if len(production_disadvantaged_tracts_set)
+        == len(local_disadvantaged_tracts_set)
+        else f" The difference is {abs(len(production_disadvantaged_tracts_set) - len(local_disadvantaged_tracts_set)):,} tract(s).\n"
+    )
+
+    removed_tracts = production_disadvantaged_tracts_set.difference(
+        local_disadvantaged_tracts_set
+    )
+    added_tracts = local_disadvantaged_tracts_set.difference(
+        production_disadvantaged_tracts_set
+    )
+
+    log_info(
+        f"There are {len(removed_tracts):,} tract(s) marked as disadvantaged in the prod score that are not disadvantaged in the local score."
+    )
+    log_info(
+        f"There are {len(added_tracts):,} tract(s) marked as disadvantaged in the local score that are not disadvantaged in the prod score."
+    )
+
+    summary += (
+        f"* There are {len(removed_tracts):,} tract(s) marked as disadvantaged in the production score that are not disadvantaged in the locally"
+        " generated score (i.e. disadvantaged tracts that were removed by the new score)."
+        f" There are {len(added_tracts):,} tract(s) marked as disadvantaged in the locally generated score that are not disadvantaged in the"
+        " production score (i.e. disadvantaged tracts that were added by the new score).\n"
+    )
+
     try:
 
         comparison_results_df = production_score_df.compare(
             local_score_df, align_axis=1, keep_shape=False, keep_equal=False
         ).rename({"self": "Production", "other": "Local"}, axis=1, level=1)
 
-        summary += f"* I compared all of the census tracts. There are {len(comparison_results_df.index):,} tracts with at least one score difference."
+        summary += "* I compared all values across all census tracts."
+        summary += f" There are {len(comparison_results_df.index):,} tracts with at least one difference."
         summary += " Please examine the logs or run the score comparison locally to view them all.\n"
         log_info(
-            f"There are {len(comparison_results_df.index)} rows with differences"
+            f"There are {len(comparison_results_df.index)} rows with any differences."
         )
 
         log_info("Those differences are:")
