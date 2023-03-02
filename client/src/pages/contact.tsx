@@ -5,7 +5,7 @@ import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import LinkTypeWrapper from '../components/LinkTypeWrapper';
-import PublicEngageButton from '../components/PublicEngageButton';
+import DatasetsButton from '../components/DatasetsButton';
 
 import * as CONTACT_COPY from '../data/copy/contact';
 import {FEEDBACK_EMAIL} from '../data/copy/common';
@@ -24,7 +24,7 @@ const ContactPage = ({location}: IContactPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
-          <PublicEngageButton />
+          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
         </section>
 
         <Grid row gap={6}>

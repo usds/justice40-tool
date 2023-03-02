@@ -6,7 +6,7 @@ import {useWindowSize} from 'react-use';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
-import PublicEngageButton from '../components/PublicEngageButton';
+import DatasetsButton from '../components/DatasetsButton';
 import SubPageNav from '../components/SubPageNav';
 
 import {USWDS_BREAKPOINTS} from '../data/constants';
@@ -237,7 +237,7 @@ const FAQPage = ({location}: IFAQPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(FAQS_COPY.PAGE_INTRO.PAGE_TILE)}</h1>
-          <PublicEngageButton />
+          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>

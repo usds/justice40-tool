@@ -1,7 +1,6 @@
 @use '../../styles/design-system.scss' as *;
 
 .datasetsButtonContainer{
-      @include u-margin-top(3);
 
       @include u-height(6);
       z-index: 2;

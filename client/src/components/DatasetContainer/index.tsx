@@ -27,14 +27,15 @@ const DatasetContainer = () => {
             </Grid>
           </Grid>
 
-          <Grid row gap>
+          <Grid row gap className={styles.alignItemsCenter}>
             <Grid desktop={{col: 7}}>
               <p>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.INFO)}</p>
+              <p>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.CENSUS_DISCLAIMER)}</p>
             </Grid>
             <Grid desktop={{col: 1}}>
             </Grid>
             <Grid desktop={{col: 4}}>
-              <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
+              <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'}/>
             </Grid>
           </Grid>
 
