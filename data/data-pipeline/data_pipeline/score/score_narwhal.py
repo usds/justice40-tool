@@ -4,7 +4,9 @@ import data_pipeline.etl.score.constants as constants
 import data_pipeline.score.field_names as field_names
 import numpy as np
 import pandas as pd
-from data_pipeline.score.score import Score
+from data_pipeline.score.score import (
+    Score,
+)  # this just adds the framework of the score class
 from data_pipeline.score.utils import calculate_tract_adjacency_scores
 from data_pipeline.utils import get_module_logger
 
@@ -14,7 +16,7 @@ logger = get_module_logger(__name__)
 class ScoreNarwhal(Score):
     """Score N, aka Narwhal."""
 
-    LOW_INCOME_THRESHOLD: float = 0.65
+    LOW_INCOME_THRESHOLD: float = 0.65  # this is the low income threshold that gets compared against the other indicators. It is a percentile rank
     MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20
     ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
     MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
@@ -441,9 +443,13 @@ class ScoreNarwhal(Score):
         )
 
         # any of the burdens
-        self.df[field_names.HOUSING_THREHSOLD_EXCEEDED] = self.df[
+        self.df[
+            field_names.HOUSING_THREHSOLD_EXCEEDED
+        ] = self.df[  # we need this to include all of the ones that are intersected with low income in order to properly calculate the total score.
             housing_eligibility_columns
-        ].any(axis="columns")
+        ].any(
+            axis="columns"
+        )
 
         self._increment_total_eligibility_exceeded(
             housing_eligibility_columns,
@@ -461,7 +467,7 @@ class ScoreNarwhal(Score):
         # Source: Census's American Community Survey
 
         pollution_eligibility_columns = [
-            field_names.RMP_LOW_INCOME_FIELD,
+            field_names.RMP_LOW_INCOME_FIELD,  # include low income in these fields because they help calculate the overall score
             field_names.SUPERFUND_LOW_INCOME_FIELD,
             field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD,
             field_names.AML_LOW_INCOME_FIELD,
