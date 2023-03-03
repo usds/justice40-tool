@@ -56,6 +56,7 @@ def get_state_fips_codes(data_path: Path) -> list:
             else:
                 fips = row[0].strip()
                 fips_state_list.append(fips)
+
     return fips_state_list
 
 

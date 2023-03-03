@@ -29,7 +29,7 @@ class TestHistoricRedliningETL(TestETL):
             mock_paths=mock_paths,
         )
         tmp_df = pd.read_excel(
-            etl.get_tmp_path() / self._SAMPLE_DATA_FILE_NAME,
+            etl.get_sources_path() / self._SAMPLE_DATA_FILE_NAME,
             dtype={etl.GEOID_TRACT_FIELD_NAME: str},
         )
         assert tmp_df.shape == (15, 5)

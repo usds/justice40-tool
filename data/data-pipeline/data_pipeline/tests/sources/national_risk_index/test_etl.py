@@ -36,23 +36,12 @@ class TestNationalRiskIndexETL(TestETL):
 
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
-        initiliazed correctly.
-
-        Validates the following conditions:
-        - self.DATA_PATH points to the "data" folder in the temp directory
-        - self.TMP_PATH points to the "data/tmp" folder in the temp directory
-        - self.INPUT_PATH points to the correct path in the temp directory
-        - self.OUTPUT_PATH points to the correct path in the temp directory
+        initialized correctly.
         """
         # setup
         etl = NationalRiskIndexETL()
-        data_path, tmp_path = mock_paths
-        input_csv = (
-            tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
-        )
 
         # validation
-        assert etl.INPUT_CSV == input_csv
         assert etl.GEOID_FIELD_NAME == "GEOID10"
         assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
         assert etl.NAME == "national_risk_index"

@@ -92,7 +92,6 @@ If you want to run specific data tasks, you can open a terminal window, navigate
 - Generate Map Tiles: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application generate-map-tiles`
 
 To learn more about these commands and when they should be run, refer to [Running for Local Development](#running-for-local-development).
-
 </details>
 
 ---
@@ -135,6 +134,9 @@ Once you've downloaded the census data, run the following commands – in order 
 | 5    | `generate-map-tiles`  | Generates map tiles for use in client website                                                                                                                         | `data/score/tiles/ high or low / {zoomLevel}`             |
 
 Many commands have options. For example, you can run a single dataset with `etl-run` by passing the command line parameter `-d name-of-dataset-to-run`. Please use the `--help` option to find out more.
+
+> :bulb: **NOTE**  
+> One important command line option is enabling cached data sources. Pass the command line parameter `-u` to many commands (e.g. `etl-run`) to use locally cached data sources within the ETL portion of the pipeline. This will ensure that you don't download many GB of data with each run of the data pipeline.
 
 ## How Scoring Works
 

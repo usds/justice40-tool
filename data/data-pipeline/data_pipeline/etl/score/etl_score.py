@@ -22,6 +22,8 @@ from data_pipeline.etl.sources.us_army_fuds.etl import USArmyFUDS
 from data_pipeline.score import field_names
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.datasource import DataSource
+
 
 logger = get_module_logger(__name__)
 
@@ -55,7 +57,13 @@ class ScoreETL(ExtractTransformLoad):
 
         self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS: List[str] = []
 
-    def extract(self) -> None:
+    def get_data_sources(self) -> [DataSource]:
+        return (
+            []
+        )  # we have all prerequisite sources locally as a result of running the ETLs
+
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+
         # EJSCreen csv Load
         ejscreen_csv = constants.DATA_PATH / "dataset" / "ejscreen" / "usa.csv"
         self.ejscreen_df = pd.read_csv(

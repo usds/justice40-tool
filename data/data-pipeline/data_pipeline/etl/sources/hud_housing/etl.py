@@ -3,24 +3,33 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 
 logger = get_module_logger(__name__)
 
 
 class HudHousingETL(ExtractTransformLoad):
+
     NAME = "hud_housing"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
 
     def __init__(self):
-        self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
 
+        # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-            self.HOUSING_FTP_URL = (
+            self.housing_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
                 "hud_housing/2014thru2018-140-csv.zip"
             )
         else:
-            self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
+            self.housing_url = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
+
+        # source
+
+        # output
+
+        self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
 
         self.HOUSING_ZIP_FILE_DIR = self.get_tmp_path()
 
@@ -55,15 +64,16 @@ class HudHousingETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-    def extract(self) -> None:
-        super().extract(
-            self.HOUSING_FTP_URL,
-            self.HOUSING_ZIP_FILE_DIR,
-        )
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            ZIPDataSource(
+                source=self.housing_url, destination=self.get_sources_path()
+            )
+        ]
 
     def _read_chas_table(self, file_name):
-        # New file name:
-        tmp_csv_file_path = self.HOUSING_ZIP_FILE_DIR / "140" / file_name
+
+        tmp_csv_file_path = self.get_sources_path() / "140" / file_name
         tmp_df = pd.read_csv(
             filepath_or_buffer=tmp_csv_file_path,
             encoding="latin-1",
@@ -78,13 +88,20 @@ class HudHousingETL(ExtractTransformLoad):
 
         return tmp_df
 
-    def transform(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         table_8 = self._read_chas_table("Table8.csv")
         table_3 = self._read_chas_table("Table3.csv")
 
         self.df = table_8.merge(
             table_3, how="outer", on=self.GEOID_TRACT_FIELD_NAME
         )
+
+    def transform(self) -> None:
 
         # Calculate share that lacks indoor plumbing or kitchen
         # This is computed as

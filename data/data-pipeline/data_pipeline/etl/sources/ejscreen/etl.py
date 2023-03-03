@@ -3,6 +3,8 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 
 logger = get_module_logger(__name__)
 
@@ -15,11 +17,18 @@ class EJSCREENETL(ExtractTransformLoad):
     INPUT_GEOID_TRACT_FIELD_NAME: str = "ID"
 
     def __init__(self):
-        self.EJSCREEN_FTP_URL = "https://gaftp.epa.gov/EJSCREEN/2021/EJSCREEN_2021_USPR_Tracts.csv.zip"
-        self.EJSCREEN_CSV = (
-            self.get_tmp_path() / "EJSCREEN_2021_USPR_Tracts.csv"
+
+        # fetch
+        self.ejscreen_url = "https://gaftp.epa.gov/EJSCREEN/2021/EJSCREEN_2021_USPR_Tracts.csv.zip"
+
+        # input
+        self.ejscreen_source = (
+            self.get_sources_path() / "EJSCREEN_2021_USPR_Tracts.csv"
         )
+
+        # output
         self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen"
+
         self.df: pd.DataFrame
 
         self.COLUMNS_TO_KEEP = [
@@ -43,21 +52,28 @@ class EJSCREENETL(ExtractTransformLoad):
             field_names.UST_FIELD,
         ]
 
-    def extract(self) -> None:
-        super().extract(
-            self.EJSCREEN_FTP_URL,
-            self.get_tmp_path(),
-            verify=False,  # EPA EJScreen end point has certificate issues often
-        )
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            ZIPDataSource(
+                source=self.ejscreen_url, destination=self.get_sources_path()
+            )
+        ]
 
-    def transform(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df = pd.read_csv(
-            self.EJSCREEN_CSV,
+            self.ejscreen_source,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
             # EJSCREEN writes the word "None" for NA data.
             na_values=["None"],
             low_memory=False,
         )
+
+    def transform(self) -> None:
 
         # rename ID to Tract ID
         self.output_df = self.df.rename(

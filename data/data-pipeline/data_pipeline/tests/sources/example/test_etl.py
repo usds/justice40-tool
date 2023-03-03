@@ -124,12 +124,18 @@ class TestETL:
         data. A basic version of that patching is included here for classes that can use it.
         """
 
+        data_path, tmp_path = mock_paths
+        sources_path = data_path / "sources" / self._ETL_CLASS.__name__
+        sources_path.mkdir(parents=True, exist_ok=True)
+
         with mock.patch(
-            "data_pipeline.utils.requests"
+            "data_pipeline.etl.downloader.requests"
         ) as requests_mock, mock.patch(
+            "data_pipeline.etl.base.ExtractTransformLoad.get_sources_path"
+        ) as sources_mock, mock.patch(
             "data_pipeline.etl.score.etl_utils.get_state_fips_codes"
         ) as mock_get_state_fips_codes:
-            tmp_path = mock_paths[1]
+
             if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
                 zip_file_fixture_src = (
                     self._DATA_DIRECTORY_FOR_TEST
@@ -145,6 +151,7 @@ class TestETL:
                     "rb",
                 ) as file:
                     file_contents = file.read()
+
             response_mock = requests.Response()
             response_mock.status_code = 200
             # pylint: disable=protected-access
@@ -154,14 +161,24 @@ class TestETL:
             mock_get_state_fips_codes.return_value = [
                 x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
             ]
+
+            # sources mock
+            sources_mock.return_value = sources_path
+
             # Instantiate the ETL class.
             etl = self._get_instance_of_etl_class()
 
             # Monkey-patch the temporary directory to the one used in the test
             etl.TMP_PATH = tmp_path
+            etl.SOURCES_PATH = data_path / "sources"
 
             # Run the extract method.
             etl.extract()
+
+        def fake_get_sources_path() -> pathlib.PosixPath:
+            return sources_path
+
+        mock.patch.object(etl, "get_sources_path", wraps=fake_get_sources_path)
 
         return etl
 
@@ -263,17 +280,12 @@ class TestETL:
         file was unzipped from a "fake" downloaded zip (located in data) in a  temporary path.
         """
         if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
-            tmp_path = mock_paths[1]
 
-            _ = self._setup_etl_instance_and_run_extract(
+            etl = self._setup_etl_instance_and_run_extract(
                 mock_etl=mock_etl,
                 mock_paths=mock_paths,
             )
-            assert (
-                tmp_path
-                / self._EXTRACT_TMP_FOLDER_NAME
-                / self._SAMPLE_DATA_FILE_NAME
-            ).exists()
+            assert (etl.get_sources_path()).exists()
 
     def test_extract_produces_valid_data(self, snapshot, mock_etl, mock_paths):
         """Tests the extract method.
@@ -285,8 +297,11 @@ class TestETL:
             mock_etl=mock_etl,
             mock_paths=mock_paths,
         )
+
+        data_path, tmp_path = mock_paths
+
         tmp_df = pd.read_csv(
-            etl.get_tmp_path() / self._SAMPLE_DATA_FILE_NAME,
+            etl.get_sources_path() / self._SAMPLE_DATA_FILE_NAME,
             dtype={etl.GEOID_TRACT_FIELD_NAME: str},
         )
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST

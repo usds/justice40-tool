@@ -1,12 +1,15 @@
 from pathlib import Path
 
-import geopandas as gpd
 import pandas as pd
+import geopandas as gpd
+
 from data_pipeline.config import settings
-from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
-from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
 
 logger = get_module_logger(__name__)
 
@@ -39,13 +42,20 @@ class AbandonedMineETL(ExtractTransformLoad):
         "55",
     ]
 
-    # Define these for easy code completion
     def __init__(self):
-        self.SOURCE_URL = (
+
+        # fetch
+        self.eamlis_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/eAMLIS export of all data.tsv.zip"
         )
 
+        # input
+        self.eamlis_source = (
+            self.get_sources_path() / "eAMLIS export of all data.tsv"
+        )
+
+        # output
         self.TRACT_INPUT_COLUMN_NAME = self.INPUT_GEOID_TRACT_FIELD_NAME
 
         self.OUTPUT_PATH: Path = (
@@ -58,18 +68,34 @@ class AbandonedMineETL(ExtractTransformLoad):
         ]
 
         self.output_df: pd.DataFrame
+        self.df: pd.DataFrame
 
-    def transform(self) -> None:
-        df = pd.read_csv(
-            self.get_tmp_path() / "eAMLIS export of all data.tsv",
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            ZIPDataSource(
+                source=self.eamlis_url, destination=self.get_sources_path()
+            )
+        ]
+
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
+        self.df = pd.read_csv(
+            self.eamlis_source,
             sep="\t",
             low_memory=False,
         )
+
+    def transform(self) -> None:
+
         gdf = gpd.GeoDataFrame(
-            df,
+            self.df,
             geometry=gpd.points_from_xy(
-                x=df["Longitude"],
-                y=df["Latitude"],
+                x=self.df["Longitude"],
+                y=self.df["Latitude"],
             ),
             crs="epsg:4326",
         )
@@ -77,4 +103,5 @@ class AbandonedMineETL(ExtractTransformLoad):
         gdf_tracts = add_tracts_for_geometries(gdf)
         gdf_tracts = gdf_tracts.drop_duplicates(self.GEOID_TRACT_FIELD_NAME)
         gdf_tracts[self.AML_BOOLEAN] = True
+
         self.output_df = gdf_tracts[self.COLUMNS_TO_KEEP]

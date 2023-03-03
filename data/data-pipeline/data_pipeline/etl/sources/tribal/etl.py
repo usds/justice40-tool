@@ -4,63 +4,57 @@ import geopandas as gpd
 import pandas as pd
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
-from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 
 
 class TribalETL(ExtractTransformLoad):
     def __init__(self):
+
+        self.CSV_BASE_PATH = self.DATA_PATH / "tribal" / "csv"
+
         self.GEOGRAPHIC_BASE_PATH = (
             self.DATA_PATH / "tribal" / "geographic_data"
         )
-        self.CSV_BASE_PATH = self.DATA_PATH / "tribal" / "csv"
         self.NATIONAL_TRIBAL_GEOJSON_PATH = (
             self.GEOGRAPHIC_BASE_PATH / "usa.json"
         )
+
         self.USA_TRIBAL_DF_LIST = []
 
-    def extract(self) -> None:
-        """Extract the tribal geojson zip files from Justice40 S3 data folder
+    def get_data_sources(self) -> [DataSource]:
 
-        Returns:
-            None
-        """
-
-        bia_shapefile_zip_url = (
+        national_lar_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/BIA_National_LAR_updated_20220929.zip"
         )
-
-        tsa_and_aian_geojson_zip_url = (
+        tsa_and_aian_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/BIA_TSA_and_AIAN_json.zip"
         )
-
-        alaska_geojson_url = (
+        alaska_native_villages_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/Alaska_Native_Villages_json.zip"
         )
 
-        unzip_file_from_url(
-            bia_shapefile_zip_url,
-            self.TMP_PATH,
-            self.GEOGRAPHIC_BASE_PATH / "bia_national_lar",
-        )
-
-        unzip_file_from_url(
-            tsa_and_aian_geojson_zip_url,
-            self.TMP_PATH,
-            self.GEOGRAPHIC_BASE_PATH / "tsa_and_aian",
-        )
-
-        unzip_file_from_url(
-            alaska_geojson_url,
-            self.TMP_PATH,
-            self.GEOGRAPHIC_BASE_PATH / "alaska_native_villages",
-        )
+        return [
+            ZIPDataSource(
+                national_lar_url,
+                destination=self.get_sources_path() / "bia_national_lar",
+            ),
+            ZIPDataSource(
+                source=tsa_and_aian_url,
+                destination=self.get_sources_path() / "tsa_and_aian",
+            ),
+            ZIPDataSource(
+                source=alaska_native_villages_url,
+                destination=self.get_sources_path() / "alaska_native_villages",
+            ),
+        ]
 
     def _transform_bia_national_lar(self, path: Path) -> None:
         """Transform the Tribal BIA National Lar Geodataframe and appends it to the
@@ -187,21 +181,21 @@ class TribalETL(ExtractTransformLoad):
         """
         # Set the filepaths:
         bia_national_lar_shapefile = (
-            self.GEOGRAPHIC_BASE_PATH / "bia_national_lar"
+            self.get_sources_path() / "bia_national_lar"
         )
 
         bia_aian_supplemental_geojson = (
-            self.GEOGRAPHIC_BASE_PATH
+            self.get_sources_path()
             / "tsa_and_aian"
             / "BIA_AIAN_Supplemental.json"
         )
 
         bia_tsa_geojson = (
-            self.GEOGRAPHIC_BASE_PATH / "tsa_and_aian" / "BIA_TSA.json"
+            self.get_sources_path() / "tsa_and_aian" / "BIA_TSA.json"
         )
 
         alaska_native_villages_geojson = (
-            self.GEOGRAPHIC_BASE_PATH
+            self.get_sources_path()
             / "alaska_native_villages"
             / "AlaskaNativeVillages.gdb.geojson"
         )
@@ -225,7 +219,11 @@ class TribalETL(ExtractTransformLoad):
             "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
         )
 
+        # note – this works a little different than many of the ETLs. The file
+        # being written here is used again downstream, so it's placed in a
+        # special directory.
         logger.debug("Writing national geojson file")
+        self.GEOGRAPHIC_BASE_PATH.mkdir(parents=True, exist_ok=True)
         usa_tribal_df.to_file(
             self.NATIONAL_TRIBAL_GEOJSON_PATH, driver="GeoJSON"
         )

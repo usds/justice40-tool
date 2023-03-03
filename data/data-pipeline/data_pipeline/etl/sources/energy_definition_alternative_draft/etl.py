@@ -5,18 +5,27 @@ from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
-from data_pipeline.utils import unzip_file_from_url
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 
 logger = get_module_logger(__name__)
 
 
 class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
     def __init__(self):
-        self.DEFINITION_ALTERNATIVE_FILE_URL = (
+
+        # fetch
+        self.definition_alternative_url = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/alternative DAC definition.csv.zip"
         )
 
+        # input
+        self.definition_alternative_source = (
+            self.get_sources_path() / "J40 alternative DAC definition.csv"
+        )
+
+        # output
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "energy_definition_alternative_draft"
         )
@@ -48,18 +57,22 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-    def extract(self) -> None:
-        unzip_file_from_url(
-            file_url=self.DEFINITION_ALTERNATIVE_FILE_URL,
-            download_path=self.get_tmp_path(),
-            unzipped_file_path=self.get_tmp_path()
-            / "energy_definition_alternative_draft",
-        )
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            ZIPDataSource(
+                source=self.definition_alternative_url,
+                destination=self.get_sources_path(),
+            )
+        ]
+
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
 
         self.df = pd.read_csv(
-            filepath_or_buffer=self.get_tmp_path()
-            / "energy_definition_alternative_draft"
-            / "J40 alternative DAC definition.csv",
+            filepath_or_buffer=self.definition_alternative_source,
             # The following need to remain as strings for all of their digits, not get converted to numbers.
             dtype={
                 self.TRACT_INPUT_COLUMN_NAME: "string",
@@ -68,6 +81,7 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
+
         self.df = self.df.rename(
             columns={
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,

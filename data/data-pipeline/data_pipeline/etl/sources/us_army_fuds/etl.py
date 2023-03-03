@@ -4,9 +4,10 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import FileDataSource
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
-from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 
@@ -28,19 +29,6 @@ class USArmyFUDS(ExtractTransformLoad):
 
     def __init__(self):
 
-        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-            self.FILE_URL = (
-                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
-                "us_army_fuds/Formerly_Used_Defense_Sites_(FUDS)_"
-                "all_data_reported_to_Congress_in_FY2020.geojson"
-            )
-        else:
-            self.FILE_URL: str = (
-                "https://opendata.arcgis.com/api/v3/datasets/"
-                "3f8354667d5b4b1b8ad7a6e00c3cf3b1_1/downloads/"
-                "data?format=geojson&spatialRefId=4326&where=1%3D1"
-            )
-
         self.OUTPUT_PATH: Path = self.DATA_PATH / "dataset" / "us_army_fuds"
 
         # Constants for output
@@ -50,17 +38,27 @@ class USArmyFUDS(ExtractTransformLoad):
             self.INELIGIBLE_FUDS_COUNT_FIELD_NAME,
             self.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
         ]
-        self.DOWNLOAD_FILE_NAME = self.get_tmp_path() / "fuds.geojson"
+        self.fuds_source = self.get_sources_path() / "fuds.geojson"
 
         self.raw_df: gpd.GeoDataFrame
         self.output_df: pd.DataFrame
 
-    def extract(self) -> None:
-        download_file_from_url(
-            file_url=self.FILE_URL,
-            download_file_name=self.DOWNLOAD_FILE_NAME,
-            verify=True,
-        )
+    def get_data_sources(self) -> [DataSource]:
+
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            fuds_url = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "us_army_fuds/Formerly_Used_Defense_Sites_(FUDS)_"
+                "all_data_reported_to_Congress_in_FY2020.geojson"
+            )
+        else:
+            fuds_url: str = (
+                "https://opendata.arcgis.com/api/v3/datasets/"
+                "3f8354667d5b4b1b8ad7a6e00c3cf3b1_1/downloads/"
+                "data?format=geojson&spatialRefId=4326&where=1%3D1"
+            )
+
+        return [FileDataSource(source=fuds_url, destination=self.fuds_source)]
 
     def transform(self) -> None:
         # before we try to do any transformation, get the tract data
@@ -68,7 +66,7 @@ class USArmyFUDS(ExtractTransformLoad):
 
         logger.debug("Loading FUDS data as GeoDataFrame for transform")
         raw_df = gpd.read_file(
-            filename=self.DOWNLOAD_FILE_NAME,
+            filename=self.fuds_source,
             low_memory=False,
         )
 

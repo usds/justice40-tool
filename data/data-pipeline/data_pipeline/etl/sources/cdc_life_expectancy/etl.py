@@ -7,8 +7,9 @@ from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.score.etl_utils import (
     compare_to_list_of_expected_state_fips_codes,
 )
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import FileDataSource
 from data_pipeline.score import field_names
-from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 
@@ -17,15 +18,12 @@ logger = get_module_logger(__name__)
 
 
 class CDCLifeExpectancy(ExtractTransformLoad):
+    """#TODO: create description"""
+
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     NAME = "cdc_life_expectancy"
-
-    if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-        USA_FILE_URL = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/US_A.CSV"
-    else:
-        USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
 
     LOAD_YAML_CONFIG: bool = False
     LIFE_EXPECTANCY_FIELD_NAME = "Life expectancy (years)"
@@ -33,43 +31,61 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
     STATES_MISSING_FROM_USA_FILE = ["23", "55"]
 
-    # For some reason, LEEP does not include Maine or Wisconsin in its "All of
-    # USA" file. Load these separately.
-    if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-        WISCONSIN_FILE_URL: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/WI_A.CSV"
-        MAINE_FILE_URL: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/ME_A.CSV"
-    else:
-        WISCONSIN_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/WI_A.CSV"
-        MAINE_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
-
     TRACT_INPUT_COLUMN_NAME = "Tract ID"
     STATE_INPUT_COLUMN_NAME = "STATE2KX"
 
-    raw_df: pd.DataFrame
-    output_df: pd.DataFrame
+    raw_df: pd.DataFrame  # result of extraction
+    output_df: pd.DataFrame  # result of transformation
 
     def __init__(self):
+
+        # fetch
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.usa_file_url = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/US_A.CSV"
+        else:
+            self.usa_file_url: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
+
+        # For some reason, LEEP does not include Maine or Wisconsin in its "All of USA" file. Load these separately.
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.wisconsin_file_url: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/WI_A.CSV"
+            self.maine_file_url: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/ME_A.CSV"
+        else:
+            self.wisconsin_file_url: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/WI_A.CSV"
+            self.maine_file_url: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
+
+        # input
+        self.usa_source = self.get_sources_path() / "US_A.CSV"
+        self.maine_source = self.get_sources_path() / "ME_A.CSV"
+        self.wisconsin_source = self.get_sources_path() / "WI_A.CSV"
+
+        # output
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "cdc_life_expectancy"
         )
 
-        # Constants for output
-        self.COLUMNS_TO_KEEP = [
+        self.COLUMNS_TO_KEEP = [  # the columns to save on output
             self.GEOID_TRACT_FIELD_NAME,
             field_names.LIFE_EXPECTANCY_FIELD,
         ]
 
-    def _download_and_prep_data(
-        self, file_url: str, download_file_name: pathlib.Path
-    ) -> pd.DataFrame:
-        download_file_from_url(
-            file_url=file_url,
-            download_file_name=download_file_name,
-            verify=True,
-        )
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            FileDataSource(
+                source=self.usa_file_url, destination=self.usa_source
+            ),
+            FileDataSource(
+                source=self.maine_file_url, destination=self.maine_source
+            ),
+            FileDataSource(
+                source=self.wisconsin_file_url,
+                destination=self.wisconsin_source,
+            ),
+        ]
+
+    def _read_data(self, file_name: pathlib.Path) -> pd.DataFrame:
 
         df = pd.read_csv(
-            filepath_or_buffer=download_file_name,
+            filepath_or_buffer=file_name,
             dtype={
                 # The following need to remain as strings for all of their digits, not get converted to numbers.
                 self.TRACT_INPUT_COLUMN_NAME: "string",
@@ -80,12 +96,13 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
         return df
 
-    def extract(self) -> None:
+    def extract(self, use_cached_data_sources: bool = False) -> None:
 
-        all_usa_raw_df = self._download_and_prep_data(
-            file_url=self.USA_FILE_URL,
-            download_file_name=self.get_tmp_path() / "US_A.CSV",
-        )
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
+        all_usa_raw_df = self._read_data(self.usa_source)
 
         # Check which states are missing
         states_in_life_expectancy_usa_file = list(
@@ -101,17 +118,11 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             additional_fips_codes_not_expected=self.STATES_MISSING_FROM_USA_FILE,
         )
 
-        logger.debug("Downloading data for Maine")
-        maine_raw_df = self._download_and_prep_data(
-            file_url=self.MAINE_FILE_URL,
-            download_file_name=self.get_tmp_path() / "maine.csv",
+        maine_raw_df = self._read_data(
+            self.maine_source,
         )
 
-        logger.debug("Downloading data for Wisconsin")
-        wisconsin_raw_df = self._download_and_prep_data(
-            file_url=self.WISCONSIN_FILE_URL,
-            download_file_name=self.get_tmp_path() / "wisconsin.csv",
-        )
+        wisconsin_raw_df = self._read_data(self.wisconsin_source)
 
         combined_df = pd.concat(
             objs=[all_usa_raw_df, maine_raw_df, wisconsin_raw_df],

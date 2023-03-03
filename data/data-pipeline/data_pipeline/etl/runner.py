@@ -2,10 +2,14 @@ import concurrent.futures
 import importlib
 import typing
 
+from functools import reduce
+
 from data_pipeline.etl.score.etl_score import ScoreETL
 from data_pipeline.etl.score.etl_score_geo import GeoScoreETL
 from data_pipeline.etl.score.etl_score_post import PostScoreETL
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
 
 from . import constants
 
@@ -40,20 +44,26 @@ def _get_datasets_to_run(dataset_to_run: str) -> typing.List[dict]:
     return dataset_list
 
 
-def _run_one_dataset(dataset: dict) -> None:
-    """Runs one etl process."""
-
-    logger.info(f"Running ETL for {dataset['name']}")
-
+def _get_dataset(dataset: dict) -> ExtractTransformLoad:
+    """Instantiates a dataset object from a dictionary description of that object's class"""
     etl_module = importlib.import_module(
         f"data_pipeline.etl.sources.{dataset['module_dir']}.etl"
     )
     etl_class = getattr(etl_module, dataset["class_name"])
     etl_instance = etl_class()
 
+    return etl_instance
+
+
+def _run_one_dataset(dataset: dict, use_cache: bool = False) -> None:
+    """Runs one etl process."""
+
+    logger.info(f"Running ETL for {dataset['name']}")
+    etl_instance = _get_dataset(dataset)
+
     # run extract
     logger.debug(f"Extracting {dataset['name']}")
-    etl_instance.extract()
+    etl_instance.extract(use_cache)
 
     # run transform
     logger.debug(f"Transforming {dataset['name']}")
@@ -74,11 +84,12 @@ def _run_one_dataset(dataset: dict) -> None:
     logger.info(f"Finished ETL for dataset {dataset['name']}")
 
 
-def etl_runner(dataset_to_run: str = None) -> None:
+def etl_runner(dataset_to_run: str = None, use_cache: bool = False) -> None:
     """Runs all etl processes or a specific one
 
     Args:
         dataset_to_run (str): Run a specific ETL process. If missing, runs all processes (optional)
+        use_cache (bool): Use the cached data sources – if they exist – rather than downloading them all from scratch
 
     Returns:
         None
@@ -105,7 +116,9 @@ def etl_runner(dataset_to_run: str = None) -> None:
         logger.info("Running concurrent ETL jobs")
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
-                executor.submit(_run_one_dataset, dataset=dataset)
+                executor.submit(
+                    _run_one_dataset, dataset=dataset, use_cache=use_cache
+                )
                 for dataset in concurrent_datasets
             }
 
@@ -119,7 +132,50 @@ def etl_runner(dataset_to_run: str = None) -> None:
     if high_memory_datasets:
         logger.info("Running high-memory ETL jobs")
         for dataset in high_memory_datasets:
-            _run_one_dataset(dataset=dataset)
+            _run_one_dataset(dataset=dataset, use_cache=use_cache)
+
+
+def get_data_sources(dataset_to_run: str = None) -> [DataSource]:
+
+    dataset_list = _get_datasets_to_run(dataset_to_run)
+
+    sources = []
+
+    for dataset in dataset_list:
+        etl_instance = _get_dataset(dataset)
+        sources.append(etl_instance.get_data_sources())
+
+    sources = reduce(
+        list.__add__, sources
+    )  # flatten the list of lists into a single list
+
+    return sources
+
+
+def extract_data_sources(
+    dataset_to_run: str = None, use_cache: bool = False
+) -> None:
+
+    dataset_list = _get_datasets_to_run(dataset_to_run)
+
+    for dataset in dataset_list:
+        etl_instance = _get_dataset(dataset)
+        logger.info(
+            f"Extracting data set for {etl_instance.__class__.__name__}"
+        )
+        etl_instance.extract(use_cache)
+
+
+def clear_data_source_cache(dataset_to_run: str = None) -> None:
+
+    dataset_list = _get_datasets_to_run(dataset_to_run)
+
+    for dataset in dataset_list:
+        etl_instance = _get_dataset(dataset)
+        logger.info(
+            f"Clearing data set cache for {etl_instance.__class__.__name__}"
+        )
+        etl_instance.clear_data_source_cache()
 
 
 def score_generate() -> None:

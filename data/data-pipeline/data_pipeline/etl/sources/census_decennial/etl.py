@@ -1,13 +1,14 @@
 import json
 from typing import List
+import os
 
 import numpy as np
 import pandas as pd
-import requests
-from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import FileDataSource
 
 pd.options.mode.chained_assignment = "raise"
 
@@ -342,20 +343,23 @@ class CensusDecennialETL(ExtractTransformLoad):
             + "&for=tract:*&in=state:{}%20county:{}"
         )
 
+        census_api_key = os.environ.get("CENSUS_API_KEY")
+        if census_api_key:
+            self.API_URL = self.API_URL + f"&key={census_api_key}"
+
         self.final_race_fields: List[str] = []
 
         self.df: pd.DataFrame
         self.df_vi: pd.DataFrame
         self.df_all: pd.DataFrame
 
-    def extract(self) -> None:
-        dfs = []
-        dfs_vi = []
+    def get_data_sources(self) -> [DataSource]:
+
+        sources = []
+
         for island in self.ISLAND_TERRITORIES:
-            logger.debug(
-                f"Downloading data for state/territory {island['state_abbreviation']}"
-            )
             for county in island["county_fips"]:
+
                 api_url = self.API_URL.format(
                     self.DECENNIAL_YEAR,
                     island["state_abbreviation"],
@@ -363,17 +367,48 @@ class CensusDecennialETL(ExtractTransformLoad):
                     island["fips"],
                     county,
                 )
-                logger.debug(f"CENSUS: Requesting {api_url}")
-                download = requests.get(
-                    api_url,
-                    timeout=settings.REQUESTS_DEFAULT_TIMOUT,
+
+                sources.append(
+                    FileDataSource(
+                        source=api_url,
+                        destination=self.get_sources_path()
+                        / str(self.DECENNIAL_YEAR)
+                        / island["state_abbreviation"]
+                        / island["fips"]
+                        / county
+                        / "census.json",
+                    )
                 )
 
+        return sources
+
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
+        dfs = []
+        dfs_vi = []
+        for island in self.ISLAND_TERRITORIES:
+            logger.debug(
+                f"Downloading data for state/territory {island['state_abbreviation']}"
+            )
+            for county in island["county_fips"]:
+
                 try:
-                    df = json.loads(download.content)
+                    filepath = (
+                        self.get_sources_path()
+                        / str(self.DECENNIAL_YEAR)
+                        / island["state_abbreviation"]
+                        / island["fips"]
+                        / county
+                        / "census.json"
+                    )
+                    df = json.load(filepath.open())
                 except ValueError as e:
                     logger.error(
-                        f"Could not load content in census decennial ETL because {e}. Content is {download.content}."
+                        f"Could not load content in census decennial ETL because {e}."
                     )
 
                 # First row is the header

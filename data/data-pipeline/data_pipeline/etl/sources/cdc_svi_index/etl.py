@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import FileDataSource
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
@@ -11,22 +13,28 @@ logger = get_module_logger(__name__)
 class CDCSVIIndex(ExtractTransformLoad):
     """CDC SVI Index class ingests 2018 dataset located
     here: https://www.atsdr.cdc.gov/placeandhealth/svi/index.html
+
     Please see the README in this module for further details.
     """
 
     def __init__(self):
-        self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_svi_index"
 
+        # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-            self.CDC_SVI_INDEX_URL = (
+            self.cdc_svi_index_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
                 "cdc_svi_index/SVI2018_US.csv"
             )
         else:
-            self.CDC_SVI_INDEX_URL = "https://svi.cdc.gov/Documents/Data/2018_SVI_Data/CSV/SVI2018_US.csv"
+            self.cdc_svi_index_url = "https://svi.cdc.gov/Documents/Data/2018_SVI_Data/CSV/SVI2018_US.csv"
+
+        # input
+        self.svi_source = self.get_sources_path() / "SVI2018_US.csv"
+
+        # output
+        self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_svi_index"
 
         self.CDC_RPL_THEMES_THRESHOLD = 0.90
-
         self.CDC_SVI_INDEX_TRACTS_FIPS_CODE = "FIPS"
 
         self.COLUMNS_TO_KEEP = [
@@ -47,9 +55,21 @@ class CDCSVIIndex(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-    def extract(self) -> None:
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            FileDataSource(
+                source=self.cdc_svi_index_url, destination=self.svi_source
+            )
+        ]
+
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         self.df = pd.read_csv(
-            filepath_or_buffer=self.CDC_SVI_INDEX_URL,
+            filepath_or_buffer=self.svi_source,
             dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: "string"},
             low_memory=False,
         )
@@ -107,8 +127,8 @@ class CDCSVIIndex(ExtractTransformLoad):
             )
 
     def load(self) -> None:
-        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
+        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
         )

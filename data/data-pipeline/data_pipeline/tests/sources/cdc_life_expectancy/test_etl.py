@@ -54,13 +54,19 @@ class TestCDCLifeExpectency(TestETL):
         data. A basic version of that patching is included here for classes that can use it.
         """
 
+        data_path, tmp_path = mock_paths
+        sources_path = data_path / "sources" / self._ETL_CLASS.__name__
+        sources_path.mkdir(parents=True, exist_ok=True)
+
         with mock.patch(
-            "data_pipeline.utils.requests"
+            "data_pipeline.etl.downloader.requests"
         ) as requests_mock, mock.patch(
+            "data_pipeline.etl.base.ExtractTransformLoad.get_sources_path"
+        ) as sources_mock, mock.patch(
             "data_pipeline.etl.score.etl_utils.get_state_fips_codes"
         ) as mock_get_state_fips_codes:
-            tmp_path = mock_paths[1]
 
+            # requests mock
             def fake_get(url, *args, **kwargs):
                 file_path = url.split("/")[-1]
                 with open(
@@ -77,17 +83,30 @@ class TestCDCLifeExpectency(TestETL):
                 return response_mock
 
             requests_mock.get = fake_get
+
+            # fips codes mock
             mock_get_state_fips_codes.return_value = [
                 x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
             ]
+
+            # sources mock
+            sources_mock.return_value = sources_path
+
             # Instantiate the ETL class.
             etl = self._get_instance_of_etl_class()
 
             # Monkey-patch the temporary directory to the one used in the test
             etl.TMP_PATH = tmp_path
+            etl.SOURCES_PATH = data_path / "sources"
 
             # Run the extract method.
             etl.extract()
+
+        def fake_get_sources_path() -> pathlib.PosixPath:
+            return sources_path
+
+        mock.patch.object(etl, "get_sources_path", wraps=fake_get_sources_path)
+
         return etl
 
     def test_init(self, mock_etl, mock_paths):

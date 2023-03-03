@@ -13,7 +13,7 @@ from data_pipeline.etl.score.constants import TILES_ISLAND_AREA_FIPS_CODES
 from data_pipeline.etl.score.constants import TILES_PUERTO_RICO_FIPS_CODE
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.score import field_names
-from data_pipeline.utils import download_file_from_url
+from data_pipeline.etl.downloader import Downloader
 from data_pipeline.utils import get_module_logger
 
 from . import constants
@@ -48,7 +48,7 @@ def check_score_data_source(
     # download from s3 if census_data_source is aws
     if score_data_source == "aws":
         logger.debug("Fetching Score Tile data from AWS S3")
-        download_file_from_url(
+        Downloader.download_file_from_url(
             file_url=TILE_SCORE_CSV_S3_URL, download_file_name=TILE_SCORE_CSV
         )
     else:

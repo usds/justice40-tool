@@ -4,8 +4,9 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
-from data_pipeline.utils import unzip_file_from_url
 from data_pipeline.config import settings
+from data_pipeline.etl.datasource import DataSource
+from data_pipeline.etl.datasource import ZIPDataSource
 
 logger = get_module_logger(__name__)
 
@@ -23,17 +24,25 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
 
     def __init__(self):
 
+        # fetch
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-            self.AGGREGATED_RSEI_SCORE_FILE_URL = (
+            self.aggregated_rsei_score_file_url = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
                 "epa_rsei/CensusMicroTracts2019_2019_aggregated.zip"
             )
         else:
-            self.AGGREGATED_RSEI_SCORE_FILE_URL = (
+            self.aggregated_rsei_score_file_url = (
                 "http://abt-rsei.s3.amazonaws.com/microdata2019/"
                 "census_agg/CensusMicroTracts2019_2019_aggregated.zip"
             )
 
+        # input
+        self.aggregated_rsei_score_source = (
+            self.get_sources_path()
+            / "CensusMicroTracts2019_2019_aggregated.csv"
+        )
+
+        # output
         self.OUTPUT_PATH: Path = self.DATA_PATH / "dataset" / "epa_rsei"
         self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = 0.75
         self.TRACT_INPUT_COLUMN_NAME = "GEOID10"
@@ -64,7 +73,20 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-    def extract(self) -> None:
+    def get_data_sources(self) -> [DataSource]:
+        return [
+            ZIPDataSource(
+                source=self.aggregated_rsei_score_file_url,
+                destination=self.get_sources_path(),
+            )
+        ]
+
+    def extract(self, use_cached_data_sources: bool = False) -> None:
+
+        super().extract(
+            use_cached_data_sources
+        )  # download and extract data sources
+
         # the column headers from the above dataset are actually a census tract's data at this point
         # We will use this data structure later to specify the column names
         input_columns = [
@@ -79,16 +101,8 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
             self.NCSCORE_INPUT_FIELD,
         ]
 
-        unzip_file_from_url(
-            file_url=self.AGGREGATED_RSEI_SCORE_FILE_URL,
-            download_path=self.get_tmp_path(),
-            unzipped_file_path=self.get_tmp_path() / "epa_rsei",
-        )
-
         self.df = pd.read_csv(
-            filepath_or_buffer=self.get_tmp_path()
-            / "epa_rsei"
-            / "CensusMicroTracts2019_2019_aggregated.csv",
+            filepath_or_buffer=self.aggregated_rsei_score_source,
             # The following need to remain as strings for all of their digits, not get
             # converted to numbers.
             low_memory=False,
