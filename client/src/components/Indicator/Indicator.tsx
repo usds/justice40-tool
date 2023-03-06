@@ -128,7 +128,7 @@ export const IndicatorValueSubText = ({type, value, isAboveThresh, threshold}:II
  *
  * The i18n variable named i18nOrdinalSuffix, in the IndicatorValue function defines the
  * various prefixes. The Spanish version of the i18n variable works in a similar manner,
- * however has a differnce. The superscripting is different for Spanish.
+ * however has a difference. The superscripting is different for Spanish.
  * In Spanish, the suffix is a ".a" and ".o", where only the "a" and "o" are superscripted.
  * This function handles this case.
  *
@@ -199,7 +199,7 @@ export const IndicatorValue = ({type, displayStat}:IIndicatorValue) => {
         {indicatorValue, selectordinal, 
           one {#st} 
           two {#nd}
-          =3 {#rd} 
+          few {#rd} 
           other {#th}
         }
         `,

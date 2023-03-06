@@ -1124,7 +1124,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden"
   },
   "explore.map.page.side.panel.indicator.percentile.value.ordinal.suffix": {
-    "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} =3 {#rd} other {#th} }",
+    "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} few {#rd} other {#th} }",
     "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc."
   },
   "explore.map.page.side.panel.indicator.pm25": {
