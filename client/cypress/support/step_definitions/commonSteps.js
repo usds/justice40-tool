@@ -23,6 +23,11 @@ When(`I click on the {string} page in the navigation`, (page) => {
   cy.get(`[data-cy="nav-link-${pageHyphenCase}"]`).click();
 });
 
+When(`I click on the {string} button in the navigation`, (page) => {
+  const pageHyphenCase = hyphenizeString(page);
+  cy.get(`[data-cy="nav-link-${pageHyphenCase}"]`).contains(page).click();
+});
+
 When(`I look for the {string} CTA`, (ctaString) => {
   cy.get(`[data-cy="${hyphenizeString(ctaString)}-block"]`).as('CTA_block');
   cy.get('@CTA_block').scrollIntoView().should('be.visible');
