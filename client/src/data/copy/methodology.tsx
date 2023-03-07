@@ -611,7 +611,7 @@ export const SOURCE_LINKS = {
     `}
     description={'Navigate to the Methodology page. This is the source link for EPA OAR'}
     values={{
-      link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
+      link1: linkFn('https://www.epa.gov/ejscreen/download-ejscreen-data', false, true),
       date17: DATE_RANGE.SEVENTEEN,
     }}
   />,
@@ -620,7 +620,7 @@ export const SOURCE_LINKS = {
     defaultMessage={`<link1>National Air Toxics Assessment (NATA)</link1> from {date14} as compiled by EPA's EJScreen`}
     description={'Navigate to the Methodology page. This is the source link for EPA NATA'}
     values={{
-      link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
+      link1: linkFn('https://www.epa.gov/ejscreen/download-ejscreen-data', false, true),
       date14: DATE_RANGE.FOURTEEN,
     }}
   />,
@@ -629,7 +629,7 @@ export const SOURCE_LINKS = {
     defaultMessage={`<link1>Traffic data</link1> from {date17} as compiled by EPA's EJScreen`}
     description={'Navigate to the Methodology page. This is the source link for DOT EPA'}
     values={{
-      link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
+      link1: linkFn('https://www.epa.gov/ejscreen/download-ejscreen-data', false, true),
       date17: DATE_RANGE.SEVENTEEN,
     }}
   />,
@@ -668,7 +668,7 @@ export const SOURCE_LINKS = {
     defaultMessage={`<link1>RMP database</link1> from {date20} as compiled by EPA’s EJScreen`}
     description={'Navigate to the Methodology page. This is the source link for EPA RMP'}
     values={{
-      link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
+      link1: linkFn('https://www.epa.gov/ejscreen/download-ejscreen-data', false, true),
       date20: DATE_RANGE.TWENTY,
     }}
   />,
@@ -677,7 +677,7 @@ export const SOURCE_LINKS = {
     defaultMessage={`<link1>Risk-Screening Environmental Indicators (RSEI) model</link1> from {date20} as compiled by EPA’s EJScreen`}
     description={'Navigate to the Methodology page. This is the source link for EPA RSEI'}
     values={{
-      link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
+      link1: linkFn('https://www.epa.gov/ejscreen/download-ejscreen-data', false, true),
       date20: DATE_RANGE.TWENTY,
     }}
   />,
