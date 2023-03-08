@@ -35,7 +35,7 @@
   "devDependencies": {
     "@formatjs/cli": "^4.8.2",
     "@testing-library/cypress": "^8.0.2",
-    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@types/d3-ease": "^3.0.0",
     "@types/jest": "^26.0.24",
