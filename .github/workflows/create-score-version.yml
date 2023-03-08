@@ -26,6 +26,7 @@ jobs:
       matrix:
         python-version: [3.9]
     steps:
+      # Pull in source and setup the build environment
       - name: Checkout source
         uses: actions/checkout@v2
       - name: Print variables to help debug
@@ -58,46 +59,6 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install gdal-bin
           ogrinfo --version
-      - name: Generate Score
-        run: |
-          poetry run python3 data_pipeline/application.py score-full-run
-      - name: Generate Score Post
-        run: |
-          poetry run python3 data_pipeline/application.py generate-score-post -s aws
-      - name: Confirm we generated the version of the score we think we did
-        if: ${{ env.J40_VERSION_LABEL_STRING == '1.0' || env.J40_VERSION_LABEL_STRING == 'test' }}
-        run: |
-          grep "Identified as disadvantaged due to tribal overlap" data_pipeline/data/score/downloadable/* > /dev/null
-      - name: Confirm we generated the version of the score we think we did
-        if: ${{ env.J40_VERSION_LABEL_STRING == 'beta' }}
-        run: |
-          grep -v "Identified as disadvantaged due to tribal overlap" data_pipeline/data/score/downloadable/* > /dev/null
-      - name: Generate Score Geo
-        run: |
-          poetry run python3 data_pipeline/application.py geo-score
-      - name: Run smoketest for 1.0
-        if: ${{ env.J40_VERSION_LABEL_STRING == '1.0' || env.J40_VERSION_LABEL_STRING == 'test' }}
-        run: |
-          poetry run pytest data_pipeline/ -m smoketest
-      - name: Deploy Score to Geoplatform AWS
-        run: |
-          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/csv --recursive --force --API-ACL=public-read
-          poetry run s4cmd put ./data_pipeline/files/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable --recursive --force --API-ACL=public-read
-          poetry run s4cmd put ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable --recursive --force --API-ACL=public-read
-      - name: Confirm we generated the version of the score we think we did
-        if: ${{ env.J40_VERSION_LABEL_STRING == '1.0' || env.J40_VERSION_LABEL_STRING == 'test' }}
-        run: |
-          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/1.0-shapefile-codebook.zip" -s -f -I -o /dev/null && \
-          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/1.0-communities.xlsx" -s -f -I -o /dev/null && \
-          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/1.0-communities.csv" -s -f -I -o /dev/null && \
-          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/1.0-shapefile-codebook.zip" -s -f -I -o /dev/null && \
-          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/cejst-technical-support-document.pdf" -s -f -I -o /dev/null && \
-          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/draft-communities-list.pdf" -s -f -I -o /dev/null
-      - name: Confirm we generated the version of the score we think we did
-        if: ${{ env.J40_VERSION_LABEL_STRING == 'beta' }}
-        run: |
-          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/beta/data/score/downloadable/beta-data-documentation.zip" -s -f -I -o /dev/null && \
-          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/beta/data/score/downloadable/beta-shapefile-codebook.zip" -s -f -I -o /dev/null
       - name: Set timezone for tippecanoe
         uses: szenius/set-timezone@v1.0
         with:
@@ -115,11 +76,64 @@ jobs:
           mkdir -p /usr/local/bin
           cp tippecanoe /usr/local/bin/tippecanoe
           tippecanoe -v
+          
+      # Generate score and map tiles
+      - name: Generate Score
+        run: |
+          poetry run python3 data_pipeline/application.py score-full-run
+      - name: Generate Score Post
+        run: |
+          poetry run python3 data_pipeline/application.py generate-score-post -s aws
+      - name: Generate Score Geo
+        run: |
+          poetry run python3 data_pipeline/application.py geo-score
       - name: Generate Tiles
         run: |
           poetry run python3 data_pipeline/application.py generate-map-tiles
+          
+      # Run basic smoke tests on score and map tiles
+      - name: Confirm we generated the version of the score we think we did
+        if: ${{ env.J40_VERSION_LABEL_STRING != 'beta' }}
+        run: |
+          grep "Identified as disadvantaged due to tribal overlap" data_pipeline/data/score/downloadable/* > /dev/null
+      - name: Confirm we generated the version of the score we think we did
+        if: ${{ env.J40_VERSION_LABEL_STRING == 'beta' }}
+        run: |
+          grep -v "Identified as disadvantaged due to tribal overlap" data_pipeline/data/score/downloadable/* > /dev/null
+      - name: Run smoketest
+        if: ${{ env.J40_VERSION_LABEL_STRING != 'beta' }}
+        run: |
+          poetry run pytest data_pipeline/ -m smoketest
+      
+      # Deploy to AWS
+      - name: Deploy Score to Geoplatform AWS
+        run: |
+          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/csv --recursive --force --API-ACL=public-read
+          poetry run s4cmd put ./data_pipeline/files/${{env.J40_VERSION_LABEL_STRING}}/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable --recursive --force --API-ACL=public-read
+          poetry run s4cmd put ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable --recursive --force --API-ACL=public-read
       - name: Deploy Map to Geoplatform AWS
         run: |
           poetry run s4cmd put ./data_pipeline/data/score/geojson/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/geojson --recursive --force  --API-ACL=public-read --num-threads=250
           poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/${{env.SHA_NUMBER}}/data/score/shapefile --recursive --force  --API-ACL=public-read
           poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/tiles --recursive --force  --API-ACL=public-read --num-threads=250
+
+      # Run more smoke tests to ensure we deployed everything correctly
+      - name: Confirm we deployed downloadables to AWS
+        if: ${{ env.J40_VERSION_LABEL_STRING != 'beta' }}
+        run: |
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable/1.0-shapefile-codebook.zip" -s -f -I -o /dev/null && \
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable/1.0-communities.xlsx" -s -f -I -o /dev/null && \
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable/1.0-communities.csv" -s -f -I -o /dev/null && \
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable/1.0-shapefile-codebook.zip" -s -f -I -o /dev/null && \
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable/cejst-technical-support-document.pdf" -s -f -I -o /dev/null && \
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable/draft-communities-list.pdf" -s -f -I -o /dev/null
+      - name: Confirm we deployed downloadables to AWS (beta)
+        if: ${{ env.J40_VERSION_LABEL_STRING == 'beta' }}
+        run: |
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/beta/data/score/downloadable/beta-data-documentation.zip" -s -f -I -o /dev/null && \
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/beta/data/score/downloadable/beta-shapefile-codebook.zip" -s -f -I -o /dev/null    
+      - name: Confirm we deployed additional downloadables – from the files directory – to AWS (test)
+        if: ${{ env.J40_VERSION_LABEL_STRING == 'test' }}
+        run: |
+          curl "https://static-data-screeningtool.geoplatform.gov/data-versions/beta/data/score/downloadable/test.md" -s -f -I -o /dev/null
+          
