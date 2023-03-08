@@ -345,37 +345,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
     <div
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
-    >
-      <div
-        class="usa-alert usa-alert--info"
-        data-testid="alert"
-      >
-        <div
-          class="usa-alert__body"
-        >
-          <h1
-            class="usa-alert__heading"
-          >
-            Version 1.0 of the tool is now available
-          </h1>
-          <p
-            class="usa-alert__text"
-          >
-            The Council on Environmental Quality (CEQ) made the version 1.0 of the tool available on 11/22/2022. For more information about the improvements to the tool, read CEQ's 
-            <a
-              class="usa-link usa-link--external"
-              data-cy=""
-              href="https://www.whitehouse.gov/ceq/news-updates/2022/11/22/biden-harris-administration-launches-version-1-0-of-climate-and-economic-justice-screening-tool-key-step-in-implementing-president-bidens-justice40-initiative/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              press release
-            </a>
-            .
-          </p>
-        </div>
-      </div>
-    </div>
+    />
   </header>
 </DocumentFragment>
 `;

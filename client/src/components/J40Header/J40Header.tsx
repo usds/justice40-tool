@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useIntl} from 'gatsby-plugin-intl';
 import {
-  Alert,
+  // Alert,
   Header,
   NavMenuButton,
   PrimaryNav,
@@ -309,13 +309,13 @@ const J40Header = ({location}:IJ40Header) => {
           {COMMON_COPY.ALERTS.ALERT_2_DESCRIPTION}
         </Alert> */}
 
-        <Alert
+        {/* <Alert
           className={styles.alert}
           type="info"
           heading={intl.formatMessage(COMMON_COPY.ALERTS.ALERT_1_TITLE.TITLE)}
           headingLevel={'h1'}>
           {COMMON_COPY.ALERTS.ALERT_1_DESCRIPTION}
-        </Alert>
+        </Alert> */}
       </J40MainGridContainer>
       }
     </Header>
