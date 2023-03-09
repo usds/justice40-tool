@@ -333,39 +333,64 @@ class GeoScoreETL(ExtractTransformLoad):
                 internal_column_name_field
             ].map(column_rename_dict)
 
-            codebook = codebook[[shapefile_column_field, internal_column_name_field, column_description_field]]
+            codebook = codebook[
+                [
+                    shapefile_column_field,
+                    internal_column_name_field,
+                    column_description_field,
+                ]
+            ]
             logger.info("Completed creating ESRI codebook")
-            
+
             return codebook
-            
+
         def combine_esri_codebook_with_original_codebook(esri_codebook_df):
             """Combines the ESRI codebook generated above with the original codebook generated
             during score-post. Essentially we want to include the shapefile column name in the
             original codebook."""
-            
+
             logger.info("Combining ESRI codebook with original codebook")
-            
+
             # load up the original codebook
-            original_codebook_df = pd.read_csv(constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH, low_memory=False)
-            
+            original_codebook_df = pd.read_csv(
+                constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH,
+                low_memory=False,
+            )
+
             # if we've already combined these files in the past, go ahead and remove the columns so we can do it again
-            original_codebook_df.drop("shapefile_label", axis=1, errors="ignore", inplace=True)
-            
+            original_codebook_df.drop(
+                "shapefile_label", axis=1, errors="ignore", inplace=True
+            )
+
             # add the esri (shapefile) columns to the original codebook by joining the two dataframes
-            combined_codebook_df = pd.merge(original_codebook_df, esri_codebook_df[["shapefile_column", "column_name"]], how="outer", 
-                left_on="Description", right_on="column_name")
-            
+            combined_codebook_df = original_codebook_df.merge(
+                esri_codebook_df[["shapefile_column", "column_name"]],
+                how="outer",
+                left_on="Description",
+                right_on="column_name",
+            )
+
             # if any descriptions are blank, replace them with the column_name description from the esri codebook
-            combined_codebook_df["Description"].mask(combined_codebook_df["Description"].isnull(), combined_codebook_df["column_name"], inplace=True)
-            combined_codebook_df = combined_codebook_df.drop("column_name", axis=1)
-            
+            combined_codebook_df["Description"].mask(
+                combined_codebook_df["Description"].isnull(),
+                combined_codebook_df["column_name"],
+                inplace=True,
+            )
+            combined_codebook_df = combined_codebook_df.drop(
+                "column_name", axis=1
+            )
+
             # move some stuff around to make it easier to read the output
             shapefile_col = combined_codebook_df.pop("shapefile_column")
             combined_codebook_df.insert(2, "shapefile_label", shapefile_col)
-            
+
             # save the combined codebook
-            combined_codebook_df.to_csv(constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH, index=False)
-            logger.info("Completed combining ESRI codebook with original codebook")
+            combined_codebook_df.to_csv(
+                constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH, index=False
+            )
+            logger.info(
+                "Completed combining ESRI codebook with original codebook"
+            )
 
         def write_esri_shapefile():
             logger.info("Producing ESRI shapefiles")
