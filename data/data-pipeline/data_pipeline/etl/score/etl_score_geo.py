@@ -33,7 +33,6 @@ class GeoScoreETL(ExtractTransformLoad):
 
         self.SCORE_SHP_PATH = self.DATA_PATH / "score" / "shapefile"
         self.SCORE_SHP_FILE = self.SCORE_SHP_PATH / "usa.shp"
-        self.SCORE_SHP_CODE_CSV = self.SCORE_SHP_PATH / "columns.csv"
 
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
