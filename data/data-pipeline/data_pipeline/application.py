@@ -268,7 +268,10 @@ def geo_score(data_source: str):
     Returns:
         None
     """
-    log_title("Generate GeoJSON", "Combine Score and GeoJSON")
+    log_title(
+        "Generate GeoJSON",
+        "Combine Score and GeoJSON, Add Shapefile Data to Codebook",
+    )
 
     log_info("Cleaning up geo score folder")
     geo_score_folder_cleanup()
