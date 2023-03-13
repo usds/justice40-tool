@@ -33,7 +33,6 @@ class GeoScoreETL(ExtractTransformLoad):
 
         self.SCORE_SHP_PATH = self.DATA_PATH / "score" / "shapefile"
         self.SCORE_SHP_FILE = self.SCORE_SHP_PATH / "usa.shp"
-        self.SCORE_SHP_CODE_CSV = self.SCORE_SHP_PATH / "columns.csv"
 
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
@@ -300,14 +299,14 @@ class GeoScoreETL(ExtractTransformLoad):
             )
             logger.info("Completed writing usa-low")
 
-        def create_esri_codebook(codebook):
+        def create_esri_codebook(codebook) -> pd.DataFrame:
             """temporary: helper to make a codebook for esri shapefile only"""
 
             shapefile_column_field = "shapefile_column"
             internal_column_name_field = "column_name"
             column_description_field = "column_description"
 
-            logger.info("Creating a codebook that uses the csv names")
+            logger.info("Creating an ESRI codebook with shortened column names")
             codebook = (
                 pd.Series(codebook)
                 .reset_index()
@@ -333,17 +332,64 @@ class GeoScoreETL(ExtractTransformLoad):
                 internal_column_name_field
             ].map(column_rename_dict)
 
-            codebook[
+            codebook = codebook[
                 [
                     shapefile_column_field,
                     internal_column_name_field,
                     column_description_field,
                 ]
-            ].to_csv(
-                self.SCORE_SHP_CODE_CSV,
-                index=False,
+            ]
+            logger.info("Completed creating ESRI codebook")
+
+            return codebook
+
+        def combine_esri_codebook_with_original_codebook(esri_codebook_df):
+            """Combines the ESRI codebook generated above with the original codebook generated
+            during score-post. Essentially we want to include the shapefile column name in the
+            original codebook."""
+
+            logger.info("Combining ESRI codebook with original codebook")
+
+            # load up the original codebook
+            original_codebook_df = pd.read_csv(
+                constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH,
+                low_memory=False,
             )
-            logger.info("Completed writing codebook")
+
+            # if we've already combined these files in the past, go ahead and remove the columns so we can do it again
+            original_codebook_df.drop(
+                "shapefile_label", axis=1, errors="ignore", inplace=True
+            )
+
+            # add the esri (shapefile) columns to the original codebook by joining the two dataframes
+            combined_codebook_df = original_codebook_df.merge(
+                esri_codebook_df[["shapefile_column", "column_name"]],
+                how="outer",
+                left_on="Description",
+                right_on="column_name",
+            )
+
+            # if any descriptions are blank, replace them with the column_name description from the esri codebook
+            combined_codebook_df["Description"].mask(
+                combined_codebook_df["Description"].isnull(),
+                combined_codebook_df["column_name"],
+                inplace=True,
+            )
+            combined_codebook_df = combined_codebook_df.drop(
+                "column_name", axis=1
+            )
+
+            # move some stuff around to make it easier to read the output
+            shapefile_col = combined_codebook_df.pop("shapefile_column")
+            combined_codebook_df.insert(2, "shapefile_label", shapefile_col)
+
+            # save the combined codebook
+            combined_codebook_df.to_csv(
+                constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH, index=False
+            )
+            logger.info(
+                "Completed combining ESRI codebook with original codebook"
+            )
 
         def write_esri_shapefile():
             logger.info("Producing ESRI shapefiles")
@@ -374,7 +420,8 @@ class GeoScoreETL(ExtractTransformLoad):
             )
             logger.info("Completed writing shapefile")
 
-            create_esri_codebook(codebook)
+            esri_codebook_df = create_esri_codebook(codebook)
+            combine_esri_codebook_with_original_codebook(esri_codebook_df)
 
             arcgis_zip_file_path = self.SCORE_SHP_PATH / "usa.zip"
             arcgis_files = []
@@ -382,6 +429,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 # don't remove __init__ files as they conserve dir structure
                 if file != "__init__.py":
                     arcgis_files.append(self.SCORE_SHP_PATH / file)
+            arcgis_files.append(constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH)
             zip_files(arcgis_zip_file_path, arcgis_files)
             logger.info("Completed zipping shapefiles")
 
