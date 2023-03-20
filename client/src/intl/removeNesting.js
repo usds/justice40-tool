@@ -1,11 +1,13 @@
 const fs = require('fs');
-const englishJson = require('./es_5.4.22-translated-final.json');
+
+// Place nested translation file
+const nestedTranslation = require('./es_3.17.23-translated-final.json');
 
 // placeholder for fixed es json file
 const fixedEs = {};
 
-// loop through incorrect es.json file modify
-for (const [key, value] of Object.entries(englishJson)) {
+// loop through nested es.json file and "flatten"
+for (const [key, value] of Object.entries(nestedTranslation)) {
   fixedEs[key] = value.defaultMessage;
 };
 
@@ -14,8 +16,8 @@ console.log(fixedEs);
 // convert JSON object to string
 const fixedEsString = JSON.stringify(fixedEs);
 
-// write JSON string to a file
-fs.writeFile('esNoNesting.json', fixedEsString, (err) => {
+// write the flattened (no nesting) translated JSON string to a file
+fs.writeFile('esFlattened.json', fixedEsString, (err) => {
   if (err) {
     throw err;
   }

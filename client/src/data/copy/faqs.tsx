@@ -379,7 +379,7 @@ export const FAQ_ANSWERS = {
   />,
   Q5_P2_1: <FormattedMessage
     id={ 'faqs.page.answers.Q5_P2_1'}
-    defaultMessage={ `This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.`}
+    defaultMessage={ `This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3> President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation </link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q5_P2_1'}
     values={{
       link1: linkFn(EXPLORE_PAGE_LINKS.WH_GOV_TRIBAL_ACTION_PLAN_4_26_21, false, true),
