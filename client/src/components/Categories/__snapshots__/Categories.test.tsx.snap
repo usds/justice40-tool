@@ -530,7 +530,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         fewer than 10% of people ages 25 or older have a 
+         more than 10% of people ages 25 or older have a 
         <a
           class="usa-link"
           href="#high-school"
