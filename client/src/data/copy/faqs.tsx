@@ -585,7 +585,7 @@ export const FAQ_ANSWERS = {
     defaultMessage={ `The public may also take a <link1>short survey</link1> to help improve the experience of using the tool.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q15_P1_3'}
     values={{
-      link1: linkFn('https://www.surveymonkey.com/r/5LZ7MNB', false, true),
+      link1: linkFn('https://www.surveymonkey.com/r/P3LWTSB', false, true),
     }}
   />,
   Q15_P1_4: <FormattedMessage

@@ -944,7 +944,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           fewer than 10% of people ages 25 or older have a 
+           more than 10% of people ages 25 or older have a 
           <a
             class="usa-link"
             href="#high-school"
