@@ -13,10 +13,14 @@ export const FED_RECOGNIZED_INDIAN_ENTITIES = `https://www.federalregister.gov/d
 export const EJSCREEN = 'https://www.epa.gov/ejscreen/how-does-epa-use-ejscreen';
 
 export const CEJST_INSTRUCT = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/CEQ-CEJST-Instructions.pdf`;
+export const CEJST_INSTRUCT_ES = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/CEQ-CEJST-Instructions-es.pdf`;
+
 export const CEJST_MEMO = `https://www.whitehouse.gov/wp-content/uploads/2023/01/M-23-09_Signed_CEQ_CPO.pdf`;
+export const CEJST_MEMO_ES = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/M-23-09_Signed_CEQ_CPO_es.pdf`;
 
 export const USE_MAP_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Tutorial.pdf`;
 export const USE_DATA_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf`;
+
 
 export const PAGE = defineMessages({
   TITLE: {
