@@ -18,8 +18,8 @@ import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
 import accountBalanceIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
 
-import groupsIcon from // @ts-ignore
-  '/node_modules/uswds/dist/img/usa-icons/groups.svg';
+import fileDownloadIcon from // @ts-ignore
+  '/node_modules/uswds/dist/img/usa-icons/file_download.svg';
 
 import commentIcon from // @ts-ignore
   '/node_modules/uswds/dist/img/usa-icons/comment.svg';
@@ -128,7 +128,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
 
             <AboutCard
               size={'small'}
-              imgSrc={groupsIcon}
+              imgSrc={fileDownloadIcon}
               header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_DATA_HEADING)}
               linkText={ABOUT_COPY.CONTENT.USE_DATA_TUTORIAL}
               url={USE_DATA_TUTORIAL_LINK}

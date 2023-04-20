@@ -141,7 +141,7 @@ export const CATEGORY_AND_CLAUSE = {
   />,
   HS_DEG_GTE_10: <FormattedMessage
     id={'methodology.page.category.and.clause.hs.ed.higher.ed'}
-    defaultMessage={`<boldtag>AND</boldtag> more than 10% of people ages 25 or older have a <link1>high school education</link1> (i.e. graduated with a high school diploma)
+    defaultMessage={`<boldtag>AND</boldtag> more than 10% of people ages 25 years or older whose high school education is less than a <link1>high school diploma</link1>
   `}
     description={'Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school diploma rate'}
     values={{

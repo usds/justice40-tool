@@ -217,12 +217,12 @@ export const QUESTIONS = [
     defaultMessage={ 'Q: Can the public provide feedback on this tool?'}
     description={ 'Navigate to the FAQs page, this will be Q15'}
   />,
-  // <FormattedMessage
-  //   id={ 'faqs.page.Q16'}
-  //   key={ 'faqs.page.Q16'}
-  //   defaultMessage={ 'Q: Will CEQ issue another Request for Information about the tool?'}
-  //   description={ 'Navigate to the FAQs page, this will be Q16'}
-  // />,
+  <FormattedMessage
+    id={ 'faqs.page.Q16'}
+    key={ 'faqs.page.Q16'}
+    defaultMessage={ 'Q: Why was the CEJST initially released in a beta version?'}
+    description={ 'Navigate to the FAQs page, this will be Q16'}
+  />,
   <FormattedMessage
     id={ 'faqs.page.Q17'}
     key={ 'faqs.page.Q17'}
@@ -373,7 +373,7 @@ export const FAQ_ANSWERS = {
   />,
   Q5_P2: <FormattedMessage
     id={ 'faqs.page.answers.Q5_P2'}
-    defaultMessage={ `Federally Recognized Tribes are those that are recognized by the U.S. Bureau of Indian Affairs in the <link1>annual notice</link1> it publishes in the Federal Register:`}
+    defaultMessage={ `Federally Recognized Tribes are those that are recognized by the U.S. Bureau of Indian Affairs in the <link1>annual notice</link1> it publishes in the Federal Register.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q5_P2'}
     values={{
       link1: linkFn(FED_RECOGNIZED_INDIAN_ENTITIES, false, true),
@@ -381,7 +381,7 @@ export const FAQ_ANSWERS = {
   />,
   Q5_P2_1: <FormattedMessage
     id={ 'faqs.page.answers.Q5_P2_1'}
-    defaultMessage={ `This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3> President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation </link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.`}
+    defaultMessage={ `This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan</link1> for Consultation and Coordination with Tribal Nations, President Biden’s <link3>Memorandum</link3> on Tribal Consultation and Strengthening Nation-to-Nation Consultation, and <link2>Executive Order 13175</link2> on Consultation and Coordination With Indian Tribal Governments.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q5_P2_1'}
     values={{
       link1: linkFn(EXPLORE_PAGE_LINKS.WH_GOV_TRIBAL_ACTION_PLAN_4_26_21, false, true),
@@ -606,8 +606,13 @@ export const FAQ_ANSWERS = {
   />,
   Q16: <FormattedMessage
     id={ 'faqs.page.answers.Q16'}
-    defaultMessage={ `Yes. CEQ plans to issue a Request for Information (RFI) about version 1.0 of the CEJST in 2023. The feedback received in that RFI will inform version 2.0 of the tool.`}
+    defaultMessage={ `CEQ launched a beta – or draft – version of the CEJST on February 18, 2022 with support from the U.S. Digital Service (USDS), and in collaboration with other Federal agencies and departments. The CEJST was released in a beta version in order to seek <link1>feedback</link1> from Federal agencies, Tribal Nations, State and local governments, Members of Congress, environmental justice stakeholders, and the public. The 90 day public comment period <link2>closed</link2> on May 25, 2022. CEQ and the USDS hosted several <link2>public training</link2> sessions on the beta version of the CEJST. All of this feedback on the beta version of the CEJST helped to inform the release of version 1.0 of the CEJST.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q16'}
+    values={{
+      link1: linkFn('https://www.federalregister.gov/documents/2022/02/23/2022-03920/climate-and-economic-justice-screening-tool-beta-version', false, true),
+      link2: linkFn('https://www.whitehouse.gov/ceq/news-updates/2022/04/21/ceq-extends-public-comment-period-on-beta-version-of-the-climate-and-economic-justice-screening-tool/', false, true),
+      link3: linkFn('https://www.youtube.com/watch?v=QwHWcXbhw28', false, true),
+    }}
   />,
   Q17_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q17_P1'}

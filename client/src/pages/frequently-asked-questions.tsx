@@ -85,9 +85,9 @@ const FAQPage = ({location}: IFAQPageProps) => {
       <>
         <p key={5}>{FAQS_COPY.FAQ_ANSWERS.Q5_P1}</p>
         <p>{FAQS_COPY.FAQ_ANSWERS.Q5_P2}</p>
-        <ul>
-          <li>{FAQS_COPY.FAQ_ANSWERS.Q5_P2_1}</li>
-        </ul>
+        <p>
+          {FAQS_COPY.FAQ_ANSWERS.Q5_P2_1}
+        </p>
       </>
     ),
     (
@@ -188,11 +188,11 @@ const FAQPage = ({location}: IFAQPageProps) => {
         </ul>
       </>
     ),
-    // (
-    //   <>
-    //     <p key={16}>{FAQS_COPY.FAQ_ANSWERS.Q16}</p>
-    //   </>
-    // ),
+    (
+      <>
+        <p key={16}>{FAQS_COPY.FAQ_ANSWERS.Q16}</p>
+      </>
+    ),
     (
       <>
         <p key={17}>{FAQS_COPY.FAQ_ANSWERS.Q17_P1}</p>
