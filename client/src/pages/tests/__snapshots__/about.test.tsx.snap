@@ -573,7 +573,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
-                  />
+                  >
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Tutorial.pdf"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      
+      Download the CEJST tutorial (.pdf 9.6 MB)
+    
+                    </a>
+                  </div>
                 </div>
               </div>
               <div
@@ -628,7 +640,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
-                  />
+                  >
+                    <a
+                      class="usa-link usa-link--external"
+                      data-cy=""
+                      href="https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      
+    Download the spreadsheet tutorial (.pdf 5.4 MB)
+    
+                    </a>
+                  </div>
                 </div>
               </div>
               <div

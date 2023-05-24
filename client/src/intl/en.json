@@ -115,6 +115,10 @@
     "defaultMessage": "Zoom in and select any census tract to see if it is considered disadvantaged.",
     "description": "Navigate to the About page. This is the paragraph of Using the map"
   },
+  "about.page.use.map.tutorial": {
+    "defaultMessage": "Download the spreadsheet tutorial (.pdf 5.4 MB)",
+    "description": "Navigate to the About page. This the link to download the how to use map tutorial"
+  },
   "common.pages.alerts.additional_docs_available.description": {
     "defaultMessage": "Download new <link1>technical support</link1> and other documentation and <link2>send feedback</link2>.",
     "description": "Alert title that appears at the top of pages."

@@ -26,6 +26,7 @@ import commentIcon from // @ts-ignore
 
 import githubIcon from // @ts-ignore
   '/node_modules/uswds/dist/img/usa-icons/github.svg';
+import {USE_DATA_TUTORIAL_LINK, USE_MAP_TUTORIAL_LINK} from '../data/copy/about';
 
 interface IAboutPageProps {
   location: Location;
@@ -117,7 +118,11 @@ const AboutPage = ({location}: IAboutPageProps) => {
             <AboutCard
               size={'small'}
               imgSrc={accountBalanceIcon}
-              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_MAP_HEADING)}>
+              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_MAP_HEADING)}
+              linkText={ABOUT_COPY.CONTENT.USE_MAP_TUTORIAL}
+              url={USE_MAP_TUTORIAL_LINK}
+              openUrlNewTab={true}
+              internal={false}>
               <p>
                 {intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_MAP_PARA)}
               </p>
@@ -126,7 +131,11 @@ const AboutPage = ({location}: IAboutPageProps) => {
             <AboutCard
               size={'small'}
               imgSrc={groupsIcon}
-              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_DATA_HEADING)}>
+              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_DATA_HEADING)}
+              linkText={ABOUT_COPY.CONTENT.USE_DATA_TUTORIAL}
+              url={USE_DATA_TUTORIAL_LINK}
+              openUrlNewTab={true}
+              internal={false}>
               <p>
                 {ABOUT_COPY.CONTENT.USE_DATA_PARA}
               </p>

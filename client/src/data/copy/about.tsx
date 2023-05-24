@@ -14,6 +14,10 @@ export const EJSCREEN = 'https://www.epa.gov/ejscreen/how-does-epa-use-ejscreen'
 
 export const CEJST_INSTRUCT = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/CEQ-CEJST-Instructions.pdf`;
 export const CEJST_MEMO = `https://www.whitehouse.gov/wp-content/uploads/2023/01/M-23-09_Signed_CEQ_CPO.pdf`;
+
+export const USE_MAP_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Tutorial.pdf`;
+export const USE_DATA_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf`;
+
 export const PAGE = defineMessages({
   TITLE: {
     id: 'about.page.title.text',
@@ -130,6 +134,21 @@ export const CONTENT = {
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
     }}
+  />,
+
+  USE_MAP_TUTORIAL: <FormattedMessage
+    id={'about.page.use.map.tutorial'}
+    defaultMessage={`
+      Download the CEJST tutorial (.pdf 9.6 MB)
+    `}
+    description={'Navigate to the About page. This the link to download the how to use map tutorial'}
+  />,
+  USE_DATA_TUTORIAL: <FormattedMessage
+    id={'about.page.use.map.tutorial'}
+    defaultMessage={`
+    Download the spreadsheet tutorial (.pdf 5.4 MB)
+    `}
+    description={'Navigate to the About page. This the link to download the how to use map tutorial'}
   />,
 };
 
