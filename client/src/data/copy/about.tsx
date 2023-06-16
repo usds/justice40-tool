@@ -84,6 +84,7 @@ export const CONTENT = {
     description={'Navigate to the About page. This is the list item 2'}
     values={{
       link1: linkFn(CEJST_INSTRUCT, false, true),
+      link1es: linkFn(CEJST_INSTRUCT_ES, false, true),
     }}
   />,
   PARA4:
@@ -148,7 +149,7 @@ export const CONTENT = {
     description={'Navigate to the About page. This the link to download the how to use map tutorial'}
   />,
   USE_DATA_TUTORIAL: <FormattedMessage
-    id={'about.page.use.map.tutorial'}
+    id={'about.page.use.data.tutorial'}
     defaultMessage={`
     Download the spreadsheet tutorial (.pdf 5.4 MB)
     `}

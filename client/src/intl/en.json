@@ -107,6 +107,10 @@
     "defaultMessage": "The tool's data is available for <link1>download</link1>. This data can be used to filter by state or county.",
     "description": "Navigate to the About page. This is the paragraph 4"
   },
+  "about.page.use.data.tutorial": {
+    "defaultMessage": "Download the spreadsheet tutorial (.pdf 5.4 MB)",
+    "description": "Navigate to the About page. This the link to download the how to use map tutorial"
+  },
   "about.page.use.map.heading": {
     "defaultMessage": "Using the map",
     "description": "Navigate to the About page. This is the sub heading of Using the map"
@@ -116,7 +120,7 @@
     "description": "Navigate to the About page. This is the paragraph of Using the map"
   },
   "about.page.use.map.tutorial": {
-    "defaultMessage": "Download the spreadsheet tutorial (.pdf 5.4 MB)",
+    "defaultMessage": "Download the CEJST tutorial (.pdf 9.6 MB)",
     "description": "Navigate to the About page. This the link to download the how to use map tutorial"
   },
   "common.pages.alerts.additional_docs_available.description": {
