@@ -26,7 +26,7 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
-          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>

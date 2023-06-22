@@ -33,7 +33,7 @@ const PreviousVersions = ({location}: IPreviousVersionsProps) => {
 
         <section className={'page-heading'}>
           <h1 data-cy={'about-page-heading'}>{intl.formatMessage(PREV_VER_COPY.PAGE.TITLE)}</h1>
-          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>

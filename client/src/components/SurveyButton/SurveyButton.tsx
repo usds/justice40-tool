@@ -11,7 +11,9 @@ import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
 
 const SurveyButton = () => {
   const intl = useIntl();
-  const href = intl.formatMessage(CONTACT_COPY.PAGE_INTRO.SURVEY_URL);
+  const href = intl.locale === 'es' ?
+  `https://www.surveymonkey.com/r/ZH36CYV` :
+  `https://www.surveymonkey.com/r/P3LWTSB`;
 
   return (
     <J40MainGridContainer className={styles.surveyButtonContainer}>

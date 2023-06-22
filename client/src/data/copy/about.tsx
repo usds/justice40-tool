@@ -21,6 +21,8 @@ export const CEJST_MEMO_ES = `https://static-data-screeningtool.geoplatform.gov/
 export const USE_MAP_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Tutorial.pdf`;
 export const USE_DATA_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf`;
 
+export const GITHUB_LINK = 'https://github.com/usds/justice40-tool';
+export const GITHUB_LINK_ES = 'https://github.com/usds/justice40-tool/blob/main/README-es.md';
 
 export const PAGE = defineMessages({
   TITLE: {
@@ -157,7 +159,6 @@ export const CONTENT = {
   />,
 };
 
-export const GITHUB_LINK = 'https://github.com/usds/justice40-tool';
 
 export const HOW_TO_USE_TOOL = defineMessages({
   TITLE: {

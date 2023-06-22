@@ -14,6 +14,7 @@ import SurveyButton from '../SurveyButton';
 // @ts-ignore
 import whitehouseIcon from '../../images/eop-seal.svg';
 import * as COMMON_COPY from '../../data/copy/common';
+import {GITHUB_LINK, GITHUB_LINK_ES} from '../../../src/data/copy/about';
 
 const J40Footer = () => {
   const intl = useIntl();
@@ -82,7 +83,7 @@ const J40Footer = () => {
       <LinkTypeWrapper
         linkText={intl.formatMessage(COMMON_COPY.FOOTER.GITHUB_LINK_TEXT)}
         internal={false}
-        url={intl.formatMessage(COMMON_COPY.FOOTER.GITHUB_LINK)}
+        url={intl.locale === 'es' ? GITHUB_LINK_ES : GITHUB_LINK}
         openUrlNewTab={true}
         className={'footer-link-first-child'}
         key={'contactlink'}

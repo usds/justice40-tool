@@ -263,10 +263,6 @@
     "defaultMessage": "The best way to contact the Council on Environmental Quality (CEQ) is by filling out <link1>this form</link1>.",
     "description": "Navigate to the survey. Spanish should substitute <link2> to get Spanish link! Already coded to support"
   },
-  "contact.page.fab.survey.link": {
-    "defaultMessage": "https://www.surveymonkey.com/r/P3LWTSB",
-    "description": "The footer sticky link that links to the CEJST survey"
-  },
   "contact.page.fab.survey.text": {
     "defaultMessage": "Help improve the tool",
     "description": "Navigate to the contact page, this is the text for floating action button"
