@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as styles from './howYouCanHelp.module.scss';
+import * as styles from './HowYouCanHelp.module.scss';
 import * as ABOUT_COPY from '../../data/copy/about';
 
 const HowYouCanHelp = () => {

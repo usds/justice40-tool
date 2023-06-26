@@ -250,6 +250,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     description={`Navigate to the about page. You will see How you can help list item 1`}
     values={{
       link1: linkFn('https://www.surveymonkey.com/r/P3LWTSB', false, true),
+      link1es: linkFn('https://www.surveymonkey.com/r/ZH36CYV', false, true),
     }}
   />,
   LIST_ITEM_2: <FormattedMessage
@@ -258,6 +259,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     description={`Navigate to the about page. You will see How you can help list item 2`}
     values={{
       link1: linkFn('https://www.surveymonkey.com/r/6G9TQJ8', false, true),
+      link1es: linkFn('https://www.surveymonkey.com/r/ZPKY8G9', false, true),
     }}
   />,
   LIST_ITEM_3: <FormattedMessage
@@ -272,6 +274,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
       link2: linkFn('https://www.surveymonkey.com/r/5LZ7MNB', false, true),
+      link2es: linkFn('https://www.surveymonkey.com/r/CGTH5P7', false, true),
     }}
   />,
   PARA1: <FormattedMessage
