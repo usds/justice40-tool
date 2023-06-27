@@ -69,9 +69,6 @@ const AboutPage = ({location}: IAboutPageProps) => {
               <p>
                 {ABOUT_COPY.CONTENT.PARA4}
               </p>
-              <p>
-                {ABOUT_COPY.CONTENT.PARA5}
-              </p>
             </section>
           </Grid>
 
