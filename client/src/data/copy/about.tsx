@@ -93,7 +93,7 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.paragraph.4'}
     defaultMessage={`
-      CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version {version}. <link1>Sign-up</link1> for updates from CEQ
+      CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version {version}. <link1>Sign-up</link1> for updates from CEQ.
     `}
     description={'Navigate to the About page. This is the paragraph 4'}
     values={{
@@ -269,7 +269,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_4: <FormattedMessage
     id={'about.page.how.you.can.help.list.item.4'}
-    defaultMessage={`Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this <link2>form</link2> . Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>`}
+    defaultMessage={`Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this <link2>form</link2> . Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>.`}
     description={`Navigate to the about page. You will see How you can help list item 3`}
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),

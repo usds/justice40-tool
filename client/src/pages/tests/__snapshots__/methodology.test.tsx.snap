@@ -986,14 +986,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           more than 10% of people ages 25 or older have a 
+           more than 10% of people ages 25 years or older whose high school education is less than a 
           <a
             class="usa-link"
             href="#high-school"
           >
-            high school education
+            high school diploma
           </a>
-           (i.e. graduated with a high school diploma)
+          
   
         </p>
       </div>

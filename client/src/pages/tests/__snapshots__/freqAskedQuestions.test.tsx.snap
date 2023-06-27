@@ -661,43 +661,41 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     annual notice
                   </a>
-                   it publishes in the Federal Register:
+                   it publishes in the Federal Register.
                 </p>
-                <ul>
-                  <li>
-                    This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s 
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Action Plan for Consultation and Coordination with Tribal Nations
-                    </a>
-                    , 
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                       President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation 
-                    </a>
-                    , and 
-                    <a
-                      class="usa-link usa-link--external"
-                      data-cy=""
-                      href="https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments
-                    </a>
-                    .
-                  </li>
-                </ul>
+                <p>
+                  This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Action Plan
+                  </a>
+                   for Consultation and Coordination with Tribal Nations, President Biden’s 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Memorandum
+                  </a>
+                   on Tribal Consultation and Strengthening Nation-to-Nation Consultation, and 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Executive Order 13175
+                  </a>
+                   on Consultation and Coordination With Indian Tribal Governments.
+                </p>
               </div>
               <h2
                 class="usa-accordion__heading"
@@ -1106,7 +1104,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-testid="accordionButton_faq-id-15"
                   type="button"
                 >
-                  Q: When did the official version of the tool come out?
+                  Q: Why was the CEJST initially released in a beta version?
                 </button>
               </h2>
               <div
@@ -1114,6 +1112,59 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="accordionItem_faq-id-15"
                 hidden=""
                 id="faq-id-15"
+              >
+                <p>
+                  CEQ launched a beta – or draft – version of the CEJST on February 18, 2022 with support from the U.S. Digital Service (USDS), and in collaboration with other Federal agencies and departments. The CEJST was released in a beta version in order to seek 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.federalregister.gov/documents/2022/02/23/2022-03920/climate-and-economic-justice-screening-tool-beta-version"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    feedback
+                  </a>
+                   from Federal agencies, Tribal Nations, State and local governments, Members of Congress, environmental justice stakeholders, and the public. The 90 day public comment period 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.whitehouse.gov/ceq/news-updates/2022/04/21/ceq-extends-public-comment-period-on-beta-version-of-the-climate-and-economic-justice-screening-tool/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    closed
+                  </a>
+                   on May 25, 2022. CEQ and the USDS hosted several 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.whitehouse.gov/ceq/news-updates/2022/04/21/ceq-extends-public-comment-period-on-beta-version-of-the-climate-and-economic-justice-screening-tool/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    public training
+                  </a>
+                   sessions on the beta version of the CEJST. All of this feedback on the beta version of the CEJST helped to inform the release of version 1.0 of the CEJST.
+                </p>
+              </div>
+              <h2
+                class="usa-accordion__heading"
+              >
+                <button
+                  aria-controls="faq-id-16"
+                  aria-expanded="false"
+                  class="usa-accordion__button"
+                  data-testid="accordionButton_faq-id-16"
+                  type="button"
+                >
+                  Q: When did the official version of the tool come out?
+                </button>
+              </h2>
+              <div
+                class="usa-accordion__content usa-prose"
+                data-testid="accordionItem_faq-id-16"
+                hidden=""
+                id="faq-id-16"
               >
                 <p>
                   The tool is now considered official because Federal agencies can now use version 1.0 of the Climate and Economic Justice Screening Tool (CEJST) to help identify disadvantaged communities. The 1.0 version was released in 
@@ -1136,10 +1187,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-accordion__heading"
               >
                 <button
-                  aria-controls="faq-id-16"
+                  aria-controls="faq-id-17"
                   aria-expanded="false"
                   class="usa-accordion__button"
-                  data-testid="accordionButton_faq-id-16"
+                  data-testid="accordionButton_faq-id-17"
                   type="button"
                 >
                   Q. How does the Council on Environmental Quality (CEQ) keep people informed about the tool?
@@ -1147,9 +1198,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h2>
               <div
                 class="usa-accordion__content usa-prose"
-                data-testid="accordionItem_faq-id-16"
+                data-testid="accordionItem_faq-id-17"
                 hidden=""
-                id="faq-id-16"
+                id="faq-id-17"
               >
                 <p>
                   <a
@@ -1168,10 +1219,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-accordion__heading"
               >
                 <button
-                  aria-controls="faq-id-17"
+                  aria-controls="faq-id-18"
                   aria-expanded="false"
                   class="usa-accordion__button"
-                  data-testid="accordionButton_faq-id-17"
+                  data-testid="accordionButton_faq-id-18"
                   type="button"
                 >
                   Q: What files and documentation are available from the tool?
@@ -1179,9 +1230,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h2>
               <div
                 class="usa-accordion__content usa-prose"
-                data-testid="accordionItem_faq-id-17"
+                data-testid="accordionItem_faq-id-18"
                 hidden=""
-                id="faq-id-17"
+                id="faq-id-18"
               >
                 <p>
                   The Climate and Economic Justice Screening Tool (CEJST) has 
@@ -1198,10 +1249,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-accordion__heading"
               >
                 <button
-                  aria-controls="faq-id-18"
+                  aria-controls="faq-id-19"
                   aria-expanded="false"
                   class="usa-accordion__button"
-                  data-testid="accordionButton_faq-id-18"
+                  data-testid="accordionButton_faq-id-19"
                   type="button"
                 >
                   Q: How does the tool’s shapefile work?
@@ -1209,9 +1260,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h2>
               <div
                 class="usa-accordion__content usa-prose"
-                data-testid="accordionItem_faq-id-18"
+                data-testid="accordionItem_faq-id-19"
                 hidden=""
-                id="faq-id-18"
+                id="faq-id-19"
               >
                 <p>
                   The tool’s shapefile can be uploaded into other mapping programs such as Esri.
