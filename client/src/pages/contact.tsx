@@ -24,7 +24,7 @@ const ContactPage = ({location}: IContactPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
-          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
         </section>
 
         <Grid row gap={6}>

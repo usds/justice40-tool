@@ -25,12 +25,8 @@ export const PAGE_INTRO = defineMessages({
     defaultMessage: `Help improve the tool`,
     description: 'Navigate to the contact page, this is the text for floating action button',
   },
-  SURVEY_URL: {
-    id: 'contact.page.fab.survey.link',
-    defaultMessage: 'https://www.surveymonkey.com/r/P3LWTSB',
-    description: 'The footer sticky link that links to the CEJST survey',
-  },
 });
+
 
 export const RFI_BOX = defineMessages({
   TITLE: {
@@ -87,6 +83,7 @@ export const CENSUS_TRACT_FEEDBACK = {
     description={'Navigate to the survey. Spanish should substitute <link2> to get Spanish link! Already coded to support'}
     values={{
       link1: COMMON_COPY.linkFn('https://www.surveymonkey.com/r/5LZ7MNB', false, true),
+      link1es: COMMON_COPY.linkFn('https://www.surveymonkey.com/r/CGTH5P7', false, true),
     }}
   />,
 };

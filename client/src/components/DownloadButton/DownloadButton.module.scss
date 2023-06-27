@@ -6,7 +6,7 @@
 };
 
 @mixin downloadButtonBase {
-    height: 40px;
+    height: fit-content;
     @include u-margin-top(3);
     
     .buttonContainer {

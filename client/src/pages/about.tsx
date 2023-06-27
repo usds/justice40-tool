@@ -37,6 +37,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
   const intl = useIntl();
   const {width} = useWindowSize();
 
+  console.log(intl.locale);
   return (
     <Layout location={location} title={intl.formatMessage(ABOUT_COPY.PAGE.TITLE)}>
 
@@ -44,7 +45,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
 
         <section className={'page-heading'}>
           <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.TITLE)}</h1>
-          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>
@@ -165,7 +166,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
             imgSrc={githubIcon}
             header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.JOIN_OSC_HEADING)}
             linkText={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.JOIN_OSC_LINK_TEXT)}
-            url={ABOUT_COPY.GITHUB_LINK}
+            url={intl.locale === 'es' ? ABOUT_COPY.GITHUB_LINK_ES : ABOUT_COPY.GITHUB_LINK}
             openUrlNewTab={true}
             internal={false}>
             <p>

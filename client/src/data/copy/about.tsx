@@ -13,10 +13,16 @@ export const FED_RECOGNIZED_INDIAN_ENTITIES = `https://www.federalregister.gov/d
 export const EJSCREEN = 'https://www.epa.gov/ejscreen/how-does-epa-use-ejscreen';
 
 export const CEJST_INSTRUCT = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/CEQ-CEJST-Instructions.pdf`;
+export const CEJST_INSTRUCT_ES = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/CEQ-CEJST-Instructions-es.pdf`;
+
 export const CEJST_MEMO = `https://www.whitehouse.gov/wp-content/uploads/2023/01/M-23-09_Signed_CEQ_CPO.pdf`;
+export const CEJST_MEMO_ES = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/M-23-09_Signed_CEQ_CPO_es.pdf`;
 
 export const USE_MAP_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Tutorial.pdf`;
 export const USE_DATA_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf`;
+
+export const GITHUB_LINK = 'https://github.com/usds/justice40-tool';
+export const GITHUB_LINK_ES = 'https://github.com/usds/justice40-tool/blob/main/README-es.md';
 
 export const PAGE = defineMessages({
   TITLE: {
@@ -80,6 +86,7 @@ export const CONTENT = {
     description={'Navigate to the About page. This is the list item 2'}
     values={{
       link1: linkFn(CEJST_INSTRUCT, false, true),
+      link1es: linkFn(CEJST_INSTRUCT_ES, false, true),
     }}
   />,
   PARA4:
@@ -144,7 +151,7 @@ export const CONTENT = {
     description={'Navigate to the About page. This the link to download the how to use map tutorial'}
   />,
   USE_DATA_TUTORIAL: <FormattedMessage
-    id={'about.page.use.map.tutorial'}
+    id={'about.page.use.data.tutorial'}
     defaultMessage={`
     Download the spreadsheet tutorial (.pdf 5.4 MB)
     `}
@@ -152,7 +159,6 @@ export const CONTENT = {
   />,
 };
 
-export const GITHUB_LINK = 'https://github.com/usds/justice40-tool';
 
 export const HOW_TO_USE_TOOL = defineMessages({
   TITLE: {
@@ -244,6 +250,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     description={`Navigate to the about page. You will see How you can help list item 1`}
     values={{
       link1: linkFn('https://www.surveymonkey.com/r/P3LWTSB', false, true),
+      link1es: linkFn('https://www.surveymonkey.com/r/ZH36CYV', false, true),
     }}
   />,
   LIST_ITEM_2: <FormattedMessage
@@ -252,6 +259,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     description={`Navigate to the about page. You will see How you can help list item 2`}
     values={{
       link1: linkFn('https://www.surveymonkey.com/r/6G9TQJ8', false, true),
+      link1es: linkFn('https://www.surveymonkey.com/r/ZPKY8G9', false, true),
     }}
   />,
   LIST_ITEM_3: <FormattedMessage
@@ -266,6 +274,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
       link2: linkFn('https://www.surveymonkey.com/r/5LZ7MNB', false, true),
+      link2es: linkFn('https://www.surveymonkey.com/r/CGTH5P7', false, true),
     }}
   />,
   PARA1: <FormattedMessage

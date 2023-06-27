@@ -69,14 +69,29 @@ export const DOWNLOAD_FILES = {
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_COMMUNITIES_LIST_PDF, false),
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
+    HOW_TO_COMMUNITIES_ES: {
+      SIZE: 761.8, // KB
+      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_COMMUNITIES_LIST_ES_PDF, false),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
+    },
     INSTRUCTIONS: {
       SIZE: 228.4, // KB // Todo: Update when actual file is uploaded
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_INSTRUCT_PDF, false),
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
+    INSTRUCTIONS_ES: {
+      SIZE: 173.6, // KB // Todo: Update when actual file is uploaded
+      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_INSTRUCT_ES_PDF, false),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
+    },
     COMP_CHART: {
       SIZE: 33.1, // KB
       URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_TOOL_COMP_PDF, false),
+      LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
+    },
+    M_23_09_ES: {
+      SIZE: 120.5, // KB
+      URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_1_0_M_23_09_SIGNED_PDF, false),
       LAST_UPDATED: COMMON_COPY.METH_1_0_RELEASE_DATE,
     },
   },
@@ -590,8 +605,15 @@ export const DOWNLOAD_LINKS = {
     description={'Navigate to the download page. This is fifth download file link'}
     values={{
       link5: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.HOW_TO_COMMUNITIES.URL, false, true),
+      link5es: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.HOW_TO_COMMUNITIES_ES.URL, false, true),
       howToCommFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.NARWAL.HOW_TO_COMMUNITIES.SIZE}
+        style="unit"
+        unit="kilobyte"
+        unitDisplay="narrow"
+      />,
+      howToCommFileSizeEs: <FormattedNumber
+        value={DOWNLOAD_FILES.NARWAL.HOW_TO_COMMUNITIES_ES.SIZE}
         style="unit"
         unit="kilobyte"
         unitDisplay="narrow"
@@ -604,8 +626,15 @@ export const DOWNLOAD_LINKS = {
     description={'Navigate to the download page. This is sixth download file link'}
     values={{
       link6: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.INSTRUCTIONS.URL, false, true),
+      link6es: COMMON_COPY.linkFn(DOWNLOAD_FILES.NARWAL.INSTRUCTIONS_ES.URL, false, true),
       instructions: <FormattedNumber
         value={DOWNLOAD_FILES.NARWAL.INSTRUCTIONS.SIZE}
+        style="unit"
+        unit="kilobyte"
+        unitDisplay="narrow"
+      />,
+      instructionsEs: <FormattedNumber
+        value={DOWNLOAD_FILES.NARWAL.INSTRUCTIONS_ES.SIZE}
         style="unit"
         unit="kilobyte"
         unitDisplay="narrow"

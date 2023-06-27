@@ -107,6 +107,10 @@
     "defaultMessage": "The tool's data is available for <link1>download</link1>. This data can be used to filter by state or county.",
     "description": "Navigate to the About page. This is the paragraph 4"
   },
+  "about.page.use.data.tutorial": {
+    "defaultMessage": "Download the spreadsheet tutorial (.pdf 5.4 MB)",
+    "description": "Navigate to the About page. This the link to download the how to use map tutorial"
+  },
   "about.page.use.map.heading": {
     "defaultMessage": "Using the map",
     "description": "Navigate to the About page. This is the sub heading of Using the map"
@@ -116,7 +120,7 @@
     "description": "Navigate to the About page. This is the paragraph of Using the map"
   },
   "about.page.use.map.tutorial": {
-    "defaultMessage": "Download the spreadsheet tutorial (.pdf 5.4 MB)",
+    "defaultMessage": "Download the CEJST tutorial (.pdf 9.6 MB)",
     "description": "Navigate to the About page. This the link to download the how to use map tutorial"
   },
   "common.pages.alerts.additional_docs_available.description": {
@@ -258,10 +262,6 @@
   "contact.page.census.tract.feedback.para3": {
     "defaultMessage": "The best way to contact the Council on Environmental Quality (CEQ) is by filling out <link1>this form</link1>.",
     "description": "Navigate to the survey. Spanish should substitute <link2> to get Spanish link! Already coded to support"
-  },
-  "contact.page.fab.survey.link": {
-    "defaultMessage": "https://www.surveymonkey.com/r/P3LWTSB",
-    "description": "The footer sticky link that links to the CEJST survey"
   },
   "contact.page.fab.survey.text": {
     "defaultMessage": "Help improve the tool",
@@ -1688,7 +1688,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q1_P3"
   },
   "faqs.page.answers.Q1_P3_1": {
-    "defaultMessage": "<link1>Memorandum</link1> on Using the CEJST for the Justice40 Initiative",
+    "defaultMessage": "<link1>Memorandum</link1> on using the CEJST for the Justice40 Initiative",
     "description": "Navigate to the FAQs page, this will be an answer, Q1_P3_1"
   },
   "faqs.page.answers.Q1_P3_2": {
@@ -1764,7 +1764,7 @@
     "description": "Navigate to the FAQs page, this will be an answer, Q5_P2"
   },
   "faqs.page.answers.Q5_P2_1": {
-    "defaultMessage": "This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.",
+    "defaultMessage": "This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3> President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation </link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.",
     "description": "Navigate to the FAQs page, this will be an answer, Q5_P2_1"
   },
   "faqs.page.answers.Q6_P1": {

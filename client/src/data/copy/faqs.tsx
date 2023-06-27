@@ -4,7 +4,7 @@ import {defineMessages, FormattedMessage} from 'gatsby-plugin-intl';
 
 import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
-import {EJSCREEN, EXEC_ORDER_LINK, FED_RECOGNIZED_INDIAN_ENTITIES, CEJST_INSTRUCT, CEJST_MEMO} from './about';
+import {EJSCREEN, EXEC_ORDER_LINK, FED_RECOGNIZED_INDIAN_ENTITIES, CEJST_INSTRUCT, CEJST_MEMO, CEJST_INSTRUCT_ES, CEJST_MEMO_ES} from './about';
 import {boldFn, linkFn, FEEDBACK_EMAIL} from './common';
 import {PAGES_ENDPOINTS} from '../constants';
 import {EXPLORE_PAGE_LINKS} from './explore';
@@ -270,10 +270,11 @@ export const FAQ_ANSWERS = {
   />,
   Q1_P3_1: <FormattedMessage
     id={ 'faqs.page.answers.Q1_P3_1'}
-    defaultMessage={ '<link1>Memorandum</link1> on Using the CEJST for the Justice40 Initiative'}
+    defaultMessage={ '<link1>Memorandum</link1> on using the CEJST for the Justice40 Initiative'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q1_P3_1'}
     values={{
       link1: linkFn(CEJST_MEMO, false, true),
+      link1es: linkFn(CEJST_MEMO_ES, false, true),
     }}
   />,
   Q1_P3_2: <FormattedMessage
@@ -282,6 +283,7 @@ export const FAQ_ANSWERS = {
     description={ 'Navigate to the FAQs page, this will be an answer, Q1_P3_2'}
     values={{
       link1: linkFn(CEJST_INSTRUCT, false, true),
+      link1es: linkFn(CEJST_INSTRUCT_ES, false, true),
     }}
 
   />,
@@ -379,7 +381,7 @@ export const FAQ_ANSWERS = {
   />,
   Q5_P2_1: <FormattedMessage
     id={ 'faqs.page.answers.Q5_P2_1'}
-    defaultMessage={ `This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.`}
+    defaultMessage={ `This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3> President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation </link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q5_P2_1'}
     values={{
       link1: linkFn(EXPLORE_PAGE_LINKS.WH_GOV_TRIBAL_ACTION_PLAN_4_26_21, false, true),

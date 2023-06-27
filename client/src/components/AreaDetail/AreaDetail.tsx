@@ -872,7 +872,7 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
       {/* Send Feedback button */}
       <a
         className={styles.sendFeedbackLink}
-        href={`https://www.surveymonkey.com/r/6GKVCMF?tractid=${blockGroup}`}
+        href={intl.locale === `es` ? `https://www.surveymonkey.com/r/ZHP6VZZ?tractid=${blockGroup}` : `https://www.surveymonkey.com/r/6GKVCMF?tractid=${blockGroup}`}
         target={"_blank"}
         rel="noreferrer"
       >
