@@ -17,7 +17,7 @@ exports[`rendering of TractDemographics component does it render a tract in Alas
           id="race-header"
           tabindex="0"
         >
-          show
+          Show
         </a>
         <img
           alt="expand icon"
@@ -107,7 +107,7 @@ exports[`rendering of TractDemographics component does it render a tract in Alas
           id="age-header"
           tabindex="0"
         >
-          show
+          Show
         </a>
         <img
           alt="expand icon"
@@ -167,7 +167,7 @@ exports[`rendering of TractDemographics component does it render a tract in Amer
           id="race-header"
           tabindex="0"
         >
-          show
+          Show
         </a>
         <img
           alt="expand icon"
@@ -257,7 +257,7 @@ exports[`rendering of TractDemographics component does it render a tract in Amer
           id="age-header"
           tabindex="0"
         >
-          show
+          Show
         </a>
         <img
           alt="expand icon"
@@ -317,7 +317,7 @@ exports[`rendering of TractDemographics component does it render a tract in NYC 
           id="race-header"
           tabindex="0"
         >
-          show
+          Show
         </a>
         <img
           alt="expand icon"
@@ -407,7 +407,7 @@ exports[`rendering of TractDemographics component does it render a tract in NYC 
           id="age-header"
           tabindex="0"
         >
-          show
+          Show
         </a>
         <img
           alt="expand icon"

@@ -582,6 +582,16 @@ export const SIDE_PANEL_DEMOGRAPHICS = {
     defaultMessage={'Elderly over 65'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 65`}
   />,
+  SHOW_DEMOGRAPHICS: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.show'}
+    defaultMessage={'Show'}
+    description={`Show of show / hide accordian`}
+  />,
+  HIDE_DEMOGRAPHICS: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.hide'}
+    defaultMessage={'Hide'}
+    description={`Hide of show / hide accordian`}
+  />,
 };
 
 export const SIDE_PANEL_TRIBAL_INFO = defineMessages({

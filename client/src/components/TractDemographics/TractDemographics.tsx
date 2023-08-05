@@ -48,7 +48,9 @@ const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
             onClick={() => setIsExpanded(!isExpanded)}
             tabIndex={0}
           >
-            {isExpanded ? 'hide' : 'show'}
+            {isExpanded ?
+            EXPLORE_COPY.SIDE_PANEL_DEMOGRAPHICS.HIDE_DEMOGRAPHICS :
+            EXPLORE_COPY.SIDE_PANEL_DEMOGRAPHICS.SHOW_DEMOGRAPHICS}
           </a>
           { isExpanded ?
           <img
