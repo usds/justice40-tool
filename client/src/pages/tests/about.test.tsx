@@ -3,6 +3,7 @@ import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
 import AboutPage from '../about';
 
+// Add tests for about page
 describe('rendering of the DatasetContainer', () => {
   const {asFragment} = render(
       <LocalizedComponent>

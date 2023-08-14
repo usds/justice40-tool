@@ -19,7 +19,9 @@ export const CEJST_MEMO = `https://www.whitehouse.gov/wp-content/uploads/2023/01
 export const CEJST_MEMO_ES = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/M-23-09_Signed_CEQ_CPO_es.pdf`;
 
 export const USE_MAP_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Tutorial.pdf`;
+export const USE_MAP_TUTORIAL_LINK_ES = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Tutorial-es.pdf`;
 export const USE_DATA_TUTORIAL_LINK = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf`;
+export const USE_DATA_TUTORIAL_LINK_ES = `https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial-es.pdf`;
 
 export const GITHUB_LINK = 'https://github.com/usds/justice40-tool';
 export const GITHUB_LINK_ES = 'https://github.com/usds/justice40-tool/blob/main/README-es.md';

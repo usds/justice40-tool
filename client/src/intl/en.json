@@ -811,6 +811,10 @@
     "defaultMessage": "Native Hawaiian or Pacific Islander",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Native Hawiian or Pacific Islander"
   },
+  "explore.map.page.side.panel.demo.hide": {
+    "defaultMessage": "Hide",
+    "description": "Hide of show / hide accordian"
+  },
   "explore.map.page.side.panel.demo.hispanic": {
     "defaultMessage": "Hispanic or Latino",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Hispanic or Latino"
@@ -826,6 +830,10 @@
   "explore.map.page.side.panel.demo.race.title": {
     "defaultMessage": "Race / Ethnicity",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics race title"
+  },
+  "explore.map.page.side.panel.demo.show": {
+    "defaultMessage": "Show",
+    "description": "Show of show / hide accordian"
   },
   "explore.map.page.side.panel.demo.title": {
     "defaultMessage": "Tract demographics",
