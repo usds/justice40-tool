@@ -67,7 +67,7 @@
   "contact.page.census.tract.feedback.para3": "La mejor forma de ponerse en contacto con el Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en ingles) es al completar este <link1es>formulario</link1es>.",
   "contact.page.fab.survey.link": "https://www.surveymonkey.com/r/P3LWTSB",
   "contact.page.fab.survey.text": "Ayude a mejorar la herramienta",
-  "contact.page.general": "De lo contrario, envíe un correo electrónico al CEQ a: {general_email_address}.",
+  "contact.page.general": "Envíe un correo electrónico al CEQ a: {general_email_address}.",
   "contact.page.header.text": "Contacto",
   "contact.page.request.for.info.box.body": "El periodo de Solicitud de información en el Registro Federal para el periodo de la versión beta abierto al público se cerró el {rfiExpDate}.",
   "contact.page.request.for.info.box.title": "Solicitud de información",

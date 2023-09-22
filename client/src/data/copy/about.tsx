@@ -271,7 +271,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_4: <FormattedMessage
     id={'about.page.how.you.can.help.list.item.4'}
-    defaultMessage={`Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this <link2>form</link2> . Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>.`}
+    defaultMessage={`Any other questions? Email: <link1>Screeningtool-Support@omb.eop.gov</link1>.`}
     description={`Navigate to the about page. You will see How you can help list item 3`}
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),

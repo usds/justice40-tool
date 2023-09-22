@@ -34,12 +34,11 @@ const ContactPage = ({location}: IContactPageProps) => {
             <h2>
               {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_SUB_HEADING)}
             </h2>
-            <p>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.PARAGRAPH3}</p>
             <p>
               <FormattedMessage
                 id={'contact.page.general'}
                 description={'Contact page body text'}
-                defaultMessage={`Otherwise, email CEQ at: {general_email_address}.`}
+                defaultMessage={`Email CEQ at: {general_email_address}.`}
                 values={{
                   general_email_address:
                     <LinkTypeWrapper
