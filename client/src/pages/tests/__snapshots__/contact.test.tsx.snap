@@ -432,22 +432,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             Contact us
           </h2>
           <p>
-            
-      The best way to contact the Council on Environmental Quality (CEQ) is by filling out 
-            <a
-              class="usa-link usa-link--external"
-              data-cy=""
-              href="https://www.surveymonkey.com/r/5LZ7MNB"
-              rel="noreferrer"
-              target="_blank"
-            >
-              this form
-            </a>
-            .
-    
-          </p>
-          <p>
-            Otherwise, email CEQ at: 
+            Email CEQ at: 
             <a
               class="usa-link usa-link--external"
               data-cy=""

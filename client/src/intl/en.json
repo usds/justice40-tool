@@ -36,7 +36,7 @@
     "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.how.you.can.help.list.item.4": {
-    "defaultMessage": "Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this <link2>form</link2> . Otherwise, email: <link1>Screeningtool-Support@omb.eop.gov</link1>.",
+    "defaultMessage": "Any other questions? Email: <link1>Screeningtool-Support@omb.eop.gov</link1>.",
     "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.how.you.can.help.para.1": {
@@ -259,16 +259,12 @@
     "defaultMessage": "https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/cejst_technical_support_document.pdf",
     "description": "Navigate to the Alerts on any page. This will be the link to the techinical support document."
   },
-  "contact.page.census.tract.feedback.para3": {
-    "defaultMessage": "The best way to contact the Council on Environmental Quality (CEQ) is by filling out <link1>this form</link1>.",
-    "description": "Navigate to the survey. Spanish should substitute <link2> to get Spanish link! Already coded to support"
-  },
   "contact.page.fab.survey.text": {
     "defaultMessage": "Help improve the tool",
     "description": "Navigate to the contact page, this is the text for floating action button"
   },
   "contact.page.general": {
-    "defaultMessage": "Otherwise, email CEQ at: {general_email_address}.",
+    "defaultMessage": "Email CEQ at: {general_email_address}.",
     "description": "Contact page body text"
   },
   "contact.page.header.text": {

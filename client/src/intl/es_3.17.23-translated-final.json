@@ -264,7 +264,7 @@
     "description": "Navegue a la página Contacto, este es el texto para el botón circular flotante."
   },
   "contact.page.general": {
-    "defaultMessage": "De lo contrario, envíe un correo electrónico al CEQ a: {general_email_address}.",
+    "defaultMessage": "Envíe un correo electrónico al CEQ a: {general_email_address}.",
     "description": "Texto del cuerpo de la página Contacto."
   },
   "contact.page.header.text": {
