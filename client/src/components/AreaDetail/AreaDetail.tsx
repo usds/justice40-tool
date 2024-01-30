@@ -620,9 +620,8 @@ const AreaDetail = ({ properties }: IAreaDetailProps) => {
       EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.FORMER_DEF_SITES
     ),
     type: "boolean",
-    value: properties.hasOwnProperty(constants.FORMER_DEF_SITES_RAW_VALUE)
-      ? // double equality is used in this instance as it seems that FUDS_RAW could be "1" or 1 from the BE
-        properties[constants.FORMER_DEF_SITES_RAW_VALUE] ==
+    value: properties.hasOwnProperty(constants.FORMER_DEF_SITES_RAW_VALUE) // double equality is used in this instance as it seems that FUDS_RAW could be "1" or 1 from the BE
+      ? properties[constants.FORMER_DEF_SITES_RAW_VALUE] ==
         constants.FUDS_RAW_YES
         ? true
         : false
