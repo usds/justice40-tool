@@ -872,7 +872,8 @@ const AreaDetail = ({properties}: IAreaDetailProps) => {
       {/* Send Feedback button */}
       <a
         className={styles.sendFeedbackLink}
-        href={intl.locale === `es` ? `${constants.CENSUS_TRACT_SURVEY_LINKS.ES}?tractid=${blockGroup}` : `${constants.CENSUS_TRACT_SURVEY_LINKS.EN}?tractid=${blockGroup}`}
+        href={intl.locale === `es` ? `${constants.CENSUS_TRACT_SURVEY_LINKS.ES}?tractid=${blockGroup}` :
+          `${constants.CENSUS_TRACT_SURVEY_LINKS.EN}?tractid=${blockGroup}`}
         target={"_blank"}
         rel="noreferrer"
       >
