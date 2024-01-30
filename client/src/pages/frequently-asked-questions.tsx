@@ -9,7 +9,7 @@ import Layout from '../components/layout';
 import DatasetsButton from '../components/DatasetsButton';
 import SubPageNav from '../components/SubPageNav';
 
-import {USWDS_BREAKPOINTS} from '../data/constants';
+import {USWDS_BREAKPOINTS, DATA_SURVEY_LINKS} from '../data/constants';
 import * as FAQS_COPY from '../data/copy/faqs';
 import {PAGES_ENDPOINTS} from '../data/constants';
 import {SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT} from '../data/copy/explore';
@@ -237,7 +237,7 @@ const FAQPage = ({location}: IFAQPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(FAQS_COPY.PAGE_INTRO.PAGE_TILE)}</h1>
-          <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {DATA_SURVEY_LINKS.EN} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>

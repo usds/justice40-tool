@@ -6,7 +6,7 @@ import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
 import {EJSCREEN, EXEC_ORDER_LINK, FED_RECOGNIZED_INDIAN_ENTITIES, CEJST_INSTRUCT, CEJST_MEMO, CEJST_INSTRUCT_ES, CEJST_MEMO_ES} from './about';
 import {boldFn, linkFn, FEEDBACK_EMAIL} from './common';
-import {PAGES_ENDPOINTS} from '../constants';
+import {PAGES_ENDPOINTS, DATA_SURVEY_LINKS, SITE_SATISFACTION_SURVEY_LINKS} from '../constants';
 import {EXPLORE_PAGE_LINKS} from './explore';
 import {DOWNLOAD_FILES} from './downloads';
 
@@ -579,7 +579,7 @@ export const FAQ_ANSWERS = {
     defaultMessage={ `The public can also submit <link1>data sources</link1> or ideas for consideration.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q15_P1_2'}
     values={{
-      link1: linkFn('https://www.surveymonkey.com/r/6G9TQJ8', false, true),
+      link1: linkFn(DATA_SURVEY_LINKS.EN, false, true),
     }}
   />,
   Q15_P1_3: <FormattedMessage
@@ -587,7 +587,7 @@ export const FAQ_ANSWERS = {
     defaultMessage={ `The public may also take a <link1>short survey</link1> to help improve the experience of using the tool.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q15_P1_3'}
     values={{
-      link1: linkFn('https://www.surveymonkey.com/r/P3LWTSB', false, true),
+      link1: linkFn(SITE_SATISFACTION_SURVEY_LINKS.EN, false, true),
     }}
   />,
   Q15_P1_4: <FormattedMessage
