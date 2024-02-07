@@ -9,6 +9,7 @@ import DatasetsButton from '../components/DatasetsButton';
 
 import * as CONTACT_COPY from '../data/copy/contact';
 import {FEEDBACK_EMAIL} from '../data/copy/common';
+import {DATA_SURVEY_LINKS} from '../data/constants';
 
 interface IContactPageProps {
   location: Location;
@@ -24,7 +25,7 @@ const ContactPage = ({location}: IContactPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
-          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? DATA_SURVEY_LINKS.ES : DATA_SURVEY_LINKS.EN} />
         </section>
 
         <Grid row gap={6}>

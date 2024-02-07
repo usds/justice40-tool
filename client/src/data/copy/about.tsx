@@ -5,7 +5,7 @@ import {FormattedMessage} from 'gatsby-plugin-intl';
 
 import {italicFn, linkFn} from './common';
 import {VERSION_NUMBER} from './methodology';
-import {PAGES_ENDPOINTS} from '../constants';
+import {PAGES_ENDPOINTS, DATA_SURVEY_LINKS, SITE_SATISFACTION_SURVEY_LINKS, CONTACT_SURVEY_LINKS} from '../constants';
 
 export const EXEC_ORDER_LINK = 'https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal.';
 export const FAQS_LINK = 'https://www.whitehouse.gov/wp-content/uploads/2022/02/CEQ-CEJST-QandA.pdf';
@@ -251,8 +251,8 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Provide <link1>general feedback</link1> on the CEJST website`}
     description={`Navigate to the about page. You will see How you can help list item 1`}
     values={{
-      link1: linkFn('https://www.surveymonkey.com/r/P3LWTSB', false, true),
-      link1es: linkFn('https://www.surveymonkey.com/r/ZH36CYV', false, true),
+      link1: linkFn(SITE_SATISFACTION_SURVEY_LINKS.EN, false, true),
+      link1es: linkFn(SITE_SATISFACTION_SURVEY_LINKS.ES, false, true),
     }}
   />,
   LIST_ITEM_2: <FormattedMessage
@@ -260,8 +260,8 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Suggest new <link1>data sources</link1>.`}
     description={`Navigate to the about page. You will see How you can help list item 2`}
     values={{
-      link1: linkFn('https://www.surveymonkey.com/r/6G9TQJ8', false, true),
-      link1es: linkFn('https://www.surveymonkey.com/r/ZPKY8G9', false, true),
+      link1: linkFn(DATA_SURVEY_LINKS.EN, false, true),
+      link1es: linkFn(DATA_SURVEY_LINKS.ES, false, true),
     }}
   />,
   LIST_ITEM_3: <FormattedMessage
@@ -275,8 +275,8 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     description={`Navigate to the about page. You will see How you can help list item 3`}
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-      link2: linkFn('https://www.surveymonkey.com/r/5LZ7MNB', false, true),
-      link2es: linkFn('https://www.surveymonkey.com/r/CGTH5P7', false, true),
+      link2: linkFn(CONTACT_SURVEY_LINKS.EN, false, true),
+      link2es: linkFn(CONTACT_SURVEY_LINKS.ES, false, true),
     }}
   />,
   PARA1: <FormattedMessage

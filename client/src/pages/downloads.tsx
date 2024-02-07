@@ -10,7 +10,7 @@ import ReleaseUpdate from '../components/ReleaseUpdate';
 import SubPageNav from '../components/SubPageNav';
 
 import * as DOWNLOADS_COPY from '../data/copy/downloads';
-import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS, DATA_SURVEY_LINKS} from '../data/constants';
 interface IDownloadsPageProps {
   location: Location;
 }
@@ -26,7 +26,7 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
-          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? DATA_SURVEY_LINKS.ES : DATA_SURVEY_LINKS.EN} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>

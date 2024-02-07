@@ -357,3 +357,25 @@ export const USWDS_BREAKPOINTS = {
   MOBILE_LG: 480,
   DESKTOP: 1024,
 };
+
+// ********** SURVEY LINKS ***************
+
+export const DATA_SURVEY_LINKS = {
+  EN: 'https://eop.gov1.qualtrics.com/jfe/form/SV_51EPev2O6jHiaJ8',
+  ES: 'https://eop.gov1.qualtrics.com/jfe/form/SV_2n0EWXynD1AZyT4',
+};
+
+export const SITE_SATISFACTION_SURVEY_LINKS = {
+  EN: 'https://eop.gov1.qualtrics.com/jfe/form/SV_eA0ZLaxP8gxLfoO',
+  ES: 'https://eop.gov1.qualtrics.com/jfe/form/SV_bpI7Dn1SBXGOSTY',
+};
+
+export const CONTACT_SURVEY_LINKS = {
+  EN: 'https://eop.gov1.qualtrics.com/jfe/form/SV_cCNgWW4OsfaBlTo',
+  ES: 'https://eop.gov1.qualtrics.com/jfe/form/SV_2n0EWXynD1AZyT4',
+};
+
+export const CENSUS_TRACT_SURVEY_LINKS = {
+  EN: 'https://eop.gov1.qualtrics.com/jfe/form/SV_8J5wGa8Ya4dMP9c',
+  ES: 'https://eop.gov1.qualtrics.com/jfe/form/SV_eJXos5X4yekq6cC',
+};
