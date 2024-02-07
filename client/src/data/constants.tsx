@@ -362,7 +362,7 @@ export const USWDS_BREAKPOINTS = {
 
 export const DATA_SURVEY_LINKS = {
   EN: 'https://eop.gov1.qualtrics.com/jfe/form/SV_51EPev2O6jHiaJ8',
-  ES: 'https://eop.gov1.qualtrics.com/jfe/form/SV_2n0EWXynD1AZyT4',
+  ES: 'https://eop.gov1.qualtrics.com/jfe/form/SV_0GTIoUJZu7ywY8S',
 };
 
 export const SITE_SATISFACTION_SURVEY_LINKS = {
