@@ -10,7 +10,7 @@ import Layout from '../components/layout';
 import SubPageNav from '../components/SubPageNav';
 import DatasetsButton from '../components/DatasetsButton';
 
-import {USWDS_BREAKPOINTS} from '../data/constants';
+import {USWDS_BREAKPOINTS, DATA_SURVEY_LINKS} from '../data/constants';
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
 import {PAGES_ENDPOINTS} from '../data/constants';
 
@@ -29,7 +29,7 @@ const IndexPage = ({location}: MethodPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(METHODOLOGY_COPY.PAGE.HEADING)}</h1>
-          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? DATA_SURVEY_LINKS.ES : DATA_SURVEY_LINKS.EN} />
         </section>
 
         <Grid row gap className={'j40-mt3'}>

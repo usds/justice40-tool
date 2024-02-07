@@ -8,7 +8,7 @@ import {hyphenizeString} from '../../../cypress/integration/common/helpers';
 
 import * as styles from './dsContainer.module.scss';
 import * as METHODOLOGY_COPY from '../../data/copy/methodology';
-import {PAGES_ENDPOINTS} from '../../data/constants';
+import {PAGES_ENDPOINTS, DATA_SURVEY_LINKS} from '../../data/constants';
 import DatasetsButton from '../DatasetsButton';
 
 
@@ -35,7 +35,7 @@ const DatasetContainer = () => {
             <Grid desktop={{col: 1}}>
             </Grid>
             <Grid desktop={{col: 4}}>
-              <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
+              <DatasetsButton href= {intl.locale === 'es' ? DATA_SURVEY_LINKS.ES : DATA_SURVEY_LINKS.EN} />
             </Grid>
           </Grid>
 
