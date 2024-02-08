@@ -10,7 +10,7 @@ import DatasetsButton from '../components/DatasetsButton';
 import SubPageNav from '../components/SubPageNav';
 
 import * as PREV_VER_COPY from '../data/copy/previousVer';
-import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS, DATA_SURVEY_LINKS} from '../data/constants';
 import {getDownloadFileUrl} from '../data/copy/downloads';
 
 interface IPreviousVersionsProps {
@@ -33,7 +33,7 @@ const PreviousVersions = ({location}: IPreviousVersionsProps) => {
 
         <section className={'page-heading'}>
           <h1 data-cy={'about-page-heading'}>{intl.formatMessage(PREV_VER_COPY.PAGE.TITLE)}</h1>
-          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? DATA_SURVEY_LINKS.ES : DATA_SURVEY_LINKS.EN} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>

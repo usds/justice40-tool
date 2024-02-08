@@ -13,7 +13,7 @@ import SubPageNav from '../components/SubPageNav';
 
 import * as ABOUT_COPY from '../data/copy/about';
 import {FEEDBACK_EMAIL} from '../data/copy/common';
-import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS, DATA_SURVEY_LINKS} from '../data/constants';
 
 import accountBalanceIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
@@ -46,7 +46,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
 
         <section className={'page-heading'}>
           <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.TITLE)}</h1>
-          <DatasetsButton href= {intl.locale === 'es' ? 'https://www.surveymonkey.com/r/ZPKY8G9' : 'https://www.surveymonkey.com/r/6G9TQJ8'} />
+          <DatasetsButton href= {intl.locale === 'es' ? DATA_SURVEY_LINKS.ES : DATA_SURVEY_LINKS.EN} />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>

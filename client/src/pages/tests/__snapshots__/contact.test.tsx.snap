@@ -403,7 +403,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           Contact
         </h1>
         <a
-          href="https://www.surveymonkey.com/r/6G9TQJ8"
+          href="https://eop.gov1.qualtrics.com/jfe/form/SV_51EPev2O6jHiaJ8"
           rel="noreferrer"
           target="_blank"
         >
@@ -431,6 +431,21 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <h2>
             Contact us
           </h2>
+          <p>
+            
+      The best way to contact the Council on Environmental Quality (CEQ) is by filling out 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="https://eop.gov1.qualtrics.com/jfe/form/SV_cCNgWW4OsfaBlTo"
+              rel="noreferrer"
+              target="_blank"
+            >
+              this form
+            </a>
+            .
+    
+          </p>
           <p>
             Email CEQ at: 
             <a
@@ -661,7 +676,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <a
-        href="https://www.surveymonkey.com/r/P3LWTSB"
+        href="https://eop.gov1.qualtrics.com/jfe/form/SV_eA0ZLaxP8gxLfoO"
         rel="noreferrer"
         target="_blank"
       >
