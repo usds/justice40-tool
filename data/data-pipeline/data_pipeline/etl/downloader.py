@@ -6,7 +6,9 @@ import shutil
 
 from pathlib import Path
 from data_pipeline.config import settings
+from data_pipeline.utils import get_module_logger
 
+logger = get_module_logger(__name__)
 
 class Downloader:
     """A simple class to encapsulate the download capabilities of the application"""
@@ -34,12 +36,13 @@ class Downloader:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
         download_file_name.parent.mkdir(parents=True, exist_ok=True)
-
+        logger.debug(f"Downloading {file_url}")
         response = requests.get(
             file_url, verify=verify, timeout=settings.REQUESTS_DEFAULT_TIMOUT
         )
         if response.status_code == 200:
             file_contents = response.content
+            logger.debug("Downloaded.")
         else:
             raise Exception(
                 f"HTTP response {response.status_code} from url {file_url}. Info: {response.content}"

@@ -215,6 +215,7 @@ class CensusETL(ExtractTransformLoad):
             state_gdf = gpd.read_file(file_name)
             usa_df = usa_df.append(state_gdf)
 
+        logger.debug("Converting to CRS")
         usa_df = usa_df.to_crs(
             "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
         )

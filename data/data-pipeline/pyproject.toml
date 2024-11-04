@@ -29,7 +29,7 @@ marshmallow-dataclass = "^8.5.3"
 marshmallow-enum = "^1.5.1"
 matplotlib = "^3.4.2"
 numpy = "^1.22.1"
-pandas = "^1.2.5"
+pandas = "~1.4.3"
 pylint = "^2.11.1"
 pillow = "9.3.0"
 python = "^3.8"
@@ -42,6 +42,7 @@ us = "^2.0.2"
 xlsxwriter = "^2.0.0"
 pydantic = "^1.9.0"
 Rtree = "^1.0.0"
+fiona = "~1.8.21"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}

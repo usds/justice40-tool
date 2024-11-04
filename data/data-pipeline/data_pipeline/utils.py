@@ -13,6 +13,7 @@ import requests
 import urllib3
 import yaml
 from data_pipeline.config import settings
+from data_pipeline.constants import LOG_LEVEL
 from data_pipeline.content.schemas.download_schemas import CodebookConfig
 from data_pipeline.content.schemas.download_schemas import CSVConfig
 from data_pipeline.content.schemas.download_schemas import ExcelConfig
@@ -48,7 +49,7 @@ def get_module_logger(module_name: str) -> logging.Logger:
     )
     handler.setFormatter(formatter)
     logger.addHandler(handler)
-    logger.setLevel(logging.INFO)
+    logger.setLevel(LOG_LEVEL)
     logger.propagate = False  # don't send log messages to the parent logger (to avoid duplicate log messages)
     return logger
 

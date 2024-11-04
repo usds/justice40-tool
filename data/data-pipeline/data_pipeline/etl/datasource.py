@@ -23,6 +23,7 @@ from typing import List
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
+from data_pipeline.constants import NO_SSL_VERIFY
 from data_pipeline.etl.downloader import Downloader
 from data_pipeline.etl.sources.census_acs.etl_utils import (
     retrieve_census_acs_data,
@@ -65,7 +66,7 @@ class FileDataSource(DataSource):
         Downloader.download_file_from_url(
             file_url=self.source,
             download_file_name=self.destination,
-            verify=True,
+            verify=not NO_SSL_VERIFY,
         )
 
     def __str__(self):
@@ -85,7 +86,7 @@ class ZIPDataSource(DataSource):
         Downloader.download_zip_file_from_url(
             file_url=self.source,
             unzipped_file_path=self.destination,
-            verify=True,
+            verify=not NO_SSL_VERIFY,
         )
 
     def __str__(self):
