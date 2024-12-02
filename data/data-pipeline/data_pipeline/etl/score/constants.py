@@ -10,7 +10,7 @@ from data_pipeline.score import field_names
 # Base Paths
 DATA_PATH = Path(settings.APP_ROOT) / "data"
 TMP_PATH = DATA_PATH / "tmp"
-FILES_PATH = Path(settings.APP_ROOT) / "files"
+FILES_PATH = Path(settings.APP_ROOT) / "files" / "static"
 
 # Remote Paths
 CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/Gaz_counties_national.zip"
@@ -52,7 +52,7 @@ else:
     version_str = os.environ.get("J40_VERSION_LABEL_STRING")
 
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
-SCORE_DOWNLOADABLE_PDF_FILE_NAME = "draft-communities-list.pdf"
+SCORE_DOWNLOADABLE_PDF_FILE_NAME = "communities-list.pdf"
 SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_PDF_FILE_NAME
 SCORE_DOWNLOADABLE_TSD_FILE_NAME = "cejst-technical-support-document.pdf"
 SCORE_DOWNLOADABLE_TSD_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_TSD_FILE_NAME
@@ -77,7 +77,7 @@ SCORE_VERSIONING_DATA_DOCUMENTATION_ZIP_FILE_PATH = (
 SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / f"{version_str}-shapefile-codebook.zip"
 )
-SCORE_VERSIONING_README_FILE_NAME = f"readme-version-{version_str}.md"
+SCORE_VERSIONING_README_FILE_NAME = "readme.md"
 SCORE_VERSIONING_README_FILE_PATH = (
     FILES_PATH / SCORE_VERSIONING_README_FILE_NAME
 )

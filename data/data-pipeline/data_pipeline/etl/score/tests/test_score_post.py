@@ -125,7 +125,7 @@ def test_load_tile_csv(etl, tile_data_expected):
 def test_load_downloadable_zip(etl, monkeypatch, score_data_expected):
     reload(constants)
     static_files_path = (
-        Path.cwd() / "data_pipeline" / "files"
+        Path.cwd() / "data_pipeline" / "files" / "static"
     )  # need to monkeypatch to real dir
     monkeypatch.setattr(constants, "FILES_PATH", static_files_path)
     monkeypatch.setattr(
