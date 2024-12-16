@@ -7,7 +7,7 @@ This repo contains the code, processes, and documentation for the data and tech 
 
 ## Background
 
-The Justice40 initiative and CEJST were announced in the [Executive Order on Tackling the Climate Crisis at Home and Abroad](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/) in January 2021. The CEJST includes interactive maps and federal agencies can use the tool to prioritize verburdened and underserved communities for benefits in their covered programs.
+The Justice40 initiative and CEJST were announced in the [Executive Order on Tackling the Climate Crisis at Home and Abroad](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/) in January 2021. The CEJST includes interactive maps and federal agencies can use the tool to prioritize overburdened and underserved communities for benefits in their covered programs.
 
 
 ## Core Team
