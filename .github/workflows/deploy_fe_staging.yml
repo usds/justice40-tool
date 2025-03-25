@@ -103,7 +103,7 @@ jobs:
           echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
       - name: Get changed files using defaults
         id: changed-files
-        uses: tj-actions/changed-files@v18.1
+        uses: tj-actions/changed-files@v46.0.3
       - name: Update PR with message that en.json has been updated
         uses: mshick/add-pr-comment@v1
         with:
